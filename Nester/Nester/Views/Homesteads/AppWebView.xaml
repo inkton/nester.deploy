@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:View xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Nester.Views;assembly=Nester"
+             xmlns:validators="clr-namespace:Nester.Utils.Validators;assembly=Nester"
+             xmlns:utils="clr-namespace:Nester.Utils;assembly=Nester"
+             Title="Hello World"
+             x:Class="Nester.Views.AppWebView">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <StackLayout>
+
+    <Grid VerticalOptions="LayoutOptions.Center" HorizontalOptions="LayoutOptions.Center">
+
+      <Grid.RowDefinitions>
+        <RowDefinition Height="5*"/>
+        <RowDefinition Height="80*"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="5*"/>
+      </Grid.RowDefinitions>
+
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="5*"/>
+        <ColumnDefinition Width="90*"/>
+        <ColumnDefinition Width="5*"/>
+      </Grid.ColumnDefinitions>
+
+      <StackLayout Grid.Row="1" Grid.Column="1">
+            <WebView x:Name="Browser" WidthRequest="1000" HeightRequest="1000" />
+            <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
+      </StackLayout>
+
+      <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Padding="10,10" VerticalOptions="LayoutOptions.Center" HorizontalOptions="LayoutOptions.Center">
+          <!--<Button x:Name="ButtonBrowserBack" Text="Back" HorizontalOptions="StartAndExpand" />
+          <Button x:Name="ButtonBrowserForward" Text="Forward" HorizontalOptions="End"  />-->
+        <Button x:Name="ButtonDone"
+          Text="Proceed"
+          TextColor="#ffffff" 
+          BackgroundColor="{StaticResource selectionColor}" 
+          Style="{StaticResource buttonPageFlow}"
+          Clicked="OnDoneButtonClickedAsync">
+        </Button>
+
+      </StackLayout>
+
+    </Grid>
+
+  </StackLayout>
+
+</views:View>

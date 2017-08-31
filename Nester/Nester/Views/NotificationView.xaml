@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:View xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Nester.Views;assembly=Nester"
+             xmlns:validators="clr-namespace:Nester.Utils.Validators;assembly=Nester"
+             xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:local="clr-namespace:Nester"
+             x:Class="Nester.Views.NotificationView"
+             Title="Notifications">
+  
+  <ContentPage.Resources>
+    <ResourceDictionary>
+
+      <DataTemplate x:Name="ItemTemplate"  x:Key="ItemTemplate">
+        <ViewCell>
+          <ViewCell.View>
+            <StackLayout Orientation="Horizontal">
+              <Label Text="{Binding CreatedAt}" Style="{StaticResource nesterListInfoBodyTiny}" />
+              <Label Text="{Binding Tag}" Style="{StaticResource nesterListInfoBodyTiny}" />
+              <Label Text="{Binding SupportText}" Style="{StaticResource nesterListInfoBodyTiny}" />
+            </StackLayout>
+          </ViewCell.View>
+        </ViewCell>
+      </DataTemplate>
+      
+      
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  
+  <ContentPage.Content>
+
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="5*"/>
+        <RowDefinition Height="80*"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="5*"/>
+      </Grid.RowDefinitions>
+
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="20*"/>
+        <ColumnDefinition Width="60*"/>
+        <ColumnDefinition Width="20*"/>
+      </Grid.ColumnDefinitions>
+
+      <StackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+
+        <sync:SfListView x:Name="Notifications"
+                        ItemsSource="{Binding Notifications}"
+                        SelectionBackgroundColor="{StaticResource selectionColor}"
+                        ItemTemplate="{StaticResource ItemTemplate}">
+        </sync:SfListView>
+              
+    </StackLayout>
+
+      <StackLayout Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" >
+
+        <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
+
+        <Button x:Name="ButtonDone"
+                Text="Proceed"
+                Style="{StaticResource buttonPageFlow}"
+                Clicked="OnDoneButtonClickedAsync">
+        </Button>
+          
+      </StackLayout>
+
+    </Grid>
+
+  </ContentPage.Content>
+</views:View>

@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:View xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Nester.Views;assembly=Nester"
+             xmlns:local="clr-namespace:Nester"
+             xmlns:validators="clr-namespace:Nester.Utils.Validators;assembly=Nester"
+             xmlns:utils="clr-namespace:Nester.Utils;assembly=Nester"
+             x:Class="Nester.Views.UserView"
+             Title="Your Details">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <utils:IdentifierMaker x:Key="identityConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <ContentPage.Content>
+
+    <StackLayout>
+      
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="5*"/>
+          <RowDefinition Height="50*"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="20*"/>
+          <ColumnDefinition Width="60*"/>
+          <ColumnDefinition Width="20*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackLayout Grid.Row="1" Grid.Column="1">
+
+          <Label Style="{StaticResource nesterFieldLabel}"
+                IsVisible="{Binding WizardMode}"
+                Text="Security Code"
+                x:Name="SecurityCodeLabel"></Label>
+          <Entry Style="{StaticResource nesterField}"
+                IsVisible="{Binding WizardMode}"             
+                x:Name="SecurityCode"
+                  Text="{
+                    Binding Path=Permit.SecurityCode
+                  }"
+                Keyboard="Keyboard.Text"
+                VerticalOptions="LayoutOptions.CenterAndExpand"
+                Placeholder="Enter the emailed security code">
+            <Entry.Behaviors>
+              <validators:EntryValidatorBehavior
+                  IsCheckEmpty="True"
+                  MaxLength="5"
+                  PropertyChanged="OnFieldValidation"
+                  x:Name="SecurityCodeValidator" />
+            </Entry.Behaviors>
+          </Entry>
+          
+          <Label Style="{StaticResource nesterFieldLabel}"
+                 Text="Nickname"></Label>
+          <Entry Style="{StaticResource nesterField}"
+                x:Name="NickName"
+                  Text="{
+                  Binding Path=Permit.Owner.Nickname, 
+                  Converter={StaticResource identityConverter},
+                  ConverterParameter=16
+                  }"
+                Keyboard="Keyboard.Text"
+                VerticalOptions="LayoutOptions.CenterAndExpand"
+                Placeholder="Enter nickname">
+            <Entry.Behaviors>
+              <validators:EntryValidatorBehavior
+                  IsCheckEmpty="True"
+                  MaxLength="16"
+                  PropertyChanged="OnFieldValidation"
+                  x:Name="NicknameValidator" />
+            </Entry.Behaviors>
+          </Entry>
+                    
+          <Label Style="{StaticResource validateFailMsg}"
+                Text="{Binding Source={x:Reference NicknameValidator}, Path=Message}"
+                Opacity="{Binding Source={x:Reference NicknameValidator}, Path=IsVisibleMessage}" />
+
+          <Picker x:Name="Territories" Title="Country" VerticalOptions="LayoutOptions.CenterAndExpand">
+          </Picker>
+          <Label Opacity="0" />
+
+          <Label Style="{StaticResource nesterFieldLabel}"
+                 Text="First Name"></Label>
+          <Entry Style="{StaticResource nesterField}"
+              x:Name="FirstName"
+              Text="{Binding Path=Permit.Owner.FirstName, Mode=TwoWay}"
+              Keyboard="Keyboard.Text"
+              VerticalOptions="LayoutOptions.CenterAndExpand"
+              Placeholder="Enter first name">
+            <Entry.Behaviors>
+              <validators:EntryValidatorBehavior
+                  IsCheckEmpty="True"
+                  MaxLength="255"
+                  PropertyChanged="OnFieldValidation"
+                  x:Name="FirstNameValidator" />
+            </Entry.Behaviors>
+          </Entry>
+          <Label Style="{StaticResource validateFailMsg}"
+                Text="{Binding Source={x:Reference FirstNameValidator}, Path=Message}"
+                Opacity="{Binding Source={x:Reference FirstNameValidator}, Path=IsVisibleMessage}" />
+
+          <Label Style="{StaticResource nesterFieldLabel}"
+                 Text="Last Name"></Label>
+          <Entry Style="{StaticResource nesterField}"
+              x:Name="LastName"
+              Text="{Binding Path=Permit.Owner.LastName, Mode=TwoWay}"
+              Keyboard="Keyboard.Text"
+              VerticalOptions="LayoutOptions.CenterAndExpand"
+              Placeholder="Enter last name">
+            <Entry.Behaviors>
+              <validators:EntryValidatorBehavior
+                  IsCheckEmpty="True"
+                  MaxLength="255"
+                  PropertyChanged="OnFieldValidation"
+                  x:Name="LastNameValidator" />
+            </Entry.Behaviors>
+          </Entry>
+          <Label Style="{StaticResource validateFailMsg}"
+                Text="{Binding Source={x:Reference LastNameValidator}, Path=Message}"
+                Opacity="{Binding Source={x:Reference LastNameValidator}, Path=IsVisibleMessage}" />
+        </StackLayout>
+
+        <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+          <Button x:Name="ButtonDone"
+                  Text="Save"
+                  IsEnabled="{Binding Validated}"
+                  Style="{StaticResource buttonPageFlow}"
+                  Clicked="OnDoneButtonClickedAsync">
+          </Button>
+        </StackLayout>
+
+      </Grid>
+
+      <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
+
+    </StackLayout>
+
+  </ContentPage.Content>
+
+</views:View>

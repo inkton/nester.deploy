@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:View xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Nester.Views;assembly=Nester"
+             xmlns:validators="clr-namespace:Nester.Utils.Validators;assembly=Nester"
+             xmlns:utils="clr-namespace:Nester.Utils;assembly=Nester"
+             Title="App Location"
+             x:Class="Nester.Views.AppLocationView">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>      
+      <Style x:Key="stackFlag" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Horizontal" />
+        <Setter Property="Spacing" Value="10" />
+        <Setter Property="Padding" Value="10,10,10,10" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />        
+        <Setter Property="BackgroundColor" Value="{StaticResource tableBackColor}" />
+      </Style>                
+      <Style x:Key="labelFlag" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource minorColor2}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="VerticalOptions" Value="Center" />
+      </Style>          
+      <Style x:Key="imageFlag" TargetType="Image">  
+        <Setter Property="WidthRequest" Value="48" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="VerticalOptions" Value="Center" />
+      </Style>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <StackLayout>
+
+    <Grid>
+
+      <Grid.RowDefinitions>
+        <RowDefinition Height="5*"/>        
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="5*"/>
+      </Grid.RowDefinitions>
+
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="20*"/>
+        <ColumnDefinition Width="60*"/>
+        <ColumnDefinition Width="20*"/>
+      </Grid.ColumnDefinitions>
+
+      <StackLayout Grid.Row="1" Grid.Column="1" >
+
+        <Label Style="{StaticResource nesterFieldLabel}"
+                Text="Locations"></Label>
+
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>          
+          </Grid.RowDefinitions>
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="33*"/>
+            <ColumnDefinition Width="33*"/>
+            <ColumnDefinition Width="33*"/>          
+          </Grid.ColumnDefinitions>
+
+          <!--Row 0-->
+                       
+          <StackLayout Grid.Row="0" Grid.Column="0">
+            <StackLayout x:Name="FlagHolder_blue_mountain" Style="{StaticResource stackFlag}">
+              <StackLayout HorizontalOptions="Start" VerticalOptions="Center">
+                <Label x:Name="FlagLabel_blue_mountain"
+                        Style="{StaticResource labelFlag}"
+                        Text="Sydney">
+                </Label>
+              </StackLayout>
+              <StackLayout HorizontalOptions="CenterAndExpand"></StackLayout>
+              <StackLayout HorizontalOptions="End" VerticalOptions="Center">
+              <Image x:Name="FlagImage_blue_mountain" 
+                      Style="{StaticResource imageFlag}"
+                      Source="australia.png">                
+              </Image>
+            </StackLayout>            
+            </StackLayout>
+           </StackLayout>
+          
+          <StackLayout Grid.Row="0" Grid.Column="1">
+            <StackLayout x:Name="FlagHolder_stadtwald" Style="{StaticResource stackFlag}">
+              <StackLayout HorizontalOptions="Start" VerticalOptions="Center">
+                <Label x:Name="FlagLabel_stadtwald"
+                        Style="{StaticResource labelFlag}"
+                        Text="Frankfurt">
+                </Label>
+              </StackLayout>
+              <StackLayout HorizontalOptions="CenterAndExpand"></StackLayout>
+              <StackLayout HorizontalOptions="End" VerticalOptions="Center">
+                <Image x:Name="FlagImage_stadtwald" 
+                        Style="{StaticResource imageFlag}"
+                        Source="germany.png">
+                </Image>
+              </StackLayout>
+            </StackLayout>
+          </StackLayout>
+
+          <StackLayout Grid.Row="0" Grid.Column="2">
+            <StackLayout x:Name="FlagHolder_bois_de_boulogne" Style="{StaticResource stackFlag}">
+            <StackLayout HorizontalOptions="Start" VerticalOptions="Center">
+              <Label x:Name="FlagLabel_bois_de_boulogne"
+                      Style="{StaticResource labelFlag}"                     
+                      Text="Paris">
+              </Label>
+            </StackLayout>
+            <StackLayout HorizontalOptions="CenterAndExpand"></StackLayout>
+            <StackLayout HorizontalOptions="End" VerticalOptions="Center">
+              <Image x:Name="FlagImage_bois_de_boulogne" 
+                      Style="{StaticResource imageFlag}"
+                      Source="france.png">
+              </Image>
+            </StackLayout>
+          </StackLayout>          
+          </StackLayout>          
+
+        
+          <!--Row 1-->
+
+          <StackLayout Grid.Row="1" Grid.Column="0">                      
+            <StackLayout x:Name="FlagHolder_sherwood" Style="{StaticResource stackFlag}">			
+			        <StackLayout HorizontalOptions="Start" VerticalOptions="Center">
+				        <Label x:Name="FlagLabel_sherwood"
+					        Style="{StaticResource labelFlag}"
+					        Text="London">
+                </Label>
+			        </StackLayout>
+		          <StackLayout HorizontalOptions="CenterAndExpand"></StackLayout>	
+			        <StackLayout HorizontalOptions="End" VerticalOptions="Center">
+				        <Image x:Name="FlagImage_sherwood" 
+					        Style="{StaticResource imageFlag}"
+					        Source="uk.png">
+				        </Image>
+			        </StackLayout>
+		        </StackLayout>
+          </StackLayout>          
+
+          <StackLayout Grid.Row="1" Grid.Column="1">
+            <StackLayout x:Name="FlagHolder_aokigahara" Style="{StaticResource stackFlag}">
+              <StackLayout HorizontalOptions="Start" VerticalOptions="Center">
+                <Label x:Name="FlagLabel_aokigahara"
+                        Style="{StaticResource labelFlag}"
+                        Text="Tokyo">
+                </Label>
+              </StackLayout>
+              <StackLayout HorizontalOptions="CenterAndExpand"></StackLayout>
+              <StackLayout HorizontalOptions="End" VerticalOptions="Center">
+              <Image x:Name="FlagImage_aokigahara" 
+                      Style="{StaticResource imageFlag}"
+                      Source="japan.png">                
+              </Image>
+              </StackLayout>
+          </StackLayout>          
+          </StackLayout>          
+
+          <StackLayout Grid.Row="1" Grid.Column="2">   
+            <StackLayout x:Name="FlagHolder_vondelpark" Style="{StaticResource stackFlag}">
+              <StackLayout HorizontalOptions="Start" VerticalOptions="Center">
+                <Label x:Name="FlagLabel_vondelpark"
+                        Style="{StaticResource labelFlag}"
+                        Text="Amsterdam">
+                </Label>
+              </StackLayout>
+              <StackLayout HorizontalOptions="CenterAndExpand"></StackLayout>
+              <StackLayout HorizontalOptions="End" VerticalOptions="Center">
+                <Image x:Name="FlagImage_vondelpark" 
+                        Style="{StaticResource imageFlag}"
+                        Source="netherlands.png">
+                </Image>
+              </StackLayout>
+            </StackLayout>            
+          </StackLayout>          
+
+          <!--Row 2-->
+
+          <StackLayout Grid.Row="2" Grid.Column="0">
+            <StackLayout x:Name="FlagHolder_sentosa" Style="{StaticResource stackFlag}">
+              <StackLayout HorizontalOptions="Start" VerticalOptions="Center">
+                <Label x:Name="FlagLabel_sentosa"
+                        Style="{StaticResource labelFlag}"                     
+                        Text="Singapore">
+                </Label>
+              </StackLayout>
+              <StackLayout HorizontalOptions="CenterAndExpand"></StackLayout>
+              <StackLayout HorizontalOptions="End" VerticalOptions="Center">
+                <Image x:Name="FlagImage_sentosa" 
+                        Style="{StaticResource imageFlag}"
+                        Source="singapore.png">
+                </Image>
+              </StackLayout>
+            </StackLayout>               
+          </StackLayout>          
+
+          <StackLayout Grid.Row="2" Grid.Column="1">                    
+            <StackLayout x:Name="FlagHolder_great_trinity" Style="{StaticResource stackFlag}">
+              <StackLayout HorizontalOptions="Start" VerticalOptions="Center">
+                <Label x:Name="FlagLabel_great_trinity"
+                        Style="{StaticResource labelFlag}"
+                        Text="Dallas">
+                </Label>
+              </StackLayout>
+              <StackLayout HorizontalOptions="CenterAndExpand"></StackLayout>
+              <StackLayout HorizontalOptions="End" VerticalOptions="Center">
+                <Image x:Name="FlagImage_great_trinity" 
+                        Style="{StaticResource imageFlag}"
+                        Source="usa.png">
+                </Image>
+              </StackLayout>
+            </StackLayout>            
+          </StackLayout>          
+
+          <StackLayout Grid.Row="2" Grid.Column="2">  
+            <StackLayout x:Name="FlagHolder_fernbank" Style="{StaticResource stackFlag}">
+              <StackLayout HorizontalOptions="Start" VerticalOptions="Center">
+                <Label x:Name="FlagLabel_fernbank"
+                        Style="{StaticResource labelFlag}"
+                        Text="Atlanta">
+                </Label>
+              </StackLayout>
+              <StackLayout HorizontalOptions="CenterAndExpand"></StackLayout>
+              <StackLayout HorizontalOptions="End" VerticalOptions="Center">
+              <Image x:Name="FlagImage_fernbank" 
+                      Style="{StaticResource imageFlag}"
+                      Source="usa.png">                
+              </Image>
+              </StackLayout>
+          </StackLayout>            
+          </StackLayout>          
+
+          <!--Row 3-->
+
+          <StackLayout Grid.Row="3" Grid.Column="0">
+            <StackLayout x:Name="FlagHolder_redwood" Style="{StaticResource stackFlag}">
+              <StackLayout HorizontalOptions="Start" VerticalOptions="Center">
+                <Label x:Name="FlagLabel_redwood"
+                        Style="{StaticResource labelFlag}"
+                        Text="Silicon Valley">
+                </Label>
+              </StackLayout>
+              <StackLayout HorizontalOptions="CenterAndExpand"></StackLayout>
+              <StackLayout HorizontalOptions="End" VerticalOptions="Center">
+                <Image x:Name="FlagImage_redwood" 
+                        Style="{StaticResource imageFlag}"
+                        Source="usa.png">
+                </Image>
+              </StackLayout>
+            </StackLayout>            
+          </StackLayout>          
+
+          <StackLayout Grid.Row="3" Grid.Column="1">
+            <StackLayout x:Name="FlagHolder_schiller" Style="{StaticResource stackFlag}">
+              <StackLayout HorizontalOptions="Start" VerticalOptions="Center">
+                <Label x:Name="FlagLabel_schiller"
+                        Style="{StaticResource labelFlag}"                     
+                        Text="Chicago">
+                </Label>
+              </StackLayout>
+              <StackLayout HorizontalOptions="CenterAndExpand"></StackLayout>
+              <StackLayout HorizontalOptions="End" VerticalOptions="Center">
+                <Image x:Name="FlagImage_schiller" 
+                        Style="{StaticResource imageFlag}"
+                        Source="usa.png">
+                </Image>
+              </StackLayout>
+            </StackLayout>             
+          </StackLayout>          
+
+          <StackLayout Grid.Row="3" Grid.Column="2">
+            <StackLayout x:Name="FlagHolder_angeles" Style="{StaticResource stackFlag}">
+              <StackLayout HorizontalOptions="Start" VerticalOptions="Center">
+                <Label x:Name="FlagLabel_angeles"
+                        Style="{StaticResource labelFlag}"
+                        Text="Los Angeles">
+                </Label>
+              </StackLayout>
+              <StackLayout HorizontalOptions="CenterAndExpand"></StackLayout>
+              <StackLayout HorizontalOptions="End" VerticalOptions="Center">
+                <Image x:Name="FlagImage_angeles" 
+                        Style="{StaticResource imageFlag}"
+                        Source="usa.png">
+                </Image>
+              </StackLayout>
+            </StackLayout>            
+          </StackLayout>          
+ 
+          <!--Row 4-->
+
+          <StackLayout Grid.Row="4" Grid.Column="0">     
+              <StackLayout x:Name="FlagHolder_whitewater" Style="{StaticResource stackFlag}">
+                <StackLayout HorizontalOptions="Start" VerticalOptions="Center">
+                  <Label x:Name="FlagLabel_whitewater"
+                          Style="{StaticResource labelFlag}"
+                          Text="Miami">
+                  </Label>
+                </StackLayout>
+                <StackLayout HorizontalOptions="CenterAndExpand"></StackLayout>
+                <StackLayout HorizontalOptions="End" VerticalOptions="Center">
+                <Image x:Name="FlagImage_whitewater" 
+                        Style="{StaticResource imageFlag}"
+                        Source="usa.png">                
+                </Image>
+                </StackLayout>
+            </StackLayout>            
+          </StackLayout>          
+
+          <StackLayout Grid.Row="4" Grid.Column="1">
+            <StackLayout x:Name="FlagHolder_altmar" Style="{StaticResource stackFlag}">
+              <StackLayout HorizontalOptions="Start" VerticalOptions="Center">
+                <Label x:Name="FlagLabel_altmar"
+                        Style="{StaticResource labelFlag}"
+                        Text="New Jersey">
+                </Label>
+              </StackLayout>
+              <StackLayout HorizontalOptions="CenterAndExpand"></StackLayout>
+              <StackLayout HorizontalOptions="End" VerticalOptions="Center">
+                <Image x:Name="FlagImage_altmar" 
+                        Style="{StaticResource imageFlag}"
+                        Source="usa.png">
+                </Image>
+              </StackLayout>
+            </StackLayout>            
+          </StackLayout>          
+
+          <StackLayout Grid.Row="4" Grid.Column="2">
+            <StackLayout x:Name="FlagHolder_hoh" Style="{StaticResource stackFlag}">
+              <StackLayout HorizontalOptions="Start" VerticalOptions="Center">
+                <Label x:Name="FlagLabel_hoh"
+                        Style="{StaticResource labelFlag}"                     
+                        Text="Seattle">
+                </Label>
+              </StackLayout>
+              <StackLayout HorizontalOptions="CenterAndExpand"></StackLayout>
+              <StackLayout HorizontalOptions="End" VerticalOptions="Center">
+                <Image x:Name="FlagImage_hoh" 
+                        Style="{StaticResource imageFlag}"
+                        Source="usa.png">
+                </Image>
+              </StackLayout>
+            </StackLayout>              
+          </StackLayout>          
+        
+        </Grid>
+
+        <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
+
+      </StackLayout>
+
+      <!--<StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+        <Button x:Name="ButtonDone"
+                Text="Proceed"
+                Style="{StaticResource buttonPageFlow}"
+                Clicked="OnDoneButtonClickedAsync">
+        </Button>
+      </StackLayout>-->
+
+    </Grid>
+
+
+  </StackLayout>
+
+</views:View>
+
+

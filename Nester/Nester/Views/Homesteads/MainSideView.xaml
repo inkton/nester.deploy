@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Nester.Views;assembly=Nester"
+             Title="Apps"
+             x:Class="Nester.Views.MainSideView" MasterBehavior="Popover">
+    <MasterDetailPage.Master>
+        <local:AppListView x:Name="AppsView" />
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <local:BannerView x:Name="AppDetailView"  />
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

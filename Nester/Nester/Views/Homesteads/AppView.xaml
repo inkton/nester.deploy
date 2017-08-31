@@ -1,0 +1,451 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:View xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Nester.Views;assembly=Nester"
+             xmlns:validators="clr-namespace:Nester.Utils.Validators;assembly=Nester"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:utils="clr-namespace:Nester.Utils;assembly=Nester"
+             Title="Hello World"
+             x:Class="Nester.Views.AppView">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <utils:InverseBoolConverter x:Key="inverseBoolConverter" />
+      <utils:ObjectToBoolConverter x:Key="objBoolConverter" />
+      
+      <DataTemplate x:Name="ItemTemplate" x:Key="ItemTemplate">
+        <ViewCell>
+          <ViewCell.View>      
+              <Grid RowSpacing="0" ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="*" />                    
+                  <RowDefinition Height="*" />
+                  <RowDefinition Height="1" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="50*" />
+                  <ColumnDefinition Width="15*" />
+                  <ColumnDefinition Width="15*" />
+                  <ColumnDefinition Width="20*" />                    
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0" Grid.Row="0" Text="{Binding Time}" Style="{StaticResource nesterFieldLabel}" />
+                <Label Grid.Column="1" Grid.Row="0" Text="{Binding Level}" Style="{StaticResource nesterFieldLabel}" />
+                <Label Grid.Column="2" Grid.Row="0" Text="{Binding EventId}" Style="{StaticResource nesterFieldLabel}" />
+                <Label Grid.Column="3" Grid.Row="0" Text="{Binding Source}" Style="{StaticResource nesterFieldLabel}" />
+                <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Text="{Binding Name}" Style="{StaticResource nesterInfoLabel}" />
+  
+                <Frame Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
+            </Grid>
+
+          </ViewCell.View>
+        </ViewCell>
+      </DataTemplate>
+
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <Grid x:Name="MainGrid" RowSpacing="0" ColumnSpacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="2*"/>
+      <RowDefinition Height="10*"/>
+      <RowDefinition Height="86*"/>
+      <RowDefinition Height="2*"/>
+    </Grid.RowDefinitions>
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="2*"/>
+      <ColumnDefinition Width="98*"/>
+      <ColumnDefinition Width="2*"/>
+    </Grid.ColumnDefinitions>
+
+    <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center"
+            Spacing = "0"
+            Padding = "0,0,0,0">
+
+      <StackLayout Orientation="Horizontal" Spacing="5">
+
+        <Button x:Name="ButtonAppSettings"
+              IsVisible="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
+              Style="{StaticResource appFuncButton}"
+              Image="appsettings24.png" >
+        </Button>
+
+        <Button x:Name="ButtonNotifications"
+                IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}"
+                Style="{StaticResource appFuncButton}"
+                Image="notifications24.png" >
+        </Button>
+
+        <Button x:Name="ButtonAppDeploy"
+                IsVisible="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
+                IsEnabled="{Binding EditApp.IsBusy, Converter={StaticResource inverseBoolConverter}}"
+                Style="{StaticResource appFuncButton}"
+                Image="appdeploy24.png" >
+        </Button>
+
+        <Button x:Name="ButtonAppDepRemove"
+                IsVisible="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
+                IsEnabled="{Binding EditApp.IsDeployed}}"
+                Style="{StaticResource appFuncButton}"
+                Image="appdeploymentremove24.png" >
+        </Button>
+
+        <Button x:Name="ButtonAppDownload"
+                IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}"
+                IsEnabled="{Binding EditApp.IsActive}"
+                Style="{StaticResource appFuncButton}"
+                Image="appdownload24.png" >
+        </Button>
+
+        <Button x:Name="ButtonAppView"
+                IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}"
+                IsEnabled="{Binding EditApp.IsActive}"
+                Style="{StaticResource appFuncButton}"
+                Image="appview24.png" >
+        </Button>
+
+        <Button x:Name="ButtonAppMenu"
+                Style="{StaticResource appFuncButton}"
+                Image="menu24.png" >
+        </Button>
+        
+      </StackLayout>
+
+      <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
+      
+    </StackLayout>
+      
+    <Grid Grid.Row="2" Grid.Column="1" RowSpacing="0" ColumnSpacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="36*"/>
+        <ColumnDefinition Width="64*"/>
+      </Grid.ColumnDefinitions>
+
+      <Grid Grid.Row="0" Grid.Column="0" Scale=".8" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="16*"/>
+          <RowDefinition Height="10*"/>
+          <RowDefinition Height="10*"/>
+          <RowDefinition Height="8*"/>
+          <RowDefinition Height="56*"/>        
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="100*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" HorizontalOptions="EndAndExpand" >
+          <Label Text="Analyze Time Period (UTC)" />
+          <DatePicker x:Name="StartAndExpand" HorizontalOptions="StartAndExpand"  />
+        </StackLayout>  
+
+        <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" >
+          <Label Text="Start" HorizontalOptions="Start" />
+          <TimePicker x:Name="StartTime" HorizontalOptions="End" />
+        </StackLayout>  
+
+        <StackLayout Grid.Row="2" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" >
+          <Label Text="End" HorizontalOptions="Start" />
+          <TimePicker x:Name="EndTime" HorizontalOptions="End"  />
+        </StackLayout>
+
+        <Button Grid.Row="3" Grid.Column="0" x:Name="ButtonGetAnalytics" Text="Get Analytics" HorizontalOptions="EndAndExpand" ></Button>
+        
+        <sync:SfListView Grid.Row="4" Grid.Column="0" 
+                x:Name="NestLogs"
+                SelectionMode="Single"
+                SelectionBackgroundColor="{StaticResource selectionColor}"
+                ItemTemplate="{StaticResource ItemTemplate}"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+                ItemsSource="{Binding LogViewModel.NestLogs}"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand" />
+        
+      </Grid>
+  
+      <Grid Grid.Row="0" Grid.Column="1" x:Name="ChartGrid" Padding="0" Margin="0" RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="2*"/>          
+          <RowDefinition Height="4*"/>
+          <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="5*"/>
+          <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Scale=".8" Padding="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+          <Grid.RowDefinitions>
+            <RowDefinition Height="100*"/>          
+          </Grid.RowDefinitions>
+            
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="60*"/>          
+          </Grid.ColumnDefinitions>
+
+          <StackLayout Grid.Column="0" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="Center">
+            <Label TextColor="{StaticResource mainColor}" Text="CPU" HorizontalOptions="Center" LineBreakMode="NoWrap" />
+            <Label TextColor="{StaticResource paneColor}" HorizontalOptions="Center" x:Name="FocusCPU" />
+          </StackLayout>
+          
+          <StackLayout Grid.Column="1" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="Center">
+            <Label TextColor="{StaticResource mainColor}" Text="RAM" HorizontalOptions="Center" LineBreakMode="NoWrap" />
+            <Label TextColor="{StaticResource paneColor}" HorizontalOptions="Center" x:Name="FocusRAM" />                         
+          </StackLayout>                        
+          
+          <StackLayout Grid.Column="2" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="Center">
+            <Label TextColor="{StaticResource mainColor}" Text="Disk" HorizontalOptions="Center" LineBreakMode="NoWrap" />
+            <Label TextColor="{StaticResource paneColor}" HorizontalOptions="Center" x:Name="FocusDisk"  />
+          </StackLayout>
+          
+          <StackLayout Grid.Column="3" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="Center">
+              <Label TextColor="{StaticResource mainColor}" Text="Net" HorizontalOptions="Start" LineBreakMode="NoWrap" />
+              <Label TextColor="{StaticResource paneColor}" HorizontalOptions="Center"  x:Name="FocusNet"  />         
+          </StackLayout>              
+          
+          <StackLayout Grid.Column="4" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
+              <ScrollView 
+                    BackgroundColor="#EEEEEE"
+                    Padding="2" 
+                    IsEnabled="{Binding Source={x:Reference NestLogs},
+                      Path=SelectedItem,
+                      Converter={StaticResource objBoolConverter}}"
+                      VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+                      <Label x:Name="Message" BackgroundColor="#EEEEEE" TextColor="{StaticResource noteColor}" LineBreakMode="WordWrap" />                
+              </ScrollView>
+          </StackLayout>     
+        
+        </Grid>
+
+        <chart:SfChart x:Name="DiskSpaceData" Grid.Row="1" Grid.Column="0" >
+
+          <chart:SfChart.Title>
+            <chart:ChartTitle Text="Disk Space"  TextColor="{StaticResource mainColor}" Font="Bold,12" />
+          </chart:SfChart.Title>
+
+          <chart:SfChart.Legend>
+            <chart:ChartLegend DockPosition="Left"
+                        Orientation="Vertical">
+              <chart:ChartLegend.LabelStyle>
+                <chart:ChartLegendLabelStyle TextColor="{StaticResource minorColor}" Font="None,10">
+                </chart:ChartLegendLabelStyle>
+              </chart:ChartLegend.LabelStyle>
+            </chart:ChartLegend>
+          </chart:SfChart.Legend>
+
+          <chart:SfChart.PrimaryAxis>
+            <chart:CategoryAxis>
+              <chart:CategoryAxis.Title>
+                <chart:ChartAxisTitle Text="Memory"> </chart:ChartAxisTitle>
+              </chart:CategoryAxis.Title>
+            </chart:CategoryAxis>
+          </chart:SfChart.PrimaryAxis>
+
+          <chart:SfChart.SecondaryAxis>
+            <chart:NumericalAxis>
+              <chart:NumericalAxis.Title>
+                <chart:ChartAxisTitle Text="Time"></chart:ChartAxisTitle>
+              </chart:NumericalAxis.Title>
+            </chart:NumericalAxis>
+          </chart:SfChart.SecondaryAxis>
+
+          <chart:PieSeries
+            XBindingPath="Key"
+            YBindingPath="Value"
+            EnableAnimation="false">
+
+            <chart:PieSeries.ColorModel>
+              <chart:ChartColorModel Palette="Custom" >
+                <chart:ChartColorModel.CustomBrushes>
+                  <Color>#34495E</Color>
+                  <Color>#27AE60</Color>
+                  <Color>#E67E22</Color>
+                  <Color>#44BBFF</Color>
+                </chart:ChartColorModel.CustomBrushes>
+              </chart:ChartColorModel>
+            </chart:PieSeries.ColorModel>
+
+          </chart:PieSeries>
+
+        </chart:SfChart>
+
+        <chart:SfChart x:Name="CpuData" Grid.Row="2" Grid.Column="0" >
+
+          <chart:SfChart.Title>
+            <chart:ChartTitle Text="CPU utilization" TextColor="{StaticResource mainColor}" Font="Bold,12">
+            </chart:ChartTitle>
+          </chart:SfChart.Title>
+
+          <chart:SfChart.Legend>
+            <chart:ChartLegend DockPosition="Bottom" Orientation="Horizontal">
+              <chart:ChartLegend.LabelStyle>
+                <chart:ChartLegendLabelStyle TextColor="{StaticResource minorColor}" Font="None,10">
+                </chart:ChartLegendLabelStyle>
+              </chart:ChartLegend.LabelStyle>
+            </chart:ChartLegend>
+          </chart:SfChart.Legend>
+
+          <chart:SfChart.PrimaryAxis>
+            <chart:DateTimeAxis IntervalType="Minutes" >
+              <chart:DateTimeAxis.LabelStyle>
+                <chart:ChartAxisLabelStyle LabelFormat="HH:mm:ss" Font="None,10"/>
+              </chart:DateTimeAxis.LabelStyle>
+            </chart:DateTimeAxis>
+          </chart:SfChart.PrimaryAxis>
+
+          <chart:SfChart.SecondaryAxis >
+            <chart:NumericalAxis Minimum="0" Maximum="100" >
+              <chart:NumericalAxis.LabelStyle>
+                <chart:ChartAxisLabelStyle Font="None,10"/>
+              </chart:NumericalAxis.LabelStyle>              
+            </chart:NumericalAxis  >
+          </chart:SfChart.SecondaryAxis>
+
+          <chart:StackingAreaSeries
+            Color="#34495E"
+            XBindingPath="Time"
+            YBindingPath="Value" />
+
+          <chart:StackingAreaSeries
+            Color="#2980B9"
+            XBindingPath="Time"
+            YBindingPath="Value" />
+
+          <chart:StackingAreaSeries
+            Color="#27AE60"
+            XBindingPath="Time"
+            YBindingPath="Value" />
+
+          <chart:StackingAreaSeries
+            Color="#E67E22"
+            XBindingPath="Time"
+            YBindingPath="Value" />
+
+          <chart:StackingAreaSeries
+            Color="#44BBFF"
+            XBindingPath="Time"
+            YBindingPath="Value" />
+
+        </chart:SfChart>
+        
+        <chart:SfChart x:Name="RamData" Grid.Row="1" Grid.Column="1" >
+
+          <chart:SfChart.Title>
+            <chart:ChartTitle Text="System RAM"  TextColor="{StaticResource mainColor}" Font="Bold,12"  />
+          </chart:SfChart.Title>
+          
+          <chart:SfChart.Legend>
+            <chart:ChartLegend DockPosition="Bottom" Orientation="Horizontal">
+              <chart:ChartLegend.LabelStyle>
+                <chart:ChartLegendLabelStyle TextColor="{StaticResource minorColor}" Font="None,10">
+                </chart:ChartLegendLabelStyle>
+              </chart:ChartLegend.LabelStyle>
+            </chart:ChartLegend>
+          </chart:SfChart.Legend>
+
+          <chart:SfChart.PrimaryAxis>
+            <chart:DateTimeAxis IntervalType="Minutes" >
+              <chart:DateTimeAxis.LabelStyle>
+                <chart:ChartAxisLabelStyle LabelFormat="HH:mm:ss" Font="None,10"/>
+              </chart:DateTimeAxis.LabelStyle>
+            </chart:DateTimeAxis>
+          </chart:SfChart.PrimaryAxis>
+
+          <chart:SfChart.SecondaryAxis >
+            <chart:NumericalAxis Minimum="0" Maximum="100" >
+              <chart:NumericalAxis.LabelStyle>
+                <chart:ChartAxisLabelStyle Font="None,10"/>
+              </chart:NumericalAxis.LabelStyle>                            
+            </chart:NumericalAxis  >
+          </chart:SfChart.SecondaryAxis>
+          
+          <chart:StackingAreaSeries
+            Color="#34495E"
+            XBindingPath="Time"
+            YBindingPath="Value" />
+
+          <chart:StackingAreaSeries
+            Color="#2980B9"
+            XBindingPath="Time"
+            YBindingPath="Value" />
+
+          <chart:StackingAreaSeries
+            Color="#27AE60"
+            XBindingPath="Time"
+            YBindingPath="Value" />
+
+          <chart:StackingAreaSeries
+            Color="#E67E22"
+            XBindingPath="Time"
+            YBindingPath="Value" />
+
+        </chart:SfChart>
+        
+        <chart:SfChart x:Name="Ipv4Data" Grid.Row="2" Grid.Column="1" >
+
+          <chart:SfChart.Title>
+            <chart:ChartTitle Text="IpV4 Network IO" TextColor="{StaticResource mainColor}" Font="Bold,12">
+            </chart:ChartTitle>
+          </chart:SfChart.Title>
+
+          <chart:SfChart.Legend>
+            <chart:ChartLegend DockPosition="Bottom" Orientation="Horizontal">
+              <chart:ChartLegend.LabelStyle>
+                <chart:ChartLegendLabelStyle TextColor="{StaticResource minorColor}" Font="None,10">
+                </chart:ChartLegendLabelStyle>
+              </chart:ChartLegend.LabelStyle>
+            </chart:ChartLegend>
+          </chart:SfChart.Legend>
+
+          <chart:SfChart.PrimaryAxis>
+            <chart:DateTimeAxis IntervalType="Minutes" >
+              <chart:DateTimeAxis.LabelStyle>
+                <chart:ChartAxisLabelStyle LabelFormat="HH:mm:ss" Font="None,10" />
+              </chart:DateTimeAxis.LabelStyle>
+            </chart:DateTimeAxis>
+          </chart:SfChart.PrimaryAxis>
+
+          <chart:SfChart.SecondaryAxis >
+            <chart:NumericalAxis Minimum="-5000" Maximum="2000" >
+              <chart:NumericalAxis.LabelStyle>
+                <chart:ChartAxisLabelStyle Font="None,10"/>
+              </chart:NumericalAxis.LabelStyle>              
+            </chart:NumericalAxis  >
+          </chart:SfChart.SecondaryAxis>
+
+          <chart:LineSeries
+            Color="#34495E"
+            XBindingPath="Time"
+            YBindingPath="Value" />
+
+          <chart:LineSeries
+            Color="#2980B9"
+            XBindingPath="Time"
+            YBindingPath="Value"  />
+
+        </chart:SfChart>
+
+      </Grid>
+
+    </Grid>
+
+  </Grid>
+
+
+</views:View>

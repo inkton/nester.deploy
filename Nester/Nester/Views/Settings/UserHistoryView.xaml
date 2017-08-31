@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:View xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Nester.Views;assembly=Nester"
+             xmlns:validators="clr-namespace:Nester.Utils.Validators;assembly=Nester"
+             xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:local="clr-namespace:Nester"
+             x:Class="Nester.Views.UserHistoryView"
+             Title="History">
+  
+    <ContentPage.Resources>
+    <ResourceDictionary>
+      <DataTemplate x:Key="ItemTemplate" x:Name="ItemTemplate">
+
+        <ViewCell>
+          <ViewCell.View>
+
+            <Grid Padding="5,5,5,5" VerticalOptions="Center"
+                    RowSpacing="6" ColumnSpacing="0">
+              
+              <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="1" />
+              </Grid.RowDefinitions>
+
+              <Grid>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="15*" />
+                  <ColumnDefinition Width="85*" />
+                </Grid.ColumnDefinitions>
+                
+                <Label Text="{Binding CreatedAt}"                     
+                    Style="{StaticResource nesterFieldLabel}"
+                    VerticalOptions="Start"
+                    Grid.Column="0"/>
+
+                <StackLayout Orientation="Vertical"
+                    VerticalOptions="Fill"
+                    Grid.Column="1">
+                    <Label Text="{Binding SupportText}" 
+                           LineBreakMode="WordWrap"
+                           FontSize="12"
+                           Style="{StaticResource nesterFieldLabel}"
+                           HorizontalOptions="Fill" 
+                           VerticalOptions="Fill">
+                    </Label>
+                </StackLayout>
+  
+              </Grid>
+             
+              <Frame Grid.Row="1" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
+            </Grid>
+
+          </ViewCell.View>
+        </ViewCell>
+            
+      </DataTemplate>
+    </ResourceDictionary>  
+  </ContentPage.Resources>
+    
+  <ContentPage.Content>
+
+    <StackLayout>
+
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="5*"/>
+          <RowDefinition Height="80*"/>
+          <RowDefinition Height="20"/>          
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="10*"/>
+          <ColumnDefinition Width="80*"/>
+          <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackLayout Grid.Row="1" Grid.Column="1"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand" >          
+    <!--<Label Style="{StaticResource nesterListInfoLabelTiny}"
+                  Text="User Events"></Label>-->
+          <sync:SfListView x:Name="History"
+                          ItemsSource="{Binding UserEvents}"
+                          SelectionGesture="Tap"
+                          SelectionMode="Single"
+                          SelectionBackgroundColor="{StaticResource selectionColor}"
+                          ItemTemplate="{StaticResource ItemTemplate}"
+                          HorizontalOptions="FillAndExpand"
+                          VerticalOptions="FillAndExpand"                           
+                          >
+          </sync:SfListView>
+        </StackLayout>
+        
+        <ActivityIndicator Grid.Row="2" Grid.Column="1"  x:Name="ServiceActive" Style="{StaticResource nesterActive}">          
+        </ActivityIndicator>
+        
+        <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal" >
+          <Button x:Name="ButtonDone"
+                  Text="Proceed"
+                  Style="{StaticResource buttonPageFlow}"
+                  Clicked="OnDoneButtonClickedAsync">
+          </Button>          
+        </StackLayout>
+
+      </Grid>
+
+    </StackLayout>
+
+
+  </ContentPage.Content>
+</views:View>
