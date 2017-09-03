@@ -166,6 +166,13 @@
             }
         }
 
+        public string Info
+        {
+            get {
+                return _scaleSize + " x " + _scale.ToString();
+            }
+        }
+
         public string Icon
         {
             get

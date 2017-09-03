@@ -38,20 +38,20 @@
                   <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Image Source="{Binding Icon, Mode=TwoWay}"
+                <Image Source="{Binding Icon}"
                     Grid.RowSpan="2"
                     HeightRequest="32"
                     WidthRequest="32"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"/>
 
-                <Label Text="{Binding Name, Mode=TwoWay}"
+                <Label Text="{Binding Name}"
                         Style="{StaticResource nesterFieldLabel}"
                         Grid.Row="0"
                         Grid.Column="1"
                         HorizontalOptions="Start" />
                 <Label x:Name="ListTag"
-                        Text="{Binding Tag, Mode=TwoWay}"
+                        Text="{Binding Tag}"
                         Style="{StaticResource nesterListInfoLabelMinor}"
                         Grid.Row="1"
                         Grid.Column="1"
@@ -70,13 +70,12 @@
                     <ColumnDefinition Width="30*" />
                   </Grid.ColumnDefinitions>
 
-                  <!--<Button Text="Certificate"
+                  <Label x:Name="Info"
+                        Text="{Binding Info}"
+                        Style="{StaticResource nesterListInfoBodyMinor}"
                         Grid.Row="0" Grid.Column="0"
-                        Style="{StaticResource buttonListInline}"
-                        BindingContext="{Binding Source={x:Reference AppDomainsList}, Path=BindingContext}"
-                        Command="{Binding EditCertCommand}"
-                        CommandParameter="{Binding Source={x:Reference Name}, Path=BindingContext}"
-                            />-->
+                        HorizontalOptions="Start" />
+                  
                 </Grid>
 
               </Grid>

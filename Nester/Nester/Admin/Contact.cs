@@ -220,6 +220,21 @@ namespace Nester.Admin
                 }
             }
         }
+
+        public string Info
+        {
+            get
+            {
+                if (_status == "active")
+                {
+                    return "Active";
+                }
+                else
+                {
+                    return "Invited";
+                }
+            }
+        }
     }
 }
 

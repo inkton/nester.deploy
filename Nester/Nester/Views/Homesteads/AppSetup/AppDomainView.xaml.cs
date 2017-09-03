@@ -72,6 +72,8 @@ namespace Nester.Views
 
             try
             {
+                await _appViewModel.ContactModel.InitAsync();
+
                 LoadView(new ContactsView(_appViewModel));
             }
             catch (Exception ex)
@@ -88,6 +90,8 @@ namespace Nester.Views
 
             try
             {
+                await _appViewModel.NestModel.InitAsync();
+
                 LoadView(new AppNestsView(_appViewModel));
             }
             catch (Exception ex)

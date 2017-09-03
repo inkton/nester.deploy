@@ -61,6 +61,8 @@ namespace Nester.Views
 
             try
             {
+                await _appViewModel.DomainModel.InitAsync();
+
                 LoadView(new AppDomainView(_appViewModel));
             }
             catch (Exception ex)
@@ -77,6 +79,8 @@ namespace Nester.Views
 
             try
             {
+                await _appViewModel.NestModel.InitAsync();
+
                 LoadView(new AppNestsView(_appViewModel));
             }
             catch (Exception ex)

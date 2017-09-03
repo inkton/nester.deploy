@@ -34,7 +34,6 @@ namespace Nester.Views
                 });
 
             _appViewModel = appViewModel;
-            Task.Run(() => _appViewModel.NestModel.InitAsync());
             BindingContext = _appViewModel.NestModel;
 
             AppNestsList.SelectionChanged += AppNestsList_SelectionChanged;
@@ -63,6 +62,8 @@ namespace Nester.Views
 
             try
             {
+                await _appViewModel.DomainModel.InitAsync();
+
                 LoadView(new AppDomainView(_appViewModel));
             }
             catch (Exception ex)
@@ -79,6 +80,8 @@ namespace Nester.Views
 
             try
             {
+                await _appViewModel.ContactModel.InitAsync();
+
                 LoadView(new ContactsView(_appViewModel));
             }
             catch (Exception ex)
@@ -135,6 +138,8 @@ namespace Nester.Views
                 ++index;
             }
 
+            Scaling.Value = browseNest.Scale;
+
             Admin.NestPlatform platform = _appViewModel.NestModel.Platforms.First(
                 x => x.Id == browseNest.PlatformId);
 
@@ -187,6 +192,7 @@ namespace Nester.Views
         private void AppNestsList_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             SetDefaults();
+            DisplayMemory();
             Validate();
         }
 
