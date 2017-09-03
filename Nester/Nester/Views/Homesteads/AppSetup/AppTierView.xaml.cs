@@ -61,6 +61,7 @@ namespace Nester.Views
                         ThisUI.AppCollectionViewModel.AddModel(_appViewModel);
                     }
 
+                    await _appViewModel.NestModel.InitAsync();
                     Navigation.InsertPageBefore(new AppNestsView(_appViewModel), this);
                 }
 
