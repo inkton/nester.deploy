@@ -333,6 +333,8 @@ namespace Nester.Views
         {
             try
             {
+                _appViewModel.WizardMode = false;
+
                 LoadView(new AppBasicDetailView(_appViewModel));
             }
             catch (Exception ex)

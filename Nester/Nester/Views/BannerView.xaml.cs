@@ -47,6 +47,15 @@ namespace Nester.Views
                 
                 switch (_status)
                 {
+                    case Status.BannerViewUndefined:
+                        progressControl.IsVisible = false;
+                        ButtonAppDeploy.IsVisible = false;
+
+                        ButtonAppSettings.IsVisible = false;
+                        ButtonNotifications.IsVisible = false;
+                        ButtonAppMenu.IsVisible = false;
+                        break;
+
                     case Status.BannerViewUpdating:
                         progressControl.Title = "Please Wait ...";
                         progressControl.TitlePlacement = Syncfusion.SfBusyIndicator.XForms.TitlePlacement.Top;
@@ -54,18 +63,22 @@ namespace Nester.Views
 
                         ButtonAppDeploy.IsVisible = false;
                         ButtonAppDeploy.IsEnabled = false;
+
+                        ButtonAppSettings.IsVisible = true;
+                        ButtonNotifications.IsVisible = true;
+                        ButtonAppMenu.IsVisible = true;
                         break;
 
                     case Status.BannerViewWaitingDeployment:
 
                         ButtonAppDeploy.IsEnabled = true;
                         ButtonAppDeploy.IsVisible = true;
+
+                        ButtonAppSettings.IsVisible = true;
+                        ButtonNotifications.IsVisible = true;
+                        ButtonAppMenu.IsVisible = true;
                         break;
                 }
-
-                ButtonAppSettings.IsVisible = true;
-                ButtonNotifications.IsVisible = true;
-                ButtonAppMenu.IsVisible = true;
             }
 
             get
@@ -79,8 +92,6 @@ namespace Nester.Views
             get { return _appViewModel; }
             set {
                 _appViewModel = value;
-                _appViewModel.WizardMode = false;
-
                 BindingContext = _appViewModel;
             }
         }
@@ -89,6 +100,8 @@ namespace Nester.Views
         {
             try
             {
+                _appViewModel.WizardMode = false;
+
                 LoadView(new AppBasicDetailView(_appViewModel));
             }
             catch (Exception ex)

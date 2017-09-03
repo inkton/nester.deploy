@@ -7,15 +7,12 @@
              xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Title="App Tier Select"             
              x:Class="Nester.Views.AppTierView">
-
-  <StackLayout>
     
-    <Grid VerticalOptions="LayoutOptions.Center" HorizontalOptions="LayoutOptions.Center">
+    <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="5*"/>
       <RowDefinition Height="70*"/>
-      <RowDefinition Height="10*"/>
-      <RowDefinition Height="20"/>
+      <RowDefinition Height="5"/>
       <RowDefinition Height="Auto"/>    
       <RowDefinition Height="5*"/>
     </Grid.RowDefinitions>
@@ -26,7 +23,7 @@
       <ColumnDefinition Width="20*"/>
     </Grid.ColumnDefinitions>
 
-    <StackLayout Grid.Row="1" Grid.Column="1">
+    <StackLayout Grid.Row="1" Grid.Column="1" >
 
         <Label Style="{StaticResource nesterFieldLabel}"
                Text="Application Tier"></Label>
@@ -172,53 +169,32 @@
               </ViewCell>
             </DataTemplate>
           </sync:SfListView.ItemTemplate>
-        </sync:SfListView>                
+        </sync:SfListView>
+
+      <StackLayout Orientation="Horizontal">
+        <Label Style="{StaticResource nesterFieldLabel}"
+            Text="MariaDB (MySQL)" HorizontalOptions="Start" VerticalOptions="Center">
+        </Label>
+        <Switch IsToggled="{Binding MariaDBEnabled, Mode=TwoWay}"
+                Scale="0.8" HorizontalOptions="End" VerticalOptions="Center">
+        </Switch>
+      </StackLayout>
 
     </StackLayout>
 
-    <StackLayout Grid.Row="2" Grid.Column="1"  VerticalOptions = "LayoutOptions.CenterAndExpand">
+    <ActivityIndicator Grid.Row="2" Grid.Column="1" x:Name="ServiceActive" Style="{StaticResource nesterActive}">
+    </ActivityIndicator>
 
-        <Grid RowSpacing="0">
-          <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-          </Grid.RowDefinitions>
-
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10*" />
-            <ColumnDefinition Width="5*" />
-            <ColumnDefinition Width="*" />
-          </Grid.ColumnDefinitions>
-
-          <StackLayout Grid.Row="0" Grid.Column="0" VerticalOptions="CenterAndExpand" HorizontalOptions="Start">
-            <Label Style="{StaticResource nesterFieldLabel}"
-                Text="MariaDB (MySQL)">
-            </Label>
-          </StackLayout>
-
-          <StackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="CenterAndExpand" HorizontalOptions="End">
-            <Switch IsToggled="{Binding MariaDBEnabled, Mode=TwoWay}"
-                    Scale="0.8">
-            </Switch>
-          </StackLayout>
-      </Grid>
-
-    </StackLayout>
-
-      <ActivityIndicator Grid.Row="3" Grid.Column="1" x:Name="ServiceActive" Style="{StaticResource nesterActive}">
-      </ActivityIndicator>
-
-      <StackLayout Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
-        <Button x:Name="ButtonDone"
-                Text="Proceed"
-                IsEnabled="{Binding Validated}"
-                Style="{StaticResource buttonPageFlow}"
-                Clicked="OnDoneButtonClickedAsync">
-        </Button>
+    <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+      <Button x:Name="ButtonDone"
+              Text="Proceed"
+              IsEnabled="{Binding Validated}"
+              Style="{StaticResource buttonPageFlow}"
+              Clicked="OnDoneButtonClickedAsync">
+      </Button>
     </StackLayout>    
 
   </Grid>
-
-  </StackLayout>
 
 </views:View>
 

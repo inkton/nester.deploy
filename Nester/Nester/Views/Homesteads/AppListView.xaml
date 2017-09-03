@@ -119,67 +119,63 @@
       </ResourceDictionary>
     </ContentPage.Resources>
 
-    <StackLayout>
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 
-      <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="96*"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="Auto"/>      
+      </Grid.RowDefinitions>
 
-        <Grid.RowDefinitions>
-          <RowDefinition Height="96*"/>
-          <RowDefinition Height="20"/>
-          <RowDefinition Height="Auto"/>      
-        </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
 
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+      <StackLayout Grid.Row="0" Grid.Column="0">
+        <syncList:SfListView x:Name="AppModels"
+                        ItemsSource="{Binding AppModels}"
+                        SelectionBackgroundColor="{StaticResource selectionColor}"
+                        ItemTemplate="{StaticResource ItemTemplate}"
+                        ItemSize="65">
+        </syncList:SfListView>      
+      </StackLayout>
 
-        <StackLayout Grid.Row="0" Grid.Column="0">
-          <syncList:SfListView x:Name="AppModels"
-                          ItemsSource="{Binding AppModels}"
-                          SelectionBackgroundColor="{StaticResource selectionColor}"
-                          ItemTemplate="{StaticResource ItemTemplate}"
-                          ItemSize="65">
-          </syncList:SfListView>      
-        </StackLayout>
-
-        <ActivityIndicator Grid.Row="1" Grid.Column="0" x:Name="ServiceActive" Style="{StaticResource nesterActive}">
-        </ActivityIndicator>
+      <ActivityIndicator Grid.Row="1" Grid.Column="0" x:Name="ServiceActive" Style="{StaticResource nesterActive}">
+      </ActivityIndicator>
       
-        <StackLayout Grid.Row="2" 
-                  Grid.Column="0" 
-                  Orientation="Horizontal" 
-                  HorizontalOptions="End" 
-                  Spacing = "0"
-                  Padding = "0,0,0,0">
+      <StackLayout Grid.Row="2" 
+                Grid.Column="0" 
+                Orientation="Horizontal" 
+                HorizontalOptions="End" 
+                Spacing = "0"
+                Padding = "0,0,0,0">
         
-            <Button x:Name="ButtonAppReload"
-                  Style="{StaticResource appFuncButton}"
-                  Image="appreload32.png"
-                  IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}" 
-                  IsEnabled="{Binding Source={x:Reference AppModels}, Path=SelectedItem, Converter={StaticResource objBoolConverter}}">          
-            </Button>
+          <Button x:Name="ButtonAppReload"
+                Style="{StaticResource appFuncButton}"
+                Image="appreload32.png"
+                IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}" 
+                IsEnabled="{Binding Source={x:Reference AppModels}, Path=SelectedItem, Converter={StaticResource objBoolConverter}}">          
+          </Button>
         
-            <Button x:Name="ButtonAppRemove"     
-                  Style="{StaticResource appFuncButton}"
-                  Image="appremove32.png"
-                  IsVisible="{Binding EditApp.OwnerCapabilities.CanDeleteApp}"
-                  IsEnabled="{Binding Source={x:Reference AppModels}, Path=SelectedItem, Converter={StaticResource objBoolConverter}}">
-            </Button>
+          <Button x:Name="ButtonAppRemove"     
+                Style="{StaticResource appFuncButton}"
+                Image="appremove32.png"
+                IsVisible="{Binding EditApp.OwnerCapabilities.CanDeleteApp}"
+                IsEnabled="{Binding Source={x:Reference AppModels}, Path=SelectedItem, Converter={StaticResource objBoolConverter}}">
+          </Button>
                     
-            <Button x:Name="ButtonAppAdd"
-                  Style="{StaticResource appFuncButton}"
-                  Image="appadd32.png">
-            </Button>
+          <Button x:Name="ButtonAppAdd"
+                Style="{StaticResource appFuncButton}"
+                Image="appadd32.png">
+          </Button>
 
-            <Button x:Name="ButtonAppJoin"
-                  Style="{StaticResource appFuncButton}"
-                  Image="appjoin32.png">                   
-            </Button>
+          <Button x:Name="ButtonAppJoin"
+                Style="{StaticResource appFuncButton}"
+                Image="appjoin32.png">                   
+          </Button>
       
-        </StackLayout>
+      </StackLayout>
     
-      </Grid>
-
-    </StackLayout>
+    </Grid>
     
 </views:View>

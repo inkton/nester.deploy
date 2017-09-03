@@ -12,43 +12,39 @@
     </ResourceDictionary>
   </ContentPage.Resources>
 
-  <StackLayout>
+  <Grid>
 
-    <Grid VerticalOptions="LayoutOptions.Center" HorizontalOptions="LayoutOptions.Center">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="5*"/>
+      <RowDefinition Height="80*"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="5*"/>
+    </Grid.RowDefinitions>
 
-      <Grid.RowDefinitions>
-        <RowDefinition Height="5*"/>
-        <RowDefinition Height="80*"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="5*"/>
-      </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="5*"/>
+      <ColumnDefinition Width="90*"/>
+      <ColumnDefinition Width="5*"/>
+    </Grid.ColumnDefinitions>
 
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="5*"/>
-        <ColumnDefinition Width="90*"/>
-        <ColumnDefinition Width="5*"/>
-      </Grid.ColumnDefinitions>
+    <StackLayout Grid.Row="1" Grid.Column="1">
+          <WebView x:Name="Browser" WidthRequest="1000" HeightRequest="1000" />
+          <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
+    </StackLayout>
 
-      <StackLayout Grid.Row="1" Grid.Column="1">
-            <WebView x:Name="Browser" WidthRequest="1000" HeightRequest="1000" />
-            <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
-      </StackLayout>
+    <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Padding="10,10" VerticalOptions="LayoutOptions.Center" HorizontalOptions="LayoutOptions.Center">
+        <!--<Button x:Name="ButtonBrowserBack" Text="Back" HorizontalOptions="StartAndExpand" />
+        <Button x:Name="ButtonBrowserForward" Text="Forward" HorizontalOptions="End"  />-->
+      <Button x:Name="ButtonDone"
+        Text="Proceed"
+        TextColor="#ffffff" 
+        BackgroundColor="{StaticResource selectionColor}" 
+        Style="{StaticResource buttonPageFlow}"
+        Clicked="OnDoneButtonClickedAsync">
+      </Button>
 
-      <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Padding="10,10" VerticalOptions="LayoutOptions.Center" HorizontalOptions="LayoutOptions.Center">
-          <!--<Button x:Name="ButtonBrowserBack" Text="Back" HorizontalOptions="StartAndExpand" />
-          <Button x:Name="ButtonBrowserForward" Text="Forward" HorizontalOptions="End"  />-->
-        <Button x:Name="ButtonDone"
-          Text="Proceed"
-          TextColor="#ffffff" 
-          BackgroundColor="{StaticResource selectionColor}" 
-          Style="{StaticResource buttonPageFlow}"
-          Clicked="OnDoneButtonClickedAsync">
-        </Button>
+    </StackLayout>
 
-      </StackLayout>
-
-    </Grid>
-
-  </StackLayout>
+  </Grid>
 
 </views:View>

@@ -100,7 +100,12 @@ namespace Nester.Views
 
         async private void ButtonCert_ClickedAsync(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AppDomainCertView(_appViewModel));
+            if (AppDomainsList.SelectedItem != null)
+            {
+                Admin.AppDomain browseDomain = AppDomainsList.SelectedItem as Admin.AppDomain;
+                _appViewModel.DomainModel.EditDomain = browseDomain;
+                await Navigation.PushAsync(new AppDomainCertView(_appViewModel));
+            }
         }
 
         private void Clear()
@@ -111,6 +116,7 @@ namespace Nester.Views
             }
 
             _appViewModel.DomainModel.EditDomain = new Admin.AppDomain();
+            _appViewModel.DomainModel.EditDomain.App = _appViewModel.EditApp;
 
             SetDefaults();
 
@@ -146,35 +152,19 @@ namespace Nester.Views
             return browsDomain;
         }
 
-        async private void SetPrimaryDomain()
+        async private void SetPrimaryDomain(Admin.AppDomain priaryDomain)
         {
             /*
-             * if this is not the primary domain check 
-             * others. if none is selected, make the 
-             * default domain the primary domain.
+             * The default domain is the <apptag>.nestapp.yt
+             * this never changes.  The primary domain is the
+             * webserver primary domain.  This is needed for
+             * SSL certificates.
+             * 
              */
             try
             {
-                Admin.AppDomain priaryDomain = AppDomainsList.SelectedItem as Admin.AppDomain;
-
-                if (priaryDomain == null || !priaryDomain.Primary)
-                {
-                    var primaryCollection = _appViewModel.DomainModel.Domains.Where(domain => domain.Primary);
-
-                    if (!primaryCollection.Any())
-                    {
-                        priaryDomain = _appViewModel.DomainModel.Domains.Where(
-                            domain => domain.Default).First();
-                    }
-                    else
-                    {
-                        priaryDomain = primaryCollection.First();
-                    }
-                }
-
                 _appViewModel.EditApp.PrimaryDomainId = priaryDomain.Id;
                 await _appViewModel.UpdateAppAsync(_appViewModel.EditApp);
-                _appViewModel.DomainModel.MakePrimary(priaryDomain);
             }
             catch (Exception ex)
             {
@@ -361,7 +351,7 @@ namespace Nester.Views
                 if (newDomain != null)
                 {
                     await _appViewModel.DomainModel.CreateDomainAsync(newDomain);
-                    SetPrimaryDomain();
+                    SetPrimaryDomain(newDomain);
                 }
 
                 Clear();
@@ -410,7 +400,7 @@ namespace Nester.Views
                     );
 
                     SetDefaults();
-                    SetPrimaryDomain();
+                    //SetPrimaryDomain();
                 }
             }
             catch (Exception ex)
@@ -438,7 +428,7 @@ namespace Nester.Views
                 );
 
                 Clear();
-                SetPrimaryDomain();
+                SetPrimaryDomain(_appViewModel.DomainModel.Domains.First());
             }
             catch (Exception ex)
             {

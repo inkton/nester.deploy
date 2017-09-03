@@ -16,11 +16,6 @@ namespace Nester.Views
         public AppCollectionViewModel()
         {
             _appModels = new ObservableCollection<AppViewModel>();
-
-            WizardMode = true;
-            NestModel.WizardMode = true;
-            DomainModel.WizardMode = true;
-            ContactModel.WizardMode = true;
         }
 
         public ObservableCollection<AppViewModel> AppModels
@@ -31,8 +26,7 @@ namespace Nester.Views
             }
             set
             {
-                _appModels = value;
-                OnPropertyChanged("AppModels");
+                SetProperty(ref _appModels, value);
             }
         }
 
@@ -72,6 +66,12 @@ namespace Nester.Views
                     LoadApp(_appModels.First());
                     OnPropertyChanged("Apps");
                 }
+                else
+                {
+                    _currentView = new BannerView();
+                    (_currentView as BannerView).State = BannerView.Status.BannerViewUndefined;
+                    _viewLoader(_currentView);
+                }
             }
 
             return status;
@@ -82,7 +82,11 @@ namespace Nester.Views
             AppViewModel appModel = new AppViewModel();
             appModel.EditApp = app;
             Task.Run(() => appModel.InitAsync());
+            AddModel(appModel);
+        }
 
+        public void AddModel(AppViewModel appModel)
+        {
             _appModels.Add(appModel);
             LoadApp(appModel);
         }

@@ -26,29 +26,9 @@ namespace Nester.Views
                 _authViewModel = value;
                 Children.All(child =>
                 {
-                    if (child is UserView)
-                    {
-                        (child as UserView).AuthViewModel = _authViewModel;
-                    }
-
-                    if (child is AuthView)
-                    {
-                        (child as AuthView).AuthViewModel = _authViewModel;
-                    }
-
-                    if (child is PaymentView)
-                    {
-                        (child as PaymentView).AuthViewModel = _authViewModel;
-                    }
-
-                    if (child is UserHistoryView)
-                    {
-                        (child as UserHistoryView).AuthViewModel = _authViewModel;
-                    }
-
+                    (child as Views.View).AuthViewModel = _authViewModel;
                     return true;
-                }
-                );
+                });
             }
         }
 
@@ -59,29 +39,10 @@ namespace Nester.Views
             {
                 _appViewModel = value;
                 Children.All(child =>
-                {
-                    if (child is UserView)
                     {
-                        (child as UserView).AppViewModel = _appViewModel;
-                    }
-
-                    if (child is AuthView)
-                    {
-                        (child as AuthView).AppViewModel = _appViewModel;
-                    }
-
-                    if (child is PaymentView)
-                    {
-                        (child as PaymentView).AppViewModel = _appViewModel;
-                    }
-
-                    if (child is UserHistoryView)
-                    {
-                        (child as UserHistoryView).AppViewModel = _appViewModel;
-                    }
-
+                    (child as Views.View).AppViewModel = _appViewModel;
                     return true;
-                }
+                    }
                 );
             }
         }
@@ -90,10 +51,11 @@ namespace Nester.Views
         {
             Children.All(x =>
             {
-                if (x is Views.UserView)
+                if (x is Views.View)
                 {
-                    (x as Views.UserView).AuthViewModel.WizardMode = false;
-                }
+                    (x as Views.View).AppViewModel.WizardMode = false;
+                    (x as Views.View).AuthViewModel.WizardMode = false;
+                }       
                 return true;
             });
 

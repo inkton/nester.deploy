@@ -31,9 +31,6 @@ namespace Nester.Views
             _authViewModel = homeView.AuthViewModel;
             _appViewModel = homeView.AppViewModel;
 
-            _authViewModel.WizardMode = true;
-            _appViewModel.WizardMode = true;
-
             BindingContext = _authViewModel;
 
             _authViewModel.Reset();
@@ -84,8 +81,12 @@ namespace Nester.Views
                     // sound but need to confirm the security code.
                     // a new sec code would have been sent too.
 
+                    AppViewModel newAppModel = new AppViewModel();
+                    newAppModel.NewAppAsync();
+                    newAppModel.WizardMode = true;
+
                     await Navigation.PushAsync(
-                        new AppEngageView(_appViewModel));
+                        new AppEngageView(newAppModel));
 
                     Views.UserView userView = new Views.UserView();
                     userView.SetModels(_authViewModel, _appViewModel);
@@ -96,7 +97,17 @@ namespace Nester.Views
                 {
                     await Navigation.PushAsync(ThisUI.HomeView);
 
-                    await (_appViewModel as AppCollectionViewModel).LoadApps();
+                    await ThisUI.AppCollectionViewModel.LoadApps();
+
+                    if (!ThisUI.AppCollectionViewModel.AppModels.Any())
+                    {
+                        AppViewModel newAppModel = new AppViewModel();
+                        newAppModel.WizardMode = true;
+                        newAppModel.NewAppAsync();
+
+                        await Navigation.PushAsync(
+                          new AppEngageView(newAppModel));
+                    }
                 }
                 else
                 {
@@ -121,8 +132,12 @@ namespace Nester.Views
 
                 await Navigation.PushAsync(ThisUI.HomeView);
 
+                AppViewModel newAppModel = new AppViewModel();
+                newAppModel.NewAppAsync();
+                newAppModel.WizardMode = true;
+
                 await Navigation.PushAsync(
-                    new AppEngageView(_appViewModel));
+                    new AppEngageView(newAppModel));
 
                 Views.UserView userView = new Views.UserView();
                 userView.SetModels(_authViewModel, _appViewModel);

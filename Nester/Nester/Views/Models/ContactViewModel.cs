@@ -47,7 +47,6 @@ namespace Nester.Views
             _contacts = new ObservableCollection<Admin.Contact>();
             _editContact = new Admin.Contact();
             _editContact.App = app;
-            _editContact.Email = app.Owner.Email;
 
             _invitations = new ObservableCollection<Admin.Invitation>();
             _editInvitation = new Admin.Invitation();
@@ -62,15 +61,14 @@ namespace Nester.Views
             }
             set
             {
-                _editApp = value;
-                _editContact.App = value;
-                _editContact.Email = value.Owner.Email;
-
+                _editContact.App = value; 
                 _editInvitation.User = ThisUI.User;
+
+                SetProperty(ref _editApp, value);
             }
         }
 
-        public Admin.Contact EditContact
+        public Admin.Contact EditContact    
         {
             get
             {
@@ -78,7 +76,8 @@ namespace Nester.Views
             }
             set
             {
-                _editContact = value;
+                SetProperty(ref _editContact, value);
+                OnPropertyChanged("EditContact.OwnerCapabilities");
             }
         }
 
@@ -90,7 +89,7 @@ namespace Nester.Views
             }
             set
             {
-                _editInvitation = value;
+                SetProperty(ref _editInvitation, value);
             }
         }
 
@@ -102,7 +101,7 @@ namespace Nester.Views
             }
             set
             {
-                _ownerContact = value;
+                SetProperty(ref _ownerContact, value);
             }
         }
 

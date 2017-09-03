@@ -33,6 +33,11 @@ namespace Nester
             get { return _homeView; }
         }
 
+        public Views.AppCollectionViewModel AppCollectionViewModel
+        {
+            get { return _homeView.AppViewModel as Views.AppCollectionViewModel; }
+        }
+
         public Admin.User User
         {
             get { return _user; }

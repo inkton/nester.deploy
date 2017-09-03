@@ -37,12 +37,11 @@ namespace Nester.Views
             }
             set
             {
-                _editApp = value;
+                SetProperty(ref _editApp, value);
                 _editNest.App = value;
             }
         }
 
-        //private void Reinvite(string email)
         public void SendRemoveMessage(Admin.Nest nest)
         {
             ManagedObjectMessage<Admin.Nest> doThis =
@@ -58,7 +57,7 @@ namespace Nester.Views
             }
             set
             {
-                _editNest = value;
+                SetProperty(ref _editNest, value);
             }
         }
 
@@ -182,6 +181,7 @@ namespace Nester.Views
                 SetNestHosts(_editNest);
                 _nests.Add(_editNest);
                 Utils.Object.PourPropertiesTo(_editNest, nest);
+                OnPropertyChanged("Nests");
             }
 
             return status;
@@ -199,6 +199,7 @@ namespace Nester.Views
                 _editNest = status.PayloadToObject<Admin.Nest>();
                 Utils.Object.PourPropertiesTo(_editNest, nest);
                 SetNestHosts(_editNest);
+                OnPropertyChanged("Nests");
             }
 
             return status;
@@ -214,6 +215,7 @@ namespace Nester.Views
             if (status.Code >= 0)
             {
                 _nests.Remove(nest);
+                OnPropertyChanged("Nests");
             }
 
             return status;

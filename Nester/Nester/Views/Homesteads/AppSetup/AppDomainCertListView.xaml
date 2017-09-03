@@ -66,151 +66,146 @@
     </ResourceDictionary>
   </ContentPage.Resources>
 
-  <StackLayout>
+  <Grid>
 
-    <Grid>
+    <!--Main Page (level 1)-->
+    <Grid.RowDefinitions>
+      <RowDefinition Height="5*"/>
+      <RowDefinition Height="40*"/>
+      <RowDefinition Height="40*"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="5*"/>
+    </Grid.RowDefinitions>
 
-      <!--Main Page (level 1)-->
-      <Grid.RowDefinitions>
-        <RowDefinition Height="5*"/>
-        <RowDefinition Height="40*"/>
-        <RowDefinition Height="40*"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="5*"/>
-      </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="20*"/>
+      <ColumnDefinition Width="60*"/>
+      <ColumnDefinition Width="20*"/>
+    </Grid.ColumnDefinitions>
 
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="20*"/>
-        <ColumnDefinition Width="60*"/>
-        <ColumnDefinition Width="20*"/>
-      </Grid.ColumnDefinitions>
+    <StackLayout Grid.Row="1" Grid.Column="1" >
 
-      <StackLayout Grid.Row="1" Grid.Column="1" >
+      <Label Style="{StaticResource nesterFieldLabel}"
+              Text="Certificates"></Label>
 
-        <Label Style="{StaticResource nesterFieldLabel}"
-                Text="Certificates"></Label>
+      <!--Parent/child (level 2)-->
+      <StackLayout>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+          <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="40*"/>
+          </Grid.ColumnDefinitions>
 
-        <!--Parent/child (level 2)-->
-        <StackLayout>
-          <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
-            <Grid.RowDefinitions>
-              <RowDefinition Height="*"/>
-              <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="20*"/>
-              <ColumnDefinition Width="40*"/>
-              <ColumnDefinition Width="40*"/>
-            </Grid.ColumnDefinitions>
+          <!--Type-->
+          <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+            <Picker x:Name="Type" 
+                    Title="Type" SelectedIndex="0"
+                    VerticalOptions="LayoutOptions.CenterAndExpand"
+                    Style="{StaticResource nesterFieldLabelPicker}"
+                  >
+              <Picker.Items>
+                <x:String>Free</x:String>
+                <x:String>Custom</x:String>
+              </Picker.Items>
+            </Picker>
+          </StackLayout>
 
-            <!--Type-->
-            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical">
-              <Picker x:Name="Type" 
-                      Title="Type" SelectedIndex="0"
-                      VerticalOptions="LayoutOptions.CenterAndExpand"
-                      Style="{StaticResource nesterFieldLabelPicker}"
-                    >
-                <Picker.Items>
-                  <x:String>Free</x:String>
-                  <x:String>Custom</x:String>
-                </Picker.Items>
-              </Picker>
-            </StackLayout>
+          <!--Domain-->
+          <Label Grid.Row="1" Grid.Column="0"
+              Style="{StaticResource nesterSenior}"
+              Text="{
+                    Binding Path=EditDomainCert.AppDomain.Name
+                  }"/>
 
-            <!--Domain-->
-            <Label Grid.Row="1" Grid.Column="0"
-                Style="{StaticResource nesterSenior}"
-                Text="{
-                      Binding Path=EditDomainCert.AppDomain.Name
-                    }"/>
-
-            <StackLayout Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Orientation="Vertical">
-              <Label Style="{StaticResource nesterFieldLabel}"
-                  Text="Certificate Key">                
-              </Label>
-              <Editor x:Name="PrivateKey"
-                    Text="{
-                      Binding Path=EditDomainCert.PrivateKey, 
-                      Mode=TwoWay,
-                    }"
-                     VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" 
-                    IsEnabled="{Binding Source={x:Reference AppDomainCertList},
-                      Path=SelectedItem,
-                      Converter={StaticResource objectBoolConverter}}"
-                    Keyboard="Keyboard.Text">
-              </Editor>
-              <Label x:Name="PrivateKeyMessage" Style="{StaticResource validateFailMsg}" />
-            </StackLayout>
-
-            <StackLayout Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Orientation="Vertical">              
-              <Label Style="{StaticResource nesterFieldLabel}"
-                  Text="Certificate Chain"></Label>
-              <Editor x:Name="Chain"
-                    Text="{
-                    Binding Path=EditDomainCert.CertificateChain, 
+          <StackLayout Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Orientation="Vertical">
+            <Label Style="{StaticResource nesterFieldLabel}"
+                Text="Certificate Key">                
+            </Label>
+            <Editor x:Name="PrivateKey"
+                  Text="{
+                    Binding Path=EditDomainCert.PrivateKey, 
                     Mode=TwoWay,
-                    }"
-                    IsEnabled="{Binding Source={x:Reference AppDomainCertList},
+                  }"
+                    VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" 
+                  IsEnabled="{Binding Source={x:Reference AppDomainCertList},
                     Path=SelectedItem,
                     Converter={StaticResource objectBoolConverter}}"
-                    VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
-                    Keyboard="Keyboard.Text">
-              </Editor>
+                  Keyboard="Keyboard.Text">
+            </Editor>
+            <Label x:Name="PrivateKeyMessage" Style="{StaticResource validateFailMsg}" />
+          </StackLayout>
 
-              <Label x:Name="CertificateChainMessage" Style="{StaticResource validateFailMsg}" />
+          <StackLayout Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Orientation="Vertical">              
+            <Label Style="{StaticResource nesterFieldLabel}"
+                Text="Certificate Chain"></Label>
+            <Editor x:Name="Chain"
+                  Text="{
+                  Binding Path=EditDomainCert.CertificateChain, 
+                  Mode=TwoWay,
+                  }"
+                  IsEnabled="{Binding Source={x:Reference AppDomainCertList},
+                  Path=SelectedItem,
+                  Converter={StaticResource objectBoolConverter}}"
+                  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                  Keyboard="Keyboard.Text">
+            </Editor>
 
-            </StackLayout>
-          </Grid>
-        </StackLayout>
+            <Label x:Name="CertificateChainMessage" Style="{StaticResource validateFailMsg}" />
+
+          </StackLayout>
+        </Grid>
+      </StackLayout>
         
-        <StackLayout Orientation="Horizontal">
+      <StackLayout Orientation="Horizontal">
 
-          <Button x:Name="ButtonRefresh"
-            Text="Refresh"
-            IsEnabled="{Binding CanUpdate}"
-            Style="{StaticResource buttonUtilStyle1}"
-            Clicked="OnRefreshDomainButtonClickedAsync">
-          </Button>
-          
-          <Button x:Name="ButtonUpdate"
-            Text="Update"
-            IsEnabled="{Binding CanUpdate}"
-            Style="{StaticResource buttonUtilStyle1}"
-            Clicked="OnUpdateDomainButtonClickedAsync">
-          </Button>
-
-        </StackLayout>
-
-      </StackLayout>
-
-      <StackLayout Grid.Row="2" Grid.Column="1">
-
-        <sync:SfListView x:Name="AppDomainCertList"
-                        ItemsSource="{Binding Certificates}"
-                        SelectionGesture="Tap"
-                        SelectionMode="Single"
-                        SelectionBackgroundColor="{StaticResource selectionColor}"
-                        ItemTemplate="{StaticResource ItemTemplate}"
-                        ItemSize="80"
-                  >
-        </sync:SfListView>
-
-        <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
-
-      </StackLayout>
-
-      <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
-        <Button x:Name="ButtonDone"
-                Text="Proceed"
-                Style="{StaticResource buttonPageFlow}"
-                Clicked="OnDoneButtonClickedAsync">
+        <Button x:Name="ButtonRefresh"
+          Text="Refresh"
+          IsEnabled="{Binding CanUpdate}"
+          Style="{StaticResource buttonUtilStyle1}"
+          Clicked="OnRefreshDomainButtonClickedAsync">
         </Button>
+          
+        <Button x:Name="ButtonUpdate"
+          Text="Update"
+          IsEnabled="{Binding CanUpdate}"
+          Style="{StaticResource buttonUtilStyle1}"
+          Clicked="OnUpdateDomainButtonClickedAsync">
+        </Button>
+
       </StackLayout>
 
-    </Grid>
+    </StackLayout>
 
+    <StackLayout Grid.Row="2" Grid.Column="1">
 
-  </StackLayout>
+      <sync:SfListView x:Name="AppDomainCertList"
+                      ItemsSource="{Binding Certificates}"
+                      SelectionGesture="Tap"
+                      SelectionMode="Single"
+                      SelectionBackgroundColor="{StaticResource selectionColor}"
+                      ItemTemplate="{StaticResource ItemTemplate}"
+                      ItemSize="80"
+                >
+      </sync:SfListView>
+
+      <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
+
+    </StackLayout>
+
+    <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+      <Button x:Name="ButtonDone"
+              Text="Proceed"
+              Style="{StaticResource buttonPageFlow}"
+              Clicked="OnDoneButtonClickedAsync">
+      </Button>
+    </StackLayout>
+
+  </Grid>
 
 </views:View>
 

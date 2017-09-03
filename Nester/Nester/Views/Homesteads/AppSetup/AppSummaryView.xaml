@@ -8,779 +8,776 @@
              Padding="20"
              Title="Deploy"             
              x:Class="Nester.Views.AppSummaryView">
-  <StackLayout>
 
-    <Grid>
+  <Grid>
 
-      <Grid.RowDefinitions>
-        <RowDefinition Height="5*"/>
-        <RowDefinition Height="15*"/>
-        <RowDefinition Height="1"/>
-        <RowDefinition Height="75*"/>
-        <RowDefinition Height="20"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="5*"/>
-      </Grid.RowDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="5*"/>
+      <RowDefinition Height="15*"/>
+      <RowDefinition Height="1"/>
+      <RowDefinition Height="75*"/>
+      <RowDefinition Height="20"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="5*"/>
+    </Grid.RowDefinitions>
 
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="10*"/>
-        <ColumnDefinition Width="80*"/>
-        <ColumnDefinition Width="10*"/>
-      </Grid.ColumnDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="10*"/>
+      <ColumnDefinition Width="80*"/>
+      <ColumnDefinition Width="10*"/>
+    </Grid.ColumnDefinitions>
 
-      <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+    <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
         
-        <!--FontAttributes="Bold"-->
-        <StackLayout Orientation="Vertical" HorizontalOptions="Start" VerticalOptions="Center">
-            <Label Text="{Binding EditApp.Name}"
-                 TextColor="#22313F" 
-                 FontSize="16" 
-                 HorizontalTextAlignment="Start" 
-                 VerticalOptions="Start"/>
+      <!--FontAttributes="Bold"-->
+      <StackLayout Orientation="Vertical" HorizontalOptions="Start" VerticalOptions="Center">
+          <Label Text="{Binding EditApp.Name}"
+                TextColor="#22313F" 
+                FontSize="16" 
+                HorizontalTextAlignment="Start" 
+                VerticalOptions="Start"/>
   
-          <Label Text="{Binding EditApp.Tag}"
-                 TextColor="#336E7B"
-                 FontSize="12"
-                 HorizontalTextAlignment="Start"
-                 VerticalOptions="Start"/>
-        </StackLayout>
-        <StackLayout HorizontalOptions="CenterAndExpand"></StackLayout>
-        <StackLayout Orientation="Vertical" HorizontalOptions="End" VerticalOptions="Center">
-          <Label Text="{Binding DomainModel.DefaultDomain.Name}"
-                 Style="{StaticResource nesterListInfoLabelMinor}"/>
+        <Label Text="{Binding EditApp.Tag}"
+                TextColor="#336E7B"
+                FontSize="12"
+                HorizontalTextAlignment="Start"
+                VerticalOptions="Start"/>
+      </StackLayout>
+      <StackLayout HorizontalOptions="CenterAndExpand"></StackLayout>
+      <StackLayout Orientation="Vertical" HorizontalOptions="End" VerticalOptions="Center">
+        <Label Text="{Binding DomainModel.DefaultDomain.Name}"
+                Style="{StaticResource nesterListInfoLabelMinor}"/>
 
-          <Label Text="{Binding ContactModel.ContactsCount, StringFormat='{0} user(s) in the team'}"
-                 Style="{StaticResource nesterListInfoLabelMinor}">
-          </Label>          
-        </StackLayout>
+        <Label Text="{Binding ContactModel.ContactsCount, StringFormat='{0} user(s) in the team'}"
+                Style="{StaticResource nesterListInfoLabelMinor}">
+        </Label>          
+      </StackLayout>
+
+    </StackLayout>
+ 
+    <BoxView Grid.Row="2" Grid.Column="1" BackgroundColor="#66004400" />
+
+    <ScrollView Grid.Row="3" Grid.Column="1">
+        
+      <StackLayout Spacing="5"
+              Margin="5"
+              Padding="5"
+              HorizontalOptions="CenterAndExpand"
+              VerticalOptions="CenterAndExpand"
+              BackgroundColor="Transparent">
+          <!-- Nest Oak -->
+          
+          <Grid x:Name="NestOakSubscription">            
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*" />
+              <RowDefinition Height="1" />
+            </Grid.RowDefinitions>
+            
+            <Grid>
+              
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*" />
+                <ColumnDefinition Width="15*" /> 
+                <ColumnDefinition Width="65*" />
+              </Grid.ColumnDefinitions>
+
+              <StackLayout Grid.Column="0">
+                <Label Grid.Column="0" Text="{Binding SelectedAppServiceTier.Service.Name}"
+                    Style="{StaticResource nesterInfoLabelMinor}">
+                </Label>
+              </StackLayout>
+               
+              <StackLayout Grid.Column="1">
+                <Label Text="{Binding SelectedAppServiceTier.Name, Converter={StaticResource i18n}}"
+                    Style="{StaticResource nesterInfoLabelMinor}">
+                </Label>                
+                <Label Text="{Binding SelectedAppServiceTier.Service.Type, Converter={StaticResource i18n}}"
+                    Style="{StaticResource nesterInfoLabelMinor}">
+                </Label>
+              </StackLayout>
+                
+              <Grid Grid.Column="2"
+                BackgroundColor="{StaticResource tableBackColor}"
+                Padding="5,5,0,0">
+
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="*" />
+                  <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="12*" />
+                    <ColumnDefinition Width="22*" />
+                    <ColumnDefinition Width="15*" />
+                    <ColumnDefinition Width="20*" />
+                </Grid.ColumnDefinitions>
+
+                  <!-- CPU -->
+                      
+                  <Label Grid.Row="0" Grid.Column="0"
+                          Text="{Binding SelectedAppServiceTier.Service.FeaturesAllArray[0]}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >                    
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="0"
+                          Text="{Binding SelectedAppServiceTier.FeaturesIncludedArray[0]}"
+                          Style="{StaticResource nesterListInfoBodyTiny}"
+                  >                                              
+                  </Label>
+
+                  <!-- Memory -->
+                      
+                  <Label Grid.Row="0" Grid.Column="1"
+                          Text="{Binding SelectedAppServiceTier.Service.FeaturesAllArray[1]}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="1"
+                          Text="{Binding SelectedAppServiceTier.FeaturesIncludedArray[1], StringFormat='{0} MB'}"
+                          Style="{StaticResource nesterListInfoBodyTiny}" 
+                  >
+                  </Label>
+
+                  <!-- Drive -->
+                      
+                  <Label Grid.Row="0" Grid.Column="2"
+                          Text="{Binding SelectedAppServiceTier.Service.FeaturesAllArray[2]}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="2"
+                          Text="{Binding SelectedAppServiceTier.FeaturesIncludedArray[2], StringFormat='{0} GB'}"
+                          Style="{StaticResource nesterListInfoBodyTiny}"
+                  >
+                  </Label>
+
+                  <!-- Bandwidth -->
+                      
+                  <Label Grid.Row="0" Grid.Column="3"
+                          Text="{Binding SelectedAppServiceTier.Service.FeaturesAllArray[3]}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="3"
+                          Text="{Binding SelectedAppServiceTier.FeaturesIncludedArray[3], StringFormat='{0} MB'}"
+                          Style="{StaticResource nesterListInfoBodyTiny}"
+                  >
+                  </Label>
+
+                  <!-- Backup -->
+                      
+                  <Label Grid.Row="0" Grid.Column="4"
+                          Text="{Binding SelectedAppServiceTier.Service.FeaturesAllArray[4]}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="4"
+                          Text="{Binding SelectedAppServiceTier.FeaturesIncludedArray[4]}"
+                          Style="{StaticResource nesterListInfoBodyTiny}"                        
+                  >
+                  </Label>
+
+                  <!-- Price -->
+                      
+                  <Label Grid.Row="0" Grid.Column="5"
+                          Text="{Binding SelectedAppServiceTier.ItemCost, StringFormat='$ {0}'}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="5"
+                          Text="{Binding SelectedAppServiceTier.Period}"
+                          Style="{StaticResource nesterListInfoBodyTiny}"                             
+                          >
+                  </Label>
+
+              </Grid>
+
+            </Grid>
+            <Frame Grid.Row="1" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
+          </Grid>
+
+          <!-- MariaDB -->
+          
+          <Grid x:Name="MariaDBSubscription" IsVisible="{Binding MariaDBEnabled}">            
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*" />
+              <RowDefinition Height="1" />
+            </Grid.RowDefinitions>
+            
+            <Grid>
+              
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*" />
+                <ColumnDefinition Width="15*" /> 
+                <ColumnDefinition Width="65*" />
+              </Grid.ColumnDefinitions>
+
+              <StackLayout Grid.Column="0">
+                <Label Grid.Column="0" Text="{Binding SelectedMariaDBTier.Service.Name}"
+                    Style="{StaticResource nesterInfoLabelMinor}">
+                </Label>               
+              </StackLayout>
+               
+              <StackLayout Grid.Column="1">
+                <Label Text="{Binding SelectedMariaDBTier.Name, Converter={StaticResource i18n}}"
+                    Style="{StaticResource nesterInfoLabelMinor}">
+                </Label>                
+                <Label Text="{Binding SelectedMariaDBTier.Service.Type, Converter={StaticResource i18n}}"
+                    Style="{StaticResource nesterInfoLabelMinor}">
+                </Label>
+              </StackLayout>
+                
+              <Grid Grid.Column="2"
+                BackgroundColor="{StaticResource tableBackColor}"
+                Padding="5,5,0,0">
+
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="*" />
+                  <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="35*" />
+                    <ColumnDefinition Width="15*" />
+                    <ColumnDefinition Width="20*" />
+                </Grid.ColumnDefinitions>
+
+                  <!-- Configuration -->
+                      
+                  <Label Grid.Row="0" Grid.Column="0"
+                          Text="{Binding SelectedMariaDBTier.Service.FeaturesAllArray[0]}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >                    
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="0"
+                          Text="{Binding SelectedMariaDBTier.FeaturesIncludedArray[0]}"
+                          Style="{StaticResource nesterListInfoBodyTiny}"
+                  >                                              
+                  </Label>
+
+                  <!-- Optimization -->
+                      
+                  <Label Grid.Row="0" Grid.Column="1"
+                          Text="{Binding SelectedMariaDBTier.Service.FeaturesAllArray[1]}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="1"
+                          Text="{Binding SelectedMariaDBTier.FeaturesIncludedArray[1]}"
+                          Style="{StaticResource nesterListInfoBodyTiny}" 
+                  >
+                  </Label>
+
+                  <!-- Backup -->
+                      
+                  <Label Grid.Row="0" Grid.Column="2"
+                          Text="{Binding SelectedMariaDBTier.Service.FeaturesAllArray[2]}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="2"
+                          Text="{Binding SelectedMariaDBTier.FeaturesIncludedArray[2]}"
+                          Style="{StaticResource nesterListInfoBodyTiny}"                        
+                  >
+                  </Label>
+
+                  <!-- Price -->
+                      
+                  <Label Grid.Row="0" Grid.Column="3"
+                          Text="{Binding SelectedMariaDBTier.ItemCost, StringFormat='$ {0}'}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="3"
+                          Text="{Binding SelectedMariaDBTier.Period}"
+                          Style="{StaticResource nesterListInfoBodyTiny}"                             
+                          >
+                  </Label>
+
+              </Grid>
+
+            </Grid>
+            <Frame Grid.Row="1" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
+          </Grid>
+        
+          <!-- Git -->
+          
+          <Grid x:Name="GitSubscription">            
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*" />
+              <RowDefinition Height="1" />
+            </Grid.RowDefinitions>
+            
+            <Grid>
+              
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*" />
+                <ColumnDefinition Width="15*" /> 
+                <ColumnDefinition Width="65*" />
+              </Grid.ColumnDefinitions>
+
+              <StackLayout Grid.Column="0">
+                <Label Grid.Column="0" Text="{Binding SelectedGitServiceTier.Service.Name}"
+                    Style="{StaticResource nesterInfoLabelMinor}">
+                </Label>               
+              </StackLayout>
+               
+              <StackLayout Grid.Column="1">
+                <Label Text="{Binding SelectedGitServiceTier.Name, Converter={StaticResource i18n}}"
+                    Style="{StaticResource nesterInfoLabelMinor}">
+                </Label>                
+                <Label Text="{Binding SelectedGitServiceTier.Service.Type, Converter={StaticResource i18n}}"
+                    Style="{StaticResource nesterInfoLabelMinor}">
+                </Label>
+              </StackLayout>
+                
+              <Grid Grid.Column="2"
+                BackgroundColor="{StaticResource tableBackColor}"
+                Padding="5,5,0,0">
+
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="*" />
+                  <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="35*" />
+                    <ColumnDefinition Width="15*" />
+                    <ColumnDefinition Width="20*" />
+                </Grid.ColumnDefinitions>
+
+                  <!-- Configuration -->
+                      
+                  <Label Grid.Row="0" Grid.Column="0"
+                          Text="{Binding SelectedGitServiceTier.Service.FeaturesAllArray[0]}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >                    
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="0"
+                          Text="{Binding SelectedGitServiceTier.FeaturesIncludedArray[0]}"
+                          Style="{StaticResource nesterListInfoBodyTiny}"
+                  >                                              
+                  </Label>
+
+                  <!-- Optimization -->
+                      
+                  <Label Grid.Row="0" Grid.Column="1"
+                          Text="{Binding SelectedGitServiceTier.Service.FeaturesAllArray[1]}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="1"
+                          Text="{Binding SelectedGitServiceTier.FeaturesIncludedArray[1]}"
+                          Style="{StaticResource nesterListInfoBodyTiny}" 
+                  >
+                  </Label>
+
+                  <!-- Backup -->
+                      
+                  <Label Grid.Row="0" Grid.Column="2"
+                          Text="{Binding SelectedGitServiceTier.Service.FeaturesAllArray[2]}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="2"
+                          Text="{Binding SelectedGitServiceTier.FeaturesIncludedArray[2]}"
+                          Style="{StaticResource nesterListInfoBodyTiny}"                        
+                  >
+                  </Label>
+
+                  <!-- Price -->
+                      
+                  <Label Grid.Row="0" Grid.Column="3"
+                          Text="{Binding SelectedGitServiceTier.ItemCost, StringFormat='$ {0}'}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="3"
+                          Text="{Binding SelectedGitServiceTier.Period}"
+                          Style="{StaticResource nesterListInfoBodyTiny}"                             
+                          >
+                  </Label>
+
+              </Grid>
+
+            </Grid>
+            <Frame Grid.Row="1" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
+          </Grid>
+
+          <!-- RabbitMQ -->
+          
+          <Grid x:Name="RabbitMQSubscription">            
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*" />
+              <RowDefinition Height="1" />
+            </Grid.RowDefinitions>
+            
+            <Grid>
+              
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*" />
+                <ColumnDefinition Width="15*" /> 
+                <ColumnDefinition Width="65*" />
+              </Grid.ColumnDefinitions>
+
+              <StackLayout Grid.Column="0">
+                <Label Grid.Column="0" Text="{Binding SelectedRabbitMQTier.Service.Name}"
+                    Style="{StaticResource nesterInfoLabelMinor}">
+                </Label>               
+              </StackLayout>
+               
+              <StackLayout Grid.Column="1">
+                <Label Text="{Binding SelectedRabbitMQTier.Name, Converter={StaticResource i18n}}"
+                    Style="{StaticResource nesterInfoLabelMinor}">
+                </Label>                
+                <Label Text="{Binding SelectedRabbitMQTier.Service.Type, Converter={StaticResource i18n}}"
+                    Style="{StaticResource nesterInfoLabelMinor}">
+                </Label>
+              </StackLayout>
+                
+              <Grid Grid.Column="2"
+                BackgroundColor="{StaticResource tableBackColor}"
+                Padding="5,5,0,0">
+
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="*" />
+                  <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="35*" />
+                    <ColumnDefinition Width="15*" />
+                    <ColumnDefinition Width="20*" />
+                </Grid.ColumnDefinitions>
+
+                  <!-- Configuration -->
+                      
+                  <Label Grid.Row="0" Grid.Column="0"
+                          Text="{Binding SelectedRabbitMQTier.Service.FeaturesAllArray[0]}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >                    
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="0"
+                          Text="{Binding SelectedRabbitMQTier.FeaturesIncludedArray[0]}"
+                          Style="{StaticResource nesterListInfoBodyTiny}"
+                  >                                              
+                  </Label>
+
+                  <!-- Optimization -->
+                      
+                  <Label Grid.Row="0" Grid.Column="1"
+                          Text="{Binding SelectedRabbitMQTier.Service.FeaturesAllArray[1]}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="1"
+                          Text="{Binding SelectedRabbitMQTier.FeaturesIncludedArray[1]}"
+                          Style="{StaticResource nesterListInfoBodyTiny}" 
+                  >
+                  </Label>
+
+                  <!-- Backup -->
+                      
+                  <Label Grid.Row="0" Grid.Column="2"
+                          Text="{Binding SelectedRabbitMQTier.Service.FeaturesAllArray[2]}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="2"
+                          Text="{Binding SelectedRabbitMQTier.FeaturesIncludedArray[2]}"
+                          Style="{StaticResource nesterListInfoBodyTiny}"                        
+                  >
+                  </Label>
+
+                  <!-- Price -->
+                      
+                  <Label Grid.Row="0" Grid.Column="3"
+                          Text="{Binding SelectedRabbitMQTier.ItemCost, StringFormat='$ {0}'}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="3"
+                          Text="{Binding SelectedRabbitMQTier.Period}"
+                          Style="{StaticResource nesterListInfoBodyTiny}"                             
+                          >
+                  </Label>
+
+              </Grid>
+
+            </Grid>
+            <Frame Grid.Row="1" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
+          </Grid>
+
+          <!-- Logging -->
+          
+          <Grid x:Name="LoggingSubscription">            
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*" />
+              <RowDefinition Height="1" />
+            </Grid.RowDefinitions>
+            
+            <Grid>
+              
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*" />
+                <ColumnDefinition Width="15*" /> 
+                <ColumnDefinition Width="65*" />
+              </Grid.ColumnDefinitions>
+
+              <StackLayout Grid.Column="0">
+                <Label Grid.Column="0" Text="{Binding SelectedLoggingTier.Service.Name}"
+                    Style="{StaticResource nesterInfoLabelMinor}">
+                </Label>               
+              </StackLayout>
+               
+              <StackLayout Grid.Column="1">
+                <Label Text="{Binding SelectedLoggingTier.Name, Converter={StaticResource i18n}}"
+                    Style="{StaticResource nesterInfoLabelMinor}">
+                </Label>                
+                <Label Text="{Binding SelectedLoggingTier.Service.Type, Converter={StaticResource i18n}}"
+                    Style="{StaticResource nesterInfoLabelMinor}">
+                </Label>
+              </StackLayout>
+                
+              <Grid Grid.Column="2"
+                BackgroundColor="{StaticResource tableBackColor}"
+                Padding="5,5,0,0">
+
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="*" />
+                  <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="35*" />
+                    <ColumnDefinition Width="15*" />
+                    <ColumnDefinition Width="20*" />
+                </Grid.ColumnDefinitions>
+
+                  <!-- Configuration -->
+                      
+                  <Label Grid.Row="0" Grid.Column="0"
+                          Text="{Binding SelectedLoggingTier.Service.FeaturesAllArray[0]}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >                    
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="0"
+                          Text="{Binding SelectedLoggingTier.FeaturesIncludedArray[0]}"
+                          Style="{StaticResource nesterListInfoBodyTiny}"
+                  >                                              
+                  </Label>
+
+                  <!-- Optimization -->
+                      
+                  <Label Grid.Row="0" Grid.Column="1"
+                          Text="{Binding SelectedLoggingTier.Service.FeaturesAllArray[1]}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="1"
+                          Text="{Binding SelectedLoggingTier.FeaturesIncludedArray[1]}"
+                          Style="{StaticResource nesterListInfoBodyTiny}" 
+                  >
+                  </Label>
+
+                  <!-- Backup -->
+                      
+                  <Label Grid.Row="0" Grid.Column="2"
+                          Text="{Binding SelectedLoggingTier.Service.FeaturesAllArray[2]}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="2"
+                          Text="{Binding SelectedLoggingTier.FeaturesIncludedArray[2]}"
+                          Style="{StaticResource nesterListInfoBodyTiny}"                        
+                  >
+                  </Label>
+
+                  <!-- Price -->
+                      
+                  <Label Grid.Row="0" Grid.Column="3"
+                          Text="{Binding SelectedLoggingTier.ItemCost, StringFormat='$ {0}'}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="3"
+                          Text="{Binding SelectedLoggingTier.Period}"
+                          Style="{StaticResource nesterListInfoBodyTiny}"                             
+                          >
+                  </Label>
+
+              </Grid>
+
+            </Grid>
+            <Frame Grid.Row="1" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
+          </Grid>
+          
+          <!-- Letsencrypt -->
+          
+          <Grid x:Name="LetsencryptSubscription">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*" />
+              <RowDefinition Height="1" />
+            </Grid.RowDefinitions>
+            
+            <Grid>
+              
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*" />
+                <ColumnDefinition Width="15*" /> 
+                <ColumnDefinition Width="65*" />
+              </Grid.ColumnDefinitions>
+
+              <StackLayout Grid.Column="0">
+                <Label Grid.Column="0" Text="{Binding SelectedLetsencryptTier.Service.Name}"
+                    Style="{StaticResource nesterInfoLabelMinor}">
+                </Label>               
+              </StackLayout>
+               
+              <StackLayout Grid.Column="1">
+                <Label Text="{Binding SelectedLetsencryptTier.Name, Converter={StaticResource i18n}}"
+                    Style="{StaticResource nesterInfoLabelMinor}">
+                </Label>                
+                <Label Text="{Binding SelectedLetsencryptTier.Service.Type, Converter={StaticResource i18n}}"
+                    Style="{StaticResource nesterInfoLabelMinor}">
+                </Label>
+              </StackLayout>
+                
+              <Grid Grid.Column="2"
+                BackgroundColor="{StaticResource tableBackColor}"
+                Padding="5,5,0,0">
+
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="*" />
+                  <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="50*" />
+                    <ColumnDefinition Width="20*" />
+                </Grid.ColumnDefinitions>
+
+                  <!-- Register -->
+                      
+                  <Label Grid.Row="0" Grid.Column="0"
+                          Text="{Binding SelectedLetsencryptTier.Service.FeaturesAllArray[0]}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >                    
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="0"
+                          Text="{Binding SelectedLetsencryptTier.FeaturesIncludedArray[0]}"
+                          Style="{StaticResource nesterListInfoBodyTiny}"
+                  >                                              
+                  </Label>
+
+                  <!-- Renew -->
+                      
+                  <Label Grid.Row="0" Grid.Column="1"
+                          Text="{Binding SelectedLetsencryptTier.Service.FeaturesAllArray[1]}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="1"
+                          Text="{Binding SelectedLetsencryptTier.FeaturesIncludedArray[1]}"
+                          Style="{StaticResource nesterListInfoBodyTiny}" 
+                  >
+                  </Label>
+
+                  <!-- Price -->
+                      
+                  <Label Grid.Row="0" Grid.Column="2"
+                          Text="{Binding SelectedLetsencryptTier.ItemCost, StringFormat='$ {0}'}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="2"
+                          Text="{Binding SelectedLetsencryptTier.Period}"
+                          Style="{StaticResource nesterListInfoBodyTiny}"                             
+                          >
+                  </Label>
+
+              </Grid>
+
+            </Grid>
+            <Frame Grid.Row="1" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
+          </Grid>
 
       </StackLayout>
- 
-      <BoxView Grid.Row="2" Grid.Column="1" BackgroundColor="#66004400" />
 
-      <ScrollView Grid.Row="3" Grid.Column="1">
-        
-        <StackLayout Spacing="5"
-               Margin="5"
-               Padding="5"
-               HorizontalOptions="CenterAndExpand"
-               VerticalOptions="CenterAndExpand"
-               BackgroundColor="Transparent">
-            <!-- Nest Oak -->
-          
-            <Grid x:Name="NestOakSubscription">            
-              <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="1" />
-              </Grid.RowDefinitions>
-            
-              <Grid>
-              
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="25*" />
-                  <ColumnDefinition Width="15*" /> 
-                  <ColumnDefinition Width="65*" />
-                </Grid.ColumnDefinitions>
-
-                <StackLayout Grid.Column="0">
-                  <Label Grid.Column="0" Text="{Binding SelectedAppServiceTier.Service.Name}"
-                      Style="{StaticResource nesterInfoLabelMinor}">
-                  </Label>
-                </StackLayout>
-               
-                <StackLayout Grid.Column="1">
-                  <Label Text="{Binding SelectedAppServiceTier.Name, Converter={StaticResource i18n}}"
-                     Style="{StaticResource nesterInfoLabelMinor}">
-                  </Label>                
-                  <Label Text="{Binding SelectedAppServiceTier.Service.Type, Converter={StaticResource i18n}}"
-                     Style="{StaticResource nesterInfoLabelMinor}">
-                  </Label>
-                </StackLayout>
-                
-                <Grid Grid.Column="2"
-                  BackgroundColor="{StaticResource tableBackColor}"
-                  Padding="5,5,0,0">
-
-                  <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                  </Grid.RowDefinitions>
-
-                  <Grid.ColumnDefinitions>
-                      <ColumnDefinition Width="10*" />
-                      <ColumnDefinition Width="20*" />
-                      <ColumnDefinition Width="12*" />
-                      <ColumnDefinition Width="22*" />
-                      <ColumnDefinition Width="15*" />
-                      <ColumnDefinition Width="20*" />
-                  </Grid.ColumnDefinitions>
-
-                    <!-- CPU -->
-                      
-                    <Label Grid.Row="0" Grid.Column="0"
-                            Text="{Binding SelectedAppServiceTier.Service.FeaturesAllArray[0]}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >                    
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="0"
-                            Text="{Binding SelectedAppServiceTier.FeaturesIncludedArray[0]}"
-                            Style="{StaticResource nesterListInfoBodyTiny}"
-                    >                                              
-                    </Label>
-
-                    <!-- Memory -->
-                      
-                    <Label Grid.Row="0" Grid.Column="1"
-                            Text="{Binding SelectedAppServiceTier.Service.FeaturesAllArray[1]}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="1"
-                            Text="{Binding SelectedAppServiceTier.FeaturesIncludedArray[1], StringFormat='{0} MB'}"
-                            Style="{StaticResource nesterListInfoBodyTiny}" 
-                    >
-                    </Label>
-
-                    <!-- Drive -->
-                      
-                    <Label Grid.Row="0" Grid.Column="2"
-                            Text="{Binding SelectedAppServiceTier.Service.FeaturesAllArray[2]}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="2"
-                            Text="{Binding SelectedAppServiceTier.FeaturesIncludedArray[2], StringFormat='{0} GB'}"
-                            Style="{StaticResource nesterListInfoBodyTiny}"
-                    >
-                    </Label>
-
-                    <!-- Bandwidth -->
-                      
-                    <Label Grid.Row="0" Grid.Column="3"
-                            Text="{Binding SelectedAppServiceTier.Service.FeaturesAllArray[3]}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="3"
-                            Text="{Binding SelectedAppServiceTier.FeaturesIncludedArray[3], StringFormat='{0} MB'}"
-                            Style="{StaticResource nesterListInfoBodyTiny}"
-                    >
-                    </Label>
-
-                    <!-- Backup -->
-                      
-                    <Label Grid.Row="0" Grid.Column="4"
-                            Text="{Binding SelectedAppServiceTier.Service.FeaturesAllArray[4]}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="4"
-                            Text="{Binding SelectedAppServiceTier.FeaturesIncludedArray[4]}"
-                            Style="{StaticResource nesterListInfoBodyTiny}"                        
-                    >
-                    </Label>
-
-                    <!-- Price -->
-                      
-                    <Label Grid.Row="0" Grid.Column="5"
-                            Text="{Binding SelectedAppServiceTier.ItemCost, StringFormat='$ {0}'}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="5"
-                            Text="{Binding SelectedAppServiceTier.Period}"
-                            Style="{StaticResource nesterListInfoBodyTiny}"                             
-                            >
-                    </Label>
-
-                </Grid>
-
-              </Grid>
-              <Frame Grid.Row="1" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
-            </Grid>
-
-            <!-- MariaDB -->
-          
-            <Grid x:Name="MariaDBSubscription" IsVisible="{Binding MariaDBEnabled}">            
-              <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="1" />
-              </Grid.RowDefinitions>
-            
-              <Grid>
-              
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="25*" />
-                  <ColumnDefinition Width="15*" /> 
-                  <ColumnDefinition Width="65*" />
-                </Grid.ColumnDefinitions>
-
-                <StackLayout Grid.Column="0">
-                  <Label Grid.Column="0" Text="{Binding SelectedMariaDBTier.Service.Name}"
-                      Style="{StaticResource nesterInfoLabelMinor}">
-                  </Label>               
-                </StackLayout>
-               
-                <StackLayout Grid.Column="1">
-                  <Label Text="{Binding SelectedMariaDBTier.Name, Converter={StaticResource i18n}}"
-                     Style="{StaticResource nesterInfoLabelMinor}">
-                  </Label>                
-                  <Label Text="{Binding SelectedMariaDBTier.Service.Type, Converter={StaticResource i18n}}"
-                     Style="{StaticResource nesterInfoLabelMinor}">
-                  </Label>
-                </StackLayout>
-                
-                <Grid Grid.Column="2"
-                  BackgroundColor="{StaticResource tableBackColor}"
-                  Padding="5,5,0,0">
-
-                  <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                  </Grid.RowDefinitions>
-
-                  <Grid.ColumnDefinitions>
-                      <ColumnDefinition Width="30*" />
-                      <ColumnDefinition Width="35*" />
-                      <ColumnDefinition Width="15*" />
-                      <ColumnDefinition Width="20*" />
-                  </Grid.ColumnDefinitions>
-
-                    <!-- Configuration -->
-                      
-                    <Label Grid.Row="0" Grid.Column="0"
-                            Text="{Binding SelectedMariaDBTier.Service.FeaturesAllArray[0]}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >                    
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="0"
-                            Text="{Binding SelectedMariaDBTier.FeaturesIncludedArray[0]}"
-                            Style="{StaticResource nesterListInfoBodyTiny}"
-                    >                                              
-                    </Label>
-
-                    <!-- Optimization -->
-                      
-                    <Label Grid.Row="0" Grid.Column="1"
-                            Text="{Binding SelectedMariaDBTier.Service.FeaturesAllArray[1]}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="1"
-                            Text="{Binding SelectedMariaDBTier.FeaturesIncludedArray[1]}"
-                            Style="{StaticResource nesterListInfoBodyTiny}" 
-                    >
-                    </Label>
-
-                    <!-- Backup -->
-                      
-                    <Label Grid.Row="0" Grid.Column="2"
-                            Text="{Binding SelectedMariaDBTier.Service.FeaturesAllArray[2]}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="2"
-                            Text="{Binding SelectedMariaDBTier.FeaturesIncludedArray[2]}"
-                            Style="{StaticResource nesterListInfoBodyTiny}"                        
-                    >
-                    </Label>
-
-                    <!-- Price -->
-                      
-                    <Label Grid.Row="0" Grid.Column="3"
-                            Text="{Binding SelectedMariaDBTier.ItemCost, StringFormat='$ {0}'}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="3"
-                            Text="{Binding SelectedMariaDBTier.Period}"
-                            Style="{StaticResource nesterListInfoBodyTiny}"                             
-                            >
-                    </Label>
-
-                </Grid>
-
-              </Grid>
-              <Frame Grid.Row="1" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
-            </Grid>
-        
-            <!-- Git -->
-          
-            <Grid x:Name="GitSubscription">            
-              <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="1" />
-              </Grid.RowDefinitions>
-            
-              <Grid>
-              
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="25*" />
-                  <ColumnDefinition Width="15*" /> 
-                  <ColumnDefinition Width="65*" />
-                </Grid.ColumnDefinitions>
-
-                <StackLayout Grid.Column="0">
-                  <Label Grid.Column="0" Text="{Binding SelectedGitServiceTier.Service.Name}"
-                      Style="{StaticResource nesterInfoLabelMinor}">
-                  </Label>               
-                </StackLayout>
-               
-                <StackLayout Grid.Column="1">
-                  <Label Text="{Binding SelectedGitServiceTier.Name, Converter={StaticResource i18n}}"
-                     Style="{StaticResource nesterInfoLabelMinor}">
-                  </Label>                
-                  <Label Text="{Binding SelectedGitServiceTier.Service.Type, Converter={StaticResource i18n}}"
-                     Style="{StaticResource nesterInfoLabelMinor}">
-                  </Label>
-                </StackLayout>
-                
-                <Grid Grid.Column="2"
-                  BackgroundColor="{StaticResource tableBackColor}"
-                  Padding="5,5,0,0">
-
-                  <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                  </Grid.RowDefinitions>
-
-                  <Grid.ColumnDefinitions>
-                      <ColumnDefinition Width="30*" />
-                      <ColumnDefinition Width="35*" />
-                      <ColumnDefinition Width="15*" />
-                      <ColumnDefinition Width="20*" />
-                  </Grid.ColumnDefinitions>
-
-                    <!-- Configuration -->
-                      
-                    <Label Grid.Row="0" Grid.Column="0"
-                            Text="{Binding SelectedGitServiceTier.Service.FeaturesAllArray[0]}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >                    
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="0"
-                            Text="{Binding SelectedGitServiceTier.FeaturesIncludedArray[0]}"
-                            Style="{StaticResource nesterListInfoBodyTiny}"
-                    >                                              
-                    </Label>
-
-                    <!-- Optimization -->
-                      
-                    <Label Grid.Row="0" Grid.Column="1"
-                            Text="{Binding SelectedGitServiceTier.Service.FeaturesAllArray[1]}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="1"
-                            Text="{Binding SelectedGitServiceTier.FeaturesIncludedArray[1]}"
-                            Style="{StaticResource nesterListInfoBodyTiny}" 
-                    >
-                    </Label>
-
-                    <!-- Backup -->
-                      
-                    <Label Grid.Row="0" Grid.Column="2"
-                            Text="{Binding SelectedGitServiceTier.Service.FeaturesAllArray[2]}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="2"
-                            Text="{Binding SelectedGitServiceTier.FeaturesIncludedArray[2]}"
-                            Style="{StaticResource nesterListInfoBodyTiny}"                        
-                    >
-                    </Label>
-
-                    <!-- Price -->
-                      
-                    <Label Grid.Row="0" Grid.Column="3"
-                            Text="{Binding SelectedGitServiceTier.ItemCost, StringFormat='$ {0}'}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="3"
-                            Text="{Binding SelectedGitServiceTier.Period}"
-                            Style="{StaticResource nesterListInfoBodyTiny}"                             
-                            >
-                    </Label>
-
-                </Grid>
-
-              </Grid>
-              <Frame Grid.Row="1" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
-            </Grid>
-
-            <!-- RabbitMQ -->
-          
-            <Grid x:Name="RabbitMQSubscription">            
-              <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="1" />
-              </Grid.RowDefinitions>
-            
-              <Grid>
-              
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="25*" />
-                  <ColumnDefinition Width="15*" /> 
-                  <ColumnDefinition Width="65*" />
-                </Grid.ColumnDefinitions>
-
-                <StackLayout Grid.Column="0">
-                  <Label Grid.Column="0" Text="{Binding SelectedRabbitMQTier.Service.Name}"
-                      Style="{StaticResource nesterInfoLabelMinor}">
-                  </Label>               
-                </StackLayout>
-               
-                <StackLayout Grid.Column="1">
-                  <Label Text="{Binding SelectedRabbitMQTier.Name, Converter={StaticResource i18n}}"
-                     Style="{StaticResource nesterInfoLabelMinor}">
-                  </Label>                
-                  <Label Text="{Binding SelectedRabbitMQTier.Service.Type, Converter={StaticResource i18n}}"
-                     Style="{StaticResource nesterInfoLabelMinor}">
-                  </Label>
-                </StackLayout>
-                
-                <Grid Grid.Column="2"
-                  BackgroundColor="{StaticResource tableBackColor}"
-                  Padding="5,5,0,0">
-
-                  <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                  </Grid.RowDefinitions>
-
-                  <Grid.ColumnDefinitions>
-                      <ColumnDefinition Width="30*" />
-                      <ColumnDefinition Width="35*" />
-                      <ColumnDefinition Width="15*" />
-                      <ColumnDefinition Width="20*" />
-                  </Grid.ColumnDefinitions>
-
-                    <!-- Configuration -->
-                      
-                    <Label Grid.Row="0" Grid.Column="0"
-                            Text="{Binding SelectedRabbitMQTier.Service.FeaturesAllArray[0]}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >                    
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="0"
-                            Text="{Binding SelectedRabbitMQTier.FeaturesIncludedArray[0]}"
-                            Style="{StaticResource nesterListInfoBodyTiny}"
-                    >                                              
-                    </Label>
-
-                    <!-- Optimization -->
-                      
-                    <Label Grid.Row="0" Grid.Column="1"
-                            Text="{Binding SelectedRabbitMQTier.Service.FeaturesAllArray[1]}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="1"
-                            Text="{Binding SelectedRabbitMQTier.FeaturesIncludedArray[1]}"
-                            Style="{StaticResource nesterListInfoBodyTiny}" 
-                    >
-                    </Label>
-
-                    <!-- Backup -->
-                      
-                    <Label Grid.Row="0" Grid.Column="2"
-                            Text="{Binding SelectedRabbitMQTier.Service.FeaturesAllArray[2]}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="2"
-                            Text="{Binding SelectedRabbitMQTier.FeaturesIncludedArray[2]}"
-                            Style="{StaticResource nesterListInfoBodyTiny}"                        
-                    >
-                    </Label>
-
-                    <!-- Price -->
-                      
-                    <Label Grid.Row="0" Grid.Column="3"
-                            Text="{Binding SelectedRabbitMQTier.ItemCost, StringFormat='$ {0}'}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="3"
-                            Text="{Binding SelectedRabbitMQTier.Period}"
-                            Style="{StaticResource nesterListInfoBodyTiny}"                             
-                            >
-                    </Label>
-
-                </Grid>
-
-              </Grid>
-              <Frame Grid.Row="1" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
-            </Grid>
-
-            <!-- Logging -->
-          
-            <Grid x:Name="LoggingSubscription">            
-              <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="1" />
-              </Grid.RowDefinitions>
-            
-              <Grid>
-              
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="25*" />
-                  <ColumnDefinition Width="15*" /> 
-                  <ColumnDefinition Width="65*" />
-                </Grid.ColumnDefinitions>
-
-                <StackLayout Grid.Column="0">
-                  <Label Grid.Column="0" Text="{Binding SelectedLoggingTier.Service.Name}"
-                      Style="{StaticResource nesterInfoLabelMinor}">
-                  </Label>               
-                </StackLayout>
-               
-                <StackLayout Grid.Column="1">
-                  <Label Text="{Binding SelectedLoggingTier.Name, Converter={StaticResource i18n}}"
-                     Style="{StaticResource nesterInfoLabelMinor}">
-                  </Label>                
-                  <Label Text="{Binding SelectedLoggingTier.Service.Type, Converter={StaticResource i18n}}"
-                     Style="{StaticResource nesterInfoLabelMinor}">
-                  </Label>
-                </StackLayout>
-                
-                <Grid Grid.Column="2"
-                  BackgroundColor="{StaticResource tableBackColor}"
-                  Padding="5,5,0,0">
-
-                  <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                  </Grid.RowDefinitions>
-
-                  <Grid.ColumnDefinitions>
-                      <ColumnDefinition Width="30*" />
-                      <ColumnDefinition Width="35*" />
-                      <ColumnDefinition Width="15*" />
-                      <ColumnDefinition Width="20*" />
-                  </Grid.ColumnDefinitions>
-
-                    <!-- Configuration -->
-                      
-                    <Label Grid.Row="0" Grid.Column="0"
-                            Text="{Binding SelectedLoggingTier.Service.FeaturesAllArray[0]}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >                    
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="0"
-                            Text="{Binding SelectedLoggingTier.FeaturesIncludedArray[0]}"
-                            Style="{StaticResource nesterListInfoBodyTiny}"
-                    >                                              
-                    </Label>
-
-                    <!-- Optimization -->
-                      
-                    <Label Grid.Row="0" Grid.Column="1"
-                            Text="{Binding SelectedLoggingTier.Service.FeaturesAllArray[1]}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="1"
-                            Text="{Binding SelectedLoggingTier.FeaturesIncludedArray[1]}"
-                            Style="{StaticResource nesterListInfoBodyTiny}" 
-                    >
-                    </Label>
-
-                    <!-- Backup -->
-                      
-                    <Label Grid.Row="0" Grid.Column="2"
-                            Text="{Binding SelectedLoggingTier.Service.FeaturesAllArray[2]}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="2"
-                            Text="{Binding SelectedLoggingTier.FeaturesIncludedArray[2]}"
-                            Style="{StaticResource nesterListInfoBodyTiny}"                        
-                    >
-                    </Label>
-
-                    <!-- Price -->
-                      
-                    <Label Grid.Row="0" Grid.Column="3"
-                            Text="{Binding SelectedLoggingTier.ItemCost, StringFormat='$ {0}'}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="3"
-                            Text="{Binding SelectedLoggingTier.Period}"
-                            Style="{StaticResource nesterListInfoBodyTiny}"                             
-                            >
-                    </Label>
-
-                </Grid>
-
-              </Grid>
-              <Frame Grid.Row="1" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
-            </Grid>
-          
-            <!-- Letsencrypt -->
-          
-            <Grid x:Name="LetsencryptSubscription">
-              <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="1" />
-              </Grid.RowDefinitions>
-            
-              <Grid>
-              
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="25*" />
-                  <ColumnDefinition Width="15*" /> 
-                  <ColumnDefinition Width="65*" />
-                </Grid.ColumnDefinitions>
-
-                <StackLayout Grid.Column="0">
-                  <Label Grid.Column="0" Text="{Binding SelectedLetsencryptTier.Service.Name}"
-                      Style="{StaticResource nesterInfoLabelMinor}">
-                  </Label>               
-                </StackLayout>
-               
-                <StackLayout Grid.Column="1">
-                  <Label Text="{Binding SelectedLetsencryptTier.Name, Converter={StaticResource i18n}}"
-                     Style="{StaticResource nesterInfoLabelMinor}">
-                  </Label>                
-                  <Label Text="{Binding SelectedLetsencryptTier.Service.Type, Converter={StaticResource i18n}}"
-                     Style="{StaticResource nesterInfoLabelMinor}">
-                  </Label>
-                </StackLayout>
-                
-                <Grid Grid.Column="2"
-                  BackgroundColor="{StaticResource tableBackColor}"
-                  Padding="5,5,0,0">
-
-                  <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                  </Grid.RowDefinitions>
-
-                  <Grid.ColumnDefinitions>
-                      <ColumnDefinition Width="30*" />
-                      <ColumnDefinition Width="50*" />
-                      <ColumnDefinition Width="20*" />
-                  </Grid.ColumnDefinitions>
-
-                    <!-- Register -->
-                      
-                    <Label Grid.Row="0" Grid.Column="0"
-                            Text="{Binding SelectedLetsencryptTier.Service.FeaturesAllArray[0]}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >                    
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="0"
-                            Text="{Binding SelectedLetsencryptTier.FeaturesIncludedArray[0]}"
-                            Style="{StaticResource nesterListInfoBodyTiny}"
-                    >                                              
-                    </Label>
-
-                    <!-- Renew -->
-                      
-                    <Label Grid.Row="0" Grid.Column="1"
-                            Text="{Binding SelectedLetsencryptTier.Service.FeaturesAllArray[1]}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="1"
-                            Text="{Binding SelectedLetsencryptTier.FeaturesIncludedArray[1]}"
-                            Style="{StaticResource nesterListInfoBodyTiny}" 
-                    >
-                    </Label>
-
-                    <!-- Price -->
-                      
-                    <Label Grid.Row="0" Grid.Column="2"
-                            Text="{Binding SelectedLetsencryptTier.ItemCost, StringFormat='$ {0}'}"
-                            Style="{StaticResource nesterListInfoLabelTiny}"
-                            >
-                    </Label>
-
-                    <Label Grid.Row="1" Grid.Column="2"
-                            Text="{Binding SelectedLetsencryptTier.Period}"
-                            Style="{StaticResource nesterListInfoBodyTiny}"                             
-                            >
-                    </Label>
-
-                </Grid>
-
-              </Grid>
-              <Frame Grid.Row="1" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
-            </Grid>
-
-        </StackLayout>
-
-     </ScrollView>
+    </ScrollView>
         
         
-      <ActivityIndicator Grid.Row="4" Grid.Column="1" x:Name="ServiceActive" Style="{StaticResource nesterActive}">
-      </ActivityIndicator>
+    <ActivityIndicator Grid.Row="4" Grid.Column="1" x:Name="ServiceActive" Style="{StaticResource nesterActive}">
+    </ActivityIndicator>
 
-      <Grid Grid.Row="5" Grid.Column="1">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="70*" />
-          <ColumnDefinition Width="30*" />
-        </Grid.ColumnDefinitions>
+    <Grid Grid.Row="5" Grid.Column="1">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="70*" />
+        <ColumnDefinition Width="30*" />
+      </Grid.ColumnDefinitions>
 
-        <StackLayout Padding="5,5,5,5" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-          <Label x:Name="DeployWarning"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand"
-            TextColor="#22313F"
-            FontSize="14">
-          </Label>
-        </StackLayout>
+      <StackLayout Padding="5,5,5,5" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+        <Label x:Name="DeployWarning"
+          HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          TextColor="#22313F"
+          FontSize="14">
+        </Label>
+      </StackLayout>
 
-        <StackLayout Padding="5,5,5,5" Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-          <Picker x:Name="SoftwareVersion" Title="Software Version" SelectedIndex="0"
-                  Style="{StaticResource nesterFieldLabelPicker}"
-                  HorizontalOptions="FillAndExpand">
-          </Picker>
-          <Button x:Name="ButtonDone"
-                HorizontalOptions="FillAndExpand"
-                Text="Deploy"
-                BorderColor="{StaticResource noteColor}"
-                BackgroundColor="{StaticResource noteColor}"
-                TextColor="White"
-                Style="{StaticResource buttonPageFlow}"
-                Clicked="OnDoneButtonClickedAsync">
-          </Button>
-        </StackLayout>
-
-      </Grid>
+      <StackLayout Padding="5,5,5,5" Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+        <Picker x:Name="SoftwareVersion" Title="Software Version" SelectedIndex="0"
+                Style="{StaticResource nesterFieldLabelPicker}"
+                HorizontalOptions="FillAndExpand">
+        </Picker>
+        <Button x:Name="ButtonDone"
+              HorizontalOptions="FillAndExpand"
+              Text="Deploy"
+              BorderColor="{StaticResource noteColor}"
+              BackgroundColor="{StaticResource noteColor}"
+              TextColor="White"
+              Style="{StaticResource buttonPageFlow}"
+              Clicked="OnDoneButtonClickedAsync">
+        </Button>
+      </StackLayout>
 
     </Grid>
 
-  </StackLayout>
+  </Grid>
 
 </views:View>

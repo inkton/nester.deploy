@@ -160,7 +160,8 @@ namespace Nester.Views
             }
             set
             {
-                _editApp = value;
+                SetProperty(ref _editApp, value);
+
                 _nester.BasicAuth = new BasicAuth(
                     true, value.Tag, value.NetworkPassword);
                 _nester.Endpoint = value.ApiEndpoint;
@@ -175,7 +176,7 @@ namespace Nester.Views
             }
             set
             {
-                _editNestLog = value;
+                SetProperty(ref _editNestLog, value);
             }
         }
 

@@ -28,7 +28,8 @@ namespace Nester.Views
                     ButtonNests,
                     ButtonContacts,
                     ButtonDomains,
-                    ButtonDone
+                    ButtonDone,
+                    ButtonUpdate
                 });
 
             _appViewModel = appViewModel;
@@ -37,6 +38,23 @@ namespace Nester.Views
             ButtonNests.Clicked += ButtonNests_ClickedAsync;
             ButtonContacts.Clicked += ButtonContacts_ClickedAsync;
             ButtonDomains.Clicked += ButtonDomains_ClickedAsync;
+            ButtonUpdate.Clicked += ButtonUpdate_ClickedAsync;
+        }
+
+        async private void ButtonUpdate_ClickedAsync(object sender, EventArgs e)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                await _appViewModel.UpdateAppAsync();
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+
+            IsServiceActive = false;
         }
 
         async private void ButtonDomains_ClickedAsync(object sender, EventArgs e)
@@ -93,10 +111,10 @@ namespace Nester.Views
 
             try
             {
+                AppTypeListView.SelectedItems.Clear();
+
                 foreach (AppViewModel.AppType appType in _appViewModel.ApplicationTypes)
                 {
-                    AppTypeListView.SelectedItems.Remove(appType);
-
                     if (_appViewModel.EditApp.Type == appType.Tag)
                     {
                         AppTypeListView.SelectedItems.Add(appType);

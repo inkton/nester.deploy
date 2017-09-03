@@ -75,15 +75,14 @@ namespace Nester.Views
             }
             set
             {
-                _editApp = value;
+                SetProperty(ref _editApp, value);
+
                 _contactViewModel.EditApp = value;
                 _nestViewModel.EditApp = value;
                 _domainViewModel.EditApp = value;
                 _deploymentViewModel.EditApp = value;
                 _servicesViewModel.EditApp = value;
                 _logViewModel.EditApp = value;
-
-                OnPropertyChanged("EditApp");
             }
         }
 
@@ -95,7 +94,8 @@ namespace Nester.Views
             }
             set
             {
-                _wizardMode = value;
+                SetProperty(ref _wizardMode, value);
+
                 _contactViewModel.WizardMode = value;
                 _nestViewModel.WizardMode = value;
                 _domainViewModel.WizardMode = value;
@@ -113,7 +113,7 @@ namespace Nester.Views
             }
             set
             {
-                _paymentModel = value;
+                SetProperty(ref _paymentModel, value);
             }
         }
 
@@ -125,7 +125,7 @@ namespace Nester.Views
             }
             set
             {
-                _contactViewModel = value;
+                SetProperty(ref _contactViewModel, value);
             }
         }
 
@@ -137,7 +137,7 @@ namespace Nester.Views
             }
             set
             {
-                _nestViewModel = value;
+                SetProperty(ref _nestViewModel, value);
             }
         }
 
@@ -149,7 +149,7 @@ namespace Nester.Views
             }
             set
             {
-                _domainViewModel = value;
+                SetProperty(ref _domainViewModel, value);
             }
         }
 
@@ -161,7 +161,7 @@ namespace Nester.Views
             }
             set
             {
-                _deploymentViewModel = value;
+                SetProperty(ref _deploymentViewModel, value);
             }
         }
 
@@ -173,7 +173,7 @@ namespace Nester.Views
             }
             set
             {
-                _servicesViewModel = value;
+                SetProperty(ref _servicesViewModel, value);
             }
         }
 
@@ -185,7 +185,7 @@ namespace Nester.Views
             }
             set
             {
-                _logViewModel = value;
+                SetProperty(ref _logViewModel, value);
             }
         }
 
@@ -244,19 +244,26 @@ namespace Nester.Views
         {
             get
             {
-                Admin.AppServiceSubscription subscription = _editApp.Subscriptions.FirstOrDefault(
-                    x => x.ServiceTier.Service.Tag == "nest-oak");
-
-                if (subscription != null)
+                if (_editApp.Subscriptions != null)
                 {
-                    return subscription.ServiceTier;
+                    Admin.AppServiceSubscription subscription = _editApp.Subscriptions.FirstOrDefault(
+                        x => x.ServiceTier.Service.Tag == "nest-oak");
+
+                    if (subscription != null)
+                    {
+                        return subscription.ServiceTier;
+                    }
+                }
+                else
+                {
+                    _selectedAppServiceTier = AppServiceTiers.First();
                 }
 
-                return null;
+                return _selectedAppServiceTier;
             }
             set
             {
-                _selectedAppServiceTier = value;
+                SetProperty(ref _selectedAppServiceTier, value);
             }
         }
 
@@ -276,16 +283,35 @@ namespace Nester.Views
             }
         }
 
+        public ObservableCollection<Admin.AppServiceTier> MariaDBTiers
+        {
+            get
+            {
+                Admin.AppService service = _servicesViewModel.Services.FirstOrDefault(
+                    x => x.Tag == "mariadb");
+
+                if (service != null)
+                {
+                    return service.Tiers;
+                }
+
+                return null;
+            }
+        }
+
         public Admin.AppServiceTier SelectedMariaDBTier
         {
             get
             {
-                Admin.AppServiceSubscription subscription = _editApp.Subscriptions.FirstOrDefault(
-                    x => x.ServiceTier.Service.Tag == "mariadb");
-
-                if (subscription != null)
+                if (_editApp.Subscriptions != null)
                 {
-                    return subscription.ServiceTier;
+                    Admin.AppServiceSubscription subscription = _editApp.Subscriptions.FirstOrDefault(
+                        x => x.ServiceTier.Service.Tag == "mariadb");
+
+                    if (subscription != null)
+                    {
+                        return subscription.ServiceTier;
+                    }
                 }
 
                 return null;
@@ -300,12 +326,15 @@ namespace Nester.Views
         {
             get
             {
-                Admin.AppServiceSubscription subscription = _editApp.Subscriptions.FirstOrDefault(
-                    x => x.ServiceTier.Service.Tag == "letsencrypt");
-
-                if (subscription != null)
+                if (_editApp.Subscriptions != null)
                 {
-                    return subscription.ServiceTier;
+                    Admin.AppServiceSubscription subscription = _editApp.Subscriptions.FirstOrDefault(
+                        x => x.ServiceTier.Service.Tag == "letsencrypt");
+
+                    if (subscription != null)
+                    {
+                        return subscription.ServiceTier;
+                    }
                 }
 
                 return null;
@@ -320,12 +349,15 @@ namespace Nester.Views
         {
             get
             {
-                Admin.AppServiceSubscription subscription = _editApp.Subscriptions.FirstOrDefault(
-                    x => x.ServiceTier.Service.Tag == "logging");
-
-                if (subscription != null)
+                if (_editApp.Subscriptions != null)
                 {
-                    return subscription.ServiceTier;
+                    Admin.AppServiceSubscription subscription = _editApp.Subscriptions.FirstOrDefault(
+                        x => x.ServiceTier.Service.Tag == "logging");
+
+                    if (subscription != null)
+                    {
+                        return subscription.ServiceTier;
+                    }
                 }
 
                 return null;
@@ -340,12 +372,15 @@ namespace Nester.Views
         {
             get
             {
-                Admin.AppServiceSubscription subscription = _editApp.Subscriptions.FirstOrDefault(
-                    x => x.ServiceTier.Service.Tag == "rabbitmq");
-
-                if (subscription != null)
+                if (_editApp.Subscriptions != null)
                 {
-                    return subscription.ServiceTier;
+                    Admin.AppServiceSubscription subscription = _editApp.Subscriptions.FirstOrDefault(
+                        x => x.ServiceTier.Service.Tag == "rabbitmq");
+
+                    if (subscription != null)
+                    {
+                        return subscription.ServiceTier;
+                    }
                 }
 
                 return null;
@@ -360,12 +395,15 @@ namespace Nester.Views
         {
             get
             {
-                Admin.AppServiceSubscription subscription = _editApp.Subscriptions.FirstOrDefault(
-                    x => x.ServiceTier.Service.Tag == "git");
-
-                if (subscription != null)
+                if (_editApp.Subscriptions != null)
                 {
-                    return subscription.ServiceTier;
+                    Admin.AppServiceSubscription subscription = _editApp.Subscriptions.FirstOrDefault(
+                        x => x.ServiceTier.Service.Tag == "git");
+
+                    if (subscription != null)
+                    {
+                        return subscription.ServiceTier;
+                    }
                 }
 
                 return null;
@@ -417,8 +455,8 @@ namespace Nester.Views
 
             return status;
         }
-        
-        public void NewApp()
+
+        async public void NewAppAsync()
         {
             _editApp = new Admin.App();
             _editApp.Type = "uniflow";
@@ -429,6 +467,8 @@ namespace Nester.Views
             _domainViewModel.EditApp = _editApp;
             _deploymentViewModel.EditApp = _editApp;
             _servicesViewModel.EditApp = _editApp;
+
+            await ServicesViewModel.QueryServicesAsync();
         }
 
         public async Task<Cloud.ServerStatus> QueryAppNotificationsAsync(Admin.App app = null,
@@ -477,40 +517,41 @@ namespace Nester.Views
         {
             Admin.App theApp = app == null ? EditApp : app;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                app, new Cloud.NesterService.CachedHttpRequest<Admin.App>(
+                theApp, new Cloud.NesterService.CachedHttpRequest<Admin.App>(
                     ThisUI.NesterService.RemoveAsync), doCache);
 
             if (status.Code == 0)
             {
-                _editApp = app;
+                _editApp = theApp;
             }
 
             return status;
         }
 
-        public async Task<Cloud.ServerStatus> UpdateAppAsync(Admin.App app,
+        public async Task<Cloud.ServerStatus> UpdateAppAsync(Admin.App app = null,
             bool doCache = false, bool throwIfError = true)
         {
+            Admin.App theApp = app == null ? EditApp : app;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                app, new Cloud.NesterService.CachedHttpRequest<Admin.App>(
+                theApp, new Cloud.NesterService.CachedHttpRequest<Admin.App>(
                     ThisUI.NesterService.UpdateAsync), doCache);
 
             if (status.Code == 0)
             {
                _editApp = status.PayloadToObject<Admin.App>();
-                Utils.Object.PourPropertiesTo(_editApp, app);
+                Utils.Object.PourPropertiesTo(_editApp, theApp);
             }
 
             return status;
         }
 
-        public async Task<Cloud.ServerStatus> CreateAppAsync(Admin.App app,
+        public async Task<Cloud.ServerStatus> CreateAppAsync(Admin.App app = null,
             bool doCache = false, bool throwIfError = true)
         {
-            app.ServiceTierId = _selectedAppServiceTier.Id;
-
+            Admin.App theApp = app == null ? EditApp : app;
+            theApp.ServiceTierId = _selectedAppServiceTier.Id;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                app, new Cloud.NesterService.CachedHttpRequest<Admin.App>(
+                theApp, new Cloud.NesterService.CachedHttpRequest<Admin.App>(
                     ThisUI.NesterService.CreateAsync), doCache);
 
             if (status.Code == 0)
@@ -518,7 +559,7 @@ namespace Nester.Views
                 _editApp = status.PayloadToObject<Admin.App>();
                 _editApp.Owner = this.ThisUI.User;
 
-                Utils.Object.PourPropertiesTo(_editApp, app);
+                Utils.Object.PourPropertiesTo(_editApp, theApp);
 
                 if (throwIfError && _editApp.Status != "assigned")
                 {
@@ -526,6 +567,8 @@ namespace Nester.Views
                     Utils.ErrorHandler.Exception(message, string.Empty);
                     throw new Exception(message);
                 }
+
+                await InitAsync();
             }
             return status;
         }

@@ -29,7 +29,7 @@ namespace Nester.Views
         private void AppTypeTierView_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             Validate();
-       }
+        }
 
         private void AppTypeTierView_Loaded(object sender, Syncfusion.ListView.XForms.ListViewLoadedEventArgs e)
         {
@@ -56,19 +56,19 @@ namespace Nester.Views
                 {
                     if (_appViewModel.EditApp.Status != "assigned")
                     {
-                        await _appViewModel.CreateAppAsync(_appViewModel.EditApp);
+                        await _appViewModel.CreateAppAsync();
 
-                        (_appViewModel as AppCollectionViewModel).AddApp(
-                            _appViewModel.EditApp);
+                        ThisUI.AppCollectionViewModel.AddModel(_appViewModel);
                     }
 
-                    await _appViewModel.NestModel.InitAsync();
                     Navigation.InsertPageBefore(new AppNestsView(_appViewModel), this);
                 }
 
                 if (_appViewModel.SelectedMariaDBTier == null && _appViewModel.MariaDBEnabled)
                 {
-                    await _appViewModel.ServicesViewModel.CreateSubscription(_appViewModel.SelectedMariaDBTier);
+                    // Only one tier available at present
+                    Admin.AppServiceTier mariaDBTier =_appViewModel.MariaDBTiers.First();
+                    await _appViewModel.ServicesViewModel.CreateSubscription(mariaDBTier);
                 }
                 else if (_appViewModel.SelectedMariaDBTier != null && !_appViewModel.MariaDBEnabled)
                 {

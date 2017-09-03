@@ -9,97 +9,92 @@
 
   <ContentPage.Content>
 
-    <StackLayout>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="5*"/>
+        <RowDefinition Height="70*"/>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="5*"/>
+      </Grid.RowDefinitions>
 
-      <Grid>
-        <Grid.RowDefinitions>
-          <RowDefinition Height="5*"/>
-          <RowDefinition Height="70*"/>
-          <RowDefinition Height="20"/>
-          <RowDefinition Height="Auto"/>
-          <RowDefinition Height="5*"/>
-        </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="20*"/>
-          <ColumnDefinition Width="60*"/>
-          <ColumnDefinition Width="20*"/>
-        </Grid.ColumnDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="20*"/>
+        <ColumnDefinition Width="60*"/>
+        <ColumnDefinition Width="20*"/>
+      </Grid.ColumnDefinitions>
                 
-        <StackLayout Grid.Row="1" Grid.Column="1" >
+      <StackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="Start">
 
-          <Label Style="{StaticResource nesterFieldLabel}" 
-                 Text="Email"></Label>
-          <Entry Style="{StaticResource nesterField}"                  
-                x:Name="Email"
-                Text="{Binding Path=Permit.Owner.Email, Mode=TwoWay}"
-                Keyboard="Email"
-                PropertyChanged="OnFieldValidation"
-                Placeholder="Enter email address">
-            <Entry.Behaviors>
-              <validators:EntryValidatorBehavior
-                  IsCheckEmpty="True"
-                  IsCheckEmail="True"
-                  MinLength="0"
-                  MaxLength="255"
-                  x:Name="EmailValidator"
-                  PropertyChanged="OnFieldValidation" />
-            </Entry.Behaviors>
-          </Entry>
-          <Label Style="{StaticResource validateFailMsg}"
-                  Text="{Binding Source={x:Reference EmailValidator}, Path=Message}"
-                  Opacity="{Binding Source={x:Reference EmailValidator}, Path=IsVisibleMessage}" />
-
-          <Label Style="{StaticResource nesterFieldLabel}" 
-                 Text="Password"></Label>
-          <Entry Style="{StaticResource nesterField}"
-              x:Name="Password"
-              Text="{Binding Path=Permit.Password, Mode=TwoWay}"
-              IsPassword="True"
+        <Label Style="{StaticResource nesterFieldLabel}" 
+                Text="Email"></Label>
+        <Entry Style="{StaticResource nesterField}"                  
+              x:Name="Email"
+              Text="{Binding Path=Permit.Owner.Email, Mode=TwoWay}"
+              Keyboard="Email"
               PropertyChanged="OnFieldValidation"
-              Placeholder="Enter password">
-            <Entry.Behaviors>
-              <validators:EntryValidatorBehavior
-                  IsCheckEmpty="True"
-                  MinLength="8"
-                  MaxLength="32"
-                  x:Name="PasswordValidator" />
-            </Entry.Behaviors>
-          </Entry>
-          <Label Style="{StaticResource validateFailMsg}"
-                Text="{Binding Source={x:Reference PasswordValidator}, Path=Message}"
-                Opacity="{Binding Source={x:Reference PasswordValidator}, Path=IsVisibleMessage}" />
+              Placeholder="Enter email address">
+          <Entry.Behaviors>
+            <validators:EntryValidatorBehavior
+                IsCheckEmpty="True"
+                IsCheckEmail="True"
+                MinLength="0"
+                MaxLength="255"
+                x:Name="EmailValidator"
+                PropertyChanged="OnFieldValidation" />
+          </Entry.Behaviors>
+        </Entry>
+        <Label Style="{StaticResource validateFailMsg}"
+                Text="{Binding Source={x:Reference EmailValidator}, Path=Message}"
+                Opacity="{Binding Source={x:Reference EmailValidator}, Path=IsVisibleMessage}" />
 
-        </StackLayout>
+        <Label Style="{StaticResource nesterFieldLabel}" 
+                Text="Password"></Label>
+        <Entry Style="{StaticResource nesterField}"
+            x:Name="Password"
+            Text="{Binding Path=Permit.Password, Mode=TwoWay}"
+            IsPassword="True"
+            PropertyChanged="OnFieldValidation"
+            Placeholder="Enter password">
+          <Entry.Behaviors>
+            <validators:EntryValidatorBehavior
+                IsCheckEmpty="True"
+                MinLength="8"
+                MaxLength="32"
+                x:Name="PasswordValidator" />
+          </Entry.Behaviors>
+        </Entry>
+        <Label Style="{StaticResource validateFailMsg}"
+              Text="{Binding Source={x:Reference PasswordValidator}, Path=Message}"
+              Opacity="{Binding Source={x:Reference PasswordValidator}, Path=IsVisibleMessage}" />
 
-        <ActivityIndicator Grid.Row="2" Grid.Column="1" x:Name="ServiceActive" Style="{StaticResource nesterActive}">          
-        </ActivityIndicator>
+      </StackLayout>
 
-        <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal" >
-          <Button x:Name="ButtonLogin"
-                  Text="Login"
-                  IsEnabled="{Binding Validated}"
-                  Style="{StaticResource buttonPageFlow}"
-                  Clicked="OnLoginButtonClickedAsync">
-          </Button>
-          <Button x:Name="ButtonSignup"
-                  Text="Sign-up"
-                  IsEnabled="{Binding Validated}"
-                  Style="{StaticResource buttonPageFlow}"
-                  Clicked="OnSignUpButtonClickedAsync">
-          </Button>
-          <Button x:Name="ButtonRecoverPassword"
-                  Text="Recover Password"
-                  IsEnabled="{Binding CanRecoverPassword}"
-                  Style="{StaticResource buttonPageFlow}"
-                  Clicked="OnRecoverPasswordButtonClickedAsync">
-          </Button>          
-        </StackLayout>
+      <ActivityIndicator Grid.Row="2" Grid.Column="1" x:Name="ServiceActive" Style="{StaticResource nesterActive}">          
+      </ActivityIndicator>
 
-      </Grid>
-      
-    </StackLayout>
+      <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal" >
+        <Button x:Name="ButtonLogin"
+                Text="Login"
+                IsEnabled="{Binding Validated}"
+                Style="{StaticResource buttonPageFlow}"
+                Clicked="OnLoginButtonClickedAsync">
+        </Button>
+        <Button x:Name="ButtonSignup"
+                Text="Sign-up"
+                IsEnabled="{Binding Validated}"
+                Style="{StaticResource buttonPageFlow}"
+                Clicked="OnSignUpButtonClickedAsync">
+        </Button>
+        <Button x:Name="ButtonRecoverPassword"
+                Text="Recover Password"
+                IsEnabled="{Binding CanRecoverPassword}"
+                Style="{StaticResource buttonPageFlow}"
+                Clicked="OnRecoverPasswordButtonClickedAsync">
+        </Button>          
+      </StackLayout>
 
-            
+    </Grid>
+                  
   </ContentPage.Content>
 </views:View>

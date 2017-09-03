@@ -37,8 +37,8 @@ namespace Nester.Views
             }
             set
             {
-                _editApp = value;
                 _editDomain.App = value;
+                SetProperty(ref _editApp, value);
             }
         }
 
@@ -89,18 +89,6 @@ namespace Nester.Views
         override public async Task<Cloud.ServerStatus> InitAsync()
         {
             return await QueryDomainsAsync();
-        }
-
-        public void MakePrimary(Admin.AppDomain primary)
-        {
-            /* the primary flag is set in the app
-             * this is just to reflect on the ui
-             */
-            _domains.All(
-                doamain => {
-                    doamain.Primary = (doamain.Tag == primary.Tag);
-                    return true;
-                });
         }
 
         public async Task<Cloud.ServerStatus> QueryDomainsAsync(
@@ -175,33 +163,33 @@ namespace Nester.Views
             return status;
         }
 
-        public async Task<Cloud.ServerStatus> CreateDomainAsync(Admin.AppDomain domain,
+        public async Task<Cloud.ServerStatus> CreateDomainAsync(Admin.AppDomain domain = null,
             bool doCache = false, bool throwIfError = true)
         {
+            Admin.AppDomain theDomain = domain == null ? _editDomain : domain;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                domain, new Cloud.NesterService.CachedHttpRequest<Admin.AppDomain>(
+                theDomain, new Cloud.NesterService.CachedHttpRequest<Admin.AppDomain>(
                     ThisUI.NesterService.CreateAsync), doCache);
 
             if (status.Code >= 0)
             {
                 _editDomain = status.PayloadToObject<Admin.AppDomain>();
-                _domains.Add(_editDomain);
+                Utils.Object.PourPropertiesTo(_editDomain, theDomain);
 
-                domain.Certificate = new Admin.AppDomainCertificate();
-                domain.Certificate.AppDomain = domain;
-                domain.Certificate.Tag = domain.Tag;
-                domain.Certificate.Type = "free";
+                theDomain.Certificate = new Admin.AppDomainCertificate();
+                theDomain.Certificate.AppDomain = _editDomain;
+                theDomain.Certificate.Tag = _editDomain.Tag;
+                theDomain.Certificate.Type = "free";
 
                 status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                    domain.Certificate, new Cloud.NesterService.CachedHttpRequest<Admin.AppDomainCertificate>(
+                    theDomain.Certificate, new Cloud.NesterService.CachedHttpRequest<Admin.AppDomainCertificate>(
                         ThisUI.NesterService.CreateAsync));
 
                 if (status.Code == 0)
                 {
-                    _editDomain.Certificate = status.PayloadToObject<Admin.AppDomainCertificate>();
-                    _certs.Add(_editDomain.Certificate);
-
-                    Utils.Object.PourPropertiesTo(_editDomain, domain);
+                    theDomain.Certificate = status.PayloadToObject<Admin.AppDomainCertificate>();
+                    _certs.Add(theDomain.Certificate);
+                    _domains.Add(theDomain);
                 }
             }
 

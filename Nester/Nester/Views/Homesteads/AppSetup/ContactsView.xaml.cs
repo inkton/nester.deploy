@@ -115,8 +115,9 @@ namespace Nester.Views
             }
 
             Admin.Contact browseContact = AppContactsList.SelectedItem as Admin.Contact;
-            Utils.Object.CopyPropertiesTo(browseContact,
-                _appViewModel.ContactModel.EditContact);
+            Admin.Contact copy = new Admin.Contact();
+            Utils.Object.CopyPropertiesTo(browseContact, copy);
+            _appViewModel.ContactModel.EditContact = copy;
         }
 
         void Validate()

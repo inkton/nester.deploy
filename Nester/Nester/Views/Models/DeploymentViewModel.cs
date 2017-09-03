@@ -40,8 +40,8 @@ namespace Nester.Views
             }
             set
             {
-                _editApp = value;
                 _editDeployment.App = value;
+                SetProperty(ref _editApp, value);
             }
         }
 
@@ -53,7 +53,7 @@ namespace Nester.Views
             }
             set
             {
-                _editDeployment = value;
+                SetProperty(ref _editDeployment, value);
             }
         }
 

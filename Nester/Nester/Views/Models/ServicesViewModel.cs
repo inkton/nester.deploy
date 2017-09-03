@@ -93,13 +93,11 @@ namespace Nester.Views
             Admin.AppServiceSubscription subscription = new Admin.AppServiceSubscription();
             subscription.App = _editApp;
             subscription.ServiceTier = tier;
-
-            Dictionary<string, string> data = new Dictionary<string, string>();
-            data.Add("app_service_tier_id", tier.Tag);
+            subscription.AppServiceTierId = tier.Id;
 
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 subscription, new Cloud.NesterService.CachedHttpRequest<Admin.AppServiceSubscription>(
-                    ThisUI.NesterService.CreateAsync), doCache, data);
+                    ThisUI.NesterService.CreateAsync), doCache);
 
             if (status.Code == 0)
             {

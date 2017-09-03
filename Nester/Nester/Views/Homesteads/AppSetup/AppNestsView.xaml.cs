@@ -97,6 +97,7 @@ namespace Nester.Views
             }
 
             _appViewModel.NestModel.EditNest = new Admin.Nest();
+            _appViewModel.NestModel.EditNest.App = _appViewModel.EditApp;
 
             SetDefaults();
 
@@ -119,8 +120,10 @@ namespace Nester.Views
             }
 
             Admin.Nest browseNest = AppNestsList.SelectedItem as Admin.Nest;
-            Utils.Object.CopyPropertiesTo(browseNest,
-                _appViewModel.NestModel.EditNest);
+            Admin.Nest copy = new Admin.Nest();
+            Utils.Object.CopyPropertiesTo(browseNest, copy);
+            _appViewModel.NestModel.EditNest = copy;
+
             int index = 0;
 
             foreach (string memory in Memory.Items)

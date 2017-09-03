@@ -219,7 +219,7 @@ namespace Nester.Views
 
             try
             {
-                AppViewModel.NewApp();
+                AppViewModel.NewAppAsync();
                 await Navigation.PushAsync(
                     new AppBasicDetailView(AppViewModel));
             }

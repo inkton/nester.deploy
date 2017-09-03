@@ -8,15 +8,14 @@
   
   <ContentPage.Content>
 
-    <StackLayout>
-      
       <Grid VerticalOptions="LayoutOptions.Center" HorizontalOptions="LayoutOptions.Center">
 
         <Grid.RowDefinitions>
           <RowDefinition Height="15*"/>
           <RowDefinition Height="35*"/>
           <RowDefinition Height="35*"/>
-          <RowDefinition Height="15*"/>
+          <RowDefinition Height="5*"/>
+          <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -100,13 +99,10 @@
         
         </StackLayout>
 
+        <ActivityIndicator Grid.Row="3" Grid.Column="1" x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
+
       </Grid>
-
-      <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
-
-    </StackLayout>
-
-
+    
   </ContentPage.Content>
 </views:View>
 

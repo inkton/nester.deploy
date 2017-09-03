@@ -32,7 +32,7 @@ namespace Nester.Views
             }
             set
             {
-                _editApp = value;
+                SetProperty(ref _editApp, value);
             }
         }
 
@@ -44,7 +44,7 @@ namespace Nester.Views
             }
             set
             {
-                _wizardMode = value;
+                SetProperty(ref _wizardMode, value);
             }
         }
 
