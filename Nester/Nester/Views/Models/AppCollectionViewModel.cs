@@ -94,7 +94,17 @@ namespace Nester.Views
         public void RemoveApp(AppViewModel appModel)
         {
             _appModels.Remove(appModel);
-            LoadApp(_appModels.First());
+            
+            if (_appModels.Any())
+            {
+                LoadApp(_appModels.First());
+            }
+            else
+            {
+                _currentView = new BannerView();
+                (_currentView as BannerView).State = BannerView.Status.BannerViewUndefined;
+                _viewLoader(_currentView);
+            }
         }
 
         public bool LoadApp(AppViewModel appModel)

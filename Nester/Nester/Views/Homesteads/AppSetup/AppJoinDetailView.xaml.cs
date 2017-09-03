@@ -69,57 +69,6 @@ namespace Nester.Views
             }
         }
 
-        private async void ToggleMemebershipAsync(Admin.Invitation invitation)
-        {
-            Admin.App searchApp = new Admin.App();
-            searchApp.Tag = invitation.AppTag;
-
-            Cloud.ServerStatus status = await _appViewModel.QueryAppAsync(
-                searchApp, false);
-
-            if (status.Code != Cloud.Result.NEST_RESULT_SUCCESS)
-            {
-                await DisplayAlert("Nester", "This app no longer exisit", "OK");
-                return;
-            }
-            else
-            {
-                searchApp.Owner = ThisUI.User;
-
-                Admin.Contact myContact = new Admin.Contact();
-                Utils.Object.CopyPropertiesTo(invitation, myContact);
-                myContact.App = searchApp;
-
-                status = await _appViewModel.ContactModel.UpdateContactAsync(myContact);
-                if (status.Code != Cloud.Result.NEST_RESULT_SUCCESS)
-                {
-                    await DisplayAlert("Nester", "Could not confirm the invitation", "OK");
-                    return;
-                }
-
-                Utils.Object.CopyPropertiesTo(myContact, invitation);
-                AppCollectionViewModel appCollection = AppViewModel as AppCollectionViewModel;
-
-                if (invitation.Status == "active")
-                {
-                    appCollection.AddApp(searchApp);
-                }
-                else
-                {
-                    foreach (AppViewModel appModel in appCollection.AppModels)
-                    {
-                        if (appModel.EditApp.Id == searchApp.Id)
-                        {
-                            appCollection.RemoveApp(appModel);
-                            break;
-                        }
-                    }
-                }
-
-                ToggleMembershipButton(invitation);
-            }
-        }
-
         async private void ButtonMembership_ClickedAsync(object sender, EventArgs e)
         {
             IsServiceActive = true;
@@ -131,7 +80,53 @@ namespace Nester.Views
                 if (invitation == null)
                     return;
 
-                ToggleMemebershipAsync(invitation);
+                Admin.App searchApp = new Admin.App();
+                searchApp.Tag = invitation.AppTag;
+
+                Cloud.ServerStatus status = await _appViewModel.QueryAppAsync(
+                    searchApp, false);
+
+                if (status.Code != Cloud.Result.NEST_RESULT_SUCCESS)
+                {
+                    await DisplayAlert("Nester", "This app no longer exisit", "OK");
+                    return;
+                }
+                else
+                {
+                    searchApp.Owner = ThisUI.User;
+
+                    Admin.Contact myContact = new Admin.Contact();
+                    Utils.Object.CopyPropertiesTo(invitation, myContact);
+                    myContact.App = searchApp;
+
+                    status = await _appViewModel.ContactModel.UpdateContactAsync(myContact);
+                    if (status.Code != Cloud.Result.NEST_RESULT_SUCCESS)
+                    {
+                        await DisplayAlert("Nester", "Could not confirm the invitation", "OK");
+                        return;
+                    }
+
+                    Utils.Object.CopyPropertiesTo(myContact, invitation);
+                    AppCollectionViewModel appCollection = ThisUI.AppCollectionViewModel;
+
+                    if (invitation.Status == "active")
+                    {
+                        appCollection.AddApp(searchApp);
+                    }
+                    else
+                    {
+                        foreach (AppViewModel appModel in appCollection.AppModels)
+                        {
+                            if (appModel.EditApp.Id == searchApp.Id)
+                            {
+                                appCollection.RemoveApp(appModel);
+                                break;
+                            }
+                        }
+                    }
+
+                    ToggleMembershipButton(invitation);
+                }
             }
             catch (Exception ex)
             {

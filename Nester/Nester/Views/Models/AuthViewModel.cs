@@ -46,8 +46,8 @@ namespace Nester.Views
         public async Task<Cloud.ServerStatus> SignupAsync(
             bool throwIfError = true)
         {
-            Cloud.ServerStatus status = await Task<Cloud.ServerStatus>.Run(
-                     () => ThisUI.NesterService.SignupAsync(_permit));
+            Cloud.ServerStatus status = await 
+                ThisUI.NesterService.SignupAsync(_permit);
 
             if (status.Code < 0 && throwIfError)
             {
@@ -61,8 +61,8 @@ namespace Nester.Views
         public async Task<Cloud.ServerStatus> RecoverPasswordAsync(
             bool throwIfError = true)
         {
-            Cloud.ServerStatus status = await Task<Cloud.ServerStatus>.Run(
-                     () => ThisUI.NesterService.RecoverPasswordAsync(_permit));
+            Cloud.ServerStatus status = await 
+                ThisUI.NesterService.RecoverPasswordAsync(_permit);
 
             if (status.Code < 0 && throwIfError)
             {
@@ -76,8 +76,8 @@ namespace Nester.Views
         public async Task<Cloud.ServerStatus> QueryTokenAsync(
             bool throwIfError = true)
         {
-            Cloud.ServerStatus status = await Task<Cloud.ServerStatus>.Run(
-                     () => ThisUI.NesterService.QueryTokenAsync(_permit));
+            Cloud.ServerStatus status = await 
+                ThisUI.NesterService.QueryTokenAsync(_permit);
 
             if (status.Code < 0 && throwIfError)
             {
@@ -91,8 +91,8 @@ namespace Nester.Views
         public async Task<Cloud.ServerStatus> ResetTokenAsync(
             bool throwIfError = true)
         {
-            Cloud.ServerStatus status = await Task<Cloud.ServerStatus>.Run(
-                     () => ThisUI.NesterService.ResetTokenAsync(_permit));
+            Cloud.ServerStatus status = await 
+                ThisUI.NesterService.ResetTokenAsync(_permit);
 
             if (status.Code < 0 && throwIfError)
             {

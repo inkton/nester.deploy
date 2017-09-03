@@ -38,6 +38,8 @@ namespace Nester.Views
         {
             IsServiceActive = true;
 
+            await _appViewModel.ContactModel.QueryInvitationsAsync();
+
             Navigation.InsertPageBefore(new AppJoinDetailView(_appViewModel), this);
             await Navigation.PopAsync();
 

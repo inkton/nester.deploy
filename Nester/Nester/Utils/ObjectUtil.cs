@@ -49,15 +49,18 @@ namespace Nester.Utils
             foreach (var sourceProp in sourceProps)
             {
                 var value = sourceProp.GetValue(source, null);
-                var p = destProps.First(x => x.Name == sourceProp.Name);
-
-                if (value == null)
+                var p = destProps.FirstOrDefault(x => x.Name == sourceProp.Name);
+                
+                if (p != null)
                 {
-                    p.SetValue(dest, null, null);
-                }
-                else
-                {
-                    p.SetValue(dest, value, null);
+                    if (value == null)
+                    {
+                        p.SetValue(dest, null, null);
+                    }
+                    else
+                    {
+                        p.SetValue(dest, value, null);
+                    }
                 }
             }
         }
@@ -77,7 +80,7 @@ namespace Nester.Utils
             foreach (var sourceProp in sourceProps)
             {
                 var value = sourceProp.GetValue(source, null);
-                var p = destProps.First(x => x.Name == sourceProp.Name);
+                var p = destProps.FirstOrDefault(x => x.Name == sourceProp.Name);
 
                 if (value != null)
                 {

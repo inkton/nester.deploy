@@ -135,11 +135,12 @@ namespace Nester.Views
                 AppViewModel newAppModel = new AppViewModel();
                 newAppModel.NewAppAsync();
                 newAppModel.WizardMode = true;
-
+ 
                 await Navigation.PushAsync(
                     new AppEngageView(newAppModel));
 
                 Views.UserView userView = new Views.UserView();
+                _authViewModel.WizardMode = true;
                 userView.SetModels(_authViewModel, _appViewModel);
 
                 await Navigation.PushModalAsync(userView);

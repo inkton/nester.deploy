@@ -417,7 +417,8 @@ namespace Nester.Views
             Cloud.ServerStatus status;
 
             status = await _paymentModel.InitAsync();
-            if (status.Code < 0)
+            if (status.Code < 0 &&
+                status.Code != Cloud.Result.NEST_RESULT_ERROR_PMETHOD_NFOUND)
             {
                 return status;
             }
@@ -474,7 +475,7 @@ namespace Nester.Views
         public async Task<Cloud.ServerStatus> QueryAppNotificationsAsync(Admin.App app = null,
             bool doCache = false, bool throwIfError = true)
         {
-            Admin.App theApp = app == null ? EditApp : app;
+            Admin.App theApp = app == null ? _editApp : app;
             Admin.Notification notificationSeed = new Admin.Notification();
             notificationSeed.App = theApp;
 
@@ -493,7 +494,7 @@ namespace Nester.Views
         public async Task<Cloud.ServerStatus> QueryAppAsync(Admin.App app = null,
             bool bCache = false, bool throwIfError = true)
         {
-            Admin.App theApp = app == null ? EditApp : app;
+            Admin.App theApp = app == null ? _editApp : app;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theApp, new Cloud.NesterService.CachedHttpRequest<Admin.App>(
                     ThisUI.NesterService.QueryAsync), bCache);
@@ -515,7 +516,7 @@ namespace Nester.Views
         public async Task<Cloud.ServerStatus> RemoveAppAsync(Admin.App app = null,
              bool doCache = false, bool throwIfError = true)
         {
-            Admin.App theApp = app == null ? EditApp : app;
+            Admin.App theApp = app == null ? _editApp : app;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theApp, new Cloud.NesterService.CachedHttpRequest<Admin.App>(
                     ThisUI.NesterService.RemoveAsync), doCache);
@@ -531,7 +532,7 @@ namespace Nester.Views
         public async Task<Cloud.ServerStatus> UpdateAppAsync(Admin.App app = null,
             bool doCache = false, bool throwIfError = true)
         {
-            Admin.App theApp = app == null ? EditApp : app;
+            Admin.App theApp = app == null ? _editApp : app;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theApp, new Cloud.NesterService.CachedHttpRequest<Admin.App>(
                     ThisUI.NesterService.UpdateAsync), doCache);
@@ -548,7 +549,7 @@ namespace Nester.Views
         public async Task<Cloud.ServerStatus> CreateAppAsync(Admin.App app = null,
             bool doCache = false, bool throwIfError = true)
         {
-            Admin.App theApp = app == null ? EditApp : app;
+            Admin.App theApp = app == null ? _editApp : app;
             theApp.ServiceTierId = _selectedAppServiceTier.Id;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theApp, new Cloud.NesterService.CachedHttpRequest<Admin.App>(
