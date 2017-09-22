@@ -49,6 +49,7 @@
     <Compile Include="Admin\Contact.cs" />
     <Compile Include="Admin\Deployment.cs" />
     <Compile Include="Admin\Devkit.cs" />
+    <Compile Include="Admin\DiscordUser.cs" />
     <Compile Include="Admin\Forest.cs" />
     <Compile Include="Admin\Geography.cs" />
     <Compile Include="Admin\Invitation.cs" />

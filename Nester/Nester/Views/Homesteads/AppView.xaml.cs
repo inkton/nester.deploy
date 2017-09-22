@@ -289,6 +289,8 @@ namespace Nester.Views
         {
             try
             {
+                await _appViewModel.InitAsync();
+
                 if (_appViewModel.PaymentModel.PaymentMethod.Proof == null ||
                     _appViewModel.PaymentModel.PaymentMethod.Proof.Last4 == 0)
                 {

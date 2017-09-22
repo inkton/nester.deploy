@@ -130,6 +130,7 @@
       </Button>
 
       <Button x:Name="ButtonDomains"
+        IsVisible="{Binding EditApp.IsDeployed}"
         Text="Domains"
         Style="{StaticResource buttonUtilStyle1}"
         Clicked="OnButtonDomainsClickedAsync">

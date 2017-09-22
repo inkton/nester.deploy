@@ -52,6 +52,7 @@
       </Button>
 
       <Button x:Name="ButtonDomains"
+        IsVisible="{Binding EditApp.IsDeployed}"
         Text="Domains"
         Style="{StaticResource buttonUtilStyle1}">
       </Button>
@@ -228,6 +229,7 @@
 
       <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Start" Opacity="{Binding WizardMode, Converter={StaticResource inverseBoolConverter}}">
           <Button x:Name="ButtonUpdate"
+              IsVisible="{Binding IsValidApp}"
               IsEnabled="{Binding EditApp.IsDeployed, Converter={StaticResource inverseBoolConverter}}"
               VerticalOptions="Start"
               HorizontalOptions="Start"

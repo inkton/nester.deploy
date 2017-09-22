@@ -220,6 +220,8 @@ namespace Nester.Views
             try
             {
                 AppViewModel.NewAppAsync();
+                AppViewModel.WizardMode = true;
+
                 await Navigation.PushAsync(
                     new AppBasicDetailView(AppViewModel));
             }

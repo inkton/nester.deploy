@@ -167,6 +167,7 @@ namespace Nester.Views
              */
             try
             {
+                priaryDomain.Primary = true;
                 _appViewModel.EditApp.PrimaryDomainId = priaryDomain.Id;
                 await _appViewModel.UpdateAppAsync(_appViewModel.EditApp);
             }
@@ -376,6 +377,13 @@ namespace Nester.Views
             {
                 Admin.AppDomain updatingDomain = AppDomainsList.SelectedItem as Admin.AppDomain;
 
+                if (updatingDomain.Default)
+                {
+                    IsServiceActive = false;
+                    await DisplayAlert("Nester", "Cannot make changes to the default domain", "OK");
+                    return;
+                }
+
                 var existDomains = from domain in _appViewModel.DomainModel.Domains
                                    where domain.Tag == Tag.Text && domain.Id != updatingDomain.Id 
                                    select domain;
@@ -404,7 +412,11 @@ namespace Nester.Views
                     );
 
                     SetDefaults();
-                    //SetPrimaryDomain();
+
+                    if (!_appViewModel.DomainModel.Domains.Where(x => x.Primary == true).Any())
+                    {
+                        SetPrimaryDomain(_appViewModel.DomainModel.Domains.First());
+                    }
                 }
             }
             catch (Exception ex)

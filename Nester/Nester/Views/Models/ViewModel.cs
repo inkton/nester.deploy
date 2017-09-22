@@ -36,6 +36,14 @@ namespace Nester.Views
             }
         }
 
+        public bool IsValidApp
+        {
+            get
+            {
+                return _editApp != null && _editApp.Id > 0;
+            }
+        }
+
         virtual public bool WizardMode
         {
             get

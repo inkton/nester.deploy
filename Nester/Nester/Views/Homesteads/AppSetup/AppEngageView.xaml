@@ -89,7 +89,7 @@
 
              <ScrollView Orientation="Vertical">
               <Label
-                Text="The app owner must have authorized access. The app tag is needed to join."
+                Text="The app owner would have sent an invitation to join."
                 LineBreakMode="WordWrap"                
                 Style="{StaticResource nesterInfoBody}">
               </Label>             

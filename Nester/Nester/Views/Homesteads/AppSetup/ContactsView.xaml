@@ -156,6 +156,7 @@
       </Button>
 
       <Button x:Name="ButtonDomains"
+        IsVisible="{Binding EditApp.IsDeployed}"
         Text="Domains"
         Style="{StaticResource buttonUtilStyle1}"
         Clicked="OnButtonDomainsClickedAsync">
@@ -212,6 +213,13 @@
             Clicked="OnRefreshButtonClickedAsync">
           </Button>-->
 
+          <Button x:Name="ButtonSyncDiscord"
+            Text="Sync Discord"
+            IsEnabled="{Binding CanUpdate, Mode=TwoWay}"
+            Style="{StaticResource buttonUtilStyle1}"
+            Clicked="OnSyncDiscordButtonClickedAsync">
+          </Button>
+          
           <Button x:Name="ButtonUpdate"
             Text="Update"
             IsEnabled="{Binding CanUpdate, Mode=TwoWay}"

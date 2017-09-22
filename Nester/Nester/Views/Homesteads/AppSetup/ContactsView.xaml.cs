@@ -259,6 +259,38 @@ namespace Nester.Views
             IsServiceActive = false;
         }
 
+        async void OnSyncDiscordButtonClickedAsync(object sender, EventArgs e)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                var existContacts = from contact in _appViewModel.ContactModel.Contacts
+                                    where ((Admin.Contact)contact).Email == NewContactEmail.Text
+                                    select contact;
+                if (existContacts.ToArray().Length > 0)
+                {
+                    IsServiceActive = false;
+                    await DisplayAlert("Nester", "The user with this email already exist", "OK");
+                    return;
+                }
+
+                Admin.Contact newContact = new Admin.Contact();
+                newContact.App = _appViewModel.EditApp;
+                newContact.Email = NewContactEmail.Text;
+
+                await _appViewModel.ContactModel.CreateContactAsync(newContact);
+
+                Clear();
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+
+            IsServiceActive = false;
+        }
+
         async void OnRefreshButtonClickedAsync(object sender, EventArgs e)
         {
             IsServiceActive = true;
@@ -352,11 +384,14 @@ namespace Nester.Views
             {
                 if (_appViewModel.WizardMode)
                 {
-                    await _appViewModel.DomainModel.QueryDomainsAsync();
-
                     // if currently trvelling back and forth on the 
-                    // app wizard - move to the next
-                    await Navigation.PushAsync(new AppDomainView(_appViewModel));
+                    // app wizard - close the wizard
+                    // Pop contact view
+                    this.Navigation.RemovePage(
+                        this.Navigation.NavigationStack[this.Navigation.NavigationStack.Count - 2]);
+
+                    // Pop this to go to Homeview <->
+                    await this.Navigation.PopAsync();
                 }
                 else
                 {
