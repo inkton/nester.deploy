@@ -152,7 +152,7 @@
 
         <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" HorizontalOptions="EndAndExpand" >
           <Label Text="Analyze Time Period (UTC)" />
-          <DatePicker x:Name="StartAndExpand" HorizontalOptions="StartAndExpand"  />
+          <DatePicker x:Name="AnalyzeDateUTC" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand"  />
         </StackLayout>  
 
         <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" >

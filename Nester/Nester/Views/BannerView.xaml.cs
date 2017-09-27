@@ -31,12 +31,13 @@ namespace Nester.Views
             ButtonAppSettings.Clicked += ButtonAppSettings_ClickedAsync;
             ButtonNotifications.Clicked += ButtonNotifications_ClickedAsync;
             ButtonAppDeploy.Clicked += ButtonAppDeploy_ClickedAsync;
-            ButtonAppMenu.Clicked += ButtonAppMenu_Clicked;
             ButtonAddToSlack.Clicked += ButtonAddToSlack_ClickedAsync;
+            ButtonAppMenu.Clicked += ButtonAppMenu_Clicked;
 
             ButtonAppSettings.IsVisible = false;
             ButtonNotifications.IsVisible = false;
             ButtonAppDeploy.IsVisible = false;
+            ButtonAddToSlack.IsVisible = false;
             ButtonAppMenu.IsVisible = false;
         }
 
@@ -55,6 +56,7 @@ namespace Nester.Views
 
                         ButtonAppSettings.IsVisible = false;
                         ButtonNotifications.IsVisible = false;
+                        ButtonAddToSlack.IsVisible = false;
                         ButtonAppMenu.IsVisible = false;
                         break;
 
@@ -68,6 +70,7 @@ namespace Nester.Views
 
                         ButtonAppSettings.IsVisible = true;
                         ButtonNotifications.IsVisible = true;
+                        ButtonAddToSlack.IsVisible = true;
                         ButtonAppMenu.IsVisible = true;
                         break;
 
@@ -78,6 +81,7 @@ namespace Nester.Views
 
                         ButtonAppSettings.IsVisible = true;
                         ButtonNotifications.IsVisible = true;
+                        ButtonAddToSlack.IsVisible = true;
                         ButtonAppMenu.IsVisible = true;
                         break;
                 }

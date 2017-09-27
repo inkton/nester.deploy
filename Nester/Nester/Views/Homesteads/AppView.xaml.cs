@@ -36,6 +36,7 @@ namespace Nester.Views
             BindingContext = _appViewModel;
 
             DateTime endTime = DateTime.Now.ToUniversalTime();
+            AnalyzeDateUTC.Date = endTime;
             DateTime dayBegin = new DateTime(
                 endTime.Year, endTime.Month, endTime.Day, 0, 0, 0);
             TimeSpan dayElapsedTime = endTime - dayBegin;
@@ -112,16 +113,16 @@ namespace Nester.Views
 
         public async void GetAnalyticsAsync()
         {
-            DateTime now = DateTime.Now, unixEpoch = new DateTime(1970, 1, 1);
-            DateTime nowUTC = now.ToUniversalTime();
+            DateTime unixEpoch = new DateTime(1970, 1, 1);
+            DateTime analyzeDateUTC = AnalyzeDateUTC.Date;
 
             long beginId = (long)(new DateTime(
-                    nowUTC.Year, nowUTC.Month, nowUTC.Day,
+                    analyzeDateUTC.Year, analyzeDateUTC.Month, analyzeDateUTC.Day,
                     StartTime.Time.Hours,
                     StartTime.Time.Minutes,
                     StartTime.Time.Seconds) - unixEpoch).TotalMilliseconds;
             long endId = (long)(new DateTime(
-                    nowUTC.Year, nowUTC.Month, nowUTC.Day,
+                    analyzeDateUTC.Year, analyzeDateUTC.Month, analyzeDateUTC.Day,
                     EndTime.Time.Hours,
                     EndTime.Time.Minutes,
                     EndTime.Time.Seconds) - unixEpoch).TotalMilliseconds;
@@ -134,11 +135,26 @@ namespace Nester.Views
 
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 
-            _appViewModel.LogViewModel.NestLogs.Clear();
-            _appViewModel.LogViewModel.SystemCPULogs.Clear();
-            _appViewModel.LogViewModel.DiskSpaceLogs.Clear();
-            _appViewModel.LogViewModel.SystemIPV4Logs.Clear();
-            _appViewModel.LogViewModel.SystemRAMLogs.Clear();
+            if (_appViewModel.LogViewModel.NestLogs != null)
+            {
+                _appViewModel.LogViewModel.NestLogs.Clear();
+            }
+            if (_appViewModel.LogViewModel.SystemCPULogs != null)
+            {
+                _appViewModel.LogViewModel.SystemCPULogs.Clear();
+            }
+            if (_appViewModel.LogViewModel.DiskSpaceLogs != null)
+            {
+                _appViewModel.LogViewModel.DiskSpaceLogs.Clear();
+            }
+            if (_appViewModel.LogViewModel.SystemIPV4Logs != null)
+            {
+                _appViewModel.LogViewModel.SystemIPV4Logs.Clear();
+            }
+            if (_appViewModel.LogViewModel.SystemRAMLogs != null)
+            {
+                _appViewModel.LogViewModel.SystemRAMLogs.Clear();
+            }
 
             _appViewModel.LogViewModel.QueryNestLogsAsync(
                 string.Format("id >= {0} and id < {1}",
