@@ -49,7 +49,7 @@
     <Compile Include="Admin\Contact.cs" />
     <Compile Include="Admin\Deployment.cs" />
     <Compile Include="Admin\Devkit.cs" />
-    <Compile Include="Admin\DiscordUser.cs" />
+    <Compile Include="Admin\Collaboration.cs" />
     <Compile Include="Admin\Forest.cs" />
     <Compile Include="Admin\Geography.cs" />
     <Compile Include="Admin\Invitation.cs" />
@@ -121,7 +121,6 @@
     <Compile Include="Views\Homesteads\AppWebView.xaml.cs">
       <DependentUpon>AppWebView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\IAppsHolder.cs" />
     <Compile Include="Views\Models\AppCollectionViewModel.cs" />
     <Compile Include="Views\Models\AppViewModel.cs" />
     <Compile Include="Views\Homesteads\AppSetup\AppBasicDetailView.xaml.cs">

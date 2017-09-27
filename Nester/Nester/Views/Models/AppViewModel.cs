@@ -86,6 +86,21 @@ namespace Nester.Views
             }
         }
 
+        public bool IsAppOwner
+        {
+            get
+            {
+                bool isOwner = false;
+
+                if (_editApp != null)
+                {
+                    isOwner = _editApp.UserId == this.ThisUI.User.Id;
+                }
+
+                return isOwner;
+            }
+        }
+
         override public bool WizardMode
         {
             get

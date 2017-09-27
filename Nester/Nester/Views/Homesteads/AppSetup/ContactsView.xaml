@@ -213,12 +213,12 @@
             Clicked="OnRefreshButtonClickedAsync">
           </Button>-->
 
-          <Button x:Name="ButtonSyncDiscord"
+          <!--<Button x:Name="ButtonSyncDiscord"
             Text="Sync Discord"
             IsEnabled="{Binding CanUpdate, Mode=TwoWay}"
             Style="{StaticResource buttonUtilStyle1}"
             Clicked="OnSyncDiscordButtonClickedAsync">
-          </Button>
+          </Button>-->
           
           <Button x:Name="ButtonUpdate"
             Text="Update"

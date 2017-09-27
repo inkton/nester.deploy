@@ -165,6 +165,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="signin.png" />
     <Content Include="singapore.png" />
+    <Content Include="slack24.png" />
     <Content Include="twowayarow.png" />
     <Content Include="uk.png" />
     <Content Include="usa.png" />

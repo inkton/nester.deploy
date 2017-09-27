@@ -108,11 +108,17 @@
                 Image="appview24.png" >
         </Button>
 
+        <Button x:Name="ButtonAddToSlack"
+                IsVisible="{Binding IsAppOwner}"                
+                Style="{StaticResource appFuncButton}"
+                Image="slack24.png" >
+        </Button>
+        
         <Button x:Name="ButtonAppMenu"
                 Style="{StaticResource appFuncButton}"
                 Image="menu24.png" >
         </Button>
-        
+      
       </StackLayout>
 
       <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>

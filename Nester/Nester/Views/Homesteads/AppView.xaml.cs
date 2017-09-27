@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using Syncfusion.SfChart.XForms;
 using System.Collections.ObjectModel;
 using Nester.Admin;
+using System.Net;
 
 namespace Nester.Views
 {
@@ -35,7 +36,20 @@ namespace Nester.Views
             BindingContext = _appViewModel;
 
             DateTime endTime = DateTime.Now.ToUniversalTime();
-            DateTime startTime = endTime.Subtract(new TimeSpan(0, 60, 0));
+            DateTime dayBegin = new DateTime(
+                endTime.Year, endTime.Month, endTime.Day, 0, 0, 0);
+            TimeSpan dayElapsedTime = endTime - dayBegin;
+
+            DateTime startTime;
+
+            if (dayElapsedTime.TotalMinutes < 60)
+            {
+                startTime = dayBegin;
+            }
+            else
+            {
+                startTime = endTime.Subtract(new TimeSpan(0, 60, 0));
+            }
 
             StartTime.Time = new TimeSpan(startTime.Hour, startTime.Minute, startTime.Second);
             EndTime.Time = new TimeSpan(endTime.Hour, endTime.Minute, endTime.Second);
@@ -48,6 +62,7 @@ namespace Nester.Views
             ButtonAppDownload.Clicked += ButtonAppDownload_ClickedAsync;
             ButtonAppMenu.Clicked += ButtonAppMenu_Clicked;
             ButtonGetAnalytics.Clicked += ButtonGetAnalytics_Clicked;
+            ButtonAddToSlack.Clicked += ButtonAddToSlack_ClickedAsync;
 
             NestLogs.SelectionChanged += NestLogs_SelectionChanged;
 
@@ -118,6 +133,12 @@ namespace Nester.Views
             }
 
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+
+            _appViewModel.LogViewModel.NestLogs.Clear();
+            _appViewModel.LogViewModel.SystemCPULogs.Clear();
+            _appViewModel.LogViewModel.DiskSpaceLogs.Clear();
+            _appViewModel.LogViewModel.SystemIPV4Logs.Clear();
+            _appViewModel.LogViewModel.SystemRAMLogs.Clear();
 
             _appViewModel.LogViewModel.QueryNestLogsAsync(
                 string.Format("id >= {0} and id < {1}",
@@ -234,6 +255,28 @@ namespace Nester.Views
                 await _appViewModel.QueryAppNotificationsAsync();
 
                 await Navigation.PushAsync(new NotificationView(_appViewModel));
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+        }
+
+        async private void ButtonAddToSlack_ClickedAsync(object sender, EventArgs e)
+        {
+            try
+            {
+                await _appViewModel.ContactModel.QueryContactCollaborateAccountAsync();
+
+                string clientId = "237221988247.245551261632";
+                string scope = "incoming-webhook,chat:write:bot";
+
+                string url = "https://slack.com/oauth/authorize?" +
+                    "&client_id=" + WebUtility.UrlEncode(clientId) +
+                    "&scope=" + WebUtility.UrlEncode(scope) +
+                    "&state=" + WebUtility.UrlEncode(_appViewModel.ContactModel.Collaboration.State);
+
+                Device.OpenUri(new Uri(url));
             }
             catch (Exception ex)
             {

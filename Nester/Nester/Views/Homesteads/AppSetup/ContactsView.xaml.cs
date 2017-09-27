@@ -259,37 +259,33 @@ namespace Nester.Views
             IsServiceActive = false;
         }
 
-        async void OnSyncDiscordButtonClickedAsync(object sender, EventArgs e)
-        {
-            IsServiceActive = true;
+        //async void OnSyncDiscordButtonClickedAsync(object sender, EventArgs e)
+        //{
+        //    IsServiceActive = true;
 
-            try
-            {
-                var existContacts = from contact in _appViewModel.ContactModel.Contacts
-                                    where ((Admin.Contact)contact).Email == NewContactEmail.Text
-                                    select contact;
-                if (existContacts.ToArray().Length > 0)
-                {
-                    IsServiceActive = false;
-                    await DisplayAlert("Nester", "The user with this email already exist", "OK");
-                    return;
-                }
+        //    try
+        //    {
+        //        Admin.Contact editContact = AppContactsList.SelectedItem as Admin.Contact;
 
-                Admin.Contact newContact = new Admin.Contact();
-                newContact.App = _appViewModel.EditApp;
-                newContact.Email = NewContactEmail.Text;
+        //        if (editContact.Status != "active")
+        //        {
+        //            IsServiceActive = false;
+        //            await DisplayAlert("Nester", "The user hasn't accepted the invitation yet", "OK");
+        //            return;
+        //        }
+        //        OnSyncDiscordButtonClickedAsync
 
-                await _appViewModel.ContactModel.CreateContactAsync(newContact);
+        //       await Process(AppContactsList.SelectedItem as Admin.Contact, false,
+        //            _appViewModel.ContactModel.UpdateContactDiscordAsync
+        //        );
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        await DisplayAlert("Nester", ex.Message, "OK");
+        //    }
 
-                Clear();
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Nester", ex.Message, "OK");
-            }
-
-            IsServiceActive = false;
-        }
+        //    IsServiceActive = false;
+        //}
 
         async void OnRefreshButtonClickedAsync(object sender, EventArgs e)
         {

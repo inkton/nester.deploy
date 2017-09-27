@@ -15,6 +15,7 @@ namespace Nester.Views
     {
         private Admin.Contact _editContact;
         private Admin.Contact _ownerContact;
+        private Admin.Collaboration _collaboration;
 
         private ObservableCollection<Admin.Contact> _contacts;
 
@@ -51,6 +52,9 @@ namespace Nester.Views
             _invitations = new ObservableCollection<Admin.Invitation>();
             _editInvitation = new Admin.Invitation();
             _editInvitation.User = ThisUI.User;
+
+            _collaboration = new Admin.Collaboration();
+            _collaboration.Contact = _editContact;
         }
 
         override public Admin.App EditApp
@@ -77,6 +81,7 @@ namespace Nester.Views
             set
             {
                 SetProperty(ref _editContact, value);
+                _collaboration.Contact = value;
                 OnPropertyChanged("EditContact.OwnerCapabilities");
             }
         }
@@ -102,6 +107,19 @@ namespace Nester.Views
             set
             {
                 SetProperty(ref _ownerContact, value);
+            }
+        }
+
+        public Admin.Collaboration Collaboration
+        {
+            get
+            {
+                return _collaboration;
+            }
+            set
+            {
+                _collaboration.Contact = _editContact;
+                SetProperty(ref _collaboration, value);
             }
         }
 
@@ -189,11 +207,11 @@ namespace Nester.Views
                         contact.UserId == ThisUI.User.Id)
                     {
                         _ownerContact = contact;
+                        _editContact = contact;
+                        _collaboration.Contact = contact;
                         _editApp.OwnerCapabilities = contact.OwnerCapabilities;
                     }
                 }
-
-                //_contacts.Remove(_ownerContact);
             }
 
             return status;
@@ -217,29 +235,6 @@ namespace Nester.Views
         }
 
         public async Task<Cloud.ServerStatus> UpdateContactAsync(Admin.Contact contact,
-            bool doCache = false, bool throwIfError = true)
-        {
-            bool leaving = contact.UserId != null;
-
-            Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                contact, new Cloud.NesterService.CachedHttpRequest<Admin.Contact>(
-                    ThisUI.NesterService.UpdateAsync), doCache);
-
-            if (status.Code >= 0)
-            {
-                _editContact = status.PayloadToObject<Admin.Contact>();
-                Utils.Object.PourPropertiesTo(_editContact, contact);
-
-                if (!leaving)
-                {
-                    await QueryPermissionsAsync(_editContact, throwIfError);
-                }
-            }
-
-            return status;
-        }
-
-        public async Task<Cloud.ServerStatus> UpdateContactDiscordAsync(Admin.Contact contact,
             bool doCache = false, bool throwIfError = true)
         {
             bool leaving = contact.UserId != null;
@@ -395,6 +390,25 @@ namespace Nester.Views
                         break;
                     }
                 }
+            }
+
+            return status;
+        }
+
+        public async Task<Cloud.ServerStatus> QueryContactCollaborateAccountAsync(Admin.Collaboration collaboration = null,
+            bool doCache = false, bool throwIfError = true)
+        {
+            Admin.Collaboration theCollaboration = collaboration == null ? _collaboration : collaboration;
+            theCollaboration.AccountId = "0";
+
+            Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
+                theCollaboration, new Cloud.NesterService.CachedHttpRequest<Admin.Collaboration>(
+                    ThisUI.NesterService.QueryAsync), doCache, null, null);
+
+            if (status.Code >= 0)
+            {
+                _collaboration = status.PayloadToObject<Admin.Collaboration>();
+                Utils.Object.PourPropertiesTo(_collaboration, theCollaboration);
             }
 
             return status;

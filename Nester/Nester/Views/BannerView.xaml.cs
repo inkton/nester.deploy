@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Net;
 
 namespace Nester.Views
 {
@@ -31,6 +32,7 @@ namespace Nester.Views
             ButtonNotifications.Clicked += ButtonNotifications_ClickedAsync;
             ButtonAppDeploy.Clicked += ButtonAppDeploy_ClickedAsync;
             ButtonAppMenu.Clicked += ButtonAppMenu_Clicked;
+            ButtonAddToSlack.Clicked += ButtonAddToSlack_ClickedAsync;
 
             ButtonAppSettings.IsVisible = false;
             ButtonNotifications.IsVisible = false;
@@ -117,6 +119,28 @@ namespace Nester.Views
                 await _appViewModel.QueryAppNotificationsAsync();
 
                 await Navigation.PushAsync(new NotificationView(_appViewModel));
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+        }
+
+        async private void ButtonAddToSlack_ClickedAsync(object sender, EventArgs e)
+        {
+            try
+            {
+                await _appViewModel.ContactModel.QueryContactCollaborateAccountAsync();
+
+                string clientId = "237221988247.245551261632";
+                string scope = "incoming-webhook,chat:write:bot";
+
+                string url = "https://slack.com/oauth/authorize?" +
+                    "&client_id=" + WebUtility.UrlEncode(clientId) +
+                    "&scope=" + WebUtility.UrlEncode(scope) +
+                    "&state=" + WebUtility.UrlEncode(_appViewModel.ContactModel.Collaboration.State);
+
+                Device.OpenUri(new Uri(url));
             }
             catch (Exception ex)
             {
