@@ -221,7 +221,7 @@ namespace Nester.Views
             bool doCache = false, bool throwIfError = true)
         {
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                contact, new Cloud.NesterService.CachedHttpRequest<Admin.Contact>(
+                contact, new Cloud.CachedHttpRequest<Admin.Contact>(
                     ThisUI.NesterService.QueryAsync), doCache, null, null);
 
             if (status.Code >= 0)
@@ -240,7 +240,7 @@ namespace Nester.Views
             bool leaving = contact.UserId != null;
 
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                contact, new Cloud.NesterService.CachedHttpRequest<Admin.Contact>(
+                contact, new Cloud.CachedHttpRequest<Admin.Contact>(
                     ThisUI.NesterService.UpdateAsync), doCache);
 
             if (status.Code >= 0)
@@ -261,7 +261,7 @@ namespace Nester.Views
             bool doCache = false, bool throwIfError = true)
         {
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                contact, new Cloud.NesterService.CachedHttpRequest<Admin.Contact>(
+                contact, new Cloud.CachedHttpRequest<Admin.Contact>(
                     ThisUI.NesterService.CreateAsync), doCache);
 
             if (status.Code >= 0)
@@ -281,7 +281,7 @@ namespace Nester.Views
             bool doCache = false, bool throwIfError = true)
         {
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                contact, new Cloud.NesterService.CachedHttpRequest<Admin.Contact>(
+                contact, new Cloud.CachedHttpRequest<Admin.Contact>(
                     ThisUI.NesterService.RemoveAsync), doCache);
 
             if (status.Code >= 0)
@@ -296,7 +296,7 @@ namespace Nester.Views
             bool doCache = false, bool throwIfError = true)
         {
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                contact, new Cloud.NesterService.CachedHttpRequest<Admin.Contact>(
+                contact, new Cloud.CachedHttpRequest<Admin.Contact>(
                     ThisUI.NesterService.UpdateAsync), doCache);
             return status;
         }
@@ -367,7 +367,7 @@ namespace Nester.Views
                     permission["app_permission_tag"] = seedPermission.AppPermissionTag;
 
                     status = await Cloud.Result.WaitForObjectAsync(false,
-                        seedPermission, new Cloud.NesterService.CachedHttpRequest<Auth.Permission>(
+                        seedPermission, new Cloud.CachedHttpRequest<Auth.Permission>(
                             ThisUI.NesterService.CreateAsync), doCache, permission);
 
                     if (status.Code != Cloud.Result.NEST_RESULT_SUCCESS &&
@@ -381,7 +381,7 @@ namespace Nester.Views
                 else
                 {
                     status = await Cloud.Result.WaitForObjectAsync(false,
-                        seedPermission, new Cloud.NesterService.CachedHttpRequest<Auth.Permission>(
+                        seedPermission, new Cloud.CachedHttpRequest<Auth.Permission>(
                             ThisUI.NesterService.RemoveAsync), doCache);
 
                     if (status.Code != Cloud.Result.NEST_RESULT_SUCCESS &&
@@ -402,7 +402,7 @@ namespace Nester.Views
             theCollaboration.AccountId = "0";
 
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                theCollaboration, new Cloud.NesterService.CachedHttpRequest<Admin.Collaboration>(
+                theCollaboration, new Cloud.CachedHttpRequest<Admin.Collaboration>(
                     ThisUI.NesterService.QueryAsync), doCache, null, null);
 
             if (status.Code >= 0)

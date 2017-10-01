@@ -99,6 +99,15 @@ namespace Nester.Views
             set {
                 _appViewModel = value;
                 BindingContext = _appViewModel;
+
+                if (_appViewModel.EditApp != null)
+                {
+                    Title = _appViewModel.EditApp.Name;
+                }
+                else
+                {
+                    Title = "Hello World";
+                }
             }
         }
 

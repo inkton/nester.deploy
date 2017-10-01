@@ -134,7 +134,7 @@ namespace Nester.Views
         {
             Admin.AppDomain theDomain = domain == null ? _editDomain : domain;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                theDomain, new Cloud.NesterService.CachedHttpRequest<Admin.AppDomain>(
+                theDomain, new Cloud.CachedHttpRequest<Admin.AppDomain>(
                     ThisUI.NesterService.QueryAsync), doCache, null, null);
 
             if (status.Code >= 0)
@@ -168,7 +168,7 @@ namespace Nester.Views
         {
             Admin.AppDomain theDomain = domain == null ? _editDomain : domain;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                theDomain, new Cloud.NesterService.CachedHttpRequest<Admin.AppDomain>(
+                theDomain, new Cloud.CachedHttpRequest<Admin.AppDomain>(
                     ThisUI.NesterService.CreateAsync), doCache);
 
             if (status.Code >= 0)
@@ -182,7 +182,7 @@ namespace Nester.Views
                 theDomain.Certificate.Type = "free";
 
                 status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                    theDomain.Certificate, new Cloud.NesterService.CachedHttpRequest<Admin.AppDomainCertificate>(
+                    theDomain.Certificate, new Cloud.CachedHttpRequest<Admin.AppDomainCertificate>(
                         ThisUI.NesterService.CreateAsync));
 
                 if (status.Code == 0)
@@ -201,7 +201,7 @@ namespace Nester.Views
          {
             Admin.AppDomain theDomain = domain == null ? _editDomain : domain;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                theDomain, new Cloud.NesterService.CachedHttpRequest<Admin.AppDomain>(
+                theDomain, new Cloud.CachedHttpRequest<Admin.AppDomain>(
                     ThisUI.NesterService.RemoveAsync), doCache);
 
             if (status.Code >= 0)
@@ -218,7 +218,7 @@ namespace Nester.Views
         {
             Admin.AppDomain theDomain = domain == null ? _editDomain : domain;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                theDomain, new Cloud.NesterService.CachedHttpRequest<Admin.AppDomain>(
+                theDomain, new Cloud.CachedHttpRequest<Admin.AppDomain>(
                     ThisUI.NesterService.UpdateAsync), doCache);
 
             if (status.Code >= 0)
@@ -226,7 +226,7 @@ namespace Nester.Views
                 _editDomain = status.PayloadToObject<Admin.AppDomain>();
 
                 status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                    theDomain.Certificate, new Cloud.NesterService.CachedHttpRequest<Admin.AppDomainCertificate>(
+                    theDomain.Certificate, new Cloud.CachedHttpRequest<Admin.AppDomainCertificate>(
                         ThisUI.NesterService.UpdateAsync));
 
                 if (status.Code >= 0)

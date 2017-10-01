@@ -187,7 +187,7 @@ namespace Nester.Views
             {
                 _appViewModel.LogViewModel.EditNestLog = nestLog;
                 Message.Text = nestLog.Message;
-                
+/*                
                 if (_appViewModel.LogViewModel.DiskSpaceLogs != null)
                 {
                     var diskspaceLog = _appViewModel.LogViewModel.DiskSpaceLogs.FirstOrDefault(
@@ -232,6 +232,7 @@ namespace Nester.Views
                             ramLog.Used / (ramLog.Used + ramLog.Cached + ramLog.Buffers));
                     }
                 }
+*/
             }
         }
 

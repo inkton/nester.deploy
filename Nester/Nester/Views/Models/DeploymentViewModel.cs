@@ -189,7 +189,7 @@ namespace Nester.Views
             bool bCache = false, bool throwIfError = true)
         {
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                devkit, new Cloud.NesterService.CachedHttpRequest<Admin.Devkit>(
+                devkit, new Cloud.CachedHttpRequest<Admin.Devkit>(
                     ThisUI.NesterService.QueryAsync), bCache);
 
             return status;
@@ -199,7 +199,7 @@ namespace Nester.Views
             bool doCache = true, bool throwIfError = true)
         {
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                deployment, new Cloud.NesterService.CachedHttpRequest<Admin.Deployment>(
+                deployment, new Cloud.CachedHttpRequest<Admin.Deployment>(
                     ThisUI.NesterService.CreateAsync), doCache);
 
             if (status.Code >= 0)
@@ -217,7 +217,7 @@ namespace Nester.Views
              bool doCache = true, bool throwIfError = true)
         {
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                deployment, new Cloud.NesterService.CachedHttpRequest<Admin.Deployment>(
+                deployment, new Cloud.CachedHttpRequest<Admin.Deployment>(
                     ThisUI.NesterService.UpdateAsync), doCache);
 
             if (status.Code >= 0)
@@ -233,7 +233,7 @@ namespace Nester.Views
             bool doCache = false, bool throwIfError = true)
         {
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                deployment, new Cloud.NesterService.CachedHttpRequest<Admin.Deployment>(
+                deployment, new Cloud.CachedHttpRequest<Admin.Deployment>(
                     ThisUI.NesterService.RemoveAsync), doCache);
 
             if (status.Code == 0)

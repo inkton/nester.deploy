@@ -32,8 +32,6 @@ namespace Nester.Views
             _appViewModel = homeView.AppViewModel;
 
             BindingContext = _authViewModel;
-
-            _authViewModel.Reset();
         }
 
         void Validate()

@@ -87,6 +87,7 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
     <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+    <WarningLevel>1</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
@@ -100,6 +101,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Cache\Storage.cs" />
+    <Compile Include="Cloud\NesterService.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -114,8 +116,8 @@
     <None Include="Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="appadd32.png" />
     <Content Include="appdeploy24.png" />
+    <Content Include="appadd32.png" />
     <Content Include="appdeploymentremove24.png" />
     <Content Include="appdownload24.png" />
     <Content Include="appjoin32.png" />
@@ -125,10 +127,15 @@
     <Content Include="appremove32.png" />
     <Content Include="appresume24.png" />
     <Content Include="appsettings24.png" />
+    <Content Include="appview-o.png" />
     <Content Include="appview24.png" />
     <Content Include="australia.png" />
+    <Content Include="Assets\chirpy.png" />
+    <Content Include="contact256.png" />
     <Content Include="contact32.png" />
+    <Content Include="contactremove256.png" />
     <Content Include="contacts24.png" />
+    <Content Include="contactverified256.png" />
     <Content Include="contactverified32.png" />
     <Content Include="creditcardtick.png" />
     <Content Include="customdomaincert.png" />
@@ -142,7 +149,7 @@
     <Content Include="germany.png" />
     <Content Include="homesteadactive32.png" />
     <Content Include="homesteadinactive32.png" />
-    <Content Include="index.html" />
+    <Content Include="Assets\inkton-132.png" />
     <Content Include="invitejoin32.png" />
     <Content Include="inviteleave32.png" />
     <Content Include="japan.png" />
@@ -153,8 +160,20 @@
     <Content Include="notifications24.png" />
     <Content Include="onewayarow.png" />
     <Content Include="pluscircle.png" />
-    <Content Include="progress_done32.png" />
-    <Content Include="progress_pending32.png" />
+    <Content Include="signin.png" />
+    <Content Include="singapore.png" />
+    <Content Include="slack.svg" />
+    <Content Include="slack24.png" />
+    <Content Include="twowayarow.png" />
+    <Content Include="uk.png" />
+    <Content Include="usa.png" />
+    <Content Include="webnet256.png" />
+    <Content Include="webnet32.png" />
+    <Content Include="websocketnet256.png" />
+    <Content Include="websocketnet32.png" />
+    <Content Include="worker256.png" />
+    <Content Include="worker32.png" />
+    <Content Include="index.html" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -163,15 +182,6 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
-    <Content Include="signin.png" />
-    <Content Include="singapore.png" />
-    <Content Include="slack24.png" />
-    <Content Include="twowayarow.png" />
-    <Content Include="uk.png" />
-    <Content Include="usa.png" />
-    <Content Include="webnet32.png" />
-    <Content Include="websocketnet32.png" />
-    <Content Include="worker32.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

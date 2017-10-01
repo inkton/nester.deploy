@@ -205,7 +205,7 @@
             <ColumnDefinition Width="60*"/>          
           </Grid.ColumnDefinitions>
 
-          <StackLayout Grid.Column="0" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="Center">
+          <!--<StackLayout Grid.Column="0" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="Center">
             <Label TextColor="{StaticResource mainColor}" Text="CPU" HorizontalOptions="Center" LineBreakMode="NoWrap" />
             <Label TextColor="{StaticResource paneColor}" HorizontalOptions="Center" x:Name="FocusCPU" />
           </StackLayout>
@@ -223,9 +223,9 @@
           <StackLayout Grid.Column="3" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="Center">
               <Label TextColor="{StaticResource mainColor}" Text="Net" HorizontalOptions="Start" LineBreakMode="NoWrap" />
               <Label TextColor="{StaticResource paneColor}" HorizontalOptions="Center"  x:Name="FocusNet"  />         
-          </StackLayout>              
+          </StackLayout>-->              
           
-          <StackLayout Grid.Column="4" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
+          <StackLayout Grid.Column="0" Grid.ColumnSpan="5" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
               <ScrollView 
                     BackgroundColor="#EEEEEE"
                     Padding="2" 
@@ -316,34 +316,34 @@
           </chart:SfChart.PrimaryAxis>
 
           <chart:SfChart.SecondaryAxis >
-            <chart:NumericalAxis Minimum="0" Maximum="100" >
+            <chart:NumericalAxis>
               <chart:NumericalAxis.LabelStyle>
                 <chart:ChartAxisLabelStyle Font="None,10"/>
               </chart:NumericalAxis.LabelStyle>              
             </chart:NumericalAxis  >
           </chart:SfChart.SecondaryAxis>
 
-          <chart:StackingAreaSeries
+          <chart:StackingArea100Series
             Color="#34495E"
             XBindingPath="Time"
             YBindingPath="Value" />
 
-          <chart:StackingAreaSeries
+          <chart:StackingArea100Series
             Color="#2980B9"
             XBindingPath="Time"
             YBindingPath="Value" />
 
-          <chart:StackingAreaSeries
+          <chart:StackingArea100Series
             Color="#27AE60"
             XBindingPath="Time"
             YBindingPath="Value" />
 
-          <chart:StackingAreaSeries
+          <chart:StackingArea100Series
             Color="#E67E22"
             XBindingPath="Time"
             YBindingPath="Value" />
 
-          <chart:StackingAreaSeries
+          <chart:StackingArea100Series
             Color="#44BBFF"
             XBindingPath="Time"
             YBindingPath="Value" />
@@ -374,29 +374,29 @@
           </chart:SfChart.PrimaryAxis>
 
           <chart:SfChart.SecondaryAxis >
-            <chart:NumericalAxis Minimum="0" Maximum="100" >
+            <chart:NumericalAxis >
               <chart:NumericalAxis.LabelStyle>
                 <chart:ChartAxisLabelStyle Font="None,10"/>
               </chart:NumericalAxis.LabelStyle>                            
             </chart:NumericalAxis  >
           </chart:SfChart.SecondaryAxis>
           
-          <chart:StackingAreaSeries
+          <chart:StackingArea100Series 
             Color="#34495E"
             XBindingPath="Time"
             YBindingPath="Value" />
 
-          <chart:StackingAreaSeries
+          <chart:StackingArea100Series 
             Color="#2980B9"
             XBindingPath="Time"
             YBindingPath="Value" />
 
-          <chart:StackingAreaSeries
+          <chart:StackingArea100Series 
             Color="#27AE60"
             XBindingPath="Time"
             YBindingPath="Value" />
 
-          <chart:StackingAreaSeries
+          <chart:StackingArea100Series 
             Color="#E67E22"
             XBindingPath="Time"
             YBindingPath="Value" />

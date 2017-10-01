@@ -37,8 +37,6 @@ namespace Nester.Views
 
         public void Reset()
         {
-            ThisUI.NesterService.ClearSession();
-
             _permit.SecurityCode = null;
             _permit.Token = null;
         }
@@ -106,7 +104,7 @@ namespace Nester.Views
             bool doCache = false, bool throwIfError = true)
         {
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                user, new Cloud.NesterService.CachedHttpRequest<Admin.User>(
+                user, new Cloud.CachedHttpRequest<Admin.User>(
                     ThisUI.NesterService.UpdateAsync), doCache);
 
             if (status.Code >= 0)

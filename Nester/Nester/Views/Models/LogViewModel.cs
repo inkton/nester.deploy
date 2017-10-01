@@ -14,7 +14,7 @@ namespace Nester.Views
 {
     public class LogViewModel : ViewModel
     {
-        private NesterService _nester;
+        private INesterService _nester;
         private ObservableCollection<Admin.NestLog> _nestLogs;
         private ObservableCollection<Admin.DiskSpaceLog> _diskSpaceLogs;
         private ObservableCollection<Admin.SystemRAMLog> _systemRamLogs;
@@ -71,16 +71,13 @@ namespace Nester.Views
                 public DataSeriesPoints(ChartSeries series)
                     :base(series)
                 {
+                    Values = new ObservableCollection<Point>();
+                    _series.ItemsSource = Values;
                 }
 
                 public void Clear()
                 {
                     Values.Clear();
-                }
-
-                public void Bind()
-                {
-                    _series.ItemsSource = Values;
                 }
             }
 
@@ -132,21 +129,13 @@ namespace Nester.Views
                     points.Clear();
                 }
             }
-
-            public void Bind()
-            {
-                foreach (DataSeriesPoints points in _namedSeries.Values)
-                {
-                    points.Bind();
-                }
-            }
         }
 
         #endregion
 
         public LogViewModel(Admin.App app) : base(app)
         {
-            _nester = new NesterService();
+            _nester = DependencyService.Get<Cloud.INesterService>(DependencyFetchTarget.NewInstance);
             _nester.BasicAuth = new BasicAuth(
                 true, app.Tag, app.NetworkPassword);
             _nester.Endpoint = app.ApiEndpoint;
@@ -276,6 +265,7 @@ namespace Nester.Views
             {
                 sql += " where " + filter;
             }
+            sql += " limit 100";
 
             Cloud.ServerStatus status = await QueryLogsAsync<Admin.NestLog>(
                 sql, throwIfError);
@@ -294,17 +284,17 @@ namespace Nester.Views
             {
                 sql += " where " + filter;
             }
+            sql += " limit 100";
 
             Cloud.ServerStatus status = await QueryLogsAsync<Admin.SystemCPULog>(
                 sql, throwIfError);
 
             _systemCpuLogs = status.PayloadToList<Admin.SystemCPULog>();
+            _cpuSeries.Clear();
 
             if (_systemCpuLogs.Any())
             {
                 _systemCpuLogs.All(log => { _cpuSeries.AddLog(log); return true; });
-
-                _cpuSeries.Bind();
 
                 OnPropertyChanged("SystemCPULogs");
             }
@@ -320,12 +310,13 @@ namespace Nester.Views
             {
                 sql += " where " + filter;
             }
+            sql += " limit 100";
 
             Cloud.ServerStatus status = await QueryLogsAsync<Admin.DiskSpaceLog>(
                 sql, throwIfError);
 
             _diskSpaceLogs = status.PayloadToList<Admin.DiskSpaceLog>();
-            
+
             if (_diskSpaceLogs.Any())
             {
                 _diskSpaceData.AddLog(_diskSpaceLogs.Last());
@@ -344,17 +335,17 @@ namespace Nester.Views
             {
                 sql += " where " + filter;
             }
+            sql += " limit 100";
 
             Cloud.ServerStatus status = await QueryLogsAsync<Admin.SystemIPV4Log>(
                 sql, throwIfError);
 
             _ipv4Logs = status.PayloadToList<Admin.SystemIPV4Log>();
+            _ipv4Series.Clear();
 
             if (_ipv4Logs.Any())
             {
                 _ipv4Logs.All(log => { _ipv4Series.AddLog(log); return true; });
-
-                _ipv4Series.Bind();
 
                 OnPropertyChanged("SystemIPV4Logs");
             }
@@ -370,17 +361,17 @@ namespace Nester.Views
             {
                 sql += " where " + filter;
             }
+            sql += " limit 100";
 
             Cloud.ServerStatus status = await QueryLogsAsync<Admin.SystemRAMLog>(
                 sql, throwIfError);
 
             _systemRamLogs = status.PayloadToList<Admin.SystemRAMLog>();
+            _ramSeries.Clear();
 
             if (_systemRamLogs.Any())
             {
                 _systemRamLogs.All(log => { _ramSeries.AddLog(log); return true; });
-
-                _ramSeries.Bind();
 
                 OnPropertyChanged("SystemRAMLogs");
             }

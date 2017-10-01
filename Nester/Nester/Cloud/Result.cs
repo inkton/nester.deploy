@@ -182,7 +182,7 @@ namespace Nester.Cloud
         }
 
         public static async Task<ServerStatus> WaitForObjectAsync<T>(bool throwIfError, T seed, 
-            NesterService.CachedHttpRequest<T> request, bool doCache = true, IDictionary < string, string> data = null, 
+            CachedHttpRequest<T> request, bool doCache = true, IDictionary < string, string> data = null, 
             string subPath = null) where T : Cloud.ManagedEntity, new()
         {
             Cloud.ServerStatus status = await Task<Cloud.ServerStatus>.Run(
@@ -212,7 +212,7 @@ namespace Nester.Cloud
         }
 
         public static async Task<ServerStatus> WaitForObjectListAsync<T>(
-            NesterService nesterService, bool throwIfError, T seed, bool doCache = true, IDictionary<string, string> data = null,
+            INesterService nesterService, bool throwIfError, T seed, bool doCache = true, IDictionary<string, string> data = null,
             string subPath = null) where T : Cloud.ManagedEntity, new()
         {
             Cloud.ServerStatus status = await Task<Cloud.ServerStatus>.Run(

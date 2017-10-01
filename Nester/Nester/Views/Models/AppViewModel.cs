@@ -511,7 +511,7 @@ namespace Nester.Views
         {
             Admin.App theApp = app == null ? _editApp : app;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                theApp, new Cloud.NesterService.CachedHttpRequest<Admin.App>(
+                theApp, new Cloud.CachedHttpRequest<Admin.App>(
                     ThisUI.NesterService.QueryAsync), bCache);
            
             if (status.Code == 0)
@@ -533,7 +533,7 @@ namespace Nester.Views
         {
             Admin.App theApp = app == null ? _editApp : app;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                theApp, new Cloud.NesterService.CachedHttpRequest<Admin.App>(
+                theApp, new Cloud.CachedHttpRequest<Admin.App>(
                     ThisUI.NesterService.RemoveAsync), doCache);
 
             if (status.Code == 0)
@@ -549,7 +549,7 @@ namespace Nester.Views
         {
             Admin.App theApp = app == null ? _editApp : app;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                theApp, new Cloud.NesterService.CachedHttpRequest<Admin.App>(
+                theApp, new Cloud.CachedHttpRequest<Admin.App>(
                     ThisUI.NesterService.UpdateAsync), doCache);
 
             if (status.Code == 0)
@@ -567,7 +567,7 @@ namespace Nester.Views
             Admin.App theApp = app == null ? _editApp : app;
             theApp.ServiceTierId = _selectedAppServiceTier.Id;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                theApp, new Cloud.NesterService.CachedHttpRequest<Admin.App>(
+                theApp, new Cloud.CachedHttpRequest<Admin.App>(
                     ThisUI.NesterService.CreateAsync), doCache);
 
             if (status.Code == 0)

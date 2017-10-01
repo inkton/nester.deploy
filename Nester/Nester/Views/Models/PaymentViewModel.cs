@@ -54,7 +54,7 @@ namespace Nester.Views
             bool dCache = true, bool throwIfError = true)
         {
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                _editPaymentMethod, new Cloud.NesterService.CachedHttpRequest<Admin.PaymentMethod>(
+                _editPaymentMethod, new Cloud.CachedHttpRequest<Admin.PaymentMethod>(
                     ThisUI.NesterService.QueryAsync), dCache, null, null);
 
             if (status.Code >= 0)
@@ -94,7 +94,7 @@ namespace Nester.Views
             data.Add("cvc", cvc);
 
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                _editPaymentMethod, new Cloud.NesterService.CachedHttpRequest<Admin.PaymentMethod>(
+                _editPaymentMethod, new Cloud.CachedHttpRequest<Admin.PaymentMethod>(
                     ThisUI.NesterService.CreateAsync), doCache, data);
 
             if (status.Code >= 0)

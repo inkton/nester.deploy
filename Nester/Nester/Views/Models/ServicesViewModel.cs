@@ -96,7 +96,7 @@ namespace Nester.Views
             subscription.AppServiceTierId = tier.Id;
 
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                subscription, new Cloud.NesterService.CachedHttpRequest<Admin.AppServiceSubscription>(
+                subscription, new Cloud.CachedHttpRequest<Admin.AppServiceSubscription>(
                     ThisUI.NesterService.CreateAsync), doCache);
 
             if (status.Code == 0)
@@ -112,7 +112,7 @@ namespace Nester.Views
              bool doCache = false, bool throwIfError = true)
         {
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                subscription, new Cloud.NesterService.CachedHttpRequest<Admin.AppServiceSubscription>(
+                subscription, new Cloud.CachedHttpRequest<Admin.AppServiceSubscription>(
                     ThisUI.NesterService.RemoveAsync), doCache);
             return status;
         }

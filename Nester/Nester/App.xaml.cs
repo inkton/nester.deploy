@@ -24,6 +24,7 @@ namespace Nester
             _storage.Clear();
 
             _homeView = new Views.HomeView();
+
             MainPage = new NavigationPage(
                 new Views.EntryView());
         }
