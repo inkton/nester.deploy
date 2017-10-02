@@ -68,8 +68,7 @@ namespace Nester.Views
                 }
                 else
                 {
-                    _currentView = new BannerView();
-                    (_currentView as BannerView).State = BannerView.Status.BannerViewUndefined;
+                    _currentView = new BannerView(BannerView.Status.Undefined);
                     _viewLoader(_currentView);
                 }
             }
@@ -101,8 +100,7 @@ namespace Nester.Views
             }
             else
             {
-                _currentView = new BannerView();
-                (_currentView as BannerView).State = BannerView.Status.BannerViewUndefined;
+                _currentView = new BannerView(BannerView.Status.Undefined);
                 _viewLoader(_currentView);
             }
         }
@@ -111,13 +109,11 @@ namespace Nester.Views
         {
             if (appModel.EditApp.IsBusy)
             {
-                _currentView = new BannerView();
-                (_currentView as BannerView).State = BannerView.Status.BannerViewUpdating;
+                _currentView = new BannerView(BannerView.Status.Updating);
             }
             else if (!appModel.EditApp.IsDeployed)
             {
-                _currentView = new BannerView();
-                (_currentView as BannerView).State = BannerView.Status.BannerViewWaitingDeployment;
+                _currentView = new BannerView(BannerView.Status.WaitingDeployment);
             }
             else
             {

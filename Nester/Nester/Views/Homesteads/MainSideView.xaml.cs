@@ -17,6 +17,8 @@ namespace Nester.Views
         {
             InitializeComponent();
 
+            Detail = new BannerView(BannerView.Status.Updating);
+
             _viewLoader = new Func<Views.View, bool>(LoadView);
             AppsView.Init(_viewLoader);
         }
@@ -43,8 +45,8 @@ namespace Nester.Views
                 (view as AppView).GetAnalyticsAsync();
             }
 
-            Detail = new NavigationPage(view);  
-
+            Detail = view;
+            
             return true;
         }
     }

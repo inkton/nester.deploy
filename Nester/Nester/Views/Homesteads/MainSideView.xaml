@@ -7,11 +7,4 @@
     <MasterDetailPage.Master>
         <local:AppListView x:Name="AppsView" />
     </MasterDetailPage.Master>
-    <MasterDetailPage.Detail>
-        <NavigationPage>
-            <x:Arguments>
-                <local:BannerView x:Name="AppDetailView"  />
-            </x:Arguments>
-        </NavigationPage>
-    </MasterDetailPage.Detail>
 </MasterDetailPage>

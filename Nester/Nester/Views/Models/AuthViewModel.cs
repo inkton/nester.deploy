@@ -37,6 +37,8 @@ namespace Nester.Views
 
         public void Reset()
         {
+            ThisUI.NesterService.ClearSession();
+
             _permit.SecurityCode = null;
             _permit.Token = null;
         }

@@ -12,14 +12,14 @@ namespace Nester.Views
     {
         public enum Status
         {
-            BannerViewUndefined,
-            BannerViewUpdating,
-            BannerViewWaitingDeployment
+            Undefined,
+            Updating,
+            WaitingDeployment
         }
 
-        private Status _status = Status.BannerViewUndefined;
+        private Status _status = Status.Undefined;
 
-        public BannerView()
+        public BannerView(Status status)
         {
             InitializeComponent();
 
@@ -39,6 +39,8 @@ namespace Nester.Views
             ButtonAppDeploy.IsVisible = false;
             ButtonAddToSlack.IsVisible = false;
             ButtonAppMenu.IsVisible = false;
+
+            State = status;
         }
 
         public Status State
@@ -50,7 +52,7 @@ namespace Nester.Views
                 
                 switch (_status)
                 {
-                    case Status.BannerViewUndefined:
+                    case Status.Undefined:
                         progressControl.IsVisible = false;
                         ButtonAppDeploy.IsVisible = false;
 
@@ -60,7 +62,7 @@ namespace Nester.Views
                         ButtonAppMenu.IsVisible = false;
                         break;
 
-                    case Status.BannerViewUpdating:
+                    case Status.Updating:
                         progressControl.Title = "Please Wait ...";
                         progressControl.TitlePlacement = Syncfusion.SfBusyIndicator.XForms.TitlePlacement.Top;
                         progressControl.IsVisible = true;
@@ -74,7 +76,7 @@ namespace Nester.Views
                         ButtonAppMenu.IsVisible = true;
                         break;
 
-                    case Status.BannerViewWaitingDeployment:
+                    case Status.WaitingDeployment:
 
                         ButtonAppDeploy.IsEnabled = true;
                         ButtonAppDeploy.IsVisible = true;

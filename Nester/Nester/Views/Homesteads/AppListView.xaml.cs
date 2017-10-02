@@ -93,14 +93,14 @@ namespace Nester.Views
                                             (!(AppCollectionModel.CurrentView is Views.BannerView ) ||
                                             (AppCollectionModel.CurrentView is Views.BannerView && 
                                                 (AppCollectionModel.CurrentView as Views.BannerView).State == 
-                                                    BannerView.Status.BannerViewWaitingDeployment)
+                                                    BannerView.Status.WaitingDeployment)
                                             ) ||
                                         !appModel.EditApp.IsBusy &&
                                             ((!appModel.EditApp.IsDeployed && 
                                                 (!(AppCollectionModel.CurrentView is Views.BannerView)) ||
                                                     (AppCollectionModel.CurrentView is Views.BannerView && 
                                                         (AppCollectionModel.CurrentView as Views.BannerView).State !=
-                                                    BannerView.Status.BannerViewWaitingDeployment )
+                                                    BannerView.Status.WaitingDeployment )
                                                 ) ||
                                             (appModel.EditApp.IsDeployed && AppCollectionModel.CurrentView is Views.BannerView)))
                                     {

@@ -6,20 +6,14 @@
              xmlns:utils="clr-namespace:Nester.Utils;assembly=Nester"
              xmlns:syncList="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Title="Manage Apps"
+             Icon="Hamburger.png"
              x:Class="Nester.Views.AppListView">
   
-          <!--<Setter Property="Margin" Value="2,2,2,2" />-->
     <ContentPage.Resources>
       <ResourceDictionary>
          <utils:ObjectToBoolConverter x:Key="objBoolConverter" />
-        <!--<Style x:Key="appFuncButton" TargetType="Image">  
-          <Setter Property="WidthRequest" Value="38" />
-          <Setter Property="BackgroundColor" Value="Transparent" />
-          <Setter Property="VerticalOptions" Value="Center" />
-          <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
-        </Style>-->      
     
-        <DataTemplate x:Name="ItemTemplate"  x:Key="ItemTemplate">                        
+        <DataTemplate x:Name="ItemTemplate"  x:Key="ItemTemplate">
           <ViewCell>
             <ViewCell.View>
             
@@ -133,6 +127,7 @@
 
       <StackLayout Grid.Row="0" Grid.Column="0">
         <syncList:SfListView x:Name="AppModels"
+                        SelectionMode="Single"
                         ItemsSource="{Binding AppModels}"
                         SelectionBackgroundColor="{StaticResource selectionColor}"
                         ItemTemplate="{StaticResource ItemTemplate}"

@@ -92,13 +92,11 @@ namespace Nester.Views
 
                 if (_appViewModel.EditApp.IsBusy)
                 {
-                    view = new BannerView();
-                    (view as BannerView).State = BannerView.Status.BannerViewUpdating;
+                    view = new BannerView(BannerView.Status.Updating);
                 }
                 else if (!_appViewModel.EditApp.IsDeployed)
                 {
-                    view = new BannerView();
-                    (view as BannerView).State = BannerView.Status.BannerViewWaitingDeployment;
+                    view = new BannerView(BannerView.Status.WaitingDeployment);
                 }
                 else
                 {

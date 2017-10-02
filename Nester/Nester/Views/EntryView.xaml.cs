@@ -66,6 +66,9 @@ namespace Nester.Views
 
             try
             {
+                _authViewModel.Reset();
+                ThisUI.AppCollectionViewModel.AppModels.Clear();
+
                 Cloud.ServerStatus status = await _authViewModel.QueryTokenAsync(false);
 
                 if (status.Code == Cloud.Result.NEST_RESULT_ERROR_AUTH_SECCODE)
@@ -126,6 +129,9 @@ namespace Nester.Views
 
             try
             {
+                _authViewModel.Reset();
+                ThisUI.AppCollectionViewModel.AppModels.Clear();
+
                 await _authViewModel.SignupAsync();
 
                 await Navigation.PushAsync(ThisUI.HomeView);
