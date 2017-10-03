@@ -51,7 +51,7 @@ namespace Nester.Views
         }
 
         public async Task<Cloud.ServerStatus> QueryPaymentMethodAsync(
-            bool dCache = true, bool throwIfError = true)
+            bool dCache = false, bool throwIfError = true)
         {
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 _editPaymentMethod, new Cloud.CachedHttpRequest<Admin.PaymentMethod>(

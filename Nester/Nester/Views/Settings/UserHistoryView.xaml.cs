@@ -9,14 +9,18 @@ namespace Nester.Views
 {
     public partial class UserHistoryView : Nester.Views.View
     {
-        public UserHistoryView()
+        public UserHistoryView(AuthViewModel authViewModel)
         {
             InitializeComponent();
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
-                    ButtonDone
                 });
+
+            ButtonAppMenu.Clicked += ButtonAppMenu_Clicked;
+
+            _authViewModel = authViewModel;
+            BindingContext = _authViewModel;
         }
 
         protected async override void OnAppearing()
@@ -38,6 +42,11 @@ namespace Nester.Views
             {
                 await DisplayAlert("Nester", ex.Message, "OK");
             }
+        }
+
+        private void ButtonAppMenu_Clicked(object sender, EventArgs e)
+        {
+            _masterDetailPage.IsPresented = true;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Nester.Views
 {
     public partial class AuthView : Nester.Views.View
     {
-        public AuthView()
+        public AuthView(AuthViewModel authViewModel)
         {
             InitializeComponent();
 
@@ -18,6 +18,11 @@ namespace Nester.Views
                 new List<Xamarin.Forms.View> {
                     ButtonDone
                 });
+
+            ButtonAppMenu.Clicked += ButtonAppMenu_Clicked;
+
+            _authViewModel = authViewModel;
+            BindingContext = _authViewModel;
         }
 
         void Validate()
@@ -43,14 +48,6 @@ namespace Nester.Views
             }
         }
 
-        protected override void OnAppearing()
-        {
-            BindingContext = _authViewModel;
-
-            base.OnAppearing();
-            Validate();
-        }
-
         void OnFieldValidation(object sender, EventArgs e)
         {
             Validate();
@@ -72,6 +69,11 @@ namespace Nester.Views
                 await DisplayAlert("Nester", ex.Message, "OK");
                 IsServiceActive = false;
             }
+        }
+
+        private void ButtonAppMenu_Clicked(object sender, EventArgs e)
+        {
+            _masterDetailPage.IsPresented = true;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Nester.Views
 {
     public partial class UserView : Nester.Views.View
     {
-        public UserView()
+        public UserView(AuthViewModel authViewModel)
         {
             InitializeComponent();
 
@@ -39,7 +39,11 @@ namespace Nester.Views
                     ButtonDone
                 });
 
+            ButtonAppMenu.Clicked += ButtonAppMenu_Clicked;
             NickName.Unfocused += NickName_Unfocused;
+
+            _authViewModel = authViewModel;
+            BindingContext = _authViewModel;
         }
 
         private void NickName_Unfocused(object sender, FocusEventArgs e)
@@ -73,14 +77,6 @@ namespace Nester.Views
                 SecurityCode.IsVisible = _authViewModel.WizardMode;
                 SecurityCodeLabel.IsVisible = _authViewModel.WizardMode;
             }
-        }
-
-        protected override void OnAppearing()
-        {
-            BindingContext = _authViewModel;
-
-            base.OnAppearing();
-            Validate();
         }
 
         void OnFieldValidation(object sender, EventArgs e)
@@ -136,6 +132,11 @@ namespace Nester.Views
                 await DisplayAlert("Nester", ex.Message, "OK");
                 IsServiceActive = false;
             }
+        }
+
+        private void ButtonAppMenu_Clicked(object sender, EventArgs e)
+        {
+            _masterDetailPage.IsPresented = true;
         }
     }
 }

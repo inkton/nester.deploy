@@ -89,8 +89,8 @@ namespace Nester.Views
                     await Navigation.PushAsync(
                         new AppEngageView(newAppModel));
 
-                    Views.UserView userView = new Views.UserView();
-                    userView.SetModels(_authViewModel, _appViewModel);
+                    _authViewModel.WizardMode = true;
+                    Views.UserView userView = new Views.UserView(_authViewModel);
 
                     await Navigation.PushModalAsync(userView);
                 }
@@ -143,9 +143,8 @@ namespace Nester.Views
                 await Navigation.PushAsync(
                     new AppEngageView(newAppModel));
 
-                Views.UserView userView = new Views.UserView();
                 _authViewModel.WizardMode = true;
-                userView.SetModels(_authViewModel, _appViewModel);
+                Views.UserView userView = new Views.UserView(_authViewModel);
 
                 await Navigation.PushModalAsync(userView);
             }

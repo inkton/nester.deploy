@@ -12,7 +12,7 @@ namespace Nester.Views
     {
         private Views.PaymentViewModel _paymentViewModel;
 
-        public PaymentView()
+        public PaymentView(PaymentViewModel paymentViewModel)
         {
             InitializeComponent();
 
@@ -22,8 +22,10 @@ namespace Nester.Views
                     ButtonReenterDone
                 });
 
-            _paymentViewModel = new Views.PaymentViewModel();
-            BindingContext = _paymentViewModel;
+            ButtonAppMenu.Clicked += ButtonAppMenu_Clicked;
+
+            _paymentViewModel = paymentViewModel;
+            BindingContext = paymentViewModel;
         }
 
         void Validate()
@@ -37,21 +39,6 @@ namespace Nester.Views
                         CVVNumberValidator.IsValid
                         );
             }
-        }
-
-        protected override async void OnAppearing()
-        {
-            try
-            {
-                await _paymentViewModel.QueryPaymentMethodAsync(true, false);
-                Validate();
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Nester", ex.Message, "OK");
-            }
-
-            base.OnAppearing();
         }
 
         public Views.PaymentViewModel PaymentViewModel
@@ -95,6 +82,11 @@ namespace Nester.Views
             }
 
             IsServiceActive = false;
+        }
+
+        private void ButtonAppMenu_Clicked(object sender, EventArgs e)
+        {
+            _masterDetailPage.IsPresented = true;
         }
     }
 }

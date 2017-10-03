@@ -10,6 +10,7 @@
 
   <ContentPage.Resources>
     <ResourceDictionary>
+      <utils:InverseBoolConverter x:Key="inverseBoolConverter" />
     </ResourceDictionary>
   </ContentPage.Resources>
 
@@ -20,9 +21,10 @@
       <Grid VerticalOptions="LayoutOptions.Fill" HorizontalOptions="LayoutOptions.Fill">
 
         <Grid.RowDefinitions>
-          <RowDefinition Height="5*"/>
-          <RowDefinition Height="90*"/>
-          <RowDefinition Height="5*"/>
+          <RowDefinition Height="2*"/>
+          <RowDefinition Height="10*"/>
+          <RowDefinition Height="80*"/>
+          <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -31,6 +33,25 @@
           <ColumnDefinition Width="20*"/>
         </Grid.ColumnDefinitions>
 
+        <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center"
+                Spacing = "0"
+                Padding = "0,0,0,0">
+
+          <StackLayout Orientation="Horizontal" Spacing="5">
+
+            <Button x:Name="ButtonAppMenu"
+                    IsVisible="{Binding WizardMode,
+                      Converter={StaticResource inverseBoolConverter}}"
+                    Style="{StaticResource appFuncButton}"
+                    Image="menu24.png" >
+            </Button>
+
+          </StackLayout>
+
+          <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
+
+        </StackLayout>
+        
         <StackLayout Grid.Row="1" Grid.Column="1">
 
           <StackLayout IsVisible="{Binding DisplayPaymentMethodProof, Mode=TwoWay}" Orientation="Horizontal">
@@ -186,8 +207,6 @@
         </StackLayout>
      
       </Grid>
-
-      <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
 
     </StackLayout>
 

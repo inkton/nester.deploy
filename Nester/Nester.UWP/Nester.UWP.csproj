@@ -160,6 +160,10 @@
     <Content Include="notifications24.png" />
     <Content Include="onewayarow.png" />
     <Content Include="pluscircle.png" />
+    <Content Include="settingsauth32.png" />
+    <Content Include="settingshistory32.png" />
+    <Content Include="settingspayment32.png" />
+    <Content Include="settingsprofile32.png" />
     <Content Include="signin.png" />
     <Content Include="singapore.png" />
     <Content Include="slack.svg" />

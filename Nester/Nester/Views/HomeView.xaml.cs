@@ -26,6 +26,10 @@ namespace Nester.Views
                     ButtonAppRemove,
                     ButtonAppAdd,
                     ButtonAppJoin,
+                    ButtonUser,
+                    ButtonAuth,
+                    ButtonPayment,
+                    ButtonHistory,
                     AppModels
                 });
 
@@ -35,6 +39,11 @@ namespace Nester.Views
             ButtonAppReload.Clicked += ButtonAppReload_ClickedAsync;
             ButtonAppAdd.Clicked += ButtonAppAdd_ClickedAsync;
             ButtonAppRemove.Clicked += ButtonAppRemove_ClickedAsync;
+
+            ButtonUser.Clicked += ButtonUser_ClickedAsync;
+            ButtonAuth.Clicked += ButtonAuth_ClickedAsync;
+            ButtonPayment.Clicked += ButtonPayment_ClickedAsync;
+            ButtonHistory.Clicked += ButtonHistory_ClickedAsync;
 
             AuthViewModel = new AuthViewModel();
             AppViewModel = new AppCollectionViewModel();
@@ -204,6 +213,79 @@ namespace Nester.Views
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+
+            IsServiceActive = false;
+        }
+        
+        private async void ButtonUser_ClickedAsync(object sender, EventArgs e)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                AuthViewModel.WizardMode = false;
+
+                _viewLoader(new UserView(AuthViewModel));
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+
+            IsServiceActive = false;
+        }
+
+        private async void ButtonAuth_ClickedAsync(object sender, EventArgs e)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                AuthViewModel.WizardMode = false;
+
+                _viewLoader(new AuthView(AuthViewModel));
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+
+            IsServiceActive = false;
+        }
+
+        private async void ButtonPayment_ClickedAsync(object sender, EventArgs e)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                AppViewModel.PaymentModel.WizardMode = false;
+                await AppViewModel.PaymentModel.QueryPaymentMethodAsync();
+
+                _viewLoader(new PaymentView(AppViewModel.PaymentModel));
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+
+            IsServiceActive = false;
+        }
+
+        private async void ButtonHistory_ClickedAsync(object sender, EventArgs e)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                AuthViewModel.WizardMode = false;
+
+                _viewLoader(new UserHistoryView(AuthViewModel));
             }
             catch (Exception ex)
             {

@@ -10,6 +10,7 @@
 
   <ContentPage.Resources>
     <ResourceDictionary>
+      <utils:InverseBoolConverter x:Key="inverseBoolConverter" />
       <utils:IdentifierMaker x:Key="identityConverter"/>
     </ResourceDictionary>
   </ContentPage.Resources>
@@ -20,10 +21,11 @@
       <Grid>
 
         <Grid.RowDefinitions>
-          <RowDefinition Height="5*"/>
-          <RowDefinition Height="50*"/>
-          <RowDefinition Height="Auto"/>
-          <RowDefinition Height="5*"/>
+          <RowDefinition Height="2*"/>
+          <RowDefinition Height="10*"/>
+          <RowDefinition Height="70*"/>
+          <RowDefinition Height="16*"/>
+          <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -32,7 +34,26 @@
           <ColumnDefinition Width="20*"/>
         </Grid.ColumnDefinitions>
 
-        <StackLayout Grid.Row="1" Grid.Column="1">
+        <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center"
+               Spacing = "0"
+               Padding = "0,0,0,0">
+
+          <StackLayout Orientation="Horizontal" Spacing="5">
+
+            <Button x:Name="ButtonAppMenu"
+                    IsVisible="{Binding WizardMode,
+                      Converter={StaticResource inverseBoolConverter}}"
+                    Style="{StaticResource appFuncButton}"
+                    Image="menu24.png" >
+            </Button>
+
+          </StackLayout>
+
+          <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
+
+        </StackLayout>
+        
+        <StackLayout Grid.Row="2" Grid.Column="1">
 
           <Label Style="{StaticResource nesterFieldLabel}"
                 x:Name="Email"
@@ -81,7 +102,7 @@
           
         </StackLayout>
 
-        <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+        <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
           <Button x:Name="ButtonDone"
                   Text="Save"
                   IsEnabled="{Binding Validated}"
@@ -91,8 +112,6 @@
         </StackLayout>
 
       </Grid>
-
-      <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
 
     </StackLayout>
 

@@ -3,13 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Nester.Views;assembly=Nester"
              xmlns:validators="clr-namespace:Nester.Utils.Validators;assembly=Nester"
+             xmlns:utils="clr-namespace:Nester.Utils;assembly=Nester"
              xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:local="clr-namespace:Nester"
              x:Class="Nester.Views.UserHistoryView"
              Title="History">
   
-    <ContentPage.Resources>
+  <ContentPage.Resources>
     <ResourceDictionary>
+      <utils:InverseBoolConverter x:Key="inverseBoolConverter" />
       <DataTemplate x:Key="ItemTemplate" x:Name="ItemTemplate">
 
         <ViewCell>
@@ -67,11 +69,10 @@
 
       <Grid>
         <Grid.RowDefinitions>
-          <RowDefinition Height="5*"/>
-          <RowDefinition Height="80*"/>
-          <RowDefinition Height="20"/>          
-          <RowDefinition Height="Auto"/>
-          <RowDefinition Height="5*"/>
+          <RowDefinition Height="2*"/>
+          <RowDefinition Height="10*"/>          
+          <RowDefinition Height="86*"/>     
+          <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -80,7 +81,26 @@
           <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
 
-        <StackLayout Grid.Row="1" Grid.Column="1"
+        <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center"
+                Spacing = "0"
+                Padding = "0,0,0,0">
+
+          <StackLayout Orientation="Horizontal" Spacing="5">
+
+            <Button x:Name="ButtonAppMenu"
+                    IsVisible="{Binding WizardMode,
+                      Converter={StaticResource inverseBoolConverter}}"
+                    Style="{StaticResource appFuncButton}"
+                    Image="menu24.png" >
+            </Button>
+
+          </StackLayout>
+
+          <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
+
+        </StackLayout>
+        
+        <StackLayout Grid.Row="2" Grid.Column="1"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand" >          
     <!--<Label Style="{StaticResource nesterListInfoLabelTiny}"
@@ -96,17 +116,7 @@
                           >
           </sync:SfListView>
         </StackLayout>
-        
-        <ActivityIndicator Grid.Row="2" Grid.Column="1"  x:Name="ServiceActive" Style="{StaticResource nesterActive}">          
-        </ActivityIndicator>
-        
-        <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal" >
-          <Button x:Name="ButtonDone"
-                  Text="Proceed"
-                  Style="{StaticResource buttonPageFlow}"
-                  Clicked="OnDoneButtonClickedAsync">
-          </Button>          
-        </StackLayout>
+               
 
       </Grid>
 

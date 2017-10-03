@@ -12,7 +12,7 @@
         <ResourceDictionary>
             <utils:ObjectToBoolConverter x:Key="objBoolConverter" />
 
-            <DataTemplate x:Name="ItemTemplate"  x:Key="ItemTemplate">
+            <DataTemplate x:Name="ItemTemplate" x:Key="ItemTemplate">
                 <ViewCell>
                     <ViewCell.View>
 
@@ -115,31 +115,133 @@
     <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="14*"/>
             <RowDefinition Height="50*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="9*"/>
-            <RowDefinition Height="20*"/>
-
-       </Grid.RowDefinitions>
+        </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+            
+        <StackLayout Grid.Row="0" 
+                Grid.Column="0" 
+                Orientation="Horizontal" 
+                HorizontalOptions="FillAndExpand" >
 
-        <StackLayout Grid.Row="0" Grid.Column="0">
+            <StackLayout 
+                Margin="0, 20, 0, 0" 
+                Orientation="Vertical" 
+                HorizontalOptions="FillAndExpand">
+                
+                <Button x:Name="ButtonUser"
+                    HorizontalOptions="FillAndExpand"
+                    Style="{StaticResource appFuncButton}"
+                    Image="settingsprofile32.png">
+                </Button>
+
+                <Label 
+                    Style="{StaticResource nesterListInfoLabelMinor}"
+                    HorizontalOptions="Center"                    
+                    VerticalTextAlignment="Center"
+                    Text="Profile">
+                </Label>
+                                
+            </StackLayout>
+
+
+            <StackLayout 
+                Margin="0, 20, 0, 0" 
+                Orientation="Vertical" 
+                HorizontalOptions="FillAndExpand">
+
+                <Button x:Name="ButtonAuth"
+                    HorizontalOptions="FillAndExpand"
+                    Style="{StaticResource appFuncButton}"
+                    Image="settingsauth32.png">
+                </Button>
+
+                <Label 
+                    Style="{StaticResource nesterListInfoLabelMinor}"
+                    HorizontalOptions="Center"                    
+                    VerticalTextAlignment="Center"
+                    Text="Security">
+                </Label>
+
+            </StackLayout>
+                        
+            <StackLayout 
+                Margin="0, 20, 0, 0" 
+                Orientation="Vertical" 
+                HorizontalOptions="FillAndExpand">
+
+                <Button x:Name="ButtonPayment"
+                    HorizontalOptions="FillAndExpand"
+                    Style="{StaticResource appFuncButton}"
+                    Image="settingspayment32.png">
+                </Button>
+
+                <Label 
+                    Style="{StaticResource nesterListInfoLabelMinor}"
+                    HorizontalOptions="Center"                    
+                    VerticalTextAlignment="Center"
+                    Text="Payment">
+                </Label>
+
+            </StackLayout>
+
+            <StackLayout 
+                Margin="0, 20, 0, 0" 
+                Orientation="Vertical" 
+                HorizontalOptions="FillAndExpand">
+
+                <Button x:Name="ButtonHistory"
+                    HorizontalOptions="FillAndExpand"
+                    Style="{StaticResource appFuncButton}"
+                    Image="settingshistory32.png">
+                </Button>
+
+                <Label 
+                    Style="{StaticResource nesterListInfoLabelMinor}"
+                    HorizontalOptions="Center"                    
+                    VerticalTextAlignment="Center"
+                    Text="History">
+                </Label>
+
+            </StackLayout>
+
+        </StackLayout>
+        
+        <StackLayout Grid.Row="1" Grid.Column="0">
             <syncList:SfListView x:Name="AppModels"
                         SelectionMode="Single"
                         ItemsSource="{Binding AppModels}"
                         SelectionBackgroundColor="{StaticResource selectionColor}"
                         ItemTemplate="{StaticResource ItemTemplate}"
                         ItemSize="65">
+                <syncList:SfListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid HeightRequest="45">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="1" />
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" LineBreakMode="NoWrap"
+                               Margin="10,0,0,0" Text="Apps" 
+                               FontSize="18" TextColor="{StaticResource mainColor}" HorizontalOptions="Start"
+                               VerticalOptions="Center"/>
+                            <Frame Grid.Row="1" OutlineColor="{StaticResource mainColor}" HasShadow="True" HeightRequest="1"/>
+                        </Grid>
+                    </DataTemplate>
+                </syncList:SfListView.HeaderTemplate>
             </syncList:SfListView>
         </StackLayout>
 
-        <ActivityIndicator Grid.Row="1" Grid.Column="0" x:Name="ServiceActive" Style="{StaticResource nesterActive}">
+        <ActivityIndicator Grid.Row="2" Grid.Column="0" x:Name="ServiceActive" Style="{StaticResource nesterActive}">
         </ActivityIndicator>
 
-        <StackLayout Grid.Row="2" 
+        <StackLayout Grid.Row="3" 
                 Grid.Column="0" 
                 Orientation="Horizontal" 
                 HorizontalOptions="End" 
@@ -168,35 +270,6 @@
             <Button x:Name="ButtonAppJoin"
                 Style="{StaticResource appFuncButton}"
                 Image="appjoin32.png">
-            </Button>
-
-        </StackLayout>
-
-        <StackLayout Grid.Row="3" 
-                Grid.Column="0" 
-                Orientation="Vertical" 
-                HorizontalOptions="End" 
-                Spacing = "0"
-                Padding = "0,0,0,0">
-
-            <Button x:Name="ButtonUser"
-                Style="{StaticResource appFuncButton}"
-                Image="appreload32.png">
-            </Button>
-
-            <Button x:Name="ButtonAuth"
-                Style="{StaticResource appFuncButton}"
-                Image="appreload32.png">
-            </Button>
-
-            <Button x:Name="ButtonPayment"
-                Style="{StaticResource appFuncButton}"
-                Image="appreload32.png">
-            </Button>
-
-            <Button x:Name="ButtonHistory"
-                Style="{StaticResource appFuncButton}"
-                Image="appreload32.png">
             </Button>
 
         </StackLayout>
