@@ -11,7 +11,7 @@ namespace Nester
         private Admin.User _user;
         private Cloud.INesterService _nester;
         private Cache.IStorageService _storage;
-        private Views.HomeView _homeView;
+        private Views.MainSideView _homeView;
 
         public NesterUI()
         {
@@ -23,13 +23,13 @@ namespace Nester
 
             _storage.Clear();
 
-            _homeView = new Views.HomeView();
+            _homeView = new Views.MainSideView();
 
             MainPage = new NavigationPage(
                 new Views.EntryView());
         }
 
-        public Views.HomeView HomeView
+        public Views.MainSideView HomeView
         {
             get { return _homeView; }
         }

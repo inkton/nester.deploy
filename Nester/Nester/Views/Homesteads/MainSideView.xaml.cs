@@ -20,19 +20,19 @@ namespace Nester.Views
             Detail = new BannerView(BannerView.Status.Updating);
 
             _viewLoader = new Func<Views.View, bool>(LoadView);
-            AppsView.Init(_viewLoader);
+            Home.Init(_viewLoader);
         }
 
         public AuthViewModel AuthViewModel
         {
-            get { return AppsView.AuthViewModel; }
-            set { AppsView.AuthViewModel = value; }
+            get { return Home.AuthViewModel; }
+            set { Home.AuthViewModel = value; }
         }
 
         public AppViewModel AppViewModel
         {
-            get { return AppsView.AppViewModel; }
-            set { AppsView.AppViewModel = value; }
+            get { return Home.AppViewModel; }
+            set { Home.AppViewModel = value; }
         }
 
         protected bool LoadView(Views.View view)

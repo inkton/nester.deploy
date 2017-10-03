@@ -6,7 +6,6 @@
              xmlns:utils="clr-namespace:Nester.Utils;assembly=Nester"
              xmlns:syncList="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Title="Manage Apps"
-             Icon="Hamburger.png"
              x:Class="Nester.Views.AppListView">
   
     <ContentPage.Resources>

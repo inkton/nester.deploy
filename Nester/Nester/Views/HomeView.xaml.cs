@@ -6,93 +6,248 @@ using System.Text;
 using System.Threading.Tasks;
 using Nester.Admin;
 using Xamarin.Forms;
+using PCLAppConfig;
 
 namespace Nester.Views
 {
-    public partial class HomeView : TabbedPage
+    public partial class HomeView : Nester.Views.View
     {
-        Views.AuthViewModel _authViewModel = null;
-        Views.AppViewModel _appViewModel = null;
-        MainSideView _mainSideView = null;
+        private Admin.App _editApp;
+        private long _updatInterval;
+        private long _lastUpdate = 0;
 
         public HomeView()
         {
             InitializeComponent();
 
-            Children.All(child =>
-            {
-                if (child is MainSideView)
-                {
-                    _mainSideView = (child as MainSideView);
+            SetActivityMonotoring(ServiceActive,
+                new List<Xamarin.Forms.View> {
+                    ButtonAppReload,
+                    ButtonAppRemove,
+                    ButtonAppAdd,
+                    ButtonAppJoin,
+                    AppModels
+                });
 
-                    _authViewModel = _mainSideView.AuthViewModel;
-                    _appViewModel = _mainSideView.AppViewModel;
-                }
-                return true;
-            });
+            AppModels.SelectionChanged += AppModels_SelectionChangedAsync;
 
-            Children.All(child =>
-            {
-                if (child is SettingsView)
-                {
-                    (child as SettingsView).AuthViewModel = _authViewModel;
-                    (child as SettingsView).AppViewModel = _appViewModel;
-                }
-                return true;
-            });
+            ButtonAppJoin.Clicked += ButtonAppJoin_ClickedAsync;
+            ButtonAppReload.Clicked += ButtonAppReload_ClickedAsync;
+            ButtonAppAdd.Clicked += ButtonAppAdd_ClickedAsync;
+            ButtonAppRemove.Clicked += ButtonAppRemove_ClickedAsync;
 
+            AuthViewModel = new AuthViewModel();
+            AppViewModel = new AppCollectionViewModel();
+
+            BindingContext = AppViewModel;
+
+            _updatInterval = Convert.ToInt64(
+                ConfigurationManager.AppSettings["appStatusRefreshInterval"]);
         }
 
-        public AuthViewModel AuthViewModel
+        public AppCollectionViewModel AppCollectionModel
         {
             get
             {
-                return _authViewModel;
+                return AppViewModel as AppCollectionViewModel;
             }
+        }
+
+        public Admin.App EditApp
+        {
             set
             {
-                _authViewModel = value;
+                _editApp = value;
+            }
+            get
+            {
+                return _editApp;
+            }
+        }
 
-                Children.All(child =>
+        public void Init(Func<Views.View, bool> viewLoader)
+        {
+            try
+            {
+                _viewLoader = viewLoader;
+                AppCollectionModel.Init(viewLoader);
+                Cloud.ServerStatus status = new Cloud.ServerStatus(0);
+
+                Device.StartTimer(TimeSpan.FromSeconds(1), () =>
                 {
-                    if (child is MainSideView)
+                    if (_lastUpdate > _updatInterval)
                     {
-                        (child as MainSideView).AuthViewModel = value;
+                        Task.Factory.StartNew(async () =>
+                        {
+                            foreach (AppViewModel appModel in AppCollectionModel.AppModels)
+                            {
+                                if (appModel.EditApp.IsBusy)
+                                {
+                                    await appModel.InitAsync();
+                                }
+
+                                if (AppCollectionModel.CurrentView != null &&
+                                    appModel.EditApp.Id == AppCollectionModel.CurrentView.App.Id)
+                                {
+                                    if (appModel.EditApp.IsBusy &&
+                                            (!(AppCollectionModel.CurrentView is Views.BannerView) ||
+                                            (AppCollectionModel.CurrentView is Views.BannerView &&
+                                                (AppCollectionModel.CurrentView as Views.BannerView).State ==
+                                                    BannerView.Status.WaitingDeployment)
+                                            ) ||
+                                        !appModel.EditApp.IsBusy &&
+                                            ((!appModel.EditApp.IsDeployed &&
+                                                (!(AppCollectionModel.CurrentView is Views.BannerView)) ||
+                                                    (AppCollectionModel.CurrentView is Views.BannerView &&
+                                                        (AppCollectionModel.CurrentView as Views.BannerView).State !=
+                                                    BannerView.Status.WaitingDeployment)
+                                                ) ||
+                                            (appModel.EditApp.IsDeployed && AppCollectionModel.CurrentView is Views.BannerView)))
+                                    {
+                                        Device.BeginInvokeOnMainThread(() =>
+                                        {
+                                            // Update the UI
+                                            AppCollectionModel.LoadApp(appModel);
+                                        });
+                                    }
+                                }
+                            }
+                        });
+
+                        _lastUpdate = 0;
                     }
-                                        
-                    if (child is SettingsView)
-                    {
-                        (child as SettingsView).AuthViewModel = value;
-                    }
+
+                    ++_lastUpdate;
 
                     return true;
                 });
             }
+            catch (Exception ex)
+            {
+                DisplayAlert("Nester", ex.Message, "OK");
+            }
         }
 
-        public AppViewModel AppViewModel
+        private async void ButtonAppJoin_ClickedAsync(object sender, EventArgs e)
         {
-            get {
-                return _appViewModel;
+            try
+            {
+                AppViewModel appViewModel = new AppViewModel();
+
+                appViewModel.ContactModel.EditInvitation.User = ThisUI.User;
+
+                await appViewModel.ContactModel.QueryInvitationsAsync();
+
+                await Navigation.PushAsync(
+                    new AppJoinDetailView(appViewModel));
             }
-            set {
-                _appViewModel = value;
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+        }
 
-                Children.All(child =>
+        private async void ButtonAppReload_ClickedAsync(object sender, EventArgs e)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                if (AppModels.SelectedItem != null)
+                {
+                    AppViewModel appModel = AppModels.SelectedItem as AppViewModel;
+                    await appModel.InitAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+
+            IsServiceActive = false;
+        }
+
+        private async void ButtonAppRemove_ClickedAsync(object sender, EventArgs e)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                if (AppModels.SelectedItem == null)
+                {
+                    IsServiceActive = false;
+                    return;
+                }
+
+                AppViewModel appModel = AppModels.SelectedItem as AppViewModel;
+                if (appModel != null)
+                {
+                    if (appModel.EditApp.Deployment != null)
                     {
-                        if (child is MainSideView)
-                        {
-                            (child as MainSideView).AppViewModel = value;
-                        }
-
-                        if (child is SettingsView)
-                        {
-                            (child as SettingsView).AppViewModel = value;
-                        }
-
-                        return true;
+                        await DisplayAlert("Nester", "Please remove the deployment before removing the app", "OK");
+                        IsServiceActive = false;
+                        return;
                     }
-                );
+
+                    var yes = await DisplayAlert("Nester", "Are you certain to remove this app?", "Yes", "No");
+
+                    if (yes)
+                    {
+                        try
+                        {
+                            await appModel.RemoveAppAsync();
+                            AppCollectionModel.RemoveApp(appModel);
+                        }
+                        catch (Exception ex)
+                        {
+                            await DisplayAlert("Nester", ex.Message, "OK");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+
+            IsServiceActive = false;
+        }
+
+        private async void ButtonAppAdd_ClickedAsync(object sender, EventArgs e)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                AppViewModel.NewAppAsync();
+                AppViewModel.WizardMode = true;
+
+                await Navigation.PushAsync(
+                    new AppBasicDetailView(AppViewModel));
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+
+            IsServiceActive = false;
+        }
+
+        private void AppModels_SelectionChangedAsync(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        {
+            AppViewModel appModel = e.AddedItems.FirstOrDefault() as AppViewModel;
+            if (appModel != null)
+            {
+                AppCollectionModel.LoadApp(appModel);
+            }
+        }
+
+        public void InitViews()
+        {
+            AppViewModel appModel = AppCollectionModel.AppModels.FirstOrDefault();
+            if (appModel != null)
+            {
+                AppCollectionModel.LoadApp(appModel);
             }
         }
     }

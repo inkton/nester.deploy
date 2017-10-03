@@ -6,8 +6,7 @@
              xmlns:validators="clr-namespace:Nester.Utils.Validators;assembly=Nester"
              xmlns:utils="clr-namespace:Nester.Utils;assembly=Nester"
              xmlns:local="clr-namespace:Nester"
-             x:Class="Nester.Views.BannerView"
-             Title="">
+             x:Class="Nester.Views.BannerView">
   
   <ContentPage.Resources>
     <ResourceDictionary>

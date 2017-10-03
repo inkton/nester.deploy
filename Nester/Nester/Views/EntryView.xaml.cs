@@ -26,7 +26,7 @@ namespace Nester.Views
             // when appropriate. the two are properties
             // of the view base class.
 
-            Views.HomeView homeView = ThisUI.HomeView;
+            Views.MainSideView homeView = ThisUI.HomeView;
 
             _authViewModel = homeView.AuthViewModel;
             _appViewModel = homeView.AppViewModel;

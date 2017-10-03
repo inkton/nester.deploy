@@ -2,9 +2,9 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Nester.Views;assembly=Nester"
-             Title="Apps"
+             Title="Nester Deploy"
              x:Class="Nester.Views.MainSideView" MasterBehavior="Popover">
     <MasterDetailPage.Master>
-        <local:AppListView x:Name="AppsView" />
+        <local:HomeView x:Name="Home" />
     </MasterDetailPage.Master>
 </MasterDetailPage>
