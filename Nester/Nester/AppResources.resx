@@ -408,4 +408,10 @@
   <data name="team_management" xml:space="preserve">
     <value>Team Management</value>
   </data>
+  <data name="users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="NEST_RESULT_ERROR_CONTACT_EXCEEDED" xml:space="preserve">
+    <value>Number of users allowed for the plan exceeded</value>
+  </data>
 </root>

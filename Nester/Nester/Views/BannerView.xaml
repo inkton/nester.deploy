@@ -79,10 +79,13 @@
               VerticalOptions="CenterAndExpand">
 
           <syncfusion:SfBusyIndicator x:Name="progressControl"
-               AnimationType="Gear"
-               ViewBoxWidth = "150"
-               ViewBoxHeight="150"
-               TextColor="{StaticResource noteColor}" />
+              VerticalOptions="Center"
+              HorizontalOptions="Center"
+              AnimationType="Gear"
+              ViewBoxWidth = "100"
+              ViewBoxHeight="100"
+              Title="Please wait ..."
+              TextColor="{StaticResource noteColor}" />
 
         </StackLayout>
      </Grid>      

@@ -69,22 +69,37 @@
 
                       <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="10*" />
                         <ColumnDefinition Width="15*" />
-                        <ColumnDefinition Width="12*" />
-                        <ColumnDefinition Width="18*" />
+                        <ColumnDefinition Width="15*" />
                         <ColumnDefinition Width="20*" />
-                        <ColumnDefinition Width="25*" />
+                        <ColumnDefinition Width="15*" />
+                        <ColumnDefinition Width="15*" />
                       </Grid.ColumnDefinitions>
 
+                      <!-- Users -->
+
+                      <Label Grid.Row="0" Grid.Column="0"
+                              Text="{Binding Service.FeaturesAllArray[12]}"
+                              Style="{StaticResource nesterListInfoLabelMinor}"
+                             >
+                      </Label>
+
+                      <Label Grid.Row="1" Grid.Column="0"
+                             Text="{Binding FeaturesIncludedArray[12]}"
+                             Style="{StaticResource nesterListInfoBodyMinor}"
+                      >
+                      </Label>
+                      
                       <!-- CPU -->
                       
-                     <Label Grid.Row="0" Grid.Column="0"
+                     <Label Grid.Row="0" Grid.Column="1"
                              Text="{Binding Service.FeaturesAllArray[0]}"
                              Style="{StaticResource nesterListInfoLabelMinor}"
                              >
                       </Label>
 
-                      <Label Grid.Row="1" Grid.Column="0"
+                      <Label Grid.Row="1" Grid.Column="1"
                              Text="{Binding FeaturesIncludedArray[0]}"
                              Style="{StaticResource nesterListInfoBodyMinor}"                        
                       >                                              
@@ -92,13 +107,13 @@
 
                       <!-- Memory -->
                       
-                      <Label Grid.Row="0" Grid.Column="1"
+                      <Label Grid.Row="0" Grid.Column="2"
                              Text="{Binding Service.FeaturesAllArray[1]}"
                              Style="{StaticResource nesterListInfoLabelMinor}"
                              >
                       </Label>
 
-                      <Label Grid.Row="1" Grid.Column="1"
+                      <Label Grid.Row="1" Grid.Column="2"
                              Text="{Binding FeaturesIncludedArray[1], StringFormat='{0} MB'}"
                              Style="{StaticResource nesterListInfoBodyMinor}" 
                       >
@@ -106,26 +121,26 @@
 
                       <!-- Drive -->
                       
-                      <Label Grid.Row="0" Grid.Column="2"
+                      <Label Grid.Row="0" Grid.Column="3"
                              Text="{Binding Service.FeaturesAllArray[2]}"
                              Style="{StaticResource nesterListInfoLabelMinor}"
                              >
                       </Label>
 
-                      <Label Grid.Row="1" Grid.Column="2"
+                      <Label Grid.Row="1" Grid.Column="3"
                              Text="{Binding FeaturesIncludedArray[2], StringFormat='{0} GB'}"
                              Style="{StaticResource nesterListInfoBodyMinor}">
                       </Label>
 
                       <!-- Bandwidth -->
                       
-                      <Label Grid.Row="0" Grid.Column="3"
+                      <Label Grid.Row="0" Grid.Column="4"
                              Text="{Binding Service.FeaturesAllArray[3]}"
                              Style="{StaticResource nesterListInfoLabelMinor}"
                              >
                       </Label>
 
-                      <Label Grid.Row="1" Grid.Column="3"
+                      <Label Grid.Row="1" Grid.Column="4"
                              Text="{Binding FeaturesIncludedArray[3], StringFormat='{0} MB'}"
                              Style="{StaticResource nesterListInfoBodyMinor}"
                       >
@@ -133,27 +148,27 @@
 
                       <!-- Backup -->
                       
-                      <Label Grid.Row="0" Grid.Column="4"
+                      <Label Grid.Row="0" Grid.Column="5"
                              Text="{Binding Service.FeaturesAllArray[4]}"
                              Style="{StaticResource nesterListInfoLabelMinor}"
                              >
                       </Label>
 
-                      <Label Grid.Row="1" Grid.Column="4"
+                      <Label Grid.Row="1" Grid.Column="5"
                              Text="{Binding FeaturesIncludedArray[4]}"
                              Style="{StaticResource nesterListInfoBodyMinor}"                        
                       >
-                      </Label>
+                      </Label>                      
 
                       <!-- Price -->
                       
-                      <Label Grid.Row="0" Grid.Column="5"
+                      <Label Grid.Row="0" Grid.Column="6"
                              Text="{Binding ItemCost, StringFormat='$ {0}'}"
                              Style="{StaticResource nesterListInfoLabelMinor}"
                              >
                       </Label>
 
-                      <Label Grid.Row="1" Grid.Column="5"
+                      <Label Grid.Row="1" Grid.Column="6"
                              Text="{Binding Period}"
                              Style="{StaticResource nesterListInfoBodyMinor}"                             
                              >

@@ -96,6 +96,7 @@ namespace Nester.Cloud
         public const int NEST_RESULT_ERROR_PERM_FOUND = -308;
         public const int NEST_RESULT_ERROR_NPLATFORM_NFOUND = -310;
         public const int NEST_RESULT_ERROR_AUTH_SECCODE = -312;
+        public const int NEST_RESULT_ERROR_CONTACT_EXCEEDED = -320;
 
         public Result()
         {   

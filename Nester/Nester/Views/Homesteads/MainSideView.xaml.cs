@@ -17,7 +17,7 @@ namespace Nester.Views
         {
             InitializeComponent();
 
-            Detail = new BannerView(BannerView.Status.Updating);
+            Detail = new BannerView(BannerView.Status.Initializing);
 
             _viewLoader = new Func<Views.View, bool>(LoadView);
             Home.Init(_viewLoader);

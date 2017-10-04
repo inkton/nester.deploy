@@ -449,6 +449,15 @@ namespace Nester {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Number of users allowed for the plan exceeded.
+        /// </summary>
+        internal static string NEST_RESULT_ERROR_CONTACT_EXCEEDED {
+            get {
+                return ResourceManager.GetString("NEST_RESULT_ERROR_CONTACT_EXCEEDED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contact not found.
         /// </summary>
         internal static string NEST_RESULT_ERROR_CONTACT_NFOUND {
@@ -895,6 +904,15 @@ namespace Nester {
         internal static string track {
             get {
                 return ResourceManager.GetString("track", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Users.
+        /// </summary>
+        internal static string users {
+            get {
+                return ResourceManager.GetString("users", resourceCulture);
             }
         }
     }

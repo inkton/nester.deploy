@@ -13,6 +13,7 @@ namespace Nester.Views
         public enum Status
         {
             Undefined,
+            Initializing,
             Updating,
             WaitingDeployment
         }
@@ -62,10 +63,26 @@ namespace Nester.Views
                         ButtonAppMenu.IsVisible = false;
                         break;
 
+                    case Status.Initializing:
+                        progressControl.Title = "Intitializing ...";
+                        progressControl.TitlePlacement = Syncfusion.SfBusyIndicator.XForms.TitlePlacement.Bottom;
+                        progressControl.IsVisible = true;
+                        progressControl.AnimationType = Syncfusion.SfBusyIndicator.XForms.AnimationTypes.SingleCircle;
+
+                        ButtonAppDeploy.IsVisible = false;
+                        ButtonAppDeploy.IsEnabled = false;
+
+                        ButtonAppSettings.IsVisible = false;
+                        ButtonNotifications.IsVisible = false;
+                        ButtonAddToSlack.IsVisible = false;
+                        ButtonAppMenu.IsVisible = false;
+                        break;                        
+
                     case Status.Updating:
                         progressControl.Title = "Please Wait ...";
-                        progressControl.TitlePlacement = Syncfusion.SfBusyIndicator.XForms.TitlePlacement.Top;
+                        progressControl.TitlePlacement = Syncfusion.SfBusyIndicator.XForms.TitlePlacement.Bottom;
                         progressControl.IsVisible = true;
+                        progressControl.AnimationType = Syncfusion.SfBusyIndicator.XForms.AnimationTypes.Gear;
 
                         ButtonAppDeploy.IsVisible = false;
                         ButtonAppDeploy.IsEnabled = false;
