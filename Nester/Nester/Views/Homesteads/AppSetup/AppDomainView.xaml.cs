@@ -358,7 +358,7 @@ namespace Nester.Views
 
                 string ip = await ThisUI.NesterService.GetIPAsync(Name.Text);
 
-                if (ip != defaultDomain.Ip)
+                if (ip == null || ip != defaultDomain.Ip)
                 {
                     IsServiceActive = false;
                     await DisplayAlert("Nester", "The domain name "+ Name.Text  + 
@@ -373,7 +373,7 @@ namespace Nester.Views
                     {
                         ip = await ThisUI.NesterService.GetIPAsync(alias);
 
-                        if (ip != defaultDomain.Ip)
+                        if (ip == null || ip != defaultDomain.Ip)
                         {
                             IsServiceActive = false;
                             await DisplayAlert("Nester", "The alias " + alias +

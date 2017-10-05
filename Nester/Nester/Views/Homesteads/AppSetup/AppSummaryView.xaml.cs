@@ -52,7 +52,7 @@ namespace Nester.Views
 
                 string ip = await ThisUI.NesterService.GetIPAsync(domain.Name);
 
-                if (ip != defaultDomain.Ip)
+                if (ip == null || ip != defaultDomain.Ip)
                 {
                     await DisplayAlert("Nester", "The domain name " + domain.Name +
                         " currently does not resolve to " + defaultDomain.Ip +
@@ -66,7 +66,7 @@ namespace Nester.Views
                     {
                         ip = await ThisUI.NesterService.GetIPAsync(alias);
 
-                        if (ip != defaultDomain.Ip)
+                        if (ip == null || ip != defaultDomain.Ip)
                         {
                             IsServiceActive = false;
                             await DisplayAlert("Nester", "The alias " + alias +
