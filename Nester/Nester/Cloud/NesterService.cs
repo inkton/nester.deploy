@@ -33,6 +33,8 @@ namespace Nester.Cloud
 
         void ClearSession();
 
+        Task<string> GetIPAsync(string host);
+
         Task<Cloud.ServerStatus> SignupAsync(Auth.Permit permit);
 
         Task<Cloud.ServerStatus> RecoverPasswordAsync(Auth.Permit permit);

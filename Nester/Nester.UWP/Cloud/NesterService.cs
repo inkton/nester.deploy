@@ -10,6 +10,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using PCLAppConfig;
+using System.Net;
 
 [assembly: Dependency(typeof(Nester.Cloud.NesterService))]
 
@@ -48,6 +49,20 @@ namespace Nester.Cloud
         public void ClearSession()
         {
             _permit = null;
+        }
+
+        public async Task<string> GetIPAsync(string host)
+        {
+            string ip = null;
+
+            try
+            {
+                IPAddress[] ipAddress = await Dns.GetHostAddressesAsync(host);
+                ip = ipAddress[0].MapToIPv4().ToString();
+            }
+            catch(Exception) { }
+
+            return ip;
         }
 
         public async Task<Cloud.ServerStatus> SignupAsync(Auth.Permit permit)

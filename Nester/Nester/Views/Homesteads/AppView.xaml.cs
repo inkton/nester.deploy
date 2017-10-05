@@ -271,7 +271,7 @@ namespace Nester.Views
             {
                 await _appViewModel.QueryAppNotificationsAsync();
 
-                await Navigation.PushAsync(new NotificationView(_appViewModel));
+                LoadView(new NotificationView(_appViewModel));
             }
             catch (Exception ex)
             {
@@ -307,7 +307,7 @@ namespace Nester.Views
 
             try
             {
-                await Navigation.PushAsync(new AppWebView(_appViewModel));
+                LoadView(new AppWebView(_appViewModel));
             }
             catch (Exception ex)
             {
@@ -378,11 +378,11 @@ namespace Nester.Views
                     Cloud.ServerStatus status = await _appViewModel.QueryAppServiceTierLocationsAsync(
                         _appViewModel.SelectedAppServiceTier, false);
                     var forests = status.PayloadToList<Admin.Forest>();
-                    await Navigation.PushAsync(new AppLocationView(_appViewModel, forests));
+                    LoadView(new AppLocationView(_appViewModel, forests));
                 }
                 else
                 {
-                    await Navigation.PushAsync(new AppSummaryView(_appViewModel));
+                    LoadView(new AppSummaryView(_appViewModel));
                 }
             }
             catch (Exception ex)

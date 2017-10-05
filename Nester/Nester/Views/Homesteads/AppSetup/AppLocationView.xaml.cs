@@ -84,6 +84,8 @@ namespace Nester.Views
                     _forestButtons.Add(forestTag, new ForestButton(this, forestTag));
                 }
             }
+
+            ButtonCancel.Clicked += ButtonCancel_ClickedAsync;
         }
 
         private void AnimateButtonTouched(Xamarin.Forms.View view, uint duration, string hexColorInitial, string hexColorFinal, int repeatCountMax)
@@ -137,9 +139,7 @@ namespace Nester.Views
                 AnimateButtonTouched(button.FlagHolder, 1500, "#66b9f1", "#E4F1FE", 1);
 
                 _appViewModel.DeploymentModel.EditDeployment.ForestId = forest.Id;
-                Navigation.InsertPageBefore(new AppSummaryView(_appViewModel), this);
-                await Navigation.PopAsync();
-
+                LoadView(new AppSummaryView(_appViewModel));
             }
             catch (Exception ex)
             {
@@ -148,6 +148,24 @@ namespace Nester.Views
 
             IsServiceActive = false;
             return status;
+        }
+
+        private async void ButtonCancel_ClickedAsync(object sender, EventArgs e)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                // Head back to homepage if the 
+                // page was called from here
+                LoadHomeView();
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+
+            IsServiceActive = false;
         }
     }
 }

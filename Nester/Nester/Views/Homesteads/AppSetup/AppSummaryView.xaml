@@ -774,6 +774,15 @@
               Style="{StaticResource buttonPageFlow}"
               Clicked="OnDoneButtonClickedAsync">
         </Button>
+        <Button x:Name="ButtonCancel"       
+              HorizontalOptions="FillAndExpand"
+              Text="Close"
+              BorderColor="{StaticResource noteColor}"
+              BackgroundColor="{StaticResource noteColor}"
+              TextColor="White"
+              Style="{StaticResource buttonPageFlow}"
+              Clicked="OnCancelButtonClickedAsync">
+        </Button>
       </StackLayout>
 
     </Grid>

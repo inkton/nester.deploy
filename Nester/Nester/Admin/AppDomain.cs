@@ -24,6 +24,7 @@ namespace Nester.Admin
         private string _name;
         private bool _default;
         private bool _primary;
+        private string _ip;
         private string _aliases;
 
         private App _application = null;
@@ -141,6 +142,15 @@ namespace Nester.Admin
             {
                 SetProperty(ref _aliases, value);
                 OnPropertyChanged("Icon");
+            }
+        }
+
+        public string Ip
+        {
+            get { return _ip; }
+            set
+            {
+                SetProperty(ref _ip, value);
             }
         }
 

@@ -22,8 +22,6 @@ namespace Nester.Views
             _appViewModel = appViewModel;
             BindingContext = _appViewModel;
             
-
-
             _appViewModel.DeploymentModel.DotnetVersions.All(version =>
             {
                 SoftwareVersion.Items.Add(version.Name);
@@ -40,11 +38,56 @@ namespace Nester.Views
                 DeployWarning.Text += "The project files should be updated to reflect the runtime framework version. ";
             }
         }
+        
+        private async Task<bool> IsDnsOkAsync()
+        {
+            Admin.AppDomain defaultDomain = (from domain in _appViewModel.DomainModel.Domains
+                                             where domain.Default == true
+                                             select domain).First();
 
-        async void OnDoneButtonClickedAsync(object sender, EventArgs e)
+            foreach (Admin.AppDomain domain in _appViewModel.DomainModel.Domains)
+            {
+                if (domain.Default)
+                    continue;
+
+                string ip = await ThisUI.NesterService.GetIPAsync(domain.Name);
+
+                if (ip != defaultDomain.Ip)
+                {
+                    await DisplayAlert("Nester", "The domain name " + domain.Name +
+                        " currently does not resolve to " + defaultDomain.Ip +
+                        ". Make sure to update the DNS", "OK");
+                    return false;
+                }
+
+                if (domain.Aliases != null)
+                {
+                    foreach (string alias in domain.Aliases.Split(' '))
+                    {
+                        ip = await ThisUI.NesterService.GetIPAsync(alias);
+
+                        if (ip != defaultDomain.Ip)
+                        {
+                            IsServiceActive = false;
+                            await DisplayAlert("Nester", "The alias " + alias +
+                                " currently does not resolve to " + defaultDomain.Ip +
+                                ". Make sure to update the DNS", "OK");
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        private async void OnDoneButtonClickedAsync(object sender, EventArgs e)
         {
             try
             {
+                if (!await IsDnsOkAsync())
+                    return;
+
                 Admin.SoftwareFramework.Version selVersion = null;
                 foreach (var version in _appViewModel.DeploymentModel.DotnetVersions)
                 {
@@ -77,13 +120,32 @@ namespace Nester.Views
                 }
 
                 await _appViewModel.InitAsync();
-                await Navigation.PopAsync();
+
+                LoadHomeView();
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Nester", ex.Message, "OK");
                 IsServiceActive = false;
             }
+        }
+
+        private async void OnCancelButtonClickedAsync(object sender, EventArgs e)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                // Head back to homepage if the 
+                // page was called from here
+                LoadHomeView();
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+
+            IsServiceActive = false;
         }
     }
 }

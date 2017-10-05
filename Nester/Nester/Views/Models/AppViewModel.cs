@@ -523,6 +523,8 @@ namespace Nester.Views
                 {
                     theApp.Owner = this.ThisUI.User;
                 }
+
+                EditApp = theApp;
             }
 
             return status;
@@ -538,7 +540,7 @@ namespace Nester.Views
 
             if (status.Code == 0)
             {
-                _editApp = theApp;
+                EditApp = theApp;
             }
 
             return status;
@@ -554,7 +556,7 @@ namespace Nester.Views
 
             if (status.Code == 0)
             {
-               _editApp = status.PayloadToObject<Admin.App>();
+                EditApp = status.PayloadToObject<Admin.App>();
                 Utils.Object.PourPropertiesTo(_editApp, theApp);
             }
 
@@ -572,7 +574,7 @@ namespace Nester.Views
 
             if (status.Code == 0)
             {
-                _editApp = status.PayloadToObject<Admin.App>();
+                EditApp = status.PayloadToObject<Admin.App>();
                 _editApp.Owner = this.ThisUI.User;
 
                 Utils.Object.PourPropertiesTo(_editApp, theApp);

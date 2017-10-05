@@ -35,6 +35,7 @@
     <Grid.RowDefinitions>
       <RowDefinition Height="5*"/>        
       <RowDefinition Height="Auto"/>
+      <RowDefinition Height="10*"/>
       <RowDefinition Height="5*"/>
     </Grid.RowDefinitions>
 
@@ -351,13 +352,16 @@
 
     </StackLayout>
 
-    <!--<StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
-      <Button x:Name="ButtonDone"
-              Text="Proceed"
-              Style="{StaticResource buttonPageFlow}"
-              Clicked="OnDoneButtonClickedAsync">
+    <StackLayout Grid.Row="2" 
+                 Grid.Column="1" 
+                 Orientation="Horizontal"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center">
+      <Button x:Name="ButtonCancel"
+              Text="Close"
+              Style="{StaticResource buttonPageFlow}">
       </Button>
-    </StackLayout>-->
+    </StackLayout>
 
   </Grid>
 

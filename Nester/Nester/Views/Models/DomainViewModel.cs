@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Forms;
 
 namespace Nester.Views
 {
@@ -80,9 +79,10 @@ namespace Nester.Views
             get
             {
                 var existDomains = from domain in _domains
-                                   where domain.Primary == true
+                                   where domain.Default == true
                                    select domain;
-                return existDomains.First();
+                Admin.AppDomain defaultDomain = existDomains.FirstOrDefault();
+                return defaultDomain;
             }
         }
 
@@ -105,6 +105,7 @@ namespace Nester.Views
                 {
                     domain.App = _editApp;
                     domain.Primary = (_editApp.PrimaryDomainId == domain.Id);
+                    domain.Ip = await ThisUI.NesterService.GetIPAsync(domain.Name);
 
                     Admin.AppDomainCertificate seedCert = new Admin.AppDomainCertificate();
                     seedCert.AppDomain = domain;

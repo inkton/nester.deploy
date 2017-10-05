@@ -352,6 +352,38 @@ namespace Nester.Views
                     return;
                 }
 
+                Admin.AppDomain defaultDomain = (from domain in _appViewModel.DomainModel.Domains
+                                                 where domain.Default == true
+                                                 select domain).First();
+
+                string ip = await ThisUI.NesterService.GetIPAsync(Name.Text);
+
+                if (ip != defaultDomain.Ip)
+                {
+                    IsServiceActive = false;
+                    await DisplayAlert("Nester", "The domain name "+ Name.Text  + 
+                        " currently does not resolve to " + defaultDomain.Ip + 
+                        ". Make sure to update the DNS", "OK");
+                    return;
+                }
+
+                if (Aliases.Text != null)
+                {
+                    foreach (string alias in Aliases.Text.Split(' '))
+                    {
+                        ip = await ThisUI.NesterService.GetIPAsync(alias);
+
+                        if (ip != defaultDomain.Ip)
+                        {
+                            IsServiceActive = false;
+                            await DisplayAlert("Nester", "The alias " + alias +
+                                " currently does not resolve to " + defaultDomain.Ip +
+                                ". Make sure to update the DNS", "OK");
+                            return;
+                        }
+                    }
+                }
+
                 Admin.AppDomain newDomain = CopyUpdate(new Admin.AppDomain());
                 if (newDomain != null)
                 {
