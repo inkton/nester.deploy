@@ -150,6 +150,8 @@ namespace Nester.Views
             browsDomain.App = _appViewModel.EditApp;
             browsDomain.Tag = Tag.Text;
             browsDomain.Name = Name.Text;
+            if (Aliases.Text == null || Aliases.Text.Length == 0)
+                Aliases.Text = null;
             browsDomain.Aliases = Aliases.Text;
             browsDomain.Primary = IsPrimary.IsToggled;
 
@@ -216,8 +218,12 @@ namespace Nester.Views
         {
             string domain = (sender as Xamarin.Forms.Entry).Text;
 
-            if (domain != null && !_domainVerifier.Match(domain).Success)
+            if (domain != null && domain.Length < 3)
             {
+                /*
+                 * the domain name can contain wildcards i.e. *.example.com
+                 */
+
                 NameValidator.IsValid = false;
                 NameValidator.Message = "Enter a valid domain name";
             }
@@ -355,13 +361,19 @@ namespace Nester.Views
                 Admin.AppDomain defaultDomain = (from domain in _appViewModel.DomainModel.Domains
                                                  where domain.Default == true
                                                  select domain).First();
+                string wildcardStripped = Name.Text;
 
-                string ip = await ThisUI.NesterService.GetIPAsync(Name.Text);
+                if (wildcardStripped.StartsWith("*."))
+                {
+                    wildcardStripped = Name.Text.Remove(0, 2);
+                }
+
+                string ip = await ThisUI.NesterService.GetIPAsync(wildcardStripped);
 
                 if (ip == null || ip != defaultDomain.Ip)
                 {
                     IsServiceActive = false;
-                    await DisplayAlert("Nester", "The domain name "+ Name.Text  + 
+                    await DisplayAlert("Nester", "The domain name "+ wildcardStripped + 
                         " currently does not resolve to " + defaultDomain.Ip + 
                         ". Make sure to update the DNS", "OK");
                     return;

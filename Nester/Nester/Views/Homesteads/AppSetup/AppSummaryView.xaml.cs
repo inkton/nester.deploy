@@ -50,11 +50,19 @@ namespace Nester.Views
                 if (domain.Default)
                     continue;
 
-                string ip = await ThisUI.NesterService.GetIPAsync(domain.Name);
+                string wildcardStripped = domain.Name;
+
+                if (wildcardStripped.StartsWith("*."))
+                {
+                    wildcardStripped = domain.Name.Remove(0, 2);
+                }
+
+                string ip = await ThisUI.NesterService.GetIPAsync(wildcardStripped);
 
                 if (ip == null || ip != defaultDomain.Ip)
                 {
-                    await DisplayAlert("Nester", "The domain name " + domain.Name +
+                    IsServiceActive = false;
+                    await DisplayAlert("Nester", "The domain name " + wildcardStripped +
                         " currently does not resolve to " + defaultDomain.Ip +
                         ". Make sure to update the DNS", "OK");
                     return false;

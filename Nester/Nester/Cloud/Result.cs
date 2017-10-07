@@ -186,8 +186,8 @@ namespace Nester.Cloud
             CachedHttpRequest<T> request, bool doCache = true, IDictionary < string, string> data = null, 
             string subPath = null) where T : Cloud.ManagedEntity, new()
         {
-            Cloud.ServerStatus status = await Task<Cloud.ServerStatus>.Run(
-                     () => request(seed, data, subPath, doCache));
+            Cloud.ServerStatus status = await 
+                request(seed, data, subPath, doCache);
 
             if (status.Code < 0 && throwIfError)
             {
@@ -201,8 +201,8 @@ namespace Nester.Cloud
             bool throwIfError, T seed, bool doCache = true, IDictionary < string, string> data = null, 
             string subPath = null) where T : Cloud.ManagedEntity, new()
         {
-            Cloud.ServerStatus status = await Task<Cloud.ServerStatus>.Run(
-                     () => ((NesterUI)NesterUI.Current).NesterService.QueryAsyncList(seed, data, subPath, doCache));
+            Cloud.ServerStatus status = await ((NesterUI)NesterUI.Current).
+                NesterService.QueryAsyncList(seed, data, subPath, doCache);
 
             if (status.Code < 0 && throwIfError)
             {
@@ -216,8 +216,8 @@ namespace Nester.Cloud
             INesterService nesterService, bool throwIfError, T seed, bool doCache = true, IDictionary<string, string> data = null,
             string subPath = null) where T : Cloud.ManagedEntity, new()
         {
-            Cloud.ServerStatus status = await Task<Cloud.ServerStatus>.Run(
-                () => nesterService.QueryAsyncList(seed, data, subPath, doCache));
+            Cloud.ServerStatus status = await 
+                nesterService.QueryAsyncList(seed, data, subPath, doCache);
 
             if (status.Code < 0 && throwIfError)
             {

@@ -72,7 +72,10 @@ namespace Nester.Views
             {
                 if (Type.SelectedIndex == 0)
                 {
+                    PrivateKey.Text = "";
                     PrivateKey.IsEnabled = false;
+
+                    Chain.Text = "";
                     Chain.IsEnabled = false;
 
                     _appViewModel.DomainModel.EditDomain.Certificate.Type = "free";
