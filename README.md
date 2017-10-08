@@ -51,3 +51,10 @@ The Oak Tree servers exist in the following Forests. A Homestead can be built in
 | ![usa](https://github.com/inkton/nester.deploy/wiki/images/usa.png)                 | New-Jersey     | Altmar Forest               |
 | ![usa](https://github.com/inkton/nester.deploy/wiki/images/usa.png)                 | Seattle        | Hoh Forest                  |
                         
+1. [Home](https://github.com/inkton/nester.deploy/wiki/Home)
+2. [Registration](https://github.com/inkton/nester.deploy/wiki/Registration)
+3. [User Settings](https://github.com/inkton/nester.deploy/wiki/User-Settings)
+4. [Adding a New App](https://github.com/inkton/nester.deploy/wiki/Adding-a-new-App)
+5. [Deploy the App](https://github.com/inkton/nester.deploy/wiki/Deploy-the-App)
+6. [Domain Names](https://github.com/inkton/nester.deploy/wiki/Domain-Names)
+7. [Slack-Integration](https://github.com/inkton/nester.deploy/wiki/Slack-Integration)
