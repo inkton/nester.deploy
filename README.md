@@ -28,7 +28,6 @@ The nest.yt uses a taxonomy based on the nest metaphor to describe how things fi
 
 Each server (Tree) is a dedicated server with its own static IP address. The server is automatically backed up each night. The Oak Tree (server group) are Vultr servers based at various data centers (Forests) around the globe. 
 
-
 ## Deployment Locations
 
 The Oak Tree servers exist in the following Forests. A Homestead can be built in any of these locations.  
@@ -50,7 +49,9 @@ The Oak Tree servers exist in the following Forests. A Homestead can be built in
 | ![usa](https://github.com/inkton/nester.deploy/wiki/images/usa.png)                 | Miami          | Whitewater Forest           |  
 | ![usa](https://github.com/inkton/nester.deploy/wiki/images/usa.png)                 | New-Jersey     | Altmar Forest               |
 | ![usa](https://github.com/inkton/nester.deploy/wiki/images/usa.png)                 | Seattle        | Hoh Forest                  |
-                        
+            
+## Detailed Steps
+            
 1. [Home](https://github.com/inkton/nester.deploy/wiki/Home)
 2. [Registration](https://github.com/inkton/nester.deploy/wiki/Registration)
 3. [User Settings](https://github.com/inkton/nester.deploy/wiki/User-Settings)
