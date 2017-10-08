@@ -97,9 +97,6 @@
     <Compile Include="Utils\Validators\ValidationFluent\BehaviorsBehaviorsExtensions.cs" />
     <Compile Include="Utils\Validators\ValidationFluent\FluentValidation.cs" />
     <Compile Include="Utils\Validators\ValidationFluent\ValidationCollected.cs" />
-    <None Include="Views\Homesteads\AppSetup\AppDomainCertListView.xaml.cs">
-      <DependentUpon>AppDomainCertListView.xaml</DependentUpon>
-    </None>
     <Compile Include="Views\BannerView.xaml.cs">
       <DependentUpon>BannerView.xaml</DependentUpon>
     </Compile>
@@ -371,12 +368,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Views\Homesteads\AppSetup\AppDomainCertListView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Homesteads\AppSetup\AppLocationView.xaml">

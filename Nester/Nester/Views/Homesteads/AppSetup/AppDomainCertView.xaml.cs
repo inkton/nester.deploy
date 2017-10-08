@@ -12,6 +12,8 @@ namespace Nester.Views
 {
     public partial class AppDomainCertView : Nester.Views.View
     {
+        private Regex _domainVerifier;
+
         public AppDomainCertView(AppViewModel appViewModel)
         {
             InitializeComponent();
@@ -19,7 +21,6 @@ namespace Nester.Views
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
                                 Type,
-                                ButtonRefresh,
                                 ButtonUpdate,
                                 ButtonDone
                 });
@@ -33,6 +34,10 @@ namespace Nester.Views
 
             Chain.TextChanged += Chain_TextChanged;
             PrivateKey.TextChanged += PrivateKey_TextChanged;
+
+            _domainVerifier = new Regex(
+                 @"^((?!-)[A-Za-z0-9-]{1,63}(?<!-)\.)+[A-Za-z]{2,6}$"
+              , RegexOptions.Singleline | RegexOptions.IgnoreCase);
 
             UpdateTypeSelection();
         }
@@ -49,46 +54,88 @@ namespace Nester.Views
 
         private void UpdateTypeSelection()
         {
+            bool enable = false;
+
+            Type.Items.Clear();
+            Type.Items.Add("None");
+
+            /* free certs can only be added to non-wildcard, 
+             * no regex containing, properly formed domain 
+             * names */
+            bool canAddFreeCert = true;
+
+            if (_appViewModel.DomainModel.EditDomain.Name != null &&
+                !_domainVerifier.Match(_appViewModel.DomainModel.EditDomain.Name).Success)
+            {
+                canAddFreeCert = false;
+            }
+            else
+            {
+                if (_appViewModel.DomainModel.EditDomain.Aliases != null &&
+                    _appViewModel.DomainModel.EditDomain.Aliases.Length > 0)
+                {
+                    string[] aliasArray = _appViewModel.DomainModel.EditDomain.Aliases.Split(new char[] { ',', ' ' });
+
+                    foreach (string alias in aliasArray)
+                    {
+                        if (alias != null &&
+                            !_domainVerifier.Match(alias).Success)
+                        {
+                            canAddFreeCert = false;
+                        }
+                    }
+                }
+            }
+
+            if (canAddFreeCert)
+            {
+                // wildcard domains do not support free certs.
+                Type.Items.Add("Free");
+            }
+
+            Type.Items.Add("Custom");
+
             if (_appViewModel.DomainModel.EditDomain.Certificate != null)
             {
-                if (_appViewModel.DomainModel.EditDomain.Certificate.Type == "free")
+                string type = _appViewModel.DomainModel.EditDomain.Certificate.Type;
+                type = char.ToUpper(type[0]) + type.Substring(1);
+
+                int index = Type.Items.IndexOf(type);
+
+                if (index >= 0)
                 {
-                    Type.SelectedIndex = 0;
+                    Type.SelectedIndex = index;
+                    enable = (type == "Custom");
                 }
                 else
                 {
-                    Type.SelectedIndex = 1;
+                    Type.SelectedIndex = Type.Items.IndexOf("None");
                 }
             }
             else
             {
-                Type.SelectedIndex = -1;
+                Type.SelectedIndex = Type.Items.IndexOf("None");
             }
+
+            PrivateKey.IsEnabled = enable;
+            Chain.IsEnabled = enable;
+
+            if (!enable)
+            {
+                PrivateKey.Text = "";
+                Chain.Text = "";
+            }
+            else
+            {
+                PrivateKey.Text = _appViewModel.DomainModel.EditDomain.Certificate.PrivateKey;
+                Chain.Text = _appViewModel.DomainModel.EditDomain.Certificate.CertificateChain;
+            }
+
+            Validate();
         }
 
         private void Type_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_appViewModel.DomainModel.EditDomain.Certificate != null)
-            {
-                if (Type.SelectedIndex == 0)
-                {
-                    PrivateKey.Text = "";
-                    PrivateKey.IsEnabled = false;
-
-                    Chain.Text = "";
-                    Chain.IsEnabled = false;
-
-                    _appViewModel.DomainModel.EditDomain.Certificate.Type = "free";
-                }
-                else
-                {
-                    PrivateKey.IsEnabled = true;
-                    Chain.IsEnabled = true;
-
-                    _appViewModel.DomainModel.EditDomain.Certificate.Type = "custom";
-                }
-            }
-
             Validate();
         }
 
@@ -97,30 +144,33 @@ namespace Nester.Views
             _appViewModel.DomainModel.CanUpdate = false;
             _appViewModel.DomainModel.Validated = false;
 
-            if (_appViewModel != null &&
-                _appViewModel.DomainModel.EditDomain != null &&
-                _appViewModel.DomainModel.EditDomain.Certificate != null)
-            {
-                if (_appViewModel.DomainModel.EditDomain.Certificate.Type == "free")
-                {
-                    _appViewModel.DomainModel.Validated = true;
-                }
-                else
-                {
-                    _appViewModel.DomainModel.Validated = (
-                           _appViewModel.DomainModel.EditDomain.Certificate.PrivateKey != null &&
-                            _appViewModel.DomainModel.EditDomain.Certificate.PrivateKey.Length > 0 &&
-                           _appViewModel.DomainModel.EditDomain.Certificate.CertificateChain != null &&
-                            _appViewModel.DomainModel.EditDomain.Certificate.CertificateChain.Length > 0
-                    );
-                }
+            string type = Type.SelectedItem as string;
 
-                /* used to enable the update function. a certificate can
-                 * be updaed only if valid fields has been selected 
-                 * and an item from a list is selected.
-                 */
-                _appViewModel.DomainModel.CanUpdate = _appViewModel.DomainModel.Validated;
+            if (type == "Custom")
+            {
+                PrivateKey.IsEnabled = true;
+                Chain.IsEnabled = true;
+
+                _appViewModel.DomainModel.Validated = (
+                        PrivateKey.Text != null &&
+                        PrivateKey.Text.Length > 0 &&
+                        Chain.Text != null &&
+                        Chain.Text.Length > 0
+                );
             }
+            else
+            {
+                PrivateKey.IsEnabled = false;
+                Chain.IsEnabled = false;
+
+                _appViewModel.DomainModel.Validated = true;
+            }
+
+            /* used to enable the update function. a certificate can
+                * be updaed only if valid fields has been selected 
+                * and an item from a list is selected.
+                */
+            _appViewModel.DomainModel.CanUpdate = _appViewModel.DomainModel.Validated;
         }
 
         protected async override void OnAppearing()
@@ -142,26 +192,39 @@ namespace Nester.Views
             Validate();
         }
 
-        async private void OnRefreshDomainButtonClickedAsync(object sender, EventArgs e)
-        {
-            IsServiceActive = true;
-
-            await Process(_appViewModel.DomainModel.EditDomain, true,
-                _appViewModel.DomainModel.QueryDomainAsync
-            );
-
-            UpdateTypeSelection();
-
-            IsServiceActive = false;
-        }
-
         async private void OnUpdateDomainButtonClickedAsync(object sender, EventArgs e)
         {
             IsServiceActive = true;
 
-            await Process(_appViewModel.DomainModel.EditDomain, true,
-                _appViewModel.DomainModel.UpdateDomainAsync
-            );
+            try
+            {
+                if (_appViewModel.DomainModel.EditDomain.Certificate != null)
+                {
+                    await Process(_appViewModel.DomainModel.EditDomain.Certificate, true,
+                        _appViewModel.DomainModel.RemoveDomainCertificateAsync
+                    );
+                }
+
+                string type = Type.SelectedItem as string;
+
+                if (type != "None")
+                {
+                    Admin.AppDomainCertificate cert = new Admin.AppDomainCertificate();
+                    cert.AppDomain = _appViewModel.DomainModel.EditDomain;
+                    cert.Tag = _appViewModel.DomainModel.EditDomain.Tag;
+                    cert.Type = type.ToLower();
+                    cert.CertificateChain = PrivateKey.Text;
+                    cert.CertificateChain = Chain.Text;
+
+                    await Process(cert, true,
+                        _appViewModel.DomainModel.CreateDomainCertificateAsync
+                    );
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
 
             IsServiceActive = false;
         }
@@ -170,7 +233,7 @@ namespace Nester.Views
         {
             try
             {
-                await this.Navigation.PopAsync();
+                await Navigation.PopAsync();
             }
             catch (Exception ex)
             {

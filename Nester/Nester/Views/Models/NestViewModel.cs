@@ -152,69 +152,93 @@ namespace Nester.Views
             return status;
         }
 
-        public async Task<Cloud.ServerStatus> QueryNestAsync(Admin.Nest nest,
-             bool dCache = true, bool throwIfError = true)
+        public async Task<Cloud.ServerStatus> QueryNestAsync(Admin.Nest nest = null,
+             bool dCache = false, bool throwIfError = true)
         {
+            Admin.Nest theNest = nest == null ? _editNest : nest;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                nest, new Cloud.CachedHttpRequest<Admin.Nest>(
+                theNest, new Cloud.CachedHttpRequest<Admin.Nest>(
                     ThisUI.NesterService.QueryAsync), dCache, null, null);
 
             if (status.Code >= 0)
             {
-                Utils.Object.PourPropertiesTo(status.PayloadToObject<Admin.Nest>(), nest);
-                SetNestHosts(nest);
+                _editNest = status.PayloadToObject<Admin.Nest>();
+                SetNestHosts(_editNest);
+
+                if (nest != null)
+                {
+                    Utils.Object.PourPropertiesTo(_editNest, nest);
+                }
             }
 
             return status;
         }
 
-        public async Task<Cloud.ServerStatus> CreateNestAsync(Admin.Nest nest,
+        public async Task<Cloud.ServerStatus> CreateNestAsync(Admin.Nest nest = null,
             bool doCache = false, bool throwIfError = true)
         {
+            Admin.Nest theNest = nest == null ? _editNest : nest;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                nest, new Cloud.CachedHttpRequest<Admin.Nest>(
+                theNest, new Cloud.CachedHttpRequest<Admin.Nest>(
                     ThisUI.NesterService.CreateAsync), doCache);
 
             if (status.Code >= 0)
             {
                 _editNest = status.PayloadToObject<Admin.Nest>();
                 SetNestHosts(_editNest);
-                _nests.Add(_editNest);
-                Utils.Object.PourPropertiesTo(_editNest, nest);
+
+                if (nest != null)
+                {
+                    Utils.Object.PourPropertiesTo(_editNest, nest);
+                    _nests.Add(_editNest);               
+                }
+
                 OnPropertyChanged("Nests");
             }
 
             return status;
         }
 
-        public async Task<Cloud.ServerStatus> UpdateNestAsync(Admin.Nest nest,
+        public async Task<Cloud.ServerStatus> UpdateNestAsync(Admin.Nest nest = null,
             bool doCache = false, bool throwIfError = true)
         {
+            Admin.Nest theNest = nest == null ? _editNest : nest;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                nest, new Cloud.CachedHttpRequest<Admin.Nest>(
+                theNest, new Cloud.CachedHttpRequest<Admin.Nest>(
                     ThisUI.NesterService.UpdateAsync), doCache);
 
             if (status.Code >= 0)
             {
                 _editNest = status.PayloadToObject<Admin.Nest>();
-                Utils.Object.PourPropertiesTo(_editNest, nest);
                 SetNestHosts(_editNest);
+
+                if (nest != null)
+                {
+                    Utils.Object.PourPropertiesTo(_editNest, nest);
+                    _nests.Add(_editNest);
+                }
+
                 OnPropertyChanged("Nests");
             }
 
             return status;
         }
 
-        public async Task<Cloud.ServerStatus> RemoveNestAsync(Admin.Nest nest,
+        public async Task<Cloud.ServerStatus> RemoveNestAsync(Admin.Nest nest = null,
             bool doCache = false, bool throwIfError = true)
         {
+            Admin.Nest theNest = nest == null ? _editNest : nest;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                nest, new Cloud.CachedHttpRequest<Admin.Nest>(
+                theNest, new Cloud.CachedHttpRequest<Admin.Nest>(
                     ThisUI.NesterService.RemoveAsync), doCache);
 
             if (status.Code >= 0)
             {
-                _nests.Remove(nest);
+                if (nest == null)
+                {
+                    _nests.Remove(nest);
+                }
+
                 OnPropertyChanged("Nests");
             }
 

@@ -191,7 +191,7 @@
                   Text="Name"></Label>
             <Entry Style="{StaticResource nesterField}"
               x:Name="Name"
-              Text="{Binding Path=EditDomain.Name, Mode=TwoWay}"
+              Text="{Binding Path=EditDomain.Name}"
               Keyboard="Keyboard.Text"
               VerticalOptions="LayoutOptions.CenterAndExpand"
               Placeholder="Enter a name">
@@ -261,21 +261,21 @@
           <Button x:Name="ButtonAdd"
             HorizontalOptions="Start"
             Text="Add"
-            IsEnabled="{Binding Validated, Mode=TwoWay}"
+            IsEnabled="{Binding Validated}"
             Style="{StaticResource buttonUtilStyle1}"
             Clicked="OnAddButtonClickedAsync">
           </Button>
 
           <Button x:Name="ButtonRefresh"
             Text="Refresh"
-            IsEnabled="{Binding CanUpdate, Mode=TwoWay}"
+            IsEnabled="{Binding CanUpdate}"
             Style="{StaticResource buttonUtilStyle1}"
             Clicked="OnRefreshButtonClickedAsync">
           </Button>
 
           <Button x:Name="ButtonUpdate"
             Text="Update"                  
-            IsEnabled="{Binding CanUpdate, Mode=TwoWay}"
+            IsEnabled="{Binding CanUpdate}"
             Style="{StaticResource buttonUtilStyle1}"
             Clicked="OnUpdateButtonClickedAsync">
           </Button>
@@ -295,7 +295,7 @@
 
           <Button x:Name="ButtonCert"
                   Text="Certificate"
-                  IsEnabled="{Binding CanUpdate , Mode=TwoWay}"
+                  IsEnabled="{Binding CanUpdate }"
                   Style="{StaticResource buttonUtilStyle2}">
           </Button>
 

@@ -58,10 +58,6 @@
                     VerticalOptions="LayoutOptions.CenterAndExpand"
                     Style="{StaticResource nesterFieldLabelPicker}"
                   >
-              <Picker.Items>
-                <x:String>Free</x:String>
-                <x:String>Custom</x:String>
-              </Picker.Items>
             </Picker>
           </StackLayout>
 
@@ -78,11 +74,7 @@
             </Label>
             <Editor x:Name="PrivateKey"
                   HeightRequest = "100"
-                  Text="{
-                  Binding Path=EditDomain.Certificate.PrivateKey, 
-                  Mode=TwoWay,
-                  }"
-                    VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
                   Keyboard="Keyboard.Text">
             </Editor>
             <Label x:Name="PrivateKeyMessage" Style="{StaticResource validateFailMsg}" />
@@ -93,10 +85,6 @@
                 Text="Certificate Chain"></Label>
             <Editor x:Name="Chain"
                   HeightRequest = "100"                    
-                  Text="{
-                  Binding Path=EditDomain.Certificate.CertificateChain, 
-                  Mode=TwoWay,
-                  }"
                   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
                   Keyboard="Keyboard.Text">
             </Editor>
@@ -109,13 +97,6 @@
       </StackLayout>
         
       <StackLayout Orientation="Horizontal">
-
-        <Button x:Name="ButtonRefresh"
-          Text="Refresh"
-          IsEnabled="{Binding CanUpdate}"
-          Style="{StaticResource buttonUtilStyle1}"
-          Clicked="OnRefreshDomainButtonClickedAsync">
-        </Button>
 
         <Button x:Name="ButtonUpdate"
           Text="Update"

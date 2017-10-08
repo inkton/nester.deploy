@@ -14,14 +14,12 @@ namespace Nester.Views
         private bool _primary;
 
         private ObservableCollection<Admin.AppDomain> _domains;
-        private ObservableCollection<Admin.AppDomainCertificate> _certs;
 
         public ICommand EditCertCommand { get; private set; }
 
         public DomainViewModel(Admin.App app) : base(app)
         {
             _domains = new ObservableCollection<Admin.AppDomain>();
-            _certs = new ObservableCollection<Admin.AppDomainCertificate>();
             _primary = false;
 
             _editDomain = new Admin.AppDomain();
@@ -140,10 +138,10 @@ namespace Nester.Views
 
             if (status.Code >= 0)
             {
-                Utils.Object.PourPropertiesTo(status.PayloadToObject<Admin.AppDomain>(), theDomain);
+                _editDomain = status.PayloadToObject<Admin.AppDomain>();
 
                 Admin.AppDomainCertificate seedCert = new Admin.AppDomainCertificate();
-                seedCert.AppDomain = theDomain;
+                seedCert.AppDomain = _editDomain;
 
                 status = await Cloud.Result.WaitForObjectListAsync(
                     throwIfError, seedCert);
@@ -158,6 +156,11 @@ namespace Nester.Views
                         theDomain.Certificate = list.First();
                         theDomain.Certificate.AppDomain = theDomain;
                     }
+                }
+
+                if (domain != null)
+                {
+                    Utils.Object.PourPropertiesTo(_editDomain, domain);
                 }
             }
 
@@ -175,22 +178,32 @@ namespace Nester.Views
             if (status.Code >= 0)
             {
                 _editDomain = status.PayloadToObject<Admin.AppDomain>();
-                Utils.Object.PourPropertiesTo(_editDomain, theDomain);
 
-                theDomain.Certificate = new Admin.AppDomainCertificate();
-                theDomain.Certificate.AppDomain = _editDomain;
-                theDomain.Certificate.Tag = _editDomain.Tag;
-                theDomain.Certificate.Type = "free";
+                if (domain != null)
+                {
+                    Utils.Object.PourPropertiesTo(_editDomain, domain);
+                    _domains.Add(domain);
+                }
+            }
 
-                status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                    theDomain.Certificate, new Cloud.CachedHttpRequest<Admin.AppDomainCertificate>(
+            return status;
+        }
+
+        public async Task<Cloud.ServerStatus> CreateDomainCertificateAsync(Admin.AppDomainCertificate cert = null,
+            bool doCache = false, bool throwIfError = true)
+        {
+            Admin.AppDomainCertificate theCert = cert == null ? _editDomain.Certificate : cert;
+            Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
+                    theCert, new Cloud.CachedHttpRequest<Admin.AppDomainCertificate>(
                         ThisUI.NesterService.CreateAsync));
 
-                if (status.Code == 0)
+            if (status.Code >= 0)
+            {
+                _editDomain.Certificate = status.PayloadToObject<Admin.AppDomainCertificate>();
+
+                if (cert != null)
                 {
-                    theDomain.Certificate = status.PayloadToObject<Admin.AppDomainCertificate>();
-                    _certs.Add(theDomain.Certificate);
-                    _domains.Add(theDomain);
+                    Utils.Object.PourPropertiesTo(_editDomain.Certificate, cert);
                 }
             }
 
@@ -207,8 +220,31 @@ namespace Nester.Views
 
             if (status.Code >= 0)
             {
-                _certs.Remove(theDomain.Certificate);
-                _domains.Remove(theDomain);
+                if (domain == null)
+                {
+                    // any cert that belong to the domain
+                    // are automatically removed in the server
+                    _domains.Remove(theDomain);
+                }
+            }
+
+            return status;
+        }
+
+        public async Task<Cloud.ServerStatus> RemoveDomainCertificateAsync(Admin.AppDomainCertificate cert = null,
+             bool doCache = false, bool throwIfError = true)
+        {
+            Admin.AppDomainCertificate theCert = cert == null ? _editDomain.Certificate : cert;
+            Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
+                theCert, new Cloud.CachedHttpRequest<Admin.AppDomainCertificate>(
+                    ThisUI.NesterService.RemoveAsync), doCache);
+
+            if (status.Code >= 0)
+            {
+                if (cert == null)
+                {
+                    _editDomain.Certificate = null;
+                }
             }
 
             return status;
@@ -226,16 +262,36 @@ namespace Nester.Views
             {
                 _editDomain = status.PayloadToObject<Admin.AppDomain>();
 
-                status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                    theDomain.Certificate, new Cloud.CachedHttpRequest<Admin.AppDomainCertificate>(
-                        ThisUI.NesterService.UpdateAsync));
+                /* updates to the domain invalidates attached
+                 * certificates.
+                */
+                _editDomain.Certificate = null;
 
-                if (status.Code >= 0)
+                if (domain != null)
+                {
+                    Utils.Object.PourPropertiesTo(_editDomain, domain);
+                }
+            }
+
+            return status;
+        }
+
+        public async Task<Cloud.ServerStatus> UpdateDomainCertificateAsync(Admin.AppDomainCertificate cert = null,
+            bool doCache = false, bool throwIfError = true)
+        {
+            Admin.AppDomainCertificate theCert = cert == null ? _editDomain.Certificate : cert;
+            Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
+                theCert, new Cloud.CachedHttpRequest<Admin.AppDomainCertificate>(
+                    ThisUI.NesterService.UpdateAsync), doCache);
+
+            if (status.Code >= 0)
+            {
+                _editDomain.Certificate = status.PayloadToObject<Admin.AppDomainCertificate>();
+
+                if (cert != null)
                 {
                     Utils.Object.PourPropertiesTo(
-                        status.PayloadToObject<Admin.AppDomainCertificate>(), _editDomain.Certificate);
-
-                    Utils.Object.PourPropertiesTo(_editDomain, theDomain);
+                        _editDomain.Certificate, cert);
                 }
             }
 

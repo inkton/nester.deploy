@@ -217,36 +217,46 @@ namespace Nester.Views
             return status;
         }
 
-        public async Task<Cloud.ServerStatus> QueryContactAsync(Admin.Contact contact,
+        public async Task<Cloud.ServerStatus> QueryContactAsync(Admin.Contact contact = null,
             bool doCache = false, bool throwIfError = true)
         {
+            Admin.Contact theContact = contact == null ? _editContact : contact;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                contact, new Cloud.CachedHttpRequest<Admin.Contact>(
+                theContact, new Cloud.CachedHttpRequest<Admin.Contact>(
                     ThisUI.NesterService.QueryAsync), doCache, null, null);
 
             if (status.Code >= 0)
             {
                 _editContact = status.PayloadToObject<Admin.Contact>();
-                Utils.Object.PourPropertiesTo(_editContact, contact);
+
+                if (contact != null)
+                {
+                    Utils.Object.PourPropertiesTo(_editContact, contact);
+                }
+
                 await QueryPermissionsAsync(_editContact, throwIfError);
             }
 
             return status;
         }
 
-        public async Task<Cloud.ServerStatus> UpdateContactAsync(Admin.Contact contact,
+        public async Task<Cloud.ServerStatus> UpdateContactAsync(Admin.Contact contact = null,
             bool doCache = false, bool throwIfError = true)
         {
-            bool leaving = contact.UserId != null;
-
+            Admin.Contact theContact = contact == null ? _editContact : contact;
+            bool leaving = theContact.UserId != null;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                contact, new Cloud.CachedHttpRequest<Admin.Contact>(
+                theContact, new Cloud.CachedHttpRequest<Admin.Contact>(
                     ThisUI.NesterService.UpdateAsync), doCache);
 
             if (status.Code >= 0)
             {
                 _editContact = status.PayloadToObject<Admin.Contact>();
-                Utils.Object.PourPropertiesTo(_editContact, contact);
+
+                if (contact != null)
+                {
+                    Utils.Object.PourPropertiesTo(_editContact, contact);
+                }
 
                 if (!leaving)
                 {
@@ -257,19 +267,23 @@ namespace Nester.Views
             return status;
         }
 
-        public async Task<Cloud.ServerStatus> CreateContactAsync(Admin.Contact contact,
+        public async Task<Cloud.ServerStatus> CreateContactAsync(Admin.Contact contact = null,
             bool doCache = false, bool throwIfError = true)
         {
+            Admin.Contact theContact = contact == null ? _editContact : contact;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                contact, new Cloud.CachedHttpRequest<Admin.Contact>(
+                theContact, new Cloud.CachedHttpRequest<Admin.Contact>(
                     ThisUI.NesterService.CreateAsync), doCache);
 
             if (status.Code >= 0)
             {
                 _editContact = status.PayloadToObject<Admin.Contact>();
-                _contacts.Add(_editContact);
 
-                Utils.Object.PourPropertiesTo(_editContact, contact);
+                if (contact != null)
+                {
+                    Utils.Object.PourPropertiesTo(_editContact, contact);
+                    _contacts.Add(_editContact);
+                }
 
                 await QueryPermissionsAsync(contact, throwIfError);
             }
@@ -277,35 +291,38 @@ namespace Nester.Views
             return status;
         }
 
-        public async Task<Cloud.ServerStatus> RemoveContactAsync(Admin.Contact contact,
+        public async Task<Cloud.ServerStatus> RemoveContactAsync(Admin.Contact contact = null,
             bool doCache = false, bool throwIfError = true)
         {
+            Admin.Contact theContact = contact == null ? _editContact : contact;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                contact, new Cloud.CachedHttpRequest<Admin.Contact>(
+                theContact, new Cloud.CachedHttpRequest<Admin.Contact>(
                     ThisUI.NesterService.RemoveAsync), doCache);
 
             if (status.Code >= 0)
             {
-                _contacts.Remove(contact);
+                _contacts.Remove(theContact);
             }
 
             return status;
         }
 
-        public async Task<Cloud.ServerStatus> ReinviteContactAsync(Admin.Contact contact,
+        public async Task<Cloud.ServerStatus> ReinviteContactAsync(Admin.Contact contact = null,
             bool doCache = false, bool throwIfError = true)
         {
+            Admin.Contact theContact = contact == null ? _editContact : contact;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                contact, new Cloud.CachedHttpRequest<Admin.Contact>(
+                theContact, new Cloud.CachedHttpRequest<Admin.Contact>(
                     ThisUI.NesterService.UpdateAsync), doCache);
             return status;
         }
 
-        public async Task<Cloud.ServerStatus> QueryPermissionsAsync(Admin.Contact contact,
+        public async Task<Cloud.ServerStatus> QueryPermissionsAsync(Admin.Contact contact = null,
               bool doCache = false, bool throwIfError = true)
         {
+            Admin.Contact theContact = contact == null ? _editContact : contact;
             Auth.Permission seedPermission = new Auth.Permission();
-            seedPermission.Contact = contact;
+            seedPermission.Contact = theContact;
             ObservableCollection<Auth.Permission> permissions = new ObservableCollection<Auth.Permission>();
 
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectListAsync(
@@ -332,17 +349,23 @@ namespace Nester.Views
                     }
                 }
 
-                contact.OwnerCapabilities = caps;
+                _editContact.OwnerCapabilities = caps;
+
+                if (contact != null)
+                {
+                    Utils.Object.PourPropertiesTo(_editContact, contact);
+                }
             }
 
             return status;
         }
 
-        public async Task<Cloud.ServerStatus> UpdatePermissionAsync(Admin.Contact contact,
+        public async Task<Cloud.ServerStatus> UpdatePermissionAsync(Admin.Contact contact = null,
             bool doCache = false, bool throwIfError = true)
         {
+            Admin.Contact theContact = contact == null ? _editContact : contact;
             Auth.Permission seedPermission = new Auth.Permission();
-            seedPermission.Contact = contact;
+            seedPermission.Contact = theContact;
 
             PermissionSwitch[] switches = new PermissionSwitch[] {
                 new PermissionSwitch(caps => caps.CanViewApp, "view-app"),
@@ -359,7 +382,7 @@ namespace Nester.Views
              
             foreach (PermissionSwitch permSwitch in switches)
             {
-                var capable = permSwitch.Getter(contact.OwnerCapabilities);
+                var capable = permSwitch.Getter(theContact.OwnerCapabilities);
                 seedPermission.AppPermissionTag = permSwitch.PermissionTag;
 
                 if (capable)

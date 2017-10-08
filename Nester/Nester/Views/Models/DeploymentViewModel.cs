@@ -30,6 +30,7 @@ namespace Nester.Views
 
             _editDeployment = new Admin.Deployment();
             _editDeployment.App = app;
+            app.Deployment = _editDeployment;
         }
 
         override public Admin.App EditApp
@@ -40,8 +41,9 @@ namespace Nester.Views
             }
             set
             {
-                _editDeployment.App = value;
                 SetProperty(ref _editApp, value);
+                _editApp.Deployment = _editDeployment;
+                _editDeployment.App = value;
             }
         }
 
@@ -54,6 +56,7 @@ namespace Nester.Views
             set
             {
                 SetProperty(ref _editDeployment, value);
+                _editApp.Deployment = value;
             }
         }
 
@@ -166,10 +169,11 @@ namespace Nester.Views
         }
 
         public async Task<Cloud.ServerStatus> QueryDeploymentsAsync(
-            bool doCache = true, bool throwIfError = true)
+            Admin.Deployment deployment = null, bool doCache = false, bool throwIfError = true)
         {
+            Admin.Deployment theDeployment = deployment == null ? _editApp.Deployment : deployment;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectListAsync(
-                throwIfError, _editDeployment, doCache);
+                throwIfError, theDeployment, doCache);
             _editApp.Deployment = null;
 
             if (status.Code >= 0)
@@ -179,6 +183,11 @@ namespace Nester.Views
                 {
                     _editDeployment = _deployments.First();
                     _editApp.Deployment = _editDeployment;
+                }
+
+                if (deployment != null)
+                {
+                    Utils.Object.PourPropertiesTo(_editApp.Deployment, deployment);
                 }
             }
 
@@ -195,50 +204,65 @@ namespace Nester.Views
             return status;
         }
 
-        public async Task<Cloud.ServerStatus> CreateDeployment(Admin.Deployment deployment,
+        public async Task<Cloud.ServerStatus> CreateDeployment(Admin.Deployment deployment = null,
             bool doCache = true, bool throwIfError = true)
         {
+            Admin.Deployment theDeployment = deployment == null ? _editApp.Deployment : deployment;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                deployment, new Cloud.CachedHttpRequest<Admin.Deployment>(
+                theDeployment, new Cloud.CachedHttpRequest<Admin.Deployment>(
                     ThisUI.NesterService.CreateAsync), doCache);
 
             if (status.Code >= 0)
             {
                 _editDeployment = status.PayloadToObject<Admin.Deployment>();
-                _deployments.Add(_editDeployment);
+                _editApp.Deployment = _editDeployment;
 
-                Utils.Object.PourPropertiesTo(_editDeployment, deployment);
+                if (deployment != null)
+                {
+                    Utils.Object.PourPropertiesTo(_editDeployment, deployment);
+                    _deployments.Add(_editDeployment);
+                }
             }
 
             return status;
         }
 
-        public async Task<Cloud.ServerStatus> UpdateDeploymentAsync(Admin.Deployment deployment,
+        public async Task<Cloud.ServerStatus> UpdateDeploymentAsync(Admin.Deployment deployment = null,
              bool doCache = true, bool throwIfError = true)
         {
+            Admin.Deployment theDeployment = deployment == null ? _editApp.Deployment : deployment;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                deployment, new Cloud.CachedHttpRequest<Admin.Deployment>(
+                theDeployment, new Cloud.CachedHttpRequest<Admin.Deployment>(
                     ThisUI.NesterService.UpdateAsync), doCache);
 
             if (status.Code >= 0)
             {
                 _editDeployment = status.PayloadToObject<Admin.Deployment>();
-                Utils.Object.PourPropertiesTo(_editDeployment, deployment);
+                _editApp.Deployment = _editDeployment;
+
+                if (deployment != null)
+                {
+                    Utils.Object.PourPropertiesTo(_editDeployment, deployment);
+                }
             }
 
             return status;
         }
 
-        public async Task<Cloud.ServerStatus> RemoveDeploymentAsync(Admin.Deployment deployment,
+        public async Task<Cloud.ServerStatus> RemoveDeploymentAsync(Admin.Deployment deployment = null,
             bool doCache = false, bool throwIfError = true)
         {
+            Admin.Deployment theDeployment = deployment == null ? _editApp.Deployment : deployment;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
-                deployment, new Cloud.CachedHttpRequest<Admin.Deployment>(
+                theDeployment, new Cloud.CachedHttpRequest<Admin.Deployment>(
                     ThisUI.NesterService.RemoveAsync), doCache);
 
             if (status.Code == 0)
             {
-                _deployments.Remove(deployment);
+                if (deployment == null)
+                {
+                    _deployments.Remove(deployment);
+                }
             }
 
             return status;

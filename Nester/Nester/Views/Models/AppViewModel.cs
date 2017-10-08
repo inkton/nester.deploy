@@ -516,15 +516,17 @@ namespace Nester.Views
            
             if (status.Code == 0)
             {
-                Admin.App queryApp = status.PayloadToObject<Admin.App>();
-                Utils.Object.PourPropertiesTo(queryApp, theApp);
+                EditApp = status.PayloadToObject<Admin.App>();
 
-                if (theApp.UserId == ThisUI.User.Id)
+                if (app != null)
                 {
-                    theApp.Owner = this.ThisUI.User;
+                    Utils.Object.PourPropertiesTo(_editApp, app);
                 }
 
-                EditApp = theApp;
+                if (_editApp.UserId == ThisUI.User.Id)
+                {
+                    _editApp.Owner = ThisUI.User;
+                }
             }
 
             return status;
@@ -557,7 +559,11 @@ namespace Nester.Views
             if (status.Code == 0)
             {
                 EditApp = status.PayloadToObject<Admin.App>();
-                Utils.Object.PourPropertiesTo(_editApp, theApp);
+
+                if (app != null)
+                {
+                    Utils.Object.PourPropertiesTo(_editApp, app);
+                }
             }
 
             return status;
@@ -577,7 +583,10 @@ namespace Nester.Views
                 EditApp = status.PayloadToObject<Admin.App>();
                 _editApp.Owner = this.ThisUI.User;
 
-                Utils.Object.PourPropertiesTo(_editApp, theApp);
+                if (app != null)
+                {
+                    Utils.Object.PourPropertiesTo(_editApp, theApp);
+                }
 
                 if (throwIfError && _editApp.Status != "assigned")
                 {

@@ -451,15 +451,26 @@ namespace Nester.Views
                 Admin.AppDomain updateDomain = CopyUpdate(updatingDomain);
                 if (updateDomain != null)
                 {
-                    await Process(updateDomain, true,
-                        _appViewModel.DomainModel.UpdateDomainAsync
-                    );
+                    bool proceed = true;
 
-                    SetDefaults();
-
-                    if (!_appViewModel.DomainModel.Domains.Where(x => x.Primary == true).Any())
+                    if (updateDomain.Certificate != null)
                     {
-                        SetPrimaryDomain(_appViewModel.DomainModel.Domains.First());
+                        proceed = await DisplayAlert("Nester", "This will clear the existing SSL certificate. Proceed?", "Yes", "No");
+                    }
+
+                    if (proceed)
+                    {
+                        updateDomain.Certificate = null;
+
+                        await Process(updateDomain, true,
+                            _appViewModel.DomainModel.UpdateDomainAsync
+                        );
+                        SetDefaults();
+
+                        if (!_appViewModel.DomainModel.Domains.Where(x => x.Primary == true).Any())
+                        {
+                            SetPrimaryDomain(_appViewModel.DomainModel.Domains.First());
+                        }
                     }
                 }
             }
