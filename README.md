@@ -1,5 +1,6 @@
 # Nester Deploy
-The client app to deploy core dotnet applications on the [nest.yt](https://nest.yt) PaaS. 
+The client app to deploy dotnet core applications on the [nest.yt](https://nest.yt) PaaS. 
+
 ![Nester Deploy](https://github.com/inkton/nester.deploy/wiki/images/nd-title.png)
  
 ## The Wiki
