@@ -1,4 +1,4 @@
-# nester.deploy
+# Nester Deploy
 The app deploy client for the nest.yt service.
 
 ![Nester Deploy](https://github.com/inkton/nester.deploy/wiki/images/nd-title.png)
