@@ -531,6 +531,11 @@ namespace Nester.Views
                 }
                 else
                 {
+                    if (_appViewModel.EditApp.IsDeployed)
+                    {
+                        await DisplayAlert("Nester", "Make sure to re-deploy the app for changes to take effect", "OK");
+                    }
+
                     // Head back to homepage if the 
                     // page was called from here
                     LoadHomeView();

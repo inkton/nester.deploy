@@ -10,6 +10,8 @@ namespace Nester.Views
 {
     public partial class AppBasicDetailView : Nester.Views.View
     {
+        private AppViewModel _appSearch = new AppViewModel();
+
         public AppBasicDetailView(AppViewModel appViewModel)
         {
             InitializeComponent();
@@ -166,19 +168,21 @@ namespace Nester.Views
 
         private async void Tag_UnfocusedAsync(object sender, FocusEventArgs e)
         {
-            string tag = (sender as Xamarin.Forms.Entry).Text;
+            string tag = (sender as Xamarin.Forms.Entry).Text.Trim();
             if (tag != null && tag.Length > 0)
             {
-                Admin.App searchApp = new Admin.App();
-                searchApp.Tag = tag;
+                _appSearch.EditApp.Owner = null;
+                _appSearch.EditApp.Tag = tag;
 
-                Cloud.ServerStatus status = await _appViewModel.QueryAppAsync(
-                    searchApp, true, false);
+                Cloud.ServerStatus status = await _appSearch.QueryAppAsync(
+                    null, true, false);
                 if (status.Code == Cloud.Result.NEST_RESULT_SUCCESS)
                 {
                     TagValidator.IsValid = false;
                     TagValidator.Message = "The tag is taken, try another tag";
                 }
+
+                Validate();
             }
         }
 
@@ -215,6 +219,12 @@ namespace Nester.Views
                 {
                     // Head back to homepage if the 
                     // page was called from here
+
+                    if (_appViewModel.EditApp.IsDeployed)
+                    {
+                        await DisplayAlert("Nester", "Make sure to re-deploy the app for changes to take effect", "OK");
+                    }
+
                     LoadHomeView();
                 }
             }

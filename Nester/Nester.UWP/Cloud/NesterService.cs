@@ -27,7 +27,7 @@ namespace Nester.Cloud
 
         public NesterService()
         {
-            _endpoint = "https://api.nestapp.yt/";
+            _endpoint = "https://api.nest.yt/";
 
             _storage = DependencyService.Get<Cache.IStorageService>();
 

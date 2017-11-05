@@ -265,7 +265,7 @@ namespace Nester.Views
             try
             {
                 AppViewModel.PaymentModel.WizardMode = false;
-                await AppViewModel.PaymentModel.QueryPaymentMethodAsync();
+                await AppViewModel.PaymentModel.QueryPaymentMethodAsync(false, false);
 
                 _viewLoader(new PaymentView(AppViewModel.PaymentModel));
             }

@@ -213,7 +213,7 @@ namespace Nester.Views
                     cert.AppDomain = _appViewModel.DomainModel.EditDomain;
                     cert.Tag = _appViewModel.DomainModel.EditDomain.Tag;
                     cert.Type = type.ToLower();
-                    cert.CertificateChain = PrivateKey.Text;
+                    cert.PrivateKey = PrivateKey.Text;
                     cert.CertificateChain = Chain.Text;
 
                     await Process(cert, true,

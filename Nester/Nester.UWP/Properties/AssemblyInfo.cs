@@ -10,8 +10,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Nester.UWP")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Inkton Copyright ©  2017")]
+[assembly: AssemblyTrademark("nest.yt")]
 [assembly: AssemblyCulture("")]
 
 // Version information for an assembly consists of the following four values:

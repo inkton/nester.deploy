@@ -90,7 +90,6 @@
               <validators:EntryValidatorBehavior
                   IsCheckEmpty="True"
                   MaxLength="16"
-                  PropertyChanged="OnFieldValidation"
                   x:Name="TagValidator" />
             </Entry.Behaviors>
           </Entry>

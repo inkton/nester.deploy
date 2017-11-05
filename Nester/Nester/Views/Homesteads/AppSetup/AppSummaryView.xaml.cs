@@ -106,8 +106,6 @@ namespace Nester.Views
                     }
                 }
 
-                await _appViewModel.DeploymentModel.InitAsync();
-
                 if (_appViewModel.DeploymentModel.Deployments.Any())
                 {
                     Admin.Deployment deployment =

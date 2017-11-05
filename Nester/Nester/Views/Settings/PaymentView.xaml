@@ -18,7 +18,7 @@
 
     <StackLayout>
       
-      <Grid VerticalOptions="LayoutOptions.Fill" HorizontalOptions="LayoutOptions.Fill">
+      <Grid>
 
         <Grid.RowDefinitions>
           <RowDefinition Height="2*"/>
@@ -52,9 +52,9 @@
 
         </StackLayout>
         
-        <StackLayout Grid.Row="1" Grid.Column="1">
+        <StackLayout Grid.Row="2" Grid.Column="1">
 
-          <StackLayout IsVisible="{Binding DisplayPaymentMethodProof, Mode=TwoWay}" Orientation="Horizontal">
+          <StackLayout IsVisible="{Binding DisplayPaymentMethodProof}" Orientation="Horizontal">
             
             <StackLayout HorizontalOptions="Start" VerticalOptions="Center">
               <Image Source="creditcardtick.png"></Image>
@@ -76,7 +76,7 @@
                         
          </StackLayout>
             
-          <StackLayout IsVisible="{Binding DisplayPaymentMethodEntry, Mode=TwoWay}">
+          <StackLayout IsVisible="{Binding DisplayPaymentMethodEntry}">
             
             <Grid>
               <Grid.RowDefinitions>

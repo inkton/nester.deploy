@@ -153,7 +153,7 @@ namespace Nester.Views
             bool doCache = true, bool throwIfError = true)
         {
             Admin.SoftwareFramework frameworkSeed = new Admin.SoftwareFramework();
-            frameworkSeed.Tag = "dotnet";
+            frameworkSeed.Tag = "aspdotnetcore";
             Admin.SoftwareFramework.Version versionSeed = new Admin.SoftwareFramework.Version();
             versionSeed.Framework = frameworkSeed;
 

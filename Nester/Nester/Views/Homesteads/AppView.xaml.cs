@@ -294,6 +294,11 @@ namespace Nester.Views
                     "&state=" + WebUtility.UrlEncode(_appViewModel.ContactModel.Collaboration.State);
 
                 Device.OpenUri(new Uri(url));
+
+                if (_appViewModel.EditApp.IsDeployed)
+                {
+                    await DisplayAlert("Nester", "Make sure to re-deploy the app for changes to take effect", "OK");
+                }
             }
             catch (Exception ex)
             {
