@@ -145,7 +145,7 @@
     <comment>From App services</comment>
   </data>
   <data name="domain" xml:space="preserve">
-    <value>Doman</value>
+    <value>Domain</value>
     <comment>ditto</comment>
   </data>
   <data name="drive_ssd_gb" xml:space="preserve">

@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Nester.UWP")]
-[assembly: AssemblyCopyright("Inkton Copyright ©  2017")]
+[assembly: AssemblyCopyright("Copyright Inkon ©  2017")]
 [assembly: AssemblyTrademark("nest.yt")]
 [assembly: AssemblyCulture("")]
 

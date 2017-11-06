@@ -170,7 +170,7 @@ namespace Nester {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Doman.
+        ///   Looks up a localized string similar to Domain.
         /// </summary>
         internal static string domain {
             get {

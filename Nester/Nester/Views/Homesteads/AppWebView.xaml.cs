@@ -94,7 +94,7 @@ namespace Nester.Views
         {
             try
             {
-                await Navigation.PopAsync();
+                LoadView(new AppView(_appViewModel));
             }
             catch (Exception ex)
             {
