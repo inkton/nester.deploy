@@ -2,7 +2,7 @@
 The client app to deploy dotnet core applications on the [nest.yt](https://nest.yt) PaaS. 
 
 1. [Home](https://github.com/inkton/nester.deploy/wiki/Home)
-2. [Requirements](https://github.com/inkton/nester.deploy/wiki/Software-Requirements)
+2. [Installation](https://github.com/inkton/nester.deploy/wiki/Installation)
 3. [Registration](https://github.com/inkton/nester.deploy/wiki/Registration)
 4. [User Settings](https://github.com/inkton/nester.deploy/wiki/User-Settings)
 5. [Adding a New App](https://github.com/inkton/nester.deploy/wiki/Adding-a-new-App)
