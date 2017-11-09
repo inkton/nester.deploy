@@ -9,4 +9,4 @@ The client app to deploy dotnet core applications on the [nest.yt](https://nest.
 6. [Deploy the App](https://github.com/inkton/nester.deploy/wiki/Deploy-the-App)
 7. [Domain Names](https://github.com/inkton/nester.deploy/wiki/Domain-Names)
 8. [Slack-Integration](https://github.com/inkton/nester.deploy/wiki/Slack-Integration)
-9. [The App Devkit](https://github.com/inkton/nester.deploy/wiki/The-App-
+9. [The App Devkit](https://github.com/inkton/nester.deploy/wiki/The-App-Devkit)
