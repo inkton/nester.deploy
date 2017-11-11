@@ -154,6 +154,11 @@
                   Style="{StaticResource buttonPageFlow}"
                   Clicked="OnDoneButtonClickedAsync">
           </Button>
+          <Button x:Name="ButtonClose"
+                  Text="Close"
+                  Style="{StaticResource buttonPageFlow}"
+                  Clicked="OnCloseButtonClickedAsync">
+          </Button>
         </StackLayout>
 
       </Grid>

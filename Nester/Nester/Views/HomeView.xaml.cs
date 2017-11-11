@@ -230,7 +230,10 @@ namespace Nester.Views
             {
                 AuthViewModel.WizardMode = false;
 
-                _viewLoader(new UserView(AuthViewModel));
+                UserView userView = new UserView(AuthViewModel);
+                userView.AppViewModel = AppCollectionModel.AppModels.FirstOrDefault();
+
+                _viewLoader(userView);
             }
             catch (Exception ex)
             {
@@ -248,7 +251,10 @@ namespace Nester.Views
             {
                 AuthViewModel.WizardMode = false;
 
-                _viewLoader(new AuthView(AuthViewModel));
+                AuthView authView = new AuthView(AuthViewModel);
+                authView.AppViewModel = AppCollectionModel.AppModels.FirstOrDefault();
+
+                _viewLoader(authView);
             }
             catch (Exception ex)
             {
@@ -267,7 +273,9 @@ namespace Nester.Views
                 AppViewModel.PaymentModel.WizardMode = false;
                 await AppViewModel.PaymentModel.QueryPaymentMethodAsync(false, false);
 
-                _viewLoader(new PaymentView(AppViewModel.PaymentModel));
+                PaymentView paymentView = new PaymentView(AppViewModel.PaymentModel);
+                paymentView.AppViewModel = AppCollectionModel.AppModels.FirstOrDefault();
+                _viewLoader(paymentView);
             }
             catch (Exception ex)
             {

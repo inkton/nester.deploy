@@ -127,8 +127,7 @@ namespace Nester.Views
         {
             get
             {
-                // others + owner
-                return _contacts.Count() + 1;
+                return _contacts.Count();
             }
         }
 

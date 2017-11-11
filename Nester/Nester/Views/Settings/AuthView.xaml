@@ -33,7 +33,7 @@
           <ColumnDefinition Width="60*"/>
           <ColumnDefinition Width="20*"/>
         </Grid.ColumnDefinitions>
-
+  
         <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center"
                Spacing = "0"
                Padding = "0,0,0,0">
@@ -109,6 +109,11 @@
                   Style="{StaticResource buttonPageFlow}"
                   Clicked="OnDoneButtonClickedAsync">
           </Button>
+          <Button x:Name="ButtonClose"
+                 Text="Close"
+                 Style="{StaticResource buttonPageFlow}"
+                 Clicked="OnCloseButtonClickedAsync">
+          </Button>         
         </StackLayout>
 
       </Grid>
