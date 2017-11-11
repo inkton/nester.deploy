@@ -71,7 +71,8 @@
         <Grid.RowDefinitions>
           <RowDefinition Height="2*"/>
           <RowDefinition Height="10*"/>          
-          <RowDefinition Height="86*"/>     
+          <RowDefinition Height="76*"/>
+          <RowDefinition Height="10*"/>
           <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
@@ -116,7 +117,14 @@
                           >
           </sync:SfListView>
         </StackLayout>
-               
+
+        <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+          <Button x:Name="ButtonClose"
+                  Text="Close"
+                  Style="{StaticResource buttonPageFlow}"
+                  Clicked="OnCloseButtonClickedAsync">
+          </Button>
+        </StackLayout>        
 
       </Grid>
 

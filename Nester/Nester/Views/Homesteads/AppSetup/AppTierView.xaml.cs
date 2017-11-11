@@ -43,6 +43,12 @@ namespace Nester.Views
                 _appViewModel.Validated = (
                      AppTypeTierView.SelectedItem != null
                     );
+
+                if (_appViewModel.Validated)
+                {
+                    _appViewModel.SelectedAppServiceTier = 
+                        AppTypeTierView.SelectedItem as Admin.AppServiceTier;
+                }
             }
         }
 

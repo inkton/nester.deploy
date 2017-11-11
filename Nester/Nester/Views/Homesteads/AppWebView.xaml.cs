@@ -94,7 +94,7 @@ namespace Nester.Views
         {
             try
             {
-                LoadView(new AppView(_appViewModel));
+                LoadHomeView();
             }
             catch (Exception ex)
             {

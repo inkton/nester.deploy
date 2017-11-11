@@ -234,11 +234,7 @@ namespace Nester.Views
 
             if (status.Code >= 0)
             {
-                if (nest == null)
-                {
-                    _nests.Remove(nest);
-                }
-
+                _nests.Remove(theNest);
                 OnPropertyChanged("Nests");
             }
 
