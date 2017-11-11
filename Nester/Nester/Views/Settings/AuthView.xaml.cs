@@ -75,5 +75,17 @@ namespace Nester.Views
         {
             _masterDetailPage.IsPresented = true;
         }
+
+        async private void OnCloseButtonClickedAsync(object sender, EventArgs e)
+        {
+            try
+            {
+                LoadHomeView();
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+        }
     }
 }

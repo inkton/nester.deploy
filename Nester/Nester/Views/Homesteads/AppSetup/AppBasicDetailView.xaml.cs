@@ -168,11 +168,16 @@ namespace Nester.Views
 
         private async void Tag_UnfocusedAsync(object sender, FocusEventArgs e)
         {
-            string tag = (sender as Xamarin.Forms.Entry).Text.Trim();
-            if (tag != null && tag.Length > 0)
+            string tag = (sender as Xamarin.Forms.Entry).Text;
+            if (tag == null)
+                return;
+
+            string tagTrimmed = tag.Trim();
+
+            if (tagTrimmed.Length > 0)
             {
                 _appSearch.EditApp.Owner = null;
-                _appSearch.EditApp.Tag = tag;
+                _appSearch.EditApp.Tag = tagTrimmed;
 
                 Cloud.ServerStatus status = await _appSearch.QueryAppAsync(
                     null, true, false);

@@ -90,20 +90,28 @@ namespace Nester.Views
             {
                 Views.View view = null;
 
-                if (_appViewModel.EditApp.IsBusy)
+                if (_appViewModel != null)
                 {
-                    view = new BannerView(BannerView.Status.Updating);
-                }
-                else if (!_appViewModel.EditApp.IsDeployed)
-                {
-                    view = new BannerView(BannerView.Status.WaitingDeployment);
+                    if (_appViewModel.EditApp.IsBusy)
+                    {
+                        view = new BannerView(BannerView.Status.Updating);
+                    }
+                    else if (!_appViewModel.EditApp.IsDeployed)
+                    {
+                        view = new BannerView(BannerView.Status.WaitingDeployment);
+                    }
+                    else
+                    {
+                        view = new Views.AppView(_appViewModel);
+                    }
+
+                    view.AppViewModel = _appViewModel;
                 }
                 else
                 {
-                    view = new Views.AppView(_appViewModel);
+                    view = new BannerView(BannerView.Status.WaitingDeployment);
                 }
 
-                view.AppViewModel = _appViewModel;
                 view.LoadView = _viewLoader;
                 _viewLoader(view);
             }
