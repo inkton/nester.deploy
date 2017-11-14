@@ -282,6 +282,21 @@ namespace Nester.Views
             }
         }
 
+        public string PaymentNotice
+        {
+            get
+            {
+                if (ThisUI.User.TerritoryISOCode == "AU")
+                {
+                    return "The prices are in US Dollars and do not include GST.";
+                }
+                else
+                {
+                    return "The prices are in US Dollars. ";
+                }                
+            }
+        }
+
         #endregion  
 
         #region MariaDB Tier
