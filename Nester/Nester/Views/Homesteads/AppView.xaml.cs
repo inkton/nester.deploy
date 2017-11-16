@@ -1,4 +1,26 @@
-﻿using System;
+﻿/*
+    Copyright (c) 2017 Inkton.
+
+    Permission is hereby granted, free of charge, to any person obtaining
+    a copy of this software and associated documentation files (the "Software"),
+    to deal in the Software without restriction, including without limitation
+    the rights to use, copy, modify, merge, publish, distribute, sublicense,
+    and/or sell copies of the Software, and to permit persons to whom the Software
+    is furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+    OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
+    OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +40,8 @@ namespace Nester.Views
             InitializeComponent();
 
             SetActivityMonotoring(ServiceActive,
-                new List<Xamarin.Forms.View> {
+                new List<Xamarin.Forms.View>
+                {
                 });
 
             _appViewModel = appViewModel;
@@ -106,7 +129,7 @@ namespace Nester.Views
                 OnPropertyChanged("App");
             }
             catch (Exception)
-            {   
+            {
                 // The connection may fail
             }
         }
@@ -187,52 +210,52 @@ namespace Nester.Views
             {
                 _appViewModel.LogViewModel.EditNestLog = nestLog;
                 Message.Text = nestLog.Message;
-/*                
-                if (_appViewModel.LogViewModel.DiskSpaceLogs != null)
-                {
-                    var diskspaceLog = _appViewModel.LogViewModel.DiskSpaceLogs.FirstOrDefault(
-                            x => x.Time >= nestLog.Time);
-                    if (diskspaceLog != null)
-                    {
-                        FocusDisk.Text = string.Format("{0:P1}",
-                            diskspaceLog.Used / (diskspaceLog.Used + diskspaceLog.Available + diskspaceLog.ReservedForRoot));
-                    }
-                }
+                /*                
+                                if (_appViewModel.LogViewModel.DiskSpaceLogs != null)
+                                {
+                                    var diskspaceLog = _appViewModel.LogViewModel.DiskSpaceLogs.FirstOrDefault(
+                                            x => x.Time >= nestLog.Time);
+                                    if (diskspaceLog != null)
+                                    {
+                                        FocusDisk.Text = string.Format("{0:P1}",
+                                            diskspaceLog.Used / (diskspaceLog.Used + diskspaceLog.Available + diskspaceLog.ReservedForRoot));
+                                    }
+                                }
 
-                if (_appViewModel.LogViewModel.SystemCPULogs != null)
-                {
-                    var cpuLog = _appViewModel.LogViewModel.SystemCPULogs.FirstOrDefault(
-                            x => x.Time >= nestLog.Time);
-                    if (cpuLog != null)
-                    {
-                        FocusCPU.Text = string.Format("{0:P1}",
-                            (cpuLog.User + cpuLog.System + cpuLog.IRQ + cpuLog.Nice + cpuLog.IOWait) / 100);
-                    }
-                }
+                                if (_appViewModel.LogViewModel.SystemCPULogs != null)
+                                {
+                                    var cpuLog = _appViewModel.LogViewModel.SystemCPULogs.FirstOrDefault(
+                                            x => x.Time >= nestLog.Time);
+                                    if (cpuLog != null)
+                                    {
+                                        FocusCPU.Text = string.Format("{0:P1}",
+                                            (cpuLog.User + cpuLog.System + cpuLog.IRQ + cpuLog.Nice + cpuLog.IOWait) / 100);
+                                    }
+                                }
 
-                if (_appViewModel.LogViewModel.SystemIPV4Logs != null)
-                {
-                    var ipv4Log = _appViewModel.LogViewModel.SystemIPV4Logs.FirstOrDefault(
-                            x => x.Time >= nestLog.Time);
-                    if (ipv4Log != null)
-                    {
-                        FocusNet.Text = string.Format("{0:0}/{0:0}",
-                             Math.Abs(ipv4Log.Sent / 1024),
-                             Math.Abs(ipv4Log.Received / 1024));
-                    }
-                }
+                                if (_appViewModel.LogViewModel.SystemIPV4Logs != null)
+                                {
+                                    var ipv4Log = _appViewModel.LogViewModel.SystemIPV4Logs.FirstOrDefault(
+                                            x => x.Time >= nestLog.Time);
+                                    if (ipv4Log != null)
+                                    {
+                                        FocusNet.Text = string.Format("{0:0}/{0:0}",
+                                             Math.Abs(ipv4Log.Sent / 1024),
+                                             Math.Abs(ipv4Log.Received / 1024));
+                                    }
+                                }
 
-                if (_appViewModel.LogViewModel.SystemRAMLogs != null)
-                {
-                    var ramLog = _appViewModel.LogViewModel.SystemRAMLogs.FirstOrDefault(
-                             x => x.Time >= nestLog.Time);
-                    if (ramLog != null)
-                    {
-                        FocusRAM.Text = string.Format("{0:P1}",
-                            ramLog.Used / (ramLog.Used + ramLog.Cached + ramLog.Buffers));
-                    }
-                }
-*/
+                                if (_appViewModel.LogViewModel.SystemRAMLogs != null)
+                                {
+                                    var ramLog = _appViewModel.LogViewModel.SystemRAMLogs.FirstOrDefault(
+                                             x => x.Time >= nestLog.Time);
+                                    if (ramLog != null)
+                                    {
+                                        FocusRAM.Text = string.Format("{0:P1}",
+                                            ramLog.Used / (ramLog.Used + ramLog.Cached + ramLog.Buffers));
+                                    }
+                                }
+                */
             }
         }
 
@@ -332,7 +355,7 @@ namespace Nester.Views
 
                 if (yes)
                 {
-                    if (_appViewModel.EditApp.Deployment != null)
+                    if (_appViewModel.EditApp.IsDeploymentValid)
                     {
                         await Process(_appViewModel.EditApp.Deployment, true,
                             _appViewModel.DeploymentModel.RemoveDeploymentAsync

@@ -184,16 +184,28 @@
               </ViewCell>
             </DataTemplate>
           </sync:SfListView.ItemTemplate>
+        
+          <sync:SfListView.FooterTemplate>
+            <DataTemplate>
+              <Grid HeightRequest="45">
+                <Label Text="{Binding PaymentNotice}" 
+                       Style="{StaticResource nesterInfoLabelMinor}"
+                       Margin="5,0,0,0"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"/>
+              </Grid>
+            </DataTemplate>
+          </sync:SfListView.FooterTemplate>      
         </sync:SfListView>
-
-      <StackLayout Orientation="Horizontal">
-        <Label Style="{StaticResource nesterFieldLabel}"
-            Text="MariaDB (MySQL)" HorizontalOptions="Start" VerticalOptions="Center">
-        </Label>
-        <Switch IsToggled="{Binding MariaDBEnabled, Mode=TwoWay}"
-                Scale="0.8" HorizontalOptions="End" VerticalOptions="Center">
-        </Switch>
-      </StackLayout>
+      
+        <StackLayout Orientation="Horizontal">
+          <Label Style="{StaticResource nesterFieldLabel}"
+              Text="MariaDB (MySQL)" HorizontalOptions="Start" VerticalOptions="Center">
+          </Label>
+          <Switch x:Name="MariaDBEnabled"
+                  Scale="0.8" HorizontalOptions="End" VerticalOptions="Center">
+          </Switch>
+        </StackLayout>
 
     </StackLayout>
 
