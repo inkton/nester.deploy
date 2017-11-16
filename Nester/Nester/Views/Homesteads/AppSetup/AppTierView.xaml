@@ -202,7 +202,7 @@
           <Label Style="{StaticResource nesterFieldLabel}"
               Text="MariaDB (MySQL)" HorizontalOptions="Start" VerticalOptions="Center">
           </Label>
-          <Switch IsToggled="{Binding MariaDBEnabled, Mode=TwoWay}"
+          <Switch x:Name="MariaDBEnabled"
                   Scale="0.8" HorizontalOptions="End" VerticalOptions="Center">
           </Switch>
         </StackLayout>
