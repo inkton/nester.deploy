@@ -7,11 +7,11 @@
     <ProjectGuid>{499CF041-D09D-47CC-8D8E-DFD0F92CA797}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nester.UWP</RootNamespace>
-    <AssemblyName>Nester.UWP</AssemblyName>
+    <RootNamespace>Inkton.Nester.UWP</RootNamespace>
+    <AssemblyName>Inkton.Nester.Deploy.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.16299.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
@@ -22,7 +22,7 @@
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x64</AppxBundlePlatforms>
     <PackageCertificateThumbprint>5D1F0CC1E77F411A5FEF7D46F2D21F2A9EFB7E68</PackageCertificateThumbprint>
-    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+    <AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -96,6 +96,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="app-background.png" />
     <Content Include="app.config" />
     <None Include="Nester.UWP_StoreKey.pfx" />
     <None Include="Nester.UWP_TemporaryKey.pfx" />
@@ -206,9 +207,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Nester\Nester.csproj">
-      <Project>{301ae7da-1676-4866-819f-87ac3a5d274a}</Project>
-      <Name>Nester</Name>
+    <ProjectReference Include="..\Nester\DeployApp.csproj">
+      <Project>{D9B1665E-E232-47FC-8C6B-3CED1E9F4D92}</Project>
+      <Name>DeployApp</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

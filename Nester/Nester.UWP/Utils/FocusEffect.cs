@@ -26,12 +26,12 @@ using Windows.UI;
 using Windows.UI.Xaml.Media;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.UWP;
-using Nester.UWP.Utils;
+using Inkton.Nester.UWP.Utils;
 
-[assembly: ResolutionGroupName("Nester")]
+[assembly: ResolutionGroupName("Inkton.Nester")]
 [assembly: ExportEffect(typeof(FocusEffect), "FocusEffect")]
 
-namespace Nester.UWP.Utils
+namespace Inkton.Nester.UWP.Utils
 {
     public class FocusEffect : PlatformEffect
     {

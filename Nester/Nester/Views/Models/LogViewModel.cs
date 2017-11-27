@@ -28,11 +28,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Xamarin.Forms;
-using Nester.Admin;
-using Nester.Cloud;
+using Inkton.Nester.Admin;
+using Inkton.Nester.Cloud;
 using Syncfusion.SfChart.XForms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
     public class LogViewModel : ViewModel
     {

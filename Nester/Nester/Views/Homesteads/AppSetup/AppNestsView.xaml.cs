@@ -30,12 +30,14 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
-    public partial class AppNestsView : Nester.Views.View
+    public partial class AppNestsView : Inkton.Nester.Views.View
     {
-        public AppNestsView(AppViewModel appViewModel)
+        public AppNestsView(Views.AppModelPair modelPair)
         {
+            _modelPair = modelPair;
+
             InitializeComponent();
 
             SetActivityMonotoring(ServiceActive,
@@ -55,11 +57,19 @@ namespace Nester.Views
                     ButtonDone
                 });
 
-            _appViewModel = appViewModel;
-            BindingContext = _appViewModel.NestModel;
+            BindingContext = _modelPair.AppViewModel.NestModel;
 
             AppNestsList.SelectionChanged += AppNestsList_SelectionChanged;
             Memory.SelectedIndexChanged += Memory_SelectedIndexChanged;
+
+            ButtonDone.IsVisible = _modelPair.WizardMode;
+            if (_modelPair.WizardMode)
+            {
+                // hide but do not collapse
+                TopButtonPanel.Opacity = 0;
+
+                NavigationPage.SetHasNavigationBar(this, true);
+            }
         }
 
         async private void OnButtonBasicDetailsClickedAsync(object sender, EventArgs e)
@@ -68,7 +78,7 @@ namespace Nester.Views
 
             try
             {
-                LoadView(new AppBasicDetailView(_appViewModel));
+                MainSideView.LoadView(new AppBasicDetailView(_modelPair));
             }
             catch (Exception ex)
             {
@@ -84,9 +94,9 @@ namespace Nester.Views
 
             try
             {
-                await _appViewModel.DomainModel.InitAsync();
+                await _modelPair.AppViewModel.DomainModel.InitAsync();
 
-                LoadView(new AppDomainView(_appViewModel));
+                MainSideView.LoadView(new AppDomainView(_modelPair));
             }
             catch (Exception ex)
             {
@@ -102,9 +112,9 @@ namespace Nester.Views
 
             try
             {
-                await _appViewModel.ContactModel.InitAsync();
+                await _modelPair.AppViewModel.ContactModel.InitAsync();
 
-                LoadView(new ContactsView(_appViewModel));
+                MainSideView.LoadView(new ContactsView(_modelPair));
             }
             catch (Exception ex)
             {
@@ -121,8 +131,8 @@ namespace Nester.Views
                 AppNestsList.SelectedItems.RemoveAt(0);
             }
 
-            _appViewModel.NestModel.EditNest = new Admin.Nest();
-            _appViewModel.NestModel.EditNest.App = _appViewModel.EditApp;
+            _modelPair.AppViewModel.NestModel.EditNest = new Admin.Nest();
+            _modelPair.AppViewModel.NestModel.EditNest.App = _modelPair.AppViewModel.EditApp;
 
             SetDefaults();
 
@@ -147,7 +157,7 @@ namespace Nester.Views
             Admin.Nest browseNest = AppNestsList.SelectedItem as Admin.Nest;
             Admin.Nest copy = new Admin.Nest();
             Utils.Object.CopyPropertiesTo(browseNest, copy);
-            _appViewModel.NestModel.EditNest = copy;
+            _modelPair.AppViewModel.NestModel.EditNest = copy;
 
             int index = 0;
 
@@ -162,7 +172,7 @@ namespace Nester.Views
 
             Scaling.Value = browseNest.Scale;
 
-            Admin.NestPlatform platform = _appViewModel.NestModel.Platforms.First(
+            Admin.NestPlatform platform = _modelPair.AppViewModel.NestModel.Platforms.First(
                 x => x.Id == browseNest.PlatformId);
 
             if (platform.Tag == "mvc")
@@ -181,7 +191,7 @@ namespace Nester.Views
 
         private Admin.Nest CopyUpdate(Admin.Nest browseNest)
         {
-            browseNest.App = _appViewModel.EditApp;
+            browseNest.App = _modelPair.AppViewModel.EditApp;
             browseNest.Tag = Tag.Text;
             browseNest.Name = Name.Text;
             browseNest.NestStatus = "active";
@@ -190,17 +200,17 @@ namespace Nester.Views
 
             if (Type.SelectedIndex == 0)
             {
-                platform = _appViewModel.NestModel.Platforms.First(
+                platform = _modelPair.AppViewModel.NestModel.Platforms.First(
                         x => x.Tag == "mvc");
             }
             else if (Type.SelectedIndex == 1)
             {
-                platform = _appViewModel.NestModel.Platforms.First(
+                platform = _modelPair.AppViewModel.NestModel.Platforms.First(
                         x => x.Tag == "api");
             }
             else if (Type.SelectedIndex == 2)
             {
-                platform = _appViewModel.NestModel.Platforms.First(
+                platform = _modelPair.AppViewModel.NestModel.Platforms.First(
                         x => x.Tag == "worker");
             }
 
@@ -242,26 +252,25 @@ namespace Nester.Views
             int totalMemoryMbytes = value * multiplier * scale;
             UsedMemory.Text = totalMemoryMbytes.ToString() + "m";
 
-            if (_appViewModel.NestModel.EditNest != null)
+            if (_modelPair.AppViewModel.NestModel.EditNest != null)
             {
-                _appViewModel.NestModel.EditNest.ScaleSize = memoryString;
-                _appViewModel.NestModel.EditNest.Scale = scale;
+                _modelPair.AppViewModel.NestModel.EditNest.ScaleSize = memoryString;
+                _modelPair.AppViewModel.NestModel.EditNest.Scale = scale;
             }
         }
 
         private void Validate()
         {
-            _appViewModel.NestModel.Validated = false;
-            _appViewModel.NestModel.CanUpdate = false;
+            _modelPair.AppViewModel.NestModel.Validated = false;
+            _modelPair.AppViewModel.NestModel.CanUpdate = false;
 
-            if (_appViewModel != null &&
-                _appViewModel.NestModel != null)
+            if (TagValidator != null)
             {
                 /* used to enable the add function. a domain can
                  * be added only if valid fields and no list item 
                  * has been selected and currenly receivng focus.
                  */
-                _appViewModel.NestModel.Validated = (
+                _modelPair.AppViewModel.NestModel.Validated = (
                     TagValidator.IsValid &&
                     NameValidator.IsValid 
                 );
@@ -270,8 +279,8 @@ namespace Nester.Views
                  * be updaed only if valid fields has been selected 
                  * and an item from a list is selected.
                  */
-                _appViewModel.NestModel.CanUpdate =
-                    _appViewModel.NestModel.Validated &&
+                _modelPair.AppViewModel.NestModel.CanUpdate =
+                    _modelPair.AppViewModel.NestModel.Validated &&
                     AppNestsList.SelectedItem != null;
             }
         }
@@ -282,9 +291,9 @@ namespace Nester.Views
 
             try
             {
-                if (_appViewModel.NestModel.Nests.Any())
+                if (_modelPair.AppViewModel.NestModel.Nests.Any())
                 {
-                    Admin.Nest nest = _appViewModel.NestModel.Nests.First();
+                    Admin.Nest nest = _modelPair.AppViewModel.NestModel.Nests.First();
                     AppNestsList.SelectedItem = nest;
                 }
 
@@ -330,7 +339,7 @@ namespace Nester.Views
 
             try
             {
-                var existNests = from nest in _appViewModel.NestModel.Nests
+                var existNests = from nest in _modelPair.AppViewModel.NestModel.Nests
                                     where nest.Tag == Tag.Text
                                     select nest;
                 if (existNests.Any())
@@ -341,11 +350,11 @@ namespace Nester.Views
                 }
 
                 Admin.Nest newNest = CopyUpdate(new Admin.Nest());
-                Admin.NestPlatform workerPlatform = _appViewModel.NestModel.Platforms.First(
+                Admin.NestPlatform workerPlatform = _modelPair.AppViewModel.NestModel.Platforms.First(
                     x => x.Tag == "worker");
 
                 // the new nest is a handler
-                var handlerNests = from nest in _appViewModel.NestModel.Nests
+                var handlerNests = from nest in _modelPair.AppViewModel.NestModel.Nests
                                    where nest.PlatformId != workerPlatform.Id
                                    select nest;
 
@@ -357,7 +366,7 @@ namespace Nester.Views
                     return;
                 }
 
-                await _appViewModel.NestModel.CreateNestAsync(newNest);
+                await _modelPair.AppViewModel.NestModel.CreateNestAsync(newNest);
 
                 Clear();
             }
@@ -376,7 +385,7 @@ namespace Nester.Views
             try
             {
                 await Process(AppNestsList.SelectedItem as Admin.Nest, true,
-                    _appViewModel.NestModel.QueryNestAsync
+                    _modelPair.AppViewModel.NestModel.QueryNestAsync
                 );
 
                 SetDefaults();
@@ -397,7 +406,7 @@ namespace Nester.Views
             {
                 Admin.Nest updatingNest = AppNestsList.SelectedItem as Admin.Nest;
 
-                var existNests = from nest in _appViewModel.NestModel.Nests
+                var existNests = from nest in _modelPair.AppViewModel.NestModel.Nests
                                  where nest.Tag == Tag.Text && nest.Id != updatingNest.Id
                                  select nest;
                 if (existNests.Any())
@@ -411,7 +420,7 @@ namespace Nester.Views
                 if (updateNest != null)
                 {
                     await Process(updateNest, true,
-                        _appViewModel.NestModel.UpdateNestAsync
+                        _modelPair.AppViewModel.NestModel.UpdateNestAsync
                     );
 
                     SetDefaults();
@@ -433,7 +442,7 @@ namespace Nester.Views
             {
                 Admin.Nest nest = AppNestsList.SelectedItem as Admin.Nest;
 
-                if (_appViewModel.EditApp.IsDeployed)
+                if (_modelPair.AppViewModel.EditApp.IsDeployed)
                 {
                     if (nest.Platform.Tag != "worker")
                     {
@@ -443,7 +452,7 @@ namespace Nester.Views
                 }
 
                 await Process(nest, true,
-                    _appViewModel.NestModel.RemoveNestAsync,
+                    _modelPair.AppViewModel.NestModel.RemoveNestAsync,
                        new Func<Admin.Nest, Task<bool>>(
                             async (obj) =>
                             {
@@ -466,10 +475,10 @@ namespace Nester.Views
         {
             try
             {
-                Admin.NestPlatform workerPlatform = _appViewModel.NestModel.Platforms.First(
+                Admin.NestPlatform workerPlatform = _modelPair.AppViewModel.NestModel.Platforms.First(
                     x => x.Tag == "worker");
 
-                var handlerNests = from nest in _appViewModel.NestModel.Nests
+                var handlerNests = from nest in _modelPair.AppViewModel.NestModel.Nests
                                    where nest.PlatformId != workerPlatform.Id
                                    select nest;
 
@@ -479,24 +488,22 @@ namespace Nester.Views
                     return;
                 }
 
-                if (_appViewModel.WizardMode)
+                if (_modelPair.WizardMode)
                 {
-                    await _appViewModel.ContactModel.InitAsync();
+                    await _modelPair.AppViewModel.ContactModel.InitAsync();
 
                     // if currently trvelling back and forth on the 
                     // app wizard - move to the next
-                    await Navigation.PushAsync(new ContactsView(_appViewModel));
+
+                    ContactsView contactsView = new ContactsView(_modelPair);
+                    contactsView.MainSideView = MainSideView;
+                    await MainSideView.Detail.Navigation.PushAsync(contactsView);
                 }
                 else
                 {
-                    if (_appViewModel.EditApp.IsDeployed)
-                    {
-                        await DisplayAlert("Nester", "Make sure to re-deploy the app for changes to take effect", "OK");
-                    }
-
                     // Head back to homepage if the 
                     // page was called from here
-                    LoadHomeView();
+                    ResetView();
                 }
             }
             catch (Exception ex)

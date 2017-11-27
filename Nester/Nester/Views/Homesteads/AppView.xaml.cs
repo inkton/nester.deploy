@@ -28,15 +28,28 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Syncfusion.SfChart.XForms;
 using System.Collections.ObjectModel;
-using Nester.Admin;
+    using Inkton.Nester.Admin;
 using System.Net;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
-    public partial class AppView : Nester.Views.View
+    public partial class AppView : View
     {
-        public AppView(AppViewModel appViewModel)
+        public enum Status
         {
+            Deploying,
+            Refreshing,
+            WaitingDeployment,
+            Deployed
+        }
+
+        private Status _status = Status.Deployed;
+
+        public AppView(Views.AppModelPair modelPair)
+        {
+            _modelPair = modelPair;
+            _modelPair.WizardMode = false;
+
             InitializeComponent();
 
             SetActivityMonotoring(ServiceActive,
@@ -44,19 +57,16 @@ namespace Nester.Views
                 {
                 });
 
-            _appViewModel = appViewModel;
-            _appViewModel.WizardMode = false;
-
-            if (_appViewModel.EditApp != null)
+            if (_modelPair.AppViewModel.EditApp != null)
             {
-                Title = _appViewModel.EditApp.Name;
+                Title = _modelPair.AppViewModel.EditApp.Name;
             }
             else
             {
                 Title = "Hello World";
             }
 
-            BindingContext = _appViewModel;
+            BindingContext = _modelPair.AppViewModel;
 
             DateTime endTime = DateTime.Now.ToUniversalTime();
             AnalyzeDateUTC.Date = endTime;
@@ -84,24 +94,23 @@ namespace Nester.Views
             ButtonAppDeploy.Clicked += ButtonAppDeploy_ClickedAsync;
             ButtonAppView.Clicked += ButtonAppView_ClickedAsync;
             ButtonAppDownload.Clicked += ButtonAppDownload_ClickedAsync;
-            ButtonAppMenu.Clicked += ButtonAppMenu_Clicked;
             ButtonGetAnalytics.Clicked += ButtonGetAnalytics_Clicked;
             ButtonAddToSlack.Clicked += ButtonAddToSlack_ClickedAsync;
 
             NestLogs.SelectionChanged += NestLogs_SelectionChanged;
 
-            _appViewModel.LogViewModel.SetupDiskSpaceSeries(
+            _modelPair.AppViewModel.LogViewModel.SetupDiskSpaceSeries(
                 DiskSpaceData.Series[0]
                 );
 
-            _appViewModel.LogViewModel.SetupRAMSeries(
+            _modelPair.AppViewModel.LogViewModel.SetupRAMSeries(
                 RamData.Series[0],
                 RamData.Series[1],
                 RamData.Series[2],
                 RamData.Series[3]
                 );
 
-            _appViewModel.LogViewModel.SetupCPUSeries(
+            _modelPair.AppViewModel.LogViewModel.SetupCPUSeries(
                 CpuData.Series[0],
                 CpuData.Series[1],
                 CpuData.Series[2],
@@ -109,24 +118,80 @@ namespace Nester.Views
                 CpuData.Series[4]
                 );
 
-            _appViewModel.LogViewModel.SetupIpv4Series(
+            _modelPair.AppViewModel.LogViewModel.SetupIpv4Series(
                 Ipv4Data.Series[0],
                 Ipv4Data.Series[1]);
         }
 
-        async public void UpdateAsync()
+        public Status State
+        {
+            set
+            {
+                _status = value;
+
+                switch (_status)
+                {
+                    case Status.Deployed:
+                        InactiveApp.IsVisible = false;
+                        Metrics.IsVisible = true;
+                        break;
+
+                    case Status.Refreshing:
+                        ProgressControl.Title = "Refreshing ...";
+                        ProgressControl.TitlePlacement = Syncfusion.SfBusyIndicator.XForms.TitlePlacement.Bottom;
+                        ProgressControl.AnimationType = Syncfusion.SfBusyIndicator.XForms.AnimationTypes.Rectangle;
+
+                        ProgressControl.IsVisible = true;
+                        Logo.IsVisible = false;
+                        InactiveApp.IsVisible = true;
+                        Metrics.IsVisible = false;
+                        break;
+
+                    case Status.Deploying:
+                        ProgressControl.Title = "Deploying ...";
+                        ProgressControl.TitlePlacement = Syncfusion.SfBusyIndicator.XForms.TitlePlacement.Bottom;
+                        ProgressControl.AnimationType = Syncfusion.SfBusyIndicator.XForms.AnimationTypes.Gear;
+
+                        ProgressControl.IsVisible = true;
+                        Logo.IsVisible = false;
+                        InactiveApp.IsVisible = true;
+                        Metrics.IsVisible = false;
+                        break;
+
+                    case Status.WaitingDeployment:
+                        ProgressControl.IsVisible = false;
+                        Logo.IsVisible = true;
+                        InactiveApp.IsVisible = true;
+                        Metrics.IsVisible = false;
+                        break;
+                }
+            }
+            get
+            {
+                return _status;
+            }
+        }
+
+        async public void ReloadAsync()
         {
             try
             {
+                Status oldState = _status;
+                State = Status.Refreshing;
+
                 Cloud.ServerStatus status;
 
-                status = await _appViewModel.InitAsync();
+                status = await _modelPair.AppViewModel.InitAsync();
                 if (status.Code < 0)
                 {
                     await DisplayAlert("Nester", "Failed to get an update of " + App.Name, "OK");
                 }
 
+                GetAnalyticsAsync();
+
                 OnPropertyChanged("App");
+
+                State = oldState;
             }
             catch (Exception)
             {
@@ -156,50 +221,7 @@ namespace Nester.Views
                 return;
             }
 
-#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-
-            if (_appViewModel.LogViewModel.NestLogs != null)
-            {
-                _appViewModel.LogViewModel.NestLogs.Clear();
-            }
-            if (_appViewModel.LogViewModel.SystemCPULogs != null)
-            {
-                _appViewModel.LogViewModel.SystemCPULogs.Clear();
-            }
-            if (_appViewModel.LogViewModel.DiskSpaceLogs != null)
-            {
-                _appViewModel.LogViewModel.DiskSpaceLogs.Clear();
-            }
-            if (_appViewModel.LogViewModel.SystemIPV4Logs != null)
-            {
-                _appViewModel.LogViewModel.SystemIPV4Logs.Clear();
-            }
-            if (_appViewModel.LogViewModel.SystemRAMLogs != null)
-            {
-                _appViewModel.LogViewModel.SystemRAMLogs.Clear();
-            }
-
-            _appViewModel.LogViewModel.QueryNestLogsAsync(
-                string.Format("id >= {0} and id < {1}",
-                        beginId, endId
-                    ));
-
-            beginId /= 1000;
-            endId /= 1000;
-
-            string filter = string.Format("id >= {0} and id < {1}",
-                        beginId, endId
-                    );
-
-            _appViewModel.LogViewModel.QuerySystemCPULogsAsync(filter);
-
-            _appViewModel.LogViewModel.QueryDiskSpaceLogsAsync(filter);
-
-            _appViewModel.LogViewModel.QuerSystemIPV4LogsAsync(filter);
-
-            _appViewModel.LogViewModel.QuerSystemRAMLogsAsync(filter);
-
-#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+            _modelPair.AppViewModel.QueryMetricsAsync(beginId, endId);
         }
 
         private void NestLogs_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
@@ -208,12 +230,12 @@ namespace Nester.Views
 
             if (nestLog != null)
             {
-                _appViewModel.LogViewModel.EditNestLog = nestLog;
+                _modelPair.AppViewModel.LogViewModel.EditNestLog = nestLog;
                 Message.Text = nestLog.Message;
                 /*                
-                                if (_appViewModel.LogViewModel.DiskSpaceLogs != null)
+                                if (_modelPair.AppViewModel.LogViewModel.DiskSpaceLogs != null)
                                 {
-                                    var diskspaceLog = _appViewModel.LogViewModel.DiskSpaceLogs.FirstOrDefault(
+                                    var diskspaceLog = _modelPair.AppViewModel.LogViewModel.DiskSpaceLogs.FirstOrDefault(
                                             x => x.Time >= nestLog.Time);
                                     if (diskspaceLog != null)
                                     {
@@ -222,9 +244,9 @@ namespace Nester.Views
                                     }
                                 }
 
-                                if (_appViewModel.LogViewModel.SystemCPULogs != null)
+                                if (_modelPair.AppViewModel.LogViewModel.SystemCPULogs != null)
                                 {
-                                    var cpuLog = _appViewModel.LogViewModel.SystemCPULogs.FirstOrDefault(
+                                    var cpuLog = _modelPair.AppViewModel.LogViewModel.SystemCPULogs.FirstOrDefault(
                                             x => x.Time >= nestLog.Time);
                                     if (cpuLog != null)
                                     {
@@ -233,9 +255,9 @@ namespace Nester.Views
                                     }
                                 }
 
-                                if (_appViewModel.LogViewModel.SystemIPV4Logs != null)
+                                if (_modelPair.AppViewModel.LogViewModel.SystemIPV4Logs != null)
                                 {
-                                    var ipv4Log = _appViewModel.LogViewModel.SystemIPV4Logs.FirstOrDefault(
+                                    var ipv4Log = _modelPair.AppViewModel.LogViewModel.SystemIPV4Logs.FirstOrDefault(
                                             x => x.Time >= nestLog.Time);
                                     if (ipv4Log != null)
                                     {
@@ -245,9 +267,9 @@ namespace Nester.Views
                                     }
                                 }
 
-                                if (_appViewModel.LogViewModel.SystemRAMLogs != null)
+                                if (_modelPair.AppViewModel.LogViewModel.SystemRAMLogs != null)
                                 {
-                                    var ramLog = _appViewModel.LogViewModel.SystemRAMLogs.FirstOrDefault(
+                                    var ramLog = _modelPair.AppViewModel.LogViewModel.SystemRAMLogs.FirstOrDefault(
                                              x => x.Time >= nestLog.Time);
                                     if (ramLog != null)
                                     {
@@ -276,9 +298,9 @@ namespace Nester.Views
             try
             {
                 Admin.Devkit devkit = new Admin.Devkit();
-                devkit.Contact = _appViewModel.ContactModel.OwnerContact;
+                devkit.Contact = _modelPair.AppViewModel.ContactModel.OwnerContact;
 
-                await _appViewModel.DeploymentModel.QueryDevkitAsync(devkit);
+                await _modelPair.AppViewModel.DeploymentModel.QueryDevkitAsync(devkit);
 
                 await DisplayAlert("Nester", "The devkit has been emailed to you", "OK");
             }
@@ -292,9 +314,9 @@ namespace Nester.Views
         {
             try
             {
-                await _appViewModel.QueryAppNotificationsAsync();
+                await _modelPair.AppViewModel.QueryAppNotificationsAsync();
 
-                LoadView(new NotificationView(_appViewModel));
+                MainSideView.LoadView(new NotificationView(_modelPair));
             }
             catch (Exception ex)
             {
@@ -306,7 +328,7 @@ namespace Nester.Views
         {
             try
             {
-                await _appViewModel.ContactModel.QueryContactCollaborateAccountAsync();
+                await _modelPair.AppViewModel.ContactModel.QueryContactCollaborateAccountAsync();
 
                 string clientId = "237221988247.245551261632";
                 string scope = "incoming-webhook,chat:write:bot";
@@ -314,14 +336,10 @@ namespace Nester.Views
                 string url = "https://slack.com/oauth/authorize?" +
                     "&client_id=" + WebUtility.UrlEncode(clientId) +
                     "&scope=" + WebUtility.UrlEncode(scope) +
-                    "&state=" + WebUtility.UrlEncode(_appViewModel.ContactModel.Collaboration.State);
+                    "&state=" + WebUtility.UrlEncode(_modelPair.AppViewModel.ContactModel.Collaboration.State);
 
                 Device.OpenUri(new Uri(url));
 
-                if (_appViewModel.EditApp.IsDeployed)
-                {
-                    await DisplayAlert("Nester", "Make sure to re-deploy the app for changes to take effect", "OK");
-                }
             }
             catch (Exception ex)
             {
@@ -335,7 +353,7 @@ namespace Nester.Views
 
             try
             {
-                LoadView(new AppWebView(_appViewModel));
+                MainSideView.LoadView(new AppWebView(_modelPair));
             }
             catch (Exception ex)
             {
@@ -355,13 +373,13 @@ namespace Nester.Views
 
                 if (yes)
                 {
-                    if (_appViewModel.EditApp.IsDeploymentValid)
+                    if (_modelPair.AppViewModel.EditApp.IsDeploymentValid)
                     {
-                        await Process(_appViewModel.EditApp.Deployment, true,
-                            _appViewModel.DeploymentModel.RemoveDeploymentAsync
+                        await Process(_modelPair.AppViewModel.EditApp.Deployment, true,
+                            _modelPair.AppViewModel.DeploymentModel.RemoveDeploymentAsync
                         );
 
-                        await _appViewModel.InitAsync();
+                        await _modelPair.AppViewModel.InitAsync();
                     }
                 }
             }
@@ -377,19 +395,19 @@ namespace Nester.Views
         {
             try
             {
-                await _appViewModel.InitAsync();
+                await _modelPair.AppViewModel.InitAsync();
 
-                if (_appViewModel.PaymentModel.PaymentMethod.Proof == null ||
-                    _appViewModel.PaymentModel.PaymentMethod.Proof.Last4 == 0)
+                if (_modelPair.AppViewModel.PaymentModel.PaymentMethod.Proof == null ||
+                    _modelPair.AppViewModel.PaymentModel.PaymentMethod.Proof.Last4 == 0)
                 {
                     await DisplayAlert("Nester", "Please enter a payment method before app creation", "OK");
                     return;
                 }
 
-                Admin.NestPlatform workerPlatform = _appViewModel.NestModel.Platforms.First(
+                Admin.NestPlatform workerPlatform = _modelPair.AppViewModel.NestModel.Platforms.First(
                     x => x.Tag == "worker");
 
-                var handlerNests = from nest in _appViewModel.NestModel.Nests
+                var handlerNests = from nest in _modelPair.AppViewModel.NestModel.Nests
                                    where nest.PlatformId != workerPlatform.Id
                                    select nest;
 
@@ -399,18 +417,18 @@ namespace Nester.Views
                     return;
                 }
 
-                await _appViewModel.DeploymentModel.CollectInfoAsync();
+                await _modelPair.AppViewModel.DeploymentModel.CollectInfoAsync();
 
-                if (!_appViewModel.DeploymentModel.Deployments.Any())
+                if (!_modelPair.AppViewModel.DeploymentModel.Deployments.Any())
                 {
-                    Cloud.ServerStatus status = await _appViewModel.QueryAppServiceTierLocationsAsync(
-                        _appViewModel.SelectedAppServiceTier, false);
+                    Cloud.ServerStatus status = await _modelPair.AppViewModel.QueryAppServiceTierLocationsAsync(
+                        _modelPair.AppViewModel.SelectedAppServiceTier, false);
                     var forests = status.PayloadToList<Admin.Forest>();
-                    LoadView(new AppLocationView(_appViewModel, forests));
+                    MainSideView.LoadView(new AppLocationView(_modelPair, forests));
                 }
                 else
                 {
-                    LoadView(new AppSummaryView(_appViewModel));
+                    MainSideView.LoadView(new AppSummaryView(_modelPair));
                 }
             }
             catch (Exception ex)
@@ -423,19 +441,14 @@ namespace Nester.Views
         {
             try
             {
-                _appViewModel.WizardMode = false;
+                _modelPair.WizardMode = false;
 
-                LoadView(new AppBasicDetailView(_appViewModel));
+                MainSideView.LoadView(new AppBasicDetailView(_modelPair));
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Nester", ex.Message, "OK");
             }
-        }
-
-        private void ButtonAppMenu_Clicked(object sender, EventArgs e)
-        {
-            _masterDetailPage.IsPresented = true;
         }
     }
 }

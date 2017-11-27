@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nester", "Nester\Nester\Nester.csproj", "{D9B1665E-E232-47FC-8C6B-3CED1E9F4D92}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeployApp", "Nester\Nester\DeployApp.csproj", "{D9B1665E-E232-47FC-8C6B-3CED1E9F4D92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nester.Droid", "Nester\Nester.Droid\Nester.Droid.csproj", "{C8E6E81A-AD1F-42E0-A49F-F573BB1A05DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeployApp.Droid", "Nester\Nester.Droid\DeployApp.Droid.csproj", "{C8E6E81A-AD1F-42E0-A49F-F573BB1A05DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nester.iOS", "Nester\Nester.iOS\Nester.iOS.csproj", "{8FAA400E-92D4-4E46-AF27-67E043D86BBF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeployApp.iOS", "Nester\Nester.iOS\DeployApp.iOS.csproj", "{8FAA400E-92D4-4E46-AF27-67E043D86BBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nester.UWP", "Nester\Nester.UWP\Nester.UWP.csproj", "{499CF041-D09D-47CC-8D8E-DFD0F92CA797}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeployApp.UWP", "Nester\Nester.UWP\DeployApp.UWP.csproj", "{499CF041-D09D-47CC-8D8E-DFD0F92CA797}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -154,7 +154,6 @@ Global
 		{C8E6E81A-AD1F-42E0-A49F-F573BB1A05DD}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{C8E6E81A-AD1F-42E0-A49F-F573BB1A05DD}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
 		{C8E6E81A-AD1F-42E0-A49F-F573BB1A05DD}.Release|x64.ActiveCfg = Release|Any CPU
-		{C8E6E81A-AD1F-42E0-A49F-F573BB1A05DD}.Release|x64.Build.0 = Release|Any CPU
 		{C8E6E81A-AD1F-42E0-A49F-F573BB1A05DD}.Release|x64.Deploy.0 = Release|Any CPU
 		{C8E6E81A-AD1F-42E0-A49F-F573BB1A05DD}.Release|x86.ActiveCfg = Release|Any CPU
 		{C8E6E81A-AD1F-42E0-A49F-F573BB1A05DD}.Release|x86.Build.0 = Release|Any CPU

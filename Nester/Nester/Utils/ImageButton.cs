@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace Nester.Utils.Controls
+namespace Inkton.Nester.Utils.Controls
 {
     //<Grid Grid.Row="2" Grid.Column= "1" >
     //                          < Grid.ColumnDefinitions >

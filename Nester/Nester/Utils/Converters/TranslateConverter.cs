@@ -31,7 +31,7 @@ using System.Globalization;
 using System.Resources;
 using System.Reflection;
 
-namespace Nester.Utils
+namespace Inkton.Nester.Utils
 {
     public class TranslateConverter : IValueConverter
     {
@@ -40,7 +40,7 @@ namespace Nester.Utils
 
         public TranslateConverter()
         {
-            _resmgr = new ResourceManager("Nester.AppResources"
+            _resmgr = new ResourceManager("Inkon.Nester.Properties.Resources"
                                 , typeof(TranslateConverter).GetTypeInfo().Assembly);
             _ci = System.Globalization.CultureInfo.CurrentUICulture;
         }

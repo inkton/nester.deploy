@@ -28,16 +28,17 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
-    public partial class AppBasicDetailView : Nester.Views.View
+    public partial class AppBasicDetailView : Inkton.Nester.Views.View
     {
         private AppViewModel _appSearch = new AppViewModel();
 
-        public AppBasicDetailView(AppViewModel appViewModel)
+        public AppBasicDetailView(Views.AppModelPair modelPair)
         {
-            InitializeComponent();
+            _modelPair = modelPair;
 
+            InitializeComponent();
             Tag.Unfocused += Tag_UnfocusedAsync;
 
             AppTypeListView.SelectionMode = Syncfusion.ListView.XForms.SelectionMode.Single;
@@ -56,13 +57,25 @@ namespace Nester.Views
                     ButtonUpdate
                 });
 
-            _appViewModel = appViewModel;
-            BindingContext = _appViewModel;
+            BindingContext = _modelPair.AppViewModel;
 
             ButtonNests.Clicked += ButtonNests_ClickedAsync;
             ButtonContacts.Clicked += ButtonContacts_ClickedAsync;
             ButtonDomains.Clicked += ButtonDomains_ClickedAsync;
             ButtonUpdate.Clicked += ButtonUpdate_ClickedAsync;
+
+            ButtonDone.IsVisible = _modelPair.WizardMode;
+            if (_modelPair.WizardMode)
+            {
+                // hide but do not collapse
+                TopButtonPanel.Opacity = 0;
+                BottomButtonPanel.Opacity = 1;
+            }
+            else
+            {
+                TopButtonPanel.Opacity = 1;
+                BottomButtonPanel.Opacity = 0;
+            }
         }
 
         async private void ButtonUpdate_ClickedAsync(object sender, EventArgs e)
@@ -71,7 +84,7 @@ namespace Nester.Views
 
             try
             {
-                await _appViewModel.UpdateAppAsync();
+                await _modelPair.AppViewModel.UpdateAppAsync();
             }
             catch (Exception ex)
             {
@@ -79,7 +92,7 @@ namespace Nester.Views
             }
 
             IsServiceActive = false;
-        }
+        } 
 
         async private void ButtonDomains_ClickedAsync(object sender, EventArgs e)
         {
@@ -87,9 +100,9 @@ namespace Nester.Views
 
             try
             {
-                await _appViewModel.DomainModel.InitAsync();
+                await _modelPair.AppViewModel.DomainModel.InitAsync();
 
-                LoadView(new AppDomainView(_appViewModel));
+                MainSideView.LoadView(new AppDomainView(_modelPair));
             }
             catch (Exception ex)
             {
@@ -105,9 +118,9 @@ namespace Nester.Views
 
             try
             {
-                await _appViewModel.ContactModel.InitAsync();
+                await _modelPair.AppViewModel.ContactModel.InitAsync();
 
-                LoadView(new ContactsView(_appViewModel));
+                MainSideView.LoadView(new ContactsView(_modelPair));
             }
             catch (Exception ex)
             {
@@ -123,9 +136,9 @@ namespace Nester.Views
 
             try
             {
-                await _appViewModel.NestModel.InitAsync();
+                await _modelPair.AppViewModel.NestModel.InitAsync();
 
-                LoadView(new AppNestsView(_appViewModel));
+                MainSideView.LoadView(new AppNestsView(_modelPair));
             }
             catch (Exception ex)
             {
@@ -143,12 +156,12 @@ namespace Nester.Views
             {
                 AppTypeListView.SelectedItems.Clear();
 
-                foreach (AppViewModel.AppType appType in _appViewModel.ApplicationTypes)
+                foreach (AppViewModel.AppType appType in _modelPair.AppViewModel.ApplicationTypes)
                 {
-                    if (_appViewModel.EditApp.Type == appType.Tag)
+                    if (_modelPair.AppViewModel.EditApp.Type == appType.Tag)
                     {
                         AppTypeListView.SelectedItems.Add(appType);
-                        _appViewModel.EditApplicationType = appType;
+                        _modelPair.AppViewModel.EditApplicationType = appType;
                         break;
                     }
                 }
@@ -173,7 +186,7 @@ namespace Nester.Views
                 {
                     if (appType != null)
                     {
-                        _appViewModel.EditApplicationType = appType;
+                        _modelPair.AppViewModel.EditApplicationType = appType;
                         break;
                     }
                 }
@@ -215,13 +228,13 @@ namespace Nester.Views
 
         void Validate()
         {
-            if (_appViewModel != null)
+            if (TagValidator != null)
             {
-                _appViewModel.Validated = (
+                _modelPair.AppViewModel.Validated = (
                     TagValidator.IsValid &&
                     NameValidator.IsValid &&
                     PasswordValidator.IsValid &&
-                    _appViewModel.EditApplicationType != null
+                    _modelPair.AppViewModel.EditApplicationType != null
                     );
             }
         }
@@ -237,22 +250,18 @@ namespace Nester.Views
 
             try
             {
-                if (_appViewModel.WizardMode)
+                if (_modelPair.WizardMode)
                 {
-                    Navigation.InsertPageBefore(new AppTierView(_appViewModel), this);
-                    await Navigation.PopAsync();
+                    AppTierView tierView = new AppTierView(_modelPair);
+                    tierView.MainSideView = MainSideView;
+                    await MainSideView.Detail.Navigation.PushAsync(tierView);
                 }
                 else
                 {
                     // Head back to homepage if the 
                     // page was called from here
 
-                    if (_appViewModel.EditApp.IsDeployed)
-                    {
-                        await DisplayAlert("Nester", "Make sure to re-deploy the app for changes to take effect", "OK");
-                    }
-
-                    LoadHomeView();
+                    ResetView();
                 }
             }
             catch (Exception ex)

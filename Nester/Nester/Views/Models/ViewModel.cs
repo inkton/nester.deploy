@@ -29,7 +29,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
     public abstract class ViewModel : INotifyPropertyChanged
     {
@@ -37,7 +37,6 @@ namespace Nester.Views
 
         protected bool _validated = false;
         protected bool _canUpdate = false;
-        protected bool _wizardMode = false;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -66,23 +65,11 @@ namespace Nester.Views
             }
         }
 
-        virtual public bool WizardMode
+        public Admin.INesterControl NesterControl
         {
             get
             {
-                return _wizardMode;
-            }
-            set
-            {
-                SetProperty(ref _wizardMode, value);
-            }
-        }
-
-        public NesterUI ThisUI
-        {
-            get
-            {
-                return ((NesterUI)NesterUI.Current);
+                return Application.Current as Admin.INesterControl;
             }
         }
 

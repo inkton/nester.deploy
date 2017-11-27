@@ -2,11 +2,10 @@
   "dependencies": {
     "FluentValidation": "7.1.1",
     "Flurl": "2.5.0",
-    "Flurl.Http": "1.2.0",
+    "Flurl.Http": "2.0.1",
     "Microsoft.Bcl": "1.1.10",
     "Microsoft.Bcl.Async": "1.0.168",
     "Microsoft.Bcl.Build": "1.0.21",
-    "Microsoft.Extensions.DependencyModel": "2.0.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.4.0",
     "Newtonsoft.Json": "10.0.3",
     "PCLAppConfig": "0.3.2",

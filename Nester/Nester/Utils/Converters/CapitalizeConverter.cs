@@ -27,7 +27,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace Nester.Utils
+namespace Inkton.Nester.Utils
 {
     public class CapitalizeConverter : IValueConverter
     {

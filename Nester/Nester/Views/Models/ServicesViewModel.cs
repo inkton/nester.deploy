@@ -29,7 +29,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
     public class ServicesViewModel : ViewModel
     {
@@ -119,7 +119,7 @@ namespace Nester.Views
 
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 subscription, new Cloud.CachedHttpRequest<Admin.AppServiceSubscription>(
-                    ThisUI.NesterService.CreateAsync), doCache);
+                    NesterControl.NesterService.CreateAsync), doCache);
 
             if (status.Code == 0)
             {
@@ -135,7 +135,7 @@ namespace Nester.Views
         {
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 subscription, new Cloud.CachedHttpRequest<Admin.AppServiceSubscription>(
-                    ThisUI.NesterService.RemoveAsync), doCache);
+                    NesterControl.NesterService.RemoveAsync), doCache);
             return status;
         }
 

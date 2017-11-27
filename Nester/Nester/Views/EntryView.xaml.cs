@@ -27,12 +27,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
-    public partial class EntryView : Nester.Views.View
+    public partial class EntryView : Inkton.Nester.Views.View
     {
         public EntryView()
         {
+            _modelPair = NesterControl.AppModelPair;
+
             InitializeComponent();
 
             SetActivityMonotoring(ServiceActive,
@@ -42,31 +44,20 @@ namespace Nester.Views
                     ButtonRecoverPassword
                 });
 
-            // the app and auth models are the main
-            // models. create and init here. it is
-            // then kept in homeview for distribution
-            // when appropriate. the two are properties
-            // of the view base class.
-
-            Views.MainSideView homeView = ThisUI.HomeView;
-
-            _authViewModel = homeView.AuthViewModel;
-            _appViewModel = homeView.AppViewModel;
-
-            BindingContext = _authViewModel;
+            BindingContext = _modelPair.AuthViewModel;
         }
 
         void Validate()
         {
-            if (_authViewModel != null)
+            if (EmailValidator != null)
             {
-                _authViewModel.Validated = (
+                _modelPair.AuthViewModel.Validated = (
                     EmailValidator.IsValid &&
                     PasswordValidator.IsValid);
 
-                _authViewModel.CanRecoverPassword = (
-                    _authViewModel.Permit.Owner.Email != null &&
-                    _authViewModel.Permit.Owner.Email.Length > 0 &&
+                _modelPair.AuthViewModel.CanRecoverPassword = (
+                    _modelPair.AuthViewModel.Permit.Owner.Email != null &&
+                    _modelPair.AuthViewModel.Permit.Owner.Email.Length > 0 &&
                     EmailValidator.IsValid);
             }
         }
@@ -74,6 +65,7 @@ namespace Nester.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
             Validate();
         }
 
@@ -82,21 +74,50 @@ namespace Nester.Views
             Validate();
         }
 
+        private void BeginNewSession()
+        {
+            _modelPair.AuthViewModel.Reset();
+            AppCollectionViewModel appCollection = _modelPair.AppViewModel as AppCollectionViewModel;
+            appCollection.AppModels.Clear();
+            _modelPair.WizardMode = true;
+        }
+
+        async private void PushEngageViewAsync()
+        {
+            AppViewModel newAppModel = new AppViewModel();
+            newAppModel.NewAppAsync();
+
+            AppModelPair modelPair = new AppModelPair(
+                _modelPair.AuthViewModel, newAppModel);
+            modelPair.WizardMode = true;
+
+            AppEngageView engageView = new AppEngageView(modelPair);
+            engageView.MainSideView = MainSideView;
+
+            await MainSideView.Detail.Navigation.PushAsync(engageView);
+        }
+
+        async private void PushEngageViewWithUserUpdateAsync()
+        {
+            PushEngageViewAsync();
+
+            Views.UserView userView = new Views.UserView(_modelPair);
+            userView.MainSideView = MainSideView;
+            await MainSideView.Detail.Navigation.PushModalAsync(userView);
+        }
+
         async private void OnLoginButtonClickedAsync(object sender, EventArgs e)
         {
             IsServiceActive = true;
 
             try
             {
-                _authViewModel.Reset();
-                ThisUI.AppCollectionViewModel.AppModels.Clear();
+                BeginNewSession();
 
-                Cloud.ServerStatus status = await _authViewModel.QueryTokenAsync(false);
+                Cloud.ServerStatus status = await _modelPair.AuthViewModel.QueryTokenAsync(false);
 
                 if (status.Code == Cloud.Result.NEST_RESULT_ERROR_AUTH_SECCODE)
                 {
-                    await Navigation.PushAsync(ThisUI.HomeView);
-
                     // the user can be hanging in inactive state
                     // if he/she did not confirm the security code
                     // in the second stage after registration.
@@ -104,32 +125,17 @@ namespace Nester.Views
                     // sound but need to confirm the security code.
                     // a new sec code would have been sent too.
 
-                    AppViewModel newAppModel = new AppViewModel();
-                    newAppModel.NewAppAsync();
-                    newAppModel.WizardMode = true;
-
-                    await Navigation.PushAsync(
-                        new AppEngageView(newAppModel));
-
-                    _authViewModel.WizardMode = true;
-                    Views.UserView userView = new Views.UserView(_authViewModel);
-
-                    await Navigation.PushModalAsync(userView);
+                    PushEngageViewWithUserUpdateAsync();
                 }
                 else if (status.Code == Cloud.Result.NEST_RESULT_SUCCESS)
                 {
-                    await Navigation.PushAsync(ThisUI.HomeView);
+                    AppCollectionViewModel appCollection = _modelPair.AppViewModel as AppCollectionViewModel;
 
-                    await ThisUI.AppCollectionViewModel.LoadApps();
+                    await appCollection.LoadApps();
 
-                    if (!ThisUI.AppCollectionViewModel.AppModels.Any())
+                    if (!appCollection.AppModels.Any())
                     {
-                        AppViewModel newAppModel = new AppViewModel();
-                        newAppModel.WizardMode = true;
-                        newAppModel.NewAppAsync();
-
-                        await Navigation.PushAsync(
-                          new AppEngageView(newAppModel));
+                        PushEngageViewAsync();
                     }
                 }
                 else
@@ -151,24 +157,11 @@ namespace Nester.Views
 
             try
             {
-                _authViewModel.Reset();
-                ThisUI.AppCollectionViewModel.AppModels.Clear();
+                BeginNewSession();
 
-                await _authViewModel.SignupAsync();
+                await _modelPair.AuthViewModel.SignupAsync();
 
-                await Navigation.PushAsync(ThisUI.HomeView);
-
-                AppViewModel newAppModel = new AppViewModel();
-                newAppModel.NewAppAsync();
-                newAppModel.WizardMode = true;
- 
-                await Navigation.PushAsync(
-                    new AppEngageView(newAppModel));
-
-                _authViewModel.WizardMode = true;
-                Views.UserView userView = new Views.UserView(_authViewModel);
-
-                await Navigation.PushModalAsync(userView);
+                PushEngageViewWithUserUpdateAsync();
             }
             catch (Exception ex)
             {
@@ -186,11 +179,11 @@ namespace Nester.Views
             try
             {
                 Cloud.ServerStatus status = 
-                    await _authViewModel.QueryTokenAsync(false);
+                    await _modelPair.AuthViewModel.QueryTokenAsync(false);
 
                 if (status.Code < 0)
                 {
-                    status = await _authViewModel.RecoverPasswordAsync(false);
+                    status = await _modelPair.AuthViewModel.RecoverPasswordAsync(false);
 
                     if (status.Code == Cloud.Result.NEST_RESULT_ERROR_USER_NFOUND)
                     {

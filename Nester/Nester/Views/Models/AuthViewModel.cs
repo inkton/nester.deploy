@@ -29,7 +29,7 @@ using Xamarin.Forms;
 using Newtonsoft.Json;
 using System.Threading;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
     public class AuthViewModel : ViewModel
     {
@@ -40,7 +40,7 @@ namespace Nester.Views
         public AuthViewModel()
         {
             _permit = new Auth.Permit();
-            _permit.Owner = ThisUI.User;
+            _permit.Owner = NesterControl.User;
 
             _userEvents = new ObservableCollection<Admin.UserEvent>();
         }
@@ -59,7 +59,7 @@ namespace Nester.Views
 
         public void Reset()
         {
-            ThisUI.NesterService.ClearSession();
+            NesterControl.NesterService.ClearSession();
 
             _permit.SecurityCode = null;
             _permit.Token = null;
@@ -69,14 +69,14 @@ namespace Nester.Views
             bool throwIfError = true)
         {
             Cloud.ServerStatus status = await 
-                ThisUI.NesterService.SignupAsync(_permit);
+                NesterControl.NesterService.SignupAsync(_permit);
 
             if (status.Code < 0 && throwIfError)
             {
                 Cloud.Result.ThrowError(status);
             }
 
-            Utils.Object.CopyPropertiesTo(_permit.Owner, ThisUI.User);
+            Utils.Object.CopyPropertiesTo(_permit.Owner, NesterControl.User);
             return status;
         }
 
@@ -84,14 +84,14 @@ namespace Nester.Views
             bool throwIfError = true)
         {
             Cloud.ServerStatus status = await 
-                ThisUI.NesterService.RecoverPasswordAsync(_permit);
+                NesterControl.NesterService.RecoverPasswordAsync(_permit);
 
             if (status.Code < 0 && throwIfError)
             {
                 Cloud.Result.ThrowError(status);
             }
 
-            Utils.Object.CopyPropertiesTo(_permit.Owner, ThisUI.User);
+            Utils.Object.CopyPropertiesTo(_permit.Owner, NesterControl.User);
             return status;
         }
 
@@ -99,22 +99,22 @@ namespace Nester.Views
             bool throwIfError = true)
         {
             Cloud.ServerStatus status = await 
-                ThisUI.NesterService.QueryTokenAsync(_permit);
+                NesterControl.NesterService.QueryTokenAsync(_permit);
 
             if (status.Code < 0 && throwIfError)
             {
                 Cloud.Result.ThrowError(status);
             }
 
-            Utils.Object.CopyPropertiesTo(_permit.Owner, ThisUI.User);
+            Utils.Object.CopyPropertiesTo(_permit.Owner, NesterControl.User);
             return status;
         }
 
         public async Task<Cloud.ServerStatus> ResetTokenAsync(
             bool throwIfError = true)
         {
-            Cloud.ServerStatus status = await 
-                ThisUI.NesterService.ResetTokenAsync(_permit);
+            Cloud.ServerStatus status = await
+                NesterControl.NesterService.ResetTokenAsync(_permit);
 
             if (status.Code < 0 && throwIfError)
             {
@@ -129,7 +129,7 @@ namespace Nester.Views
         {
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 user, new Cloud.CachedHttpRequest<Admin.User>(
-                    ThisUI.NesterService.UpdateAsync), doCache);
+                    NesterControl.NesterService.UpdateAsync), doCache);
 
             if (status.Code >= 0)
             {

@@ -34,9 +34,9 @@ using System.Collections.ObjectModel;
 using PCLAppConfig;
 using System.Net;
 
-[assembly: Dependency(typeof(Nester.Cloud.NesterService))]
+[assembly: Dependency(typeof(Inkton.Nester.Cloud.NesterService))]
 
-namespace Nester.Cloud
+namespace Inkton.Nester.Cloud
 {
     public class NesterService : INesterService
     {

@@ -38,7 +38,7 @@ using Xamarin.Forms;
 
 using Syncfusion.ListView.XForms.UWP;
 
-namespace Nester.UWP
+namespace Inkton.Nester.UWP
 {
     public sealed partial class MainView
     {
@@ -53,7 +53,7 @@ namespace Nester.UWP
                 // https://www.syncfusion.com/kb/7144/how-to-resolve-sfchart-not-rendering-issue-in-ios-and-uwp
                 new Syncfusion.SfChart.XForms.UWP.SfChartRenderer();
 
-                LoadApplication(new Nester.NesterUI());
+                LoadApplication(new Nester.DeployApp());
             }
             catch (Exception ex)
             {

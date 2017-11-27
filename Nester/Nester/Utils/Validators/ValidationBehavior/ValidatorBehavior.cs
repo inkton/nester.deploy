@@ -22,7 +22,7 @@
 
 using Xamarin.Forms;
 
-namespace Nester.Utils.Validators
+namespace Inkton.Nester.Utils.Validators
 {
     public class ValidatorBehavior<T> : Behavior<T> where T : BindableObject
     {

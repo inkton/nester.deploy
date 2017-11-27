@@ -28,13 +28,11 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
-    public partial class PaymentView : Nester.Views.View
+    public partial class PaymentView : Inkton.Nester.Views.View
     {
-        private Views.PaymentViewModel _paymentViewModel;
-
-        public PaymentView(PaymentViewModel paymentViewModel)
+        public PaymentView(Views.AppModelPair modelPair)
         {
             InitializeComponent();
 
@@ -44,29 +42,21 @@ namespace Nester.Views
                     ButtonReenterDone
                 });
 
-            ButtonAppMenu.Clicked += ButtonAppMenu_Clicked;
-
-            _paymentViewModel = paymentViewModel;
-            BindingContext = paymentViewModel;
+            _modelPair = modelPair;
+            BindingContext = _modelPair.AppViewModel.PaymentModel;
         }
 
         void Validate()
         {
-            if (_paymentViewModel != null)
+            if (CardNumberValidator != null)
             {
-                _paymentViewModel.Validated = (
+                _modelPair.AppViewModel.PaymentModel.Validated = (
                         CardNumberValidator.IsValid &&
                         ExpMonthValidator.IsValid &&
                         ExpYearValidator.IsValid &&
                         CVVNumberValidator.IsValid
                         );
             }
-        }
-
-        public Views.PaymentViewModel PaymentViewModel
-        {
-            get { return _paymentViewModel; }
-            set { _paymentViewModel = value; }
         }
 
         void OnFieldValidation(object sender, EventArgs e)
@@ -78,8 +68,8 @@ namespace Nester.Views
         {
             IsServiceActive = true;
 
-            _paymentViewModel.DisplayPaymentMethodProof = false;
-            _paymentViewModel.DisplayPaymentMethodEntry = true;
+            _modelPair.AppViewModel.PaymentModel.DisplayPaymentMethodProof = false;
+            _modelPair.AppViewModel.PaymentModel.DisplayPaymentMethodEntry = true;
 
             IsServiceActive = false;
         }
@@ -90,7 +80,7 @@ namespace Nester.Views
 
             try
             {
-                await _paymentViewModel.CreatePaymentMethodAsync(CardNumber.Text,
+                await _modelPair.AppViewModel.PaymentModel.CreatePaymentMethodAsync(CardNumber.Text,
                     int.Parse(ExpMonth.Text), int.Parse(ExpYear.Text), CVVNumber.Text);
 
                 if (Navigation.ModalStack.Count > 0)
@@ -106,16 +96,11 @@ namespace Nester.Views
             IsServiceActive = false;
         }
 
-        private void ButtonAppMenu_Clicked(object sender, EventArgs e)
-        {
-            _masterDetailPage.IsPresented = true;
-        }
-
         async private void OnCloseButtonClickedAsync(object sender, EventArgs e)
         {
             try
             {
-                LoadHomeView();
+                ResetView();
             }
             catch (Exception ex)
             {

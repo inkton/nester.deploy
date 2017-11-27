@@ -1,10 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Nester.Views;assembly=Nester"
-             Title="Nester Deploy"
-             x:Class="Nester.Views.MainSideView" MasterBehavior="Popover">
+             xmlns:local="clr-namespace:Inkton.Nester.Views"
+             x:Class="Inkton.Nester.Views.MainSideView">
     <MasterDetailPage.Master>
-        <local:HomeView x:Name="Home" />
+        <local:HomeView x:Name="homeView" />
     </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <local:BannerView />
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
 </MasterDetailPage>

@@ -26,7 +26,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
     public class NavigationMessage
     {

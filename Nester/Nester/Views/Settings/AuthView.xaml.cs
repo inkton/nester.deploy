@@ -28,11 +28,11 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
-    public partial class AuthView : Nester.Views.View
+    public partial class AuthView : Inkton.Nester.Views.View
     {
-        public AuthView(AuthViewModel authViewModel)
+        public AuthView(Views.AppModelPair modelPair)
         {
             InitializeComponent();
 
@@ -41,22 +41,28 @@ namespace Nester.Views
                     ButtonDone
                 });
 
-            ButtonAppMenu.Clicked += ButtonAppMenu_Clicked;
+            Password.Unfocused += Password_Unfocused;
+            PasswordVerify.Unfocused += Password_Unfocused;
 
-            _authViewModel = authViewModel;
-            BindingContext = _authViewModel;
+            _modelPair = modelPair;
+            BindingContext = _modelPair.AuthViewModel;
+        }
+
+        private void Password_Unfocused(object sender, FocusEventArgs e)
+        {
+            Validate();
         }
 
         void Validate()
         {
             if (PasswordValidator != null)
             {
-                _authViewModel.Validated = (
+                _modelPair.AuthViewModel.Validated = (
                      PasswordValidator.IsValid &&
                      PasswordRepeatValidator.IsValid
                      );
                 
-                if (_authViewModel.Validated)
+                if (_modelPair.AuthViewModel.Validated)
                 {
                     if (Password.Text != PasswordVerify.Text)
                     {
@@ -81,7 +87,7 @@ namespace Nester.Views
             {
                 IsServiceActive = true;
 
-                await _authViewModel.ResetTokenAsync();
+                await _modelPair.AuthViewModel.ResetTokenAsync();
                 await DisplayAlert("Nester", "Password was saved", "OK");
 
                 IsServiceActive = false;
@@ -93,16 +99,11 @@ namespace Nester.Views
             }
         }
 
-        private void ButtonAppMenu_Clicked(object sender, EventArgs e)
-        {
-            _masterDetailPage.IsPresented = true;
-        }
-
         async private void OnCloseButtonClickedAsync(object sender, EventArgs e)
         {
             try
             {
-                LoadHomeView();
+                ResetView();
             }
             catch (Exception ex)
             {

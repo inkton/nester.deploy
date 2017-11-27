@@ -31,7 +31,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
 
-namespace Nester.Admin
+namespace Inkton.Nester.Admin
 {
     public class Invitation : Contact
     {

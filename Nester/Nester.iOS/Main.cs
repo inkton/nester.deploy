@@ -27,7 +27,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace Nester.iOS
+namespace Inkton.Nester.iOS
 {
     public class Application
     {

@@ -29,7 +29,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
     public class AppViewModel : ViewModel
     {
@@ -63,7 +63,7 @@ namespace Nester.Views
             // select uniflow default
             _editApp = new Admin.App();
             _editApp.Type = "uniflow";
-            _editApp.Owner = this.ThisUI.User;
+            _editApp.Owner = NesterControl.User;
 
             _applicationTypes = new ObservableCollection<AppType> {
                 new AppType {
@@ -116,29 +116,10 @@ namespace Nester.Views
 
                 if (_editApp != null)
                 {
-                    isOwner = _editApp.UserId == this.ThisUI.User.Id;
+                    isOwner = _editApp.UserId == NesterControl.User.Id;
                 }
 
                 return isOwner;
-            }
-        }
-
-        override public bool WizardMode
-        {
-            get
-            {
-                return _wizardMode;
-            }
-            set
-            {
-                SetProperty(ref _wizardMode, value);
-
-                _contactViewModel.WizardMode = value;
-                _nestViewModel.WizardMode = value;
-                _domainViewModel.WizardMode = value;
-                _deploymentViewModel.WizardMode = value;
-                _servicesViewModel.WizardMode = value;
-                _logViewModel.WizardMode = value;
             }
         }
 
@@ -308,7 +289,7 @@ namespace Nester.Views
         {
             get
             {
-                if (ThisUI.User.TerritoryISOCode == "AU")
+                if (NesterControl.User.TerritoryISOCode == "AU")
                 {
                     return "The prices are in US Dollars and do not include GST.";
                 }
@@ -513,7 +494,7 @@ namespace Nester.Views
         {
             _editApp = new Admin.App();
             _editApp.Type = "uniflow";
-            _editApp.Owner = this.ThisUI.User;
+            _editApp.Owner = NesterControl.User;
 
             _contactViewModel.EditApp = _editApp;
             _nestViewModel.EditApp = _editApp;
@@ -522,6 +503,58 @@ namespace Nester.Views
             _servicesViewModel.EditApp = _editApp;
 
             await ServicesViewModel.QueryServicesAsync();
+        }
+
+        async public void Reload()
+        {
+            await InitAsync();
+            await InitAsync();
+
+            await ServicesViewModel.QueryServicesAsync();
+        }
+
+        public async void QueryMetricsAsync(long beginId, long endId)
+        {
+            if (LogViewModel.NestLogs != null)
+            {
+                LogViewModel.NestLogs.Clear();
+            }
+            if (LogViewModel.SystemCPULogs != null)
+            {
+                LogViewModel.SystemCPULogs.Clear();
+            }
+            if (LogViewModel.DiskSpaceLogs != null)
+            {
+                LogViewModel.DiskSpaceLogs.Clear();
+            }
+            if (LogViewModel.SystemIPV4Logs != null)
+            {
+                LogViewModel.SystemIPV4Logs.Clear();
+            }
+            if (LogViewModel.SystemRAMLogs != null)
+            {
+                LogViewModel.SystemRAMLogs.Clear();
+            }
+
+            await LogViewModel.QueryNestLogsAsync(
+                string.Format("id >= {0} and id < {1}",
+                        beginId, endId
+                    ));
+
+            beginId /= 1000;
+            endId /= 1000;
+
+            string filter = string.Format("id >= {0} and id < {1}",
+                        beginId, endId
+                    );
+
+            await LogViewModel.QuerySystemCPULogsAsync(filter);
+
+            await LogViewModel.QueryDiskSpaceLogsAsync(filter);
+
+            await LogViewModel.QuerSystemIPV4LogsAsync(filter);
+
+            await LogViewModel.QuerSystemRAMLogsAsync(filter);
         }
 
         public async Task<Cloud.ServerStatus> QueryAppNotificationsAsync(Admin.App app = null,
@@ -549,7 +582,7 @@ namespace Nester.Views
             Admin.App theApp = app == null ? _editApp : app;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theApp, new Cloud.CachedHttpRequest<Admin.App>(
-                    ThisUI.NesterService.QueryAsync), bCache);
+                    NesterControl.NesterService.QueryAsync), bCache);
            
             if (status.Code == 0)
             {
@@ -560,9 +593,9 @@ namespace Nester.Views
                     Utils.Object.PourPropertiesTo(_editApp, app);
                 }
 
-                if (_editApp.UserId == ThisUI.User.Id)
+                if (_editApp.UserId == NesterControl.User.Id)
                 {
-                    _editApp.Owner = ThisUI.User;
+                    _editApp.Owner = NesterControl.User;
                 }
             }
 
@@ -575,7 +608,7 @@ namespace Nester.Views
             Admin.App theApp = app == null ? _editApp : app;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theApp, new Cloud.CachedHttpRequest<Admin.App>(
-                    ThisUI.NesterService.RemoveAsync), doCache);
+                    NesterControl.NesterService.RemoveAsync), doCache);
 
             if (status.Code == 0)
             {
@@ -591,7 +624,7 @@ namespace Nester.Views
             Admin.App theApp = app == null ? _editApp : app;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theApp, new Cloud.CachedHttpRequest<Admin.App>(
-                    ThisUI.NesterService.UpdateAsync), doCache);
+                    NesterControl.NesterService.UpdateAsync), doCache);
 
             if (status.Code == 0)
             {
@@ -613,12 +646,12 @@ namespace Nester.Views
             theApp.ServiceTierId = _selectedAppServiceTier.Id;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theApp, new Cloud.CachedHttpRequest<Admin.App>(
-                    ThisUI.NesterService.CreateAsync), doCache);
+                    NesterControl.NesterService.CreateAsync), doCache);
 
             if (status.Code == 0)
             {
                 EditApp = status.PayloadToObject<Admin.App>();
-                _editApp.Owner = this.ThisUI.User;
+                _editApp.Owner = NesterControl.User;
 
                 if (app != null)
                 {

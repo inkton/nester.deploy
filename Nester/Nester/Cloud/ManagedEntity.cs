@@ -19,17 +19,16 @@
     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
     OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Text;
+using System.Net;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
-namespace Nester.Cloud
+namespace Inkton.Nester.Cloud
 {
-    using System;
-    using System.IO;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Net;
-    using System.ComponentModel;
-    using System.Runtime.CompilerServices;
-
     public abstract class ManagedEntity : INotifyPropertyChanged
     {
         private string _entity, _collection;

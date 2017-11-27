@@ -31,9 +31,9 @@ using Newtonsoft.Json;
 using Xamarin.Forms;
 using System.IO.Compression;
 
-[assembly: Dependency(typeof(Nester.Admin.LogService))]
+[assembly: Dependency(typeof(Inkton.Nester.Admin.LogService))]
 
-namespace Nester.Admin
+namespace Inkton.Nester.Admin
 {
     public class LogService : ILogService
     {

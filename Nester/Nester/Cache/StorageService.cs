@@ -28,7 +28,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.IO;
 
-namespace Nester.Cache
+namespace Inkton.Nester.Cache
 {
     public interface IStorageService
     {

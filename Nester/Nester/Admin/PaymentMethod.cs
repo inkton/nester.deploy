@@ -27,7 +27,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Nester.Admin
+namespace Inkton.Nester.Admin
 {
     public class ChargeCardToken : Cloud.ManagedEntity
     {

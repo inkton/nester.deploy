@@ -26,7 +26,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nester.Admin
+namespace Inkton.Nester.Admin
 {
     public class Geography
     {

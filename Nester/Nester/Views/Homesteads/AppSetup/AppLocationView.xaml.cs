@@ -30,9 +30,9 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
-    public partial class AppLocationView : Nester.Views.View
+    public partial class AppLocationView : Inkton.Nester.Views.View
     {
         struct ForestButton
         {
@@ -41,7 +41,7 @@ namespace Nester.Views
                 TapGestureRecognizer tap = new TapGestureRecognizer
                 {
                     Command = new Command<Admin.Forest>(async (forest) => await view.OnSelectLocation(forest, true)),
-                    CommandParameter = view._appViewModel.DeploymentModel.ForestsByTag[forestTag.Replace('_', '-')]
+                    CommandParameter = view.AppModelPair.AppViewModel.DeploymentModel.ForestsByTag[forestTag.Replace('_', '-')]
                 };
 
                 FlagLabel = view.FindByName<Label>("FlagLabel_" + forestTag);
@@ -61,9 +61,11 @@ namespace Nester.Views
 
         private Dictionary<string, ForestButton> _forestButtons;
 
-        public AppLocationView(AppViewModel appViewModel, 
+        public AppLocationView(Views.AppModelPair modelPair, 
             ObservableCollection<Admin.Forest> validForests)
         {
+            _modelPair = modelPair;
+
             InitializeComponent();
 
             SetActivityMonotoring(ServiceActive,
@@ -85,9 +87,7 @@ namespace Nester.Views
                     FlagImage_hoh
                 });
 
-            _appViewModel = appViewModel;
-
-            BindingContext = _appViewModel.DeploymentModel;
+            BindingContext = _modelPair.AppViewModel.DeploymentModel;
             _forestButtons = new Dictionary<string, ForestButton>();
 
             foreach (string forestTag in new string[] 
@@ -160,8 +160,8 @@ namespace Nester.Views
                 AnimateButtonTouched(button.FlagHolder, 1500, "#66b9f1", "#E4F1FE", 1);
                 AnimateButtonTouched(button.FlagHolder, 1500, "#66b9f1", "#E4F1FE", 1);
 
-                _appViewModel.DeploymentModel.EditDeployment.ForestId = forest.Id;
-                LoadView(new AppSummaryView(_appViewModel));
+                _modelPair.AppViewModel.DeploymentModel.EditDeployment.ForestId = forest.Id;
+                MainSideView.LoadView(new AppSummaryView(_modelPair));
             }
             catch (Exception ex)
             {
@@ -180,7 +180,7 @@ namespace Nester.Views
             {
                 // Head back to homepage if the 
                 // page was called from here
-                LoadHomeView();
+                ResetView();
             }
             catch (Exception ex)
             {

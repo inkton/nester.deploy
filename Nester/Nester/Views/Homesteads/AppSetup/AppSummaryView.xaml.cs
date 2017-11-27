@@ -28,12 +28,14 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
-    public partial class AppSummaryView : Nester.Views.View
+    public partial class AppSummaryView : Inkton.Nester.Views.View
     {
-        public AppSummaryView(AppViewModel appViewModel)
+        public AppSummaryView(Views.AppModelPair modelPair)
         {
+            _modelPair = modelPair;
+
             InitializeComponent();
 
             SetActivityMonotoring(ServiceActive,
@@ -41,10 +43,9 @@ namespace Nester.Views
                     ButtonDone
                 });
 
-            _appViewModel = appViewModel;
-            BindingContext = _appViewModel;
+            BindingContext = _modelPair.AppViewModel;
             
-            _appViewModel.DeploymentModel.DotnetVersions.All(version =>
+            _modelPair.AppViewModel.DeploymentModel.DotnetVersions.All(version =>
             {
                 SoftwareVersion.Items.Add(version.Name);
                 return true;
@@ -53,7 +54,7 @@ namespace Nester.Views
             SoftwareVersion.SelectedIndex = 0;
             DeployWarning.Text = "The deployment will take some time to complete. ";
 
-            if (appViewModel.EditApp.IsDeployed)
+            if (_modelPair.AppViewModel.EditApp.IsDeployed)
             {
                 DeployWarning.Text += "New DevKits will be rebuilt with new access keys. ";
                 DeployWarning.Text += "Download the Devkits again once the deployment is complete. ";
@@ -63,11 +64,11 @@ namespace Nester.Views
         
         private async Task<bool> IsDnsOkAsync()
         {
-            Admin.AppDomain defaultDomain = (from domain in _appViewModel.DomainModel.Domains
+            Admin.AppDomain defaultDomain = (from domain in _modelPair.AppViewModel.DomainModel.Domains
                                              where domain.Default == true
                                              select domain).First();
 
-            foreach (Admin.AppDomain domain in _appViewModel.DomainModel.Domains)
+            foreach (Admin.AppDomain domain in _modelPair.AppViewModel.DomainModel.Domains)
             {
                 if (domain.Default)
                     continue;
@@ -79,7 +80,7 @@ namespace Nester.Views
                     wildcardStripped = domain.Name.Remove(0, 2);
                 }
 
-                string ip = await ThisUI.NesterService.GetIPAsync(wildcardStripped);
+                string ip = await NesterControl.NesterService.GetIPAsync(wildcardStripped);
 
                 if (ip == null || ip != defaultDomain.Ip)
                 {
@@ -94,7 +95,7 @@ namespace Nester.Views
                 {
                     foreach (string alias in domain.Aliases.Split(' '))
                     {
-                        ip = await ThisUI.NesterService.GetIPAsync(alias);
+                        ip = await NesterControl.NesterService.GetIPAsync(alias);
 
                         if (ip == null || ip != defaultDomain.Ip)
                         {
@@ -119,7 +120,7 @@ namespace Nester.Views
                     return;
 
                 Admin.SoftwareFramework.Version selVersion = null;
-                foreach (var version in _appViewModel.DeploymentModel.DotnetVersions)
+                foreach (var version in _modelPair.AppViewModel.DeploymentModel.DotnetVersions)
                 {
                     if (version.Name == SoftwareVersion.SelectedItem as string)
                     {
@@ -128,28 +129,28 @@ namespace Nester.Views
                     }
                 }
 
-                if (_appViewModel.DeploymentModel.Deployments.Any())
+                if (_modelPair.AppViewModel.DeploymentModel.Deployments.Any())
                 {
                     Admin.Deployment deployment =
-                        _appViewModel.DeploymentModel.Deployments.First();
+                        _modelPair.AppViewModel.DeploymentModel.Deployments.First();
                     deployment.FrameworkVersionId = selVersion.Id;
 
-                    await _appViewModel.DeploymentModel.UpdateDeploymentAsync(deployment);
+                    await _modelPair.AppViewModel.DeploymentModel.UpdateDeploymentAsync(deployment);
                 }
                 else
                 {
-                    _appViewModel.DeploymentModel.EditDeployment.FrameworkVersionId = selVersion.Id;
+                    _modelPair.AppViewModel.DeploymentModel.EditDeployment.FrameworkVersionId = selVersion.Id;
 
-                    await _appViewModel.DeploymentModel.CreateDeployment(
-                        _appViewModel.DeploymentModel.EditDeployment);
+                    await _modelPair.AppViewModel.DeploymentModel.CreateDeployment(
+                        _modelPair.AppViewModel.DeploymentModel.EditDeployment);
 
-                    _appViewModel.EditApp.Deployment = 
-                        _appViewModel.DeploymentModel.EditDeployment;
+                    _modelPair.AppViewModel.EditApp.Deployment = 
+                        _modelPair.AppViewModel.DeploymentModel.EditDeployment;
                 }
 
-                await _appViewModel.InitAsync();
+                await _modelPair.AppViewModel.InitAsync();
 
-                LoadHomeView();
+                ResetView();
             }
             catch (Exception ex)
             {
@@ -166,7 +167,7 @@ namespace Nester.Views
             {
                 // Head back to homepage if the 
                 // page was called from here
-                LoadHomeView();
+                ResetView();
             }
             catch (Exception ex)
             {

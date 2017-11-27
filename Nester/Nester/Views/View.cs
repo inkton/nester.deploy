@@ -27,50 +27,38 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
     public class View : ContentPage
     {
-        protected Views.AuthViewModel _authViewModel;
-        protected Views.AppViewModel _appViewModel;
-
         protected ActivityIndicator _activityIndicator;
-        protected List<Xamarin.Forms.View> _blockWhenActive = null;
-        protected List<Xamarin.Forms.View> _activeBlockViews = null;
-
-        protected Func<Views.View, bool> _viewLoader;
-        protected MasterDetailPage _masterDetailPage;
+        protected List<Xamarin.Forms.View> _blockWhenActive;
+        protected List<Xamarin.Forms.View> _activeBlockViews;
+        protected Views.AppModelPair _modelPair;
+        protected MainSideView _mainSideView;
 
         public View()
         {
             SubscribeToMessages();
         }
 
-        public void SetModels(
-            AuthViewModel authViewModel, 
-            AppViewModel appViewModel)
+        public virtual AppModelPair AppModelPair
         {
-            _authViewModel = authViewModel;
-            _appViewModel = appViewModel;
+            get { return _modelPair; }
+            set { _modelPair = value; }
         }
 
-        public virtual AuthViewModel AuthViewModel
+        public virtual MainSideView MainSideView
         {
-            get { return _authViewModel; }
-            set { _authViewModel = value; }
+            get { return _mainSideView; }
+            set { _mainSideView = value; }
         }
 
-        public virtual AppViewModel AppViewModel
-        {
-            get { return _appViewModel; }
-            set {  _appViewModel = value; }
-        }
-
-        public NesterUI ThisUI
+        public Admin.INesterControl NesterControl
         {
             get
             {
-                return ((NesterUI)NesterUI.Current);
+                return Application.Current as Admin.INesterControl;
             }
         }
 
@@ -78,66 +66,23 @@ namespace Nester.Views
         {
             get
             {
-                return _appViewModel.EditApp;
+                return _modelPair.AppViewModel.EditApp;
             }
         }
 
-        public MasterDetailPage MasterDetailPage
+        protected void ResetView()
         {
-            get
+            if (_modelPair == null || _modelPair.AppViewModel == null)
             {
-                return _masterDetailPage;
+                // models has not been set or there is no
+                // apps to begin with. the dashboard is set 
+                // to a blank view.
+                NesterControl.ResetView();
             }
-            set
+            else
             {
-                _masterDetailPage = value;
+                NesterControl.CreateAppView(_modelPair);
             }
-        }
-
-        public Func<Views.View, bool> LoadView
-        {
-            get
-            {
-                return _viewLoader;
-            }
-            set
-            {
-                _viewLoader = value;
-            }
-        }
-
-        protected void LoadHomeView()
-        {
-            if (_viewLoader != null)
-            {
-                Views.View view = null;
-
-                if (_appViewModel != null)
-                {
-                    if (_appViewModel.EditApp.IsBusy)
-                    {
-                        view = new BannerView(BannerView.Status.Updating);
-                    }
-                    else if (!_appViewModel.EditApp.IsDeployed)
-                    {
-                        view = new BannerView(BannerView.Status.WaitingDeployment);
-                    }
-                    else
-                    {
-                        view = new Views.AppView(_appViewModel);
-                    }
-
-                    view.AppViewModel = _appViewModel;
-                }
-                else
-                {
-                    view = new BannerView(BannerView.Status.WaitingDeployment);
-                }
-
-                view.LoadView = _viewLoader;
-                _viewLoader(view);
-            }
-
         }
 
         protected void SetActivityMonotoring(ActivityIndicator activityIndicator,

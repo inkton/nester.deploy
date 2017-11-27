@@ -19,14 +19,15 @@
     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
     OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-namespace Nester.Admin
-{
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Text;
-    using Newtonsoft.Json;
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Newtonsoft.Json;
+
+namespace Inkton.Nester.Admin
+{
     public class AppServiceTier : Cloud.ManagedEntity
     {
         private Int64 _id;

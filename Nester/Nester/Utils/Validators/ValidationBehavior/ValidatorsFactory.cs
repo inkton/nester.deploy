@@ -23,7 +23,7 @@
 using System;
 using System.Text.RegularExpressions;
 
-namespace Nester.Utils.Validators
+namespace Inkton.Nester.Utils.Validators
 {
     public static class ValidatorsFactory
     {

@@ -30,14 +30,16 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
-    public partial class AppDomainView : Nester.Views.View
+    public partial class AppDomainView : Inkton.Nester.Views.View
     {
         private Regex _domainVerifier;
 
-        public AppDomainView(AppViewModel appViewModel)
+        public AppDomainView(Views.AppModelPair modelPair)
         {
+            _modelPair = modelPair;
+
             InitializeComponent();
 
             SetActivityMonotoring(ServiceActive,
@@ -55,14 +57,19 @@ namespace Nester.Views
                                 ButtonDone
                 });
 
-            _appViewModel = appViewModel;
-
-            BindingContext = _appViewModel.DomainModel;
+            BindingContext = _modelPair.AppViewModel.DomainModel;
 
             Aliases.Unfocused += Aliases_Unfocused;
             Name.Unfocused += Name_Unfocused;
             AppDomainsList.SelectionChanged += AppDomainsList_SelectionChanged;
             ButtonCert.Clicked += ButtonCert_ClickedAsync;
+
+            ButtonDone.IsVisible = _modelPair.WizardMode;
+            if (_modelPair.WizardMode)
+            {
+                // hide but do not collapse
+                TopButtonPanel.Opacity = 0;
+            }
 
             // Thanks - http://stackoverflow.com/questions/10306690/domain-name-validation-with-regex
             _domainVerifier = new Regex(
@@ -78,7 +85,7 @@ namespace Nester.Views
 
             try
             {
-                LoadView(new AppBasicDetailView(_appViewModel));
+                MainSideView.LoadView(new AppBasicDetailView(_modelPair));
             }
             catch (Exception ex)
             {
@@ -94,9 +101,9 @@ namespace Nester.Views
 
             try
             {
-                await _appViewModel.ContactModel.InitAsync();
+                await _modelPair.AppViewModel.ContactModel.InitAsync();
 
-                LoadView(new ContactsView(_appViewModel));
+                MainSideView.LoadView(new ContactsView(_modelPair));
             }
             catch (Exception ex)
             {
@@ -112,9 +119,9 @@ namespace Nester.Views
 
             try
             {
-                await _appViewModel.NestModel.InitAsync();
+                await _modelPair.AppViewModel.NestModel.InitAsync();
 
-                LoadView(new AppNestsView(_appViewModel));
+                MainSideView.LoadView(new AppNestsView(_modelPair));
             }
             catch (Exception ex)
             {
@@ -129,8 +136,8 @@ namespace Nester.Views
             if (AppDomainsList.SelectedItem != null)
             {
                 Admin.AppDomain browseDomain = AppDomainsList.SelectedItem as Admin.AppDomain;
-                _appViewModel.DomainModel.EditDomain = browseDomain;
-                await Navigation.PushAsync(new AppDomainCertView(_appViewModel));
+                _modelPair.AppViewModel.DomainModel.EditDomain = browseDomain;
+                await Navigation.PushAsync(new AppDomainCertView(_modelPair));
             }
         }
 
@@ -141,8 +148,8 @@ namespace Nester.Views
                 AppDomainsList.SelectedItems.RemoveAt(0);
             }
 
-            _appViewModel.DomainModel.EditDomain = new Admin.AppDomain();
-            _appViewModel.DomainModel.EditDomain.App = _appViewModel.EditApp;
+            _modelPair.AppViewModel.DomainModel.EditDomain = new Admin.AppDomain();
+            _modelPair.AppViewModel.DomainModel.EditDomain.App = _modelPair.AppViewModel.EditApp;
 
             SetDefaults();
 
@@ -157,7 +164,7 @@ namespace Nester.Views
             {
                 Admin.AppDomain browseDomain = AppDomainsList.SelectedItem as Admin.AppDomain;
                 Utils.Object.CopyPropertiesTo(browseDomain,
-                    _appViewModel.DomainModel.EditDomain);
+                    _modelPair.AppViewModel.DomainModel.EditDomain);
                 enableEdits = !browseDomain.Default;
             }
 
@@ -169,7 +176,7 @@ namespace Nester.Views
 
         private Admin.AppDomain CopyUpdate(Admin.AppDomain browsDomain)
         {
-            browsDomain.App = _appViewModel.EditApp;
+            browsDomain.App = _modelPair.AppViewModel.EditApp;
             browsDomain.Tag = Tag.Text;
             browsDomain.Name = Name.Text;
             if (Aliases.Text == null || Aliases.Text.Length == 0)
@@ -192,8 +199,8 @@ namespace Nester.Views
             try
             {
                 priaryDomain.Primary = true;
-                _appViewModel.EditApp.PrimaryDomainId = priaryDomain.Id;
-                await _appViewModel.UpdateAppAsync(_appViewModel.EditApp);
+                _modelPair.AppViewModel.EditApp.PrimaryDomainId = priaryDomain.Id;
+                await _modelPair.AppViewModel.UpdateAppAsync(_modelPair.AppViewModel.EditApp);
             }
             catch (Exception ex)
             {
@@ -278,16 +285,16 @@ namespace Nester.Views
 
         private void Validate()
         {
-            _appViewModel.DomainModel.Validated = false;
-            _appViewModel.DomainModel.CanUpdate = false;
+            _modelPair.AppViewModel.DomainModel.Validated = false;
+            _modelPair.AppViewModel.DomainModel.CanUpdate = false;
 
-            if (_appViewModel != null)
+            if (TagValidator != null)
             {
                 /* used to enable the add function. a domain can
                  * be added only if valid fields and no list item 
                  * has been selected and currenly receivng focus.
                  */
-                _appViewModel.DomainModel.Validated = (
+                _modelPair.AppViewModel.DomainModel.Validated = (
                     TagValidator.IsValid &&
                     NameValidator.IsValid &&
                     AliasesValidator.IsValid                      
@@ -297,8 +304,8 @@ namespace Nester.Views
                  * be updaed only if valid fields has been selected 
                  * and an item from a list is selected.
                  */
-                _appViewModel.DomainModel.CanUpdate =
-                    _appViewModel.DomainModel.Validated &&
+                _modelPair.AppViewModel.DomainModel.CanUpdate =
+                    _modelPair.AppViewModel.DomainModel.Validated &&
                    AppDomainsList.SelectedItem != null &&
                     !(AppDomainsList.SelectedItem as Admin.AppDomain).Default;
             }
@@ -341,7 +348,7 @@ namespace Nester.Views
             try
             {
                 await Process(AppDomainsList.SelectedItem as Admin.AppDomain, true,
-                    _appViewModel.DomainModel.QueryDomainAsync
+                    _modelPair.AppViewModel.DomainModel.QueryDomainAsync
                 );
 
                 SetDefaults();
@@ -360,7 +367,7 @@ namespace Nester.Views
 
             try
             {
-                var existDomains = from domain in _appViewModel.DomainModel.Domains
+                var existDomains = from domain in _modelPair.AppViewModel.DomainModel.Domains
                                  where domain.Tag == Tag.Text
                                  select domain;
                 if (existDomains.Any())
@@ -370,7 +377,7 @@ namespace Nester.Views
                     return;
                 }
 
-                existDomains = from domain in _appViewModel.DomainModel.Domains
+                existDomains = from domain in _modelPair.AppViewModel.DomainModel.Domains
                                    where domain.Name == Name.Text
                                select domain;
                 if (existDomains.Any())
@@ -380,7 +387,7 @@ namespace Nester.Views
                     return;
                 }
 
-                Admin.AppDomain defaultDomain = (from domain in _appViewModel.DomainModel.Domains
+                Admin.AppDomain defaultDomain = (from domain in _modelPair.AppViewModel.DomainModel.Domains
                                                  where domain.Default == true
                                                  select domain).First();
                 string wildcardStripped = Name.Text;
@@ -390,7 +397,7 @@ namespace Nester.Views
                     wildcardStripped = Name.Text.Remove(0, 2);
                 }
 
-                string ip = await ThisUI.NesterService.GetIPAsync(wildcardStripped);
+                string ip = await NesterControl.NesterService.GetIPAsync(wildcardStripped);
 
                 if (ip == null || ip != defaultDomain.Ip)
                 {
@@ -405,7 +412,7 @@ namespace Nester.Views
                 {
                     foreach (string alias in Aliases.Text.Split(' '))
                     {
-                        ip = await ThisUI.NesterService.GetIPAsync(alias);
+                        ip = await NesterControl.NesterService.GetIPAsync(alias);
 
                         if (ip == null || ip != defaultDomain.Ip)
                         {
@@ -421,7 +428,7 @@ namespace Nester.Views
                 Admin.AppDomain newDomain = CopyUpdate(new Admin.AppDomain());
                 if (newDomain != null)
                 {
-                    await _appViewModel.DomainModel.CreateDomainAsync(newDomain);
+                    await _modelPair.AppViewModel.DomainModel.CreateDomainAsync(newDomain);
                     SetPrimaryDomain(newDomain);
                 }
 
@@ -450,7 +457,7 @@ namespace Nester.Views
                     return;
                 }
 
-                var existDomains = from domain in _appViewModel.DomainModel.Domains
+                var existDomains = from domain in _modelPair.AppViewModel.DomainModel.Domains
                                    where domain.Tag == Tag.Text && domain.Id != updatingDomain.Id 
                                    select domain;
                 if (existDomains.Any())
@@ -460,7 +467,7 @@ namespace Nester.Views
                     return;
                 }
 
-                existDomains = from domain in _appViewModel.DomainModel.Domains
+                existDomains = from domain in _modelPair.AppViewModel.DomainModel.Domains
                                where domain.Name == Name.Text && domain.Id != updatingDomain.Id
                                select domain;
                 if (existDomains.Any())
@@ -485,13 +492,13 @@ namespace Nester.Views
                         updateDomain.Certificate = null;
 
                         await Process(updateDomain, true,
-                            _appViewModel.DomainModel.UpdateDomainAsync
+                            _modelPair.AppViewModel.DomainModel.UpdateDomainAsync
                         );
                         SetDefaults();
 
-                        if (!_appViewModel.DomainModel.Domains.Where(x => x.Primary == true).Any())
+                        if (!_modelPair.AppViewModel.DomainModel.Domains.Where(x => x.Primary == true).Any())
                         {
-                            SetPrimaryDomain(_appViewModel.DomainModel.Domains.First());
+                            SetPrimaryDomain(_modelPair.AppViewModel.DomainModel.Domains.First());
                         }
                     }
                 }
@@ -511,7 +518,7 @@ namespace Nester.Views
             try
             {
                 await Process(AppDomainsList.SelectedItem as Admin.AppDomain, true,
-                    _appViewModel.DomainModel.RemoveDomainAsync,
+                    _modelPair.AppViewModel.DomainModel.RemoveDomainAsync,
                        new Func<Admin.AppDomain, Task<bool>>(
                             async (obj) =>
                             {
@@ -521,7 +528,7 @@ namespace Nester.Views
                 );
 
                 Clear();
-                SetPrimaryDomain(_appViewModel.DomainModel.Domains.First());
+                SetPrimaryDomain(_modelPair.AppViewModel.DomainModel.Domains.First());
             }
             catch (Exception ex)
             {
@@ -537,31 +544,9 @@ namespace Nester.Views
 
             try
             {
-                if (_appViewModel.WizardMode)
-                {
-                    // if currently trvelling back and forth on the 
-                    // app wizard - close the wizard
-                    this.Navigation.RemovePage(
-                        this.Navigation.NavigationStack[this.Navigation.NavigationStack.Count - 2]);
-
-                    // Pop contact view
-                    this.Navigation.RemovePage(
-                        this.Navigation.NavigationStack[this.Navigation.NavigationStack.Count - 2]);
-
-                    // Pop this to go to Homeview <->
-                    await this.Navigation.PopAsync();
-                }
-                else
-                {
-                    if (_appViewModel.EditApp.IsDeployed)
-                    {
-                        await DisplayAlert("Nester", "Make sure to re-deploy the app for changes to take effect", "OK");
-                    }
-
-                    // Head back to homepage if the 
-                    // page was called from here
-                    LoadHomeView();
-                }
+                // Head back to homepage if the 
+                // page was called from here
+                ResetView();
             }
             catch (Exception ex)
             {

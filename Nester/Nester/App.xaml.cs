@@ -26,39 +26,37 @@ using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
-namespace Nester
+namespace Inkton.Nester
 {
-    public partial class NesterUI : Application
+    public partial class DeployApp : Application, Admin.INesterControl
     {
         private Admin.User _user;
         private Cloud.INesterService _nester;
         private Cache.IStorageService _storage;
-        private Views.MainSideView _homeView;
+        private Views.AppModelPair _appModelPair;
+        private Views.MainSideView _mainSideView;
 
-        public NesterUI()
+        public DeployApp()
         {
             InitializeComponent();
 
             _user = new Admin.User();
             _nester = DependencyService.Get<Cloud.INesterService>();
             _storage = DependencyService.Get<Cache.IStorageService>();
-
             _storage.Clear();
 
-            _homeView = new Views.MainSideView();
+            _appModelPair = new Views.AppModelPair(
+                new Views.AuthViewModel(), new Views.AppCollectionViewModel());
+            _mainSideView = new Views.MainSideView();
 
-            MainPage = new NavigationPage(
-                new Views.EntryView());
+            MainPage = _mainSideView;
+
+            _mainSideView.ShowEntry();
         }
 
-        public Views.MainSideView HomeView
+        public Views.AppModelPair AppModelPair
         {
-            get { return _homeView; }
-        }
-
-        public Views.AppCollectionViewModel AppCollectionViewModel
-        {
-            get { return _homeView.AppViewModel as Views.AppCollectionViewModel; }
+            get { return _appModelPair; }
         }
 
         public Admin.User User
@@ -74,6 +72,16 @@ namespace Nester
         public Cache.IStorageService StorageService
         {
             get { return _storage; }
+        }
+
+        public void ResetView()
+        {
+            _mainSideView.ResetView();
+        }
+
+        public bool CreateAppView(Views.AppModelPair modelPair)
+        {
+            return _mainSideView.CreateAppView(modelPair);
         }
     }
 }

@@ -26,50 +26,114 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Nester.Admin;
+using Inkton.Nester.Admin;
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
     public partial class MainSideView : MasterDetailPage
     {
-        protected Func<Views.View, bool> _viewLoader;
-
+        private Views.View _currentView;
+        
         public MainSideView()
         {
             InitializeComponent();
 
-            Detail = new BannerView(BannerView.Status.Initializing);
+            homeView = new HomeView();
+            homeView.MainSideView = this;
+            Master = homeView;
 
-            _viewLoader = new Func<Views.View, bool>(LoadView);
-            Home.Init(_viewLoader);
-        }
+            _currentView = new BannerView();
+            (_currentView as BannerView).ShowProgress = true;
+            (_currentView as BannerView).Text = "Starting ..";
+            (_currentView as BannerView).AnimationType = Syncfusion.SfBusyIndicator.XForms.AnimationTypes.Box;
 
-        public AuthViewModel AuthViewModel
-        {
-            get { return Home.AuthViewModel; }
-            set { Home.AuthViewModel = value; }
-        }
+            _currentView.MainSideView = this;
+            Detail = new NavigationPage(_currentView);
 
-        public AppViewModel AppViewModel
-        {
-            get { return Home.AppViewModel; }
-            set { Home.AppViewModel = value; }
-        }
-
-        protected bool LoadView(Views.View view)
-        {
-            view.LoadView = _viewLoader;
-            view.MasterDetailPage = this;
-
-            if (view is AppView)
+            if (Device.RuntimePlatform == Device.UWP)
             {
-                (view as AppView).GetAnalyticsAsync();
+                MasterBehavior = MasterBehavior.Popover;
+            }
+        }
+
+        public void ShowEntry()
+        {
+            EntryView entry = new EntryView();
+            entry.MainSideView = this;
+            Detail.Navigation.PushAsync(entry);
+        }
+
+        public void ResetView()
+        {
+            _currentView = new BannerView();
+            (_currentView as BannerView).ShowProgress = false;
+            _currentView.MainSideView = this;
+            Detail = new NavigationPage(_currentView);
+            IsPresented = false;
+        }
+
+        public bool LoadView(Views.View view)
+        {
+            Detail = new NavigationPage(view);
+            _currentView = view;
+            _currentView.MainSideView = this;
+
+            IsPresented = false;
+            return true;
+        }
+
+        public bool CreateAppView(Views.AppModelPair appModelPair)
+        {
+            AppView.Status newState;
+            bool viewLoadNeeded = true;
+
+            if (appModelPair.AppViewModel.EditApp.IsBusy)
+            {
+                newState = AppView.Status.Deploying;
+            }
+            else if (!appModelPair.AppViewModel.EditApp.IsDeployed)
+            {
+                newState = AppView.Status.WaitingDeployment;
+            }
+            else
+            {
+                newState = AppView.Status.Deployed;
             }
 
-            Detail = view;
-            
+            if (_currentView != null && _currentView is AppView && _currentView.AppModelPair != null &&
+                _currentView.AppModelPair.AppViewModel.EditApp.Id == appModelPair.AppViewModel.EditApp.Id)
+            {
+                viewLoadNeeded = ((_currentView as AppView).State != newState);
+            }
+
+            if (viewLoadNeeded)
+            {
+                Views.AppView appView = new Views.AppView(appModelPair);
+                appView.State = AppView.Status.Refreshing;
+                appView.AppModelPair = appModelPair;
+                if (newState == AppView.Status.Deployed)
+                {
+                    appView.GetAnalyticsAsync();
+                }
+                LoadView(appView);
+                appView.State = newState;
+            }
+
             return true;
+        }
+
+        public void Reload(AppViewModel appModel)
+        {
+            if (_currentView != null && _currentView is AppView && _currentView.AppModelPair != null &&
+                _currentView.AppModelPair.AppViewModel.EditApp.Id == appModel.EditApp.Id)
+            {
+                (_currentView as AppView).ReloadAsync();
+            }
+            else
+            {
+                appModel.Reload();
+            }
         }
     }
 }

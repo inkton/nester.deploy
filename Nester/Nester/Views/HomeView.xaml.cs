@@ -26,20 +26,21 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Nester.Admin;
+using Inkton.Nester.Admin;
 using Xamarin.Forms;
 using PCLAppConfig;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
-    public partial class HomeView : Nester.Views.View
+    public partial class HomeView : Inkton.Nester.Views.View
     {
-        private Admin.App _editApp;
         private long _updatInterval;
         private long _lastUpdate = 0;
 
         public HomeView()
         {
+            _modelPair = NesterControl.AppModelPair;
+
             InitializeComponent();
 
             SetActivityMonotoring(ServiceActive,
@@ -62,48 +63,31 @@ namespace Nester.Views
             ButtonAppAdd.Clicked += ButtonAppAdd_ClickedAsync;
             ButtonAppRemove.Clicked += ButtonAppRemove_ClickedAsync;
 
-            ButtonUser.Clicked += ButtonUser_ClickedAsync;
-            ButtonAuth.Clicked += ButtonAuth_ClickedAsync;
+            ButtonUser.Clicked += ButtonUser_Clicked;
+            ButtonAuth.Clicked += ButtonAuth_Clicked;
             ButtonPayment.Clicked += ButtonPayment_ClickedAsync;
             ButtonHistory.Clicked += ButtonHistory_ClickedAsync;
 
-            AuthViewModel = new AuthViewModel();
-            AppViewModel = new AppCollectionViewModel();
-
-            BindingContext = AppViewModel;
-
             _updatInterval = Convert.ToInt64(
                 ConfigurationManager.AppSettings["appStatusRefreshInterval"]);
+
+            BindingContext = _modelPair.AppViewModel;
         }
 
         public AppCollectionViewModel AppCollectionModel
         {
             get
             {
-                return AppViewModel as AppCollectionViewModel;
+                return AppModelPair.AppViewModel as AppCollectionViewModel;
             }
         }
 
-        public Admin.App EditApp
-        {
-            set
-            {
-                _editApp = value;
-            }
-            get
-            {
-                return _editApp;
-            }
-        }
-
-        public void Init(Func<Views.View, bool> viewLoader)
+        public void Init()
         {
             try
             {
-                _viewLoader = viewLoader;
-                AppCollectionModel.Init(viewLoader);
                 Cloud.ServerStatus status = new Cloud.ServerStatus(0);
-
+                
                 Device.StartTimer(TimeSpan.FromSeconds(1), () =>
                 {
                     if (_lastUpdate > _updatInterval)
@@ -114,34 +98,13 @@ namespace Nester.Views
                             {
                                 if (appModel.EditApp.IsBusy)
                                 {
+                                    // In the middle of an operation. 
+                                    // Update state again to capture current status.
                                     await appModel.InitAsync();
                                 }
 
-                                if (AppCollectionModel.CurrentView != null &&
-                                    appModel.EditApp.Id == AppCollectionModel.CurrentView.App.Id)
-                                {
-                                    if (appModel.EditApp.IsBusy &&
-                                            (!(AppCollectionModel.CurrentView is Views.BannerView) ||
-                                            (AppCollectionModel.CurrentView is Views.BannerView &&
-                                                (AppCollectionModel.CurrentView as Views.BannerView).State ==
-                                                    BannerView.Status.WaitingDeployment)
-                                            ) ||
-                                        !appModel.EditApp.IsBusy &&
-                                            ((!appModel.EditApp.IsDeployed &&
-                                                (!(AppCollectionModel.CurrentView is Views.BannerView)) ||
-                                                    (AppCollectionModel.CurrentView is Views.BannerView &&
-                                                        (AppCollectionModel.CurrentView as Views.BannerView).State !=
-                                                    BannerView.Status.WaitingDeployment)
-                                                ) ||
-                                            (appModel.EditApp.IsDeployed && AppCollectionModel.CurrentView is Views.BannerView)))
-                                    {
-                                        Device.BeginInvokeOnMainThread(() =>
-                                        {
-                                            // Update the UI
-                                            AppCollectionModel.LoadApp(appModel);
-                                        });
-                                    }
-                                }
+                                NesterControl.CreateAppView(
+                                    new AppModelPair(_modelPair.AuthViewModel, appModel));
                             }
                         });
 
@@ -159,18 +122,43 @@ namespace Nester.Views
             }
         }
 
+        private async void LoadSettingsPage(Type pageType)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                _modelPair.WizardMode = false;
+
+                AppModelPair modelPair = new AppModelPair(_modelPair.AuthViewModel);
+                AppViewModel appModel = AppModels.SelectedItem as AppViewModel;
+                if (appModel != null)
+                {
+                    modelPair.AppViewModel = appModel;
+                }
+
+                MainSideView.LoadView(
+                    Activator.CreateInstance(pageType, new object[] { modelPair }) as Views.View);
+                MainSideView.IsPresented = false;
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+
+            IsServiceActive = false;
+        }
+
         private async void ButtonAppJoin_ClickedAsync(object sender, EventArgs e)
         {
             try
             {
-                AppViewModel appViewModel = new AppViewModel();
+                _modelPair.AppViewModel.ContactModel.EditInvitation.User = NesterControl.User;
 
-                appViewModel.ContactModel.EditInvitation.User = ThisUI.User;
+                await _modelPair.AppViewModel.ContactModel.QueryInvitationsAsync();
 
-                await appViewModel.ContactModel.QueryInvitationsAsync();
-
-                await Navigation.PushAsync(
-                    new AppJoinDetailView(appViewModel));
+                MainSideView.LoadView(
+                   new AppJoinDetailView(_modelPair));
             }
             catch (Exception ex)
             {
@@ -187,7 +175,7 @@ namespace Nester.Views
                 if (AppModels.SelectedItem != null)
                 {
                     AppViewModel appModel = AppModels.SelectedItem as AppViewModel;
-                    await appModel.InitAsync();
+                    MainSideView.Reload(appModel);
                 }
             }
             catch (Exception ex)
@@ -244,85 +232,26 @@ namespace Nester.Views
             IsServiceActive = false;
         }
         
-        private async void ButtonUser_ClickedAsync(object sender, EventArgs e)
+        private void ButtonUser_Clicked(object sender, EventArgs e)
         {
-            IsServiceActive = true;
-
-            try
-            {
-                AuthViewModel.WizardMode = false;
-
-                UserView userView = new UserView(AuthViewModel);
-                userView.AppViewModel = AppCollectionModel.AppModels.FirstOrDefault();
-
-                _viewLoader(userView);
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Nester", ex.Message, "OK");
-            }
-
-            IsServiceActive = false;
+            LoadSettingsPage(typeof(UserView));
         }
 
-        private async void ButtonAuth_ClickedAsync(object sender, EventArgs e)
+        private void ButtonAuth_Clicked(object sender, EventArgs e)
         {
-            IsServiceActive = true;
-
-            try
-            {
-                AuthViewModel.WizardMode = false;
-
-                AuthView authView = new AuthView(AuthViewModel);
-                authView.AppViewModel = AppCollectionModel.AppModels.FirstOrDefault();
-
-                _viewLoader(authView);
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Nester", ex.Message, "OK");
-            }
-
-            IsServiceActive = false;
+            LoadSettingsPage(typeof(AuthView));
         }
 
         private async void ButtonPayment_ClickedAsync(object sender, EventArgs e)
         {
-            IsServiceActive = true;
+            await _modelPair.AppViewModel.PaymentModel.QueryPaymentMethodAsync(false, false);
 
-            try
-            {
-                AppViewModel.PaymentModel.WizardMode = false;
-                await AppViewModel.PaymentModel.QueryPaymentMethodAsync(false, false);
-
-                PaymentView paymentView = new PaymentView(AppViewModel.PaymentModel);
-                paymentView.AppViewModel = AppCollectionModel.AppModels.FirstOrDefault();
-                _viewLoader(paymentView);
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Nester", ex.Message, "OK");
-            }
-
-            IsServiceActive = false;
+            LoadSettingsPage(typeof(PaymentView));
         }
 
-        private async void ButtonHistory_ClickedAsync(object sender, EventArgs e)
+        private void ButtonHistory_ClickedAsync(object sender, EventArgs e)
         {
-            IsServiceActive = true;
-
-            try
-            {
-                AuthViewModel.WizardMode = false;
-
-                _viewLoader(new UserHistoryView(AuthViewModel));
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Nester", ex.Message, "OK");
-            }
-
-            IsServiceActive = false;
+            LoadSettingsPage(typeof(UserHistoryView));
         }
 
         private async void ButtonAppAdd_ClickedAsync(object sender, EventArgs e)
@@ -331,11 +260,17 @@ namespace Nester.Views
 
             try
             {
-                AppViewModel.NewAppAsync();
-                AppViewModel.WizardMode = true;
+                AppViewModel newAppModel = new AppViewModel();
+                newAppModel.NewAppAsync();
 
-                await Navigation.PushAsync(
-                    new AppBasicDetailView(AppViewModel));
+                AppModelPair modelPair = new AppModelPair(
+                    _modelPair.AuthViewModel, newAppModel);
+                modelPair.WizardMode = true;
+
+                MainSideView.LoadView(
+                   new AppBasicDetailView(modelPair));
+
+                MainSideView.IsPresented = false;
             }
             catch (Exception ex)
             {
@@ -350,7 +285,8 @@ namespace Nester.Views
             AppViewModel appModel = e.AddedItems.FirstOrDefault() as AppViewModel;
             if (appModel != null)
             {
-                AppCollectionModel.LoadApp(appModel);
+                NesterControl.CreateAppView(
+                    new AppModelPair(_modelPair.AuthViewModel, appModel));
             }
         }
 
@@ -359,7 +295,8 @@ namespace Nester.Views
             AppViewModel appModel = AppCollectionModel.AppModels.FirstOrDefault();
             if (appModel != null)
             {
-                AppCollectionModel.LoadApp(appModel);
+                NesterControl.CreateAppView(
+                    new AppModelPair(_modelPair.AuthViewModel, appModel));
             }
         }
     }

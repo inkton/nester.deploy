@@ -27,23 +27,23 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
-    public partial class AppWebView : Nester.Views.View
+    public partial class AppWebView : Inkton.Nester.Views.View
     {
-        public AppWebView(AppViewModel appViewModel)
+        public AppWebView(Views.AppModelPair modelPair)
         {
+            _modelPair = modelPair;
+            _modelPair.WizardMode = false;
+
             InitializeComponent();
 
             _activityIndicator = ServiceActive;
 
-            _appViewModel = appViewModel;
-            _appViewModel.WizardMode = false;
-
-            if (_appViewModel.EditApp.Id != 0)
+            if (_modelPair.AppViewModel.EditApp.Id != 0)
             {
-                Title = _appViewModel.EditApp.Name;
-                Browser.Source = "https://" + _appViewModel.DomainModel.DefaultDomain.Name;
+                Title = _modelPair.AppViewModel.EditApp.Name;
+                Browser.Source = "https://" + _modelPair.AppViewModel.DomainModel.DefaultDomain.Name;
             }
             else
             {
@@ -52,7 +52,7 @@ namespace Nester.Views
                 Browser.Source = "ms-appx-web:///index.html";
             }
 
-            BindingContext = _appViewModel;
+            BindingContext = _modelPair.AppViewModel;
 
             //ButtonBrowserBack.Clicked += ButtonBrowserBack_Clicked;
             //ButtonBrowserForward.Clicked += ButtonBrowserForward_Clicked;
@@ -108,7 +108,7 @@ namespace Nester.Views
             }
             else
             { // If not, leave the view
-                Navigation.PopAsync();
+                ResetView();
             }
         }
 
@@ -116,7 +116,7 @@ namespace Nester.Views
         {
             try
             {
-                LoadHomeView();
+                ResetView();
             }
             catch (Exception ex)
             {

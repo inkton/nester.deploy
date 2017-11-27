@@ -30,14 +30,16 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
-    public partial class AppDomainCertView : Nester.Views.View
+    public partial class AppDomainCertView : Inkton.Nester.Views.View
     {
         private Regex _domainVerifier;
 
-        public AppDomainCertView(AppViewModel appViewModel)
+        public AppDomainCertView(Views.AppModelPair modelPair)
         {
+            _modelPair = modelPair;
+
             InitializeComponent();
 
             SetActivityMonotoring(ServiceActive,
@@ -47,9 +49,7 @@ namespace Nester.Views
                                 ButtonDone
                 });
 
-            _appViewModel = appViewModel;
-
-            BindingContext = _appViewModel.DomainModel;
+            BindingContext = _modelPair.AppViewModel.DomainModel;
 
             //Name.Unfocused += Name_Unfocused;
             Type.SelectedIndexChanged += Type_SelectedIndexChanged;
@@ -86,17 +86,17 @@ namespace Nester.Views
              * names */
             bool canAddFreeCert = true;
 
-            if (_appViewModel.DomainModel.EditDomain.Name != null &&
-                !_domainVerifier.Match(_appViewModel.DomainModel.EditDomain.Name).Success)
+            if (_modelPair.AppViewModel.DomainModel.EditDomain.Name != null &&
+                !_domainVerifier.Match(_modelPair.AppViewModel.DomainModel.EditDomain.Name).Success)
             {
                 canAddFreeCert = false;
             }
             else
             {
-                if (_appViewModel.DomainModel.EditDomain.Aliases != null &&
-                    _appViewModel.DomainModel.EditDomain.Aliases.Length > 0)
+                if (_modelPair.AppViewModel.DomainModel.EditDomain.Aliases != null &&
+                    _modelPair.AppViewModel.DomainModel.EditDomain.Aliases.Length > 0)
                 {
-                    string[] aliasArray = _appViewModel.DomainModel.EditDomain.Aliases.Split(new char[] { ',', ' ' });
+                    string[] aliasArray = _modelPair.AppViewModel.DomainModel.EditDomain.Aliases.Split(new char[] { ',', ' ' });
 
                     foreach (string alias in aliasArray)
                     {
@@ -117,9 +117,9 @@ namespace Nester.Views
 
             Type.Items.Add("Custom");
 
-            if (_appViewModel.DomainModel.EditDomain.Certificate != null)
+            if (_modelPair.AppViewModel.DomainModel.EditDomain.Certificate != null)
             {
-                string type = _appViewModel.DomainModel.EditDomain.Certificate.Type;
+                string type = _modelPair.AppViewModel.DomainModel.EditDomain.Certificate.Type;
                 type = char.ToUpper(type[0]) + type.Substring(1);
 
                 int index = Type.Items.IndexOf(type);
@@ -149,8 +149,8 @@ namespace Nester.Views
             }
             else
             {
-                PrivateKey.Text = _appViewModel.DomainModel.EditDomain.Certificate.PrivateKey;
-                Chain.Text = _appViewModel.DomainModel.EditDomain.Certificate.CertificateChain;
+                PrivateKey.Text = _modelPair.AppViewModel.DomainModel.EditDomain.Certificate.PrivateKey;
+                Chain.Text = _modelPair.AppViewModel.DomainModel.EditDomain.Certificate.CertificateChain;
             }
 
             Validate();
@@ -163,8 +163,8 @@ namespace Nester.Views
 
         private void Validate()
         {
-            _appViewModel.DomainModel.CanUpdate = false;
-            _appViewModel.DomainModel.Validated = false;
+            _modelPair.AppViewModel.DomainModel.CanUpdate = false;
+            _modelPair.AppViewModel.DomainModel.Validated = false;
 
             string type = Type.SelectedItem as string;
 
@@ -173,7 +173,7 @@ namespace Nester.Views
                 PrivateKey.IsEnabled = true;
                 Chain.IsEnabled = true;
 
-                _appViewModel.DomainModel.Validated = (
+                _modelPair.AppViewModel.DomainModel.Validated = (
                         PrivateKey.Text != null &&
                         PrivateKey.Text.Length > 0 &&
                         Chain.Text != null &&
@@ -185,14 +185,14 @@ namespace Nester.Views
                 PrivateKey.IsEnabled = false;
                 Chain.IsEnabled = false;
 
-                _appViewModel.DomainModel.Validated = true;
+                _modelPair.AppViewModel.DomainModel.Validated = true;
             }
 
             /* used to enable the update function. a certificate can
                 * be updaed only if valid fields has been selected 
                 * and an item from a list is selected.
                 */
-            _appViewModel.DomainModel.CanUpdate = _appViewModel.DomainModel.Validated;
+            _modelPair.AppViewModel.DomainModel.CanUpdate = _modelPair.AppViewModel.DomainModel.Validated;
         }
 
         protected async override void OnAppearing()
@@ -220,10 +220,10 @@ namespace Nester.Views
 
             try
             {
-                if (_appViewModel.DomainModel.EditDomain.Certificate != null)
+                if (_modelPair.AppViewModel.DomainModel.EditDomain.Certificate != null)
                 {
-                    await Process(_appViewModel.DomainModel.EditDomain.Certificate, true,
-                        _appViewModel.DomainModel.RemoveDomainCertificateAsync
+                    await Process(_modelPair.AppViewModel.DomainModel.EditDomain.Certificate, true,
+                        _modelPair.AppViewModel.DomainModel.RemoveDomainCertificateAsync
                     );
                 }
 
@@ -232,14 +232,14 @@ namespace Nester.Views
                 if (type != "None")
                 {
                     Admin.AppDomainCertificate cert = new Admin.AppDomainCertificate();
-                    cert.AppDomain = _appViewModel.DomainModel.EditDomain;
-                    cert.Tag = _appViewModel.DomainModel.EditDomain.Tag;
+                    cert.AppDomain = _modelPair.AppViewModel.DomainModel.EditDomain;
+                    cert.Tag = _modelPair.AppViewModel.DomainModel.EditDomain.Tag;
                     cert.Type = type.ToLower();
                     cert.PrivateKey = PrivateKey.Text;
                     cert.CertificateChain = Chain.Text;
 
                     await Process(cert, true,
-                        _appViewModel.DomainModel.CreateDomainCertificateAsync
+                        _modelPair.AppViewModel.DomainModel.CreateDomainCertificateAsync
                     );
                 }
             }

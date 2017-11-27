@@ -27,11 +27,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
-    public partial class UserHistoryView : Nester.Views.View
+    public partial class UserHistoryView : Inkton.Nester.Views.View
     {
-        public UserHistoryView(AuthViewModel authViewModel)
+        public UserHistoryView(Views.AppModelPair modelPair)
         {
             InitializeComponent();
 
@@ -39,26 +39,31 @@ namespace Nester.Views
                 new List<Xamarin.Forms.View> {
                 });
 
-            ButtonAppMenu.Clicked += ButtonAppMenu_Clicked;
-
-            _authViewModel = authViewModel;
-            BindingContext = _authViewModel;
+            _modelPair = modelPair;
+            BindingContext = _modelPair.AuthViewModel;
         }
 
         protected async override void OnAppearing()
         {
-            BindingContext = _authViewModel;
+            BindingContext = _modelPair.AuthViewModel;
 
             base.OnAppearing();
 
-            await _authViewModel.QueryUserEventsAsync(ThisUI.User);
+            await _modelPair.AuthViewModel.QueryUserEventsAsync(NesterControl.User);
         }
 
         async private void OnDoneButtonClickedAsync(object sender, EventArgs e)
         {
             try
             {
-                await Navigation.PopAsync();
+                if (_modelPair.AppViewModel != null)
+                {
+                    MainSideView.CreateAppView(_modelPair);
+                }
+                else
+                {
+                    MainSideView.ResetView();
+                }
             }
             catch (Exception ex)
             {
@@ -66,16 +71,11 @@ namespace Nester.Views
             }
         }
 
-        private void ButtonAppMenu_Clicked(object sender, EventArgs e)
-        {
-            _masterDetailPage.IsPresented = true;
-        }
-
         async private void OnCloseButtonClickedAsync(object sender, EventArgs e)
         {
             try
             {
-                LoadHomeView();
+                ResetView();
             }
             catch (Exception ex)
             {

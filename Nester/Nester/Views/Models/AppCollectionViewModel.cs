@@ -27,13 +27,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
     public class AppCollectionViewModel : AppViewModel
     {
         private ObservableCollection<AppViewModel> _appModels;
-        private Func<Views.View, bool> _viewLoader;
-        private Views.View _currentView = null;
 
         public AppCollectionViewModel()
         {
@@ -50,19 +48,6 @@ namespace Nester.Views
             {
                 SetProperty(ref _appModels, value);
             }
-        }
-
-        public Views.View CurrentView
-        {
-            get
-            {
-                return _currentView;
-            }
-        }
-
-        public void Init(Func<Views.View, bool> viewLoader)
-        {
-            _viewLoader = viewLoader;
         }
 
         public async Task<Cloud.ServerStatus> LoadApps(
@@ -85,13 +70,13 @@ namespace Nester.Views
                         _appModels.Add(appModel);
                     }
 
-                    LoadApp(_appModels.First());
+                    NesterControl.CreateAppView(
+                        new AppModelPair(NesterControl.AppModelPair.AuthViewModel, _appModels.First()));
                     OnPropertyChanged("Apps");
                 }
                 else
                 {
-                    _currentView = new BannerView(BannerView.Status.Undefined);
-                    _viewLoader(_currentView);
+                    NesterControl.ResetView();
                 }
             }
 
@@ -102,14 +87,16 @@ namespace Nester.Views
         {
             AppViewModel appModel = new AppViewModel();
             appModel.EditApp = app;
-            Task.Run(() => appModel.InitAsync());
             AddModel(appModel);
         }
 
         public void AddModel(AppViewModel appModel)
         {
             _appModels.Add(appModel);
-            LoadApp(appModel);
+
+            Task.Run(() => appModel.InitAsync());
+            NesterControl.CreateAppView(
+                new AppModelPair(NesterControl.AppModelPair.AuthViewModel, appModel));
         }
 
         public void RemoveApp(AppViewModel appModel)
@@ -118,35 +105,13 @@ namespace Nester.Views
             
             if (_appModels.Any())
             {
-                LoadApp(_appModels.First());
+                NesterControl.CreateAppView(
+                    new AppModelPair(NesterControl.AppModelPair.AuthViewModel, _appModels.First()));
             }
             else
             {
-                _currentView = new BannerView(BannerView.Status.Undefined);
-                _viewLoader(_currentView);
+                NesterControl.ResetView();
             }
-        }
-
-        public bool LoadApp(AppViewModel appModel)
-        {
-            if (appModel.EditApp.IsBusy)
-            {
-                _currentView = new BannerView(BannerView.Status.Updating);
-            }
-            else if (!appModel.EditApp.IsDeployed)
-            {
-                _currentView = new BannerView(BannerView.Status.WaitingDeployment);
-            }
-            else
-            {
-                _currentView = new Views.AppView(appModel);
-            }
-
-            _currentView.AppViewModel = appModel;
-            _currentView.LoadView = _viewLoader;
-            _viewLoader(_currentView);
-
-            return true;
         }
     }
 }

@@ -1,10 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:utils="clr-namespace:Nester.Utils;assembly=Nester"
-             xmlns:validators="clr-namespace:Nester.Utils.Validators;assembly=Nester"             
+             xmlns:utils="clr-namespace:Inkton.Nester.Utils"
              xmlns:light="clr-namespace:Xamarin.Forms.Themes;assembly=Xamarin.Forms.Theme.Light"
-             x:Class="Nester.NesterUI">
+             x:Class="Inkton.Nester.DeployApp">
   <Application.Resources>
 
     <!-- Application resource dictionary -->

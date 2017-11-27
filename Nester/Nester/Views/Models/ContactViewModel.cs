@@ -31,7 +31,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
     public class ContactViewModel : ViewModel
     {
@@ -73,7 +73,7 @@ namespace Nester.Views
 
             _invitations = new ObservableCollection<Admin.Invitation>();
             _editInvitation = new Admin.Invitation();
-            _editInvitation.User = ThisUI.User;
+            _editInvitation.User = NesterControl.User;
 
             _collaboration = new Admin.Collaboration();
             _collaboration.Contact = _editContact;
@@ -88,7 +88,7 @@ namespace Nester.Views
             set
             {
                 _editContact.App = value; 
-                _editInvitation.User = ThisUI.User;
+                _editInvitation.User = NesterControl.User;
 
                 SetProperty(ref _editApp, value);
             }
@@ -225,7 +225,7 @@ namespace Nester.Views
                     await QueryPermissionsAsync(contact, throwIfError);
 
                     if (contact.UserId != null &&
-                        contact.UserId == ThisUI.User.Id)
+                        contact.UserId == NesterControl.User.Id)
                     {
                         _ownerContact = contact;
                         _editContact = contact;
@@ -244,7 +244,7 @@ namespace Nester.Views
             Admin.Contact theContact = contact == null ? _editContact : contact;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theContact, new Cloud.CachedHttpRequest<Admin.Contact>(
-                    ThisUI.NesterService.QueryAsync), doCache, null, null);
+                    NesterControl.NesterService.QueryAsync), doCache, null, null);
 
             if (status.Code >= 0)
             {
@@ -268,7 +268,7 @@ namespace Nester.Views
             bool leaving = theContact.UserId != null;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theContact, new Cloud.CachedHttpRequest<Admin.Contact>(
-                    ThisUI.NesterService.UpdateAsync), doCache);
+                    NesterControl.NesterService.UpdateAsync), doCache);
 
             if (status.Code >= 0)
             {
@@ -294,7 +294,7 @@ namespace Nester.Views
             Admin.Contact theContact = contact == null ? _editContact : contact;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theContact, new Cloud.CachedHttpRequest<Admin.Contact>(
-                    ThisUI.NesterService.CreateAsync), doCache);
+                    NesterControl.NesterService.CreateAsync), doCache);
 
             if (status.Code >= 0)
             {
@@ -318,7 +318,7 @@ namespace Nester.Views
             Admin.Contact theContact = contact == null ? _editContact : contact;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theContact, new Cloud.CachedHttpRequest<Admin.Contact>(
-                    ThisUI.NesterService.RemoveAsync), doCache);
+                    NesterControl.NesterService.RemoveAsync), doCache);
 
             if (status.Code >= 0)
             {
@@ -334,7 +334,7 @@ namespace Nester.Views
             Admin.Contact theContact = contact == null ? _editContact : contact;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theContact, new Cloud.CachedHttpRequest<Admin.Contact>(
-                    ThisUI.NesterService.UpdateAsync), doCache);
+                    NesterControl.NesterService.UpdateAsync), doCache);
             return status;
         }
 
@@ -412,7 +412,7 @@ namespace Nester.Views
 
                     status = await Cloud.Result.WaitForObjectAsync(false,
                         seedPermission, new Cloud.CachedHttpRequest<Auth.Permission>(
-                            ThisUI.NesterService.CreateAsync), doCache, permission);
+                            NesterControl.NesterService.CreateAsync), doCache, permission);
 
                     if (status.Code != Cloud.Result.NEST_RESULT_SUCCESS &&
                         status.Code != Cloud.Result.NEST_RESULT_ERROR_PERM_FOUND)
@@ -426,7 +426,7 @@ namespace Nester.Views
                 {
                     status = await Cloud.Result.WaitForObjectAsync(false,
                         seedPermission, new Cloud.CachedHttpRequest<Auth.Permission>(
-                            ThisUI.NesterService.RemoveAsync), doCache);
+                            NesterControl.NesterService.RemoveAsync), doCache);
 
                     if (status.Code != Cloud.Result.NEST_RESULT_SUCCESS &&
                         status.Code != Cloud.Result.NEST_RESULT_ERROR_PERM_NFOUND)
@@ -447,7 +447,7 @@ namespace Nester.Views
 
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theCollaboration, new Cloud.CachedHttpRequest<Admin.Collaboration>(
-                    ThisUI.NesterService.QueryAsync), doCache, null, null);
+                    NesterControl.NesterService.QueryAsync), doCache, null, null);
 
             if (status.Code >= 0)
             {
