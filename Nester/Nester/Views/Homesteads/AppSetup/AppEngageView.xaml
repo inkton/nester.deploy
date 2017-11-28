@@ -99,7 +99,7 @@
         
         </StackLayout>
 
-        <ActivityIndicator Grid.Row="3" Grid.Column="1" x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
+        <ActivityIndicator Grid.Row="3" Grid.Column="1" x:Name="ServiceActive" ></ActivityIndicator>
 
       </Grid>
     

@@ -64,54 +64,33 @@ namespace Inkton.Nester.Views
                 {
                     foreach (Admin.App app in apps)
                     {
-                        AppViewModel appModel = new AppViewModel();
-                        appModel.EditApp = app;
-                        await appModel.InitAsync();
-                        _appModels.Add(appModel);
+                        await AddAppAsync(app);
                     }
-
-                    NesterControl.CreateAppView(
-                        new AppModelPair(NesterControl.AppModelPair.AuthViewModel, _appModels.First()));
-                    OnPropertyChanged("Apps");
-                }
-                else
-                {
-                    NesterControl.ResetView();
                 }
             }
 
             return status;
         }
 
-        public void AddApp(Admin.App app)
+        public async Task<AppViewModel> AddAppAsync(Admin.App app)
         {
             AppViewModel appModel = new AppViewModel();
             appModel.EditApp = app;
+            await appModel.InitAsync();
             AddModel(appModel);
+            return appModel;
         }
 
         public void AddModel(AppViewModel appModel)
         {
             _appModels.Add(appModel);
-
-            Task.Run(() => appModel.InitAsync());
-            NesterControl.CreateAppView(
-                new AppModelPair(NesterControl.AppModelPair.AuthViewModel, appModel));
+            OnPropertyChanged("Apps");
         }
 
         public void RemoveApp(AppViewModel appModel)
         {
             _appModels.Remove(appModel);
-            
-            if (_appModels.Any())
-            {
-                NesterControl.CreateAppView(
-                    new AppModelPair(NesterControl.AppModelPair.AuthViewModel, _appModels.First()));
-            }
-            else
-            {
-                NesterControl.ResetView();
-            }
+            OnPropertyChanged("Apps");
         }
     }
 }

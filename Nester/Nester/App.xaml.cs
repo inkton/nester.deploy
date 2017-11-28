@@ -74,9 +74,9 @@ namespace Inkton.Nester
             get { return _storage; }
         }
 
-        public void ResetView()
+        public void ResetView(Views.AppModelPair appModelPair = null)
         {
-            _mainSideView.ResetView();
+            _mainSideView.ResetView(appModelPair);
         }
 
         public bool CreateAppView(Views.AppModelPair modelPair)

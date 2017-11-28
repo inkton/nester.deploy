@@ -49,14 +49,14 @@
 
           </StackLayout>
 
-          <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
+          <ActivityIndicator x:Name="ServiceActive" ></ActivityIndicator>
 
         </StackLayout>
         
         <StackLayout Grid.Row="2" Grid.Column="1">
 
           <Label Style="{StaticResource nesterFieldLabel}"
-                Text="Security Code"
+                Text="Security Code"  
                 x:Name="SecurityCodeLabel"></Label>
           <Entry Style="{StaticResource nesterField}"
                 x:Name="SecurityCode"

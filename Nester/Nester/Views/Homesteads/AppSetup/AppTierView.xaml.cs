@@ -113,9 +113,8 @@ namespace Inkton.Nester.Views
 
                 AppNestsView nestsView = new AppNestsView(_modelPair);
                 nestsView.MainSideView = MainSideView;
-
-                await MainSideView.Detail.Navigation.PopToRootAsync();
-                await MainSideView.Detail.Navigation.PushAsync(nestsView);
+                MainSideView.Detail.Navigation.InsertPageBefore(nestsView, this);
+                await MainSideView.Detail.Navigation.PopAsync();
             }
             catch (Exception ex)
             {

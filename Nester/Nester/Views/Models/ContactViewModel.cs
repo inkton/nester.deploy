@@ -370,12 +370,7 @@ namespace Inkton.Nester.Views
                     }
                 }
 
-                _editContact.OwnerCapabilities = caps;
-
-                if (contact != null)
-                {
-                    Utils.Object.PourPropertiesTo(_editContact, contact);
-                }
+                theContact.OwnerCapabilities = caps;
             }
 
             return status;
@@ -391,7 +386,7 @@ namespace Inkton.Nester.Views
             PermissionSwitch[] switches = new PermissionSwitch[] {
                 new PermissionSwitch(caps => caps.CanViewApp, "view-app"),
                 new PermissionSwitch(caps => caps.CanUpdateApp, "update-app"),
-                new PermissionSwitch(caps => caps.CanUpdateApp, "delete-app"),
+                new PermissionSwitch(caps => caps.CanDeleteApp, "delete-app"),
                 new PermissionSwitch(caps => caps.CanCreateNest, "create-nest"),
                 new PermissionSwitch(caps => caps.CanUpdateNest, "update-nest"),
                 new PermissionSwitch(caps => caps.CanDeleteNest, "delete-nest"),

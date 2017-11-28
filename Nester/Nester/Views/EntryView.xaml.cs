@@ -39,6 +39,8 @@ namespace Inkton.Nester.Views
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
+                    Email,
+                    Password,
                     ButtonLogin,
                     ButtonSignup,
                     ButtonRecoverPassword
@@ -82,7 +84,7 @@ namespace Inkton.Nester.Views
             _modelPair.WizardMode = true;
         }
 
-        async private void PushEngageViewAsync()
+        private void PushEngageView()
         {
             AppViewModel newAppModel = new AppViewModel();
             newAppModel.NewAppAsync();
@@ -94,16 +96,17 @@ namespace Inkton.Nester.Views
             AppEngageView engageView = new AppEngageView(modelPair);
             engageView.MainSideView = MainSideView;
 
-            await MainSideView.Detail.Navigation.PushAsync(engageView);
+            MainSideView.Detail.Navigation.InsertPageBefore(engageView, this);
         }
 
-        async private void PushEngageViewWithUserUpdateAsync()
+        private void PushEngageViewWithUserUpdate()
         {
-            PushEngageViewAsync();
+            PushEngageView();
 
             Views.UserView userView = new Views.UserView(_modelPair);
             userView.MainSideView = MainSideView;
-            await MainSideView.Detail.Navigation.PushModalAsync(userView);
+
+            MainSideView.Detail.Navigation.InsertPageBefore(userView, this);
         }
 
         async private void OnLoginButtonClickedAsync(object sender, EventArgs e)
@@ -125,7 +128,7 @@ namespace Inkton.Nester.Views
                     // sound but need to confirm the security code.
                     // a new sec code would have been sent too.
 
-                    PushEngageViewWithUserUpdateAsync();
+                    PushEngageViewWithUserUpdate();
                 }
                 else if (status.Code == Cloud.Result.NEST_RESULT_SUCCESS)
                 {
@@ -135,7 +138,21 @@ namespace Inkton.Nester.Views
 
                     if (!appCollection.AppModels.Any())
                     {
-                        PushEngageViewAsync();
+                        PushEngageView();
+
+                        await MainSideView.Detail.Navigation.PopAsync();
+                    }
+                    else
+                    {
+                        await MainSideView.Detail.Navigation.PopAsync();
+
+                        AppModelPair modelPair = null;
+
+                        modelPair = new AppModelPair(
+                                _modelPair.AuthViewModel,
+                                appCollection.AppModels.First());
+
+                        NesterControl.ResetView(modelPair);
                     }
                 }
                 else
@@ -161,7 +178,9 @@ namespace Inkton.Nester.Views
 
                 await _modelPair.AuthViewModel.SignupAsync();
 
-                PushEngageViewWithUserUpdateAsync();
+                PushEngageViewWithUserUpdate();
+
+                await MainSideView.Detail.Navigation.PopAsync();
             }
             catch (Exception ex)
             {

@@ -57,7 +57,7 @@ namespace Inkton.Nester.Views
         {
             set
             {
-                ProgressControl.IsVisible = false;
+                ProgressControl.IsVisible = value;
             }
             get
             {

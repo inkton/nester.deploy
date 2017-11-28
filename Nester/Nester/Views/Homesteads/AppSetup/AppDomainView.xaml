@@ -319,7 +319,7 @@
 
     </StackLayout>
 
-    <ActivityIndicator Grid.Row="2" Grid.Column="1" x:Name="ServiceActive" Style="{StaticResource nesterActive}">
+    <ActivityIndicator Grid.Row="2" Grid.Column="1" x:Name="ServiceActive" >
     </ActivityIndicator>
       
     <StackLayout Grid.Row="4" Grid.Column="1" Orientation="Horizontal">

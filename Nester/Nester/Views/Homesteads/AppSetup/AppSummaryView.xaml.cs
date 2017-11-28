@@ -91,7 +91,7 @@ namespace Inkton.Nester.Views
                     return false;
                 }
 
-                if (domain.Aliases != null)
+                if (domain.Aliases != null && domain.Aliases.Length > 0)
                 {
                     foreach (string alias in domain.Aliases.Split(' '))
                     {
@@ -151,6 +151,8 @@ namespace Inkton.Nester.Views
                 await _modelPair.AppViewModel.InitAsync();
 
                 ResetView();
+
+                NesterControl.CreateAppView(_modelPair);
             }
             catch (Exception ex)
             {

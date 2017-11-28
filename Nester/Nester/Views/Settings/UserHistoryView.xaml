@@ -97,7 +97,7 @@
 
           </StackLayout>
 
-          <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
+          <ActivityIndicator x:Name="ServiceActive" ></ActivityIndicator>
 
         </StackLayout>
         

@@ -117,7 +117,7 @@
               
       </StackLayout>
 
-      <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
+      <ActivityIndicator x:Name="ServiceActive"></ActivityIndicator>
       
     </StackLayout>
 
@@ -137,11 +137,12 @@
               <syncfusion:SfBusyIndicator x:Name="ProgressControl"
                   VerticalOptions="Center"
                   HorizontalOptions="Center"
+                  TitlePlacement = "Bottom"
                   AnimationType="Gear"
-                  ViewBoxWidth = "100"
-                  ViewBoxHeight="100"
+                  ViewBoxWidth = "150"
+                  ViewBoxHeight="150"
                   Title="Please wait ..."
-                  TextColor="{StaticResource noteColor}" />        
+                  TextColor="{StaticResource mainColor}" />        
         </StackLayout>
           
       <Grid x:Name="Metrics" RowSpacing="0" ColumnSpacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
