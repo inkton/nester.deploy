@@ -21,29 +21,37 @@
 */
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-using Android.App;
-using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Android.OS;
-
-namespace Inkton.Nester.Droid
+namespace Inkton.Nester.Admin
 {
-    [Activity(Label = "Nester", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    public interface INesterControl
     {
-        protected override void OnCreate(Bundle bundle)
+        Views.AppModelPair AppModelPair
         {
-            TabLayoutResource = Resource.Layout.Tabbar;
-            ToolbarResource = Resource.Layout.Toolbar;
-
-            base.OnCreate(bundle);
-
-            global::Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new NesterUI());
+            get;
         }
+
+        Admin.User User
+        {
+            get;
+        }
+
+        Cloud.INesterService NesterService
+        {
+            get;
+        }
+
+        Cache.IStorageService StorageService
+        {
+            get;
+        }
+
+        void ResetView(Views.AppModelPair appModelPair = null);
+
+        bool CreateAppView(Views.AppModelPair modelPair);
     }
 }
-

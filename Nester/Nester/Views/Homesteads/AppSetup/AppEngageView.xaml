@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <views:View xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:views="clr-namespace:Nester.Views;assembly=Nester"
+             xmlns:views="clr-namespace:Inkton.Nester.Views"
              Title="App Setup"
-             xmlns:local="clr-namespace:Nester.Views;assembly=Nester"             
-             x:Class="Nester.Views.AppEngageView">
+             xmlns:local="clr-namespace:Inkton.Nester.Views"             
+             x:Class="Inkton.Nester.Views.AppEngageView">
   
   <ContentPage.Content>
 
@@ -99,7 +99,7 @@
         
         </StackLayout>
 
-        <ActivityIndicator Grid.Row="3" Grid.Column="1" x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
+        <ActivityIndicator Grid.Row="3" Grid.Column="1" x:Name="ServiceActive" ></ActivityIndicator>
 
       </Grid>
     

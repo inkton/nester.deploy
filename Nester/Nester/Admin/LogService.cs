@@ -20,7 +20,7 @@
     OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-namespace Nester.Admin
+namespace Inkton.Nester.Admin
 {
     public enum LogSeverity
     {

@@ -20,13 +20,13 @@
     OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-using Nester.Utils.Validators;
+using Inkton.Nester.Utils.Validators;
 using Xamarin.Forms;
 
 // from http://blog.zquanghoangz.com/?p=139
 // Thanks Hoang!
 
-namespace Nester.Utils.Validators
+namespace Inkton.Nester.Utils.Validators
 {
     public class EntryValidatorBehavior : ValidatorBehavior<Entry>
     {

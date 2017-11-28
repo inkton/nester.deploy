@@ -30,7 +30,7 @@ using System.Resources;
 using System.Reflection;
 using System.Collections.ObjectModel;
 
-namespace Nester.Admin
+namespace Inkton.Nester.Admin
 {
     public class AppService : Cloud.ManagedEntity
     {
@@ -139,7 +139,7 @@ namespace Nester.Admin
                 List<string> values = JsonConvert.DeserializeObject<List<string>>(
                     _featuresAll);
 
-                ResourceManager resmgr = new ResourceManager("Nester.AppResources"
+                ResourceManager resmgr = new ResourceManager("Inkon.Nester.Properties.Resources"
                                     , typeof(AppService).GetTypeInfo().Assembly);
 
                 List<string> TranslatedValues = new List<string>();

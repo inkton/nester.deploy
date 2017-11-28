@@ -20,15 +20,15 @@
     OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-namespace Nester.Admin
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using Newtonsoft.Json;
-    using System.Collections.ObjectModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Newtonsoft.Json;
+using System.Collections.ObjectModel;
 
+namespace Inkton.Nester.Admin
+{
     public class App : Cloud.ManagedEntity
     {
         private Int64 _id;

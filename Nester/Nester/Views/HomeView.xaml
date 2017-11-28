@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <views:View xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:views="clr-namespace:Nester.Views;assembly=Nester"
-             xmlns:validators="clr-namespace:Nester.Utils.Validators;assembly=Nester"
-             xmlns:utils="clr-namespace:Nester.Utils;assembly=Nester"
+             xmlns:views="clr-namespace:Inkton.Nester.Views"
+             xmlns:validators="clr-namespace:Inkton.Nester.Utils.Validators"
+             xmlns:utils="clr-namespace:Inkton.Nester.Utils"
              xmlns:syncList="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Title="Home"
-             x:Class="Nester.Views.HomeView">
+             x:Class="Inkton.Nester.Views.HomeView">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -115,10 +115,9 @@
     <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="14*"/>
-            <RowDefinition Height="50*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="9*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -127,7 +126,8 @@
             
         <StackLayout Grid.Row="0" 
                 Grid.Column="0" 
-                Orientation="Horizontal" 
+                Orientation="Horizontal"
+                VerticalOptions="FillAndExpand" 
                 HorizontalOptions="FillAndExpand" >
 
             <StackLayout 
@@ -149,7 +149,6 @@
                 </Label>
                                 
             </StackLayout>
-
 
             <StackLayout 
                 Margin="0, 20, 0, 0" 
@@ -213,7 +212,7 @@
 
         </StackLayout>
         
-        <StackLayout Grid.Row="1" Grid.Column="0">
+        <StackLayout Grid.Row="1" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
             <syncList:SfListView x:Name="AppModels"
                         SelectionMode="Single"
                         ItemsSource="{Binding AppModels}"
@@ -231,20 +230,22 @@
                                Margin="10,0,0,0" Text="Apps" 
                                FontSize="18" TextColor="{StaticResource mainColor}" HorizontalOptions="Start"
                                VerticalOptions="Center"/>
-                            <Frame Grid.Row="1" OutlineColor="{StaticResource mainColor}" HasShadow="True" HeightRequest="1"/>
+                            <Frame Grid.Row="1" OutlineColor="{StaticResource subColor}" HeightRequest="1"/>
                         </Grid>
                     </DataTemplate>
                 </syncList:SfListView.HeaderTemplate>
             </syncList:SfListView>
+
+          <ActivityIndicator VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Grid.Row="2" Grid.Column="0" x:Name="ServiceActive">
+          </ActivityIndicator>
+
         </StackLayout>
 
-        <ActivityIndicator Grid.Row="2" Grid.Column="0" x:Name="ServiceActive" Style="{StaticResource nesterActive}">
-        </ActivityIndicator>
-
-        <StackLayout Grid.Row="3" 
+        <StackLayout Grid.Row="2" 
                 Grid.Column="0" 
                 Orientation="Horizontal" 
-                HorizontalOptions="End" 
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="End"                     
                 Spacing = "0"
                 Padding = "0,0,0,0">
 
@@ -272,6 +273,7 @@
                 Image="appjoin32.png">
             </Button>
 
+          
         </StackLayout>
 
     </Grid>

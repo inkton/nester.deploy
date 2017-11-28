@@ -28,7 +28,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Runtime.CompilerServices;
 
-namespace Nester.Admin
+namespace Inkton.Nester.Admin
 {
     public class Log : Cloud.ManagedEntity
     {

@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <views:View xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:views="clr-namespace:Nester.Views;assembly=Nester"
-             xmlns:validators="clr-namespace:Nester.Utils.Validators;assembly=Nester"
-             xmlns:utils="clr-namespace:Nester.Utils;assembly=Nester"
+             xmlns:views="clr-namespace:Inkton.Nester.Views"
+             xmlns:validators="clr-namespace:Inkton.Nester.Utils.Validators"
+             xmlns:utils="clr-namespace:Inkton.Nester.Utils"
              xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Title="Nests"                          
-             x:Class="Nester.Views.AppNestsView">
+             x:Class="Inkton.Nester.Views.AppNestsView">
   
   <ContentPage.Resources>
     <ResourceDictionary>
@@ -108,7 +108,7 @@
       <ColumnDefinition Width="20*"/>
     </Grid.ColumnDefinitions>
 
-    <StackLayout Grid.Row="0" Grid.Column="1" Opacity="{Binding WizardMode, Converter={StaticResource inverseBoolConverter}}"
+    <StackLayout x:Name="TopButtonPanel" Grid.Row="0" Grid.Column="1"
         Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Start">
 
       <Button x:Name="ButtonHome"
@@ -351,13 +351,12 @@
       
     </StackLayout>
 
-    <ActivityIndicator Grid.Row="3" Grid.Column="1" x:Name="ServiceActive" Style="{StaticResource nesterActive}">
+    <ActivityIndicator Grid.Row="3" Grid.Column="1" x:Name="ServiceActive" >
     </ActivityIndicator>
       
     <StackLayout Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
       <Button x:Name="ButtonDone"
               Text="Proceed"
-              IsVisible="{Binding WizardMode}"                
               Style="{StaticResource buttonPageFlow}"
               Clicked="OnDoneButtonClickedAsync">
       </Button>

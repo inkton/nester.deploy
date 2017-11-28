@@ -28,7 +28,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
     public class DomainViewModel : ViewModel
     {
@@ -125,7 +125,7 @@ namespace Nester.Views
                 {
                     domain.App = _editApp;
                     domain.Primary = (_editApp.PrimaryDomainId == domain.Id);
-                    domain.Ip = await ThisUI.NesterService.GetIPAsync(domain.Name);
+                    domain.Ip = await NesterControl.NesterService.GetIPAsync(domain.Name);
 
                     Admin.AppDomainCertificate seedCert = new Admin.AppDomainCertificate();
                     seedCert.AppDomain = domain;
@@ -156,7 +156,7 @@ namespace Nester.Views
             Admin.AppDomain theDomain = domain == null ? _editDomain : domain;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theDomain, new Cloud.CachedHttpRequest<Admin.AppDomain>(
-                    ThisUI.NesterService.QueryAsync), doCache, null, null);
+                    NesterControl.NesterService.QueryAsync), doCache, null, null);
 
             if (status.Code >= 0)
             {
@@ -195,7 +195,7 @@ namespace Nester.Views
             Admin.AppDomain theDomain = domain == null ? _editDomain : domain;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theDomain, new Cloud.CachedHttpRequest<Admin.AppDomain>(
-                    ThisUI.NesterService.CreateAsync), doCache);
+                    NesterControl.NesterService.CreateAsync), doCache);
 
             if (status.Code >= 0)
             {
@@ -217,7 +217,7 @@ namespace Nester.Views
             Admin.AppDomainCertificate theCert = cert == null ? _editDomain.Certificate : cert;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                     theCert, new Cloud.CachedHttpRequest<Admin.AppDomainCertificate>(
-                        ThisUI.NesterService.CreateAsync));
+                        NesterControl.NesterService.CreateAsync));
 
             if (status.Code >= 0)
             {
@@ -238,7 +238,7 @@ namespace Nester.Views
             Admin.AppDomain theDomain = domain == null ? _editDomain : domain;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theDomain, new Cloud.CachedHttpRequest<Admin.AppDomain>(
-                    ThisUI.NesterService.RemoveAsync), doCache);
+                    NesterControl.NesterService.RemoveAsync), doCache);
 
             if (status.Code >= 0)
             {
@@ -259,7 +259,7 @@ namespace Nester.Views
             Admin.AppDomainCertificate theCert = cert == null ? _editDomain.Certificate : cert;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theCert, new Cloud.CachedHttpRequest<Admin.AppDomainCertificate>(
-                    ThisUI.NesterService.RemoveAsync), doCache);
+                    NesterControl.NesterService.RemoveAsync), doCache);
 
             if (status.Code >= 0)
             {
@@ -278,7 +278,7 @@ namespace Nester.Views
             Admin.AppDomain theDomain = domain == null ? _editDomain : domain;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theDomain, new Cloud.CachedHttpRequest<Admin.AppDomain>(
-                    ThisUI.NesterService.UpdateAsync), doCache);
+                    NesterControl.NesterService.UpdateAsync), doCache);
 
             if (status.Code >= 0)
             {
@@ -304,7 +304,7 @@ namespace Nester.Views
             Admin.AppDomainCertificate theCert = cert == null ? _editDomain.Certificate : cert;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theCert, new Cloud.CachedHttpRequest<Admin.AppDomainCertificate>(
-                    ThisUI.NesterService.UpdateAsync), doCache);
+                    NesterControl.NesterService.UpdateAsync), doCache);
 
             if (status.Code >= 0)
             {

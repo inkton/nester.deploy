@@ -26,7 +26,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace Nester.Auth
+namespace Inkton.Nester.Auth
 { 
     public class OwnerCapabilities : Cloud.ManagedEntity
     {

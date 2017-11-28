@@ -28,12 +28,14 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
-    public partial class AppEngageView : Nester.Views.View
+    public partial class AppEngageView : Inkton.Nester.Views.View
     {
-        public AppEngageView(AppViewModel appViewModel)
+        public AppEngageView(Views.AppModelPair modelPair)
         {
+            _modelPair = modelPair;
+
             InitializeComponent();
 
             SetActivityMonotoring(ServiceActive,
@@ -42,16 +44,17 @@ namespace Nester.Views
                                 ButtonJoin
                 });
 
-            _appViewModel = appViewModel;
-            BindingContext = _appViewModel;
+            BindingContext = modelPair.AppViewModel;
         }
 
         async private void OnCreateAppClickedAsync(object sender, EventArgs e)
         {
             IsServiceActive = true;
 
-            Navigation.InsertPageBefore(new AppBasicDetailView(_appViewModel), this);
-            await Navigation.PopAsync();
+            AppBasicDetailView basicView = new AppBasicDetailView(_modelPair);
+            basicView.MainSideView = MainSideView;
+            MainSideView.Detail.Navigation.InsertPageBefore(basicView, this);
+            await MainSideView.Detail.Navigation.PopAsync();
 
             IsServiceActive = false;
         }
@@ -60,10 +63,12 @@ namespace Nester.Views
         {
             IsServiceActive = true;
 
-            await _appViewModel.ContactModel.QueryInvitationsAsync();
+            await _modelPair.AppViewModel.ContactModel.QueryInvitationsAsync();
 
-            Navigation.InsertPageBefore(new AppJoinDetailView(_appViewModel), this);
-            await Navigation.PopAsync();
+            AppJoinDetailView joinView = new AppJoinDetailView(_modelPair);
+            joinView.MainSideView = MainSideView;
+            MainSideView.Detail.Navigation.InsertPageBefore(joinView, this);
+            await MainSideView.Detail.Navigation.PopAsync();
 
             IsServiceActive = false;
         }

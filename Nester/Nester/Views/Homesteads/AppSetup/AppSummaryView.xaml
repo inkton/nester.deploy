@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <views:View xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:views="clr-namespace:Nester.Views;assembly=Nester"
-             xmlns:validators="clr-namespace:Nester.Utils.Validators;assembly=Nester"
-             xmlns:utils="clr-namespace:Nester.Utils;assembly=Nester"
+             xmlns:views="clr-namespace:Inkton.Nester.Views"
+             xmlns:validators="clr-namespace:Inkton.Nester.Utils.Validators"
+             xmlns:utils="clr-namespace:Inkton.Nester.Utils"
              xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Padding="20"
              Title="Deploy"             
-             x:Class="Nester.Views.AppSummaryView">
+             x:Class="Inkton.Nester.Views.AppSummaryView">
 
   <Grid>
 
@@ -739,7 +739,7 @@
     </ScrollView>
         
         
-    <ActivityIndicator Grid.Row="4" Grid.Column="1" x:Name="ServiceActive" Style="{StaticResource nesterActive}">
+    <ActivityIndicator Grid.Row="4" Grid.Column="1" x:Name="ServiceActive" >
     </ActivityIndicator>
 
     <Grid Grid.Row="5" Grid.Column="1">

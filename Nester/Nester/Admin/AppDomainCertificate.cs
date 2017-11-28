@@ -25,19 +25,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
+using System.Runtime.Serialization;
+using Newtonsoft.Json.Linq;
 
-namespace Nester.Admin
+namespace Inkton.Nester.Admin
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using Newtonsoft.Json.Serialization;
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json.Linq;
-
     public class AppDomainCertificate : Cloud.ManagedEntity
     {
         private Int64 _id;

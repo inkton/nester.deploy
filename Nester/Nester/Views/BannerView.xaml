@@ -2,11 +2,11 @@
 <views:View xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-             xmlns:views="clr-namespace:Nester.Views;assembly=Nester"
-             xmlns:validators="clr-namespace:Nester.Utils.Validators;assembly=Nester"
-             xmlns:utils="clr-namespace:Nester.Utils;assembly=Nester"
+             xmlns:views="clr-namespace:Inkton.Nester.Views"
+             xmlns:validators="clr-namespace:Inkton.Nester.Utils.Validators"
+             xmlns:utils="clr-namespace:Inkton.Nester.Utils"
              xmlns:local="clr-namespace:Nester"
-             x:Class="Nester.Views.BannerView">
+             x:Class="Inkton.Nester.Views.BannerView">
   
   <ContentPage.Resources>
     <ResourceDictionary>
@@ -27,65 +27,30 @@
 
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="2*"/>
-          <ColumnDefinition Width="10*"/>
-          <ColumnDefinition Width="88*"/>
+          <ColumnDefinition Width="96*"/>
           <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-
-        <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center"
-                Spacing = "0"
-                Padding = "0,0,0,0">
-
-          <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Spacing="5">
-
-            <Button x:Name="ButtonAppSettings"
-                  IsVisible="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
-                  Style="{StaticResource appFuncButton}"
-                  Image="appsettings24.png" >
-            </Button>
-
-            <Button x:Name="ButtonNotifications"
-                    IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}"
-                    Style="{StaticResource appFuncButton}"
-                    Image="notifications24.png" >
-            </Button>
-
-            <Button x:Name="ButtonAppDeploy"
-                    IsVisible="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
-                    IsEnabled="{Binding EditApp.IsBusy, Converter={StaticResource inverseBoolConverter}}"
-                    Style="{StaticResource appFuncButton}"
-                    Image="appdeploy24.png" >
-            </Button>
-
-            <Button x:Name="ButtonAddToSlack"
-                    IsVisible="{Binding IsAppOwner}"
-                    Style="{StaticResource appFuncButton}"
-                    Image="slack24.png" >
-            </Button>
-
-            <Button x:Name="ButtonAppMenu"
-                    Style="{StaticResource appFuncButton}"
-                    Image="menu24.png" >
-            </Button>
-            
-          </StackLayout>
-
-          <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
-
-        </StackLayout>
 
         <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
               HorizontalOptions="CenterAndExpand"
               VerticalOptions="CenterAndExpand">
 
-          <syncfusion:SfBusyIndicator x:Name="progressControl"
+          <Image x:Name="Logo"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"            
+            Source="app-background.png" />
+          
+          <ActivityIndicator x:Name="ServiceActive"></ActivityIndicator>
+
+          <syncfusion:SfBusyIndicator x:Name="ProgressControl"
               VerticalOptions="Center"
               HorizontalOptions="Center"
+              TitlePlacement = "Bottom"
               AnimationType="Gear"
-              ViewBoxWidth = "100"
-              ViewBoxHeight="100"
+              ViewBoxWidth = "50"
+              ViewBoxHeight="50"
               Title="Please wait ..."
-              TextColor="{StaticResource noteColor}" />
+              TextColor="{StaticResource minorColor}" />
 
         </StackLayout>
      </Grid>      

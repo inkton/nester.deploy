@@ -27,13 +27,13 @@ using System.Resources;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Nester.Utils
+namespace Inkton.Nester.Utils
 {
     [ContentProperty("Text")]
     public class TranslateExtension : IMarkupExtension
     {
         readonly CultureInfo ci;
-        const string ResourceId = "Nester.Resx.AppResources";
+        const string ResourceId = "Inkton.Nester.Resx.Resources";
 
         /*
          * Grabbed from here

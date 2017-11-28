@@ -29,7 +29,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
     public class NestViewModel : ViewModel
     {
@@ -180,7 +180,7 @@ namespace Nester.Views
             Admin.Nest theNest = nest == null ? _editNest : nest;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theNest, new Cloud.CachedHttpRequest<Admin.Nest>(
-                    ThisUI.NesterService.QueryAsync), dCache, null, null);
+                    NesterControl.NesterService.QueryAsync), dCache, null, null);
 
             if (status.Code >= 0)
             {
@@ -202,7 +202,7 @@ namespace Nester.Views
             Admin.Nest theNest = nest == null ? _editNest : nest;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theNest, new Cloud.CachedHttpRequest<Admin.Nest>(
-                    ThisUI.NesterService.CreateAsync), doCache);
+                    NesterControl.NesterService.CreateAsync), doCache);
 
             if (status.Code >= 0)
             {
@@ -227,7 +227,7 @@ namespace Nester.Views
             Admin.Nest theNest = nest == null ? _editNest : nest;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theNest, new Cloud.CachedHttpRequest<Admin.Nest>(
-                    ThisUI.NesterService.UpdateAsync), doCache);
+                    NesterControl.NesterService.UpdateAsync), doCache);
 
             if (status.Code >= 0)
             {
@@ -252,7 +252,7 @@ namespace Nester.Views
             Admin.Nest theNest = nest == null ? _editNest : nest;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theNest, new Cloud.CachedHttpRequest<Admin.Nest>(
-                    ThisUI.NesterService.RemoveAsync), doCache);
+                    NesterControl.NesterService.RemoveAsync), doCache);
 
             if (status.Code >= 0)
             {

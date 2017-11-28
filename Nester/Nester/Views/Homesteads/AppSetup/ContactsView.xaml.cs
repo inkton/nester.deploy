@@ -29,12 +29,14 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
-    public partial class ContactsView : Nester.Views.View
+    public partial class ContactsView : Inkton.Nester.Views.View
     {
-        public ContactsView(AppViewModel appViewModel)
+        public ContactsView(Views.AppModelPair modelPair)
         {
+            _modelPair = modelPair;
+
             InitializeComponent();
 
             SetActivityMonotoring(ServiceActive, 
@@ -55,10 +57,15 @@ namespace Nester.Views
                     SwitchCanDeleteNest,
                 });
 
-            _appViewModel = appViewModel;
-
-            BindingContext = _appViewModel.ContactModel;
+            BindingContext = _modelPair.AppViewModel.ContactModel;
             AppContactsList.SelectionChanged += AppContactsList_SelectionChanged;
+
+            ButtonDone.IsVisible = _modelPair.WizardMode;
+            if (_modelPair.WizardMode)
+            {
+                // hide but do not collapse
+                TopButtonPanel.Opacity = 0;
+            }
         }
 
         async private void OnButtonBasicDetailsClickedAsync(object sender, EventArgs e)
@@ -67,7 +74,7 @@ namespace Nester.Views
 
             try
             {
-                LoadView(new AppBasicDetailView(_appViewModel));
+                MainSideView.LoadView(new AppBasicDetailView(_modelPair));
             }
             catch (Exception ex)
             {
@@ -83,9 +90,9 @@ namespace Nester.Views
 
             try
             {
-                await _appViewModel.DomainModel.InitAsync();
+                await _modelPair.AppViewModel.DomainModel.InitAsync();
 
-                LoadView(new AppDomainView(_appViewModel));
+                MainSideView.LoadView(new AppDomainView(_modelPair));
             }
             catch (Exception ex)
             {
@@ -101,9 +108,9 @@ namespace Nester.Views
 
             try
             {
-                await _appViewModel.NestModel.InitAsync();
+                await _modelPair.AppViewModel.NestModel.InitAsync();
 
-                LoadView(new AppNestsView(_appViewModel));
+                MainSideView.LoadView(new AppNestsView(_modelPair));
             }
             catch (Exception ex)
             {
@@ -126,7 +133,7 @@ namespace Nester.Views
                 AppContactsList.SelectedItems.RemoveAt(0);
             }
 
-            _appViewModel.ContactModel.EditContact = new Admin.Contact();
+            _modelPair.AppViewModel.ContactModel.EditContact = new Admin.Contact();
 
             SetDefaults();
 
@@ -143,22 +150,21 @@ namespace Nester.Views
             Admin.Contact browseContact = AppContactsList.SelectedItem as Admin.Contact;
             Admin.Contact copy = new Admin.Contact();
             Utils.Object.CopyPropertiesTo(browseContact, copy);
-            _appViewModel.ContactModel.EditContact = copy;
+            _modelPair.AppViewModel.ContactModel.EditContact = copy;
         }
 
         void Validate()
         {
-            _appViewModel.ContactModel.Validated = false;
-            _appViewModel.ContactModel.CanUpdate = false;
+            _modelPair.AppViewModel.ContactModel.Validated = false;
+            _modelPair.AppViewModel.ContactModel.CanUpdate = false;
 
-            if (_appViewModel != null &&
-                _appViewModel.ContactModel != null)
+            if (EmailValidator != null)
             {
                 /* used to enable the add function. a domain can
                  * be added only if valid fields and no list item 
                  * has been selected and currenly receivng focus.
                  */
-                _appViewModel.ContactModel.Validated = (
+                _modelPair.AppViewModel.ContactModel.Validated = (
                     EmailValidator.IsValid 
                 );
 
@@ -166,8 +172,8 @@ namespace Nester.Views
                  * be updaed only if valid fields has been selected 
                  * and an item from a list is selected.
                  */
-                _appViewModel.ContactModel.CanUpdate =
-                    _appViewModel.ContactModel.Validated &&
+                _modelPair.AppViewModel.ContactModel.CanUpdate =
+                    _modelPair.AppViewModel.ContactModel.Validated &&
                     AppContactsList.SelectedItem != null;
             }
         }
@@ -178,7 +184,7 @@ namespace Nester.Views
 
         //    ProcessMessage<Admin.Contact>("re-invite",
         //        new Func<Admin.Contact, bool, Task<Cloud.ServerStatus>>(
-        //        _appViewModel.ContactModel.ReinviteContact));
+        //        _modelPair.AppViewModel.ContactModel.ReinviteContact));
 
 
         //    MessagingCenter.Subscribe<ManagedObjectMessage<Admin.Contact>>(this, "remove", async (objMessage) =>
@@ -189,7 +195,7 @@ namespace Nester.Views
         //        {
         //            try
         //            {
-        //                await _appViewModel.ContactModel.RemoveContact(objMessage.Object);
+        //                await _modelPair.AppViewModel.ContactModel.RemoveContact(objMessage.Object);
         //            }
         //            catch (Exception ex)
         //            {
@@ -213,9 +219,9 @@ namespace Nester.Views
 
             try
             {
-                if (_appViewModel.ContactModel.Contacts.Any())
+                if (_modelPair.AppViewModel.ContactModel.Contacts.Any())
                 {
-                    Admin.Contact contact = _appViewModel.ContactModel.Contacts.First();
+                    Admin.Contact contact = _modelPair.AppViewModel.ContactModel.Contacts.First();
                     AppContactsList.SelectedItem = contact;
                 }
 
@@ -255,7 +261,7 @@ namespace Nester.Views
 
             try
             {
-                var existContacts = from contact in _appViewModel.ContactModel.Contacts
+                var existContacts = from contact in _modelPair.AppViewModel.ContactModel.Contacts
                                     where ((Admin.Contact)contact).Email == NewContactEmail.Text
                                     select contact;
                 if (existContacts.ToArray().Length > 0)
@@ -266,10 +272,10 @@ namespace Nester.Views
                 }
 
                 Admin.Contact newContact = new Admin.Contact();
-                newContact.App = _appViewModel.EditApp;
+                newContact.App = _modelPair.AppViewModel.EditApp;
                 newContact.Email = NewContactEmail.Text;
 
-                await _appViewModel.ContactModel.CreateContactAsync(newContact);
+                await _modelPair.AppViewModel.ContactModel.CreateContactAsync(newContact);
 
                 Clear();
             }
@@ -298,7 +304,7 @@ namespace Nester.Views
         //        OnSyncDiscordButtonClickedAsync
 
         //       await Process(AppContactsList.SelectedItem as Admin.Contact, false,
-        //            _appViewModel.ContactModel.UpdateContactDiscordAsync
+        //            _modelPair.AppViewModel.ContactModel.UpdateContactDiscordAsync
         //        );
         //    }
         //    catch (Exception ex)
@@ -316,7 +322,7 @@ namespace Nester.Views
             try
             {
                 await Process(AppContactsList.SelectedItem as Admin.Contact, true,
-                    _appViewModel.ContactModel.QueryContactAsync
+                    _modelPair.AppViewModel.ContactModel.QueryContactAsync
                 );
 
                 SetDefaults();
@@ -335,7 +341,7 @@ namespace Nester.Views
 
             try
             {
-                await _appViewModel.ContactModel.QueryContactsAsync();
+                await _modelPair.AppViewModel.ContactModel.QueryContactsAsync();
 
                 SetDefaults();
             }
@@ -357,7 +363,7 @@ namespace Nester.Views
                 browseContact.Email = NewContactEmail.Text;
 
                 await Process(browseContact, true,
-                    _appViewModel.ContactModel.UpdatePermissionAsync
+                    _modelPair.AppViewModel.ContactModel.UpdatePermissionAsync
                 );
 
                 SetDefaults();
@@ -377,7 +383,7 @@ namespace Nester.Views
             try
             {
                 await Process(AppContactsList.SelectedItem as Admin.Contact, true,
-                    _appViewModel.ContactModel.RemoveContactAsync,
+                    _modelPair.AppViewModel.ContactModel.RemoveContactAsync,
                        new Func<Admin.Contact, Task<bool>>(
                             async (obj) =>
                             {
@@ -400,27 +406,26 @@ namespace Nester.Views
         {
             try
             {
-                if (_appViewModel.WizardMode)
+                if (_modelPair.WizardMode)
                 {
-                    // if currently trvelling back and forth on the 
-                    // app wizard - close the wizard
-                    // Pop contact view
-                    this.Navigation.RemovePage(
-                        this.Navigation.NavigationStack[this.Navigation.NavigationStack.Count - 2]);
-
                     // Pop this to go to Homeview <->
-                    await this.Navigation.PopAsync();
+                    foreach (var page in MainSideView.Detail.Navigation.NavigationStack.ToList())
+                    {
+                        if (!(page is ContactsView))
+                        {
+                            MainSideView.Detail.Navigation.RemovePage(page);
+                        }
+                    }
+
+                    await MainSideView.Detail.Navigation.PopAsync();
+                    _modelPair.WizardMode = false;
+                    MainSideView.ResetView(_modelPair);
                 }
                 else
                 {
-                    if (_appViewModel.EditApp.IsDeployed)
-                    {
-                        await DisplayAlert("Nester", "Make sure to re-deploy the app for changes to take effect", "OK");
-                    }
-
                     // Head back to homepage if the 
                     // page was called from here
-                    LoadHomeView();
+                    ResetView();
                 }
             }
             catch (Exception ex)

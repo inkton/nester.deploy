@@ -33,7 +33,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections.ObjectModel;
 using Newtonsoft.Json;
 
-namespace Nester.Utils
+namespace Inkton.Nester.Utils
 {
     public static class Object
     {

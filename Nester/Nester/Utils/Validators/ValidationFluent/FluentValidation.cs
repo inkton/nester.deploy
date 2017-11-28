@@ -23,7 +23,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Nester.Utils.Validators
+namespace Inkton.Nester.Utils.Validators
 {
     public class FluentValidation
     {

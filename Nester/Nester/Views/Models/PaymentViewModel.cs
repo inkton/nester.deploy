@@ -26,7 +26,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
     public class PaymentViewModel : ViewModel
     {
@@ -38,7 +38,7 @@ namespace Nester.Views
         public PaymentViewModel()
         {
             _editPaymentMethod = new Admin.PaymentMethod();
-            _editPaymentMethod.Owner = ThisUI.User;
+            _editPaymentMethod.Owner = NesterControl.User;
         }
 
         public Admin.PaymentMethod PaymentMethod
@@ -77,7 +77,7 @@ namespace Nester.Views
         {
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 _editPaymentMethod, new Cloud.CachedHttpRequest<Admin.PaymentMethod>(
-                    ThisUI.NesterService.QueryAsync), dCache, null, null);
+                    NesterControl.NesterService.QueryAsync), dCache, null, null);
 
             if (status.Code >= 0)
             {                
@@ -117,7 +117,7 @@ namespace Nester.Views
 
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 _editPaymentMethod, new Cloud.CachedHttpRequest<Admin.PaymentMethod>(
-                    ThisUI.NesterService.CreateAsync), doCache, data);
+                    NesterControl.NesterService.CreateAsync), doCache, data);
 
             if (status.Code >= 0)
             {

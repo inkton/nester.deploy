@@ -28,23 +28,26 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
-    public partial class UserView : Nester.Views.View
+    public partial class UserView : Inkton.Nester.Views.View
     {
-        public UserView(AuthViewModel authViewModel)
+        public UserView(Views.AppModelPair modelPair)
         {
             InitializeComponent();
 
+            _modelPair = modelPair;
+            SecurityCode.IsVisible = _modelPair.WizardMode;
+            SecurityCodeLabel.IsVisible = _modelPair.WizardMode;
             int selectedTerritoryIndex = -1;
 
             foreach (Admin.Geography.ISO3166Country territory in Admin.Geography.Territories)
             {
                 Territories.Items.Add(territory.ToString());
 
-                if (authViewModel.WizardMode == false)
+                if (modelPair.WizardMode == false)
                 {
-                    if (ThisUI.User.TerritoryISOCode == territory.Alpha2)
+                    if (NesterControl.User.TerritoryISOCode == territory.Alpha2)
                     {
                         selectedTerritoryIndex = Territories.Items.Count - 1;
                     }
@@ -71,11 +74,9 @@ namespace Nester.Views
                     ButtonDone
                 });
 
-            ButtonAppMenu.Clicked += ButtonAppMenu_Clicked;
             NickName.Unfocused += NickName_Unfocused;
 
-            _authViewModel = authViewModel;
-            BindingContext = _authViewModel;
+            BindingContext = _modelPair.AuthViewModel;
         }
 
         private void NickName_Unfocused(object sender, FocusEventArgs e)
@@ -100,14 +101,14 @@ namespace Nester.Views
         {
             if (NicknameValidator != null)
             {
-                _authViewModel.Validated = (
+                _modelPair.AuthViewModel.Validated = (
                      NicknameValidator.IsValid &&
                      FirstNameValidator.IsValid &&
                      LastNameValidator.IsValid
                      );
 
-                SecurityCode.IsVisible = _authViewModel.WizardMode;
-                SecurityCodeLabel.IsVisible = _authViewModel.WizardMode;
+                SecurityCode.IsVisible = _modelPair.WizardMode;
+                SecurityCodeLabel.IsVisible = _modelPair.WizardMode;
             }
         }
 
@@ -128,16 +129,16 @@ namespace Nester.Views
                 {
                     if (territoryName == territory.ToString())
                     {
-                        ThisUI.User.TerritoryISOCode = territory.Alpha2;
+                        NesterControl.User.TerritoryISOCode = territory.Alpha2;
                         break;
                     }
                 }
 
                 IsServiceActive = false;
 
-                if (_authViewModel.WizardMode)
+                if (_modelPair.WizardMode)
                 {
-                    Cloud.ServerStatus status = await _authViewModel.SignupAsync(false);
+                    Cloud.ServerStatus status = await _modelPair.AuthViewModel.SignupAsync(false);
                     if (status.Code == Cloud.Result.NEST_RESULT_ERROR_AUTH_SECCODE)
                     {
                         await DisplayAlert("Nester", "Invalid security code", "OK");
@@ -148,14 +149,14 @@ namespace Nester.Views
                     }
                     else
                     {
-                        await _authViewModel.QueryTokenAsync();
+                        await _modelPair.AuthViewModel.QueryTokenAsync();
 
-                        await Navigation.PopModalAsync();
+                        await MainSideView.Detail.Navigation.PopAsync();
                     }
                 }
                 else
                 {
-                    await _authViewModel.UpdateUserAsync(ThisUI.User);
+                    await _modelPair.AuthViewModel.UpdateUserAsync(NesterControl.User);
                     await DisplayAlert("Nester", "Your information was saved", "OK");
                 }
             }
@@ -166,16 +167,11 @@ namespace Nester.Views
             }
         }
 
-        private void ButtonAppMenu_Clicked(object sender, EventArgs e)
-        {
-            _masterDetailPage.IsPresented = true;
-        }
-
         async private void OnCloseButtonClickedAsync(object sender, EventArgs e)
         {
             try
             {
-                LoadHomeView();
+                ResetView();
             }
             catch (Exception ex)
             {

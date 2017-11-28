@@ -23,7 +23,7 @@
 using System;
 using System.Linq.Expressions;
 
-namespace Nester.Utils.Validators
+namespace Inkton.Nester.Utils.Validators
 {
     public static class BehaviorsBehaviorsExtensions
     {

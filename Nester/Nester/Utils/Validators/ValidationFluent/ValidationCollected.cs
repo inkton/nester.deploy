@@ -23,10 +23,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Nester.Utils.Validators;
+using Inkton.Nester.Utils.Validators;
 using Xamarin.Forms;
 
-namespace Nester.Utils.Validators
+namespace Inkton.Nester.Utils.Validators
 {
     public class ValidationCollected
     {

@@ -29,7 +29,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
     public class DeploymentViewModel : ViewModel
     {
@@ -221,7 +221,7 @@ namespace Nester.Views
         {
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 devkit, new Cloud.CachedHttpRequest<Admin.Devkit>(
-                    ThisUI.NesterService.QueryAsync), bCache);
+                    NesterControl.NesterService.QueryAsync), bCache);
 
             return status;
         }
@@ -232,7 +232,7 @@ namespace Nester.Views
             Admin.Deployment theDeployment = deployment == null ? _editApp.Deployment : deployment;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theDeployment, new Cloud.CachedHttpRequest<Admin.Deployment>(
-                    ThisUI.NesterService.CreateAsync), doCache);
+                    NesterControl.NesterService.CreateAsync), doCache);
 
             if (status.Code >= 0)
             {
@@ -255,7 +255,7 @@ namespace Nester.Views
             Admin.Deployment theDeployment = deployment == null ? _editApp.Deployment : deployment;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theDeployment, new Cloud.CachedHttpRequest<Admin.Deployment>(
-                    ThisUI.NesterService.UpdateAsync), doCache);
+                    NesterControl.NesterService.UpdateAsync), doCache);
 
             if (status.Code >= 0)
             {
@@ -277,7 +277,7 @@ namespace Nester.Views
             Admin.Deployment theDeployment = deployment == null ? _editApp.Deployment : deployment;
             Cloud.ServerStatus status = await Cloud.Result.WaitForObjectAsync(throwIfError,
                 theDeployment, new Cloud.CachedHttpRequest<Admin.Deployment>(
-                    ThisUI.NesterService.RemoveAsync), doCache);
+                    NesterControl.NesterService.RemoveAsync), doCache);
 
             if (status.Code == 0)
             {

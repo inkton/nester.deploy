@@ -8,8 +8,8 @@
     <ProjectGuid>{D9B1665E-E232-47FC-8C6B-3CED1E9F4D92}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nester</RootNamespace>
-    <AssemblyName>Nester</AssemblyName>
+    <RootNamespace>Inkon.Nester</RootNamespace>
+    <AssemblyName>Inkon.Nester</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
@@ -56,6 +56,7 @@
     <Compile Include="Admin\Log.cs" />
     <Compile Include="Admin\LogService.cs" />
     <Compile Include="Admin\Nest.cs" />
+    <Compile Include="Admin\NesterControl.cs" />
     <Compile Include="Admin\NestPlatform.cs" />
     <Compile Include="Admin\Notification.cs" />
     <Compile Include="Admin\SoftwareFramework.cs" />
@@ -67,16 +68,16 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Auth\Permit.cs" />
     <Compile Include="Cache\StorageService.cs" />
     <Compile Include="Cloud\ManagedEntity.cs" />
     <Compile Include="Cloud\NesterService.cs" />
     <Compile Include="Cloud\ServerStatus.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Utils\CircularProgress.cs" />
     <Compile Include="Utils\Converters\BoolToDomainStatusConverter.cs" />
     <Compile Include="Utils\Converters\CapitalizeConverter.cs" />
@@ -119,6 +120,7 @@
       <DependentUpon>AppWebView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Models\AppCollectionViewModel.cs" />
+    <Compile Include="Views\Models\AppModelPair.cs" />
     <Compile Include="Views\Models\AppViewModel.cs" />
     <Compile Include="Views\Homesteads\AppSetup\AppBasicDetailView.xaml.cs">
       <DependentUpon>AppBasicDetailView.xaml</DependentUpon>
@@ -177,9 +179,9 @@
     <Compile Include="Views\View.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AppResources.resx">
+    <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\EntryView.xaml">
       <SubType>Designer</SubType>
@@ -196,9 +198,6 @@
     </Reference>
     <Reference Include="Flurl, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Flurl.2.5.0\lib\netstandard1.0\Flurl.dll</HintPath>
-    </Reference>
-    <Reference Include="Flurl.Http, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Flurl.Http.1.2.0\lib\portable-net45+win8+wp8+wpa81\Flurl.Http.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\portable-net45+win8+wp8+wpa81\Microsoft.Threading.Tasks.dll</HintPath>

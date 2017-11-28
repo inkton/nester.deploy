@@ -27,11 +27,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace Nester.Views
+namespace Inkton.Nester.Views
 {
-    public partial class NotificationView : Nester.Views.View
+    public partial class NotificationView : Inkton.Nester.Views.View
     {
-        public NotificationView(AppViewModel appViewModel)
+        public NotificationView(Views.AppModelPair modelPair)
         {
             InitializeComponent();
 
@@ -40,15 +40,15 @@ namespace Nester.Views
                     ButtonDone
                 });
 
-            _appViewModel = appViewModel;
-            BindingContext = _appViewModel;
+            _modelPair = modelPair;
+            BindingContext = _modelPair.AppViewModel;
         }
 
         async private void OnDoneButtonClickedAsync(object sender, EventArgs e)
         {
             try
             {
-                await Navigation.PopAsync();
+                ResetView();
             }
             catch (Exception ex)
             {

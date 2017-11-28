@@ -26,22 +26,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Inkon.Nester.Properties;
 
-namespace Nester.Utils
+namespace Inkton.Nester.Utils
 {
     public class BoolToDomainStatusConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (value == null)
-                return AppResources.DomainNormal;
+                return Resources.DomainNormal;
 
-            return (bool)value ? AppResources.DomainPrimary : AppResources.DomainNormal;
+            return (bool)value ? Resources.DomainPrimary : Resources.DomainNormal;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            return ((string)value == AppResources.DomainPrimary);
+            return ((string)value == Resources.DomainPrimary);
         }
     }
 }

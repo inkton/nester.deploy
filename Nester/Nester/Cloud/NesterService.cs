@@ -24,7 +24,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Nester.Cloud
+namespace Inkton.Nester.Cloud
 {
     public struct BasicAuth
     {

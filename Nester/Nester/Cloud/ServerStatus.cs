@@ -29,11 +29,11 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Net;
 using System.Collections.ObjectModel;
-using Nester.Admin;
+using Inkton.Nester.Admin;
 using System.Resources;
 using System.Reflection;
 
-namespace Nester.Cloud
+namespace Inkton.Nester.Cloud
 {
     public struct ServerStatus
     {
@@ -94,7 +94,7 @@ namespace Nester.Cloud
         {
             get
             {
-                ResourceManager resmgr = new ResourceManager("Nester.AppResources"
+                ResourceManager resmgr = new ResourceManager("Inkon.Nester.Properties.Resources"
                                     , typeof(ServerStatus).GetTypeInfo().Assembly);
                 return resmgr.GetString(_description,
                                       System.Globalization.CultureInfo.CurrentUICulture);

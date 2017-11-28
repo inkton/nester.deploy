@@ -32,8 +32,9 @@ using System.Reflection;
 using System.Dynamic;
 using System.Collections.ObjectModel;
 using Newtonsoft.Json.Linq;
+using Xamarin.Forms;
 
-namespace Nester.Cloud
+namespace Inkton.Nester.Cloud
 {
     public class Result
     {
@@ -223,7 +224,7 @@ namespace Nester.Cloud
             bool throwIfError, T seed, bool doCache = true, IDictionary < string, string> data = null, 
             string subPath = null) where T : Cloud.ManagedEntity, new()
         {
-            Cloud.ServerStatus status = await ((NesterUI)NesterUI.Current).
+            Cloud.ServerStatus status = await (Application.Current as Admin.INesterControl).
                 NesterService.QueryAsyncList(seed, data, subPath, doCache);
 
             if (status.Code < 0 && throwIfError)

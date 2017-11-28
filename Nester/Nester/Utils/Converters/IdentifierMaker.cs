@@ -29,7 +29,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using Xamarin.Forms;
 
-namespace Nester.Utils
+namespace Inkton.Nester.Utils
 {
     public class IdentifierMaker : IValueConverter
     {

@@ -30,9 +30,9 @@ using System.IO;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(Nester.Cache.StorageService))]
+[assembly: Dependency(typeof(Inkton.Nester.Cache.StorageService))]
 
-namespace Nester.Cache
+namespace Inkton.Nester.Cache
 {
     public class StorageService : IStorageService
     {
