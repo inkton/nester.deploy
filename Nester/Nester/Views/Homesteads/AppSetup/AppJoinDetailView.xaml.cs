@@ -120,6 +120,7 @@ namespace Inkton.Nester.Views
                     Admin.Contact myContact = new Admin.Contact();
                     Utils.Object.CopyPropertiesTo(invitation, myContact);
                     myContact.App = searchApp;
+                    AppModelPair modelPair = null;
 
                     status = await _modelPair.AppViewModel.ContactModel.UpdateContactAsync(myContact);
                     if (status.Code != Cloud.Result.NEST_RESULT_SUCCESS)
@@ -133,7 +134,7 @@ namespace Inkton.Nester.Views
 
                     if (invitation.Status == "active")
                     {
-                        appCollection.AddApp(searchApp);
+                        await appCollection.AddAppAsync(searchApp);
                     }
                     else
                     {
@@ -146,6 +147,15 @@ namespace Inkton.Nester.Views
                             }
                         }
                     }
+
+                    if (appCollection.AppModels.Any())
+                    {
+                        modelPair = new AppModelPair(
+                                _modelPair.AuthViewModel,
+                                appCollection.AppModels.First());
+                    }
+
+                    NesterControl.ResetView(modelPair);
 
                     ToggleMembershipButton(invitation);
                 }

@@ -50,7 +50,7 @@ namespace Inkton.Nester.Admin
             get;
         }
 
-        void ResetView();
+        void ResetView(Views.AppModelPair appModelPair = null);
 
         bool CreateAppView(Views.AppModelPair modelPair);
     }

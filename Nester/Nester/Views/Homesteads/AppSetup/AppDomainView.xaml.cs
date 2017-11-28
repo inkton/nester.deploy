@@ -137,7 +137,9 @@ namespace Inkton.Nester.Views
             {
                 Admin.AppDomain browseDomain = AppDomainsList.SelectedItem as Admin.AppDomain;
                 _modelPair.AppViewModel.DomainModel.EditDomain = browseDomain;
-                await Navigation.PushAsync(new AppDomainCertView(_modelPair));
+                AppDomainCertView certView = new AppDomainCertView(_modelPair);
+                certView.MainSideView = MainSideView;
+                await MainSideView.Detail.Navigation.PushAsync(certView);
             }
         }
 
@@ -408,7 +410,7 @@ namespace Inkton.Nester.Views
                     return;
                 }
 
-                if (Aliases.Text != null)
+                if (Aliases.Text != null && Aliases.Text.Length > 0)
                 {
                     foreach (string alias in Aliases.Text.Split(' '))
                     {

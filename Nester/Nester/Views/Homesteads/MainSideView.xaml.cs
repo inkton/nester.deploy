@@ -28,6 +28,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Inkton.Nester.Admin;
 using Xamarin.Forms;
+using Syncfusion.SfBusyIndicator.XForms;
 
 namespace Inkton.Nester.Views
 {
@@ -39,38 +40,44 @@ namespace Inkton.Nester.Views
         {
             InitializeComponent();
 
-            homeView = new HomeView();
-            homeView.MainSideView = this;
-            Master = homeView;
-
-            _currentView = new BannerView();
-            (_currentView as BannerView).ShowProgress = true;
-            (_currentView as BannerView).Text = "Starting ..";
-            (_currentView as BannerView).AnimationType = Syncfusion.SfBusyIndicator.XForms.AnimationTypes.Box;
-
-            _currentView.MainSideView = this;
-            Detail = new NavigationPage(_currentView);
-
             if (Device.RuntimePlatform == Device.UWP)
             {
                 MasterBehavior = MasterBehavior.Popover;
             }
         }
 
+        public Views.View CurrentView
+        {
+            get
+            {
+                return _currentView;
+            }
+        }
+
         public void ShowEntry()
         {
+            (Master as HomeView).MainSideView = this;
+
+            ((Detail as NavigationPage).CurrentPage as BannerView).ShowProgress = false;
+            ((Detail as NavigationPage).CurrentPage as BannerView).MainSideView = this;
+
             EntryView entry = new EntryView();
             entry.MainSideView = this;
             Detail.Navigation.PushAsync(entry);
         }
 
-        public void ResetView()
-        {
-            _currentView = new BannerView();
-            (_currentView as BannerView).ShowProgress = false;
-            _currentView.MainSideView = this;
-            Detail = new NavigationPage(_currentView);
-            IsPresented = false;
+        public void ResetView(Views.AppModelPair appModelPair = null)
+        {             
+            if (appModelPair == null)
+            {
+                BannerView view = new BannerView();
+                view.ShowProgress = false;
+                LoadView(view);
+            }
+            else
+            {
+                CreateAppView(appModelPair);
+            }
         }
 
         public bool LoadView(Views.View view)
@@ -78,8 +85,6 @@ namespace Inkton.Nester.Views
             Detail = new NavigationPage(view);
             _currentView = view;
             _currentView.MainSideView = this;
-
-            IsPresented = false;
             return true;
         }
 
@@ -90,7 +95,7 @@ namespace Inkton.Nester.Views
 
             if (appModelPair.AppViewModel.EditApp.IsBusy)
             {
-                newState = AppView.Status.Deploying;
+                newState = AppView.Status.Updating;
             }
             else if (!appModelPair.AppViewModel.EditApp.IsDeployed)
             {
@@ -109,15 +114,19 @@ namespace Inkton.Nester.Views
 
             if (viewLoadNeeded)
             {
-                Views.AppView appView = new Views.AppView(appModelPair);
-                appView.State = AppView.Status.Refreshing;
-                appView.AppModelPair = appModelPair;
-                if (newState == AppView.Status.Deployed)
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    appView.GetAnalyticsAsync();
-                }
-                LoadView(appView);
-                appView.State = newState;
+                    Views.AppView appView = new Views.AppView(appModelPair);
+                    appView.State = AppView.Status.Refreshing;
+                    appView.AppModelPair = appModelPair;
+                    if (newState == AppView.Status.Deployed)
+                    {
+                        appView.GetAnalyticsAsync();
+                    }
+                    LoadView(appView);
+                    appView.State = newState;
+
+                });
             }
 
             return true;

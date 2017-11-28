@@ -409,7 +409,17 @@ namespace Inkton.Nester.Views
                 if (_modelPair.WizardMode)
                 {
                     // Pop this to go to Homeview <->
-                    await MainSideView.Detail.Navigation.PopToRootAsync();
+                    foreach (var page in MainSideView.Detail.Navigation.NavigationStack.ToList())
+                    {
+                        if (!(page is ContactsView))
+                        {
+                            MainSideView.Detail.Navigation.RemovePage(page);
+                        }
+                    }
+
+                    await MainSideView.Detail.Navigation.PopAsync();
+                    _modelPair.WizardMode = false;
+                    MainSideView.ResetView(_modelPair);
                 }
                 else
                 {

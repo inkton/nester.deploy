@@ -236,7 +236,7 @@
                 </syncList:SfListView.HeaderTemplate>
             </syncList:SfListView>
 
-          <ActivityIndicator VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Grid.Row="2" Grid.Column="0" x:Name="ServiceActive" Style="{StaticResource nesterActive}">
+          <ActivityIndicator VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Grid.Row="2" Grid.Column="0" x:Name="ServiceActive">
           </ActivityIndicator>
 
         </StackLayout>

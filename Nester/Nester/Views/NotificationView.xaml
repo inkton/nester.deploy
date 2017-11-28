@@ -55,7 +55,7 @@
 
       <StackLayout Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" >
 
-        <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
+        <ActivityIndicator x:Name="ServiceActive" ></ActivityIndicator>
 
         <Button x:Name="ButtonDone"
                 Text="Proceed"

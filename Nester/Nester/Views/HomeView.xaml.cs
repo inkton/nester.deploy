@@ -82,12 +82,14 @@ namespace Inkton.Nester.Views
             }
         }
 
-        public void Init()
+        public void Monitor()
         {
             try
             {
                 Cloud.ServerStatus status = new Cloud.ServerStatus(0);
-                
+                AppView.Status newState;
+                bool viewLoadNeeded = true;
+
                 Device.StartTimer(TimeSpan.FromSeconds(1), () =>
                 {
                     if (_lastUpdate > _updatInterval)
@@ -96,15 +98,50 @@ namespace Inkton.Nester.Views
                         {
                             foreach (AppViewModel appModel in AppCollectionModel.AppModels)
                             {
-                                if (appModel.EditApp.IsBusy)
+                                if (!appModel.EditApp.IsBusy)
                                 {
-                                    // In the middle of an operation. 
-                                    // Update state again to capture current status.
-                                    await appModel.InitAsync();
+                                    continue;
                                 }
 
-                                NesterControl.CreateAppView(
-                                    new AppModelPair(_modelPair.AuthViewModel, appModel));
+                                await appModel.QueryAppAsync();
+                                await appModel.DeploymentModel.QueryDeploymentsAsync();
+
+                                viewLoadNeeded = false;
+
+                                if (appModel.EditApp.IsBusy)
+                                {
+                                    newState = AppView.Status.Updating;
+                                }
+                                else if (!appModel.EditApp.IsDeployed)
+                                {
+                                    newState = AppView.Status.WaitingDeployment;
+                                }
+                                else
+                                {
+                                    newState = AppView.Status.Deployed;
+                                }
+
+                                System.Diagnostics.Debug.WriteLine("Polling App - {0}, currently Deployed - {1}, Busy - {2}, View - {3}",
+                                    appModel.EditApp.Tag, appModel.EditApp.IsDeployed, appModel.EditApp.IsBusy, newState);
+
+                                if (MainSideView.CurrentView != null && MainSideView.CurrentView is AppView && 
+                                    MainSideView.CurrentView.AppModelPair != null && 
+                                    MainSideView.CurrentView.AppModelPair.AppViewModel.EditApp.Id == appModel.EditApp.Id)
+                                {
+                                    System.Diagnostics.Debug.WriteLine("Displayed App - {0}, currently Deployed - {1}, Busy - {2}, View - {3}",
+                                        MainSideView.CurrentView.AppModelPair.AppViewModel.EditApp.Tag,
+                                        MainSideView.CurrentView.AppModelPair.AppViewModel.EditApp.IsDeployed, 
+                                        MainSideView.CurrentView.AppModelPair.AppViewModel.EditApp.IsBusy,
+                                        (MainSideView.CurrentView as AppView).State);
+
+                                    viewLoadNeeded = ((MainSideView.CurrentView as AppView).State != newState);
+                                }
+
+                                if (viewLoadNeeded)
+                                {
+                                    NesterControl.CreateAppView(
+                                        new AppModelPair(_modelPair.AuthViewModel, appModel));
+                                }
                             }
                         });
 
@@ -216,6 +253,17 @@ namespace Inkton.Nester.Views
                         {
                             await appModel.RemoveAppAsync();
                             AppCollectionModel.RemoveApp(appModel);
+
+                            AppModelPair modelPair = null;
+
+                            if (AppCollectionModel.AppModels.Any())
+                            {
+                                modelPair = new AppModelPair(
+                                        _modelPair.AuthViewModel, 
+                                        AppCollectionModel.AppModels.First());
+                            }
+
+                            NesterControl.ResetView(modelPair);
                         }
                         catch (Exception ex)
                         {

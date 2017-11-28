@@ -28,7 +28,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Syncfusion.SfChart.XForms;
 using System.Collections.ObjectModel;
-    using Inkton.Nester.Admin;
+using Syncfusion.SfBusyIndicator.XForms;
+using Inkton.Nester.Admin;
 using System.Net;
 
 namespace Inkton.Nester.Views
@@ -37,7 +38,7 @@ namespace Inkton.Nester.Views
     {
         public enum Status
         {
-            Deploying,
+            Updating,
             Refreshing,
             WaitingDeployment,
             Deployed
@@ -138,8 +139,7 @@ namespace Inkton.Nester.Views
 
                     case Status.Refreshing:
                         ProgressControl.Title = "Refreshing ...";
-                        ProgressControl.TitlePlacement = Syncfusion.SfBusyIndicator.XForms.TitlePlacement.Bottom;
-                        ProgressControl.AnimationType = Syncfusion.SfBusyIndicator.XForms.AnimationTypes.Rectangle;
+                        ProgressControl.AnimationType = AnimationTypes.Rectangle;
 
                         ProgressControl.IsVisible = true;
                         Logo.IsVisible = false;
@@ -147,10 +147,9 @@ namespace Inkton.Nester.Views
                         Metrics.IsVisible = false;
                         break;
 
-                    case Status.Deploying:
-                        ProgressControl.Title = "Deploying ...";
-                        ProgressControl.TitlePlacement = Syncfusion.SfBusyIndicator.XForms.TitlePlacement.Bottom;
-                        ProgressControl.AnimationType = Syncfusion.SfBusyIndicator.XForms.AnimationTypes.Gear;
+                    case Status.Updating:
+                        ProgressControl.Title = "Updating ...";
+                        ProgressControl.AnimationType = AnimationTypes.Gear;
 
                         ProgressControl.IsVisible = true;
                         Logo.IsVisible = false;
@@ -375,6 +374,8 @@ namespace Inkton.Nester.Views
                 {
                     if (_modelPair.AppViewModel.EditApp.IsDeploymentValid)
                     {
+                        State = Status.Updating;
+
                         await Process(_modelPair.AppViewModel.EditApp.Deployment, true,
                             _modelPair.AppViewModel.DeploymentModel.RemoveDeploymentAsync
                         );

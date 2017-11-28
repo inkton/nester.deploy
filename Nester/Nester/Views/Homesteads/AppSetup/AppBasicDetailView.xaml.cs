@@ -254,7 +254,8 @@ namespace Inkton.Nester.Views
                 {
                     AppTierView tierView = new AppTierView(_modelPair);
                     tierView.MainSideView = MainSideView;
-                    await MainSideView.Detail.Navigation.PushAsync(tierView);
+                    MainSideView.Detail.Navigation.InsertPageBefore(tierView, this);
+                    await MainSideView.Detail.Navigation.PopAsync();
                 }
                 else
                 {

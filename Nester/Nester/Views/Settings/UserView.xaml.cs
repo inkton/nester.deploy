@@ -151,7 +151,7 @@ namespace Inkton.Nester.Views
                     {
                         await _modelPair.AuthViewModel.QueryTokenAsync();
 
-                        await Navigation.PopModalAsync();
+                        await MainSideView.Detail.Navigation.PopAsync();
                     }
                 }
                 else

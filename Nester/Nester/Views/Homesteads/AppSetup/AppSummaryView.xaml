@@ -739,7 +739,7 @@
     </ScrollView>
         
         
-    <ActivityIndicator Grid.Row="4" Grid.Column="1" x:Name="ServiceActive" Style="{StaticResource nesterActive}">
+    <ActivityIndicator Grid.Row="4" Grid.Column="1" x:Name="ServiceActive" >
     </ActivityIndicator>
 
     <Grid Grid.Row="5" Grid.Column="1">

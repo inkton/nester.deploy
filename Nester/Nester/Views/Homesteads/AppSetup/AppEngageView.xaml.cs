@@ -53,7 +53,8 @@ namespace Inkton.Nester.Views
 
             AppBasicDetailView basicView = new AppBasicDetailView(_modelPair);
             basicView.MainSideView = MainSideView;
-            await MainSideView.Detail.Navigation.PushAsync(basicView);
+            MainSideView.Detail.Navigation.InsertPageBefore(basicView, this);
+            await MainSideView.Detail.Navigation.PopAsync();
 
             IsServiceActive = false;
         }
@@ -66,7 +67,8 @@ namespace Inkton.Nester.Views
 
             AppJoinDetailView joinView = new AppJoinDetailView(_modelPair);
             joinView.MainSideView = MainSideView;
-            await MainSideView.Detail.Navigation.PushAsync(joinView);
+            MainSideView.Detail.Navigation.InsertPageBefore(joinView, this);
+            await MainSideView.Detail.Navigation.PopAsync();
 
             IsServiceActive = false;
         }

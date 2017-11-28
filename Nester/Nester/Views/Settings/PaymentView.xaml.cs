@@ -83,9 +83,9 @@ namespace Inkton.Nester.Views
                 await _modelPair.AppViewModel.PaymentModel.CreatePaymentMethodAsync(CardNumber.Text,
                     int.Parse(ExpMonth.Text), int.Parse(ExpYear.Text), CVVNumber.Text);
 
-                if (Navigation.ModalStack.Count > 0)
+                if (MainSideView.Detail.Navigation.NavigationStack.Count > 0)
                 {
-                    await Navigation.PopModalAsync();
+                    await MainSideView.Detail.Navigation.PopAsync();
                 }
             }
             catch (Exception ex)

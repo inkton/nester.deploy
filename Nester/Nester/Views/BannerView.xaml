@@ -40,16 +40,17 @@
             HorizontalOptions="Center"            
             Source="app-background.png" />
           
-          <ActivityIndicator x:Name="ServiceActive" Style="{StaticResource nesterActive}"></ActivityIndicator>
+          <ActivityIndicator x:Name="ServiceActive"></ActivityIndicator>
 
           <syncfusion:SfBusyIndicator x:Name="ProgressControl"
               VerticalOptions="Center"
               HorizontalOptions="Center"
+              TitlePlacement = "Bottom"
               AnimationType="Gear"
-              ViewBoxWidth = "75"
-              ViewBoxHeight="75"
+              ViewBoxWidth = "50"
+              ViewBoxHeight="50"
               Title="Please wait ..."
-              TextColor="{StaticResource noteColor}" />
+              TextColor="{StaticResource minorColor}" />
 
         </StackLayout>
      </Grid>      

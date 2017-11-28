@@ -255,7 +255,7 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                await Navigation.PopAsync();
+                await MainSideView.Detail.Navigation.PopAsync();
             }
             catch (Exception ex)
             {
