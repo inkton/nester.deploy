@@ -33,7 +33,7 @@ namespace Inkton.Nester.Views
     {
         public EntryView()
         {
-            _modelPair = NesterControl.AppModelPair;
+            _baseModels = NesterControl.BaseModels;
 
             InitializeComponent();
 
@@ -46,20 +46,20 @@ namespace Inkton.Nester.Views
                     ButtonRecoverPassword
                 });
 
-            BindingContext = _modelPair.AuthViewModel;
+            BindingContext = _baseModels.AuthViewModel;
         }
 
         void Validate()
         {
             if (EmailValidator != null)
             {
-                _modelPair.AuthViewModel.Validated = (
+                _baseModels.AuthViewModel.Validated = (
                     EmailValidator.IsValid &&
                     PasswordValidator.IsValid);
 
-                _modelPair.AuthViewModel.CanRecoverPassword = (
-                    _modelPair.AuthViewModel.Permit.Owner.Email != null &&
-                    _modelPair.AuthViewModel.Permit.Owner.Email.Length > 0 &&
+                _baseModels.AuthViewModel.CanRecoverPassword = (
+                    _baseModels.AuthViewModel.Permit.Owner.Email != null &&
+                    _baseModels.AuthViewModel.Permit.Owner.Email.Length > 0 &&
                     EmailValidator.IsValid);
             }
         }
@@ -78,10 +78,10 @@ namespace Inkton.Nester.Views
 
         private void BeginNewSession()
         {
-            _modelPair.AuthViewModel.Reset();
-            AppCollectionViewModel appCollection = _modelPair.AppViewModel as AppCollectionViewModel;
+            _baseModels.AuthViewModel.Reset();
+            AppCollectionViewModel appCollection = _baseModels.AppViewModel as AppCollectionViewModel;
             appCollection.AppModels.Clear();
-            _modelPair.WizardMode = true;
+            _baseModels.WizardMode = true;
         }
 
         private void PushEngageView()
@@ -89,11 +89,13 @@ namespace Inkton.Nester.Views
             AppViewModel newAppModel = new AppViewModel();
             newAppModel.NewAppAsync();
 
-            AppModelPair modelPair = new AppModelPair(
-                _modelPair.AuthViewModel, newAppModel);
-            modelPair.WizardMode = true;
+            BaseModels baseModels = new BaseModels(
+                _baseModels.AuthViewModel,
+                _baseModels.PaymentViewModel,
+                newAppModel);
+            baseModels.WizardMode = true;
 
-            AppEngageView engageView = new AppEngageView(modelPair);
+            AppEngageView engageView = new AppEngageView(baseModels);
             engageView.MainSideView = MainSideView;
 
             MainSideView.Detail.Navigation.InsertPageBefore(engageView, this);
@@ -103,7 +105,7 @@ namespace Inkton.Nester.Views
         {
             PushEngageView();
 
-            Views.UserView userView = new Views.UserView(_modelPair);
+            Views.UserView userView = new Views.UserView(_baseModels);
             userView.MainSideView = MainSideView;
 
             MainSideView.Detail.Navigation.InsertPageBefore(userView, this);
@@ -117,7 +119,7 @@ namespace Inkton.Nester.Views
             {
                 BeginNewSession();
 
-                Cloud.ServerStatus status = await _modelPair.AuthViewModel.QueryTokenAsync(false);
+                Cloud.ServerStatus status = _baseModels.AuthViewModel.QueryToken(false);
 
                 if (status.Code == Cloud.Result.NEST_RESULT_ERROR_AUTH_SECCODE)
                 {
@@ -132,7 +134,9 @@ namespace Inkton.Nester.Views
                 }
                 else if (status.Code == Cloud.Result.NEST_RESULT_SUCCESS)
                 {
-                    AppCollectionViewModel appCollection = _modelPair.AppViewModel as AppCollectionViewModel;
+                    await _baseModels.PaymentViewModel.InitAsync();
+
+                    AppCollectionViewModel appCollection = _baseModels.AppViewModel as AppCollectionViewModel;
 
                     await appCollection.LoadApps();
 
@@ -146,13 +150,12 @@ namespace Inkton.Nester.Views
                     {
                         await MainSideView.Detail.Navigation.PopAsync();
 
-                        AppModelPair modelPair = null;
-
-                        modelPair = new AppModelPair(
-                                _modelPair.AuthViewModel,
+                        BaseModels baseModels = new BaseModels(
+                                _baseModels.AuthViewModel,
+                                _baseModels.PaymentViewModel,
                                 appCollection.AppModels.First());
 
-                        NesterControl.ResetView(modelPair);
+                        NesterControl.ResetView(baseModels);
                     }
                 }
                 else
@@ -176,7 +179,7 @@ namespace Inkton.Nester.Views
             {
                 BeginNewSession();
 
-                await _modelPair.AuthViewModel.SignupAsync();
+                _baseModels.AuthViewModel.Signup();
 
                 PushEngageViewWithUserUpdate();
 
@@ -198,11 +201,11 @@ namespace Inkton.Nester.Views
             try
             {
                 Cloud.ServerStatus status = 
-                    await _modelPair.AuthViewModel.QueryTokenAsync(false);
+                    _baseModels.AuthViewModel.QueryToken(false);
 
                 if (status.Code < 0)
                 {
-                    status = await _modelPair.AuthViewModel.RecoverPasswordAsync(false);
+                    status = await _baseModels.AuthViewModel.RecoverPasswordAsync(false);
 
                     if (status.Code == Cloud.Result.NEST_RESULT_ERROR_USER_NFOUND)
                     {

@@ -6,17 +6,21 @@ using System.Threading.Tasks;
 
 namespace Inkton.Nester.Views
 {
-    public class AppModelPair
+    public class BaseModels
     {
         private Views.AuthViewModel _authViewModel = null;
         private Views.AppViewModel _appViewModel = null;
+        private Views.PaymentViewModel _paymentViewModel = null;
+
         protected bool _wizardMode = false;
 
-        public AppModelPair(
-            Views.AuthViewModel authViewModel = null, 
+        public BaseModels(
+            Views.AuthViewModel authViewModel = null,
+            Views.PaymentViewModel paymentViewModel = null,
             Views.AppViewModel appViewModel = null)
         {
             _authViewModel = authViewModel;
+            _paymentViewModel = paymentViewModel;
             _appViewModel = appViewModel;
         }
 
@@ -24,6 +28,12 @@ namespace Inkton.Nester.Views
         {
             get { return _authViewModel; }
             set { _authViewModel = value; }
+        }
+
+        public PaymentViewModel PaymentViewModel
+        {
+            get { return _paymentViewModel; }
+            set { _paymentViewModel = value; }
         }
 
         public AppViewModel AppViewModel

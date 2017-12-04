@@ -35,7 +35,6 @@ namespace Inkton.Nester.Views
     {
         private bool _mariaDBEnabled = false;
 
-        private PaymentViewModel _paymentModel;
         private ContactViewModel _contactViewModel;
         private NestViewModel _nestViewModel;
         private DomainViewModel _domainViewModel;
@@ -80,7 +79,6 @@ namespace Inkton.Nester.Views
                 },
             };
 
-            _paymentModel = new PaymentViewModel();
             _contactViewModel = new ContactViewModel(_editApp);
             _nestViewModel = new NestViewModel(_editApp);
             _domainViewModel = new DomainViewModel(_editApp);
@@ -120,18 +118,6 @@ namespace Inkton.Nester.Views
                 }
 
                 return isOwner;
-            }
-        }
-
-        public PaymentViewModel PaymentModel
-        {
-            get
-            {
-                return _paymentModel;
-            }
-            set
-            {
-                SetProperty(ref _paymentModel, value);
             }
         }
 
@@ -449,27 +435,8 @@ namespace Inkton.Nester.Views
         {
             Cloud.ServerStatus status;
 
-            status = await _paymentModel.InitAsync();
-            if (status.Code < 0 &&
-                status.Code != Cloud.Result.NEST_RESULT_ERROR_PMETHOD_NFOUND)
-            {
-                return status;
-            }
-
-            // Get the app when query all relations
-            status = await QueryAppAsync();
-            if (status.Code < 0)
-            {
-                return status;
-            }
-
-            status = await _deploymentViewModel.InitAsync();
-            if (status.Code < 0)
-            {
-                return status;
-            }
-
-            status = await _servicesViewModel.InitAsync();
+            // The only blocking call
+            status = QueryApp();
             if (status.Code < 0)
             {
                 return status;
@@ -477,13 +444,11 @@ namespace Inkton.Nester.Views
 
             _mariaDBEnabled = SelectedMariaDBTier != null;
 
-#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-
-            _contactViewModel.InitAsync();
-            _nestViewModel.InitAsync();
-            _domainViewModel.InitAsync();
-
-#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+            await _deploymentViewModel.InitAsync();
+            await _servicesViewModel.InitAsync();
+            await _contactViewModel.InitAsync();
+            await _nestViewModel.InitAsync();
+            await _domainViewModel.InitAsync();
 
             OnPropertyChanged("EditApp");
 
@@ -571,6 +536,32 @@ namespace Inkton.Nester.Views
             {
                 _notifications = status.PayloadToList<Admin.Notification>();
                 _notifications.All(x => { x.App = theApp; return true; });
+            }
+
+            return status;
+        }
+
+        public Cloud.ServerStatus QueryApp(Admin.App app = null,
+            bool bCache = false, bool throwIfError = true)
+        {
+            Admin.App theApp = app == null ? _editApp : app;
+            Cloud.ServerStatus status = Cloud.Result.WaitForObject(throwIfError,
+                theApp, new Cloud.CachedHttpRequest<Admin.App>(
+                    NesterControl.NesterService.QueryAsync), bCache);
+
+            if (status.Code == 0)
+            {
+                EditApp = status.PayloadToObject<Admin.App>();
+
+                if (app != null)
+                {
+                    Utils.Object.PourPropertiesTo(_editApp, app);
+                }
+
+                if (_editApp.UserId == NesterControl.User.Id)
+                {
+                    _editApp.Owner = NesterControl.User;
+                }
             }
 
             return status;

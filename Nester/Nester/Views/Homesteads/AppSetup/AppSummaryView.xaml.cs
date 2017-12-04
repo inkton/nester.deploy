@@ -32,9 +32,9 @@ namespace Inkton.Nester.Views
 {
     public partial class AppSummaryView : Inkton.Nester.Views.View
     {
-        public AppSummaryView(Views.AppModelPair modelPair)
+        public AppSummaryView(Views.BaseModels baseModels)
         {
-            _modelPair = modelPair;
+            _baseModels = baseModels;
 
             InitializeComponent();
 
@@ -43,9 +43,9 @@ namespace Inkton.Nester.Views
                     ButtonDone
                 });
 
-            BindingContext = _modelPair.AppViewModel;
+            BindingContext = _baseModels.AppViewModel;
             
-            _modelPair.AppViewModel.DeploymentModel.DotnetVersions.All(version =>
+            _baseModels.AppViewModel.DeploymentModel.DotnetVersions.All(version =>
             {
                 SoftwareVersion.Items.Add(version.Name);
                 return true;
@@ -54,7 +54,7 @@ namespace Inkton.Nester.Views
             SoftwareVersion.SelectedIndex = 0;
             DeployWarning.Text = "The deployment will take some time to complete. ";
 
-            if (_modelPair.AppViewModel.EditApp.IsDeployed)
+            if (_baseModels.AppViewModel.EditApp.IsDeployed)
             {
                 DeployWarning.Text += "New DevKits will be rebuilt with new access keys. ";
                 DeployWarning.Text += "Download the Devkits again once the deployment is complete. ";
@@ -64,11 +64,11 @@ namespace Inkton.Nester.Views
         
         private async Task<bool> IsDnsOkAsync()
         {
-            Admin.AppDomain defaultDomain = (from domain in _modelPair.AppViewModel.DomainModel.Domains
+            Admin.AppDomain defaultDomain = (from domain in _baseModels.AppViewModel.DomainModel.Domains
                                              where domain.Default == true
                                              select domain).First();
 
-            foreach (Admin.AppDomain domain in _modelPair.AppViewModel.DomainModel.Domains)
+            foreach (Admin.AppDomain domain in _baseModels.AppViewModel.DomainModel.Domains)
             {
                 if (domain.Default)
                     continue;
@@ -120,7 +120,7 @@ namespace Inkton.Nester.Views
                     return;
 
                 Admin.SoftwareFramework.Version selVersion = null;
-                foreach (var version in _modelPair.AppViewModel.DeploymentModel.DotnetVersions)
+                foreach (var version in _baseModels.AppViewModel.DeploymentModel.DotnetVersions)
                 {
                     if (version.Name == SoftwareVersion.SelectedItem as string)
                     {
@@ -129,30 +129,30 @@ namespace Inkton.Nester.Views
                     }
                 }
 
-                if (_modelPair.AppViewModel.DeploymentModel.Deployments.Any())
+                if (_baseModels.AppViewModel.DeploymentModel.Deployments.Any())
                 {
                     Admin.Deployment deployment =
-                        _modelPair.AppViewModel.DeploymentModel.Deployments.First();
+                        _baseModels.AppViewModel.DeploymentModel.Deployments.First();
                     deployment.FrameworkVersionId = selVersion.Id;
 
-                    await _modelPair.AppViewModel.DeploymentModel.UpdateDeploymentAsync(deployment);
+                    await _baseModels.AppViewModel.DeploymentModel.UpdateDeploymentAsync(deployment);
                 }
                 else
                 {
-                    _modelPair.AppViewModel.DeploymentModel.EditDeployment.FrameworkVersionId = selVersion.Id;
+                    _baseModels.AppViewModel.DeploymentModel.EditDeployment.FrameworkVersionId = selVersion.Id;
 
-                    await _modelPair.AppViewModel.DeploymentModel.CreateDeployment(
-                        _modelPair.AppViewModel.DeploymentModel.EditDeployment);
+                    await _baseModels.AppViewModel.DeploymentModel.CreateDeployment(
+                        _baseModels.AppViewModel.DeploymentModel.EditDeployment);
 
-                    _modelPair.AppViewModel.EditApp.Deployment = 
-                        _modelPair.AppViewModel.DeploymentModel.EditDeployment;
+                    _baseModels.AppViewModel.EditApp.Deployment = 
+                        _baseModels.AppViewModel.DeploymentModel.EditDeployment;
                 }
 
-                await _modelPair.AppViewModel.InitAsync();
+                await _baseModels.AppViewModel.InitAsync();
 
                 ResetView();
 
-                NesterControl.CreateAppView(_modelPair);
+                NesterControl.CreateAppView(_baseModels);
             }
             catch (Exception ex)
             {

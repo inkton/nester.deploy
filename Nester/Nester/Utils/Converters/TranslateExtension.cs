@@ -20,6 +20,7 @@
     OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+using Inkton.Nester.Admin;
 using System;
 using System.Globalization;
 using System.Reflection;
@@ -33,7 +34,6 @@ namespace Inkton.Nester.Utils
     public class TranslateExtension : IMarkupExtension
     {
         readonly CultureInfo ci;
-        const string ResourceId = "Inkton.Nester.Resx.Resources";
 
         /*
          * Grabbed from here
@@ -59,16 +59,16 @@ namespace Inkton.Nester.Utils
             if (Text == null)
                 return "";
 
-            ResourceManager resmgr = new ResourceManager(ResourceId
-                                , typeof(TranslateExtension).GetTypeInfo().Assembly);
-
+            ResourceManager resmgr = 
+                (Application.Current as INesterControl).GetResourceManager();
             var translation = resmgr.GetString(Text, ci);
 
             if (translation == null)
             {
 #if DEBUG
                 throw new ArgumentException(
-                    String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", Text, ResourceId, ci.Name),
+                    String.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'.", 
+                    Text, "Inkton.Nester.Resx.Resources", ci.Name),
                     "Text");
 #else
                 translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER

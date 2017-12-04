@@ -34,9 +34,9 @@ namespace Inkton.Nester.Views
 {
     public partial class AppNestsView : Inkton.Nester.Views.View
     {
-        public AppNestsView(Views.AppModelPair modelPair)
+        public AppNestsView(Views.BaseModels baseModels)
         {
-            _modelPair = modelPair;
+            _baseModels = baseModels;
 
             InitializeComponent();
 
@@ -57,13 +57,13 @@ namespace Inkton.Nester.Views
                     ButtonDone
                 });
 
-            BindingContext = _modelPair.AppViewModel.NestModel;
+            BindingContext = _baseModels.AppViewModel.NestModel;
 
             AppNestsList.SelectionChanged += AppNestsList_SelectionChanged;
             Memory.SelectedIndexChanged += Memory_SelectedIndexChanged;
 
-            ButtonDone.IsVisible = _modelPair.WizardMode;
-            if (_modelPair.WizardMode)
+            ButtonDone.IsVisible = _baseModels.WizardMode;
+            if (_baseModels.WizardMode)
             {
                 // hide but do not collapse
                 TopButtonPanel.Opacity = 0;
@@ -78,7 +78,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.LoadView(new AppBasicDetailView(_modelPair));
+                MainSideView.LoadView(new AppBasicDetailView(_baseModels));
             }
             catch (Exception ex)
             {
@@ -94,9 +94,9 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _modelPair.AppViewModel.DomainModel.InitAsync();
+                await _baseModels.AppViewModel.DomainModel.InitAsync();
 
-                MainSideView.LoadView(new AppDomainView(_modelPair));
+                MainSideView.LoadView(new AppDomainView(_baseModels));
             }
             catch (Exception ex)
             {
@@ -112,9 +112,9 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _modelPair.AppViewModel.ContactModel.InitAsync();
+                await _baseModels.AppViewModel.ContactModel.InitAsync();
 
-                MainSideView.LoadView(new ContactsView(_modelPair));
+                MainSideView.LoadView(new ContactsView(_baseModels));
             }
             catch (Exception ex)
             {
@@ -131,8 +131,8 @@ namespace Inkton.Nester.Views
                 AppNestsList.SelectedItems.RemoveAt(0);
             }
 
-            _modelPair.AppViewModel.NestModel.EditNest = new Admin.Nest();
-            _modelPair.AppViewModel.NestModel.EditNest.App = _modelPair.AppViewModel.EditApp;
+            _baseModels.AppViewModel.NestModel.EditNest = new Admin.Nest();
+            _baseModels.AppViewModel.NestModel.EditNest.App = _baseModels.AppViewModel.EditApp;
 
             SetDefaults();
 
@@ -157,7 +157,7 @@ namespace Inkton.Nester.Views
             Admin.Nest browseNest = AppNestsList.SelectedItem as Admin.Nest;
             Admin.Nest copy = new Admin.Nest();
             Utils.Object.CopyPropertiesTo(browseNest, copy);
-            _modelPair.AppViewModel.NestModel.EditNest = copy;
+            _baseModels.AppViewModel.NestModel.EditNest = copy;
 
             int index = 0;
 
@@ -172,7 +172,7 @@ namespace Inkton.Nester.Views
 
             Scaling.Value = browseNest.Scale;
 
-            Admin.NestPlatform platform = _modelPair.AppViewModel.NestModel.Platforms.First(
+            Admin.NestPlatform platform = _baseModels.AppViewModel.NestModel.Platforms.First(
                 x => x.Id == browseNest.PlatformId);
 
             if (platform.Tag == "mvc")
@@ -191,7 +191,7 @@ namespace Inkton.Nester.Views
 
         private Admin.Nest CopyUpdate(Admin.Nest browseNest)
         {
-            browseNest.App = _modelPair.AppViewModel.EditApp;
+            browseNest.App = _baseModels.AppViewModel.EditApp;
             browseNest.Tag = Tag.Text;
             browseNest.Name = Name.Text;
             browseNest.NestStatus = "active";
@@ -200,17 +200,17 @@ namespace Inkton.Nester.Views
 
             if (Type.SelectedIndex == 0)
             {
-                platform = _modelPair.AppViewModel.NestModel.Platforms.First(
+                platform = _baseModels.AppViewModel.NestModel.Platforms.First(
                         x => x.Tag == "mvc");
             }
             else if (Type.SelectedIndex == 1)
             {
-                platform = _modelPair.AppViewModel.NestModel.Platforms.First(
+                platform = _baseModels.AppViewModel.NestModel.Platforms.First(
                         x => x.Tag == "api");
             }
             else if (Type.SelectedIndex == 2)
             {
-                platform = _modelPair.AppViewModel.NestModel.Platforms.First(
+                platform = _baseModels.AppViewModel.NestModel.Platforms.First(
                         x => x.Tag == "worker");
             }
 
@@ -252,17 +252,17 @@ namespace Inkton.Nester.Views
             int totalMemoryMbytes = value * multiplier * scale;
             UsedMemory.Text = totalMemoryMbytes.ToString() + "m";
 
-            if (_modelPair.AppViewModel.NestModel.EditNest != null)
+            if (_baseModels.AppViewModel.NestModel.EditNest != null)
             {
-                _modelPair.AppViewModel.NestModel.EditNest.ScaleSize = memoryString;
-                _modelPair.AppViewModel.NestModel.EditNest.Scale = scale;
+                _baseModels.AppViewModel.NestModel.EditNest.ScaleSize = memoryString;
+                _baseModels.AppViewModel.NestModel.EditNest.Scale = scale;
             }
         }
 
         private void Validate()
         {
-            _modelPair.AppViewModel.NestModel.Validated = false;
-            _modelPair.AppViewModel.NestModel.CanUpdate = false;
+            _baseModels.AppViewModel.NestModel.Validated = false;
+            _baseModels.AppViewModel.NestModel.CanUpdate = false;
 
             if (TagValidator != null)
             {
@@ -270,7 +270,7 @@ namespace Inkton.Nester.Views
                  * be added only if valid fields and no list item 
                  * has been selected and currenly receivng focus.
                  */
-                _modelPair.AppViewModel.NestModel.Validated = (
+                _baseModels.AppViewModel.NestModel.Validated = (
                     TagValidator.IsValid &&
                     NameValidator.IsValid 
                 );
@@ -279,8 +279,8 @@ namespace Inkton.Nester.Views
                  * be updaed only if valid fields has been selected 
                  * and an item from a list is selected.
                  */
-                _modelPair.AppViewModel.NestModel.CanUpdate =
-                    _modelPair.AppViewModel.NestModel.Validated &&
+                _baseModels.AppViewModel.NestModel.CanUpdate =
+                    _baseModels.AppViewModel.NestModel.Validated &&
                     AppNestsList.SelectedItem != null;
             }
         }
@@ -291,9 +291,9 @@ namespace Inkton.Nester.Views
 
             try
             {
-                if (_modelPair.AppViewModel.NestModel.Nests.Any())
+                if (_baseModels.AppViewModel.NestModel.Nests.Any())
                 {
-                    Admin.Nest nest = _modelPair.AppViewModel.NestModel.Nests.First();
+                    Admin.Nest nest = _baseModels.AppViewModel.NestModel.Nests.First();
                     AppNestsList.SelectedItem = nest;
                 }
 
@@ -339,7 +339,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                var existNests = from nest in _modelPair.AppViewModel.NestModel.Nests
+                var existNests = from nest in _baseModels.AppViewModel.NestModel.Nests
                                     where nest.Tag == Tag.Text
                                     select nest;
                 if (existNests.Any())
@@ -350,11 +350,11 @@ namespace Inkton.Nester.Views
                 }
 
                 Admin.Nest newNest = CopyUpdate(new Admin.Nest());
-                Admin.NestPlatform workerPlatform = _modelPair.AppViewModel.NestModel.Platforms.First(
+                Admin.NestPlatform workerPlatform = _baseModels.AppViewModel.NestModel.Platforms.First(
                     x => x.Tag == "worker");
 
                 // the new nest is a handler
-                var handlerNests = from nest in _modelPair.AppViewModel.NestModel.Nests
+                var handlerNests = from nest in _baseModels.AppViewModel.NestModel.Nests
                                    where nest.PlatformId != workerPlatform.Id
                                    select nest;
 
@@ -366,7 +366,7 @@ namespace Inkton.Nester.Views
                     return;
                 }
 
-                await _modelPair.AppViewModel.NestModel.CreateNestAsync(newNest);
+                await _baseModels.AppViewModel.NestModel.CreateNestAsync(newNest);
 
                 Clear();
             }
@@ -385,7 +385,7 @@ namespace Inkton.Nester.Views
             try
             {
                 await Process(AppNestsList.SelectedItem as Admin.Nest, true,
-                    _modelPair.AppViewModel.NestModel.QueryNestAsync
+                    _baseModels.AppViewModel.NestModel.QueryNestAsync
                 );
 
                 SetDefaults();
@@ -406,7 +406,7 @@ namespace Inkton.Nester.Views
             {
                 Admin.Nest updatingNest = AppNestsList.SelectedItem as Admin.Nest;
 
-                var existNests = from nest in _modelPair.AppViewModel.NestModel.Nests
+                var existNests = from nest in _baseModels.AppViewModel.NestModel.Nests
                                  where nest.Tag == Tag.Text && nest.Id != updatingNest.Id
                                  select nest;
                 if (existNests.Any())
@@ -420,7 +420,7 @@ namespace Inkton.Nester.Views
                 if (updateNest != null)
                 {
                     await Process(updateNest, true,
-                        _modelPair.AppViewModel.NestModel.UpdateNestAsync
+                        _baseModels.AppViewModel.NestModel.UpdateNestAsync
                     );
 
                     SetDefaults();
@@ -442,7 +442,7 @@ namespace Inkton.Nester.Views
             {
                 Admin.Nest nest = AppNestsList.SelectedItem as Admin.Nest;
 
-                if (_modelPair.AppViewModel.EditApp.IsDeployed)
+                if (_baseModels.AppViewModel.EditApp.IsDeployed)
                 {
                     if (nest.Platform.Tag != "worker")
                     {
@@ -452,7 +452,7 @@ namespace Inkton.Nester.Views
                 }
 
                 await Process(nest, true,
-                    _modelPair.AppViewModel.NestModel.RemoveNestAsync,
+                    _baseModels.AppViewModel.NestModel.RemoveNestAsync,
                        new Func<Admin.Nest, Task<bool>>(
                             async (obj) =>
                             {
@@ -475,10 +475,10 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                Admin.NestPlatform workerPlatform = _modelPair.AppViewModel.NestModel.Platforms.First(
+                Admin.NestPlatform workerPlatform = _baseModels.AppViewModel.NestModel.Platforms.First(
                     x => x.Tag == "worker");
 
-                var handlerNests = from nest in _modelPair.AppViewModel.NestModel.Nests
+                var handlerNests = from nest in _baseModels.AppViewModel.NestModel.Nests
                                    where nest.PlatformId != workerPlatform.Id
                                    select nest;
 
@@ -488,14 +488,14 @@ namespace Inkton.Nester.Views
                     return;
                 }
 
-                if (_modelPair.WizardMode)
+                if (_baseModels.WizardMode)
                 {
-                    await _modelPair.AppViewModel.ContactModel.InitAsync();
+                    await _baseModels.AppViewModel.ContactModel.InitAsync();
 
                     // if currently trvelling back and forth on the 
                     // app wizard - move to the next
 
-                    ContactsView contactsView = new ContactsView(_modelPair);
+                    ContactsView contactsView = new ContactsView(_baseModels);
                     contactsView.MainSideView = MainSideView;
                     await MainSideView.Detail.Navigation.PushAsync(contactsView);
                 }

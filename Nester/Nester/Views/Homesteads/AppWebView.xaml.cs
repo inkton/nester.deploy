@@ -31,19 +31,19 @@ namespace Inkton.Nester.Views
 {
     public partial class AppWebView : Inkton.Nester.Views.View
     {
-        public AppWebView(Views.AppModelPair modelPair)
+        public AppWebView(Views.BaseModels baseModels)
         {
-            _modelPair = modelPair;
-            _modelPair.WizardMode = false;
+            _baseModels = baseModels;
+            _baseModels.WizardMode = false;
 
             InitializeComponent();
 
             _activityIndicator = ServiceActive;
 
-            if (_modelPair.AppViewModel.EditApp.Id != 0)
+            if (_baseModels.AppViewModel.EditApp.Id != 0)
             {
-                Title = _modelPair.AppViewModel.EditApp.Name;
-                Browser.Source = "https://" + _modelPair.AppViewModel.DomainModel.DefaultDomain.Name;
+                Title = _baseModels.AppViewModel.EditApp.Name;
+                Browser.Source = "https://" + _baseModels.AppViewModel.DomainModel.DefaultDomain.Name;
             }
             else
             {
@@ -52,7 +52,7 @@ namespace Inkton.Nester.Views
                 Browser.Source = "ms-appx-web:///index.html";
             }
 
-            BindingContext = _modelPair.AppViewModel;
+            BindingContext = _baseModels.AppViewModel;
 
             //ButtonBrowserBack.Clicked += ButtonBrowserBack_Clicked;
             //ButtonBrowserForward.Clicked += ButtonBrowserForward_Clicked;

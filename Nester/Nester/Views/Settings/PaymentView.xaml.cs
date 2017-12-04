@@ -32,7 +32,7 @@ namespace Inkton.Nester.Views
 {
     public partial class PaymentView : Inkton.Nester.Views.View
     {
-        public PaymentView(Views.AppModelPair modelPair)
+        public PaymentView(Views.BaseModels baseModels)
         {
             InitializeComponent();
 
@@ -42,15 +42,15 @@ namespace Inkton.Nester.Views
                     ButtonReenterDone
                 });
 
-            _modelPair = modelPair;
-            BindingContext = _modelPair.AppViewModel.PaymentModel;
+            _baseModels = baseModels;
+            BindingContext = _baseModels.PaymentViewModel;
         }
 
         void Validate()
         {
             if (CardNumberValidator != null)
             {
-                _modelPair.AppViewModel.PaymentModel.Validated = (
+                _baseModels.PaymentViewModel.Validated = (
                         CardNumberValidator.IsValid &&
                         ExpMonthValidator.IsValid &&
                         ExpYearValidator.IsValid &&
@@ -68,8 +68,8 @@ namespace Inkton.Nester.Views
         {
             IsServiceActive = true;
 
-            _modelPair.AppViewModel.PaymentModel.DisplayPaymentMethodProof = false;
-            _modelPair.AppViewModel.PaymentModel.DisplayPaymentMethodEntry = true;
+            _baseModels.PaymentViewModel.DisplayPaymentMethodProof = false;
+            _baseModels.PaymentViewModel.DisplayPaymentMethodEntry = true;
 
             IsServiceActive = false;
         }
@@ -80,7 +80,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _modelPair.AppViewModel.PaymentModel.CreatePaymentMethodAsync(CardNumber.Text,
+                await _baseModels.PaymentViewModel.CreatePaymentMethodAsync(CardNumber.Text,
                     int.Parse(ExpMonth.Text), int.Parse(ExpYear.Text), CVVNumber.Text);
 
                 if (MainSideView.Detail.Navigation.NavigationStack.Count > 0)

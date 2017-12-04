@@ -33,6 +33,7 @@ using System.Dynamic;
 using System.Collections.ObjectModel;
 using Newtonsoft.Json.Linq;
 using Xamarin.Forms;
+using System.Threading;
 
 namespace Inkton.Nester.Cloud
 {
@@ -122,7 +123,7 @@ namespace Inkton.Nester.Cloud
         public const int NEST_RESULT_ERROR_CONTACT_EXCEEDED = -320;
 
         public Result()
-        {   
+        {
             ResultCode = -1;
             ResultText = "Uknown Error";
         }
@@ -164,7 +165,7 @@ namespace Inkton.Nester.Cloud
             Result result = JsonConvert.DeserializeObject<Result>(json);
             ObservableCollection<T> objectList = null;
 
-            if (result.ResultCode == 0 && result.Data != null)  
+            if (result.ResultCode == 0 && result.Data != null)
             {
                 T obj = new T();
                 var sourceDict = result.Data as IDictionary<string, object>;
@@ -205,11 +206,44 @@ namespace Inkton.Nester.Cloud
             throw new Exception(message);
         }
 
-        public static async Task<ServerStatus> WaitForObjectAsync<T>(bool throwIfError, T seed, 
-            CachedHttpRequest<T> request, bool doCache = true, IDictionary < string, string> data = null, 
+        public static Task<T> WaitAsync<T>(Task<T> task)
+        {
+            // Ensure that awaits were called with .ConfigureAwait(false)
+
+            var wait = new ManualResetEventSlim(false);
+
+            var continuation = task.ContinueWith(_ =>
+            {
+                wait.Set();
+                return _.Result;
+            });
+
+            wait.Wait();
+
+            return continuation;
+        }
+
+        public static ServerStatus WaitForObject<T>(bool throwIfError, T seed,
+            CachedHttpRequest<T> request, bool doCache = true, IDictionary<string, string> data = null,
             string subPath = null) where T : Cloud.ManagedEntity, new()
         {
-            Cloud.ServerStatus status = await 
+            ServerStatus status = WaitAsync(
+                Task<ServerStatus>.Run(async () => await request(seed, data, subPath, doCache))
+                ).Result;
+
+            if (status.Code < 0 && throwIfError)
+            {
+                ThrowError(status);
+            }
+
+            return status;
+        }
+
+        public static async Task<ServerStatus> WaitForObjectAsync<T>(bool throwIfError, T seed,
+            CachedHttpRequest<T> request, bool doCache = true, IDictionary<string, string> data = null,
+            string subPath = null) where T : Cloud.ManagedEntity, new()
+        {
+            Cloud.ServerStatus status = await
                 request(seed, data, subPath, doCache);
 
             if (status.Code < 0 && throwIfError)
@@ -221,7 +255,7 @@ namespace Inkton.Nester.Cloud
         }
 
         public static async Task<ServerStatus> WaitForObjectListAsync<T>(
-            bool throwIfError, T seed, bool doCache = true, IDictionary < string, string> data = null, 
+            bool throwIfError, T seed, bool doCache = true, IDictionary<string, string> data = null,
             string subPath = null) where T : Cloud.ManagedEntity, new()
         {
             Cloud.ServerStatus status = await (Application.Current as Admin.INesterControl).
@@ -239,7 +273,7 @@ namespace Inkton.Nester.Cloud
             INesterService nesterService, bool throwIfError, T seed, bool doCache = true, IDictionary<string, string> data = null,
             string subPath = null) where T : Cloud.ManagedEntity, new()
         {
-            Cloud.ServerStatus status = await 
+            Cloud.ServerStatus status = await
                 nesterService.QueryAsyncList(seed, data, subPath, doCache);
 
             if (status.Code < 0 && throwIfError)

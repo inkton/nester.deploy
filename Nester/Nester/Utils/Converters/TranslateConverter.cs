@@ -30,6 +30,7 @@ using Xamarin.Forms;
 using System.Globalization;
 using System.Resources;
 using System.Reflection;
+using Inkton.Nester.Admin;
 
 namespace Inkton.Nester.Utils
 {
@@ -40,8 +41,7 @@ namespace Inkton.Nester.Utils
 
         public TranslateConverter()
         {
-            _resmgr = new ResourceManager("Inkon.Nester.Properties.Resources"
-                                , typeof(TranslateConverter).GetTypeInfo().Assembly);
+            _resmgr = (Application.Current as INesterControl).GetResourceManager();
             _ci = System.Globalization.CultureInfo.CurrentUICulture;
         }
 

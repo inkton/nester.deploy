@@ -65,11 +65,11 @@ namespace Inkton.Nester.Views
             _permit.Token = null;
         }
 
-        public async Task<Cloud.ServerStatus> SignupAsync(
+        public Cloud.ServerStatus Signup(
             bool throwIfError = true)
         {
-            Cloud.ServerStatus status = await 
-                NesterControl.NesterService.SignupAsync(_permit);
+            Cloud.ServerStatus status = 
+                NesterControl.NesterService.Signup(_permit);
 
             if (status.Code < 0 && throwIfError)
             {
@@ -95,11 +95,11 @@ namespace Inkton.Nester.Views
             return status;
         }
 
-        public async Task<Cloud.ServerStatus> QueryTokenAsync(
+        public Cloud.ServerStatus QueryToken(
             bool throwIfError = true)
         {
-            Cloud.ServerStatus status = await 
-                NesterControl.NesterService.QueryTokenAsync(_permit);
+            Cloud.ServerStatus status =
+                NesterControl.NesterService.QueryToken(_permit);
 
             if (status.Code < 0 && throwIfError)
             {
