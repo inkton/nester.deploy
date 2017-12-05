@@ -66,9 +66,9 @@ namespace Inkton.Nester.Views
             Detail.Navigation.PushAsync(entry);
         }
 
-        public void ResetView(Views.AppModelPair appModelPair = null)
+        public void ResetView(Views.BaseModels baseModels = null)
         {             
-            if (appModelPair == null)
+            if (baseModels == null)
             {
                 BannerView view = new BannerView();
                 view.ShowProgress = false;
@@ -76,7 +76,7 @@ namespace Inkton.Nester.Views
             }
             else
             {
-                CreateAppView(appModelPair);
+                CreateAppView(baseModels);
             }
         }
 
@@ -88,16 +88,16 @@ namespace Inkton.Nester.Views
             return true;
         }
 
-        public bool CreateAppView(Views.AppModelPair appModelPair)
+        public bool CreateAppView(Views.BaseModels baseModels)
         {
             AppView.Status newState;
             bool viewLoadNeeded = true;
 
-            if (appModelPair.AppViewModel.EditApp.IsBusy)
+            if (baseModels.AppViewModel.EditApp.IsBusy)
             {
                 newState = AppView.Status.Updating;
             }
-            else if (!appModelPair.AppViewModel.EditApp.IsDeployed)
+            else if (!baseModels.AppViewModel.EditApp.IsDeployed)
             {
                 newState = AppView.Status.WaitingDeployment;
             }
@@ -106,8 +106,8 @@ namespace Inkton.Nester.Views
                 newState = AppView.Status.Deployed;
             }
 
-            if (_currentView != null && _currentView is AppView && _currentView.AppModelPair != null &&
-                _currentView.AppModelPair.AppViewModel.EditApp.Id == appModelPair.AppViewModel.EditApp.Id)
+            if (_currentView != null && _currentView is AppView && _currentView.BaseModels != null &&
+                _currentView.BaseModels.AppViewModel.EditApp.Id == baseModels.AppViewModel.EditApp.Id)
             {
                 viewLoadNeeded = ((_currentView as AppView).State != newState);
             }
@@ -116,9 +116,9 @@ namespace Inkton.Nester.Views
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    Views.AppView appView = new Views.AppView(appModelPair);
+                    Views.AppView appView = new Views.AppView(baseModels);
                     appView.State = AppView.Status.Refreshing;
-                    appView.AppModelPair = appModelPair;
+                    appView.BaseModels = baseModels;
                     if (newState == AppView.Status.Deployed)
                     {
                         appView.GetAnalyticsAsync();
@@ -134,8 +134,8 @@ namespace Inkton.Nester.Views
 
         public void Reload(AppViewModel appModel)
         {
-            if (_currentView != null && _currentView is AppView && _currentView.AppModelPair != null &&
-                _currentView.AppModelPair.AppViewModel.EditApp.Id == appModel.EditApp.Id)
+            if (_currentView != null && _currentView is AppView && _currentView.BaseModels != null &&
+                _currentView.BaseModels.AppViewModel.EditApp.Id == appModel.EditApp.Id)
             {
                 (_currentView as AppView).ReloadAsync();
             }

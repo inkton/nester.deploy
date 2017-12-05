@@ -41,7 +41,7 @@ namespace Inkton.Nester.Views
                 TapGestureRecognizer tap = new TapGestureRecognizer
                 {
                     Command = new Command<Admin.Forest>(async (forest) => await view.OnSelectLocation(forest, true)),
-                    CommandParameter = view.AppModelPair.AppViewModel.DeploymentModel.ForestsByTag[forestTag.Replace('_', '-')]
+                    CommandParameter = view.BaseModels.AppViewModel.DeploymentModel.ForestsByTag[forestTag.Replace('_', '-')]
                 };
 
                 FlagLabel = view.FindByName<Label>("FlagLabel_" + forestTag);
@@ -61,10 +61,10 @@ namespace Inkton.Nester.Views
 
         private Dictionary<string, ForestButton> _forestButtons;
 
-        public AppLocationView(Views.AppModelPair modelPair, 
+        public AppLocationView(Views.BaseModels baseModels, 
             ObservableCollection<Admin.Forest> validForests)
         {
-            _modelPair = modelPair;
+            _baseModels = baseModels;
 
             InitializeComponent();
 
@@ -87,7 +87,7 @@ namespace Inkton.Nester.Views
                     FlagImage_hoh
                 });
 
-            BindingContext = _modelPair.AppViewModel.DeploymentModel;
+            BindingContext = _baseModels.AppViewModel.DeploymentModel;
             _forestButtons = new Dictionary<string, ForestButton>();
 
             foreach (string forestTag in new string[] 
@@ -160,8 +160,8 @@ namespace Inkton.Nester.Views
                 AnimateButtonTouched(button.FlagHolder, 1500, "#66b9f1", "#E4F1FE", 1);
                 AnimateButtonTouched(button.FlagHolder, 1500, "#66b9f1", "#E4F1FE", 1);
 
-                _modelPair.AppViewModel.DeploymentModel.EditDeployment.ForestId = forest.Id;
-                MainSideView.LoadView(new AppSummaryView(_modelPair));
+                _baseModels.AppViewModel.DeploymentModel.EditDeployment.ForestId = forest.Id;
+                MainSideView.LoadView(new AppSummaryView(_baseModels));
             }
             catch (Exception ex)
             {

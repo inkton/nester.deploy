@@ -120,7 +120,7 @@
       <DependentUpon>AppWebView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Models\AppCollectionViewModel.cs" />
-    <Compile Include="Views\Models\AppModelPair.cs" />
+    <Compile Include="Views\Models\BaseModels.cs" />
     <Compile Include="Views\Models\AppViewModel.cs" />
     <Compile Include="Views\Homesteads\AppSetup\AppBasicDetailView.xaml.cs">
       <DependentUpon>AppBasicDetailView.xaml</DependentUpon>

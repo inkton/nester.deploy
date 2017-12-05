@@ -32,9 +32,9 @@ namespace Inkton.Nester.Views
 {
     public partial class AppEngageView : Inkton.Nester.Views.View
     {
-        public AppEngageView(Views.AppModelPair modelPair)
+        public AppEngageView(Views.BaseModels baseModels)
         {
-            _modelPair = modelPair;
+            _baseModels = baseModels;
 
             InitializeComponent();
 
@@ -44,14 +44,14 @@ namespace Inkton.Nester.Views
                                 ButtonJoin
                 });
 
-            BindingContext = modelPair.AppViewModel;
+            BindingContext = baseModels.AppViewModel;
         }
 
         async private void OnCreateAppClickedAsync(object sender, EventArgs e)
         {
             IsServiceActive = true;
 
-            AppBasicDetailView basicView = new AppBasicDetailView(_modelPair);
+            AppBasicDetailView basicView = new AppBasicDetailView(_baseModels);
             basicView.MainSideView = MainSideView;
             MainSideView.Detail.Navigation.InsertPageBefore(basicView, this);
             await MainSideView.Detail.Navigation.PopAsync();
@@ -63,9 +63,9 @@ namespace Inkton.Nester.Views
         {
             IsServiceActive = true;
 
-            await _modelPair.AppViewModel.ContactModel.QueryInvitationsAsync();
+            await _baseModels.AppViewModel.ContactModel.QueryInvitationsAsync();
 
-            AppJoinDetailView joinView = new AppJoinDetailView(_modelPair);
+            AppJoinDetailView joinView = new AppJoinDetailView(_baseModels);
             joinView.MainSideView = MainSideView;
             MainSideView.Detail.Navigation.InsertPageBefore(joinView, this);
             await MainSideView.Detail.Navigation.PopAsync();

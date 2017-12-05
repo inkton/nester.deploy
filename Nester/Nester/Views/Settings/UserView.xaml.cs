@@ -32,20 +32,20 @@ namespace Inkton.Nester.Views
 {
     public partial class UserView : Inkton.Nester.Views.View
     {
-        public UserView(Views.AppModelPair modelPair)
+        public UserView(Views.BaseModels baseModels)
         {
             InitializeComponent();
 
-            _modelPair = modelPair;
-            SecurityCode.IsVisible = _modelPair.WizardMode;
-            SecurityCodeLabel.IsVisible = _modelPair.WizardMode;
+            _baseModels = baseModels;
+            SecurityCode.IsVisible = _baseModels.WizardMode;
+            SecurityCodeLabel.IsVisible = _baseModels.WizardMode;
             int selectedTerritoryIndex = -1;
 
             foreach (Admin.Geography.ISO3166Country territory in Admin.Geography.Territories)
             {
                 Territories.Items.Add(territory.ToString());
 
-                if (modelPair.WizardMode == false)
+                if (baseModels.WizardMode == false)
                 {
                     if (NesterControl.User.TerritoryISOCode == territory.Alpha2)
                     {
@@ -76,7 +76,7 @@ namespace Inkton.Nester.Views
 
             NickName.Unfocused += NickName_Unfocused;
 
-            BindingContext = _modelPair.AuthViewModel;
+            BindingContext = _baseModels.AuthViewModel;
         }
 
         private void NickName_Unfocused(object sender, FocusEventArgs e)
@@ -101,14 +101,14 @@ namespace Inkton.Nester.Views
         {
             if (NicknameValidator != null)
             {
-                _modelPair.AuthViewModel.Validated = (
+                _baseModels.AuthViewModel.Validated = (
                      NicknameValidator.IsValid &&
                      FirstNameValidator.IsValid &&
                      LastNameValidator.IsValid
                      );
 
-                SecurityCode.IsVisible = _modelPair.WizardMode;
-                SecurityCodeLabel.IsVisible = _modelPair.WizardMode;
+                SecurityCode.IsVisible = _baseModels.WizardMode;
+                SecurityCodeLabel.IsVisible = _baseModels.WizardMode;
             }
         }
 
@@ -136,9 +136,10 @@ namespace Inkton.Nester.Views
 
                 IsServiceActive = false;
 
-                if (_modelPair.WizardMode)
+                if (_baseModels.WizardMode)
                 {
-                    Cloud.ServerStatus status = await _modelPair.AuthViewModel.SignupAsync(false);
+                    Cloud.ServerStatus status = _baseModels.AuthViewModel.Signup(false);
+
                     if (status.Code == Cloud.Result.NEST_RESULT_ERROR_AUTH_SECCODE)
                     {
                         await DisplayAlert("Nester", "Invalid security code", "OK");
@@ -149,14 +150,14 @@ namespace Inkton.Nester.Views
                     }
                     else
                     {
-                        await _modelPair.AuthViewModel.QueryTokenAsync();
+                        _baseModels.AuthViewModel.QueryToken();
 
                         await MainSideView.Detail.Navigation.PopAsync();
                     }
                 }
                 else
                 {
-                    await _modelPair.AuthViewModel.UpdateUserAsync(NesterControl.User);
+                    await _baseModels.AuthViewModel.UpdateUserAsync(NesterControl.User);
                     await DisplayAlert("Nester", "Your information was saved", "OK");
                 }
             }

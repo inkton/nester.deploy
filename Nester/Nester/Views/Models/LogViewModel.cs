@@ -173,9 +173,12 @@ namespace Inkton.Nester.Views
             {
                 SetProperty(ref _editApp, value);
 
-                _nester.BasicAuth = new BasicAuth(
-                    true, value.Tag, value.NetworkPassword);
-                _nester.Endpoint = value.ApiEndpoint;
+                if (_editApp != null)
+                {
+                    _nester.BasicAuth = new BasicAuth(
+                        true, value.Tag, value.NetworkPassword);
+                    _nester.Endpoint = value.ApiEndpoint;
+                }
             }
         }
 

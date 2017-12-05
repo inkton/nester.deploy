@@ -25,12 +25,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Resources;
 
 namespace Inkton.Nester.Admin
 {
     public interface INesterControl
     {
-        Views.AppModelPair AppModelPair
+        Views.BaseModels BaseModels
         {
             get;
         }
@@ -50,8 +51,10 @@ namespace Inkton.Nester.Admin
             get;
         }
 
-        void ResetView(Views.AppModelPair appModelPair = null);
+        ResourceManager GetResourceManager();
 
-        bool CreateAppView(Views.AppModelPair modelPair);
+        void ResetView(Views.BaseModels baseModels = null);
+
+        bool CreateAppView(Views.BaseModels baseModels);
     }
 }

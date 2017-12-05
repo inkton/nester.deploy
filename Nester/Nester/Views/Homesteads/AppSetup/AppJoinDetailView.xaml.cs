@@ -32,9 +32,9 @@ namespace Inkton.Nester.Views
 {
     public partial class AppJoinDetailView : Inkton.Nester.Views.View
     {
-        public AppJoinDetailView(Views.AppModelPair modelPair)
+        public AppJoinDetailView(Views.BaseModels baseModels)
         {
-            _modelPair = modelPair;
+            _baseModels = baseModels;
 
             InitializeComponent();
 
@@ -44,16 +44,16 @@ namespace Inkton.Nester.Views
                                 ButtonMembership
                 });
 
-            if (_modelPair.AppViewModel.ContactModel.Invitations.Any())
+            if (_baseModels.AppViewModel.ContactModel.Invitations.Any())
             {
-                _modelPair.AppViewModel.ContactModel.EditInvitation = _modelPair.AppViewModel.ContactModel.Invitations.First();
+                _baseModels.AppViewModel.ContactModel.EditInvitation = _baseModels.AppViewModel.ContactModel.Invitations.First();
             }
             else
             {
-                _modelPair.AppViewModel.ContactModel.EditInvitation = null;
+                _baseModels.AppViewModel.ContactModel.EditInvitation = null;
             }
 
-            BindingContext = _modelPair.AppViewModel;
+            BindingContext = _baseModels.AppViewModel;
 
             AppInviteList.Loaded += AppInviteList_Loaded;
             AppInviteList.SelectionChanged += AppInviteList_SelectionChanged;
@@ -63,9 +63,9 @@ namespace Inkton.Nester.Views
 
         private void AppInviteList_Loaded(object sender, Syncfusion.ListView.XForms.ListViewLoadedEventArgs e)
         {
-            if (_modelPair.AppViewModel.ContactModel.Invitations.Any())
+            if (_baseModels.AppViewModel.ContactModel.Invitations.Any())
             {
-                AppInviteList.SelectedItem = _modelPair.AppViewModel.ContactModel.Invitations.First();
+                AppInviteList.SelectedItem = _baseModels.AppViewModel.ContactModel.Invitations.First();
             }
         }
 
@@ -105,7 +105,7 @@ namespace Inkton.Nester.Views
                 Admin.App searchApp = new Admin.App();
                 searchApp.Tag = invitation.AppTag;
 
-                Cloud.ServerStatus status = await _modelPair.AppViewModel.QueryAppAsync(
+                Cloud.ServerStatus status = await _baseModels.AppViewModel.QueryAppAsync(
                     searchApp, false);
 
                 if (status.Code != Cloud.Result.NEST_RESULT_SUCCESS)
@@ -120,9 +120,9 @@ namespace Inkton.Nester.Views
                     Admin.Contact myContact = new Admin.Contact();
                     Utils.Object.CopyPropertiesTo(invitation, myContact);
                     myContact.App = searchApp;
-                    AppModelPair modelPair = null;
+                    BaseModels baseModels = null;
 
-                    status = await _modelPair.AppViewModel.ContactModel.UpdateContactAsync(myContact);
+                    status = await _baseModels.AppViewModel.ContactModel.UpdateContactAsync(myContact);
                     if (status.Code != Cloud.Result.NEST_RESULT_SUCCESS)
                     {
                         await DisplayAlert("Nester", "Could not confirm the invitation", "OK");
@@ -130,7 +130,7 @@ namespace Inkton.Nester.Views
                     }
 
                     Utils.Object.CopyPropertiesTo(myContact, invitation);
-                    AppCollectionViewModel appCollection = NesterControl.AppModelPair.AppViewModel as AppCollectionViewModel;
+                    AppCollectionViewModel appCollection = NesterControl.BaseModels.AppViewModel as AppCollectionViewModel;
 
                     if (invitation.Status == "active")
                     {
@@ -150,12 +150,13 @@ namespace Inkton.Nester.Views
 
                     if (appCollection.AppModels.Any())
                     {
-                        modelPair = new AppModelPair(
-                                _modelPair.AuthViewModel,
+                        baseModels = new BaseModels(
+                                _baseModels.AuthViewModel,
+                                _baseModels.PaymentViewModel,
                                 appCollection.AppModels.First());
                     }
 
-                    NesterControl.ResetView(modelPair);
+                    NesterControl.ResetView(baseModels);
 
                     ToggleMembershipButton(invitation);
                 }

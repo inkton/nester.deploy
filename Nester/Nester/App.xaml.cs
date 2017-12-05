@@ -25,6 +25,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Xamarin.Forms;
+using System.Resources;
+using System.Reflection;
 
 namespace Inkton.Nester
 {
@@ -33,7 +35,7 @@ namespace Inkton.Nester
         private Admin.User _user;
         private Cloud.INesterService _nester;
         private Cache.IStorageService _storage;
-        private Views.AppModelPair _appModelPair;
+        private Views.BaseModels _baseModels;
         private Views.MainSideView _mainSideView;
 
         public DeployApp()
@@ -45,8 +47,10 @@ namespace Inkton.Nester
             _storage = DependencyService.Get<Cache.IStorageService>();
             _storage.Clear();
 
-            _appModelPair = new Views.AppModelPair(
-                new Views.AuthViewModel(), new Views.AppCollectionViewModel());
+            _baseModels = new Views.BaseModels(
+                new Views.AuthViewModel(), 
+                new Views.PaymentViewModel(),
+                new Views.AppCollectionViewModel());
             _mainSideView = new Views.MainSideView();
 
             MainPage = _mainSideView;
@@ -54,9 +58,9 @@ namespace Inkton.Nester
             _mainSideView.ShowEntry();
         }
 
-        public Views.AppModelPair AppModelPair
+        public Views.BaseModels BaseModels
         {
-            get { return _appModelPair; }
+            get { return _baseModels; }
         }
 
         public Admin.User User
@@ -74,14 +78,22 @@ namespace Inkton.Nester
             get { return _storage; }
         }
 
-        public void ResetView(Views.AppModelPair appModelPair = null)
+        public ResourceManager GetResourceManager()
         {
-            _mainSideView.ResetView(appModelPair);
+            ResourceManager resmgr = new ResourceManager(
+                "Inkon.Nester.Properties.Resources",
+                typeof(DeployApp).GetTypeInfo().Assembly);
+            return resmgr;
         }
 
-        public bool CreateAppView(Views.AppModelPair modelPair)
+        public void ResetView(Views.BaseModels baseModels = null)
         {
-            return _mainSideView.CreateAppView(modelPair);
+            _mainSideView.ResetView(baseModels);
+        }
+
+        public bool CreateAppView(Views.BaseModels baseModels)
+        {
+            return _mainSideView.CreateAppView(baseModels);
         }
     }
 }
