@@ -31,7 +31,7 @@ namespace Inkton.Nester.Views
 {
     public partial class NotificationView : Inkton.Nester.Views.View
     {
-        public NotificationView(Views.AppModelPair modelPair)
+        public NotificationView(Views.BaseModels baseModels)
         {
             InitializeComponent();
 
@@ -40,8 +40,8 @@ namespace Inkton.Nester.Views
                     ButtonDone
                 });
 
-            _modelPair = modelPair;
-            BindingContext = _modelPair.AppViewModel;
+            _baseModels = baseModels;
+            BindingContext = _baseModels.AppViewModel;
         }
 
         async private void OnDoneButtonClickedAsync(object sender, EventArgs e)

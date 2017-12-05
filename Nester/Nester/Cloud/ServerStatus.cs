@@ -32,6 +32,7 @@ using System.Collections.ObjectModel;
 using Inkton.Nester.Admin;
 using System.Resources;
 using System.Reflection;
+using Xamarin.Forms;
 
 namespace Inkton.Nester.Cloud
 {
@@ -94,10 +95,9 @@ namespace Inkton.Nester.Cloud
         {
             get
             {
-                ResourceManager resmgr = new ResourceManager("Inkon.Nester.Properties.Resources"
-                                    , typeof(ServerStatus).GetTypeInfo().Assembly);
+                ResourceManager resmgr = (Application.Current as INesterControl).GetResourceManager();
                 return resmgr.GetString(_description,
-                                      System.Globalization.CultureInfo.CurrentUICulture);
+                    System.Globalization.CultureInfo.CurrentUICulture);
             }
         }
 

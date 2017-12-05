@@ -37,6 +37,7 @@ namespace Inkton.Nester.Views
 
         protected bool _validated = false;
         protected bool _canUpdate = false;
+        protected bool _isBusy = false;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -85,6 +86,12 @@ namespace Inkton.Nester.Views
             set { SetProperty(ref _canUpdate, value); }
         }
 
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set { SetProperty(ref _isBusy, value); }
+        }
+        
         public virtual Task<Cloud.ServerStatus> InitAsync()
         {
             return Task.FromResult(default(Cloud.ServerStatus));

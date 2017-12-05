@@ -49,6 +49,8 @@ namespace Inkton.Nester.Cloud
 
     public interface INesterService
     {
+        int Version { get; set; }
+
         string Endpoint { get; set; }
 
         BasicAuth BasicAuth { get; set; }
@@ -57,11 +59,11 @@ namespace Inkton.Nester.Cloud
 
         Task<string> GetIPAsync(string host);
 
-        Task<Cloud.ServerStatus> SignupAsync(Auth.Permit permit);
+        ServerStatus Signup(Auth.Permit permit);
 
-        Task<Cloud.ServerStatus> RecoverPasswordAsync(Auth.Permit permit);
+        Task<ServerStatus> RecoverPasswordAsync(Auth.Permit permit);
 
-        Task<Cloud.ServerStatus> QueryTokenAsync(Auth.Permit permit = null);
+        ServerStatus QueryToken(Auth.Permit permit = null);
 
         Task<Cloud.ServerStatus> ResetTokenAsync(Auth.Permit permit = null);
 

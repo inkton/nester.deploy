@@ -34,9 +34,9 @@ namespace Inkton.Nester.Views
     {
         private AppViewModel _appSearch = new AppViewModel();
 
-        public AppBasicDetailView(Views.AppModelPair modelPair)
+        public AppBasicDetailView(Views.BaseModels baseModels)
         {
-            _modelPair = modelPair;
+            _baseModels = baseModels;
 
             InitializeComponent();
             Tag.Unfocused += Tag_UnfocusedAsync;
@@ -57,15 +57,15 @@ namespace Inkton.Nester.Views
                     ButtonUpdate
                 });
 
-            BindingContext = _modelPair.AppViewModel;
+            BindingContext = _baseModels.AppViewModel;
 
             ButtonNests.Clicked += ButtonNests_ClickedAsync;
             ButtonContacts.Clicked += ButtonContacts_ClickedAsync;
             ButtonDomains.Clicked += ButtonDomains_ClickedAsync;
             ButtonUpdate.Clicked += ButtonUpdate_ClickedAsync;
 
-            ButtonDone.IsVisible = _modelPair.WizardMode;
-            if (_modelPair.WizardMode)
+            ButtonDone.IsVisible = _baseModels.WizardMode;
+            if (_baseModels.WizardMode)
             {
                 // hide but do not collapse
                 TopButtonPanel.Opacity = 0;
@@ -84,7 +84,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _modelPair.AppViewModel.UpdateAppAsync();
+                await _baseModels.AppViewModel.UpdateAppAsync();
             }
             catch (Exception ex)
             {
@@ -100,9 +100,9 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _modelPair.AppViewModel.DomainModel.InitAsync();
+                await _baseModels.AppViewModel.DomainModel.InitAsync();
 
-                MainSideView.LoadView(new AppDomainView(_modelPair));
+                MainSideView.LoadView(new AppDomainView(_baseModels));
             }
             catch (Exception ex)
             {
@@ -118,9 +118,9 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _modelPair.AppViewModel.ContactModel.InitAsync();
+                await _baseModels.AppViewModel.ContactModel.InitAsync();
 
-                MainSideView.LoadView(new ContactsView(_modelPair));
+                MainSideView.LoadView(new ContactsView(_baseModels));
             }
             catch (Exception ex)
             {
@@ -136,9 +136,9 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _modelPair.AppViewModel.NestModel.InitAsync();
+                await _baseModels.AppViewModel.NestModel.InitAsync();
 
-                MainSideView.LoadView(new AppNestsView(_modelPair));
+                MainSideView.LoadView(new AppNestsView(_baseModels));
             }
             catch (Exception ex)
             {
@@ -156,12 +156,12 @@ namespace Inkton.Nester.Views
             {
                 AppTypeListView.SelectedItems.Clear();
 
-                foreach (AppViewModel.AppType appType in _modelPair.AppViewModel.ApplicationTypes)
+                foreach (AppViewModel.AppType appType in _baseModels.AppViewModel.ApplicationTypes)
                 {
-                    if (_modelPair.AppViewModel.EditApp.Type == appType.Tag)
+                    if (_baseModels.AppViewModel.EditApp.Type == appType.Tag)
                     {
                         AppTypeListView.SelectedItems.Add(appType);
-                        _modelPair.AppViewModel.EditApplicationType = appType;
+                        _baseModels.AppViewModel.EditApplicationType = appType;
                         break;
                     }
                 }
@@ -186,7 +186,7 @@ namespace Inkton.Nester.Views
                 {
                     if (appType != null)
                     {
-                        _modelPair.AppViewModel.EditApplicationType = appType;
+                        _baseModels.AppViewModel.EditApplicationType = appType;
                         break;
                     }
                 }
@@ -230,11 +230,11 @@ namespace Inkton.Nester.Views
         {
             if (TagValidator != null)
             {
-                _modelPair.AppViewModel.Validated = (
+                _baseModels.AppViewModel.Validated = (
                     TagValidator.IsValid &&
                     NameValidator.IsValid &&
                     PasswordValidator.IsValid &&
-                    _modelPair.AppViewModel.EditApplicationType != null
+                    _baseModels.AppViewModel.EditApplicationType != null
                     );
             }
         }
@@ -250,9 +250,9 @@ namespace Inkton.Nester.Views
 
             try
             {
-                if (_modelPair.WizardMode)
+                if (_baseModels.WizardMode)
                 {
-                    AppTierView tierView = new AppTierView(_modelPair);
+                    AppTierView tierView = new AppTierView(_baseModels);
                     tierView.MainSideView = MainSideView;
                     MainSideView.Detail.Navigation.InsertPageBefore(tierView, this);
                     await MainSideView.Detail.Navigation.PopAsync();

@@ -46,6 +46,7 @@ namespace Inkton.Nester.Cloud
         private Auth.Permit _permit;
         private Cache.IStorageService _storage;
         private string _environment;
+        private int _version = 1;
 
         public NesterService()
         {
@@ -54,6 +55,12 @@ namespace Inkton.Nester.Cloud
             _storage = DependencyService.Get<Cache.IStorageService>();
 
             _environment = ConfigurationManager.AppSettings["env"];
+        }
+
+        public int Version
+        {
+            get { return _version; }
+            set { _version = value; }
         }
 
         public string Endpoint
@@ -87,7 +94,7 @@ namespace Inkton.Nester.Cloud
             return ip;
         }
 
-        public async Task<Cloud.ServerStatus> SignupAsync(Auth.Permit permit)
+        public ServerStatus Signup(Auth.Permit permit)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
             data.Add("password", permit.Password);
@@ -104,18 +111,20 @@ namespace Inkton.Nester.Cloud
 
             data.Add("env", _environment);
 
-            Cloud.ServerStatus status = await PostAsync(permit, data);
+            ServerStatus status = Result.WaitAsync(
+                Task<ServerStatus>.Run(async () => await PostAsync(permit, data))
+                ).Result;
 
             return status;
         }
 
-        public async Task<Cloud.ServerStatus> RecoverPasswordAsync(Auth.Permit permit)
+        public async Task<ServerStatus> RecoverPasswordAsync(Auth.Permit permit)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
             data.Add("email", permit.Owner.Email);
             data.Add("env", _environment);
 
-            Cloud.ServerStatus status = await PutAsync(permit, data);
+            ServerStatus status = await PutAsync(permit, data);
 
             if (status.Code == 0)
             {
@@ -126,6 +135,11 @@ namespace Inkton.Nester.Cloud
         }
 
         #region Utility
+
+        private string GetVersionHeader()
+        {
+            return string.Format("application/vnd.nest.v{0}+json", _version);
+         }
 
         private void LogConnectFailure(
             ref Cloud.ServerStatus result, Exception ex)
@@ -144,7 +158,7 @@ namespace Inkton.Nester.Cloud
             result.Notes = "Failed to connect to remote server";
         }
 
-        public async Task<Cloud.ServerStatus> QueryTokenAsync(Auth.Permit permit = null)
+        public ServerStatus QueryToken(Auth.Permit permit = null)
         {
             if (permit != null)
             {
@@ -155,7 +169,9 @@ namespace Inkton.Nester.Cloud
             data.Add("password", _permit.Password);
             data.Add("env", _environment);
 
-            Cloud.ServerStatus status = await GetAsync(_permit, data);
+            ServerStatus status = Result.WaitAsync(
+                Task<ServerStatus>.Run(async () => await GetAsync(_permit, data))
+                ).Result;
 
             if (status.Code == 0)
             {
@@ -198,9 +214,10 @@ namespace Inkton.Nester.Cloud
                 }
 
                 string json = await fullUrl.SetQueryParams(data)
+                                .WithHeader("Accept", GetVersionHeader())
                                 .PostJsonAsync(seed)
                                 .ReceiveString();   
-               
+                
                 result = Result.ConvertObject(json, seed);
             }
             catch (Exception ex)
@@ -229,13 +246,17 @@ namespace Inkton.Nester.Cloud
 
                 if (_basicAuth.Enabled)
                 {
-                    json = await fullUrl.SetQueryParams(data).WithBasicAuth(
-                            _basicAuth.Username, _basicAuth.Password).GetAsync().ReceiveString();
+                    json = await fullUrl.SetQueryParams(data)
+                            .WithHeader("Accept", GetVersionHeader())
+                            .WithBasicAuth(_basicAuth.Username, _basicAuth.Password)
+                            .GetAsync().ReceiveString();
                 }
                 else
                 {
                     json = await fullUrl.SetQueryParams(data)
-                            .GetAsync().ReceiveString();
+                            .WithHeader("Accept", GetVersionHeader())
+                            .GetAsync()
+                            .ReceiveString();
                 }
 
                 result = Result.ConvertObject(json, seed);
@@ -265,6 +286,7 @@ namespace Inkton.Nester.Cloud
                 string objJson = JsonConvert.SerializeObject(seed);
                 var httpContent = new StringContent(objJson, Encoding.UTF8, "application/json");
                 string json = await fullUrl.SetQueryParams(data)
+                                .WithHeader("Accept", GetVersionHeader())
                                 .PutAsync(httpContent)
                                 .ReceiveString();
 
@@ -295,6 +317,7 @@ namespace Inkton.Nester.Cloud
                 string objJson = JsonConvert.SerializeObject(seed);
                 var httpContent = new StringContent(objJson, Encoding.UTF8, "application/json");
                 string json = await fullUrl.SetQueryParams(data)
+                                .WithHeader("Accept", GetVersionHeader())
                                 .DeleteAsync()
                                 .ReceiveString();
 
@@ -358,7 +381,7 @@ namespace Inkton.Nester.Cloud
                 }
 
                 // Token expired, get another
-                await QueryTokenAsync();
+                QueryToken();
             }
 
             return result;
@@ -425,13 +448,17 @@ namespace Inkton.Nester.Cloud
 
                     if (_basicAuth.Enabled)
                     {
-                        json = await fullUrl.SetQueryParams(data).WithBasicAuth(
-                                _basicAuth.Username, _basicAuth.Password)
+                        json = await fullUrl
+                                .WithHeader("Accept", GetVersionHeader())
+                                .SetQueryParams(data)
+                                .WithBasicAuth(_basicAuth.Username, _basicAuth.Password)
                                 .GetAsync().ReceiveString();
                     }
                     else
                     {
-                        json = await fullUrl.SetQueryParams(data)
+                        json = await fullUrl
+                                .WithHeader("Accept", GetVersionHeader())
+                                .SetQueryParams(data)
                                 .GetAsync().ReceiveString();
                     }
 
@@ -469,7 +496,7 @@ namespace Inkton.Nester.Cloud
                 }
 
                 // Token expired, get another
-                await QueryTokenAsync();
+                QueryToken();
             }
 
             return result;

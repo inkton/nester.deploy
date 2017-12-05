@@ -34,7 +34,7 @@ namespace Inkton.Nester.Views
         protected ActivityIndicator _activityIndicator;
         protected List<Xamarin.Forms.View> _blockWhenActive;
         protected List<Xamarin.Forms.View> _activeBlockViews;
-        protected Views.AppModelPair _modelPair;
+        protected Views.BaseModels _baseModels;
         protected MainSideView _mainSideView;
 
         public View()
@@ -42,10 +42,10 @@ namespace Inkton.Nester.Views
             SubscribeToMessages();
         }
 
-        public virtual AppModelPair AppModelPair
+        public virtual BaseModels BaseModels
         {
-            get { return _modelPair; }
-            set { _modelPair = value; }
+            get { return _baseModels; }
+            set { _baseModels = value; }
         }
 
         public virtual MainSideView MainSideView
@@ -66,13 +66,13 @@ namespace Inkton.Nester.Views
         {
             get
             {
-                return _modelPair.AppViewModel.EditApp;
+                return _baseModels.AppViewModel.EditApp;
             }
         }
 
         protected void ResetView()
         {
-            if (_modelPair == null || _modelPair.AppViewModel == null)
+            if (_baseModels == null || _baseModels.AppViewModel == null)
             {
                 // models has not been set or there is no
                 // apps to begin with. the dashboard is set 
@@ -81,7 +81,7 @@ namespace Inkton.Nester.Views
             }
             else
             {
-                NesterControl.CreateAppView(_modelPair);
+                NesterControl.CreateAppView(_baseModels);
             }
         }
 

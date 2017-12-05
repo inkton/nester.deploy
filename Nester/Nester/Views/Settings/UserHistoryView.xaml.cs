@@ -31,7 +31,7 @@ namespace Inkton.Nester.Views
 {
     public partial class UserHistoryView : Inkton.Nester.Views.View
     {
-        public UserHistoryView(Views.AppModelPair modelPair)
+        public UserHistoryView(Views.BaseModels baseModels)
         {
             InitializeComponent();
 
@@ -39,26 +39,26 @@ namespace Inkton.Nester.Views
                 new List<Xamarin.Forms.View> {
                 });
 
-            _modelPair = modelPair;
-            BindingContext = _modelPair.AuthViewModel;
+            _baseModels = baseModels;
+            BindingContext = _baseModels.AuthViewModel;
         }
 
         protected async override void OnAppearing()
         {
-            BindingContext = _modelPair.AuthViewModel;
+            BindingContext = _baseModels.AuthViewModel;
 
             base.OnAppearing();
 
-            await _modelPair.AuthViewModel.QueryUserEventsAsync(NesterControl.User);
+            await _baseModels.AuthViewModel.QueryUserEventsAsync(NesterControl.User);
         }
 
         async private void OnDoneButtonClickedAsync(object sender, EventArgs e)
         {
             try
             {
-                if (_modelPair.AppViewModel != null)
+                if (_baseModels.AppViewModel != null)
                 {
-                    MainSideView.CreateAppView(_modelPair);
+                    MainSideView.CreateAppView(_baseModels);
                 }
                 else
                 {

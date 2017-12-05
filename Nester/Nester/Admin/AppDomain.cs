@@ -57,7 +57,11 @@ namespace Inkton.Nester.Admin
             set
             {
                 _application = value;
-                this.AppId = _application.Id;
+
+                if (_application != null)
+                {
+                    AppId = _application.Id;
+                }
             }
         }
 
