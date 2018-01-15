@@ -22,19 +22,16 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
+using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
-    public partial class AppBasicDetailView : Inkton.Nester.Views.View
+    public partial class AppBasicDetailView : View
     {
         private AppViewModel _appSearch = new AppViewModel();
 
-        public AppBasicDetailView(Views.BaseModels baseModels)
+        public AppBasicDetailView(BaseModels baseModels)
         {
             _baseModels = baseModels;
 
@@ -57,7 +54,7 @@ namespace Inkton.Nester.Views
                     ButtonUpdate
                 });
 
-            BindingContext = _baseModels.AppViewModel;
+            BindingContext = _baseModels.TargetViewModel;
 
             ButtonNests.Clicked += ButtonNests_ClickedAsync;
             ButtonContacts.Clicked += ButtonContacts_ClickedAsync;
@@ -84,7 +81,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseModels.AppViewModel.UpdateAppAsync();
+                await _baseModels.TargetViewModel.UpdateAppAsync();
             }
             catch (Exception ex)
             {
@@ -100,7 +97,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseModels.AppViewModel.DomainModel.InitAsync();
+                await _baseModels.TargetViewModel.DomainModel.InitAsync();
 
                 MainSideView.LoadView(new AppDomainView(_baseModels));
             }
@@ -118,7 +115,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseModels.AppViewModel.ContactModel.InitAsync();
+                await _baseModels.TargetViewModel.ContactModel.InitAsync();
 
                 MainSideView.LoadView(new ContactsView(_baseModels));
             }
@@ -136,7 +133,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseModels.AppViewModel.NestModel.InitAsync();
+                await _baseModels.TargetViewModel.NestModel.InitAsync();
 
                 MainSideView.LoadView(new AppNestsView(_baseModels));
             }
@@ -156,12 +153,12 @@ namespace Inkton.Nester.Views
             {
                 AppTypeListView.SelectedItems.Clear();
 
-                foreach (AppViewModel.AppType appType in _baseModels.AppViewModel.ApplicationTypes)
+                foreach (AppViewModel.AppType appType in _baseModels.TargetViewModel.ApplicationTypes)
                 {
-                    if (_baseModels.AppViewModel.EditApp.Type == appType.Tag)
+                    if (_baseModels.TargetViewModel.EditApp.Type == appType.Tag)
                     {
                         AppTypeListView.SelectedItems.Add(appType);
-                        _baseModels.AppViewModel.EditApplicationType = appType;
+                        _baseModels.TargetViewModel.EditApplicationType = appType;
                         break;
                     }
                 }
@@ -186,7 +183,7 @@ namespace Inkton.Nester.Views
                 {
                     if (appType != null)
                     {
-                        _baseModels.AppViewModel.EditApplicationType = appType;
+                        _baseModels.TargetViewModel.EditApplicationType = appType;
                         break;
                     }
                 }
@@ -216,7 +213,7 @@ namespace Inkton.Nester.Views
 
                 Cloud.ServerStatus status = await _appSearch.QueryAppAsync(
                     null, true, false);
-                if (status.Code == Cloud.Result.NEST_RESULT_SUCCESS)
+                if (status.Code == Cloud.ServerStatus.NEST_RESULT_SUCCESS)
                 {
                     TagValidator.IsValid = false;
                     TagValidator.Message = "The tag is taken, try another tag";
@@ -230,11 +227,11 @@ namespace Inkton.Nester.Views
         {
             if (TagValidator != null)
             {
-                _baseModels.AppViewModel.Validated = (
+                _baseModels.TargetViewModel.Validated = (
                     TagValidator.IsValid &&
                     NameValidator.IsValid &&
                     PasswordValidator.IsValid &&
-                    _baseModels.AppViewModel.EditApplicationType != null
+                    _baseModels.TargetViewModel.EditApplicationType != null
                     );
             }
         }
@@ -262,7 +259,7 @@ namespace Inkton.Nester.Views
                     // Head back to homepage if the 
                     // page was called from here
 
-                    ResetView();
+                    await NesterControl.ResetViewAsync();
                 }
             }
             catch (Exception ex)

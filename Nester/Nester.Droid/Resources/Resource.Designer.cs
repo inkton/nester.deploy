@@ -27,3580 +27,45 @@ namespace Inkton.Nester.Droid
 		public static void UpdateIdValues()
 		{
 			global::ModernHttpClient.Resource.String.library_name = global::Inkton.Nester.Droid.Resource.String.library_name;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Animation.abc_fade_in = global::Inkton.Nester.Droid.Resource.Animation.abc_fade_in;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Animation.abc_fade_out = global::Inkton.Nester.Droid.Resource.Animation.abc_fade_out;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Animation.abc_grow_fade_in_from_bottom = global::Inkton.Nester.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Animation.abc_popup_enter = global::Inkton.Nester.Droid.Resource.Animation.abc_popup_enter;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Animation.abc_popup_exit = global::Inkton.Nester.Droid.Resource.Animation.abc_popup_exit;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Animation.abc_shrink_fade_out_from_bottom = global::Inkton.Nester.Droid.Resource.Animation.abc_shrink_fade_out_from_bottom;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Animation.abc_slide_in_bottom = global::Inkton.Nester.Droid.Resource.Animation.abc_slide_in_bottom;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Animation.abc_slide_in_top = global::Inkton.Nester.Droid.Resource.Animation.abc_slide_in_top;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Animation.abc_slide_out_bottom = global::Inkton.Nester.Droid.Resource.Animation.abc_slide_out_bottom;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Animation.abc_slide_out_top = global::Inkton.Nester.Droid.Resource.Animation.abc_slide_out_top;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Animation.design_bottom_sheet_slide_in = global::Inkton.Nester.Droid.Resource.Animation.design_bottom_sheet_slide_in;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Animation.design_bottom_sheet_slide_out = global::Inkton.Nester.Droid.Resource.Animation.design_bottom_sheet_slide_out;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Animation.design_fab_in = global::Inkton.Nester.Droid.Resource.Animation.design_fab_in;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Animation.design_fab_out = global::Inkton.Nester.Droid.Resource.Animation.design_fab_out;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Animation.design_snackbar_in = global::Inkton.Nester.Droid.Resource.Animation.design_snackbar_in;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Animation.design_snackbar_out = global::Inkton.Nester.Droid.Resource.Animation.design_snackbar_out;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.MediaRouteControllerWindowBackground = global::Inkton.Nester.Droid.Resource.Attribute.MediaRouteControllerWindowBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionBarDivider = global::Inkton.Nester.Droid.Resource.Attribute.actionBarDivider;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionBarItemBackground = global::Inkton.Nester.Droid.Resource.Attribute.actionBarItemBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionBarPopupTheme = global::Inkton.Nester.Droid.Resource.Attribute.actionBarPopupTheme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionBarSize = global::Inkton.Nester.Droid.Resource.Attribute.actionBarSize;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionBarSplitStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionBarSplitStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionBarStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionBarStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionBarTabBarStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionBarTabBarStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionBarTabStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionBarTabStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionBarTabTextStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionBarTabTextStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionBarTheme = global::Inkton.Nester.Droid.Resource.Attribute.actionBarTheme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionBarWidgetTheme = global::Inkton.Nester.Droid.Resource.Attribute.actionBarWidgetTheme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionDropDownStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionDropDownStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionLayout = global::Inkton.Nester.Droid.Resource.Attribute.actionLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionMenuTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.actionMenuTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionMenuTextColor = global::Inkton.Nester.Droid.Resource.Attribute.actionMenuTextColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionModeBackground = global::Inkton.Nester.Droid.Resource.Attribute.actionModeBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionModeCloseButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionModeCloseButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionModeCloseDrawable = global::Inkton.Nester.Droid.Resource.Attribute.actionModeCloseDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionModeCopyDrawable = global::Inkton.Nester.Droid.Resource.Attribute.actionModeCopyDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionModeCutDrawable = global::Inkton.Nester.Droid.Resource.Attribute.actionModeCutDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionModeFindDrawable = global::Inkton.Nester.Droid.Resource.Attribute.actionModeFindDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionModePasteDrawable = global::Inkton.Nester.Droid.Resource.Attribute.actionModePasteDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionModePopupWindowStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionModePopupWindowStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionModeSelectAllDrawable = global::Inkton.Nester.Droid.Resource.Attribute.actionModeSelectAllDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionModeShareDrawable = global::Inkton.Nester.Droid.Resource.Attribute.actionModeShareDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionModeSplitBackground = global::Inkton.Nester.Droid.Resource.Attribute.actionModeSplitBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionModeStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionModeStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionModeWebSearchDrawable = global::Inkton.Nester.Droid.Resource.Attribute.actionModeWebSearchDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionOverflowButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionOverflowButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionOverflowMenuStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionOverflowMenuStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionProviderClass = global::Inkton.Nester.Droid.Resource.Attribute.actionProviderClass;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.actionViewClass = global::Inkton.Nester.Droid.Resource.Attribute.actionViewClass;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.activityChooserViewStyle = global::Inkton.Nester.Droid.Resource.Attribute.activityChooserViewStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.alertDialogButtonGroupStyle = global::Inkton.Nester.Droid.Resource.Attribute.alertDialogButtonGroupStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.alertDialogCenterButtons = global::Inkton.Nester.Droid.Resource.Attribute.alertDialogCenterButtons;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.alertDialogStyle = global::Inkton.Nester.Droid.Resource.Attribute.alertDialogStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.alertDialogTheme = global::Inkton.Nester.Droid.Resource.Attribute.alertDialogTheme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.allowStacking = global::Inkton.Nester.Droid.Resource.Attribute.allowStacking;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.arrowHeadLength = global::Inkton.Nester.Droid.Resource.Attribute.arrowHeadLength;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.arrowShaftLength = global::Inkton.Nester.Droid.Resource.Attribute.arrowShaftLength;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.autoCompleteTextViewStyle = global::Inkton.Nester.Droid.Resource.Attribute.autoCompleteTextViewStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.background = global::Inkton.Nester.Droid.Resource.Attribute.background;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.backgroundSplit = global::Inkton.Nester.Droid.Resource.Attribute.backgroundSplit;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.backgroundStacked = global::Inkton.Nester.Droid.Resource.Attribute.backgroundStacked;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.backgroundTint = global::Inkton.Nester.Droid.Resource.Attribute.backgroundTint;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.backgroundTintMode = global::Inkton.Nester.Droid.Resource.Attribute.backgroundTintMode;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.barLength = global::Inkton.Nester.Droid.Resource.Attribute.barLength;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.behavior_hideable = global::Inkton.Nester.Droid.Resource.Attribute.behavior_hideable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.behavior_overlapTop = global::Inkton.Nester.Droid.Resource.Attribute.behavior_overlapTop;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.behavior_peekHeight = global::Inkton.Nester.Droid.Resource.Attribute.behavior_peekHeight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.borderWidth = global::Inkton.Nester.Droid.Resource.Attribute.borderWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.borderlessButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.borderlessButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.bottomSheetDialogTheme = global::Inkton.Nester.Droid.Resource.Attribute.bottomSheetDialogTheme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.bottomSheetStyle = global::Inkton.Nester.Droid.Resource.Attribute.bottomSheetStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.buttonBarButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.buttonBarButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.buttonBarNegativeButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.buttonBarNegativeButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.buttonBarNeutralButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.buttonBarNeutralButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.buttonBarPositiveButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.buttonBarPositiveButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.buttonBarStyle = global::Inkton.Nester.Droid.Resource.Attribute.buttonBarStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.buttonPanelSideLayout = global::Inkton.Nester.Droid.Resource.Attribute.buttonPanelSideLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.buttonStyle = global::Inkton.Nester.Droid.Resource.Attribute.buttonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.buttonStyleSmall = global::Inkton.Nester.Droid.Resource.Attribute.buttonStyleSmall;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.buttonTint = global::Inkton.Nester.Droid.Resource.Attribute.buttonTint;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.buttonTintMode = global::Inkton.Nester.Droid.Resource.Attribute.buttonTintMode;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.cardBackgroundColor = global::Inkton.Nester.Droid.Resource.Attribute.cardBackgroundColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.cardCornerRadius = global::Inkton.Nester.Droid.Resource.Attribute.cardCornerRadius;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.cardElevation = global::Inkton.Nester.Droid.Resource.Attribute.cardElevation;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.cardMaxElevation = global::Inkton.Nester.Droid.Resource.Attribute.cardMaxElevation;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.cardPreventCornerOverlap = global::Inkton.Nester.Droid.Resource.Attribute.cardPreventCornerOverlap;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.cardUseCompatPadding = global::Inkton.Nester.Droid.Resource.Attribute.cardUseCompatPadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.checkboxStyle = global::Inkton.Nester.Droid.Resource.Attribute.checkboxStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.checkedTextViewStyle = global::Inkton.Nester.Droid.Resource.Attribute.checkedTextViewStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.closeIcon = global::Inkton.Nester.Droid.Resource.Attribute.closeIcon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.closeItemLayout = global::Inkton.Nester.Droid.Resource.Attribute.closeItemLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.collapseContentDescription = global::Inkton.Nester.Droid.Resource.Attribute.collapseContentDescription;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.collapseIcon = global::Inkton.Nester.Droid.Resource.Attribute.collapseIcon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.collapsedTitleGravity = global::Inkton.Nester.Droid.Resource.Attribute.collapsedTitleGravity;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.collapsedTitleTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.collapsedTitleTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.color = global::Inkton.Nester.Droid.Resource.Attribute.color;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.colorAccent = global::Inkton.Nester.Droid.Resource.Attribute.colorAccent;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.colorButtonNormal = global::Inkton.Nester.Droid.Resource.Attribute.colorButtonNormal;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.colorControlActivated = global::Inkton.Nester.Droid.Resource.Attribute.colorControlActivated;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.colorControlHighlight = global::Inkton.Nester.Droid.Resource.Attribute.colorControlHighlight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.colorControlNormal = global::Inkton.Nester.Droid.Resource.Attribute.colorControlNormal;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.colorPrimary = global::Inkton.Nester.Droid.Resource.Attribute.colorPrimary;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.colorPrimaryDark = global::Inkton.Nester.Droid.Resource.Attribute.colorPrimaryDark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.colorSwitchThumbNormal = global::Inkton.Nester.Droid.Resource.Attribute.colorSwitchThumbNormal;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.commitIcon = global::Inkton.Nester.Droid.Resource.Attribute.commitIcon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.contentInsetEnd = global::Inkton.Nester.Droid.Resource.Attribute.contentInsetEnd;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.contentInsetLeft = global::Inkton.Nester.Droid.Resource.Attribute.contentInsetLeft;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.contentInsetRight = global::Inkton.Nester.Droid.Resource.Attribute.contentInsetRight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.contentInsetStart = global::Inkton.Nester.Droid.Resource.Attribute.contentInsetStart;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.contentPadding = global::Inkton.Nester.Droid.Resource.Attribute.contentPadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.contentPaddingBottom = global::Inkton.Nester.Droid.Resource.Attribute.contentPaddingBottom;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.contentPaddingLeft = global::Inkton.Nester.Droid.Resource.Attribute.contentPaddingLeft;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.contentPaddingRight = global::Inkton.Nester.Droid.Resource.Attribute.contentPaddingRight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.contentPaddingTop = global::Inkton.Nester.Droid.Resource.Attribute.contentPaddingTop;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.contentScrim = global::Inkton.Nester.Droid.Resource.Attribute.contentScrim;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.controlBackground = global::Inkton.Nester.Droid.Resource.Attribute.controlBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.counterEnabled = global::Inkton.Nester.Droid.Resource.Attribute.counterEnabled;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.counterMaxLength = global::Inkton.Nester.Droid.Resource.Attribute.counterMaxLength;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.counterOverflowTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.counterOverflowTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.counterTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.counterTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.customNavigationLayout = global::Inkton.Nester.Droid.Resource.Attribute.customNavigationLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.defaultQueryHint = global::Inkton.Nester.Droid.Resource.Attribute.defaultQueryHint;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.dialogPreferredPadding = global::Inkton.Nester.Droid.Resource.Attribute.dialogPreferredPadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.dialogTheme = global::Inkton.Nester.Droid.Resource.Attribute.dialogTheme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.displayOptions = global::Inkton.Nester.Droid.Resource.Attribute.displayOptions;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.divider = global::Inkton.Nester.Droid.Resource.Attribute.divider;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.dividerHorizontal = global::Inkton.Nester.Droid.Resource.Attribute.dividerHorizontal;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.dividerPadding = global::Inkton.Nester.Droid.Resource.Attribute.dividerPadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.dividerVertical = global::Inkton.Nester.Droid.Resource.Attribute.dividerVertical;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.drawableSize = global::Inkton.Nester.Droid.Resource.Attribute.drawableSize;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.drawerArrowStyle = global::Inkton.Nester.Droid.Resource.Attribute.drawerArrowStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.dropDownListViewStyle = global::Inkton.Nester.Droid.Resource.Attribute.dropDownListViewStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.dropdownListPreferredItemHeight = global::Inkton.Nester.Droid.Resource.Attribute.dropdownListPreferredItemHeight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.editTextBackground = global::Inkton.Nester.Droid.Resource.Attribute.editTextBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.editTextColor = global::Inkton.Nester.Droid.Resource.Attribute.editTextColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.editTextStyle = global::Inkton.Nester.Droid.Resource.Attribute.editTextStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.elevation = global::Inkton.Nester.Droid.Resource.Attribute.elevation;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.errorEnabled = global::Inkton.Nester.Droid.Resource.Attribute.errorEnabled;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.errorTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.errorTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.expandActivityOverflowButtonDrawable = global::Inkton.Nester.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.expanded = global::Inkton.Nester.Droid.Resource.Attribute.expanded;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.expandedTitleGravity = global::Inkton.Nester.Droid.Resource.Attribute.expandedTitleGravity;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.expandedTitleMargin = global::Inkton.Nester.Droid.Resource.Attribute.expandedTitleMargin;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.expandedTitleMarginBottom = global::Inkton.Nester.Droid.Resource.Attribute.expandedTitleMarginBottom;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.expandedTitleMarginEnd = global::Inkton.Nester.Droid.Resource.Attribute.expandedTitleMarginEnd;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.expandedTitleMarginStart = global::Inkton.Nester.Droid.Resource.Attribute.expandedTitleMarginStart;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.expandedTitleMarginTop = global::Inkton.Nester.Droid.Resource.Attribute.expandedTitleMarginTop;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.expandedTitleTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.expandedTitleTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.externalRouteEnabledDrawable = global::Inkton.Nester.Droid.Resource.Attribute.externalRouteEnabledDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.fabSize = global::Inkton.Nester.Droid.Resource.Attribute.fabSize;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.foregroundInsidePadding = global::Inkton.Nester.Droid.Resource.Attribute.foregroundInsidePadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.gapBetweenBars = global::Inkton.Nester.Droid.Resource.Attribute.gapBetweenBars;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.goIcon = global::Inkton.Nester.Droid.Resource.Attribute.goIcon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.headerLayout = global::Inkton.Nester.Droid.Resource.Attribute.headerLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.height = global::Inkton.Nester.Droid.Resource.Attribute.height;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.hideOnContentScroll = global::Inkton.Nester.Droid.Resource.Attribute.hideOnContentScroll;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.hintAnimationEnabled = global::Inkton.Nester.Droid.Resource.Attribute.hintAnimationEnabled;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.hintEnabled = global::Inkton.Nester.Droid.Resource.Attribute.hintEnabled;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.hintTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.hintTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.homeAsUpIndicator = global::Inkton.Nester.Droid.Resource.Attribute.homeAsUpIndicator;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.homeLayout = global::Inkton.Nester.Droid.Resource.Attribute.homeLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.icon = global::Inkton.Nester.Droid.Resource.Attribute.icon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.iconifiedByDefault = global::Inkton.Nester.Droid.Resource.Attribute.iconifiedByDefault;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.imageButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.imageButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.indeterminateProgressStyle = global::Inkton.Nester.Droid.Resource.Attribute.indeterminateProgressStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.initialActivityCount = global::Inkton.Nester.Droid.Resource.Attribute.initialActivityCount;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.insetForeground = global::Inkton.Nester.Droid.Resource.Attribute.insetForeground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.isLightTheme = global::Inkton.Nester.Droid.Resource.Attribute.isLightTheme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.itemBackground = global::Inkton.Nester.Droid.Resource.Attribute.itemBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.itemIconTint = global::Inkton.Nester.Droid.Resource.Attribute.itemIconTint;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.itemPadding = global::Inkton.Nester.Droid.Resource.Attribute.itemPadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.itemTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.itemTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.itemTextColor = global::Inkton.Nester.Droid.Resource.Attribute.itemTextColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.keylines = global::Inkton.Nester.Droid.Resource.Attribute.keylines;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.layout = global::Inkton.Nester.Droid.Resource.Attribute.layout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.layoutManager = global::Inkton.Nester.Droid.Resource.Attribute.layoutManager;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.layout_anchor = global::Inkton.Nester.Droid.Resource.Attribute.layout_anchor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.layout_anchorGravity = global::Inkton.Nester.Droid.Resource.Attribute.layout_anchorGravity;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.layout_behavior = global::Inkton.Nester.Droid.Resource.Attribute.layout_behavior;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.layout_collapseMode = global::Inkton.Nester.Droid.Resource.Attribute.layout_collapseMode;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.layout_collapseParallaxMultiplier = global::Inkton.Nester.Droid.Resource.Attribute.layout_collapseParallaxMultiplier;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.layout_keyline = global::Inkton.Nester.Droid.Resource.Attribute.layout_keyline;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.layout_scrollFlags = global::Inkton.Nester.Droid.Resource.Attribute.layout_scrollFlags;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.layout_scrollInterpolator = global::Inkton.Nester.Droid.Resource.Attribute.layout_scrollInterpolator;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.listChoiceBackgroundIndicator = global::Inkton.Nester.Droid.Resource.Attribute.listChoiceBackgroundIndicator;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.listDividerAlertDialog = global::Inkton.Nester.Droid.Resource.Attribute.listDividerAlertDialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.listItemLayout = global::Inkton.Nester.Droid.Resource.Attribute.listItemLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.listLayout = global::Inkton.Nester.Droid.Resource.Attribute.listLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.listPopupWindowStyle = global::Inkton.Nester.Droid.Resource.Attribute.listPopupWindowStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.listPreferredItemHeight = global::Inkton.Nester.Droid.Resource.Attribute.listPreferredItemHeight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.listPreferredItemHeightLarge = global::Inkton.Nester.Droid.Resource.Attribute.listPreferredItemHeightLarge;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.listPreferredItemHeightSmall = global::Inkton.Nester.Droid.Resource.Attribute.listPreferredItemHeightSmall;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.listPreferredItemPaddingLeft = global::Inkton.Nester.Droid.Resource.Attribute.listPreferredItemPaddingLeft;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.listPreferredItemPaddingRight = global::Inkton.Nester.Droid.Resource.Attribute.listPreferredItemPaddingRight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.logo = global::Inkton.Nester.Droid.Resource.Attribute.logo;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.logoDescription = global::Inkton.Nester.Droid.Resource.Attribute.logoDescription;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.maxActionInlineWidth = global::Inkton.Nester.Droid.Resource.Attribute.maxActionInlineWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.maxButtonHeight = global::Inkton.Nester.Droid.Resource.Attribute.maxButtonHeight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.measureWithLargestChild = global::Inkton.Nester.Droid.Resource.Attribute.measureWithLargestChild;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.mediaRouteAudioTrackDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteAudioTrackDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.mediaRouteBluetoothIconDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteBluetoothIconDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.mediaRouteButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.mediaRouteCastDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteCastDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.mediaRouteChooserPrimaryTextStyle = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteChooserPrimaryTextStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.mediaRouteChooserSecondaryTextStyle = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteChooserSecondaryTextStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.mediaRouteCloseDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteCloseDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.mediaRouteCollapseGroupDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteCollapseGroupDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.mediaRouteConnectingDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteConnectingDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.mediaRouteControllerPrimaryTextStyle = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteControllerPrimaryTextStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.mediaRouteControllerSecondaryTextStyle = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteControllerSecondaryTextStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.mediaRouteControllerTitleTextStyle = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteControllerTitleTextStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.mediaRouteDefaultIconDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteDefaultIconDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.mediaRouteExpandGroupDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteExpandGroupDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.mediaRouteOffDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteOffDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.mediaRouteOnDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteOnDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.mediaRoutePauseDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRoutePauseDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.mediaRoutePlayDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRoutePlayDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.mediaRouteSpeakerGroupIconDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteSpeakerGroupIconDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.mediaRouteSpeakerIconDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteSpeakerIconDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.mediaRouteTvIconDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteTvIconDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.menu = global::Inkton.Nester.Droid.Resource.Attribute.menu;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.multiChoiceItemLayout = global::Inkton.Nester.Droid.Resource.Attribute.multiChoiceItemLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.navigationContentDescription = global::Inkton.Nester.Droid.Resource.Attribute.navigationContentDescription;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.navigationIcon = global::Inkton.Nester.Droid.Resource.Attribute.navigationIcon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.navigationMode = global::Inkton.Nester.Droid.Resource.Attribute.navigationMode;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.overlapAnchor = global::Inkton.Nester.Droid.Resource.Attribute.overlapAnchor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.paddingEnd = global::Inkton.Nester.Droid.Resource.Attribute.paddingEnd;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.paddingStart = global::Inkton.Nester.Droid.Resource.Attribute.paddingStart;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.panelBackground = global::Inkton.Nester.Droid.Resource.Attribute.panelBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.panelMenuListTheme = global::Inkton.Nester.Droid.Resource.Attribute.panelMenuListTheme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.panelMenuListWidth = global::Inkton.Nester.Droid.Resource.Attribute.panelMenuListWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.popupMenuStyle = global::Inkton.Nester.Droid.Resource.Attribute.popupMenuStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.popupTheme = global::Inkton.Nester.Droid.Resource.Attribute.popupTheme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.popupWindowStyle = global::Inkton.Nester.Droid.Resource.Attribute.popupWindowStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.preserveIconSpacing = global::Inkton.Nester.Droid.Resource.Attribute.preserveIconSpacing;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.pressedTranslationZ = global::Inkton.Nester.Droid.Resource.Attribute.pressedTranslationZ;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.progressBarPadding = global::Inkton.Nester.Droid.Resource.Attribute.progressBarPadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.progressBarStyle = global::Inkton.Nester.Droid.Resource.Attribute.progressBarStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.queryBackground = global::Inkton.Nester.Droid.Resource.Attribute.queryBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.queryHint = global::Inkton.Nester.Droid.Resource.Attribute.queryHint;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.radioButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.radioButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.ratingBarStyle = global::Inkton.Nester.Droid.Resource.Attribute.ratingBarStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.ratingBarStyleIndicator = global::Inkton.Nester.Droid.Resource.Attribute.ratingBarStyleIndicator;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.ratingBarStyleSmall = global::Inkton.Nester.Droid.Resource.Attribute.ratingBarStyleSmall;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.reverseLayout = global::Inkton.Nester.Droid.Resource.Attribute.reverseLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.rippleColor = global::Inkton.Nester.Droid.Resource.Attribute.rippleColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.searchHintIcon = global::Inkton.Nester.Droid.Resource.Attribute.searchHintIcon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.searchIcon = global::Inkton.Nester.Droid.Resource.Attribute.searchIcon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.searchViewStyle = global::Inkton.Nester.Droid.Resource.Attribute.searchViewStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.seekBarStyle = global::Inkton.Nester.Droid.Resource.Attribute.seekBarStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.selectableItemBackground = global::Inkton.Nester.Droid.Resource.Attribute.selectableItemBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.selectableItemBackgroundBorderless = global::Inkton.Nester.Droid.Resource.Attribute.selectableItemBackgroundBorderless;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.showAsAction = global::Inkton.Nester.Droid.Resource.Attribute.showAsAction;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.showDividers = global::Inkton.Nester.Droid.Resource.Attribute.showDividers;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.showText = global::Inkton.Nester.Droid.Resource.Attribute.showText;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.singleChoiceItemLayout = global::Inkton.Nester.Droid.Resource.Attribute.singleChoiceItemLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.spanCount = global::Inkton.Nester.Droid.Resource.Attribute.spanCount;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.spinBars = global::Inkton.Nester.Droid.Resource.Attribute.spinBars;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.spinnerDropDownItemStyle = global::Inkton.Nester.Droid.Resource.Attribute.spinnerDropDownItemStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.spinnerStyle = global::Inkton.Nester.Droid.Resource.Attribute.spinnerStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.splitTrack = global::Inkton.Nester.Droid.Resource.Attribute.splitTrack;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.srcCompat = global::Inkton.Nester.Droid.Resource.Attribute.srcCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.stackFromEnd = global::Inkton.Nester.Droid.Resource.Attribute.stackFromEnd;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.state_above_anchor = global::Inkton.Nester.Droid.Resource.Attribute.state_above_anchor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.statusBarBackground = global::Inkton.Nester.Droid.Resource.Attribute.statusBarBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.statusBarScrim = global::Inkton.Nester.Droid.Resource.Attribute.statusBarScrim;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.submitBackground = global::Inkton.Nester.Droid.Resource.Attribute.submitBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.subtitle = global::Inkton.Nester.Droid.Resource.Attribute.subtitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.subtitleTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.subtitleTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.subtitleTextColor = global::Inkton.Nester.Droid.Resource.Attribute.subtitleTextColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.subtitleTextStyle = global::Inkton.Nester.Droid.Resource.Attribute.subtitleTextStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.suggestionRowLayout = global::Inkton.Nester.Droid.Resource.Attribute.suggestionRowLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.switchMinWidth = global::Inkton.Nester.Droid.Resource.Attribute.switchMinWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.switchPadding = global::Inkton.Nester.Droid.Resource.Attribute.switchPadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.switchStyle = global::Inkton.Nester.Droid.Resource.Attribute.switchStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.switchTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.switchTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.tabBackground = global::Inkton.Nester.Droid.Resource.Attribute.tabBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.tabContentStart = global::Inkton.Nester.Droid.Resource.Attribute.tabContentStart;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.tabGravity = global::Inkton.Nester.Droid.Resource.Attribute.tabGravity;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.tabIndicatorColor = global::Inkton.Nester.Droid.Resource.Attribute.tabIndicatorColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.tabIndicatorHeight = global::Inkton.Nester.Droid.Resource.Attribute.tabIndicatorHeight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.tabMaxWidth = global::Inkton.Nester.Droid.Resource.Attribute.tabMaxWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.tabMinWidth = global::Inkton.Nester.Droid.Resource.Attribute.tabMinWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.tabMode = global::Inkton.Nester.Droid.Resource.Attribute.tabMode;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.tabPadding = global::Inkton.Nester.Droid.Resource.Attribute.tabPadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.tabPaddingBottom = global::Inkton.Nester.Droid.Resource.Attribute.tabPaddingBottom;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.tabPaddingEnd = global::Inkton.Nester.Droid.Resource.Attribute.tabPaddingEnd;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.tabPaddingStart = global::Inkton.Nester.Droid.Resource.Attribute.tabPaddingStart;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.tabPaddingTop = global::Inkton.Nester.Droid.Resource.Attribute.tabPaddingTop;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.tabSelectedTextColor = global::Inkton.Nester.Droid.Resource.Attribute.tabSelectedTextColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.tabTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.tabTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.tabTextColor = global::Inkton.Nester.Droid.Resource.Attribute.tabTextColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.textAllCaps = global::Inkton.Nester.Droid.Resource.Attribute.textAllCaps;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.textAppearanceLargePopupMenu = global::Inkton.Nester.Droid.Resource.Attribute.textAppearanceLargePopupMenu;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.textAppearanceListItem = global::Inkton.Nester.Droid.Resource.Attribute.textAppearanceListItem;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.textAppearanceListItemSmall = global::Inkton.Nester.Droid.Resource.Attribute.textAppearanceListItemSmall;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.textAppearanceSearchResultSubtitle = global::Inkton.Nester.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.textAppearanceSearchResultTitle = global::Inkton.Nester.Droid.Resource.Attribute.textAppearanceSearchResultTitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.textAppearanceSmallPopupMenu = global::Inkton.Nester.Droid.Resource.Attribute.textAppearanceSmallPopupMenu;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.textColorAlertDialogListItem = global::Inkton.Nester.Droid.Resource.Attribute.textColorAlertDialogListItem;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.textColorError = global::Inkton.Nester.Droid.Resource.Attribute.textColorError;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.textColorSearchUrl = global::Inkton.Nester.Droid.Resource.Attribute.textColorSearchUrl;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.theme = global::Inkton.Nester.Droid.Resource.Attribute.theme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.thickness = global::Inkton.Nester.Droid.Resource.Attribute.thickness;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.thumbTextPadding = global::Inkton.Nester.Droid.Resource.Attribute.thumbTextPadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.title = global::Inkton.Nester.Droid.Resource.Attribute.title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.titleEnabled = global::Inkton.Nester.Droid.Resource.Attribute.titleEnabled;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.titleMarginBottom = global::Inkton.Nester.Droid.Resource.Attribute.titleMarginBottom;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.titleMarginEnd = global::Inkton.Nester.Droid.Resource.Attribute.titleMarginEnd;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.titleMarginStart = global::Inkton.Nester.Droid.Resource.Attribute.titleMarginStart;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.titleMarginTop = global::Inkton.Nester.Droid.Resource.Attribute.titleMarginTop;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.titleMargins = global::Inkton.Nester.Droid.Resource.Attribute.titleMargins;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.titleTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.titleTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.titleTextColor = global::Inkton.Nester.Droid.Resource.Attribute.titleTextColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.titleTextStyle = global::Inkton.Nester.Droid.Resource.Attribute.titleTextStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.toolbarId = global::Inkton.Nester.Droid.Resource.Attribute.toolbarId;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.toolbarNavigationButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.toolbarNavigationButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.toolbarStyle = global::Inkton.Nester.Droid.Resource.Attribute.toolbarStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.track = global::Inkton.Nester.Droid.Resource.Attribute.track;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.useCompatPadding = global::Inkton.Nester.Droid.Resource.Attribute.useCompatPadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.voiceIcon = global::Inkton.Nester.Droid.Resource.Attribute.voiceIcon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.windowActionBar = global::Inkton.Nester.Droid.Resource.Attribute.windowActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.windowActionBarOverlay = global::Inkton.Nester.Droid.Resource.Attribute.windowActionBarOverlay;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.windowActionModeOverlay = global::Inkton.Nester.Droid.Resource.Attribute.windowActionModeOverlay;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.windowFixedHeightMajor = global::Inkton.Nester.Droid.Resource.Attribute.windowFixedHeightMajor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.windowFixedHeightMinor = global::Inkton.Nester.Droid.Resource.Attribute.windowFixedHeightMinor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.windowFixedWidthMajor = global::Inkton.Nester.Droid.Resource.Attribute.windowFixedWidthMajor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.windowFixedWidthMinor = global::Inkton.Nester.Droid.Resource.Attribute.windowFixedWidthMinor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.windowMinWidthMajor = global::Inkton.Nester.Droid.Resource.Attribute.windowMinWidthMajor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.windowMinWidthMinor = global::Inkton.Nester.Droid.Resource.Attribute.windowMinWidthMinor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Attribute.windowNoTitle = global::Inkton.Nester.Droid.Resource.Attribute.windowNoTitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Boolean.abc_action_bar_embed_tabs = global::Inkton.Nester.Droid.Resource.Boolean.abc_action_bar_embed_tabs;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Boolean.abc_action_bar_embed_tabs_pre_jb = global::Inkton.Nester.Droid.Resource.Boolean.abc_action_bar_embed_tabs_pre_jb;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Boolean.abc_action_bar_expanded_action_views_exclusive = global::Inkton.Nester.Droid.Resource.Boolean.abc_action_bar_expanded_action_views_exclusive;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Boolean.abc_allow_stacked_button_bar = global::Inkton.Nester.Droid.Resource.Boolean.abc_allow_stacked_button_bar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::Inkton.Nester.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Boolean.abc_config_allowActionMenuItemTextWithIcon = global::Inkton.Nester.Droid.Resource.Boolean.abc_config_allowActionMenuItemTextWithIcon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Boolean.abc_config_closeDialogWhenTouchOutside = global::Inkton.Nester.Droid.Resource.Boolean.abc_config_closeDialogWhenTouchOutside;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent = global::Inkton.Nester.Droid.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.abc_background_cache_hint_selector_material_dark = global::Inkton.Nester.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.abc_background_cache_hint_selector_material_light = global::Inkton.Nester.Droid.Resource.Color.abc_background_cache_hint_selector_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.abc_color_highlight_material = global::Inkton.Nester.Droid.Resource.Color.abc_color_highlight_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.abc_input_method_navigation_guard = global::Inkton.Nester.Droid.Resource.Color.abc_input_method_navigation_guard;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.abc_primary_text_disable_only_material_dark = global::Inkton.Nester.Droid.Resource.Color.abc_primary_text_disable_only_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.abc_primary_text_disable_only_material_light = global::Inkton.Nester.Droid.Resource.Color.abc_primary_text_disable_only_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.abc_primary_text_material_dark = global::Inkton.Nester.Droid.Resource.Color.abc_primary_text_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.abc_primary_text_material_light = global::Inkton.Nester.Droid.Resource.Color.abc_primary_text_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.abc_search_url_text = global::Inkton.Nester.Droid.Resource.Color.abc_search_url_text;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.abc_search_url_text_normal = global::Inkton.Nester.Droid.Resource.Color.abc_search_url_text_normal;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.abc_search_url_text_pressed = global::Inkton.Nester.Droid.Resource.Color.abc_search_url_text_pressed;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.abc_search_url_text_selected = global::Inkton.Nester.Droid.Resource.Color.abc_search_url_text_selected;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.abc_secondary_text_material_dark = global::Inkton.Nester.Droid.Resource.Color.abc_secondary_text_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.abc_secondary_text_material_light = global::Inkton.Nester.Droid.Resource.Color.abc_secondary_text_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.accent_material_dark = global::Inkton.Nester.Droid.Resource.Color.accent_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.accent_material_light = global::Inkton.Nester.Droid.Resource.Color.accent_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.background_floating_material_dark = global::Inkton.Nester.Droid.Resource.Color.background_floating_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.background_floating_material_light = global::Inkton.Nester.Droid.Resource.Color.background_floating_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.background_material_dark = global::Inkton.Nester.Droid.Resource.Color.background_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.background_material_light = global::Inkton.Nester.Droid.Resource.Color.background_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.bright_foreground_disabled_material_dark = global::Inkton.Nester.Droid.Resource.Color.bright_foreground_disabled_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.bright_foreground_disabled_material_light = global::Inkton.Nester.Droid.Resource.Color.bright_foreground_disabled_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.bright_foreground_inverse_material_dark = global::Inkton.Nester.Droid.Resource.Color.bright_foreground_inverse_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.bright_foreground_inverse_material_light = global::Inkton.Nester.Droid.Resource.Color.bright_foreground_inverse_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.bright_foreground_material_dark = global::Inkton.Nester.Droid.Resource.Color.bright_foreground_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.bright_foreground_material_light = global::Inkton.Nester.Droid.Resource.Color.bright_foreground_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.button_material_dark = global::Inkton.Nester.Droid.Resource.Color.button_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.button_material_light = global::Inkton.Nester.Droid.Resource.Color.button_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.cardview_dark_background = global::Inkton.Nester.Droid.Resource.Color.cardview_dark_background;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.cardview_light_background = global::Inkton.Nester.Droid.Resource.Color.cardview_light_background;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.cardview_shadow_end_color = global::Inkton.Nester.Droid.Resource.Color.cardview_shadow_end_color;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.cardview_shadow_start_color = global::Inkton.Nester.Droid.Resource.Color.cardview_shadow_start_color;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.design_fab_shadow_end_color = global::Inkton.Nester.Droid.Resource.Color.design_fab_shadow_end_color;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.design_fab_shadow_mid_color = global::Inkton.Nester.Droid.Resource.Color.design_fab_shadow_mid_color;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.design_fab_shadow_start_color = global::Inkton.Nester.Droid.Resource.Color.design_fab_shadow_start_color;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.design_fab_stroke_end_inner_color = global::Inkton.Nester.Droid.Resource.Color.design_fab_stroke_end_inner_color;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.design_fab_stroke_end_outer_color = global::Inkton.Nester.Droid.Resource.Color.design_fab_stroke_end_outer_color;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.design_fab_stroke_top_inner_color = global::Inkton.Nester.Droid.Resource.Color.design_fab_stroke_top_inner_color;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.design_fab_stroke_top_outer_color = global::Inkton.Nester.Droid.Resource.Color.design_fab_stroke_top_outer_color;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.design_snackbar_background_color = global::Inkton.Nester.Droid.Resource.Color.design_snackbar_background_color;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.design_textinput_error_color_dark = global::Inkton.Nester.Droid.Resource.Color.design_textinput_error_color_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.design_textinput_error_color_light = global::Inkton.Nester.Droid.Resource.Color.design_textinput_error_color_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.dim_foreground_disabled_material_dark = global::Inkton.Nester.Droid.Resource.Color.dim_foreground_disabled_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.dim_foreground_disabled_material_light = global::Inkton.Nester.Droid.Resource.Color.dim_foreground_disabled_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.dim_foreground_material_dark = global::Inkton.Nester.Droid.Resource.Color.dim_foreground_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.dim_foreground_material_light = global::Inkton.Nester.Droid.Resource.Color.dim_foreground_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.foreground_material_dark = global::Inkton.Nester.Droid.Resource.Color.foreground_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.foreground_material_light = global::Inkton.Nester.Droid.Resource.Color.foreground_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.highlighted_text_material_dark = global::Inkton.Nester.Droid.Resource.Color.highlighted_text_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.highlighted_text_material_light = global::Inkton.Nester.Droid.Resource.Color.highlighted_text_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.hint_foreground_material_dark = global::Inkton.Nester.Droid.Resource.Color.hint_foreground_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.hint_foreground_material_light = global::Inkton.Nester.Droid.Resource.Color.hint_foreground_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.material_blue_grey_800 = global::Inkton.Nester.Droid.Resource.Color.material_blue_grey_800;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.material_blue_grey_900 = global::Inkton.Nester.Droid.Resource.Color.material_blue_grey_900;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.material_blue_grey_950 = global::Inkton.Nester.Droid.Resource.Color.material_blue_grey_950;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.material_deep_teal_200 = global::Inkton.Nester.Droid.Resource.Color.material_deep_teal_200;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.material_deep_teal_500 = global::Inkton.Nester.Droid.Resource.Color.material_deep_teal_500;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.material_grey_100 = global::Inkton.Nester.Droid.Resource.Color.material_grey_100;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.material_grey_300 = global::Inkton.Nester.Droid.Resource.Color.material_grey_300;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.material_grey_50 = global::Inkton.Nester.Droid.Resource.Color.material_grey_50;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.material_grey_600 = global::Inkton.Nester.Droid.Resource.Color.material_grey_600;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.material_grey_800 = global::Inkton.Nester.Droid.Resource.Color.material_grey_800;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.material_grey_850 = global::Inkton.Nester.Droid.Resource.Color.material_grey_850;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.material_grey_900 = global::Inkton.Nester.Droid.Resource.Color.material_grey_900;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.primary_dark_material_dark = global::Inkton.Nester.Droid.Resource.Color.primary_dark_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.primary_dark_material_light = global::Inkton.Nester.Droid.Resource.Color.primary_dark_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.primary_material_dark = global::Inkton.Nester.Droid.Resource.Color.primary_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.primary_material_light = global::Inkton.Nester.Droid.Resource.Color.primary_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.primary_text_default_material_dark = global::Inkton.Nester.Droid.Resource.Color.primary_text_default_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.primary_text_default_material_light = global::Inkton.Nester.Droid.Resource.Color.primary_text_default_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.primary_text_disabled_material_dark = global::Inkton.Nester.Droid.Resource.Color.primary_text_disabled_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.primary_text_disabled_material_light = global::Inkton.Nester.Droid.Resource.Color.primary_text_disabled_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.ripple_material_dark = global::Inkton.Nester.Droid.Resource.Color.ripple_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.ripple_material_light = global::Inkton.Nester.Droid.Resource.Color.ripple_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.secondary_text_default_material_dark = global::Inkton.Nester.Droid.Resource.Color.secondary_text_default_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.secondary_text_default_material_light = global::Inkton.Nester.Droid.Resource.Color.secondary_text_default_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.secondary_text_disabled_material_dark = global::Inkton.Nester.Droid.Resource.Color.secondary_text_disabled_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.secondary_text_disabled_material_light = global::Inkton.Nester.Droid.Resource.Color.secondary_text_disabled_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.switch_thumb_disabled_material_dark = global::Inkton.Nester.Droid.Resource.Color.switch_thumb_disabled_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.switch_thumb_disabled_material_light = global::Inkton.Nester.Droid.Resource.Color.switch_thumb_disabled_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.switch_thumb_material_dark = global::Inkton.Nester.Droid.Resource.Color.switch_thumb_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.switch_thumb_material_light = global::Inkton.Nester.Droid.Resource.Color.switch_thumb_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.switch_thumb_normal_material_dark = global::Inkton.Nester.Droid.Resource.Color.switch_thumb_normal_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Color.switch_thumb_normal_material_light = global::Inkton.Nester.Droid.Resource.Color.switch_thumb_normal_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_action_bar_content_inset_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_content_inset_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_action_bar_default_height_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_default_height_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_action_bar_default_padding_end_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_default_padding_end_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_action_bar_default_padding_start_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_default_padding_start_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_action_bar_icon_vertical_padding_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_action_bar_overflow_padding_end_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_action_bar_overflow_padding_start_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_action_bar_progress_bar_size = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_progress_bar_size;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_action_bar_stacked_max_height = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_stacked_max_height;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_action_bar_stacked_tab_max_width = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_action_bar_subtitle_top_margin_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_action_button_min_height_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_button_min_height_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_action_button_min_width_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_button_min_width_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_action_button_min_width_overflow_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_alert_dialog_button_bar_height = global::Inkton.Nester.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_button_inset_horizontal_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_button_inset_horizontal_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_button_inset_vertical_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_button_inset_vertical_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_button_padding_horizontal_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_button_padding_horizontal_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_button_padding_vertical_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_button_padding_vertical_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_config_prefDialogWidth = global::Inkton.Nester.Droid.Resource.Dimension.abc_config_prefDialogWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_control_corner_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_control_corner_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_control_inset_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_control_inset_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_control_padding_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_control_padding_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_dialog_fixed_height_major = global::Inkton.Nester.Droid.Resource.Dimension.abc_dialog_fixed_height_major;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_dialog_fixed_height_minor = global::Inkton.Nester.Droid.Resource.Dimension.abc_dialog_fixed_height_minor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_dialog_fixed_width_major = global::Inkton.Nester.Droid.Resource.Dimension.abc_dialog_fixed_width_major;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_dialog_fixed_width_minor = global::Inkton.Nester.Droid.Resource.Dimension.abc_dialog_fixed_width_minor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_dialog_list_padding_vertical_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_dialog_list_padding_vertical_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_dialog_min_width_major = global::Inkton.Nester.Droid.Resource.Dimension.abc_dialog_min_width_major;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_dialog_min_width_minor = global::Inkton.Nester.Droid.Resource.Dimension.abc_dialog_min_width_minor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_dialog_padding_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_dialog_padding_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_dialog_padding_top_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_dialog_padding_top_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_disabled_alpha_material_dark = global::Inkton.Nester.Droid.Resource.Dimension.abc_disabled_alpha_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_disabled_alpha_material_light = global::Inkton.Nester.Droid.Resource.Dimension.abc_disabled_alpha_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_dropdownitem_icon_width = global::Inkton.Nester.Droid.Resource.Dimension.abc_dropdownitem_icon_width;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_dropdownitem_text_padding_left = global::Inkton.Nester.Droid.Resource.Dimension.abc_dropdownitem_text_padding_left;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_dropdownitem_text_padding_right = global::Inkton.Nester.Droid.Resource.Dimension.abc_dropdownitem_text_padding_right;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_edit_text_inset_bottom_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_edit_text_inset_bottom_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_edit_text_inset_top_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_edit_text_inset_top_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_floating_window_z = global::Inkton.Nester.Droid.Resource.Dimension.abc_floating_window_z;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_list_item_padding_horizontal_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_panel_menu_list_width = global::Inkton.Nester.Droid.Resource.Dimension.abc_panel_menu_list_width;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_search_view_preferred_width = global::Inkton.Nester.Droid.Resource.Dimension.abc_search_view_preferred_width;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_search_view_text_min_width = global::Inkton.Nester.Droid.Resource.Dimension.abc_search_view_text_min_width;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_seekbar_track_background_height_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_seekbar_track_background_height_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_seekbar_track_progress_height_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_seekbar_track_progress_height_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_select_dialog_padding_start_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_select_dialog_padding_start_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_switch_padding = global::Inkton.Nester.Droid.Resource.Dimension.abc_switch_padding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_text_size_body_1_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_body_1_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_text_size_body_2_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_body_2_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_text_size_button_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_button_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_text_size_caption_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_caption_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_text_size_display_1_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_display_1_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_text_size_display_2_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_display_2_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_text_size_display_3_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_display_3_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_text_size_display_4_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_display_4_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_text_size_headline_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_headline_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_text_size_large_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_large_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_text_size_medium_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_medium_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_text_size_menu_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_menu_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_text_size_small_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_small_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_text_size_subhead_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_subhead_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_text_size_subtitle_material_toolbar = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_text_size_title_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_title_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.abc_text_size_title_material_toolbar = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_title_material_toolbar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.cardview_compat_inset_shadow = global::Inkton.Nester.Droid.Resource.Dimension.cardview_compat_inset_shadow;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.cardview_default_elevation = global::Inkton.Nester.Droid.Resource.Dimension.cardview_default_elevation;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.cardview_default_radius = global::Inkton.Nester.Droid.Resource.Dimension.cardview_default_radius;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_appbar_elevation = global::Inkton.Nester.Droid.Resource.Dimension.design_appbar_elevation;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_bottom_sheet_modal_elevation = global::Inkton.Nester.Droid.Resource.Dimension.design_bottom_sheet_modal_elevation;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_bottom_sheet_modal_peek_height = global::Inkton.Nester.Droid.Resource.Dimension.design_bottom_sheet_modal_peek_height;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_fab_border_width = global::Inkton.Nester.Droid.Resource.Dimension.design_fab_border_width;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_fab_elevation = global::Inkton.Nester.Droid.Resource.Dimension.design_fab_elevation;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_fab_image_size = global::Inkton.Nester.Droid.Resource.Dimension.design_fab_image_size;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_fab_size_mini = global::Inkton.Nester.Droid.Resource.Dimension.design_fab_size_mini;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_fab_size_normal = global::Inkton.Nester.Droid.Resource.Dimension.design_fab_size_normal;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_fab_translation_z_pressed = global::Inkton.Nester.Droid.Resource.Dimension.design_fab_translation_z_pressed;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_navigation_elevation = global::Inkton.Nester.Droid.Resource.Dimension.design_navigation_elevation;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_navigation_icon_padding = global::Inkton.Nester.Droid.Resource.Dimension.design_navigation_icon_padding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_navigation_icon_size = global::Inkton.Nester.Droid.Resource.Dimension.design_navigation_icon_size;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_navigation_max_width = global::Inkton.Nester.Droid.Resource.Dimension.design_navigation_max_width;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_navigation_padding_bottom = global::Inkton.Nester.Droid.Resource.Dimension.design_navigation_padding_bottom;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_navigation_separator_vertical_padding = global::Inkton.Nester.Droid.Resource.Dimension.design_navigation_separator_vertical_padding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_snackbar_action_inline_max_width = global::Inkton.Nester.Droid.Resource.Dimension.design_snackbar_action_inline_max_width;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_snackbar_background_corner_radius = global::Inkton.Nester.Droid.Resource.Dimension.design_snackbar_background_corner_radius;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_snackbar_elevation = global::Inkton.Nester.Droid.Resource.Dimension.design_snackbar_elevation;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_snackbar_extra_spacing_horizontal = global::Inkton.Nester.Droid.Resource.Dimension.design_snackbar_extra_spacing_horizontal;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_snackbar_max_width = global::Inkton.Nester.Droid.Resource.Dimension.design_snackbar_max_width;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_snackbar_min_width = global::Inkton.Nester.Droid.Resource.Dimension.design_snackbar_min_width;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_snackbar_padding_horizontal = global::Inkton.Nester.Droid.Resource.Dimension.design_snackbar_padding_horizontal;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_snackbar_padding_vertical = global::Inkton.Nester.Droid.Resource.Dimension.design_snackbar_padding_vertical;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_snackbar_padding_vertical_2lines = global::Inkton.Nester.Droid.Resource.Dimension.design_snackbar_padding_vertical_2lines;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_snackbar_text_size = global::Inkton.Nester.Droid.Resource.Dimension.design_snackbar_text_size;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_tab_max_width = global::Inkton.Nester.Droid.Resource.Dimension.design_tab_max_width;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_tab_scrollable_min_width = global::Inkton.Nester.Droid.Resource.Dimension.design_tab_scrollable_min_width;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_tab_text_size = global::Inkton.Nester.Droid.Resource.Dimension.design_tab_text_size;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.design_tab_text_size_2line = global::Inkton.Nester.Droid.Resource.Dimension.design_tab_text_size_2line;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.disabled_alpha_material_dark = global::Inkton.Nester.Droid.Resource.Dimension.disabled_alpha_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.disabled_alpha_material_light = global::Inkton.Nester.Droid.Resource.Dimension.disabled_alpha_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.highlight_alpha_material_colored = global::Inkton.Nester.Droid.Resource.Dimension.highlight_alpha_material_colored;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.highlight_alpha_material_dark = global::Inkton.Nester.Droid.Resource.Dimension.highlight_alpha_material_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.highlight_alpha_material_light = global::Inkton.Nester.Droid.Resource.Dimension.highlight_alpha_material_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame = global::Inkton.Nester.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity = global::Inkton.Nester.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.item_touch_helper_swipe_escape_velocity = global::Inkton.Nester.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.mr_controller_volume_group_list_item_height = global::Inkton.Nester.Droid.Resource.Dimension.mr_controller_volume_group_list_item_height;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.mr_controller_volume_group_list_item_icon_size = global::Inkton.Nester.Droid.Resource.Dimension.mr_controller_volume_group_list_item_icon_size;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.mr_controller_volume_group_list_max_height = global::Inkton.Nester.Droid.Resource.Dimension.mr_controller_volume_group_list_max_height;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.mr_controller_volume_group_list_padding_top = global::Inkton.Nester.Droid.Resource.Dimension.mr_controller_volume_group_list_padding_top;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.mr_dialog_fixed_width_major = global::Inkton.Nester.Droid.Resource.Dimension.mr_dialog_fixed_width_major;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.mr_dialog_fixed_width_minor = global::Inkton.Nester.Droid.Resource.Dimension.mr_dialog_fixed_width_minor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.notification_large_icon_height = global::Inkton.Nester.Droid.Resource.Dimension.notification_large_icon_height;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.notification_large_icon_width = global::Inkton.Nester.Droid.Resource.Dimension.notification_large_icon_width;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Dimension.notification_subtext_size = global::Inkton.Nester.Droid.Resource.Dimension.notification_subtext_size;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_action_bar_item_background_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_action_bar_item_background_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_btn_borderless_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_borderless_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_btn_check_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_check_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_btn_colored_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_colored_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_btn_default_mtrl_shape = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_default_mtrl_shape;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_btn_radio_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_radio_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_btn_rating_star_off_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_rating_star_off_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_btn_rating_star_on_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_rating_star_on_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012 = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_cab_background_internal_bg = global::Inkton.Nester.Droid.Resource.Drawable.abc_cab_background_internal_bg;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_cab_background_top_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_cab_background_top_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_cab_background_top_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_control_background_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_control_background_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_dialog_material_background_dark = global::Inkton.Nester.Droid.Resource.Drawable.abc_dialog_material_background_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_dialog_material_background_light = global::Inkton.Nester.Droid.Resource.Drawable.abc_dialog_material_background_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_edit_text_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_edit_text_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_ic_ab_back_mtrl_am_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_ab_back_mtrl_am_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_ic_clear_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_clear_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_ic_go_search_api_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_go_search_api_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_ic_menu_moreoverflow_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_menu_moreoverflow_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_ic_menu_share_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_ic_search_api_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_search_api_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_ic_star_black_16dp = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_star_black_16dp;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_ic_star_black_36dp = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_star_black_36dp;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_ic_star_half_black_16dp = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_star_half_black_16dp;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_ic_star_half_black_36dp = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_star_half_black_36dp;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_ic_voice_search_api_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_voice_search_api_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_item_background_holo_dark = global::Inkton.Nester.Droid.Resource.Drawable.abc_item_background_holo_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_item_background_holo_light = global::Inkton.Nester.Droid.Resource.Drawable.abc_item_background_holo_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_list_divider_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_list_focused_holo = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_focused_holo;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_list_longpressed_holo = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_longpressed_holo;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_list_pressed_holo_dark = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_pressed_holo_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_list_pressed_holo_light = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_pressed_holo_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_list_selector_background_transition_holo_dark = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_list_selector_background_transition_holo_light = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_list_selector_disabled_holo_dark = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_selector_disabled_holo_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_list_selector_disabled_holo_light = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_selector_disabled_holo_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_list_selector_holo_dark = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_selector_holo_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_list_selector_holo_light = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_selector_holo_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult = global::Inkton.Nester.Droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_popup_background_mtrl_mult = global::Inkton.Nester.Droid.Resource.Drawable.abc_popup_background_mtrl_mult;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_ratingbar_full_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_ratingbar_full_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_ratingbar_indicator_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_ratingbar_indicator_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_ratingbar_small_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_ratingbar_small_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000 = global::Inkton.Nester.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005 = global::Inkton.Nester.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_scrubber_primary_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_scrubber_primary_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_scrubber_track_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_scrubber_track_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_seekbar_thumb_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_seekbar_thumb_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_seekbar_track_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_seekbar_track_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_spinner_mtrl_am_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_spinner_mtrl_am_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_spinner_textfield_background_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_spinner_textfield_background_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_switch_thumb_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_switch_thumb_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_switch_track_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_tab_indicator_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_tab_indicator_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_text_cursor_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_text_cursor_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.abc_textfield_search_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_textfield_search_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.design_fab_background = global::Inkton.Nester.Droid.Resource.Drawable.design_fab_background;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.design_snackbar_background = global::Inkton.Nester.Droid.Resource.Drawable.design_snackbar_background;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_audiotrack = global::Inkton.Nester.Droid.Resource.Drawable.ic_audiotrack;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_audiotrack_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_audiotrack_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_bluetooth_grey = global::Inkton.Nester.Droid.Resource.Drawable.ic_bluetooth_grey;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_bluetooth_white = global::Inkton.Nester.Droid.Resource.Drawable.ic_bluetooth_white;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_cast_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_cast_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_cast_disabled_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_cast_disabled_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_cast_grey = global::Inkton.Nester.Droid.Resource.Drawable.ic_cast_grey;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_cast_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_cast_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_cast_off_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_cast_off_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_cast_on_0_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_cast_on_0_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_cast_on_1_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_cast_on_1_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_cast_on_2_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_cast_on_2_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_cast_on_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_cast_on_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_cast_white = global::Inkton.Nester.Droid.Resource.Drawable.ic_cast_white;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_close_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_close_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_close_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_close_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_collapse = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_collapse_00000 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00000;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_collapse_00001 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00001;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_collapse_00002 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00002;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_collapse_00003 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00003;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_collapse_00004 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00004;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_collapse_00005 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00005;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_collapse_00006 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00006;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_collapse_00007 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00007;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_collapse_00008 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00008;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_collapse_00009 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00009;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_collapse_00010 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00010;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_collapse_00011 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00011;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_collapse_00012 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00012;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_collapse_00013 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00013;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_collapse_00014 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00014;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_collapse_00015 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00015;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_expand = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_expand_00000 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00000;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_expand_00001 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00001;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_expand_00002 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00002;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_expand_00003 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00003;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_expand_00004 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00004;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_expand_00005 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00005;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_expand_00006 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00006;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_expand_00007 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00007;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_expand_00008 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00008;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_expand_00009 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00009;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_expand_00010 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00010;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_expand_00011 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00011;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_expand_00012 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00012;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_expand_00013 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00013;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_expand_00014 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00014;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_expand_00015 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00015;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_media_pause = global::Inkton.Nester.Droid.Resource.Drawable.ic_media_pause;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_media_play = global::Inkton.Nester.Droid.Resource.Drawable.ic_media_play;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_media_route_disabled_mono_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_media_route_disabled_mono_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_media_route_off_mono_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_media_route_off_mono_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_media_route_on_0_mono_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_media_route_on_0_mono_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_media_route_on_1_mono_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_media_route_on_1_mono_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_media_route_on_2_mono_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_media_route_on_2_mono_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_media_route_on_mono_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_media_route_on_mono_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_pause_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_pause_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_pause_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_pause_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_play_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_play_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_play_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_play_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_speaker_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_speaker_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_speaker_group_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_speaker_group_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_speaker_group_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_speaker_group_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_speaker_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_speaker_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_tv_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_tv_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.ic_tv_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_tv_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.mr_dialog_material_background_dark = global::Inkton.Nester.Droid.Resource.Drawable.mr_dialog_material_background_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.mr_dialog_material_background_light = global::Inkton.Nester.Droid.Resource.Drawable.mr_dialog_material_background_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.mr_ic_audiotrack_light = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_audiotrack_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.mr_ic_cast_dark = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_cast_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.mr_ic_cast_light = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_cast_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.mr_ic_close_dark = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_close_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.mr_ic_close_light = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_close_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.mr_ic_media_route_connecting_mono_dark = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_media_route_connecting_mono_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.mr_ic_media_route_connecting_mono_light = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_media_route_connecting_mono_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.mr_ic_media_route_mono_dark = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_media_route_mono_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.mr_ic_media_route_mono_light = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_media_route_mono_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.mr_ic_pause_dark = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_pause_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.mr_ic_pause_light = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_pause_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.mr_ic_play_dark = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_play_dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.mr_ic_play_light = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_play_light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Drawable.notification_template_icon_bg = global::Inkton.Nester.Droid.Resource.Drawable.notification_template_icon_bg;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.action0 = global::Inkton.Nester.Droid.Resource.Id.action0;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.action_bar = global::Inkton.Nester.Droid.Resource.Id.action_bar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.action_bar_activity_content = global::Inkton.Nester.Droid.Resource.Id.action_bar_activity_content;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.action_bar_container = global::Inkton.Nester.Droid.Resource.Id.action_bar_container;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.action_bar_root = global::Inkton.Nester.Droid.Resource.Id.action_bar_root;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.action_bar_spinner = global::Inkton.Nester.Droid.Resource.Id.action_bar_spinner;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.action_bar_subtitle = global::Inkton.Nester.Droid.Resource.Id.action_bar_subtitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.action_bar_title = global::Inkton.Nester.Droid.Resource.Id.action_bar_title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.action_context_bar = global::Inkton.Nester.Droid.Resource.Id.action_context_bar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.action_divider = global::Inkton.Nester.Droid.Resource.Id.action_divider;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.action_menu_divider = global::Inkton.Nester.Droid.Resource.Id.action_menu_divider;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.action_menu_presenter = global::Inkton.Nester.Droid.Resource.Id.action_menu_presenter;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.action_mode_bar = global::Inkton.Nester.Droid.Resource.Id.action_mode_bar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.action_mode_bar_stub = global::Inkton.Nester.Droid.Resource.Id.action_mode_bar_stub;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.action_mode_close_button = global::Inkton.Nester.Droid.Resource.Id.action_mode_close_button;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.activity_chooser_view_content = global::Inkton.Nester.Droid.Resource.Id.activity_chooser_view_content;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.alertTitle = global::Inkton.Nester.Droid.Resource.Id.alertTitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.always = global::Inkton.Nester.Droid.Resource.Id.always;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.beginning = global::Inkton.Nester.Droid.Resource.Id.beginning;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.bottom = global::Inkton.Nester.Droid.Resource.Id.bottom;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.buttonPanel = global::Inkton.Nester.Droid.Resource.Id.buttonPanel;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.cancel_action = global::Inkton.Nester.Droid.Resource.Id.cancel_action;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.center = global::Inkton.Nester.Droid.Resource.Id.center;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.center_horizontal = global::Inkton.Nester.Droid.Resource.Id.center_horizontal;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.center_vertical = global::Inkton.Nester.Droid.Resource.Id.center_vertical;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.checkbox = global::Inkton.Nester.Droid.Resource.Id.checkbox;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.chronometer = global::Inkton.Nester.Droid.Resource.Id.chronometer;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.clip_horizontal = global::Inkton.Nester.Droid.Resource.Id.clip_horizontal;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.clip_vertical = global::Inkton.Nester.Droid.Resource.Id.clip_vertical;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.collapseActionView = global::Inkton.Nester.Droid.Resource.Id.collapseActionView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.contentPanel = global::Inkton.Nester.Droid.Resource.Id.contentPanel;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.custom = global::Inkton.Nester.Droid.Resource.Id.custom;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.customPanel = global::Inkton.Nester.Droid.Resource.Id.customPanel;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.decor_content_parent = global::Inkton.Nester.Droid.Resource.Id.decor_content_parent;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.default_activity_button = global::Inkton.Nester.Droid.Resource.Id.default_activity_button;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.design_bottom_sheet = global::Inkton.Nester.Droid.Resource.Id.design_bottom_sheet;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.design_menu_item_action_area = global::Inkton.Nester.Droid.Resource.Id.design_menu_item_action_area;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.design_menu_item_action_area_stub = global::Inkton.Nester.Droid.Resource.Id.design_menu_item_action_area_stub;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.design_menu_item_text = global::Inkton.Nester.Droid.Resource.Id.design_menu_item_text;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.design_navigation_view = global::Inkton.Nester.Droid.Resource.Id.design_navigation_view;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.disableHome = global::Inkton.Nester.Droid.Resource.Id.disableHome;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.edit_query = global::Inkton.Nester.Droid.Resource.Id.edit_query;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.end = global::Inkton.Nester.Droid.Resource.Id.end;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.end_padder = global::Inkton.Nester.Droid.Resource.Id.end_padder;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.enterAlways = global::Inkton.Nester.Droid.Resource.Id.enterAlways;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.enterAlwaysCollapsed = global::Inkton.Nester.Droid.Resource.Id.enterAlwaysCollapsed;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.exitUntilCollapsed = global::Inkton.Nester.Droid.Resource.Id.exitUntilCollapsed;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.expand_activities_button = global::Inkton.Nester.Droid.Resource.Id.expand_activities_button;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.expanded_menu = global::Inkton.Nester.Droid.Resource.Id.expanded_menu;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.fill = global::Inkton.Nester.Droid.Resource.Id.fill;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.fill_horizontal = global::Inkton.Nester.Droid.Resource.Id.fill_horizontal;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.fill_vertical = global::Inkton.Nester.Droid.Resource.Id.fill_vertical;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.@fixed = global::Inkton.Nester.Droid.Resource.Id.@fixed;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.home = global::Inkton.Nester.Droid.Resource.Id.home;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.homeAsUp = global::Inkton.Nester.Droid.Resource.Id.homeAsUp;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.icon = global::Inkton.Nester.Droid.Resource.Id.icon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.ifRoom = global::Inkton.Nester.Droid.Resource.Id.ifRoom;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.image = global::Inkton.Nester.Droid.Resource.Id.image;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.info = global::Inkton.Nester.Droid.Resource.Id.info;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.item_touch_helper_previous_elevation = global::Inkton.Nester.Droid.Resource.Id.item_touch_helper_previous_elevation;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.left = global::Inkton.Nester.Droid.Resource.Id.left;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.line1 = global::Inkton.Nester.Droid.Resource.Id.line1;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.line3 = global::Inkton.Nester.Droid.Resource.Id.line3;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.listMode = global::Inkton.Nester.Droid.Resource.Id.listMode;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.list_item = global::Inkton.Nester.Droid.Resource.Id.list_item;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.media_actions = global::Inkton.Nester.Droid.Resource.Id.media_actions;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.middle = global::Inkton.Nester.Droid.Resource.Id.middle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mini = global::Inkton.Nester.Droid.Resource.Id.mini;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_art = global::Inkton.Nester.Droid.Resource.Id.mr_art;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_chooser_list = global::Inkton.Nester.Droid.Resource.Id.mr_chooser_list;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_chooser_route_desc = global::Inkton.Nester.Droid.Resource.Id.mr_chooser_route_desc;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_chooser_route_icon = global::Inkton.Nester.Droid.Resource.Id.mr_chooser_route_icon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_chooser_route_name = global::Inkton.Nester.Droid.Resource.Id.mr_chooser_route_name;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_close = global::Inkton.Nester.Droid.Resource.Id.mr_close;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_control_divider = global::Inkton.Nester.Droid.Resource.Id.mr_control_divider;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_control_play_pause = global::Inkton.Nester.Droid.Resource.Id.mr_control_play_pause;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_control_subtitle = global::Inkton.Nester.Droid.Resource.Id.mr_control_subtitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_control_title = global::Inkton.Nester.Droid.Resource.Id.mr_control_title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_control_title_container = global::Inkton.Nester.Droid.Resource.Id.mr_control_title_container;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_custom_control = global::Inkton.Nester.Droid.Resource.Id.mr_custom_control;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_default_control = global::Inkton.Nester.Droid.Resource.Id.mr_default_control;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_dialog_area = global::Inkton.Nester.Droid.Resource.Id.mr_dialog_area;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_expandable_area = global::Inkton.Nester.Droid.Resource.Id.mr_expandable_area;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_group_expand_collapse = global::Inkton.Nester.Droid.Resource.Id.mr_group_expand_collapse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_media_main_control = global::Inkton.Nester.Droid.Resource.Id.mr_media_main_control;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_name = global::Inkton.Nester.Droid.Resource.Id.mr_name;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_playback_control = global::Inkton.Nester.Droid.Resource.Id.mr_playback_control;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_title_bar = global::Inkton.Nester.Droid.Resource.Id.mr_title_bar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_volume_control = global::Inkton.Nester.Droid.Resource.Id.mr_volume_control;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_volume_group_list = global::Inkton.Nester.Droid.Resource.Id.mr_volume_group_list;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_volume_item_icon = global::Inkton.Nester.Droid.Resource.Id.mr_volume_item_icon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.mr_volume_slider = global::Inkton.Nester.Droid.Resource.Id.mr_volume_slider;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.multiply = global::Inkton.Nester.Droid.Resource.Id.multiply;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.navigation_header_container = global::Inkton.Nester.Droid.Resource.Id.navigation_header_container;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.never = global::Inkton.Nester.Droid.Resource.Id.never;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.none = global::Inkton.Nester.Droid.Resource.Id.none;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.normal = global::Inkton.Nester.Droid.Resource.Id.normal;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.parallax = global::Inkton.Nester.Droid.Resource.Id.parallax;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.parentPanel = global::Inkton.Nester.Droid.Resource.Id.parentPanel;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.pin = global::Inkton.Nester.Droid.Resource.Id.pin;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.progress_circular = global::Inkton.Nester.Droid.Resource.Id.progress_circular;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.progress_horizontal = global::Inkton.Nester.Droid.Resource.Id.progress_horizontal;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.radio = global::Inkton.Nester.Droid.Resource.Id.radio;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.right = global::Inkton.Nester.Droid.Resource.Id.right;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.screen = global::Inkton.Nester.Droid.Resource.Id.screen;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.scroll = global::Inkton.Nester.Droid.Resource.Id.scroll;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.scrollIndicatorDown = global::Inkton.Nester.Droid.Resource.Id.scrollIndicatorDown;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.scrollIndicatorUp = global::Inkton.Nester.Droid.Resource.Id.scrollIndicatorUp;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.scrollView = global::Inkton.Nester.Droid.Resource.Id.scrollView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.scrollable = global::Inkton.Nester.Droid.Resource.Id.scrollable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.search_badge = global::Inkton.Nester.Droid.Resource.Id.search_badge;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.search_bar = global::Inkton.Nester.Droid.Resource.Id.search_bar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.search_button = global::Inkton.Nester.Droid.Resource.Id.search_button;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.search_close_btn = global::Inkton.Nester.Droid.Resource.Id.search_close_btn;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.search_edit_frame = global::Inkton.Nester.Droid.Resource.Id.search_edit_frame;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.search_go_btn = global::Inkton.Nester.Droid.Resource.Id.search_go_btn;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.search_mag_icon = global::Inkton.Nester.Droid.Resource.Id.search_mag_icon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.search_plate = global::Inkton.Nester.Droid.Resource.Id.search_plate;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.search_src_text = global::Inkton.Nester.Droid.Resource.Id.search_src_text;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.search_voice_btn = global::Inkton.Nester.Droid.Resource.Id.search_voice_btn;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.select_dialog_listview = global::Inkton.Nester.Droid.Resource.Id.select_dialog_listview;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.shortcut = global::Inkton.Nester.Droid.Resource.Id.shortcut;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.showCustom = global::Inkton.Nester.Droid.Resource.Id.showCustom;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.showHome = global::Inkton.Nester.Droid.Resource.Id.showHome;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.showTitle = global::Inkton.Nester.Droid.Resource.Id.showTitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.snackbar_action = global::Inkton.Nester.Droid.Resource.Id.snackbar_action;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.snackbar_text = global::Inkton.Nester.Droid.Resource.Id.snackbar_text;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.snap = global::Inkton.Nester.Droid.Resource.Id.snap;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.spacer = global::Inkton.Nester.Droid.Resource.Id.spacer;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.split_action_bar = global::Inkton.Nester.Droid.Resource.Id.split_action_bar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.src_atop = global::Inkton.Nester.Droid.Resource.Id.src_atop;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.src_in = global::Inkton.Nester.Droid.Resource.Id.src_in;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.src_over = global::Inkton.Nester.Droid.Resource.Id.src_over;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.start = global::Inkton.Nester.Droid.Resource.Id.start;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.status_bar_latest_event_content = global::Inkton.Nester.Droid.Resource.Id.status_bar_latest_event_content;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.submit_area = global::Inkton.Nester.Droid.Resource.Id.submit_area;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.tabMode = global::Inkton.Nester.Droid.Resource.Id.tabMode;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.text = global::Inkton.Nester.Droid.Resource.Id.text;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.text2 = global::Inkton.Nester.Droid.Resource.Id.text2;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.textSpacerNoButtons = global::Inkton.Nester.Droid.Resource.Id.textSpacerNoButtons;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.time = global::Inkton.Nester.Droid.Resource.Id.time;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.title = global::Inkton.Nester.Droid.Resource.Id.title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.title_template = global::Inkton.Nester.Droid.Resource.Id.title_template;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.top = global::Inkton.Nester.Droid.Resource.Id.top;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.topPanel = global::Inkton.Nester.Droid.Resource.Id.topPanel;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.touch_outside = global::Inkton.Nester.Droid.Resource.Id.touch_outside;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.up = global::Inkton.Nester.Droid.Resource.Id.up;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.useLogo = global::Inkton.Nester.Droid.Resource.Id.useLogo;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.view_offset_helper = global::Inkton.Nester.Droid.Resource.Id.view_offset_helper;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.volume_item_container = global::Inkton.Nester.Droid.Resource.Id.volume_item_container;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.withText = global::Inkton.Nester.Droid.Resource.Id.withText;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Id.wrap_content = global::Inkton.Nester.Droid.Resource.Id.wrap_content;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Integer.abc_config_activityDefaultDur = global::Inkton.Nester.Droid.Resource.Integer.abc_config_activityDefaultDur;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Integer.abc_config_activityShortDur = global::Inkton.Nester.Droid.Resource.Integer.abc_config_activityShortDur;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Integer.abc_max_action_buttons = global::Inkton.Nester.Droid.Resource.Integer.abc_max_action_buttons;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Integer.bottom_sheet_slide_duration = global::Inkton.Nester.Droid.Resource.Integer.bottom_sheet_slide_duration;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Integer.cancel_button_image_alpha = global::Inkton.Nester.Droid.Resource.Integer.cancel_button_image_alpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Integer.design_snackbar_text_max_lines = global::Inkton.Nester.Droid.Resource.Integer.design_snackbar_text_max_lines;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Integer.mr_controller_volume_group_list_animation_duration_ms = global::Inkton.Nester.Droid.Resource.Integer.mr_controller_volume_group_list_animation_duration_ms;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Integer.mr_controller_volume_group_list_fade_in_duration_ms = global::Inkton.Nester.Droid.Resource.Integer.mr_controller_volume_group_list_fade_in_duration_ms;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Integer.mr_controller_volume_group_list_fade_out_duration_ms = global::Inkton.Nester.Droid.Resource.Integer.mr_controller_volume_group_list_fade_out_duration_ms;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Integer.status_bar_notification_info_maxnum = global::Inkton.Nester.Droid.Resource.Integer.status_bar_notification_info_maxnum;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Interpolator.mr_fast_out_slow_in = global::Inkton.Nester.Droid.Resource.Interpolator.mr_fast_out_slow_in;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Interpolator.mr_linear_out_slow_in = global::Inkton.Nester.Droid.Resource.Interpolator.mr_linear_out_slow_in;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_action_bar_title_item = global::Inkton.Nester.Droid.Resource.Layout.abc_action_bar_title_item;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_action_bar_up_container = global::Inkton.Nester.Droid.Resource.Layout.abc_action_bar_up_container;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_action_bar_view_list_nav_layout = global::Inkton.Nester.Droid.Resource.Layout.abc_action_bar_view_list_nav_layout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_action_menu_item_layout = global::Inkton.Nester.Droid.Resource.Layout.abc_action_menu_item_layout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_action_menu_layout = global::Inkton.Nester.Droid.Resource.Layout.abc_action_menu_layout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_action_mode_bar = global::Inkton.Nester.Droid.Resource.Layout.abc_action_mode_bar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_action_mode_close_item_material = global::Inkton.Nester.Droid.Resource.Layout.abc_action_mode_close_item_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_activity_chooser_view = global::Inkton.Nester.Droid.Resource.Layout.abc_activity_chooser_view;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_activity_chooser_view_list_item = global::Inkton.Nester.Droid.Resource.Layout.abc_activity_chooser_view_list_item;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_alert_dialog_button_bar_material = global::Inkton.Nester.Droid.Resource.Layout.abc_alert_dialog_button_bar_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_alert_dialog_material = global::Inkton.Nester.Droid.Resource.Layout.abc_alert_dialog_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_dialog_title_material = global::Inkton.Nester.Droid.Resource.Layout.abc_dialog_title_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_expanded_menu_layout = global::Inkton.Nester.Droid.Resource.Layout.abc_expanded_menu_layout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_list_menu_item_checkbox = global::Inkton.Nester.Droid.Resource.Layout.abc_list_menu_item_checkbox;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_list_menu_item_icon = global::Inkton.Nester.Droid.Resource.Layout.abc_list_menu_item_icon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_list_menu_item_layout = global::Inkton.Nester.Droid.Resource.Layout.abc_list_menu_item_layout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_list_menu_item_radio = global::Inkton.Nester.Droid.Resource.Layout.abc_list_menu_item_radio;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_popup_menu_item_layout = global::Inkton.Nester.Droid.Resource.Layout.abc_popup_menu_item_layout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_screen_content_include = global::Inkton.Nester.Droid.Resource.Layout.abc_screen_content_include;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_screen_simple = global::Inkton.Nester.Droid.Resource.Layout.abc_screen_simple;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_screen_simple_overlay_action_mode = global::Inkton.Nester.Droid.Resource.Layout.abc_screen_simple_overlay_action_mode;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_screen_toolbar = global::Inkton.Nester.Droid.Resource.Layout.abc_screen_toolbar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_search_dropdown_item_icons_2line = global::Inkton.Nester.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_search_view = global::Inkton.Nester.Droid.Resource.Layout.abc_search_view;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.abc_select_dialog_material = global::Inkton.Nester.Droid.Resource.Layout.abc_select_dialog_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.design_bottom_sheet_dialog = global::Inkton.Nester.Droid.Resource.Layout.design_bottom_sheet_dialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.design_layout_snackbar = global::Inkton.Nester.Droid.Resource.Layout.design_layout_snackbar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.design_layout_snackbar_include = global::Inkton.Nester.Droid.Resource.Layout.design_layout_snackbar_include;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.design_layout_tab_icon = global::Inkton.Nester.Droid.Resource.Layout.design_layout_tab_icon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.design_layout_tab_text = global::Inkton.Nester.Droid.Resource.Layout.design_layout_tab_text;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.design_menu_item_action_area = global::Inkton.Nester.Droid.Resource.Layout.design_menu_item_action_area;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.design_navigation_item = global::Inkton.Nester.Droid.Resource.Layout.design_navigation_item;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.design_navigation_item_header = global::Inkton.Nester.Droid.Resource.Layout.design_navigation_item_header;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.design_navigation_item_separator = global::Inkton.Nester.Droid.Resource.Layout.design_navigation_item_separator;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.design_navigation_item_subheader = global::Inkton.Nester.Droid.Resource.Layout.design_navigation_item_subheader;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.design_navigation_menu = global::Inkton.Nester.Droid.Resource.Layout.design_navigation_menu;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.design_navigation_menu_item = global::Inkton.Nester.Droid.Resource.Layout.design_navigation_menu_item;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.mr_chooser_dialog = global::Inkton.Nester.Droid.Resource.Layout.mr_chooser_dialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.mr_chooser_list_item = global::Inkton.Nester.Droid.Resource.Layout.mr_chooser_list_item;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.mr_controller_material_dialog_b = global::Inkton.Nester.Droid.Resource.Layout.mr_controller_material_dialog_b;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.mr_controller_volume_item = global::Inkton.Nester.Droid.Resource.Layout.mr_controller_volume_item;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.mr_playback_control = global::Inkton.Nester.Droid.Resource.Layout.mr_playback_control;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.mr_volume_control = global::Inkton.Nester.Droid.Resource.Layout.mr_volume_control;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.notification_media_action = global::Inkton.Nester.Droid.Resource.Layout.notification_media_action;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.notification_media_cancel_action = global::Inkton.Nester.Droid.Resource.Layout.notification_media_cancel_action;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.notification_template_big_media = global::Inkton.Nester.Droid.Resource.Layout.notification_template_big_media;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.notification_template_big_media_narrow = global::Inkton.Nester.Droid.Resource.Layout.notification_template_big_media_narrow;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.notification_template_lines = global::Inkton.Nester.Droid.Resource.Layout.notification_template_lines;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.notification_template_media = global::Inkton.Nester.Droid.Resource.Layout.notification_template_media;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.notification_template_part_chronometer = global::Inkton.Nester.Droid.Resource.Layout.notification_template_part_chronometer;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.notification_template_part_time = global::Inkton.Nester.Droid.Resource.Layout.notification_template_part_time;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.select_dialog_item_material = global::Inkton.Nester.Droid.Resource.Layout.select_dialog_item_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.select_dialog_multichoice_material = global::Inkton.Nester.Droid.Resource.Layout.select_dialog_multichoice_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.select_dialog_singlechoice_material = global::Inkton.Nester.Droid.Resource.Layout.select_dialog_singlechoice_material;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Layout.support_simple_spinner_dropdown_item = global::Inkton.Nester.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.ApplicationName = global::Inkton.Nester.Droid.Resource.String.ApplicationName;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.Hello = global::Inkton.Nester.Droid.Resource.String.Hello;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.abc_action_bar_home_description = global::Inkton.Nester.Droid.Resource.String.abc_action_bar_home_description;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.abc_action_bar_home_description_format = global::Inkton.Nester.Droid.Resource.String.abc_action_bar_home_description_format;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.abc_action_bar_home_subtitle_description_format = global::Inkton.Nester.Droid.Resource.String.abc_action_bar_home_subtitle_description_format;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.abc_action_bar_up_description = global::Inkton.Nester.Droid.Resource.String.abc_action_bar_up_description;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.abc_action_menu_overflow_description = global::Inkton.Nester.Droid.Resource.String.abc_action_menu_overflow_description;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.abc_action_mode_done = global::Inkton.Nester.Droid.Resource.String.abc_action_mode_done;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.abc_activity_chooser_view_see_all = global::Inkton.Nester.Droid.Resource.String.abc_activity_chooser_view_see_all;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.abc_activitychooserview_choose_application = global::Inkton.Nester.Droid.Resource.String.abc_activitychooserview_choose_application;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.abc_capital_off = global::Inkton.Nester.Droid.Resource.String.abc_capital_off;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.abc_capital_on = global::Inkton.Nester.Droid.Resource.String.abc_capital_on;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.abc_search_hint = global::Inkton.Nester.Droid.Resource.String.abc_search_hint;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.abc_searchview_description_clear = global::Inkton.Nester.Droid.Resource.String.abc_searchview_description_clear;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.abc_searchview_description_query = global::Inkton.Nester.Droid.Resource.String.abc_searchview_description_query;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.abc_searchview_description_search = global::Inkton.Nester.Droid.Resource.String.abc_searchview_description_search;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.abc_searchview_description_submit = global::Inkton.Nester.Droid.Resource.String.abc_searchview_description_submit;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.abc_searchview_description_voice = global::Inkton.Nester.Droid.Resource.String.abc_searchview_description_voice;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.abc_shareactionprovider_share_with = global::Inkton.Nester.Droid.Resource.String.abc_shareactionprovider_share_with;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.abc_shareactionprovider_share_with_application = global::Inkton.Nester.Droid.Resource.String.abc_shareactionprovider_share_with_application;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.abc_toolbar_collapse_description = global::Inkton.Nester.Droid.Resource.String.abc_toolbar_collapse_description;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.appbar_scrolling_view_behavior = global::Inkton.Nester.Droid.Resource.String.appbar_scrolling_view_behavior;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.bottom_sheet_behavior = global::Inkton.Nester.Droid.Resource.String.bottom_sheet_behavior;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.character_counter_pattern = global::Inkton.Nester.Droid.Resource.String.character_counter_pattern;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.mr_button_content_description = global::Inkton.Nester.Droid.Resource.String.mr_button_content_description;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.mr_chooser_searching = global::Inkton.Nester.Droid.Resource.String.mr_chooser_searching;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.mr_chooser_title = global::Inkton.Nester.Droid.Resource.String.mr_chooser_title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.mr_controller_casting_screen = global::Inkton.Nester.Droid.Resource.String.mr_controller_casting_screen;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.mr_controller_close_description = global::Inkton.Nester.Droid.Resource.String.mr_controller_close_description;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.mr_controller_collapse_group = global::Inkton.Nester.Droid.Resource.String.mr_controller_collapse_group;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.mr_controller_disconnect = global::Inkton.Nester.Droid.Resource.String.mr_controller_disconnect;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.mr_controller_expand_group = global::Inkton.Nester.Droid.Resource.String.mr_controller_expand_group;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.mr_controller_no_info_available = global::Inkton.Nester.Droid.Resource.String.mr_controller_no_info_available;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.mr_controller_no_media_selected = global::Inkton.Nester.Droid.Resource.String.mr_controller_no_media_selected;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.mr_controller_pause = global::Inkton.Nester.Droid.Resource.String.mr_controller_pause;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.mr_controller_play = global::Inkton.Nester.Droid.Resource.String.mr_controller_play;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.mr_controller_stop = global::Inkton.Nester.Droid.Resource.String.mr_controller_stop;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.mr_system_route_name = global::Inkton.Nester.Droid.Resource.String.mr_system_route_name;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.mr_user_route_category_name = global::Inkton.Nester.Droid.Resource.String.mr_user_route_category_name;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.String.status_bar_notification_info_overflow = global::Inkton.Nester.Droid.Resource.String.status_bar_notification_info_overflow;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.AlertDialog_AppCompat = global::Inkton.Nester.Droid.Resource.Style.AlertDialog_AppCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.AlertDialog_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.AlertDialog_AppCompat_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Animation_AppCompat_Dialog = global::Inkton.Nester.Droid.Resource.Style.Animation_AppCompat_Dialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Animation_AppCompat_DropDownUp = global::Inkton.Nester.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Animation_Design_BottomSheetDialog = global::Inkton.Nester.Droid.Resource.Style.Animation_Design_BottomSheetDialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_AlertDialog_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Base_AlertDialog_AppCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_AlertDialog_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Animation_AppCompat_Dialog = global::Inkton.Nester.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::Inkton.Nester.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_CardView = global::Inkton.Nester.Droid.Resource.Style.Base_CardView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_DialogWindowTitle_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Button = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Button;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Caption = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Caption;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Display1 = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display1;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Display2 = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display2;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Display3 = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display3;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Display4 = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display4;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Headline = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Headline;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Inverse = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Large = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Medium = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Menu = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Menu;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_SearchResult = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Small = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Subhead = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Title = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Theme_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Theme_AppCompat_Dialog = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Dialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Theme_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_ThemeOverlay_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Base_ThemeOverlay_AppCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::Inkton.Nester.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::Inkton.Nester.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar = global::Inkton.Nester.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_V11_Theme_AppCompat_Dialog = global::Inkton.Nester.Droid.Resource.Style.Base_V11_Theme_AppCompat_Dialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog = global::Inkton.Nester.Droid.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView = global::Inkton.Nester.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_V12_Widget_AppCompat_EditText = global::Inkton.Nester.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_V21_Theme_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Base_V21_Theme_AppCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::Inkton.Nester.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_V21_Theme_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::Inkton.Nester.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_V22_Theme_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Base_V22_Theme_AppCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_V22_Theme_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_V23_Theme_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Base_V23_Theme_AppCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_V23_Theme_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_V7_Theme_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Base_V7_Theme_AppCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::Inkton.Nester.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_V7_Theme_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::Inkton.Nester.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::Inkton.Nester.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::Inkton.Nester.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_ActionBar = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_ActionButton = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_ActionMode = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ActionMode;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_Button = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Button;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_Button_Small = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_EditText = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_EditText;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_ImageButton = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ImageButton;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_ListPopupWindow = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_ListView = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ListView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_ListView_DropDown = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_ListView_Menu = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_PopupMenu = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_PopupWindow = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_PopupWindow;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_ProgressBar = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_RatingBar = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_RatingBar_Small = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Small;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_SearchView = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_SearchView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_SeekBar = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_Spinner = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Spinner;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_Toolbar = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Base_Widget_Design_TabLayout = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_Design_TabLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.CardView = global::Inkton.Nester.Droid.Resource.Style.CardView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.CardView_Dark = global::Inkton.Nester.Droid.Resource.Style.CardView_Dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.CardView_Light = global::Inkton.Nester.Droid.Resource.Style.CardView_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Platform_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Platform_AppCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Platform_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Platform_AppCompat_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Platform_ThemeOverlay_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::Inkton.Nester.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Platform_V11_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Platform_V11_AppCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Platform_V11_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Platform_V11_AppCompat_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Platform_V14_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Platform_V14_AppCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Platform_V14_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Platform_V14_AppCompat_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Platform_Widget_AppCompat_Spinner = global::Inkton.Nester.Droid.Resource.Style.Platform_Widget_AppCompat_Spinner;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton = global::Inkton.Nester.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = global::Inkton.Nester.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Body1 = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Body1;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Body2 = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Body2;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Button = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Button;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Caption = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Caption;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Display1 = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Display1;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Display2 = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Display2;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Display3 = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Display3;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Display4 = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Display4;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Headline = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Headline;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Large = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Large;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Large_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Medium = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Medium;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Medium_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Menu = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Menu;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_SearchResult_Title = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Small = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Small;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Small_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Subhead = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Subhead;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Title = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Widget_Button = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_Design_Counter = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_Design_Counter;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_Design_Counter_Overflow = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_Design_Counter_Overflow;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_Design_Error = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_Design_Error;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_Design_Hint = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_Design_Hint;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_Design_Snackbar_Message = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_Design_Snackbar_Message;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_Design_Tab = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_Design_Tab;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_StatusBar_EventContent = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_StatusBar_EventContent;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_StatusBar_EventContent_Info = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Info;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_StatusBar_EventContent_Line2 = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Line2;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_StatusBar_EventContent_Time = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Time;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_StatusBar_EventContent_Title = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_AppCompat_CompactMenu = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_CompactMenu;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_AppCompat_DayNight = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_DayNight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_AppCompat_DayNight_NoActionBar = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_AppCompat_Dialog = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_Dialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_AppCompat_Dialog_Alert = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_AppCompat_Light_Dialog = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_Light_Dialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_AppCompat_NoActionBar = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_NoActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_Design = global::Inkton.Nester.Droid.Resource.Style.Theme_Design;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_Design_BottomSheetDialog = global::Inkton.Nester.Droid.Resource.Style.Theme_Design_BottomSheetDialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_Design_Light = global::Inkton.Nester.Droid.Resource.Style.Theme_Design_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_Design_Light_BottomSheetDialog = global::Inkton.Nester.Droid.Resource.Style.Theme_Design_Light_BottomSheetDialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_Design_Light_NoActionBar = global::Inkton.Nester.Droid.Resource.Style.Theme_Design_Light_NoActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_Design_NoActionBar = global::Inkton.Nester.Droid.Resource.Style.Theme_Design_NoActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_MediaRouter = global::Inkton.Nester.Droid.Resource.Style.Theme_MediaRouter;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_MediaRouter_Light = global::Inkton.Nester.Droid.Resource.Style.Theme_MediaRouter_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_MediaRouter_Light_DarkControlPanel = global::Inkton.Nester.Droid.Resource.Style.Theme_MediaRouter_Light_DarkControlPanel;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Theme_MediaRouter_LightControlPanel = global::Inkton.Nester.Droid.Resource.Style.Theme_MediaRouter_LightControlPanel;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.ThemeOverlay_AppCompat = global::Inkton.Nester.Droid.Resource.Style.ThemeOverlay_AppCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::Inkton.Nester.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.ThemeOverlay_AppCompat_Dark = global::Inkton.Nester.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::Inkton.Nester.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.ThemeOverlay_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.ThemeOverlay_AppCompat_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_ActionBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_ActionBar_TabText = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabText;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_ActionBar_TabView = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_ActionButton = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ActionButton;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_ActionButton_CloseMode = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_ActionButton_Overflow = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_ActionMode = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ActionMode;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_ActivityChooserView = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Button = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Button;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Button_Borderless = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Button_Borderless;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Button_Colored = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Button_Colored;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Button_Small = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Button_Small;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_ButtonBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ButtonBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_DrawerArrowToggle = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_DropDownItem_Spinner = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_EditText = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_EditText;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_ImageButton = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ImageButton;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_ActionBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_ActionButton = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_ActivityChooserView = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_ListPopupWindow = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_ListView_DropDown = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_PopupMenu = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_SearchView = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_SearchView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_ListPopupWindow = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ListPopupWindow;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_ListView = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ListView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_ListView_DropDown = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ListView_DropDown;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_ListView_Menu = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ListView_Menu;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_PopupMenu = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_PopupMenu;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_PopupMenu_Overflow = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_PopupWindow = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_PopupWindow;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_ProgressBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ProgressBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_RatingBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_RatingBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_RatingBar_Indicator = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_RatingBar_Indicator;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_RatingBar_Small = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_RatingBar_Small;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_SearchView = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_SearchView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_SearchView_ActionBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_SeekBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_SeekBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Spinner = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Spinner;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Toolbar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Toolbar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_Design_AppBarLayout = global::Inkton.Nester.Droid.Resource.Style.Widget_Design_AppBarLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_Design_BottomSheet_Modal = global::Inkton.Nester.Droid.Resource.Style.Widget_Design_BottomSheet_Modal;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_Design_CollapsingToolbar = global::Inkton.Nester.Droid.Resource.Style.Widget_Design_CollapsingToolbar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_Design_CoordinatorLayout = global::Inkton.Nester.Droid.Resource.Style.Widget_Design_CoordinatorLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_Design_FloatingActionButton = global::Inkton.Nester.Droid.Resource.Style.Widget_Design_FloatingActionButton;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_Design_NavigationView = global::Inkton.Nester.Droid.Resource.Style.Widget_Design_NavigationView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_Design_ScrimInsetsFrameLayout = global::Inkton.Nester.Droid.Resource.Style.Widget_Design_ScrimInsetsFrameLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_Design_Snackbar = global::Inkton.Nester.Droid.Resource.Style.Widget_Design_Snackbar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_Design_TabLayout = global::Inkton.Nester.Droid.Resource.Style.Widget_Design_TabLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_Design_TextInputLayout = global::Inkton.Nester.Droid.Resource.Style.Widget_Design_TextInputLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_MediaRouter_ChooserText = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ChooserText;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_MediaRouter_ChooserText_Primary = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ChooserText_Primary;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_MediaRouter_ChooserText_Primary_Dark = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ChooserText_Primary_Dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_MediaRouter_ChooserText_Primary_Light = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ChooserText_Primary_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_MediaRouter_ChooserText_Secondary = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ChooserText_Secondary;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_MediaRouter_ChooserText_Secondary_Dark = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ChooserText_Secondary_Dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_MediaRouter_ChooserText_Secondary_Light = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ChooserText_Secondary_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_MediaRouter_ControllerText = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ControllerText;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_MediaRouter_ControllerText_Primary = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Primary;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_MediaRouter_ControllerText_Primary_Dark = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Primary_Dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_MediaRouter_ControllerText_Primary_Light = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Primary_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_MediaRouter_ControllerText_Secondary = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Secondary;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_MediaRouter_ControllerText_Secondary_Dark = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Secondary_Dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_MediaRouter_ControllerText_Secondary_Light = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Secondary_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_MediaRouter_ControllerText_Title = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_MediaRouter_ControllerText_Title_Dark = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Title_Dark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_MediaRouter_ControllerText_Title_Light = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Title_Light;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Style.Widget_MediaRouter_MediaRouteButton = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_MediaRouteButton;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_background = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_background;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_backgroundSplit = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_backgroundSplit;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_backgroundStacked = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_backgroundStacked;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_contentInsetEnd = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_contentInsetEnd;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_contentInsetLeft = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_contentInsetLeft;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_contentInsetRight = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_contentInsetRight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_contentInsetStart = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_contentInsetStart;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_customNavigationLayout = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_customNavigationLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_displayOptions = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_displayOptions;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_divider = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_divider;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_elevation = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_elevation;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_height = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_height;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_hideOnContentScroll = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_hideOnContentScroll;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_homeAsUpIndicator = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_homeAsUpIndicator;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_homeLayout = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_homeLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_icon = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_icon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_indeterminateProgressStyle = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_indeterminateProgressStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_itemPadding = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_itemPadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_logo = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_logo;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_navigationMode = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_navigationMode;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_popupTheme = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_popupTheme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_progressBarPadding = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_progressBarPadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_progressBarStyle = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_progressBarStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_subtitle = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_subtitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_subtitleTextStyle = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_subtitleTextStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_title = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBar_titleTextStyle = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_titleTextStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBarLayout = global::Inkton.Nester.Droid.Resource.Styleable.ActionBarLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::Inkton.Nester.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionMenuItemView = global::Inkton.Nester.Droid.Resource.Styleable.ActionMenuItemView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionMenuItemView_android_minWidth = global::Inkton.Nester.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionMenuView = global::Inkton.Nester.Droid.Resource.Styleable.ActionMenuView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionMode = global::Inkton.Nester.Droid.Resource.Styleable.ActionMode;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionMode_background = global::Inkton.Nester.Droid.Resource.Styleable.ActionMode_background;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionMode_backgroundSplit = global::Inkton.Nester.Droid.Resource.Styleable.ActionMode_backgroundSplit;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionMode_closeItemLayout = global::Inkton.Nester.Droid.Resource.Styleable.ActionMode_closeItemLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionMode_height = global::Inkton.Nester.Droid.Resource.Styleable.ActionMode_height;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionMode_subtitleTextStyle = global::Inkton.Nester.Droid.Resource.Styleable.ActionMode_subtitleTextStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActionMode_titleTextStyle = global::Inkton.Nester.Droid.Resource.Styleable.ActionMode_titleTextStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActivityChooserView = global::Inkton.Nester.Droid.Resource.Styleable.ActivityChooserView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable = global::Inkton.Nester.Droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ActivityChooserView_initialActivityCount = global::Inkton.Nester.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AlertDialog = global::Inkton.Nester.Droid.Resource.Styleable.AlertDialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AlertDialog_android_layout = global::Inkton.Nester.Droid.Resource.Styleable.AlertDialog_android_layout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AlertDialog_buttonPanelSideLayout = global::Inkton.Nester.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AlertDialog_listItemLayout = global::Inkton.Nester.Droid.Resource.Styleable.AlertDialog_listItemLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AlertDialog_listLayout = global::Inkton.Nester.Droid.Resource.Styleable.AlertDialog_listLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AlertDialog_multiChoiceItemLayout = global::Inkton.Nester.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::Inkton.Nester.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppBarLayout = global::Inkton.Nester.Droid.Resource.Styleable.AppBarLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppBarLayout_android_background = global::Inkton.Nester.Droid.Resource.Styleable.AppBarLayout_android_background;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppBarLayout_elevation = global::Inkton.Nester.Droid.Resource.Styleable.AppBarLayout_elevation;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppBarLayout_expanded = global::Inkton.Nester.Droid.Resource.Styleable.AppBarLayout_expanded;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppBarLayout_LayoutParams = global::Inkton.Nester.Droid.Resource.Styleable.AppBarLayout_LayoutParams;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollFlags = global::Inkton.Nester.Droid.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollFlags;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollInterpolator = global::Inkton.Nester.Droid.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollInterpolator;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatImageView = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatImageView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatImageView_android_src = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatImageView_android_src;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatImageView_srcCompat = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatImageView_srcCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTextView = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTextView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTextView_android_textAppearance = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTextView_textAllCaps = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTextView_textAllCaps;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionBarDivider = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionBarItemBackground = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarItemBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionBarPopupTheme = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarPopupTheme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionBarSize = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarSize;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionBarSplitStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarSplitStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionBarStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionBarTabStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarTabStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionBarTheme = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarTheme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionDropDownStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionDropDownStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionMenuTextColor = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionModeBackground = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionModeCutDrawable = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeCutDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionModeFindDrawable = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeFindDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionModePasteDrawable = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModePasteDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionModeShareDrawable = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeShareDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionModeSplitBackground = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeSplitBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionModeStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_activityChooserViewStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_activityChooserViewStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_alertDialogStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_alertDialogStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_alertDialogTheme = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_alertDialogTheme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_android_windowIsFloating = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_android_windowIsFloating;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_borderlessButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_borderlessButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_buttonBarStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_buttonBarStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_buttonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_buttonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_buttonStyleSmall = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_buttonStyleSmall;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_checkboxStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_checkboxStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_checkedTextViewStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_checkedTextViewStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_colorAccent = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_colorAccent;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_colorButtonNormal = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_colorButtonNormal;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_colorControlActivated = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_colorControlActivated;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_colorControlHighlight = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_colorControlHighlight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_colorControlNormal = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_colorControlNormal;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_colorPrimary = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_colorPrimary;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_colorPrimaryDark = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_colorPrimaryDark;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_controlBackground = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_controlBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_dialogPreferredPadding = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_dialogPreferredPadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_dialogTheme = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_dialogTheme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_dividerHorizontal = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_dividerHorizontal;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_dividerVertical = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_dividerVertical;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_dropDownListViewStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_editTextBackground = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_editTextBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_editTextColor = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_editTextColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_editTextStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_editTextStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_homeAsUpIndicator = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_homeAsUpIndicator;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_imageButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_imageButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_listDividerAlertDialog = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_listDividerAlertDialog;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_listPopupWindowStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_listPopupWindowStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_listPreferredItemHeight = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_panelBackground = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_panelBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_panelMenuListTheme = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_panelMenuListTheme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_panelMenuListWidth = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_panelMenuListWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_popupMenuStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_popupMenuStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_popupWindowStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_popupWindowStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_radioButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_radioButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_ratingBarStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_searchViewStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_searchViewStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_seekBarStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_seekBarStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_selectableItemBackground = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_spinnerStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_spinnerStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_switchStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_switchStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_textAppearanceListItem = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItem;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_textColorSearchUrl = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_textColorSearchUrl;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_toolbarStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_toolbarStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_windowActionBar = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_windowActionBar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_windowActionBarOverlay = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_windowActionBarOverlay;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_windowActionModeOverlay = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_windowActionModeOverlay;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_windowMinWidthMajor = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMajor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_windowMinWidthMinor = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMinor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.AppCompatTheme_windowNoTitle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_windowNoTitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.BottomSheetBehavior_Params = global::Inkton.Nester.Droid.Resource.Styleable.BottomSheetBehavior_Params;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.BottomSheetBehavior_Params_behavior_hideable = global::Inkton.Nester.Droid.Resource.Styleable.BottomSheetBehavior_Params_behavior_hideable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.BottomSheetBehavior_Params_behavior_peekHeight = global::Inkton.Nester.Droid.Resource.Styleable.BottomSheetBehavior_Params_behavior_peekHeight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ButtonBarLayout = global::Inkton.Nester.Droid.Resource.Styleable.ButtonBarLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ButtonBarLayout_allowStacking = global::Inkton.Nester.Droid.Resource.Styleable.ButtonBarLayout_allowStacking;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CardView = global::Inkton.Nester.Droid.Resource.Styleable.CardView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CardView_android_minHeight = global::Inkton.Nester.Droid.Resource.Styleable.CardView_android_minHeight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CardView_android_minWidth = global::Inkton.Nester.Droid.Resource.Styleable.CardView_android_minWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CardView_cardBackgroundColor = global::Inkton.Nester.Droid.Resource.Styleable.CardView_cardBackgroundColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CardView_cardCornerRadius = global::Inkton.Nester.Droid.Resource.Styleable.CardView_cardCornerRadius;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CardView_cardElevation = global::Inkton.Nester.Droid.Resource.Styleable.CardView_cardElevation;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CardView_cardMaxElevation = global::Inkton.Nester.Droid.Resource.Styleable.CardView_cardMaxElevation;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CardView_cardPreventCornerOverlap = global::Inkton.Nester.Droid.Resource.Styleable.CardView_cardPreventCornerOverlap;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CardView_cardUseCompatPadding = global::Inkton.Nester.Droid.Resource.Styleable.CardView_cardUseCompatPadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CardView_contentPadding = global::Inkton.Nester.Droid.Resource.Styleable.CardView_contentPadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CardView_contentPaddingBottom = global::Inkton.Nester.Droid.Resource.Styleable.CardView_contentPaddingBottom;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CardView_contentPaddingLeft = global::Inkton.Nester.Droid.Resource.Styleable.CardView_contentPaddingLeft;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CardView_contentPaddingRight = global::Inkton.Nester.Droid.Resource.Styleable.CardView_contentPaddingRight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CardView_contentPaddingTop = global::Inkton.Nester.Droid.Resource.Styleable.CardView_contentPaddingTop;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CollapsingAppBarLayout_LayoutParams = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingAppBarLayout_LayoutParams;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseMode = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseMode;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseParallaxMultiplier = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseParallaxMultiplier;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CollapsingToolbarLayout = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CollapsingToolbarLayout_contentScrim = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_contentScrim;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CollapsingToolbarLayout_title = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CollapsingToolbarLayout_titleEnabled = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CollapsingToolbarLayout_toolbarId = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CompoundButton = global::Inkton.Nester.Droid.Resource.Styleable.CompoundButton;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CompoundButton_android_button = global::Inkton.Nester.Droid.Resource.Styleable.CompoundButton_android_button;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CompoundButton_buttonTint = global::Inkton.Nester.Droid.Resource.Styleable.CompoundButton_buttonTint;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CompoundButton_buttonTintMode = global::Inkton.Nester.Droid.Resource.Styleable.CompoundButton_buttonTintMode;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CoordinatorLayout = global::Inkton.Nester.Droid.Resource.Styleable.CoordinatorLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CoordinatorLayout_keylines = global::Inkton.Nester.Droid.Resource.Styleable.CoordinatorLayout_keylines;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::Inkton.Nester.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CoordinatorLayout_LayoutParams = global::Inkton.Nester.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CoordinatorLayout_LayoutParams_android_layout_gravity = global::Inkton.Nester.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_android_layout_gravity;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchor = global::Inkton.Nester.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchorGravity = global::Inkton.Nester.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchorGravity;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_behavior = global::Inkton.Nester.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_behavior;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_keyline = global::Inkton.Nester.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_keyline;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.DesignTheme = global::Inkton.Nester.Droid.Resource.Styleable.DesignTheme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.DesignTheme_bottomSheetDialogTheme = global::Inkton.Nester.Droid.Resource.Styleable.DesignTheme_bottomSheetDialogTheme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.DesignTheme_bottomSheetStyle = global::Inkton.Nester.Droid.Resource.Styleable.DesignTheme_bottomSheetStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.DesignTheme_textColorError = global::Inkton.Nester.Droid.Resource.Styleable.DesignTheme_textColorError;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.DrawerArrowToggle = global::Inkton.Nester.Droid.Resource.Styleable.DrawerArrowToggle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.DrawerArrowToggle_arrowHeadLength = global::Inkton.Nester.Droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.DrawerArrowToggle_arrowShaftLength = global::Inkton.Nester.Droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.DrawerArrowToggle_barLength = global::Inkton.Nester.Droid.Resource.Styleable.DrawerArrowToggle_barLength;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.DrawerArrowToggle_color = global::Inkton.Nester.Droid.Resource.Styleable.DrawerArrowToggle_color;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.DrawerArrowToggle_drawableSize = global::Inkton.Nester.Droid.Resource.Styleable.DrawerArrowToggle_drawableSize;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.DrawerArrowToggle_gapBetweenBars = global::Inkton.Nester.Droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.DrawerArrowToggle_spinBars = global::Inkton.Nester.Droid.Resource.Styleable.DrawerArrowToggle_spinBars;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.DrawerArrowToggle_thickness = global::Inkton.Nester.Droid.Resource.Styleable.DrawerArrowToggle_thickness;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.FloatingActionButton = global::Inkton.Nester.Droid.Resource.Styleable.FloatingActionButton;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.FloatingActionButton_backgroundTint = global::Inkton.Nester.Droid.Resource.Styleable.FloatingActionButton_backgroundTint;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.FloatingActionButton_backgroundTintMode = global::Inkton.Nester.Droid.Resource.Styleable.FloatingActionButton_backgroundTintMode;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.FloatingActionButton_borderWidth = global::Inkton.Nester.Droid.Resource.Styleable.FloatingActionButton_borderWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.FloatingActionButton_elevation = global::Inkton.Nester.Droid.Resource.Styleable.FloatingActionButton_elevation;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.FloatingActionButton_fabSize = global::Inkton.Nester.Droid.Resource.Styleable.FloatingActionButton_fabSize;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.FloatingActionButton_pressedTranslationZ = global::Inkton.Nester.Droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.FloatingActionButton_rippleColor = global::Inkton.Nester.Droid.Resource.Styleable.FloatingActionButton_rippleColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.FloatingActionButton_useCompatPadding = global::Inkton.Nester.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ForegroundLinearLayout = global::Inkton.Nester.Droid.Resource.Styleable.ForegroundLinearLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ForegroundLinearLayout_android_foreground = global::Inkton.Nester.Droid.Resource.Styleable.ForegroundLinearLayout_android_foreground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity = global::Inkton.Nester.Droid.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding = global::Inkton.Nester.Droid.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.LinearLayoutCompat = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.LinearLayoutCompat_android_gravity = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_android_gravity;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.LinearLayoutCompat_android_orientation = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_android_orientation;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.LinearLayoutCompat_divider = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_divider;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.LinearLayoutCompat_showDividers = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_showDividers;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.LinearLayoutCompat_Layout = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_Layout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ListPopupWindow = global::Inkton.Nester.Droid.Resource.Styleable.ListPopupWindow;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::Inkton.Nester.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::Inkton.Nester.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MediaRouteButton = global::Inkton.Nester.Droid.Resource.Styleable.MediaRouteButton;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MediaRouteButton_android_minHeight = global::Inkton.Nester.Droid.Resource.Styleable.MediaRouteButton_android_minHeight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MediaRouteButton_android_minWidth = global::Inkton.Nester.Droid.Resource.Styleable.MediaRouteButton_android_minWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable = global::Inkton.Nester.Droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuGroup = global::Inkton.Nester.Droid.Resource.Styleable.MenuGroup;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuGroup_android_checkableBehavior = global::Inkton.Nester.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuGroup_android_enabled = global::Inkton.Nester.Droid.Resource.Styleable.MenuGroup_android_enabled;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuGroup_android_id = global::Inkton.Nester.Droid.Resource.Styleable.MenuGroup_android_id;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuGroup_android_menuCategory = global::Inkton.Nester.Droid.Resource.Styleable.MenuGroup_android_menuCategory;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuGroup_android_orderInCategory = global::Inkton.Nester.Droid.Resource.Styleable.MenuGroup_android_orderInCategory;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuGroup_android_visible = global::Inkton.Nester.Droid.Resource.Styleable.MenuGroup_android_visible;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuItem = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuItem_actionLayout = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_actionLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuItem_actionProviderClass = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_actionProviderClass;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuItem_actionViewClass = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_actionViewClass;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuItem_android_checkable = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_checkable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuItem_android_checked = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_checked;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuItem_android_enabled = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_enabled;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuItem_android_icon = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_icon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuItem_android_id = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_id;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuItem_android_menuCategory = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_menuCategory;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuItem_android_numericShortcut = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_numericShortcut;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuItem_android_onClick = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_onClick;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuItem_android_orderInCategory = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_orderInCategory;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuItem_android_title = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuItem_android_titleCondensed = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_titleCondensed;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuItem_android_visible = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_visible;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuItem_showAsAction = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_showAsAction;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuView = global::Inkton.Nester.Droid.Resource.Styleable.MenuView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuView_android_headerBackground = global::Inkton.Nester.Droid.Resource.Styleable.MenuView_android_headerBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuView_android_horizontalDivider = global::Inkton.Nester.Droid.Resource.Styleable.MenuView_android_horizontalDivider;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuView_android_itemBackground = global::Inkton.Nester.Droid.Resource.Styleable.MenuView_android_itemBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuView_android_itemIconDisabledAlpha = global::Inkton.Nester.Droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuView_android_itemTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.MenuView_android_itemTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuView_android_verticalDivider = global::Inkton.Nester.Droid.Resource.Styleable.MenuView_android_verticalDivider;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuView_android_windowAnimationStyle = global::Inkton.Nester.Droid.Resource.Styleable.MenuView_android_windowAnimationStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.MenuView_preserveIconSpacing = global::Inkton.Nester.Droid.Resource.Styleable.MenuView_preserveIconSpacing;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.NavigationView = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.NavigationView_android_background = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView_android_background;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.NavigationView_android_fitsSystemWindows = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView_android_fitsSystemWindows;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.NavigationView_android_maxWidth = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView_android_maxWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.NavigationView_elevation = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView_elevation;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.NavigationView_headerLayout = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView_headerLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.NavigationView_itemBackground = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView_itemBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.NavigationView_itemIconTint = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView_itemIconTint;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.NavigationView_itemTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView_itemTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.NavigationView_itemTextColor = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView_itemTextColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.NavigationView_menu = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView_menu;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.PopupWindow = global::Inkton.Nester.Droid.Resource.Styleable.PopupWindow;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.PopupWindow_android_popupBackground = global::Inkton.Nester.Droid.Resource.Styleable.PopupWindow_android_popupBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.PopupWindow_overlapAnchor = global::Inkton.Nester.Droid.Resource.Styleable.PopupWindow_overlapAnchor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.PopupWindowBackgroundState = global::Inkton.Nester.Droid.Resource.Styleable.PopupWindowBackgroundState;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::Inkton.Nester.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.RecyclerView = global::Inkton.Nester.Droid.Resource.Styleable.RecyclerView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.RecyclerView_android_orientation = global::Inkton.Nester.Droid.Resource.Styleable.RecyclerView_android_orientation;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.RecyclerView_layoutManager = global::Inkton.Nester.Droid.Resource.Styleable.RecyclerView_layoutManager;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.RecyclerView_reverseLayout = global::Inkton.Nester.Droid.Resource.Styleable.RecyclerView_reverseLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.RecyclerView_spanCount = global::Inkton.Nester.Droid.Resource.Styleable.RecyclerView_spanCount;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.RecyclerView_stackFromEnd = global::Inkton.Nester.Droid.Resource.Styleable.RecyclerView_stackFromEnd;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ScrimInsetsFrameLayout = global::Inkton.Nester.Droid.Resource.Styleable.ScrimInsetsFrameLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground = global::Inkton.Nester.Droid.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ScrollingViewBehavior_Params = global::Inkton.Nester.Droid.Resource.Styleable.ScrollingViewBehavior_Params;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ScrollingViewBehavior_Params_behavior_overlapTop = global::Inkton.Nester.Droid.Resource.Styleable.ScrollingViewBehavior_Params_behavior_overlapTop;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SearchView = global::Inkton.Nester.Droid.Resource.Styleable.SearchView;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SearchView_android_focusable = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_android_focusable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SearchView_android_imeOptions = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_android_imeOptions;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SearchView_android_inputType = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_android_inputType;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SearchView_android_maxWidth = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_android_maxWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SearchView_closeIcon = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_closeIcon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SearchView_commitIcon = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_commitIcon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SearchView_defaultQueryHint = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_defaultQueryHint;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SearchView_goIcon = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_goIcon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SearchView_iconifiedByDefault = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_iconifiedByDefault;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SearchView_layout = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_layout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SearchView_queryBackground = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_queryBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SearchView_queryHint = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_queryHint;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SearchView_searchHintIcon = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_searchHintIcon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SearchView_searchIcon = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_searchIcon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SearchView_submitBackground = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_submitBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SearchView_suggestionRowLayout = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_suggestionRowLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SearchView_voiceIcon = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_voiceIcon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SnackbarLayout = global::Inkton.Nester.Droid.Resource.Styleable.SnackbarLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SnackbarLayout_android_maxWidth = global::Inkton.Nester.Droid.Resource.Styleable.SnackbarLayout_android_maxWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SnackbarLayout_elevation = global::Inkton.Nester.Droid.Resource.Styleable.SnackbarLayout_elevation;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SnackbarLayout_maxActionInlineWidth = global::Inkton.Nester.Droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Spinner = global::Inkton.Nester.Droid.Resource.Styleable.Spinner;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Spinner_android_dropDownWidth = global::Inkton.Nester.Droid.Resource.Styleable.Spinner_android_dropDownWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Spinner_android_entries = global::Inkton.Nester.Droid.Resource.Styleable.Spinner_android_entries;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Spinner_android_popupBackground = global::Inkton.Nester.Droid.Resource.Styleable.Spinner_android_popupBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Spinner_android_prompt = global::Inkton.Nester.Droid.Resource.Styleable.Spinner_android_prompt;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Spinner_popupTheme = global::Inkton.Nester.Droid.Resource.Styleable.Spinner_popupTheme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SwitchCompat = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SwitchCompat_android_textOff = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat_android_textOff;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SwitchCompat_android_textOn = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat_android_textOn;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SwitchCompat_android_thumb = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat_android_thumb;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SwitchCompat_showText = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat_showText;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SwitchCompat_splitTrack = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat_splitTrack;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SwitchCompat_switchMinWidth = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat_switchMinWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SwitchCompat_switchPadding = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat_switchPadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SwitchCompat_switchTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat_switchTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SwitchCompat_thumbTextPadding = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat_thumbTextPadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.SwitchCompat_track = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat_track;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TabItem = global::Inkton.Nester.Droid.Resource.Styleable.TabItem;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TabItem_android_icon = global::Inkton.Nester.Droid.Resource.Styleable.TabItem_android_icon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TabItem_android_layout = global::Inkton.Nester.Droid.Resource.Styleable.TabItem_android_layout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TabItem_android_text = global::Inkton.Nester.Droid.Resource.Styleable.TabItem_android_text;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TabLayout = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TabLayout_tabBackground = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabBackground;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TabLayout_tabContentStart = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabContentStart;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TabLayout_tabGravity = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabGravity;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TabLayout_tabIndicatorColor = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabIndicatorColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TabLayout_tabIndicatorHeight = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabIndicatorHeight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TabLayout_tabMaxWidth = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabMaxWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TabLayout_tabMinWidth = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabMinWidth;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TabLayout_tabMode = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabMode;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TabLayout_tabPadding = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabPadding;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TabLayout_tabPaddingBottom = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabPaddingBottom;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TabLayout_tabPaddingEnd = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabPaddingEnd;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TabLayout_tabPaddingStart = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabPaddingStart;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TabLayout_tabPaddingTop = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabPaddingTop;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TabLayout_tabSelectedTextColor = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabSelectedTextColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TabLayout_tabTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TabLayout_tabTextColor = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabTextColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.TextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextAppearance_android_shadowColor = global::Inkton.Nester.Droid.Resource.Styleable.TextAppearance_android_shadowColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextAppearance_android_shadowDx = global::Inkton.Nester.Droid.Resource.Styleable.TextAppearance_android_shadowDx;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextAppearance_android_shadowDy = global::Inkton.Nester.Droid.Resource.Styleable.TextAppearance_android_shadowDy;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextAppearance_android_shadowRadius = global::Inkton.Nester.Droid.Resource.Styleable.TextAppearance_android_shadowRadius;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextAppearance_android_textColor = global::Inkton.Nester.Droid.Resource.Styleable.TextAppearance_android_textColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextAppearance_android_textSize = global::Inkton.Nester.Droid.Resource.Styleable.TextAppearance_android_textSize;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextAppearance_android_textStyle = global::Inkton.Nester.Droid.Resource.Styleable.TextAppearance_android_textStyle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextAppearance_android_typeface = global::Inkton.Nester.Droid.Resource.Styleable.TextAppearance_android_typeface;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextAppearance_textAllCaps = global::Inkton.Nester.Droid.Resource.Styleable.TextAppearance_textAllCaps;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextInputLayout = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextInputLayout_android_hint = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_android_hint;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextInputLayout_android_textColorHint = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_android_textColorHint;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextInputLayout_counterEnabled = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_counterEnabled;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextInputLayout_counterMaxLength = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_counterMaxLength;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextInputLayout_counterTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_counterTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextInputLayout_errorEnabled = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_errorEnabled;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextInputLayout_errorTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_errorTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextInputLayout_hintAnimationEnabled = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_hintAnimationEnabled;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextInputLayout_hintEnabled = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_hintEnabled;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.TextInputLayout_hintTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_hintTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_android_gravity = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_android_gravity;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_android_minHeight = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_android_minHeight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_collapseContentDescription = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_collapseContentDescription;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_collapseIcon = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_collapseIcon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_contentInsetEnd = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_contentInsetEnd;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_contentInsetLeft = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_contentInsetLeft;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_contentInsetRight = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_contentInsetRight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_contentInsetStart = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_contentInsetStart;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_logo = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_logo;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_logoDescription = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_logoDescription;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_maxButtonHeight = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_maxButtonHeight;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_navigationContentDescription = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_navigationContentDescription;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_navigationIcon = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_navigationIcon;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_popupTheme = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_popupTheme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_subtitle = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_subtitle;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_subtitleTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_subtitleTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_subtitleTextColor = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_subtitleTextColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_title = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_title;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_titleMarginBottom = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_titleMarginBottom;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_titleMarginEnd = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_titleMarginEnd;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_titleMarginStart = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_titleMarginStart;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_titleMarginTop = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_titleMarginTop;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_titleMargins = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_titleMargins;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_titleTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_titleTextAppearance;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.Toolbar_titleTextColor = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_titleTextColor;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.View = global::Inkton.Nester.Droid.Resource.Styleable.View;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.View_android_focusable = global::Inkton.Nester.Droid.Resource.Styleable.View_android_focusable;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.View_android_theme = global::Inkton.Nester.Droid.Resource.Styleable.View_android_theme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.View_paddingEnd = global::Inkton.Nester.Droid.Resource.Styleable.View_paddingEnd;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.View_paddingStart = global::Inkton.Nester.Droid.Resource.Styleable.View_paddingStart;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.View_theme = global::Inkton.Nester.Droid.Resource.Styleable.View_theme;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ViewBackgroundHelper = global::Inkton.Nester.Droid.Resource.Styleable.ViewBackgroundHelper;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ViewBackgroundHelper_android_background = global::Inkton.Nester.Droid.Resource.Styleable.ViewBackgroundHelper_android_background;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::Inkton.Nester.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode = global::Inkton.Nester.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ViewStubCompat = global::Inkton.Nester.Droid.Resource.Styleable.ViewStubCompat;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ViewStubCompat_android_id = global::Inkton.Nester.Droid.Resource.Styleable.ViewStubCompat_android_id;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ViewStubCompat_android_inflatedId = global::Inkton.Nester.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
-			global::PCLAppConfig.FileSystemStream.Android.Resource.Styleable.ViewStubCompat_android_layout = global::Inkton.Nester.Droid.Resource.Styleable.ViewStubCompat_android_layout;
-			global::PCLStorage.Resource.String.ApplicationName = global::Inkton.Nester.Droid.Resource.String.ApplicationName;
-			global::PCLStorage.Resource.String.Hello = global::Inkton.Nester.Droid.Resource.String.Hello;
-			global::Syncfusion.ListView.XForms.Android.Resource.Animation.abc_fade_in = global::Inkton.Nester.Droid.Resource.Animation.abc_fade_in;
-			global::Syncfusion.ListView.XForms.Android.Resource.Animation.abc_fade_out = global::Inkton.Nester.Droid.Resource.Animation.abc_fade_out;
-			global::Syncfusion.ListView.XForms.Android.Resource.Animation.abc_grow_fade_in_from_bottom = global::Inkton.Nester.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
-			global::Syncfusion.ListView.XForms.Android.Resource.Animation.abc_popup_enter = global::Inkton.Nester.Droid.Resource.Animation.abc_popup_enter;
-			global::Syncfusion.ListView.XForms.Android.Resource.Animation.abc_popup_exit = global::Inkton.Nester.Droid.Resource.Animation.abc_popup_exit;
-			global::Syncfusion.ListView.XForms.Android.Resource.Animation.abc_shrink_fade_out_from_bottom = global::Inkton.Nester.Droid.Resource.Animation.abc_shrink_fade_out_from_bottom;
-			global::Syncfusion.ListView.XForms.Android.Resource.Animation.abc_slide_in_bottom = global::Inkton.Nester.Droid.Resource.Animation.abc_slide_in_bottom;
-			global::Syncfusion.ListView.XForms.Android.Resource.Animation.abc_slide_in_top = global::Inkton.Nester.Droid.Resource.Animation.abc_slide_in_top;
-			global::Syncfusion.ListView.XForms.Android.Resource.Animation.abc_slide_out_bottom = global::Inkton.Nester.Droid.Resource.Animation.abc_slide_out_bottom;
-			global::Syncfusion.ListView.XForms.Android.Resource.Animation.abc_slide_out_top = global::Inkton.Nester.Droid.Resource.Animation.abc_slide_out_top;
-			global::Syncfusion.ListView.XForms.Android.Resource.Animation.design_bottom_sheet_slide_in = global::Inkton.Nester.Droid.Resource.Animation.design_bottom_sheet_slide_in;
-			global::Syncfusion.ListView.XForms.Android.Resource.Animation.design_bottom_sheet_slide_out = global::Inkton.Nester.Droid.Resource.Animation.design_bottom_sheet_slide_out;
-			global::Syncfusion.ListView.XForms.Android.Resource.Animation.design_fab_in = global::Inkton.Nester.Droid.Resource.Animation.design_fab_in;
-			global::Syncfusion.ListView.XForms.Android.Resource.Animation.design_fab_out = global::Inkton.Nester.Droid.Resource.Animation.design_fab_out;
-			global::Syncfusion.ListView.XForms.Android.Resource.Animation.design_snackbar_in = global::Inkton.Nester.Droid.Resource.Animation.design_snackbar_in;
-			global::Syncfusion.ListView.XForms.Android.Resource.Animation.design_snackbar_out = global::Inkton.Nester.Droid.Resource.Animation.design_snackbar_out;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.MediaRouteControllerWindowBackground = global::Inkton.Nester.Droid.Resource.Attribute.MediaRouteControllerWindowBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionBarDivider = global::Inkton.Nester.Droid.Resource.Attribute.actionBarDivider;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionBarItemBackground = global::Inkton.Nester.Droid.Resource.Attribute.actionBarItemBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionBarPopupTheme = global::Inkton.Nester.Droid.Resource.Attribute.actionBarPopupTheme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionBarSize = global::Inkton.Nester.Droid.Resource.Attribute.actionBarSize;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionBarSplitStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionBarSplitStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionBarStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionBarStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionBarTabBarStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionBarTabBarStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionBarTabStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionBarTabStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionBarTabTextStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionBarTabTextStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionBarTheme = global::Inkton.Nester.Droid.Resource.Attribute.actionBarTheme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionBarWidgetTheme = global::Inkton.Nester.Droid.Resource.Attribute.actionBarWidgetTheme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionDropDownStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionDropDownStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionLayout = global::Inkton.Nester.Droid.Resource.Attribute.actionLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionMenuTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.actionMenuTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionMenuTextColor = global::Inkton.Nester.Droid.Resource.Attribute.actionMenuTextColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionModeBackground = global::Inkton.Nester.Droid.Resource.Attribute.actionModeBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionModeCloseButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionModeCloseButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionModeCloseDrawable = global::Inkton.Nester.Droid.Resource.Attribute.actionModeCloseDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionModeCopyDrawable = global::Inkton.Nester.Droid.Resource.Attribute.actionModeCopyDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionModeCutDrawable = global::Inkton.Nester.Droid.Resource.Attribute.actionModeCutDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionModeFindDrawable = global::Inkton.Nester.Droid.Resource.Attribute.actionModeFindDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionModePasteDrawable = global::Inkton.Nester.Droid.Resource.Attribute.actionModePasteDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionModePopupWindowStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionModePopupWindowStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionModeSelectAllDrawable = global::Inkton.Nester.Droid.Resource.Attribute.actionModeSelectAllDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionModeShareDrawable = global::Inkton.Nester.Droid.Resource.Attribute.actionModeShareDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionModeSplitBackground = global::Inkton.Nester.Droid.Resource.Attribute.actionModeSplitBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionModeStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionModeStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionModeWebSearchDrawable = global::Inkton.Nester.Droid.Resource.Attribute.actionModeWebSearchDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionOverflowButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionOverflowButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionOverflowMenuStyle = global::Inkton.Nester.Droid.Resource.Attribute.actionOverflowMenuStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionProviderClass = global::Inkton.Nester.Droid.Resource.Attribute.actionProviderClass;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.actionViewClass = global::Inkton.Nester.Droid.Resource.Attribute.actionViewClass;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.activityChooserViewStyle = global::Inkton.Nester.Droid.Resource.Attribute.activityChooserViewStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.alertDialogButtonGroupStyle = global::Inkton.Nester.Droid.Resource.Attribute.alertDialogButtonGroupStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.alertDialogCenterButtons = global::Inkton.Nester.Droid.Resource.Attribute.alertDialogCenterButtons;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.alertDialogStyle = global::Inkton.Nester.Droid.Resource.Attribute.alertDialogStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.alertDialogTheme = global::Inkton.Nester.Droid.Resource.Attribute.alertDialogTheme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.allowStacking = global::Inkton.Nester.Droid.Resource.Attribute.allowStacking;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.arrowHeadLength = global::Inkton.Nester.Droid.Resource.Attribute.arrowHeadLength;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.arrowShaftLength = global::Inkton.Nester.Droid.Resource.Attribute.arrowShaftLength;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.autoCompleteTextViewStyle = global::Inkton.Nester.Droid.Resource.Attribute.autoCompleteTextViewStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.background = global::Inkton.Nester.Droid.Resource.Attribute.background;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.backgroundSplit = global::Inkton.Nester.Droid.Resource.Attribute.backgroundSplit;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.backgroundStacked = global::Inkton.Nester.Droid.Resource.Attribute.backgroundStacked;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.backgroundTint = global::Inkton.Nester.Droid.Resource.Attribute.backgroundTint;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.backgroundTintMode = global::Inkton.Nester.Droid.Resource.Attribute.backgroundTintMode;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.barLength = global::Inkton.Nester.Droid.Resource.Attribute.barLength;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.behavior_hideable = global::Inkton.Nester.Droid.Resource.Attribute.behavior_hideable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.behavior_overlapTop = global::Inkton.Nester.Droid.Resource.Attribute.behavior_overlapTop;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.behavior_peekHeight = global::Inkton.Nester.Droid.Resource.Attribute.behavior_peekHeight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.borderWidth = global::Inkton.Nester.Droid.Resource.Attribute.borderWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.borderlessButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.borderlessButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.bottomSheetDialogTheme = global::Inkton.Nester.Droid.Resource.Attribute.bottomSheetDialogTheme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.bottomSheetStyle = global::Inkton.Nester.Droid.Resource.Attribute.bottomSheetStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.buttonBarButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.buttonBarButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.buttonBarNegativeButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.buttonBarNegativeButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.buttonBarNeutralButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.buttonBarNeutralButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.buttonBarPositiveButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.buttonBarPositiveButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.buttonBarStyle = global::Inkton.Nester.Droid.Resource.Attribute.buttonBarStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.buttonPanelSideLayout = global::Inkton.Nester.Droid.Resource.Attribute.buttonPanelSideLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.buttonStyle = global::Inkton.Nester.Droid.Resource.Attribute.buttonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.buttonStyleSmall = global::Inkton.Nester.Droid.Resource.Attribute.buttonStyleSmall;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.buttonTint = global::Inkton.Nester.Droid.Resource.Attribute.buttonTint;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.buttonTintMode = global::Inkton.Nester.Droid.Resource.Attribute.buttonTintMode;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.cardBackgroundColor = global::Inkton.Nester.Droid.Resource.Attribute.cardBackgroundColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.cardCornerRadius = global::Inkton.Nester.Droid.Resource.Attribute.cardCornerRadius;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.cardElevation = global::Inkton.Nester.Droid.Resource.Attribute.cardElevation;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.cardMaxElevation = global::Inkton.Nester.Droid.Resource.Attribute.cardMaxElevation;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.cardPreventCornerOverlap = global::Inkton.Nester.Droid.Resource.Attribute.cardPreventCornerOverlap;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.cardUseCompatPadding = global::Inkton.Nester.Droid.Resource.Attribute.cardUseCompatPadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.checkboxStyle = global::Inkton.Nester.Droid.Resource.Attribute.checkboxStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.checkedTextViewStyle = global::Inkton.Nester.Droid.Resource.Attribute.checkedTextViewStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.closeIcon = global::Inkton.Nester.Droid.Resource.Attribute.closeIcon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.closeItemLayout = global::Inkton.Nester.Droid.Resource.Attribute.closeItemLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.collapseContentDescription = global::Inkton.Nester.Droid.Resource.Attribute.collapseContentDescription;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.collapseIcon = global::Inkton.Nester.Droid.Resource.Attribute.collapseIcon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.collapsedTitleGravity = global::Inkton.Nester.Droid.Resource.Attribute.collapsedTitleGravity;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.collapsedTitleTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.collapsedTitleTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.color = global::Inkton.Nester.Droid.Resource.Attribute.color;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.colorAccent = global::Inkton.Nester.Droid.Resource.Attribute.colorAccent;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.colorButtonNormal = global::Inkton.Nester.Droid.Resource.Attribute.colorButtonNormal;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.colorControlActivated = global::Inkton.Nester.Droid.Resource.Attribute.colorControlActivated;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.colorControlHighlight = global::Inkton.Nester.Droid.Resource.Attribute.colorControlHighlight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.colorControlNormal = global::Inkton.Nester.Droid.Resource.Attribute.colorControlNormal;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.colorPrimary = global::Inkton.Nester.Droid.Resource.Attribute.colorPrimary;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.colorPrimaryDark = global::Inkton.Nester.Droid.Resource.Attribute.colorPrimaryDark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.colorSwitchThumbNormal = global::Inkton.Nester.Droid.Resource.Attribute.colorSwitchThumbNormal;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.commitIcon = global::Inkton.Nester.Droid.Resource.Attribute.commitIcon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.contentInsetEnd = global::Inkton.Nester.Droid.Resource.Attribute.contentInsetEnd;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.contentInsetLeft = global::Inkton.Nester.Droid.Resource.Attribute.contentInsetLeft;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.contentInsetRight = global::Inkton.Nester.Droid.Resource.Attribute.contentInsetRight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.contentInsetStart = global::Inkton.Nester.Droid.Resource.Attribute.contentInsetStart;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.contentPadding = global::Inkton.Nester.Droid.Resource.Attribute.contentPadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.contentPaddingBottom = global::Inkton.Nester.Droid.Resource.Attribute.contentPaddingBottom;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.contentPaddingLeft = global::Inkton.Nester.Droid.Resource.Attribute.contentPaddingLeft;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.contentPaddingRight = global::Inkton.Nester.Droid.Resource.Attribute.contentPaddingRight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.contentPaddingTop = global::Inkton.Nester.Droid.Resource.Attribute.contentPaddingTop;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.contentScrim = global::Inkton.Nester.Droid.Resource.Attribute.contentScrim;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.controlBackground = global::Inkton.Nester.Droid.Resource.Attribute.controlBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.counterEnabled = global::Inkton.Nester.Droid.Resource.Attribute.counterEnabled;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.counterMaxLength = global::Inkton.Nester.Droid.Resource.Attribute.counterMaxLength;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.counterOverflowTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.counterOverflowTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.counterTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.counterTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.customNavigationLayout = global::Inkton.Nester.Droid.Resource.Attribute.customNavigationLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.defaultQueryHint = global::Inkton.Nester.Droid.Resource.Attribute.defaultQueryHint;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.dialogPreferredPadding = global::Inkton.Nester.Droid.Resource.Attribute.dialogPreferredPadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.dialogTheme = global::Inkton.Nester.Droid.Resource.Attribute.dialogTheme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.displayOptions = global::Inkton.Nester.Droid.Resource.Attribute.displayOptions;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.divider = global::Inkton.Nester.Droid.Resource.Attribute.divider;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.dividerHorizontal = global::Inkton.Nester.Droid.Resource.Attribute.dividerHorizontal;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.dividerPadding = global::Inkton.Nester.Droid.Resource.Attribute.dividerPadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.dividerVertical = global::Inkton.Nester.Droid.Resource.Attribute.dividerVertical;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.drawableSize = global::Inkton.Nester.Droid.Resource.Attribute.drawableSize;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.drawerArrowStyle = global::Inkton.Nester.Droid.Resource.Attribute.drawerArrowStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.dropDownListViewStyle = global::Inkton.Nester.Droid.Resource.Attribute.dropDownListViewStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.dropdownListPreferredItemHeight = global::Inkton.Nester.Droid.Resource.Attribute.dropdownListPreferredItemHeight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.editTextBackground = global::Inkton.Nester.Droid.Resource.Attribute.editTextBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.editTextColor = global::Inkton.Nester.Droid.Resource.Attribute.editTextColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.editTextStyle = global::Inkton.Nester.Droid.Resource.Attribute.editTextStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.elevation = global::Inkton.Nester.Droid.Resource.Attribute.elevation;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.errorEnabled = global::Inkton.Nester.Droid.Resource.Attribute.errorEnabled;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.errorTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.errorTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.expandActivityOverflowButtonDrawable = global::Inkton.Nester.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.expanded = global::Inkton.Nester.Droid.Resource.Attribute.expanded;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.expandedTitleGravity = global::Inkton.Nester.Droid.Resource.Attribute.expandedTitleGravity;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.expandedTitleMargin = global::Inkton.Nester.Droid.Resource.Attribute.expandedTitleMargin;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.expandedTitleMarginBottom = global::Inkton.Nester.Droid.Resource.Attribute.expandedTitleMarginBottom;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.expandedTitleMarginEnd = global::Inkton.Nester.Droid.Resource.Attribute.expandedTitleMarginEnd;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.expandedTitleMarginStart = global::Inkton.Nester.Droid.Resource.Attribute.expandedTitleMarginStart;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.expandedTitleMarginTop = global::Inkton.Nester.Droid.Resource.Attribute.expandedTitleMarginTop;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.expandedTitleTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.expandedTitleTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.externalRouteEnabledDrawable = global::Inkton.Nester.Droid.Resource.Attribute.externalRouteEnabledDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.fabSize = global::Inkton.Nester.Droid.Resource.Attribute.fabSize;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.foregroundInsidePadding = global::Inkton.Nester.Droid.Resource.Attribute.foregroundInsidePadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.gapBetweenBars = global::Inkton.Nester.Droid.Resource.Attribute.gapBetweenBars;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.goIcon = global::Inkton.Nester.Droid.Resource.Attribute.goIcon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.headerLayout = global::Inkton.Nester.Droid.Resource.Attribute.headerLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.height = global::Inkton.Nester.Droid.Resource.Attribute.height;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.hideOnContentScroll = global::Inkton.Nester.Droid.Resource.Attribute.hideOnContentScroll;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.hintAnimationEnabled = global::Inkton.Nester.Droid.Resource.Attribute.hintAnimationEnabled;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.hintEnabled = global::Inkton.Nester.Droid.Resource.Attribute.hintEnabled;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.hintTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.hintTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.homeAsUpIndicator = global::Inkton.Nester.Droid.Resource.Attribute.homeAsUpIndicator;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.homeLayout = global::Inkton.Nester.Droid.Resource.Attribute.homeLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.icon = global::Inkton.Nester.Droid.Resource.Attribute.icon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.iconifiedByDefault = global::Inkton.Nester.Droid.Resource.Attribute.iconifiedByDefault;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.imageButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.imageButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.indeterminateProgressStyle = global::Inkton.Nester.Droid.Resource.Attribute.indeterminateProgressStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.initialActivityCount = global::Inkton.Nester.Droid.Resource.Attribute.initialActivityCount;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.insetForeground = global::Inkton.Nester.Droid.Resource.Attribute.insetForeground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.isLightTheme = global::Inkton.Nester.Droid.Resource.Attribute.isLightTheme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.itemBackground = global::Inkton.Nester.Droid.Resource.Attribute.itemBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.itemIconTint = global::Inkton.Nester.Droid.Resource.Attribute.itemIconTint;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.itemPadding = global::Inkton.Nester.Droid.Resource.Attribute.itemPadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.itemTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.itemTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.itemTextColor = global::Inkton.Nester.Droid.Resource.Attribute.itemTextColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.keylines = global::Inkton.Nester.Droid.Resource.Attribute.keylines;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.layout = global::Inkton.Nester.Droid.Resource.Attribute.layout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.layoutManager = global::Inkton.Nester.Droid.Resource.Attribute.layoutManager;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.layout_anchor = global::Inkton.Nester.Droid.Resource.Attribute.layout_anchor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.layout_anchorGravity = global::Inkton.Nester.Droid.Resource.Attribute.layout_anchorGravity;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.layout_behavior = global::Inkton.Nester.Droid.Resource.Attribute.layout_behavior;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.layout_collapseMode = global::Inkton.Nester.Droid.Resource.Attribute.layout_collapseMode;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.layout_collapseParallaxMultiplier = global::Inkton.Nester.Droid.Resource.Attribute.layout_collapseParallaxMultiplier;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.layout_keyline = global::Inkton.Nester.Droid.Resource.Attribute.layout_keyline;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.layout_scrollFlags = global::Inkton.Nester.Droid.Resource.Attribute.layout_scrollFlags;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.layout_scrollInterpolator = global::Inkton.Nester.Droid.Resource.Attribute.layout_scrollInterpolator;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.listChoiceBackgroundIndicator = global::Inkton.Nester.Droid.Resource.Attribute.listChoiceBackgroundIndicator;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.listDividerAlertDialog = global::Inkton.Nester.Droid.Resource.Attribute.listDividerAlertDialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.listItemLayout = global::Inkton.Nester.Droid.Resource.Attribute.listItemLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.listLayout = global::Inkton.Nester.Droid.Resource.Attribute.listLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.listPopupWindowStyle = global::Inkton.Nester.Droid.Resource.Attribute.listPopupWindowStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.listPreferredItemHeight = global::Inkton.Nester.Droid.Resource.Attribute.listPreferredItemHeight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.listPreferredItemHeightLarge = global::Inkton.Nester.Droid.Resource.Attribute.listPreferredItemHeightLarge;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.listPreferredItemHeightSmall = global::Inkton.Nester.Droid.Resource.Attribute.listPreferredItemHeightSmall;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.listPreferredItemPaddingLeft = global::Inkton.Nester.Droid.Resource.Attribute.listPreferredItemPaddingLeft;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.listPreferredItemPaddingRight = global::Inkton.Nester.Droid.Resource.Attribute.listPreferredItemPaddingRight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.logo = global::Inkton.Nester.Droid.Resource.Attribute.logo;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.logoDescription = global::Inkton.Nester.Droid.Resource.Attribute.logoDescription;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.maxActionInlineWidth = global::Inkton.Nester.Droid.Resource.Attribute.maxActionInlineWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.maxButtonHeight = global::Inkton.Nester.Droid.Resource.Attribute.maxButtonHeight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.measureWithLargestChild = global::Inkton.Nester.Droid.Resource.Attribute.measureWithLargestChild;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.mediaRouteAudioTrackDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteAudioTrackDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.mediaRouteBluetoothIconDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteBluetoothIconDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.mediaRouteButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.mediaRouteCastDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteCastDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.mediaRouteChooserPrimaryTextStyle = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteChooserPrimaryTextStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.mediaRouteChooserSecondaryTextStyle = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteChooserSecondaryTextStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.mediaRouteCloseDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteCloseDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.mediaRouteCollapseGroupDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteCollapseGroupDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.mediaRouteConnectingDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteConnectingDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.mediaRouteControllerPrimaryTextStyle = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteControllerPrimaryTextStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.mediaRouteControllerSecondaryTextStyle = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteControllerSecondaryTextStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.mediaRouteControllerTitleTextStyle = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteControllerTitleTextStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.mediaRouteDefaultIconDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteDefaultIconDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.mediaRouteExpandGroupDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteExpandGroupDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.mediaRouteOffDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteOffDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.mediaRouteOnDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteOnDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.mediaRoutePauseDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRoutePauseDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.mediaRoutePlayDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRoutePlayDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.mediaRouteSpeakerGroupIconDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteSpeakerGroupIconDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.mediaRouteSpeakerIconDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteSpeakerIconDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.mediaRouteTvIconDrawable = global::Inkton.Nester.Droid.Resource.Attribute.mediaRouteTvIconDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.menu = global::Inkton.Nester.Droid.Resource.Attribute.menu;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.multiChoiceItemLayout = global::Inkton.Nester.Droid.Resource.Attribute.multiChoiceItemLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.navigationContentDescription = global::Inkton.Nester.Droid.Resource.Attribute.navigationContentDescription;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.navigationIcon = global::Inkton.Nester.Droid.Resource.Attribute.navigationIcon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.navigationMode = global::Inkton.Nester.Droid.Resource.Attribute.navigationMode;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.overlapAnchor = global::Inkton.Nester.Droid.Resource.Attribute.overlapAnchor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.paddingEnd = global::Inkton.Nester.Droid.Resource.Attribute.paddingEnd;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.paddingStart = global::Inkton.Nester.Droid.Resource.Attribute.paddingStart;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.panelBackground = global::Inkton.Nester.Droid.Resource.Attribute.panelBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.panelMenuListTheme = global::Inkton.Nester.Droid.Resource.Attribute.panelMenuListTheme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.panelMenuListWidth = global::Inkton.Nester.Droid.Resource.Attribute.panelMenuListWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.popupMenuStyle = global::Inkton.Nester.Droid.Resource.Attribute.popupMenuStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.popupTheme = global::Inkton.Nester.Droid.Resource.Attribute.popupTheme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.popupWindowStyle = global::Inkton.Nester.Droid.Resource.Attribute.popupWindowStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.preserveIconSpacing = global::Inkton.Nester.Droid.Resource.Attribute.preserveIconSpacing;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.pressedTranslationZ = global::Inkton.Nester.Droid.Resource.Attribute.pressedTranslationZ;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.progressBarPadding = global::Inkton.Nester.Droid.Resource.Attribute.progressBarPadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.progressBarStyle = global::Inkton.Nester.Droid.Resource.Attribute.progressBarStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.queryBackground = global::Inkton.Nester.Droid.Resource.Attribute.queryBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.queryHint = global::Inkton.Nester.Droid.Resource.Attribute.queryHint;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.radioButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.radioButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.ratingBarStyle = global::Inkton.Nester.Droid.Resource.Attribute.ratingBarStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.ratingBarStyleIndicator = global::Inkton.Nester.Droid.Resource.Attribute.ratingBarStyleIndicator;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.ratingBarStyleSmall = global::Inkton.Nester.Droid.Resource.Attribute.ratingBarStyleSmall;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.reverseLayout = global::Inkton.Nester.Droid.Resource.Attribute.reverseLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.rippleColor = global::Inkton.Nester.Droid.Resource.Attribute.rippleColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.searchHintIcon = global::Inkton.Nester.Droid.Resource.Attribute.searchHintIcon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.searchIcon = global::Inkton.Nester.Droid.Resource.Attribute.searchIcon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.searchViewStyle = global::Inkton.Nester.Droid.Resource.Attribute.searchViewStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.seekBarStyle = global::Inkton.Nester.Droid.Resource.Attribute.seekBarStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.selectableItemBackground = global::Inkton.Nester.Droid.Resource.Attribute.selectableItemBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.selectableItemBackgroundBorderless = global::Inkton.Nester.Droid.Resource.Attribute.selectableItemBackgroundBorderless;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.showAsAction = global::Inkton.Nester.Droid.Resource.Attribute.showAsAction;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.showDividers = global::Inkton.Nester.Droid.Resource.Attribute.showDividers;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.showText = global::Inkton.Nester.Droid.Resource.Attribute.showText;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.singleChoiceItemLayout = global::Inkton.Nester.Droid.Resource.Attribute.singleChoiceItemLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.spanCount = global::Inkton.Nester.Droid.Resource.Attribute.spanCount;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.spinBars = global::Inkton.Nester.Droid.Resource.Attribute.spinBars;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.spinnerDropDownItemStyle = global::Inkton.Nester.Droid.Resource.Attribute.spinnerDropDownItemStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.spinnerStyle = global::Inkton.Nester.Droid.Resource.Attribute.spinnerStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.splitTrack = global::Inkton.Nester.Droid.Resource.Attribute.splitTrack;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.srcCompat = global::Inkton.Nester.Droid.Resource.Attribute.srcCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.stackFromEnd = global::Inkton.Nester.Droid.Resource.Attribute.stackFromEnd;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.state_above_anchor = global::Inkton.Nester.Droid.Resource.Attribute.state_above_anchor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.statusBarBackground = global::Inkton.Nester.Droid.Resource.Attribute.statusBarBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.statusBarScrim = global::Inkton.Nester.Droid.Resource.Attribute.statusBarScrim;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.submitBackground = global::Inkton.Nester.Droid.Resource.Attribute.submitBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.subtitle = global::Inkton.Nester.Droid.Resource.Attribute.subtitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.subtitleTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.subtitleTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.subtitleTextColor = global::Inkton.Nester.Droid.Resource.Attribute.subtitleTextColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.subtitleTextStyle = global::Inkton.Nester.Droid.Resource.Attribute.subtitleTextStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.suggestionRowLayout = global::Inkton.Nester.Droid.Resource.Attribute.suggestionRowLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.switchMinWidth = global::Inkton.Nester.Droid.Resource.Attribute.switchMinWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.switchPadding = global::Inkton.Nester.Droid.Resource.Attribute.switchPadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.switchStyle = global::Inkton.Nester.Droid.Resource.Attribute.switchStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.switchTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.switchTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.tabBackground = global::Inkton.Nester.Droid.Resource.Attribute.tabBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.tabContentStart = global::Inkton.Nester.Droid.Resource.Attribute.tabContentStart;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.tabGravity = global::Inkton.Nester.Droid.Resource.Attribute.tabGravity;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.tabIndicatorColor = global::Inkton.Nester.Droid.Resource.Attribute.tabIndicatorColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.tabIndicatorHeight = global::Inkton.Nester.Droid.Resource.Attribute.tabIndicatorHeight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.tabMaxWidth = global::Inkton.Nester.Droid.Resource.Attribute.tabMaxWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.tabMinWidth = global::Inkton.Nester.Droid.Resource.Attribute.tabMinWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.tabMode = global::Inkton.Nester.Droid.Resource.Attribute.tabMode;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.tabPadding = global::Inkton.Nester.Droid.Resource.Attribute.tabPadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.tabPaddingBottom = global::Inkton.Nester.Droid.Resource.Attribute.tabPaddingBottom;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.tabPaddingEnd = global::Inkton.Nester.Droid.Resource.Attribute.tabPaddingEnd;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.tabPaddingStart = global::Inkton.Nester.Droid.Resource.Attribute.tabPaddingStart;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.tabPaddingTop = global::Inkton.Nester.Droid.Resource.Attribute.tabPaddingTop;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.tabSelectedTextColor = global::Inkton.Nester.Droid.Resource.Attribute.tabSelectedTextColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.tabTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.tabTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.tabTextColor = global::Inkton.Nester.Droid.Resource.Attribute.tabTextColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.textAllCaps = global::Inkton.Nester.Droid.Resource.Attribute.textAllCaps;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.textAppearanceLargePopupMenu = global::Inkton.Nester.Droid.Resource.Attribute.textAppearanceLargePopupMenu;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.textAppearanceListItem = global::Inkton.Nester.Droid.Resource.Attribute.textAppearanceListItem;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.textAppearanceListItemSmall = global::Inkton.Nester.Droid.Resource.Attribute.textAppearanceListItemSmall;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.textAppearanceSearchResultSubtitle = global::Inkton.Nester.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.textAppearanceSearchResultTitle = global::Inkton.Nester.Droid.Resource.Attribute.textAppearanceSearchResultTitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.textAppearanceSmallPopupMenu = global::Inkton.Nester.Droid.Resource.Attribute.textAppearanceSmallPopupMenu;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.textColorAlertDialogListItem = global::Inkton.Nester.Droid.Resource.Attribute.textColorAlertDialogListItem;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.textColorError = global::Inkton.Nester.Droid.Resource.Attribute.textColorError;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.textColorSearchUrl = global::Inkton.Nester.Droid.Resource.Attribute.textColorSearchUrl;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.theme = global::Inkton.Nester.Droid.Resource.Attribute.theme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.thickness = global::Inkton.Nester.Droid.Resource.Attribute.thickness;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.thumbTextPadding = global::Inkton.Nester.Droid.Resource.Attribute.thumbTextPadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.title = global::Inkton.Nester.Droid.Resource.Attribute.title;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.titleEnabled = global::Inkton.Nester.Droid.Resource.Attribute.titleEnabled;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.titleMarginBottom = global::Inkton.Nester.Droid.Resource.Attribute.titleMarginBottom;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.titleMarginEnd = global::Inkton.Nester.Droid.Resource.Attribute.titleMarginEnd;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.titleMarginStart = global::Inkton.Nester.Droid.Resource.Attribute.titleMarginStart;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.titleMarginTop = global::Inkton.Nester.Droid.Resource.Attribute.titleMarginTop;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.titleMargins = global::Inkton.Nester.Droid.Resource.Attribute.titleMargins;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.titleTextAppearance = global::Inkton.Nester.Droid.Resource.Attribute.titleTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.titleTextColor = global::Inkton.Nester.Droid.Resource.Attribute.titleTextColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.titleTextStyle = global::Inkton.Nester.Droid.Resource.Attribute.titleTextStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.toolbarId = global::Inkton.Nester.Droid.Resource.Attribute.toolbarId;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.toolbarNavigationButtonStyle = global::Inkton.Nester.Droid.Resource.Attribute.toolbarNavigationButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.toolbarStyle = global::Inkton.Nester.Droid.Resource.Attribute.toolbarStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.track = global::Inkton.Nester.Droid.Resource.Attribute.track;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.useCompatPadding = global::Inkton.Nester.Droid.Resource.Attribute.useCompatPadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.voiceIcon = global::Inkton.Nester.Droid.Resource.Attribute.voiceIcon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.windowActionBar = global::Inkton.Nester.Droid.Resource.Attribute.windowActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.windowActionBarOverlay = global::Inkton.Nester.Droid.Resource.Attribute.windowActionBarOverlay;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.windowActionModeOverlay = global::Inkton.Nester.Droid.Resource.Attribute.windowActionModeOverlay;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.windowFixedHeightMajor = global::Inkton.Nester.Droid.Resource.Attribute.windowFixedHeightMajor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.windowFixedHeightMinor = global::Inkton.Nester.Droid.Resource.Attribute.windowFixedHeightMinor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.windowFixedWidthMajor = global::Inkton.Nester.Droid.Resource.Attribute.windowFixedWidthMajor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.windowFixedWidthMinor = global::Inkton.Nester.Droid.Resource.Attribute.windowFixedWidthMinor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.windowMinWidthMajor = global::Inkton.Nester.Droid.Resource.Attribute.windowMinWidthMajor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.windowMinWidthMinor = global::Inkton.Nester.Droid.Resource.Attribute.windowMinWidthMinor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Attribute.windowNoTitle = global::Inkton.Nester.Droid.Resource.Attribute.windowNoTitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Boolean.abc_action_bar_embed_tabs = global::Inkton.Nester.Droid.Resource.Boolean.abc_action_bar_embed_tabs;
-			global::Syncfusion.ListView.XForms.Android.Resource.Boolean.abc_action_bar_embed_tabs_pre_jb = global::Inkton.Nester.Droid.Resource.Boolean.abc_action_bar_embed_tabs_pre_jb;
-			global::Syncfusion.ListView.XForms.Android.Resource.Boolean.abc_action_bar_expanded_action_views_exclusive = global::Inkton.Nester.Droid.Resource.Boolean.abc_action_bar_expanded_action_views_exclusive;
-			global::Syncfusion.ListView.XForms.Android.Resource.Boolean.abc_allow_stacked_button_bar = global::Inkton.Nester.Droid.Resource.Boolean.abc_allow_stacked_button_bar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::Inkton.Nester.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps;
-			global::Syncfusion.ListView.XForms.Android.Resource.Boolean.abc_config_allowActionMenuItemTextWithIcon = global::Inkton.Nester.Droid.Resource.Boolean.abc_config_allowActionMenuItemTextWithIcon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Boolean.abc_config_closeDialogWhenTouchOutside = global::Inkton.Nester.Droid.Resource.Boolean.abc_config_closeDialogWhenTouchOutside;
-			global::Syncfusion.ListView.XForms.Android.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent = global::Inkton.Nester.Droid.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.abc_background_cache_hint_selector_material_dark = global::Inkton.Nester.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.abc_background_cache_hint_selector_material_light = global::Inkton.Nester.Droid.Resource.Color.abc_background_cache_hint_selector_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.abc_color_highlight_material = global::Inkton.Nester.Droid.Resource.Color.abc_color_highlight_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.abc_input_method_navigation_guard = global::Inkton.Nester.Droid.Resource.Color.abc_input_method_navigation_guard;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.abc_primary_text_disable_only_material_dark = global::Inkton.Nester.Droid.Resource.Color.abc_primary_text_disable_only_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.abc_primary_text_disable_only_material_light = global::Inkton.Nester.Droid.Resource.Color.abc_primary_text_disable_only_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.abc_primary_text_material_dark = global::Inkton.Nester.Droid.Resource.Color.abc_primary_text_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.abc_primary_text_material_light = global::Inkton.Nester.Droid.Resource.Color.abc_primary_text_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.abc_search_url_text = global::Inkton.Nester.Droid.Resource.Color.abc_search_url_text;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.abc_search_url_text_normal = global::Inkton.Nester.Droid.Resource.Color.abc_search_url_text_normal;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.abc_search_url_text_pressed = global::Inkton.Nester.Droid.Resource.Color.abc_search_url_text_pressed;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.abc_search_url_text_selected = global::Inkton.Nester.Droid.Resource.Color.abc_search_url_text_selected;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.abc_secondary_text_material_dark = global::Inkton.Nester.Droid.Resource.Color.abc_secondary_text_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.abc_secondary_text_material_light = global::Inkton.Nester.Droid.Resource.Color.abc_secondary_text_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.accent_material_dark = global::Inkton.Nester.Droid.Resource.Color.accent_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.accent_material_light = global::Inkton.Nester.Droid.Resource.Color.accent_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.background_floating_material_dark = global::Inkton.Nester.Droid.Resource.Color.background_floating_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.background_floating_material_light = global::Inkton.Nester.Droid.Resource.Color.background_floating_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.background_material_dark = global::Inkton.Nester.Droid.Resource.Color.background_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.background_material_light = global::Inkton.Nester.Droid.Resource.Color.background_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.bright_foreground_disabled_material_dark = global::Inkton.Nester.Droid.Resource.Color.bright_foreground_disabled_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.bright_foreground_disabled_material_light = global::Inkton.Nester.Droid.Resource.Color.bright_foreground_disabled_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.bright_foreground_inverse_material_dark = global::Inkton.Nester.Droid.Resource.Color.bright_foreground_inverse_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.bright_foreground_inverse_material_light = global::Inkton.Nester.Droid.Resource.Color.bright_foreground_inverse_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.bright_foreground_material_dark = global::Inkton.Nester.Droid.Resource.Color.bright_foreground_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.bright_foreground_material_light = global::Inkton.Nester.Droid.Resource.Color.bright_foreground_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.button_material_dark = global::Inkton.Nester.Droid.Resource.Color.button_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.button_material_light = global::Inkton.Nester.Droid.Resource.Color.button_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.cardview_dark_background = global::Inkton.Nester.Droid.Resource.Color.cardview_dark_background;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.cardview_light_background = global::Inkton.Nester.Droid.Resource.Color.cardview_light_background;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.cardview_shadow_end_color = global::Inkton.Nester.Droid.Resource.Color.cardview_shadow_end_color;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.cardview_shadow_start_color = global::Inkton.Nester.Droid.Resource.Color.cardview_shadow_start_color;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.design_fab_shadow_end_color = global::Inkton.Nester.Droid.Resource.Color.design_fab_shadow_end_color;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.design_fab_shadow_mid_color = global::Inkton.Nester.Droid.Resource.Color.design_fab_shadow_mid_color;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.design_fab_shadow_start_color = global::Inkton.Nester.Droid.Resource.Color.design_fab_shadow_start_color;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.design_fab_stroke_end_inner_color = global::Inkton.Nester.Droid.Resource.Color.design_fab_stroke_end_inner_color;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.design_fab_stroke_end_outer_color = global::Inkton.Nester.Droid.Resource.Color.design_fab_stroke_end_outer_color;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.design_fab_stroke_top_inner_color = global::Inkton.Nester.Droid.Resource.Color.design_fab_stroke_top_inner_color;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.design_fab_stroke_top_outer_color = global::Inkton.Nester.Droid.Resource.Color.design_fab_stroke_top_outer_color;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.design_snackbar_background_color = global::Inkton.Nester.Droid.Resource.Color.design_snackbar_background_color;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.design_textinput_error_color_dark = global::Inkton.Nester.Droid.Resource.Color.design_textinput_error_color_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.design_textinput_error_color_light = global::Inkton.Nester.Droid.Resource.Color.design_textinput_error_color_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.dim_foreground_disabled_material_dark = global::Inkton.Nester.Droid.Resource.Color.dim_foreground_disabled_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.dim_foreground_disabled_material_light = global::Inkton.Nester.Droid.Resource.Color.dim_foreground_disabled_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.dim_foreground_material_dark = global::Inkton.Nester.Droid.Resource.Color.dim_foreground_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.dim_foreground_material_light = global::Inkton.Nester.Droid.Resource.Color.dim_foreground_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.foreground_material_dark = global::Inkton.Nester.Droid.Resource.Color.foreground_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.foreground_material_light = global::Inkton.Nester.Droid.Resource.Color.foreground_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.highlighted_text_material_dark = global::Inkton.Nester.Droid.Resource.Color.highlighted_text_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.highlighted_text_material_light = global::Inkton.Nester.Droid.Resource.Color.highlighted_text_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.hint_foreground_material_dark = global::Inkton.Nester.Droid.Resource.Color.hint_foreground_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.hint_foreground_material_light = global::Inkton.Nester.Droid.Resource.Color.hint_foreground_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.material_blue_grey_800 = global::Inkton.Nester.Droid.Resource.Color.material_blue_grey_800;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.material_blue_grey_900 = global::Inkton.Nester.Droid.Resource.Color.material_blue_grey_900;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.material_blue_grey_950 = global::Inkton.Nester.Droid.Resource.Color.material_blue_grey_950;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.material_deep_teal_200 = global::Inkton.Nester.Droid.Resource.Color.material_deep_teal_200;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.material_deep_teal_500 = global::Inkton.Nester.Droid.Resource.Color.material_deep_teal_500;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.material_grey_100 = global::Inkton.Nester.Droid.Resource.Color.material_grey_100;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.material_grey_300 = global::Inkton.Nester.Droid.Resource.Color.material_grey_300;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.material_grey_50 = global::Inkton.Nester.Droid.Resource.Color.material_grey_50;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.material_grey_600 = global::Inkton.Nester.Droid.Resource.Color.material_grey_600;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.material_grey_800 = global::Inkton.Nester.Droid.Resource.Color.material_grey_800;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.material_grey_850 = global::Inkton.Nester.Droid.Resource.Color.material_grey_850;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.material_grey_900 = global::Inkton.Nester.Droid.Resource.Color.material_grey_900;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.primary_dark_material_dark = global::Inkton.Nester.Droid.Resource.Color.primary_dark_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.primary_dark_material_light = global::Inkton.Nester.Droid.Resource.Color.primary_dark_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.primary_material_dark = global::Inkton.Nester.Droid.Resource.Color.primary_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.primary_material_light = global::Inkton.Nester.Droid.Resource.Color.primary_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.primary_text_default_material_dark = global::Inkton.Nester.Droid.Resource.Color.primary_text_default_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.primary_text_default_material_light = global::Inkton.Nester.Droid.Resource.Color.primary_text_default_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.primary_text_disabled_material_dark = global::Inkton.Nester.Droid.Resource.Color.primary_text_disabled_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.primary_text_disabled_material_light = global::Inkton.Nester.Droid.Resource.Color.primary_text_disabled_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.ripple_material_dark = global::Inkton.Nester.Droid.Resource.Color.ripple_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.ripple_material_light = global::Inkton.Nester.Droid.Resource.Color.ripple_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.secondary_text_default_material_dark = global::Inkton.Nester.Droid.Resource.Color.secondary_text_default_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.secondary_text_default_material_light = global::Inkton.Nester.Droid.Resource.Color.secondary_text_default_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.secondary_text_disabled_material_dark = global::Inkton.Nester.Droid.Resource.Color.secondary_text_disabled_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.secondary_text_disabled_material_light = global::Inkton.Nester.Droid.Resource.Color.secondary_text_disabled_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.switch_thumb_disabled_material_dark = global::Inkton.Nester.Droid.Resource.Color.switch_thumb_disabled_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.switch_thumb_disabled_material_light = global::Inkton.Nester.Droid.Resource.Color.switch_thumb_disabled_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.switch_thumb_material_dark = global::Inkton.Nester.Droid.Resource.Color.switch_thumb_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.switch_thumb_material_light = global::Inkton.Nester.Droid.Resource.Color.switch_thumb_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.switch_thumb_normal_material_dark = global::Inkton.Nester.Droid.Resource.Color.switch_thumb_normal_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Color.switch_thumb_normal_material_light = global::Inkton.Nester.Droid.Resource.Color.switch_thumb_normal_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_action_bar_content_inset_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_content_inset_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_action_bar_default_height_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_default_height_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_action_bar_default_padding_end_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_default_padding_end_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_action_bar_default_padding_start_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_default_padding_start_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_action_bar_icon_vertical_padding_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_action_bar_overflow_padding_end_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_action_bar_overflow_padding_start_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_action_bar_progress_bar_size = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_progress_bar_size;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_action_bar_stacked_max_height = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_stacked_max_height;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_action_bar_stacked_tab_max_width = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_action_bar_subtitle_top_margin_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_action_button_min_height_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_button_min_height_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_action_button_min_width_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_button_min_width_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_action_button_min_width_overflow_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_alert_dialog_button_bar_height = global::Inkton.Nester.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_button_inset_horizontal_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_button_inset_horizontal_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_button_inset_vertical_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_button_inset_vertical_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_button_padding_horizontal_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_button_padding_horizontal_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_button_padding_vertical_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_button_padding_vertical_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_config_prefDialogWidth = global::Inkton.Nester.Droid.Resource.Dimension.abc_config_prefDialogWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_control_corner_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_control_corner_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_control_inset_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_control_inset_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_control_padding_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_control_padding_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_dialog_fixed_height_major = global::Inkton.Nester.Droid.Resource.Dimension.abc_dialog_fixed_height_major;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_dialog_fixed_height_minor = global::Inkton.Nester.Droid.Resource.Dimension.abc_dialog_fixed_height_minor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_dialog_fixed_width_major = global::Inkton.Nester.Droid.Resource.Dimension.abc_dialog_fixed_width_major;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_dialog_fixed_width_minor = global::Inkton.Nester.Droid.Resource.Dimension.abc_dialog_fixed_width_minor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_dialog_list_padding_vertical_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_dialog_list_padding_vertical_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_dialog_min_width_major = global::Inkton.Nester.Droid.Resource.Dimension.abc_dialog_min_width_major;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_dialog_min_width_minor = global::Inkton.Nester.Droid.Resource.Dimension.abc_dialog_min_width_minor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_dialog_padding_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_dialog_padding_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_dialog_padding_top_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_dialog_padding_top_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_disabled_alpha_material_dark = global::Inkton.Nester.Droid.Resource.Dimension.abc_disabled_alpha_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_disabled_alpha_material_light = global::Inkton.Nester.Droid.Resource.Dimension.abc_disabled_alpha_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_dropdownitem_icon_width = global::Inkton.Nester.Droid.Resource.Dimension.abc_dropdownitem_icon_width;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_dropdownitem_text_padding_left = global::Inkton.Nester.Droid.Resource.Dimension.abc_dropdownitem_text_padding_left;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_dropdownitem_text_padding_right = global::Inkton.Nester.Droid.Resource.Dimension.abc_dropdownitem_text_padding_right;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_edit_text_inset_bottom_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_edit_text_inset_bottom_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_edit_text_inset_top_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_edit_text_inset_top_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_floating_window_z = global::Inkton.Nester.Droid.Resource.Dimension.abc_floating_window_z;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_list_item_padding_horizontal_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_panel_menu_list_width = global::Inkton.Nester.Droid.Resource.Dimension.abc_panel_menu_list_width;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_search_view_preferred_width = global::Inkton.Nester.Droid.Resource.Dimension.abc_search_view_preferred_width;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_search_view_text_min_width = global::Inkton.Nester.Droid.Resource.Dimension.abc_search_view_text_min_width;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_seekbar_track_background_height_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_seekbar_track_background_height_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_seekbar_track_progress_height_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_seekbar_track_progress_height_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_select_dialog_padding_start_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_select_dialog_padding_start_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_switch_padding = global::Inkton.Nester.Droid.Resource.Dimension.abc_switch_padding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_text_size_body_1_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_body_1_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_text_size_body_2_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_body_2_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_text_size_button_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_button_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_text_size_caption_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_caption_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_text_size_display_1_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_display_1_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_text_size_display_2_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_display_2_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_text_size_display_3_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_display_3_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_text_size_display_4_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_display_4_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_text_size_headline_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_headline_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_text_size_large_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_large_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_text_size_medium_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_medium_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_text_size_menu_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_menu_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_text_size_small_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_small_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_text_size_subhead_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_subhead_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_text_size_subtitle_material_toolbar = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_text_size_title_material = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_title_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.abc_text_size_title_material_toolbar = global::Inkton.Nester.Droid.Resource.Dimension.abc_text_size_title_material_toolbar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.cardview_compat_inset_shadow = global::Inkton.Nester.Droid.Resource.Dimension.cardview_compat_inset_shadow;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.cardview_default_elevation = global::Inkton.Nester.Droid.Resource.Dimension.cardview_default_elevation;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.cardview_default_radius = global::Inkton.Nester.Droid.Resource.Dimension.cardview_default_radius;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_appbar_elevation = global::Inkton.Nester.Droid.Resource.Dimension.design_appbar_elevation;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_bottom_sheet_modal_elevation = global::Inkton.Nester.Droid.Resource.Dimension.design_bottom_sheet_modal_elevation;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_bottom_sheet_modal_peek_height = global::Inkton.Nester.Droid.Resource.Dimension.design_bottom_sheet_modal_peek_height;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_fab_border_width = global::Inkton.Nester.Droid.Resource.Dimension.design_fab_border_width;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_fab_elevation = global::Inkton.Nester.Droid.Resource.Dimension.design_fab_elevation;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_fab_image_size = global::Inkton.Nester.Droid.Resource.Dimension.design_fab_image_size;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_fab_size_mini = global::Inkton.Nester.Droid.Resource.Dimension.design_fab_size_mini;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_fab_size_normal = global::Inkton.Nester.Droid.Resource.Dimension.design_fab_size_normal;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_fab_translation_z_pressed = global::Inkton.Nester.Droid.Resource.Dimension.design_fab_translation_z_pressed;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_navigation_elevation = global::Inkton.Nester.Droid.Resource.Dimension.design_navigation_elevation;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_navigation_icon_padding = global::Inkton.Nester.Droid.Resource.Dimension.design_navigation_icon_padding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_navigation_icon_size = global::Inkton.Nester.Droid.Resource.Dimension.design_navigation_icon_size;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_navigation_max_width = global::Inkton.Nester.Droid.Resource.Dimension.design_navigation_max_width;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_navigation_padding_bottom = global::Inkton.Nester.Droid.Resource.Dimension.design_navigation_padding_bottom;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_navigation_separator_vertical_padding = global::Inkton.Nester.Droid.Resource.Dimension.design_navigation_separator_vertical_padding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_snackbar_action_inline_max_width = global::Inkton.Nester.Droid.Resource.Dimension.design_snackbar_action_inline_max_width;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_snackbar_background_corner_radius = global::Inkton.Nester.Droid.Resource.Dimension.design_snackbar_background_corner_radius;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_snackbar_elevation = global::Inkton.Nester.Droid.Resource.Dimension.design_snackbar_elevation;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_snackbar_extra_spacing_horizontal = global::Inkton.Nester.Droid.Resource.Dimension.design_snackbar_extra_spacing_horizontal;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_snackbar_max_width = global::Inkton.Nester.Droid.Resource.Dimension.design_snackbar_max_width;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_snackbar_min_width = global::Inkton.Nester.Droid.Resource.Dimension.design_snackbar_min_width;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_snackbar_padding_horizontal = global::Inkton.Nester.Droid.Resource.Dimension.design_snackbar_padding_horizontal;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_snackbar_padding_vertical = global::Inkton.Nester.Droid.Resource.Dimension.design_snackbar_padding_vertical;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_snackbar_padding_vertical_2lines = global::Inkton.Nester.Droid.Resource.Dimension.design_snackbar_padding_vertical_2lines;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_snackbar_text_size = global::Inkton.Nester.Droid.Resource.Dimension.design_snackbar_text_size;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_tab_max_width = global::Inkton.Nester.Droid.Resource.Dimension.design_tab_max_width;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_tab_scrollable_min_width = global::Inkton.Nester.Droid.Resource.Dimension.design_tab_scrollable_min_width;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_tab_text_size = global::Inkton.Nester.Droid.Resource.Dimension.design_tab_text_size;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.design_tab_text_size_2line = global::Inkton.Nester.Droid.Resource.Dimension.design_tab_text_size_2line;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.disabled_alpha_material_dark = global::Inkton.Nester.Droid.Resource.Dimension.disabled_alpha_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.disabled_alpha_material_light = global::Inkton.Nester.Droid.Resource.Dimension.disabled_alpha_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.highlight_alpha_material_colored = global::Inkton.Nester.Droid.Resource.Dimension.highlight_alpha_material_colored;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.highlight_alpha_material_dark = global::Inkton.Nester.Droid.Resource.Dimension.highlight_alpha_material_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.highlight_alpha_material_light = global::Inkton.Nester.Droid.Resource.Dimension.highlight_alpha_material_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame = global::Inkton.Nester.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity = global::Inkton.Nester.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.item_touch_helper_swipe_escape_velocity = global::Inkton.Nester.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.mr_controller_volume_group_list_item_height = global::Inkton.Nester.Droid.Resource.Dimension.mr_controller_volume_group_list_item_height;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.mr_controller_volume_group_list_item_icon_size = global::Inkton.Nester.Droid.Resource.Dimension.mr_controller_volume_group_list_item_icon_size;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.mr_controller_volume_group_list_max_height = global::Inkton.Nester.Droid.Resource.Dimension.mr_controller_volume_group_list_max_height;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.mr_controller_volume_group_list_padding_top = global::Inkton.Nester.Droid.Resource.Dimension.mr_controller_volume_group_list_padding_top;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.mr_dialog_fixed_width_major = global::Inkton.Nester.Droid.Resource.Dimension.mr_dialog_fixed_width_major;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.mr_dialog_fixed_width_minor = global::Inkton.Nester.Droid.Resource.Dimension.mr_dialog_fixed_width_minor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.notification_large_icon_height = global::Inkton.Nester.Droid.Resource.Dimension.notification_large_icon_height;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.notification_large_icon_width = global::Inkton.Nester.Droid.Resource.Dimension.notification_large_icon_width;
-			global::Syncfusion.ListView.XForms.Android.Resource.Dimension.notification_subtext_size = global::Inkton.Nester.Droid.Resource.Dimension.notification_subtext_size;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_action_bar_item_background_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_action_bar_item_background_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_btn_borderless_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_borderless_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_btn_check_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_check_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_btn_colored_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_colored_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_btn_default_mtrl_shape = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_default_mtrl_shape;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_btn_radio_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_radio_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_btn_rating_star_off_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_rating_star_off_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_btn_rating_star_on_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_rating_star_on_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012 = global::Inkton.Nester.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_cab_background_internal_bg = global::Inkton.Nester.Droid.Resource.Drawable.abc_cab_background_internal_bg;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_cab_background_top_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_cab_background_top_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_cab_background_top_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_control_background_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_control_background_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_dialog_material_background_dark = global::Inkton.Nester.Droid.Resource.Drawable.abc_dialog_material_background_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_dialog_material_background_light = global::Inkton.Nester.Droid.Resource.Drawable.abc_dialog_material_background_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_edit_text_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_edit_text_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_ic_ab_back_mtrl_am_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_ab_back_mtrl_am_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_ic_clear_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_clear_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_ic_go_search_api_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_go_search_api_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_ic_menu_moreoverflow_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_menu_moreoverflow_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_ic_menu_share_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_ic_search_api_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_search_api_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_ic_star_black_16dp = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_star_black_16dp;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_ic_star_black_36dp = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_star_black_36dp;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_ic_star_half_black_16dp = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_star_half_black_16dp;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_ic_star_half_black_36dp = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_star_half_black_36dp;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_ic_voice_search_api_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_ic_voice_search_api_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_item_background_holo_dark = global::Inkton.Nester.Droid.Resource.Drawable.abc_item_background_holo_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_item_background_holo_light = global::Inkton.Nester.Droid.Resource.Drawable.abc_item_background_holo_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_list_divider_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_list_focused_holo = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_focused_holo;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_list_longpressed_holo = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_longpressed_holo;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_list_pressed_holo_dark = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_pressed_holo_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_list_pressed_holo_light = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_pressed_holo_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_list_selector_background_transition_holo_dark = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_list_selector_background_transition_holo_light = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_list_selector_disabled_holo_dark = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_selector_disabled_holo_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_list_selector_disabled_holo_light = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_selector_disabled_holo_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_list_selector_holo_dark = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_selector_holo_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_list_selector_holo_light = global::Inkton.Nester.Droid.Resource.Drawable.abc_list_selector_holo_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult = global::Inkton.Nester.Droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_popup_background_mtrl_mult = global::Inkton.Nester.Droid.Resource.Drawable.abc_popup_background_mtrl_mult;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_ratingbar_full_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_ratingbar_full_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_ratingbar_indicator_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_ratingbar_indicator_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_ratingbar_small_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_ratingbar_small_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000 = global::Inkton.Nester.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005 = global::Inkton.Nester.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_scrubber_primary_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_scrubber_primary_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_scrubber_track_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_scrubber_track_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_seekbar_thumb_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_seekbar_thumb_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_seekbar_track_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_seekbar_track_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_spinner_mtrl_am_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_spinner_mtrl_am_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_spinner_textfield_background_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_spinner_textfield_background_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_switch_thumb_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_switch_thumb_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_switch_track_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_tab_indicator_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_tab_indicator_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_text_cursor_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_text_cursor_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::Inkton.Nester.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.abc_textfield_search_material = global::Inkton.Nester.Droid.Resource.Drawable.abc_textfield_search_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.design_fab_background = global::Inkton.Nester.Droid.Resource.Drawable.design_fab_background;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.design_snackbar_background = global::Inkton.Nester.Droid.Resource.Drawable.design_snackbar_background;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_audiotrack = global::Inkton.Nester.Droid.Resource.Drawable.ic_audiotrack;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_audiotrack_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_audiotrack_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_bluetooth_grey = global::Inkton.Nester.Droid.Resource.Drawable.ic_bluetooth_grey;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_bluetooth_white = global::Inkton.Nester.Droid.Resource.Drawable.ic_bluetooth_white;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_cast_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_cast_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_cast_disabled_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_cast_disabled_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_cast_grey = global::Inkton.Nester.Droid.Resource.Drawable.ic_cast_grey;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_cast_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_cast_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_cast_off_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_cast_off_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_cast_on_0_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_cast_on_0_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_cast_on_1_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_cast_on_1_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_cast_on_2_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_cast_on_2_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_cast_on_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_cast_on_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_cast_white = global::Inkton.Nester.Droid.Resource.Drawable.ic_cast_white;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_close_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_close_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_close_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_close_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_collapse = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_collapse_00000 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00000;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_collapse_00001 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00001;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_collapse_00002 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00002;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_collapse_00003 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00003;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_collapse_00004 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00004;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_collapse_00005 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00005;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_collapse_00006 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00006;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_collapse_00007 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00007;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_collapse_00008 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00008;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_collapse_00009 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00009;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_collapse_00010 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00010;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_collapse_00011 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00011;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_collapse_00012 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00012;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_collapse_00013 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00013;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_collapse_00014 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00014;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_collapse_00015 = global::Inkton.Nester.Droid.Resource.Drawable.ic_collapse_00015;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_expand = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_expand_00000 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00000;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_expand_00001 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00001;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_expand_00002 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00002;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_expand_00003 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00003;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_expand_00004 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00004;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_expand_00005 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00005;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_expand_00006 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00006;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_expand_00007 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00007;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_expand_00008 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00008;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_expand_00009 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00009;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_expand_00010 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00010;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_expand_00011 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00011;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_expand_00012 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00012;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_expand_00013 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00013;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_expand_00014 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00014;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_expand_00015 = global::Inkton.Nester.Droid.Resource.Drawable.ic_expand_00015;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_media_pause = global::Inkton.Nester.Droid.Resource.Drawable.ic_media_pause;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_media_play = global::Inkton.Nester.Droid.Resource.Drawable.ic_media_play;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_media_route_disabled_mono_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_media_route_disabled_mono_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_media_route_off_mono_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_media_route_off_mono_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_media_route_on_0_mono_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_media_route_on_0_mono_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_media_route_on_1_mono_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_media_route_on_1_mono_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_media_route_on_2_mono_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_media_route_on_2_mono_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_media_route_on_mono_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_media_route_on_mono_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_pause_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_pause_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_pause_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_pause_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_play_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_play_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_play_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_play_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_speaker_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_speaker_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_speaker_group_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_speaker_group_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_speaker_group_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_speaker_group_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_speaker_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_speaker_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_tv_dark = global::Inkton.Nester.Droid.Resource.Drawable.ic_tv_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.ic_tv_light = global::Inkton.Nester.Droid.Resource.Drawable.ic_tv_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.mr_dialog_material_background_dark = global::Inkton.Nester.Droid.Resource.Drawable.mr_dialog_material_background_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.mr_dialog_material_background_light = global::Inkton.Nester.Droid.Resource.Drawable.mr_dialog_material_background_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.mr_ic_audiotrack_light = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_audiotrack_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.mr_ic_cast_dark = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_cast_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.mr_ic_cast_light = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_cast_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.mr_ic_close_dark = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_close_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.mr_ic_close_light = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_close_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.mr_ic_media_route_connecting_mono_dark = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_media_route_connecting_mono_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.mr_ic_media_route_connecting_mono_light = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_media_route_connecting_mono_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.mr_ic_media_route_mono_dark = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_media_route_mono_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.mr_ic_media_route_mono_light = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_media_route_mono_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.mr_ic_pause_dark = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_pause_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.mr_ic_pause_light = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_pause_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.mr_ic_play_dark = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_play_dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.mr_ic_play_light = global::Inkton.Nester.Droid.Resource.Drawable.mr_ic_play_light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Drawable.notification_template_icon_bg = global::Inkton.Nester.Droid.Resource.Drawable.notification_template_icon_bg;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.action0 = global::Inkton.Nester.Droid.Resource.Id.action0;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.action_bar = global::Inkton.Nester.Droid.Resource.Id.action_bar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.action_bar_activity_content = global::Inkton.Nester.Droid.Resource.Id.action_bar_activity_content;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.action_bar_container = global::Inkton.Nester.Droid.Resource.Id.action_bar_container;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.action_bar_root = global::Inkton.Nester.Droid.Resource.Id.action_bar_root;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.action_bar_spinner = global::Inkton.Nester.Droid.Resource.Id.action_bar_spinner;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.action_bar_subtitle = global::Inkton.Nester.Droid.Resource.Id.action_bar_subtitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.action_bar_title = global::Inkton.Nester.Droid.Resource.Id.action_bar_title;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.action_context_bar = global::Inkton.Nester.Droid.Resource.Id.action_context_bar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.action_divider = global::Inkton.Nester.Droid.Resource.Id.action_divider;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.action_menu_divider = global::Inkton.Nester.Droid.Resource.Id.action_menu_divider;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.action_menu_presenter = global::Inkton.Nester.Droid.Resource.Id.action_menu_presenter;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.action_mode_bar = global::Inkton.Nester.Droid.Resource.Id.action_mode_bar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.action_mode_bar_stub = global::Inkton.Nester.Droid.Resource.Id.action_mode_bar_stub;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.action_mode_close_button = global::Inkton.Nester.Droid.Resource.Id.action_mode_close_button;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.activity_chooser_view_content = global::Inkton.Nester.Droid.Resource.Id.activity_chooser_view_content;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.alertTitle = global::Inkton.Nester.Droid.Resource.Id.alertTitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.always = global::Inkton.Nester.Droid.Resource.Id.always;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.beginning = global::Inkton.Nester.Droid.Resource.Id.beginning;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.bottom = global::Inkton.Nester.Droid.Resource.Id.bottom;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.buttonPanel = global::Inkton.Nester.Droid.Resource.Id.buttonPanel;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.cancel_action = global::Inkton.Nester.Droid.Resource.Id.cancel_action;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.center = global::Inkton.Nester.Droid.Resource.Id.center;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.center_horizontal = global::Inkton.Nester.Droid.Resource.Id.center_horizontal;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.center_vertical = global::Inkton.Nester.Droid.Resource.Id.center_vertical;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.checkbox = global::Inkton.Nester.Droid.Resource.Id.checkbox;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.chronometer = global::Inkton.Nester.Droid.Resource.Id.chronometer;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.clip_horizontal = global::Inkton.Nester.Droid.Resource.Id.clip_horizontal;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.clip_vertical = global::Inkton.Nester.Droid.Resource.Id.clip_vertical;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.collapseActionView = global::Inkton.Nester.Droid.Resource.Id.collapseActionView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.contentPanel = global::Inkton.Nester.Droid.Resource.Id.contentPanel;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.custom = global::Inkton.Nester.Droid.Resource.Id.custom;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.customPanel = global::Inkton.Nester.Droid.Resource.Id.customPanel;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.decor_content_parent = global::Inkton.Nester.Droid.Resource.Id.decor_content_parent;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.default_activity_button = global::Inkton.Nester.Droid.Resource.Id.default_activity_button;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.design_bottom_sheet = global::Inkton.Nester.Droid.Resource.Id.design_bottom_sheet;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.design_menu_item_action_area = global::Inkton.Nester.Droid.Resource.Id.design_menu_item_action_area;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.design_menu_item_action_area_stub = global::Inkton.Nester.Droid.Resource.Id.design_menu_item_action_area_stub;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.design_menu_item_text = global::Inkton.Nester.Droid.Resource.Id.design_menu_item_text;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.design_navigation_view = global::Inkton.Nester.Droid.Resource.Id.design_navigation_view;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.disableHome = global::Inkton.Nester.Droid.Resource.Id.disableHome;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.edit_query = global::Inkton.Nester.Droid.Resource.Id.edit_query;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.end = global::Inkton.Nester.Droid.Resource.Id.end;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.end_padder = global::Inkton.Nester.Droid.Resource.Id.end_padder;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.enterAlways = global::Inkton.Nester.Droid.Resource.Id.enterAlways;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.enterAlwaysCollapsed = global::Inkton.Nester.Droid.Resource.Id.enterAlwaysCollapsed;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.exitUntilCollapsed = global::Inkton.Nester.Droid.Resource.Id.exitUntilCollapsed;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.expand_activities_button = global::Inkton.Nester.Droid.Resource.Id.expand_activities_button;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.expanded_menu = global::Inkton.Nester.Droid.Resource.Id.expanded_menu;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.fill = global::Inkton.Nester.Droid.Resource.Id.fill;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.fill_horizontal = global::Inkton.Nester.Droid.Resource.Id.fill_horizontal;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.fill_vertical = global::Inkton.Nester.Droid.Resource.Id.fill_vertical;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.@fixed = global::Inkton.Nester.Droid.Resource.Id.@fixed;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.home = global::Inkton.Nester.Droid.Resource.Id.home;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.homeAsUp = global::Inkton.Nester.Droid.Resource.Id.homeAsUp;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.icon = global::Inkton.Nester.Droid.Resource.Id.icon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.ifRoom = global::Inkton.Nester.Droid.Resource.Id.ifRoom;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.image = global::Inkton.Nester.Droid.Resource.Id.image;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.info = global::Inkton.Nester.Droid.Resource.Id.info;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.item_touch_helper_previous_elevation = global::Inkton.Nester.Droid.Resource.Id.item_touch_helper_previous_elevation;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.left = global::Inkton.Nester.Droid.Resource.Id.left;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.line1 = global::Inkton.Nester.Droid.Resource.Id.line1;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.line3 = global::Inkton.Nester.Droid.Resource.Id.line3;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.listMode = global::Inkton.Nester.Droid.Resource.Id.listMode;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.list_item = global::Inkton.Nester.Droid.Resource.Id.list_item;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.media_actions = global::Inkton.Nester.Droid.Resource.Id.media_actions;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.middle = global::Inkton.Nester.Droid.Resource.Id.middle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mini = global::Inkton.Nester.Droid.Resource.Id.mini;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_art = global::Inkton.Nester.Droid.Resource.Id.mr_art;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_chooser_list = global::Inkton.Nester.Droid.Resource.Id.mr_chooser_list;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_chooser_route_desc = global::Inkton.Nester.Droid.Resource.Id.mr_chooser_route_desc;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_chooser_route_icon = global::Inkton.Nester.Droid.Resource.Id.mr_chooser_route_icon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_chooser_route_name = global::Inkton.Nester.Droid.Resource.Id.mr_chooser_route_name;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_close = global::Inkton.Nester.Droid.Resource.Id.mr_close;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_control_divider = global::Inkton.Nester.Droid.Resource.Id.mr_control_divider;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_control_play_pause = global::Inkton.Nester.Droid.Resource.Id.mr_control_play_pause;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_control_subtitle = global::Inkton.Nester.Droid.Resource.Id.mr_control_subtitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_control_title = global::Inkton.Nester.Droid.Resource.Id.mr_control_title;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_control_title_container = global::Inkton.Nester.Droid.Resource.Id.mr_control_title_container;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_custom_control = global::Inkton.Nester.Droid.Resource.Id.mr_custom_control;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_default_control = global::Inkton.Nester.Droid.Resource.Id.mr_default_control;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_dialog_area = global::Inkton.Nester.Droid.Resource.Id.mr_dialog_area;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_expandable_area = global::Inkton.Nester.Droid.Resource.Id.mr_expandable_area;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_group_expand_collapse = global::Inkton.Nester.Droid.Resource.Id.mr_group_expand_collapse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_media_main_control = global::Inkton.Nester.Droid.Resource.Id.mr_media_main_control;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_name = global::Inkton.Nester.Droid.Resource.Id.mr_name;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_playback_control = global::Inkton.Nester.Droid.Resource.Id.mr_playback_control;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_title_bar = global::Inkton.Nester.Droid.Resource.Id.mr_title_bar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_volume_control = global::Inkton.Nester.Droid.Resource.Id.mr_volume_control;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_volume_group_list = global::Inkton.Nester.Droid.Resource.Id.mr_volume_group_list;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_volume_item_icon = global::Inkton.Nester.Droid.Resource.Id.mr_volume_item_icon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.mr_volume_slider = global::Inkton.Nester.Droid.Resource.Id.mr_volume_slider;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.multiply = global::Inkton.Nester.Droid.Resource.Id.multiply;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.navigation_header_container = global::Inkton.Nester.Droid.Resource.Id.navigation_header_container;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.never = global::Inkton.Nester.Droid.Resource.Id.never;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.none = global::Inkton.Nester.Droid.Resource.Id.none;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.normal = global::Inkton.Nester.Droid.Resource.Id.normal;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.parallax = global::Inkton.Nester.Droid.Resource.Id.parallax;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.parentPanel = global::Inkton.Nester.Droid.Resource.Id.parentPanel;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.pin = global::Inkton.Nester.Droid.Resource.Id.pin;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.progress_circular = global::Inkton.Nester.Droid.Resource.Id.progress_circular;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.progress_horizontal = global::Inkton.Nester.Droid.Resource.Id.progress_horizontal;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.radio = global::Inkton.Nester.Droid.Resource.Id.radio;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.right = global::Inkton.Nester.Droid.Resource.Id.right;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.screen = global::Inkton.Nester.Droid.Resource.Id.screen;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.scroll = global::Inkton.Nester.Droid.Resource.Id.scroll;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.scrollIndicatorDown = global::Inkton.Nester.Droid.Resource.Id.scrollIndicatorDown;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.scrollIndicatorUp = global::Inkton.Nester.Droid.Resource.Id.scrollIndicatorUp;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.scrollView = global::Inkton.Nester.Droid.Resource.Id.scrollView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.scrollable = global::Inkton.Nester.Droid.Resource.Id.scrollable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.search_badge = global::Inkton.Nester.Droid.Resource.Id.search_badge;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.search_bar = global::Inkton.Nester.Droid.Resource.Id.search_bar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.search_button = global::Inkton.Nester.Droid.Resource.Id.search_button;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.search_close_btn = global::Inkton.Nester.Droid.Resource.Id.search_close_btn;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.search_edit_frame = global::Inkton.Nester.Droid.Resource.Id.search_edit_frame;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.search_go_btn = global::Inkton.Nester.Droid.Resource.Id.search_go_btn;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.search_mag_icon = global::Inkton.Nester.Droid.Resource.Id.search_mag_icon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.search_plate = global::Inkton.Nester.Droid.Resource.Id.search_plate;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.search_src_text = global::Inkton.Nester.Droid.Resource.Id.search_src_text;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.search_voice_btn = global::Inkton.Nester.Droid.Resource.Id.search_voice_btn;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.select_dialog_listview = global::Inkton.Nester.Droid.Resource.Id.select_dialog_listview;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.shortcut = global::Inkton.Nester.Droid.Resource.Id.shortcut;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.showCustom = global::Inkton.Nester.Droid.Resource.Id.showCustom;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.showHome = global::Inkton.Nester.Droid.Resource.Id.showHome;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.showTitle = global::Inkton.Nester.Droid.Resource.Id.showTitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.snackbar_action = global::Inkton.Nester.Droid.Resource.Id.snackbar_action;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.snackbar_text = global::Inkton.Nester.Droid.Resource.Id.snackbar_text;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.snap = global::Inkton.Nester.Droid.Resource.Id.snap;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.spacer = global::Inkton.Nester.Droid.Resource.Id.spacer;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.split_action_bar = global::Inkton.Nester.Droid.Resource.Id.split_action_bar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.src_atop = global::Inkton.Nester.Droid.Resource.Id.src_atop;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.src_in = global::Inkton.Nester.Droid.Resource.Id.src_in;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.src_over = global::Inkton.Nester.Droid.Resource.Id.src_over;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.start = global::Inkton.Nester.Droid.Resource.Id.start;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.status_bar_latest_event_content = global::Inkton.Nester.Droid.Resource.Id.status_bar_latest_event_content;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.submit_area = global::Inkton.Nester.Droid.Resource.Id.submit_area;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.tabMode = global::Inkton.Nester.Droid.Resource.Id.tabMode;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.text = global::Inkton.Nester.Droid.Resource.Id.text;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.text2 = global::Inkton.Nester.Droid.Resource.Id.text2;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.textSpacerNoButtons = global::Inkton.Nester.Droid.Resource.Id.textSpacerNoButtons;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.time = global::Inkton.Nester.Droid.Resource.Id.time;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.title = global::Inkton.Nester.Droid.Resource.Id.title;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.title_template = global::Inkton.Nester.Droid.Resource.Id.title_template;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.top = global::Inkton.Nester.Droid.Resource.Id.top;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.topPanel = global::Inkton.Nester.Droid.Resource.Id.topPanel;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.touch_outside = global::Inkton.Nester.Droid.Resource.Id.touch_outside;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.up = global::Inkton.Nester.Droid.Resource.Id.up;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.useLogo = global::Inkton.Nester.Droid.Resource.Id.useLogo;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.view_offset_helper = global::Inkton.Nester.Droid.Resource.Id.view_offset_helper;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.volume_item_container = global::Inkton.Nester.Droid.Resource.Id.volume_item_container;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.withText = global::Inkton.Nester.Droid.Resource.Id.withText;
-			global::Syncfusion.ListView.XForms.Android.Resource.Id.wrap_content = global::Inkton.Nester.Droid.Resource.Id.wrap_content;
-			global::Syncfusion.ListView.XForms.Android.Resource.Integer.abc_config_activityDefaultDur = global::Inkton.Nester.Droid.Resource.Integer.abc_config_activityDefaultDur;
-			global::Syncfusion.ListView.XForms.Android.Resource.Integer.abc_config_activityShortDur = global::Inkton.Nester.Droid.Resource.Integer.abc_config_activityShortDur;
-			global::Syncfusion.ListView.XForms.Android.Resource.Integer.abc_max_action_buttons = global::Inkton.Nester.Droid.Resource.Integer.abc_max_action_buttons;
-			global::Syncfusion.ListView.XForms.Android.Resource.Integer.bottom_sheet_slide_duration = global::Inkton.Nester.Droid.Resource.Integer.bottom_sheet_slide_duration;
-			global::Syncfusion.ListView.XForms.Android.Resource.Integer.cancel_button_image_alpha = global::Inkton.Nester.Droid.Resource.Integer.cancel_button_image_alpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Integer.design_snackbar_text_max_lines = global::Inkton.Nester.Droid.Resource.Integer.design_snackbar_text_max_lines;
-			global::Syncfusion.ListView.XForms.Android.Resource.Integer.mr_controller_volume_group_list_animation_duration_ms = global::Inkton.Nester.Droid.Resource.Integer.mr_controller_volume_group_list_animation_duration_ms;
-			global::Syncfusion.ListView.XForms.Android.Resource.Integer.mr_controller_volume_group_list_fade_in_duration_ms = global::Inkton.Nester.Droid.Resource.Integer.mr_controller_volume_group_list_fade_in_duration_ms;
-			global::Syncfusion.ListView.XForms.Android.Resource.Integer.mr_controller_volume_group_list_fade_out_duration_ms = global::Inkton.Nester.Droid.Resource.Integer.mr_controller_volume_group_list_fade_out_duration_ms;
-			global::Syncfusion.ListView.XForms.Android.Resource.Integer.status_bar_notification_info_maxnum = global::Inkton.Nester.Droid.Resource.Integer.status_bar_notification_info_maxnum;
-			global::Syncfusion.ListView.XForms.Android.Resource.Interpolator.mr_fast_out_slow_in = global::Inkton.Nester.Droid.Resource.Interpolator.mr_fast_out_slow_in;
-			global::Syncfusion.ListView.XForms.Android.Resource.Interpolator.mr_linear_out_slow_in = global::Inkton.Nester.Droid.Resource.Interpolator.mr_linear_out_slow_in;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_action_bar_title_item = global::Inkton.Nester.Droid.Resource.Layout.abc_action_bar_title_item;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_action_bar_up_container = global::Inkton.Nester.Droid.Resource.Layout.abc_action_bar_up_container;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_action_bar_view_list_nav_layout = global::Inkton.Nester.Droid.Resource.Layout.abc_action_bar_view_list_nav_layout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_action_menu_item_layout = global::Inkton.Nester.Droid.Resource.Layout.abc_action_menu_item_layout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_action_menu_layout = global::Inkton.Nester.Droid.Resource.Layout.abc_action_menu_layout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_action_mode_bar = global::Inkton.Nester.Droid.Resource.Layout.abc_action_mode_bar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_action_mode_close_item_material = global::Inkton.Nester.Droid.Resource.Layout.abc_action_mode_close_item_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_activity_chooser_view = global::Inkton.Nester.Droid.Resource.Layout.abc_activity_chooser_view;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_activity_chooser_view_list_item = global::Inkton.Nester.Droid.Resource.Layout.abc_activity_chooser_view_list_item;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_alert_dialog_button_bar_material = global::Inkton.Nester.Droid.Resource.Layout.abc_alert_dialog_button_bar_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_alert_dialog_material = global::Inkton.Nester.Droid.Resource.Layout.abc_alert_dialog_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_dialog_title_material = global::Inkton.Nester.Droid.Resource.Layout.abc_dialog_title_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_expanded_menu_layout = global::Inkton.Nester.Droid.Resource.Layout.abc_expanded_menu_layout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_list_menu_item_checkbox = global::Inkton.Nester.Droid.Resource.Layout.abc_list_menu_item_checkbox;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_list_menu_item_icon = global::Inkton.Nester.Droid.Resource.Layout.abc_list_menu_item_icon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_list_menu_item_layout = global::Inkton.Nester.Droid.Resource.Layout.abc_list_menu_item_layout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_list_menu_item_radio = global::Inkton.Nester.Droid.Resource.Layout.abc_list_menu_item_radio;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_popup_menu_item_layout = global::Inkton.Nester.Droid.Resource.Layout.abc_popup_menu_item_layout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_screen_content_include = global::Inkton.Nester.Droid.Resource.Layout.abc_screen_content_include;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_screen_simple = global::Inkton.Nester.Droid.Resource.Layout.abc_screen_simple;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_screen_simple_overlay_action_mode = global::Inkton.Nester.Droid.Resource.Layout.abc_screen_simple_overlay_action_mode;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_screen_toolbar = global::Inkton.Nester.Droid.Resource.Layout.abc_screen_toolbar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_search_dropdown_item_icons_2line = global::Inkton.Nester.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_search_view = global::Inkton.Nester.Droid.Resource.Layout.abc_search_view;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.abc_select_dialog_material = global::Inkton.Nester.Droid.Resource.Layout.abc_select_dialog_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.design_bottom_sheet_dialog = global::Inkton.Nester.Droid.Resource.Layout.design_bottom_sheet_dialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.design_layout_snackbar = global::Inkton.Nester.Droid.Resource.Layout.design_layout_snackbar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.design_layout_snackbar_include = global::Inkton.Nester.Droid.Resource.Layout.design_layout_snackbar_include;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.design_layout_tab_icon = global::Inkton.Nester.Droid.Resource.Layout.design_layout_tab_icon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.design_layout_tab_text = global::Inkton.Nester.Droid.Resource.Layout.design_layout_tab_text;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.design_menu_item_action_area = global::Inkton.Nester.Droid.Resource.Layout.design_menu_item_action_area;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.design_navigation_item = global::Inkton.Nester.Droid.Resource.Layout.design_navigation_item;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.design_navigation_item_header = global::Inkton.Nester.Droid.Resource.Layout.design_navigation_item_header;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.design_navigation_item_separator = global::Inkton.Nester.Droid.Resource.Layout.design_navigation_item_separator;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.design_navigation_item_subheader = global::Inkton.Nester.Droid.Resource.Layout.design_navigation_item_subheader;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.design_navigation_menu = global::Inkton.Nester.Droid.Resource.Layout.design_navigation_menu;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.design_navigation_menu_item = global::Inkton.Nester.Droid.Resource.Layout.design_navigation_menu_item;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.mr_chooser_dialog = global::Inkton.Nester.Droid.Resource.Layout.mr_chooser_dialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.mr_chooser_list_item = global::Inkton.Nester.Droid.Resource.Layout.mr_chooser_list_item;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.mr_controller_material_dialog_b = global::Inkton.Nester.Droid.Resource.Layout.mr_controller_material_dialog_b;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.mr_controller_volume_item = global::Inkton.Nester.Droid.Resource.Layout.mr_controller_volume_item;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.mr_playback_control = global::Inkton.Nester.Droid.Resource.Layout.mr_playback_control;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.mr_volume_control = global::Inkton.Nester.Droid.Resource.Layout.mr_volume_control;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.notification_media_action = global::Inkton.Nester.Droid.Resource.Layout.notification_media_action;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.notification_media_cancel_action = global::Inkton.Nester.Droid.Resource.Layout.notification_media_cancel_action;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.notification_template_big_media = global::Inkton.Nester.Droid.Resource.Layout.notification_template_big_media;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.notification_template_big_media_narrow = global::Inkton.Nester.Droid.Resource.Layout.notification_template_big_media_narrow;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.notification_template_lines = global::Inkton.Nester.Droid.Resource.Layout.notification_template_lines;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.notification_template_media = global::Inkton.Nester.Droid.Resource.Layout.notification_template_media;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.notification_template_part_chronometer = global::Inkton.Nester.Droid.Resource.Layout.notification_template_part_chronometer;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.notification_template_part_time = global::Inkton.Nester.Droid.Resource.Layout.notification_template_part_time;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.select_dialog_item_material = global::Inkton.Nester.Droid.Resource.Layout.select_dialog_item_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.select_dialog_multichoice_material = global::Inkton.Nester.Droid.Resource.Layout.select_dialog_multichoice_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.select_dialog_singlechoice_material = global::Inkton.Nester.Droid.Resource.Layout.select_dialog_singlechoice_material;
-			global::Syncfusion.ListView.XForms.Android.Resource.Layout.support_simple_spinner_dropdown_item = global::Inkton.Nester.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.ApplicationName = global::Inkton.Nester.Droid.Resource.String.ApplicationName;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.Hello = global::Inkton.Nester.Droid.Resource.String.Hello;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.abc_action_bar_home_description = global::Inkton.Nester.Droid.Resource.String.abc_action_bar_home_description;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.abc_action_bar_home_description_format = global::Inkton.Nester.Droid.Resource.String.abc_action_bar_home_description_format;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.abc_action_bar_home_subtitle_description_format = global::Inkton.Nester.Droid.Resource.String.abc_action_bar_home_subtitle_description_format;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.abc_action_bar_up_description = global::Inkton.Nester.Droid.Resource.String.abc_action_bar_up_description;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.abc_action_menu_overflow_description = global::Inkton.Nester.Droid.Resource.String.abc_action_menu_overflow_description;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.abc_action_mode_done = global::Inkton.Nester.Droid.Resource.String.abc_action_mode_done;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.abc_activity_chooser_view_see_all = global::Inkton.Nester.Droid.Resource.String.abc_activity_chooser_view_see_all;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.abc_activitychooserview_choose_application = global::Inkton.Nester.Droid.Resource.String.abc_activitychooserview_choose_application;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.abc_capital_off = global::Inkton.Nester.Droid.Resource.String.abc_capital_off;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.abc_capital_on = global::Inkton.Nester.Droid.Resource.String.abc_capital_on;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.abc_search_hint = global::Inkton.Nester.Droid.Resource.String.abc_search_hint;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.abc_searchview_description_clear = global::Inkton.Nester.Droid.Resource.String.abc_searchview_description_clear;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.abc_searchview_description_query = global::Inkton.Nester.Droid.Resource.String.abc_searchview_description_query;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.abc_searchview_description_search = global::Inkton.Nester.Droid.Resource.String.abc_searchview_description_search;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.abc_searchview_description_submit = global::Inkton.Nester.Droid.Resource.String.abc_searchview_description_submit;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.abc_searchview_description_voice = global::Inkton.Nester.Droid.Resource.String.abc_searchview_description_voice;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.abc_shareactionprovider_share_with = global::Inkton.Nester.Droid.Resource.String.abc_shareactionprovider_share_with;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.abc_shareactionprovider_share_with_application = global::Inkton.Nester.Droid.Resource.String.abc_shareactionprovider_share_with_application;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.abc_toolbar_collapse_description = global::Inkton.Nester.Droid.Resource.String.abc_toolbar_collapse_description;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.appbar_scrolling_view_behavior = global::Inkton.Nester.Droid.Resource.String.appbar_scrolling_view_behavior;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.bottom_sheet_behavior = global::Inkton.Nester.Droid.Resource.String.bottom_sheet_behavior;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.character_counter_pattern = global::Inkton.Nester.Droid.Resource.String.character_counter_pattern;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.mr_button_content_description = global::Inkton.Nester.Droid.Resource.String.mr_button_content_description;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.mr_chooser_searching = global::Inkton.Nester.Droid.Resource.String.mr_chooser_searching;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.mr_chooser_title = global::Inkton.Nester.Droid.Resource.String.mr_chooser_title;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.mr_controller_casting_screen = global::Inkton.Nester.Droid.Resource.String.mr_controller_casting_screen;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.mr_controller_close_description = global::Inkton.Nester.Droid.Resource.String.mr_controller_close_description;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.mr_controller_collapse_group = global::Inkton.Nester.Droid.Resource.String.mr_controller_collapse_group;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.mr_controller_disconnect = global::Inkton.Nester.Droid.Resource.String.mr_controller_disconnect;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.mr_controller_expand_group = global::Inkton.Nester.Droid.Resource.String.mr_controller_expand_group;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.mr_controller_no_info_available = global::Inkton.Nester.Droid.Resource.String.mr_controller_no_info_available;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.mr_controller_no_media_selected = global::Inkton.Nester.Droid.Resource.String.mr_controller_no_media_selected;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.mr_controller_pause = global::Inkton.Nester.Droid.Resource.String.mr_controller_pause;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.mr_controller_play = global::Inkton.Nester.Droid.Resource.String.mr_controller_play;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.mr_controller_stop = global::Inkton.Nester.Droid.Resource.String.mr_controller_stop;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.mr_system_route_name = global::Inkton.Nester.Droid.Resource.String.mr_system_route_name;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.mr_user_route_category_name = global::Inkton.Nester.Droid.Resource.String.mr_user_route_category_name;
-			global::Syncfusion.ListView.XForms.Android.Resource.String.status_bar_notification_info_overflow = global::Inkton.Nester.Droid.Resource.String.status_bar_notification_info_overflow;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.AlertDialog_AppCompat = global::Inkton.Nester.Droid.Resource.Style.AlertDialog_AppCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.AlertDialog_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.AlertDialog_AppCompat_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Animation_AppCompat_Dialog = global::Inkton.Nester.Droid.Resource.Style.Animation_AppCompat_Dialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Animation_AppCompat_DropDownUp = global::Inkton.Nester.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Animation_Design_BottomSheetDialog = global::Inkton.Nester.Droid.Resource.Style.Animation_Design_BottomSheetDialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_AlertDialog_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Base_AlertDialog_AppCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_AlertDialog_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Animation_AppCompat_Dialog = global::Inkton.Nester.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::Inkton.Nester.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_CardView = global::Inkton.Nester.Droid.Resource.Style.Base_CardView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_DialogWindowTitle_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Button = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Button;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Caption = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Caption;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Display1 = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display1;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Display2 = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display2;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Display3 = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display3;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Display4 = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display4;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Headline = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Headline;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Inverse = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Large = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Medium = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Menu = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Menu;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_SearchResult = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Small = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Subhead = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Title = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::Inkton.Nester.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Theme_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Theme_AppCompat_Dialog = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Dialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Theme_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::Inkton.Nester.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_ThemeOverlay_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Base_ThemeOverlay_AppCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::Inkton.Nester.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::Inkton.Nester.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar = global::Inkton.Nester.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_V11_Theme_AppCompat_Dialog = global::Inkton.Nester.Droid.Resource.Style.Base_V11_Theme_AppCompat_Dialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog = global::Inkton.Nester.Droid.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView = global::Inkton.Nester.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_V12_Widget_AppCompat_EditText = global::Inkton.Nester.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_V21_Theme_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Base_V21_Theme_AppCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::Inkton.Nester.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_V21_Theme_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::Inkton.Nester.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_V22_Theme_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Base_V22_Theme_AppCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_V22_Theme_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_V23_Theme_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Base_V23_Theme_AppCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_V23_Theme_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_V7_Theme_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Base_V7_Theme_AppCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::Inkton.Nester.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_V7_Theme_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::Inkton.Nester.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::Inkton.Nester.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::Inkton.Nester.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_ActionBar = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_ActionButton = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_ActionMode = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ActionMode;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_Button = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Button;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_Button_Small = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_EditText = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_EditText;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_ImageButton = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ImageButton;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_ListPopupWindow = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_ListView = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ListView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_ListView_DropDown = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_ListView_Menu = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_PopupMenu = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_PopupWindow = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_PopupWindow;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_ProgressBar = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_RatingBar = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_RatingBar_Small = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Small;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_SearchView = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_SearchView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_SeekBar = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_Spinner = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Spinner;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_Toolbar = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Base_Widget_Design_TabLayout = global::Inkton.Nester.Droid.Resource.Style.Base_Widget_Design_TabLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.CardView = global::Inkton.Nester.Droid.Resource.Style.CardView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.CardView_Dark = global::Inkton.Nester.Droid.Resource.Style.CardView_Dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.CardView_Light = global::Inkton.Nester.Droid.Resource.Style.CardView_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Platform_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Platform_AppCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Platform_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Platform_AppCompat_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Platform_ThemeOverlay_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::Inkton.Nester.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Platform_V11_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Platform_V11_AppCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Platform_V11_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Platform_V11_AppCompat_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Platform_V14_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Platform_V14_AppCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Platform_V14_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Platform_V14_AppCompat_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Platform_Widget_AppCompat_Spinner = global::Inkton.Nester.Droid.Resource.Style.Platform_Widget_AppCompat_Spinner;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::Inkton.Nester.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton = global::Inkton.Nester.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = global::Inkton.Nester.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Body1 = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Body1;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Body2 = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Body2;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Button = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Button;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Caption = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Caption;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Display1 = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Display1;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Display2 = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Display2;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Display3 = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Display3;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Display4 = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Display4;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Headline = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Headline;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Large = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Large;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Large_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Medium = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Medium;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Medium_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Menu = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Menu;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_SearchResult_Title = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Small = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Small;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Small_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Subhead = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Subhead;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Title = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Title;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Widget_Button = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_Design_Counter = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_Design_Counter;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_Design_Counter_Overflow = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_Design_Counter_Overflow;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_Design_Error = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_Design_Error;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_Design_Hint = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_Design_Hint;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_Design_Snackbar_Message = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_Design_Snackbar_Message;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_Design_Tab = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_Design_Tab;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_StatusBar_EventContent = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_StatusBar_EventContent;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_StatusBar_EventContent_Info = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Info;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_StatusBar_EventContent_Line2 = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Line2;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_StatusBar_EventContent_Time = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Time;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_StatusBar_EventContent_Title = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Title;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::Inkton.Nester.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_AppCompat = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_AppCompat_CompactMenu = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_CompactMenu;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_AppCompat_DayNight = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_DayNight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_AppCompat_DayNight_NoActionBar = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_AppCompat_Dialog = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_Dialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_AppCompat_Dialog_Alert = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_AppCompat_Light_Dialog = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_Light_Dialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_AppCompat_NoActionBar = global::Inkton.Nester.Droid.Resource.Style.Theme_AppCompat_NoActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_Design = global::Inkton.Nester.Droid.Resource.Style.Theme_Design;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_Design_BottomSheetDialog = global::Inkton.Nester.Droid.Resource.Style.Theme_Design_BottomSheetDialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_Design_Light = global::Inkton.Nester.Droid.Resource.Style.Theme_Design_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_Design_Light_BottomSheetDialog = global::Inkton.Nester.Droid.Resource.Style.Theme_Design_Light_BottomSheetDialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_Design_Light_NoActionBar = global::Inkton.Nester.Droid.Resource.Style.Theme_Design_Light_NoActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_Design_NoActionBar = global::Inkton.Nester.Droid.Resource.Style.Theme_Design_NoActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_MediaRouter = global::Inkton.Nester.Droid.Resource.Style.Theme_MediaRouter;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_MediaRouter_Light = global::Inkton.Nester.Droid.Resource.Style.Theme_MediaRouter_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_MediaRouter_Light_DarkControlPanel = global::Inkton.Nester.Droid.Resource.Style.Theme_MediaRouter_Light_DarkControlPanel;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Theme_MediaRouter_LightControlPanel = global::Inkton.Nester.Droid.Resource.Style.Theme_MediaRouter_LightControlPanel;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.ThemeOverlay_AppCompat = global::Inkton.Nester.Droid.Resource.Style.ThemeOverlay_AppCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::Inkton.Nester.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.ThemeOverlay_AppCompat_Dark = global::Inkton.Nester.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::Inkton.Nester.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.ThemeOverlay_AppCompat_Light = global::Inkton.Nester.Droid.Resource.Style.ThemeOverlay_AppCompat_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_ActionBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_ActionBar_TabText = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabText;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_ActionBar_TabView = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_ActionButton = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ActionButton;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_ActionButton_CloseMode = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_ActionButton_Overflow = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_ActionMode = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ActionMode;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_ActivityChooserView = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Button = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Button;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Button_Borderless = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Button_Borderless;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Button_Colored = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Button_Colored;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Button_Small = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Button_Small;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_ButtonBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ButtonBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_DrawerArrowToggle = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_DropDownItem_Spinner = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_EditText = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_EditText;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_ImageButton = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ImageButton;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_ActionBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_ActionButton = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_ActivityChooserView = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_ListPopupWindow = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_ListView_DropDown = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_PopupMenu = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_SearchView = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_SearchView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_ListPopupWindow = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ListPopupWindow;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_ListView = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ListView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_ListView_DropDown = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ListView_DropDown;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_ListView_Menu = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ListView_Menu;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_PopupMenu = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_PopupMenu;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_PopupMenu_Overflow = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_PopupWindow = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_PopupWindow;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_ProgressBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ProgressBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_RatingBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_RatingBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_RatingBar_Indicator = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_RatingBar_Indicator;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_RatingBar_Small = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_RatingBar_Small;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_SearchView = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_SearchView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_SearchView_ActionBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_SeekBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_SeekBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Spinner = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Spinner;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Toolbar = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Toolbar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::Inkton.Nester.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_Design_AppBarLayout = global::Inkton.Nester.Droid.Resource.Style.Widget_Design_AppBarLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_Design_BottomSheet_Modal = global::Inkton.Nester.Droid.Resource.Style.Widget_Design_BottomSheet_Modal;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_Design_CollapsingToolbar = global::Inkton.Nester.Droid.Resource.Style.Widget_Design_CollapsingToolbar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_Design_CoordinatorLayout = global::Inkton.Nester.Droid.Resource.Style.Widget_Design_CoordinatorLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_Design_FloatingActionButton = global::Inkton.Nester.Droid.Resource.Style.Widget_Design_FloatingActionButton;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_Design_NavigationView = global::Inkton.Nester.Droid.Resource.Style.Widget_Design_NavigationView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_Design_ScrimInsetsFrameLayout = global::Inkton.Nester.Droid.Resource.Style.Widget_Design_ScrimInsetsFrameLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_Design_Snackbar = global::Inkton.Nester.Droid.Resource.Style.Widget_Design_Snackbar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_Design_TabLayout = global::Inkton.Nester.Droid.Resource.Style.Widget_Design_TabLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_Design_TextInputLayout = global::Inkton.Nester.Droid.Resource.Style.Widget_Design_TextInputLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_MediaRouter_ChooserText = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ChooserText;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_MediaRouter_ChooserText_Primary = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ChooserText_Primary;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_MediaRouter_ChooserText_Primary_Dark = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ChooserText_Primary_Dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_MediaRouter_ChooserText_Primary_Light = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ChooserText_Primary_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_MediaRouter_ChooserText_Secondary = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ChooserText_Secondary;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_MediaRouter_ChooserText_Secondary_Dark = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ChooserText_Secondary_Dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_MediaRouter_ChooserText_Secondary_Light = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ChooserText_Secondary_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_MediaRouter_ControllerText = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ControllerText;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_MediaRouter_ControllerText_Primary = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Primary;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_MediaRouter_ControllerText_Primary_Dark = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Primary_Dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_MediaRouter_ControllerText_Primary_Light = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Primary_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_MediaRouter_ControllerText_Secondary = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Secondary;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_MediaRouter_ControllerText_Secondary_Dark = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Secondary_Dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_MediaRouter_ControllerText_Secondary_Light = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Secondary_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_MediaRouter_ControllerText_Title = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Title;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_MediaRouter_ControllerText_Title_Dark = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Title_Dark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_MediaRouter_ControllerText_Title_Light = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_ControllerText_Title_Light;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton;
-			global::Syncfusion.ListView.XForms.Android.Resource.Style.Widget_MediaRouter_MediaRouteButton = global::Inkton.Nester.Droid.Resource.Style.Widget_MediaRouter_MediaRouteButton;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_background = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_background;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_backgroundSplit = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_backgroundSplit;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_backgroundStacked = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_backgroundStacked;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_contentInsetEnd = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_contentInsetEnd;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_contentInsetLeft = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_contentInsetLeft;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_contentInsetRight = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_contentInsetRight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_contentInsetStart = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_contentInsetStart;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_customNavigationLayout = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_customNavigationLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_displayOptions = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_displayOptions;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_divider = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_divider;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_elevation = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_elevation;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_height = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_height;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_hideOnContentScroll = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_hideOnContentScroll;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_homeAsUpIndicator = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_homeAsUpIndicator;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_homeLayout = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_homeLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_icon = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_icon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_indeterminateProgressStyle = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_indeterminateProgressStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_itemPadding = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_itemPadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_logo = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_logo;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_navigationMode = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_navigationMode;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_popupTheme = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_popupTheme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_progressBarPadding = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_progressBarPadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_progressBarStyle = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_progressBarStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_subtitle = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_subtitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_subtitleTextStyle = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_subtitleTextStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_title = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_title;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBar_titleTextStyle = global::Inkton.Nester.Droid.Resource.Styleable.ActionBar_titleTextStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBarLayout = global::Inkton.Nester.Droid.Resource.Styleable.ActionBarLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::Inkton.Nester.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionMenuItemView = global::Inkton.Nester.Droid.Resource.Styleable.ActionMenuItemView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionMenuItemView_android_minWidth = global::Inkton.Nester.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionMenuView = global::Inkton.Nester.Droid.Resource.Styleable.ActionMenuView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionMode = global::Inkton.Nester.Droid.Resource.Styleable.ActionMode;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionMode_background = global::Inkton.Nester.Droid.Resource.Styleable.ActionMode_background;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionMode_backgroundSplit = global::Inkton.Nester.Droid.Resource.Styleable.ActionMode_backgroundSplit;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionMode_closeItemLayout = global::Inkton.Nester.Droid.Resource.Styleable.ActionMode_closeItemLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionMode_height = global::Inkton.Nester.Droid.Resource.Styleable.ActionMode_height;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionMode_subtitleTextStyle = global::Inkton.Nester.Droid.Resource.Styleable.ActionMode_subtitleTextStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActionMode_titleTextStyle = global::Inkton.Nester.Droid.Resource.Styleable.ActionMode_titleTextStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActivityChooserView = global::Inkton.Nester.Droid.Resource.Styleable.ActivityChooserView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable = global::Inkton.Nester.Droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ActivityChooserView_initialActivityCount = global::Inkton.Nester.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AlertDialog = global::Inkton.Nester.Droid.Resource.Styleable.AlertDialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AlertDialog_android_layout = global::Inkton.Nester.Droid.Resource.Styleable.AlertDialog_android_layout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AlertDialog_buttonPanelSideLayout = global::Inkton.Nester.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AlertDialog_listItemLayout = global::Inkton.Nester.Droid.Resource.Styleable.AlertDialog_listItemLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AlertDialog_listLayout = global::Inkton.Nester.Droid.Resource.Styleable.AlertDialog_listLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AlertDialog_multiChoiceItemLayout = global::Inkton.Nester.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::Inkton.Nester.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppBarLayout = global::Inkton.Nester.Droid.Resource.Styleable.AppBarLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppBarLayout_android_background = global::Inkton.Nester.Droid.Resource.Styleable.AppBarLayout_android_background;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppBarLayout_elevation = global::Inkton.Nester.Droid.Resource.Styleable.AppBarLayout_elevation;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppBarLayout_expanded = global::Inkton.Nester.Droid.Resource.Styleable.AppBarLayout_expanded;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppBarLayout_LayoutParams = global::Inkton.Nester.Droid.Resource.Styleable.AppBarLayout_LayoutParams;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollFlags = global::Inkton.Nester.Droid.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollFlags;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollInterpolator = global::Inkton.Nester.Droid.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollInterpolator;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatImageView = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatImageView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatImageView_android_src = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatImageView_android_src;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatImageView_srcCompat = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatImageView_srcCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTextView = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTextView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTextView_android_textAppearance = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTextView_textAllCaps = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTextView_textAllCaps;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionBarDivider = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionBarItemBackground = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarItemBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionBarPopupTheme = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarPopupTheme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionBarSize = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarSize;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionBarSplitStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarSplitStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionBarStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionBarTabStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarTabStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionBarTheme = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarTheme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionDropDownStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionDropDownStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionMenuTextColor = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionModeBackground = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionModeCutDrawable = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeCutDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionModeFindDrawable = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeFindDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionModePasteDrawable = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModePasteDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionModeShareDrawable = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeShareDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionModeSplitBackground = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeSplitBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionModeStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_activityChooserViewStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_activityChooserViewStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_alertDialogStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_alertDialogStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_alertDialogTheme = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_alertDialogTheme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_android_windowIsFloating = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_android_windowIsFloating;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_borderlessButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_borderlessButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_buttonBarStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_buttonBarStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_buttonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_buttonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_buttonStyleSmall = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_buttonStyleSmall;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_checkboxStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_checkboxStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_checkedTextViewStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_checkedTextViewStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_colorAccent = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_colorAccent;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_colorButtonNormal = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_colorButtonNormal;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_colorControlActivated = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_colorControlActivated;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_colorControlHighlight = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_colorControlHighlight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_colorControlNormal = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_colorControlNormal;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_colorPrimary = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_colorPrimary;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_colorPrimaryDark = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_colorPrimaryDark;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_controlBackground = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_controlBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_dialogPreferredPadding = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_dialogPreferredPadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_dialogTheme = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_dialogTheme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_dividerHorizontal = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_dividerHorizontal;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_dividerVertical = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_dividerVertical;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_dropDownListViewStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_editTextBackground = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_editTextBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_editTextColor = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_editTextColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_editTextStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_editTextStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_homeAsUpIndicator = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_homeAsUpIndicator;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_imageButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_imageButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_listDividerAlertDialog = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_listDividerAlertDialog;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_listPopupWindowStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_listPopupWindowStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_listPreferredItemHeight = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_panelBackground = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_panelBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_panelMenuListTheme = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_panelMenuListTheme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_panelMenuListWidth = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_panelMenuListWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_popupMenuStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_popupMenuStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_popupWindowStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_popupWindowStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_radioButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_radioButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_ratingBarStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_searchViewStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_searchViewStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_seekBarStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_seekBarStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_selectableItemBackground = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_spinnerStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_spinnerStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_switchStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_switchStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_textAppearanceListItem = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItem;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_textColorSearchUrl = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_textColorSearchUrl;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_toolbarStyle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_toolbarStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_windowActionBar = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_windowActionBar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_windowActionBarOverlay = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_windowActionBarOverlay;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_windowActionModeOverlay = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_windowActionModeOverlay;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_windowMinWidthMajor = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMajor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_windowMinWidthMinor = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMinor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.AppCompatTheme_windowNoTitle = global::Inkton.Nester.Droid.Resource.Styleable.AppCompatTheme_windowNoTitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.BottomSheetBehavior_Params = global::Inkton.Nester.Droid.Resource.Styleable.BottomSheetBehavior_Params;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.BottomSheetBehavior_Params_behavior_hideable = global::Inkton.Nester.Droid.Resource.Styleable.BottomSheetBehavior_Params_behavior_hideable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.BottomSheetBehavior_Params_behavior_peekHeight = global::Inkton.Nester.Droid.Resource.Styleable.BottomSheetBehavior_Params_behavior_peekHeight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ButtonBarLayout = global::Inkton.Nester.Droid.Resource.Styleable.ButtonBarLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ButtonBarLayout_allowStacking = global::Inkton.Nester.Droid.Resource.Styleable.ButtonBarLayout_allowStacking;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CardView = global::Inkton.Nester.Droid.Resource.Styleable.CardView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CardView_android_minHeight = global::Inkton.Nester.Droid.Resource.Styleable.CardView_android_minHeight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CardView_android_minWidth = global::Inkton.Nester.Droid.Resource.Styleable.CardView_android_minWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CardView_cardBackgroundColor = global::Inkton.Nester.Droid.Resource.Styleable.CardView_cardBackgroundColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CardView_cardCornerRadius = global::Inkton.Nester.Droid.Resource.Styleable.CardView_cardCornerRadius;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CardView_cardElevation = global::Inkton.Nester.Droid.Resource.Styleable.CardView_cardElevation;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CardView_cardMaxElevation = global::Inkton.Nester.Droid.Resource.Styleable.CardView_cardMaxElevation;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CardView_cardPreventCornerOverlap = global::Inkton.Nester.Droid.Resource.Styleable.CardView_cardPreventCornerOverlap;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CardView_cardUseCompatPadding = global::Inkton.Nester.Droid.Resource.Styleable.CardView_cardUseCompatPadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CardView_contentPadding = global::Inkton.Nester.Droid.Resource.Styleable.CardView_contentPadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CardView_contentPaddingBottom = global::Inkton.Nester.Droid.Resource.Styleable.CardView_contentPaddingBottom;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CardView_contentPaddingLeft = global::Inkton.Nester.Droid.Resource.Styleable.CardView_contentPaddingLeft;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CardView_contentPaddingRight = global::Inkton.Nester.Droid.Resource.Styleable.CardView_contentPaddingRight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CardView_contentPaddingTop = global::Inkton.Nester.Droid.Resource.Styleable.CardView_contentPaddingTop;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CollapsingAppBarLayout_LayoutParams = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingAppBarLayout_LayoutParams;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseMode = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseMode;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseParallaxMultiplier = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseParallaxMultiplier;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CollapsingToolbarLayout = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CollapsingToolbarLayout_contentScrim = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_contentScrim;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CollapsingToolbarLayout_title = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_title;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CollapsingToolbarLayout_titleEnabled = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CollapsingToolbarLayout_toolbarId = global::Inkton.Nester.Droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CompoundButton = global::Inkton.Nester.Droid.Resource.Styleable.CompoundButton;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CompoundButton_android_button = global::Inkton.Nester.Droid.Resource.Styleable.CompoundButton_android_button;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CompoundButton_buttonTint = global::Inkton.Nester.Droid.Resource.Styleable.CompoundButton_buttonTint;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CompoundButton_buttonTintMode = global::Inkton.Nester.Droid.Resource.Styleable.CompoundButton_buttonTintMode;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CoordinatorLayout = global::Inkton.Nester.Droid.Resource.Styleable.CoordinatorLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CoordinatorLayout_keylines = global::Inkton.Nester.Droid.Resource.Styleable.CoordinatorLayout_keylines;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::Inkton.Nester.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CoordinatorLayout_LayoutParams = global::Inkton.Nester.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CoordinatorLayout_LayoutParams_android_layout_gravity = global::Inkton.Nester.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_android_layout_gravity;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchor = global::Inkton.Nester.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchorGravity = global::Inkton.Nester.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchorGravity;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_behavior = global::Inkton.Nester.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_behavior;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_keyline = global::Inkton.Nester.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_keyline;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.DesignTheme = global::Inkton.Nester.Droid.Resource.Styleable.DesignTheme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.DesignTheme_bottomSheetDialogTheme = global::Inkton.Nester.Droid.Resource.Styleable.DesignTheme_bottomSheetDialogTheme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.DesignTheme_bottomSheetStyle = global::Inkton.Nester.Droid.Resource.Styleable.DesignTheme_bottomSheetStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.DesignTheme_textColorError = global::Inkton.Nester.Droid.Resource.Styleable.DesignTheme_textColorError;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.DrawerArrowToggle = global::Inkton.Nester.Droid.Resource.Styleable.DrawerArrowToggle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.DrawerArrowToggle_arrowHeadLength = global::Inkton.Nester.Droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.DrawerArrowToggle_arrowShaftLength = global::Inkton.Nester.Droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.DrawerArrowToggle_barLength = global::Inkton.Nester.Droid.Resource.Styleable.DrawerArrowToggle_barLength;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.DrawerArrowToggle_color = global::Inkton.Nester.Droid.Resource.Styleable.DrawerArrowToggle_color;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.DrawerArrowToggle_drawableSize = global::Inkton.Nester.Droid.Resource.Styleable.DrawerArrowToggle_drawableSize;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.DrawerArrowToggle_gapBetweenBars = global::Inkton.Nester.Droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.DrawerArrowToggle_spinBars = global::Inkton.Nester.Droid.Resource.Styleable.DrawerArrowToggle_spinBars;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.DrawerArrowToggle_thickness = global::Inkton.Nester.Droid.Resource.Styleable.DrawerArrowToggle_thickness;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.FloatingActionButton = global::Inkton.Nester.Droid.Resource.Styleable.FloatingActionButton;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.FloatingActionButton_backgroundTint = global::Inkton.Nester.Droid.Resource.Styleable.FloatingActionButton_backgroundTint;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.FloatingActionButton_backgroundTintMode = global::Inkton.Nester.Droid.Resource.Styleable.FloatingActionButton_backgroundTintMode;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.FloatingActionButton_borderWidth = global::Inkton.Nester.Droid.Resource.Styleable.FloatingActionButton_borderWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.FloatingActionButton_elevation = global::Inkton.Nester.Droid.Resource.Styleable.FloatingActionButton_elevation;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.FloatingActionButton_fabSize = global::Inkton.Nester.Droid.Resource.Styleable.FloatingActionButton_fabSize;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.FloatingActionButton_pressedTranslationZ = global::Inkton.Nester.Droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.FloatingActionButton_rippleColor = global::Inkton.Nester.Droid.Resource.Styleable.FloatingActionButton_rippleColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.FloatingActionButton_useCompatPadding = global::Inkton.Nester.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ForegroundLinearLayout = global::Inkton.Nester.Droid.Resource.Styleable.ForegroundLinearLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ForegroundLinearLayout_android_foreground = global::Inkton.Nester.Droid.Resource.Styleable.ForegroundLinearLayout_android_foreground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity = global::Inkton.Nester.Droid.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding = global::Inkton.Nester.Droid.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.LinearLayoutCompat = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.LinearLayoutCompat_android_gravity = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_android_gravity;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.LinearLayoutCompat_android_orientation = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_android_orientation;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.LinearLayoutCompat_divider = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_divider;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.LinearLayoutCompat_showDividers = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_showDividers;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.LinearLayoutCompat_Layout = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_Layout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::Inkton.Nester.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ListPopupWindow = global::Inkton.Nester.Droid.Resource.Styleable.ListPopupWindow;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::Inkton.Nester.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::Inkton.Nester.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MediaRouteButton = global::Inkton.Nester.Droid.Resource.Styleable.MediaRouteButton;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MediaRouteButton_android_minHeight = global::Inkton.Nester.Droid.Resource.Styleable.MediaRouteButton_android_minHeight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MediaRouteButton_android_minWidth = global::Inkton.Nester.Droid.Resource.Styleable.MediaRouteButton_android_minWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable = global::Inkton.Nester.Droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuGroup = global::Inkton.Nester.Droid.Resource.Styleable.MenuGroup;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuGroup_android_checkableBehavior = global::Inkton.Nester.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuGroup_android_enabled = global::Inkton.Nester.Droid.Resource.Styleable.MenuGroup_android_enabled;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuGroup_android_id = global::Inkton.Nester.Droid.Resource.Styleable.MenuGroup_android_id;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuGroup_android_menuCategory = global::Inkton.Nester.Droid.Resource.Styleable.MenuGroup_android_menuCategory;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuGroup_android_orderInCategory = global::Inkton.Nester.Droid.Resource.Styleable.MenuGroup_android_orderInCategory;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuGroup_android_visible = global::Inkton.Nester.Droid.Resource.Styleable.MenuGroup_android_visible;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuItem = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuItem_actionLayout = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_actionLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuItem_actionProviderClass = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_actionProviderClass;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuItem_actionViewClass = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_actionViewClass;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuItem_android_checkable = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_checkable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuItem_android_checked = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_checked;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuItem_android_enabled = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_enabled;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuItem_android_icon = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_icon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuItem_android_id = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_id;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuItem_android_menuCategory = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_menuCategory;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuItem_android_numericShortcut = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_numericShortcut;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuItem_android_onClick = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_onClick;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuItem_android_orderInCategory = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_orderInCategory;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuItem_android_title = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_title;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuItem_android_titleCondensed = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_titleCondensed;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuItem_android_visible = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_android_visible;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuItem_showAsAction = global::Inkton.Nester.Droid.Resource.Styleable.MenuItem_showAsAction;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuView = global::Inkton.Nester.Droid.Resource.Styleable.MenuView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuView_android_headerBackground = global::Inkton.Nester.Droid.Resource.Styleable.MenuView_android_headerBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuView_android_horizontalDivider = global::Inkton.Nester.Droid.Resource.Styleable.MenuView_android_horizontalDivider;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuView_android_itemBackground = global::Inkton.Nester.Droid.Resource.Styleable.MenuView_android_itemBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuView_android_itemIconDisabledAlpha = global::Inkton.Nester.Droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuView_android_itemTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.MenuView_android_itemTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuView_android_verticalDivider = global::Inkton.Nester.Droid.Resource.Styleable.MenuView_android_verticalDivider;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuView_android_windowAnimationStyle = global::Inkton.Nester.Droid.Resource.Styleable.MenuView_android_windowAnimationStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.MenuView_preserveIconSpacing = global::Inkton.Nester.Droid.Resource.Styleable.MenuView_preserveIconSpacing;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.NavigationView = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.NavigationView_android_background = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView_android_background;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.NavigationView_android_fitsSystemWindows = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView_android_fitsSystemWindows;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.NavigationView_android_maxWidth = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView_android_maxWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.NavigationView_elevation = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView_elevation;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.NavigationView_headerLayout = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView_headerLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.NavigationView_itemBackground = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView_itemBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.NavigationView_itemIconTint = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView_itemIconTint;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.NavigationView_itemTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView_itemTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.NavigationView_itemTextColor = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView_itemTextColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.NavigationView_menu = global::Inkton.Nester.Droid.Resource.Styleable.NavigationView_menu;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.PopupWindow = global::Inkton.Nester.Droid.Resource.Styleable.PopupWindow;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.PopupWindow_android_popupBackground = global::Inkton.Nester.Droid.Resource.Styleable.PopupWindow_android_popupBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.PopupWindow_overlapAnchor = global::Inkton.Nester.Droid.Resource.Styleable.PopupWindow_overlapAnchor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.PopupWindowBackgroundState = global::Inkton.Nester.Droid.Resource.Styleable.PopupWindowBackgroundState;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::Inkton.Nester.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.RecyclerView = global::Inkton.Nester.Droid.Resource.Styleable.RecyclerView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.RecyclerView_android_orientation = global::Inkton.Nester.Droid.Resource.Styleable.RecyclerView_android_orientation;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.RecyclerView_layoutManager = global::Inkton.Nester.Droid.Resource.Styleable.RecyclerView_layoutManager;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.RecyclerView_reverseLayout = global::Inkton.Nester.Droid.Resource.Styleable.RecyclerView_reverseLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.RecyclerView_spanCount = global::Inkton.Nester.Droid.Resource.Styleable.RecyclerView_spanCount;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.RecyclerView_stackFromEnd = global::Inkton.Nester.Droid.Resource.Styleable.RecyclerView_stackFromEnd;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ScrimInsetsFrameLayout = global::Inkton.Nester.Droid.Resource.Styleable.ScrimInsetsFrameLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground = global::Inkton.Nester.Droid.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ScrollingViewBehavior_Params = global::Inkton.Nester.Droid.Resource.Styleable.ScrollingViewBehavior_Params;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ScrollingViewBehavior_Params_behavior_overlapTop = global::Inkton.Nester.Droid.Resource.Styleable.ScrollingViewBehavior_Params_behavior_overlapTop;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SearchView = global::Inkton.Nester.Droid.Resource.Styleable.SearchView;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SearchView_android_focusable = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_android_focusable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SearchView_android_imeOptions = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_android_imeOptions;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SearchView_android_inputType = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_android_inputType;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SearchView_android_maxWidth = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_android_maxWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SearchView_closeIcon = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_closeIcon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SearchView_commitIcon = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_commitIcon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SearchView_defaultQueryHint = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_defaultQueryHint;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SearchView_goIcon = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_goIcon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SearchView_iconifiedByDefault = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_iconifiedByDefault;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SearchView_layout = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_layout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SearchView_queryBackground = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_queryBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SearchView_queryHint = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_queryHint;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SearchView_searchHintIcon = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_searchHintIcon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SearchView_searchIcon = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_searchIcon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SearchView_submitBackground = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_submitBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SearchView_suggestionRowLayout = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_suggestionRowLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SearchView_voiceIcon = global::Inkton.Nester.Droid.Resource.Styleable.SearchView_voiceIcon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SnackbarLayout = global::Inkton.Nester.Droid.Resource.Styleable.SnackbarLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SnackbarLayout_android_maxWidth = global::Inkton.Nester.Droid.Resource.Styleable.SnackbarLayout_android_maxWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SnackbarLayout_elevation = global::Inkton.Nester.Droid.Resource.Styleable.SnackbarLayout_elevation;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SnackbarLayout_maxActionInlineWidth = global::Inkton.Nester.Droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Spinner = global::Inkton.Nester.Droid.Resource.Styleable.Spinner;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Spinner_android_dropDownWidth = global::Inkton.Nester.Droid.Resource.Styleable.Spinner_android_dropDownWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Spinner_android_entries = global::Inkton.Nester.Droid.Resource.Styleable.Spinner_android_entries;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Spinner_android_popupBackground = global::Inkton.Nester.Droid.Resource.Styleable.Spinner_android_popupBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Spinner_android_prompt = global::Inkton.Nester.Droid.Resource.Styleable.Spinner_android_prompt;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Spinner_popupTheme = global::Inkton.Nester.Droid.Resource.Styleable.Spinner_popupTheme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SwitchCompat = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SwitchCompat_android_textOff = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat_android_textOff;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SwitchCompat_android_textOn = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat_android_textOn;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SwitchCompat_android_thumb = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat_android_thumb;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SwitchCompat_showText = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat_showText;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SwitchCompat_splitTrack = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat_splitTrack;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SwitchCompat_switchMinWidth = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat_switchMinWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SwitchCompat_switchPadding = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat_switchPadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SwitchCompat_switchTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat_switchTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SwitchCompat_thumbTextPadding = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat_thumbTextPadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.SwitchCompat_track = global::Inkton.Nester.Droid.Resource.Styleable.SwitchCompat_track;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TabItem = global::Inkton.Nester.Droid.Resource.Styleable.TabItem;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TabItem_android_icon = global::Inkton.Nester.Droid.Resource.Styleable.TabItem_android_icon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TabItem_android_layout = global::Inkton.Nester.Droid.Resource.Styleable.TabItem_android_layout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TabItem_android_text = global::Inkton.Nester.Droid.Resource.Styleable.TabItem_android_text;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TabLayout = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TabLayout_tabBackground = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabBackground;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TabLayout_tabContentStart = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabContentStart;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TabLayout_tabGravity = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabGravity;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TabLayout_tabIndicatorColor = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabIndicatorColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TabLayout_tabIndicatorHeight = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabIndicatorHeight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TabLayout_tabMaxWidth = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabMaxWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TabLayout_tabMinWidth = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabMinWidth;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TabLayout_tabMode = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabMode;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TabLayout_tabPadding = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabPadding;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TabLayout_tabPaddingBottom = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabPaddingBottom;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TabLayout_tabPaddingEnd = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabPaddingEnd;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TabLayout_tabPaddingStart = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabPaddingStart;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TabLayout_tabPaddingTop = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabPaddingTop;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TabLayout_tabSelectedTextColor = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabSelectedTextColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TabLayout_tabTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TabLayout_tabTextColor = global::Inkton.Nester.Droid.Resource.Styleable.TabLayout_tabTextColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.TextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextAppearance_android_shadowColor = global::Inkton.Nester.Droid.Resource.Styleable.TextAppearance_android_shadowColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextAppearance_android_shadowDx = global::Inkton.Nester.Droid.Resource.Styleable.TextAppearance_android_shadowDx;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextAppearance_android_shadowDy = global::Inkton.Nester.Droid.Resource.Styleable.TextAppearance_android_shadowDy;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextAppearance_android_shadowRadius = global::Inkton.Nester.Droid.Resource.Styleable.TextAppearance_android_shadowRadius;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextAppearance_android_textColor = global::Inkton.Nester.Droid.Resource.Styleable.TextAppearance_android_textColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextAppearance_android_textSize = global::Inkton.Nester.Droid.Resource.Styleable.TextAppearance_android_textSize;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextAppearance_android_textStyle = global::Inkton.Nester.Droid.Resource.Styleable.TextAppearance_android_textStyle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextAppearance_android_typeface = global::Inkton.Nester.Droid.Resource.Styleable.TextAppearance_android_typeface;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextAppearance_textAllCaps = global::Inkton.Nester.Droid.Resource.Styleable.TextAppearance_textAllCaps;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextInputLayout = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextInputLayout_android_hint = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_android_hint;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextInputLayout_android_textColorHint = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_android_textColorHint;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextInputLayout_counterEnabled = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_counterEnabled;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextInputLayout_counterMaxLength = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_counterMaxLength;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextInputLayout_counterTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_counterTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextInputLayout_errorEnabled = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_errorEnabled;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextInputLayout_errorTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_errorTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextInputLayout_hintAnimationEnabled = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_hintAnimationEnabled;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextInputLayout_hintEnabled = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_hintEnabled;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.TextInputLayout_hintTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.TextInputLayout_hintTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_android_gravity = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_android_gravity;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_android_minHeight = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_android_minHeight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_collapseContentDescription = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_collapseContentDescription;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_collapseIcon = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_collapseIcon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_contentInsetEnd = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_contentInsetEnd;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_contentInsetLeft = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_contentInsetLeft;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_contentInsetRight = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_contentInsetRight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_contentInsetStart = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_contentInsetStart;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_logo = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_logo;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_logoDescription = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_logoDescription;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_maxButtonHeight = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_maxButtonHeight;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_navigationContentDescription = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_navigationContentDescription;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_navigationIcon = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_navigationIcon;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_popupTheme = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_popupTheme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_subtitle = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_subtitle;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_subtitleTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_subtitleTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_subtitleTextColor = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_subtitleTextColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_title = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_title;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_titleMarginBottom = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_titleMarginBottom;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_titleMarginEnd = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_titleMarginEnd;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_titleMarginStart = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_titleMarginStart;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_titleMarginTop = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_titleMarginTop;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_titleMargins = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_titleMargins;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_titleTextAppearance = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_titleTextAppearance;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.Toolbar_titleTextColor = global::Inkton.Nester.Droid.Resource.Styleable.Toolbar_titleTextColor;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.View = global::Inkton.Nester.Droid.Resource.Styleable.View;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.View_android_focusable = global::Inkton.Nester.Droid.Resource.Styleable.View_android_focusable;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.View_android_theme = global::Inkton.Nester.Droid.Resource.Styleable.View_android_theme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.View_paddingEnd = global::Inkton.Nester.Droid.Resource.Styleable.View_paddingEnd;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.View_paddingStart = global::Inkton.Nester.Droid.Resource.Styleable.View_paddingStart;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.View_theme = global::Inkton.Nester.Droid.Resource.Styleable.View_theme;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ViewBackgroundHelper = global::Inkton.Nester.Droid.Resource.Styleable.ViewBackgroundHelper;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ViewBackgroundHelper_android_background = global::Inkton.Nester.Droid.Resource.Styleable.ViewBackgroundHelper_android_background;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::Inkton.Nester.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode = global::Inkton.Nester.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ViewStubCompat = global::Inkton.Nester.Droid.Resource.Styleable.ViewStubCompat;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ViewStubCompat_android_id = global::Inkton.Nester.Droid.Resource.Styleable.ViewStubCompat_android_id;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ViewStubCompat_android_inflatedId = global::Inkton.Nester.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
-			global::Syncfusion.ListView.XForms.Android.Resource.Styleable.ViewStubCompat_android_layout = global::Inkton.Nester.Droid.Resource.Styleable.ViewStubCompat_android_layout;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Animation.Fadein = global::Inkton.Nester.Droid.Resource.Animation.Fadein;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Animation.Fadeout = global::Inkton.Nester.Droid.Resource.Animation.Fadeout;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Animation.Scale_in = global::Inkton.Nester.Droid.Resource.Animation.Scale_in;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Animation.Scale_out = global::Inkton.Nester.Droid.Resource.Animation.Scale_out;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.annotationLayout = global::Inkton.Nester.Droid.Resource.Id.annotationLayout;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.axisLayout = global::Inkton.Nester.Droid.Resource.Id.axisLayout;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.bottom_labels = global::Inkton.Nester.Droid.Resource.Id.bottom_labels;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.chartBehaviorLayout = global::Inkton.Nester.Droid.Resource.Id.chartBehaviorLayout;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.chartLegendScrollView = global::Inkton.Nester.Droid.Resource.Id.chartLegendScrollView;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.content = global::Inkton.Nester.Droid.Resource.Id.content;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.dataMarkerLayout = global::Inkton.Nester.Droid.Resource.Id.dataMarkerLayout;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.gridLineLayout = global::Inkton.Nester.Droid.Resource.Id.gridLineLayout;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.gridLinesLayout = global::Inkton.Nester.Droid.Resource.Id.gridLinesLayout;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.iconView = global::Inkton.Nester.Droid.Resource.Id.iconView;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.label = global::Inkton.Nester.Droid.Resource.Id.label;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.legendHeader = global::Inkton.Nester.Droid.Resource.Id.legendHeader;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.legendItemsLayout = global::Inkton.Nester.Droid.Resource.Id.legendItemsLayout;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.legendLayout = global::Inkton.Nester.Droid.Resource.Id.legendLayout;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.legendScrollView = global::Inkton.Nester.Droid.Resource.Id.legendScrollView;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.legendViewGroup = global::Inkton.Nester.Droid.Resource.Id.legendViewGroup;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.rootLayout = global::Inkton.Nester.Droid.Resource.Id.rootLayout;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.seriesLayout = global::Inkton.Nester.Droid.Resource.Id.seriesLayout;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.stripLinesLayout = global::Inkton.Nester.Droid.Resource.Id.stripLinesLayout;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.technicalIndicatorLayout = global::Inkton.Nester.Droid.Resource.Id.technicalIndicatorLayout;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.thumbLayout = global::Inkton.Nester.Droid.Resource.Id.thumbLayout;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.titleLayout = global::Inkton.Nester.Droid.Resource.Id.titleLayout;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Id.top_labels = global::Inkton.Nester.Droid.Resource.Id.top_labels;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Layout.chart_layout = global::Inkton.Nester.Droid.Resource.Layout.chart_layout;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Layout.chart_legend = global::Inkton.Nester.Droid.Resource.Layout.chart_legend;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Layout.chart_legend_item = global::Inkton.Nester.Droid.Resource.Layout.chart_legend_item;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.Layout.range_navigator_layout = global::Inkton.Nester.Droid.Resource.Layout.range_navigator_layout;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.String.q = global::Inkton.Nester.Droid.Resource.String.q;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.String.quarter = global::Inkton.Nester.Droid.Resource.String.quarter;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.String.sfchart_close_label = global::Inkton.Nester.Droid.Resource.String.sfchart_close_label;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.String.sfchart_high_label = global::Inkton.Nester.Droid.Resource.String.sfchart_high_label;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.String.sfchart_low_label = global::Inkton.Nester.Droid.Resource.String.sfchart_low_label;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.String.sfchart_open_label = global::Inkton.Nester.Droid.Resource.String.sfchart_open_label;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.String.w = global::Inkton.Nester.Droid.Resource.String.w;
+			global::Syncfusion.SfChart.XForms.Droid.Resource.String.week = global::Inkton.Nester.Droid.Resource.String.week;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::Inkton.Nester.Droid.Resource.Attribute.actionBarSize;
 		}
 		
@@ -3654,6 +119,18 @@ namespace Inkton.Nester.Droid
 			
 			// aapt resource value: 0x7f04000f
 			public const int design_snackbar_out = 2130968591;
+			
+			// aapt resource value: 0x7f040010
+			public const int Fadein = 2130968592;
+			
+			// aapt resource value: 0x7f040011
+			public const int Fadeout = 2130968593;
+			
+			// aapt resource value: 0x7f040012
+			public const int Scale_in = 2130968594;
+			
+			// aapt resource value: 0x7f040013
+			public const int Scale_out = 2130968595;
 			
 			static Animation()
 			{
@@ -5791,8 +2268,8 @@ namespace Inkton.Nester.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f07008b
-			public const int action0 = 2131165323;
+			// aapt resource value: 0x7f07009d
+			public const int action0 = 2131165341;
 			
 			// aapt resource value: 0x7f07005a
 			public const int action_bar = 2131165274;
@@ -5818,8 +2295,8 @@ namespace Inkton.Nester.Droid
 			// aapt resource value: 0x7f07005b
 			public const int action_context_bar = 2131165275;
 			
-			// aapt resource value: 0x7f07008f
-			public const int action_divider = 2131165327;
+			// aapt resource value: 0x7f0700a1
+			public const int action_divider = 2131165345;
 			
 			// aapt resource value: 0x7f070003
 			public const int action_menu_divider = 2131165187;
@@ -5845,17 +2322,26 @@ namespace Inkton.Nester.Droid
 			// aapt resource value: 0x7f07001e
 			public const int always = 2131165214;
 			
+			// aapt resource value: 0x7f070073
+			public const int annotationLayout = 2131165299;
+			
+			// aapt resource value: 0x7f070070
+			public const int axisLayout = 2131165296;
+			
 			// aapt resource value: 0x7f07001b
 			public const int beginning = 2131165211;
 			
 			// aapt resource value: 0x7f07002a
 			public const int bottom = 2131165226;
 			
+			// aapt resource value: 0x7f0700ab
+			public const int bottom_labels = 2131165355;
+			
 			// aapt resource value: 0x7f070044
 			public const int buttonPanel = 2131165252;
 			
-			// aapt resource value: 0x7f07008c
-			public const int cancel_action = 2131165324;
+			// aapt resource value: 0x7f07009e
+			public const int cancel_action = 2131165342;
 			
 			// aapt resource value: 0x7f07002b
 			public const int center = 2131165227;
@@ -5866,11 +2352,17 @@ namespace Inkton.Nester.Droid
 			// aapt resource value: 0x7f07002d
 			public const int center_vertical = 2131165229;
 			
+			// aapt resource value: 0x7f070072
+			public const int chartBehaviorLayout = 2131165298;
+			
+			// aapt resource value: 0x7f070076
+			public const int chartLegendScrollView = 2131165302;
+			
 			// aapt resource value: 0x7f070052
 			public const int checkbox = 2131165266;
 			
-			// aapt resource value: 0x7f070092
-			public const int chronometer = 2131165330;
+			// aapt resource value: 0x7f0700a4
+			public const int chronometer = 2131165348;
 			
 			// aapt resource value: 0x7f070033
 			public const int clip_horizontal = 2131165235;
@@ -5881,6 +2373,9 @@ namespace Inkton.Nester.Droid
 			// aapt resource value: 0x7f07001f
 			public const int collapseActionView = 2131165215;
 			
+			// aapt resource value: 0x7f0700ac
+			public const int content = 2131165356;
+			
 			// aapt resource value: 0x7f07004a
 			public const int contentPanel = 2131165258;
 			
@@ -5890,26 +2385,29 @@ namespace Inkton.Nester.Droid
 			// aapt resource value: 0x7f07004f
 			public const int customPanel = 2131165263;
 			
+			// aapt resource value: 0x7f07006e
+			public const int dataMarkerLayout = 2131165294;
+			
 			// aapt resource value: 0x7f070058
 			public const int decor_content_parent = 2131165272;
 			
 			// aapt resource value: 0x7f070040
 			public const int default_activity_button = 2131165248;
 			
-			// aapt resource value: 0x7f07006a
-			public const int design_bottom_sheet = 2131165290;
+			// aapt resource value: 0x7f07007c
+			public const int design_bottom_sheet = 2131165308;
 			
-			// aapt resource value: 0x7f070071
-			public const int design_menu_item_action_area = 2131165297;
+			// aapt resource value: 0x7f070083
+			public const int design_menu_item_action_area = 2131165315;
 			
-			// aapt resource value: 0x7f070070
-			public const int design_menu_item_action_area_stub = 2131165296;
+			// aapt resource value: 0x7f070082
+			public const int design_menu_item_action_area_stub = 2131165314;
 			
-			// aapt resource value: 0x7f07006f
-			public const int design_menu_item_text = 2131165295;
+			// aapt resource value: 0x7f070081
+			public const int design_menu_item_text = 2131165313;
 			
-			// aapt resource value: 0x7f07006e
-			public const int design_navigation_view = 2131165294;
+			// aapt resource value: 0x7f070080
+			public const int design_navigation_view = 2131165312;
 			
 			// aapt resource value: 0x7f07000e
 			public const int disableHome = 2131165198;
@@ -5920,8 +2418,8 @@ namespace Inkton.Nester.Droid
 			// aapt resource value: 0x7f07001c
 			public const int end = 2131165212;
 			
-			// aapt resource value: 0x7f070097
-			public const int end_padder = 2131165335;
+			// aapt resource value: 0x7f0700a9
+			public const int end_padder = 2131165353;
 			
 			// aapt resource value: 0x7f070023
 			public const int enterAlways = 2131165219;
@@ -5950,6 +2448,12 @@ namespace Inkton.Nester.Droid
 			// aapt resource value: 0x7f070038
 			public const int @fixed = 2131165240;
 			
+			// aapt resource value: 0x7f07006b
+			public const int gridLineLayout = 2131165291;
+			
+			// aapt resource value: 0x7f0700ad
+			public const int gridLinesLayout = 2131165357;
+			
 			// aapt resource value: 0x7f070005
 			public const int home = 2131165189;
 			
@@ -5959,26 +2463,47 @@ namespace Inkton.Nester.Droid
 			// aapt resource value: 0x7f070042
 			public const int icon = 2131165250;
 			
+			// aapt resource value: 0x7f070079
+			public const int iconView = 2131165305;
+			
 			// aapt resource value: 0x7f070020
 			public const int ifRoom = 2131165216;
 			
 			// aapt resource value: 0x7f07003f
 			public const int image = 2131165247;
 			
-			// aapt resource value: 0x7f070096
-			public const int info = 2131165334;
+			// aapt resource value: 0x7f0700a8
+			public const int info = 2131165352;
 			
 			// aapt resource value: 0x7f070000
 			public const int item_touch_helper_previous_elevation = 2131165184;
 			
+			// aapt resource value: 0x7f07007a
+			public const int label = 2131165306;
+			
 			// aapt resource value: 0x7f07002f
 			public const int left = 2131165231;
 			
-			// aapt resource value: 0x7f070090
-			public const int line1 = 2131165328;
+			// aapt resource value: 0x7f070075
+			public const int legendHeader = 2131165301;
 			
-			// aapt resource value: 0x7f070094
-			public const int line3 = 2131165332;
+			// aapt resource value: 0x7f070078
+			public const int legendItemsLayout = 2131165304;
+			
+			// aapt resource value: 0x7f070071
+			public const int legendLayout = 2131165297;
+			
+			// aapt resource value: 0x7f070077
+			public const int legendScrollView = 2131165303;
+			
+			// aapt resource value: 0x7f070074
+			public const int legendViewGroup = 2131165300;
+			
+			// aapt resource value: 0x7f0700a2
+			public const int line1 = 2131165346;
+			
+			// aapt resource value: 0x7f0700a6
+			public const int line3 = 2131165350;
 			
 			// aapt resource value: 0x7f07000b
 			public const int listMode = 2131165195;
@@ -5986,8 +2511,8 @@ namespace Inkton.Nester.Droid
 			// aapt resource value: 0x7f070041
 			public const int list_item = 2131165249;
 			
-			// aapt resource value: 0x7f07008e
-			public const int media_actions = 2131165326;
+			// aapt resource value: 0x7f0700a0
+			public const int media_actions = 2131165344;
 			
 			// aapt resource value: 0x7f07001d
 			public const int middle = 2131165213;
@@ -5995,83 +2520,83 @@ namespace Inkton.Nester.Droid
 			// aapt resource value: 0x7f070037
 			public const int mini = 2131165239;
 			
-			// aapt resource value: 0x7f07007d
-			public const int mr_art = 2131165309;
-			
-			// aapt resource value: 0x7f070072
-			public const int mr_chooser_list = 2131165298;
-			
-			// aapt resource value: 0x7f070075
-			public const int mr_chooser_route_desc = 2131165301;
-			
-			// aapt resource value: 0x7f070073
-			public const int mr_chooser_route_icon = 2131165299;
-			
-			// aapt resource value: 0x7f070074
-			public const int mr_chooser_route_name = 2131165300;
-			
-			// aapt resource value: 0x7f07007a
-			public const int mr_close = 2131165306;
-			
-			// aapt resource value: 0x7f070080
-			public const int mr_control_divider = 2131165312;
-			
-			// aapt resource value: 0x7f070086
-			public const int mr_control_play_pause = 2131165318;
-			
-			// aapt resource value: 0x7f070089
-			public const int mr_control_subtitle = 2131165321;
-			
-			// aapt resource value: 0x7f070088
-			public const int mr_control_title = 2131165320;
-			
-			// aapt resource value: 0x7f070087
-			public const int mr_control_title_container = 2131165319;
-			
-			// aapt resource value: 0x7f07007b
-			public const int mr_custom_control = 2131165307;
-			
-			// aapt resource value: 0x7f07007c
-			public const int mr_default_control = 2131165308;
-			
-			// aapt resource value: 0x7f070077
-			public const int mr_dialog_area = 2131165303;
-			
-			// aapt resource value: 0x7f070076
-			public const int mr_expandable_area = 2131165302;
-			
-			// aapt resource value: 0x7f07008a
-			public const int mr_group_expand_collapse = 2131165322;
-			
-			// aapt resource value: 0x7f07007e
-			public const int mr_media_main_control = 2131165310;
-			
-			// aapt resource value: 0x7f070079
-			public const int mr_name = 2131165305;
-			
-			// aapt resource value: 0x7f07007f
-			public const int mr_playback_control = 2131165311;
-			
-			// aapt resource value: 0x7f070078
-			public const int mr_title_bar = 2131165304;
-			
-			// aapt resource value: 0x7f070081
-			public const int mr_volume_control = 2131165313;
-			
-			// aapt resource value: 0x7f070082
-			public const int mr_volume_group_list = 2131165314;
+			// aapt resource value: 0x7f07008f
+			public const int mr_art = 2131165327;
 			
 			// aapt resource value: 0x7f070084
-			public const int mr_volume_item_icon = 2131165316;
+			public const int mr_chooser_list = 2131165316;
+			
+			// aapt resource value: 0x7f070087
+			public const int mr_chooser_route_desc = 2131165319;
 			
 			// aapt resource value: 0x7f070085
-			public const int mr_volume_slider = 2131165317;
+			public const int mr_chooser_route_icon = 2131165317;
+			
+			// aapt resource value: 0x7f070086
+			public const int mr_chooser_route_name = 2131165318;
+			
+			// aapt resource value: 0x7f07008c
+			public const int mr_close = 2131165324;
+			
+			// aapt resource value: 0x7f070092
+			public const int mr_control_divider = 2131165330;
+			
+			// aapt resource value: 0x7f070098
+			public const int mr_control_play_pause = 2131165336;
+			
+			// aapt resource value: 0x7f07009b
+			public const int mr_control_subtitle = 2131165339;
+			
+			// aapt resource value: 0x7f07009a
+			public const int mr_control_title = 2131165338;
+			
+			// aapt resource value: 0x7f070099
+			public const int mr_control_title_container = 2131165337;
+			
+			// aapt resource value: 0x7f07008d
+			public const int mr_custom_control = 2131165325;
+			
+			// aapt resource value: 0x7f07008e
+			public const int mr_default_control = 2131165326;
+			
+			// aapt resource value: 0x7f070089
+			public const int mr_dialog_area = 2131165321;
+			
+			// aapt resource value: 0x7f070088
+			public const int mr_expandable_area = 2131165320;
+			
+			// aapt resource value: 0x7f07009c
+			public const int mr_group_expand_collapse = 2131165340;
+			
+			// aapt resource value: 0x7f070090
+			public const int mr_media_main_control = 2131165328;
+			
+			// aapt resource value: 0x7f07008b
+			public const int mr_name = 2131165323;
+			
+			// aapt resource value: 0x7f070091
+			public const int mr_playback_control = 2131165329;
+			
+			// aapt resource value: 0x7f07008a
+			public const int mr_title_bar = 2131165322;
+			
+			// aapt resource value: 0x7f070093
+			public const int mr_volume_control = 2131165331;
+			
+			// aapt resource value: 0x7f070094
+			public const int mr_volume_group_list = 2131165332;
+			
+			// aapt resource value: 0x7f070096
+			public const int mr_volume_item_icon = 2131165334;
+			
+			// aapt resource value: 0x7f070097
+			public const int mr_volume_slider = 2131165335;
 			
 			// aapt resource value: 0x7f070016
 			public const int multiply = 2131165206;
 			
-			// aapt resource value: 0x7f07006d
-			public const int navigation_header_container = 2131165293;
+			// aapt resource value: 0x7f07007f
+			public const int navigation_header_container = 2131165311;
 			
 			// aapt resource value: 0x7f070021
 			public const int never = 2131165217;
@@ -6102,6 +2627,9 @@ namespace Inkton.Nester.Droid
 			
 			// aapt resource value: 0x7f070030
 			public const int right = 2131165232;
+			
+			// aapt resource value: 0x7f070069
+			public const int rootLayout = 2131165289;
 			
 			// aapt resource value: 0x7f070017
 			public const int screen = 2131165207;
@@ -6154,6 +2682,9 @@ namespace Inkton.Nester.Droid
 			// aapt resource value: 0x7f070068
 			public const int select_dialog_listview = 2131165288;
 			
+			// aapt resource value: 0x7f07006d
+			public const int seriesLayout = 2131165293;
+			
 			// aapt resource value: 0x7f070053
 			public const int shortcut = 2131165267;
 			
@@ -6166,14 +2697,14 @@ namespace Inkton.Nester.Droid
 			// aapt resource value: 0x7f070013
 			public const int showTitle = 2131165203;
 			
-			// aapt resource value: 0x7f070098
-			public const int sliding_tabs = 2131165336;
+			// aapt resource value: 0x7f0700af
+			public const int sliding_tabs = 2131165359;
 			
-			// aapt resource value: 0x7f07006c
-			public const int snackbar_action = 2131165292;
+			// aapt resource value: 0x7f07007e
+			public const int snackbar_action = 2131165310;
 			
-			// aapt resource value: 0x7f07006b
-			public const int snackbar_text = 2131165291;
+			// aapt resource value: 0x7f07007d
+			public const int snackbar_text = 2131165309;
 			
 			// aapt resource value: 0x7f070027
 			public const int snap = 2131165223;
@@ -6196,8 +2727,11 @@ namespace Inkton.Nester.Droid
 			// aapt resource value: 0x7f070031
 			public const int start = 2131165233;
 			
-			// aapt resource value: 0x7f07008d
-			public const int status_bar_latest_event_content = 2131165325;
+			// aapt resource value: 0x7f07009f
+			public const int status_bar_latest_event_content = 2131165343;
+			
+			// aapt resource value: 0x7f07006c
+			public const int stripLinesLayout = 2131165292;
 			
 			// aapt resource value: 0x7f070065
 			public const int submit_area = 2131165285;
@@ -6205,26 +2739,35 @@ namespace Inkton.Nester.Droid
 			// aapt resource value: 0x7f07000d
 			public const int tabMode = 2131165197;
 			
-			// aapt resource value: 0x7f070095
-			public const int text = 2131165333;
+			// aapt resource value: 0x7f07006f
+			public const int technicalIndicatorLayout = 2131165295;
 			
-			// aapt resource value: 0x7f070093
-			public const int text2 = 2131165331;
+			// aapt resource value: 0x7f0700a7
+			public const int text = 2131165351;
+			
+			// aapt resource value: 0x7f0700a5
+			public const int text2 = 2131165349;
 			
 			// aapt resource value: 0x7f07004d
 			public const int textSpacerNoButtons = 2131165261;
 			
-			// aapt resource value: 0x7f070091
-			public const int time = 2131165329;
+			// aapt resource value: 0x7f0700ae
+			public const int thumbLayout = 2131165358;
+			
+			// aapt resource value: 0x7f0700a3
+			public const int time = 2131165347;
 			
 			// aapt resource value: 0x7f070043
 			public const int title = 2131165251;
 			
+			// aapt resource value: 0x7f07006a
+			public const int titleLayout = 2131165290;
+			
 			// aapt resource value: 0x7f070048
 			public const int title_template = 2131165256;
 			
-			// aapt resource value: 0x7f070099
-			public const int toolbar = 2131165337;
+			// aapt resource value: 0x7f0700b0
+			public const int toolbar = 2131165360;
 			
 			// aapt resource value: 0x7f070032
 			public const int top = 2131165234;
@@ -6232,8 +2775,11 @@ namespace Inkton.Nester.Droid
 			// aapt resource value: 0x7f070047
 			public const int topPanel = 2131165255;
 			
-			// aapt resource value: 0x7f070069
-			public const int touch_outside = 2131165289;
+			// aapt resource value: 0x7f0700aa
+			public const int top_labels = 2131165354;
+			
+			// aapt resource value: 0x7f07007b
+			public const int touch_outside = 2131165307;
 			
 			// aapt resource value: 0x7f070009
 			public const int up = 2131165193;
@@ -6244,8 +2790,8 @@ namespace Inkton.Nester.Droid
 			// aapt resource value: 0x7f07000a
 			public const int view_offset_helper = 2131165194;
 			
-			// aapt resource value: 0x7f070083
-			public const int volume_item_container = 2131165315;
+			// aapt resource value: 0x7f070095
+			public const int volume_item_container = 2131165333;
 			
 			// aapt resource value: 0x7f070022
 			public const int withText = 2131165218;
@@ -6404,103 +2950,112 @@ namespace Inkton.Nester.Droid
 			public const int abc_select_dialog_material = 2130903064;
 			
 			// aapt resource value: 0x7f030019
-			public const int design_bottom_sheet_dialog = 2130903065;
+			public const int chart_layout = 2130903065;
 			
 			// aapt resource value: 0x7f03001a
-			public const int design_layout_snackbar = 2130903066;
+			public const int chart_legend = 2130903066;
 			
 			// aapt resource value: 0x7f03001b
-			public const int design_layout_snackbar_include = 2130903067;
+			public const int chart_legend_item = 2130903067;
 			
 			// aapt resource value: 0x7f03001c
-			public const int design_layout_tab_icon = 2130903068;
+			public const int design_bottom_sheet_dialog = 2130903068;
 			
 			// aapt resource value: 0x7f03001d
-			public const int design_layout_tab_text = 2130903069;
+			public const int design_layout_snackbar = 2130903069;
 			
 			// aapt resource value: 0x7f03001e
-			public const int design_menu_item_action_area = 2130903070;
+			public const int design_layout_snackbar_include = 2130903070;
 			
 			// aapt resource value: 0x7f03001f
-			public const int design_navigation_item = 2130903071;
+			public const int design_layout_tab_icon = 2130903071;
 			
 			// aapt resource value: 0x7f030020
-			public const int design_navigation_item_header = 2130903072;
+			public const int design_layout_tab_text = 2130903072;
 			
 			// aapt resource value: 0x7f030021
-			public const int design_navigation_item_separator = 2130903073;
+			public const int design_menu_item_action_area = 2130903073;
 			
 			// aapt resource value: 0x7f030022
-			public const int design_navigation_item_subheader = 2130903074;
+			public const int design_navigation_item = 2130903074;
 			
 			// aapt resource value: 0x7f030023
-			public const int design_navigation_menu = 2130903075;
+			public const int design_navigation_item_header = 2130903075;
 			
 			// aapt resource value: 0x7f030024
-			public const int design_navigation_menu_item = 2130903076;
+			public const int design_navigation_item_separator = 2130903076;
 			
 			// aapt resource value: 0x7f030025
-			public const int mr_chooser_dialog = 2130903077;
+			public const int design_navigation_item_subheader = 2130903077;
 			
 			// aapt resource value: 0x7f030026
-			public const int mr_chooser_list_item = 2130903078;
+			public const int design_navigation_menu = 2130903078;
 			
 			// aapt resource value: 0x7f030027
-			public const int mr_controller_material_dialog_b = 2130903079;
+			public const int design_navigation_menu_item = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int mr_controller_volume_item = 2130903080;
+			public const int mr_chooser_dialog = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int mr_playback_control = 2130903081;
+			public const int mr_chooser_list_item = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int mr_volume_control = 2130903082;
+			public const int mr_controller_material_dialog_b = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int notification_media_action = 2130903083;
+			public const int mr_controller_volume_item = 2130903083;
 			
 			// aapt resource value: 0x7f03002c
-			public const int notification_media_cancel_action = 2130903084;
+			public const int mr_playback_control = 2130903084;
 			
 			// aapt resource value: 0x7f03002d
-			public const int notification_template_big_media = 2130903085;
+			public const int mr_volume_control = 2130903085;
 			
 			// aapt resource value: 0x7f03002e
-			public const int notification_template_big_media_narrow = 2130903086;
+			public const int notification_media_action = 2130903086;
 			
 			// aapt resource value: 0x7f03002f
-			public const int notification_template_lines = 2130903087;
+			public const int notification_media_cancel_action = 2130903087;
 			
 			// aapt resource value: 0x7f030030
-			public const int notification_template_media = 2130903088;
+			public const int notification_template_big_media = 2130903088;
 			
 			// aapt resource value: 0x7f030031
-			public const int notification_template_part_chronometer = 2130903089;
+			public const int notification_template_big_media_narrow = 2130903089;
 			
 			// aapt resource value: 0x7f030032
-			public const int notification_template_part_time = 2130903090;
+			public const int notification_template_lines = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public const int select_dialog_item_material = 2130903091;
+			public const int notification_template_media = 2130903091;
 			
 			// aapt resource value: 0x7f030034
-			public const int select_dialog_multichoice_material = 2130903092;
+			public const int notification_template_part_chronometer = 2130903092;
 			
 			// aapt resource value: 0x7f030035
-			public const int select_dialog_singlechoice_material = 2130903093;
+			public const int notification_template_part_time = 2130903093;
 			
 			// aapt resource value: 0x7f030036
-			public const int sfbusyindicator_layout = 2130903094;
+			public const int range_navigator_layout = 2130903094;
 			
 			// aapt resource value: 0x7f030037
-			public const int support_simple_spinner_dropdown_item = 2130903095;
+			public const int select_dialog_item_material = 2130903095;
 			
 			// aapt resource value: 0x7f030038
-			public const int Tabbar = 2130903096;
+			public const int select_dialog_multichoice_material = 2130903096;
 			
 			// aapt resource value: 0x7f030039
-			public const int Toolbar = 2130903097;
+			public const int select_dialog_singlechoice_material = 2130903097;
+			
+			// aapt resource value: 0x7f03003a
+			public const int support_simple_spinner_dropdown_item = 2130903098;
+			
+			// aapt resource value: 0x7f03003b
+			public const int Tabbar = 2130903099;
+			
+			// aapt resource value: 0x7f03003c
+			public const int Toolbar = 2130903100;
 			
 			static Layout()
 			{
@@ -6587,8 +3142,8 @@ namespace Inkton.Nester.Droid
 			// aapt resource value: 0x7f080025
 			public const int character_counter_pattern = 2131230757;
 			
-			// aapt resource value: 0x7f080028
-			public const int library_name = 2131230760;
+			// aapt resource value: 0x7f080030
+			public const int library_name = 2131230768;
 			
 			// aapt resource value: 0x7f080000
 			public const int mr_button_content_description = 2131230720;
@@ -6635,8 +3190,32 @@ namespace Inkton.Nester.Droid
 			// aapt resource value: 0x7f08000e
 			public const int mr_user_route_category_name = 2131230734;
 			
+			// aapt resource value: 0x7f080029
+			public const int q = 2131230761;
+			
+			// aapt resource value: 0x7f080028
+			public const int quarter = 2131230760;
+			
+			// aapt resource value: 0x7f08002f
+			public const int sfchart_close_label = 2131230767;
+			
+			// aapt resource value: 0x7f08002c
+			public const int sfchart_high_label = 2131230764;
+			
+			// aapt resource value: 0x7f08002d
+			public const int sfchart_low_label = 2131230765;
+			
+			// aapt resource value: 0x7f08002e
+			public const int sfchart_open_label = 2131230766;
+			
 			// aapt resource value: 0x7f080022
 			public const int status_bar_notification_info_overflow = 2131230754;
+			
+			// aapt resource value: 0x7f08002b
+			public const int w = 2131230763;
+			
+			// aapt resource value: 0x7f08002a
+			public const int week = 2131230762;
 			
 			static String()
 			{

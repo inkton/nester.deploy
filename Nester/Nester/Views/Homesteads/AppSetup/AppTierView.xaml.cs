@@ -22,18 +22,15 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
+using Inkton.Nester.Models;
+using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
-    public partial class AppTierView : Inkton.Nester.Views.View
+    public partial class AppTierView : View
     {
-        public AppTierView(Views.BaseModels baseModels)
+        public AppTierView(BaseModels baseModels)
         {
             _baseModels = baseModels;
 
@@ -46,7 +43,7 @@ namespace Inkton.Nester.Views
                     ButtonDone
                 });
 
-            BindingContext = _baseModels.AppViewModel;
+            BindingContext = _baseModels.TargetViewModel;
         }
 
         private void AppTypeTierView_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
@@ -54,23 +51,18 @@ namespace Inkton.Nester.Views
             Validate();
         }
 
-        private void AppTypeTierView_Loaded(object sender, Syncfusion.ListView.XForms.ListViewLoadedEventArgs e)
-        {
-            AppTypeTierView.SelectedItem = _baseModels.AppViewModel.SelectedAppServiceTier;
-        }
-
         void Validate()
         {
-            if (_baseModels.AppViewModel != null)
+            if (_baseModels.TargetViewModel != null)
             {
-                _baseModels.AppViewModel.Validated = (
+                _baseModels.TargetViewModel.Validated = (
                      AppTypeTierView.SelectedItem != null
                     );
 
-                if (_baseModels.AppViewModel.Validated)
+                if (_baseModels.TargetViewModel.Validated)
                 {
-                    _baseModels.AppViewModel.SelectedAppServiceTier = 
-                        AppTypeTierView.SelectedItem as Admin.AppServiceTier;
+                    _baseModels.TargetViewModel.SelectedAppService =
+                        AppTypeTierView.SelectedItem as ServicesViewModel.ServiceTableItem;
                 }
             }
         }
@@ -85,31 +77,31 @@ namespace Inkton.Nester.Views
                 // the app cannot change app tier afterwards as 
                 // there is no support in the backend.
 
-                if (_baseModels.AppViewModel.EditApp.Status != "assigned")
+                if (_baseModels.TargetViewModel.EditApp.Status != "assigned")
                 {
-                    await _baseModels.AppViewModel.CreateAppAsync();
+                    await _baseModels.TargetViewModel.CreateAppAsync();
 
-                    (NesterControl.BaseModels.AppViewModel as AppCollectionViewModel).AddModel(_baseModels.AppViewModel);
+                    NesterControl.BaseModels.AllApps.AddModel(_baseModels.TargetViewModel);
                 }
 
-                if (_baseModels.AppViewModel.SelectedMariaDBTier == null && MariaDBEnabled.IsToggled)
+                if (_baseModels.TargetViewModel.SelectedMariaDBService == null && MariaDBEnabled.IsToggled)
                 {
                     // Only one tier available at present
-                    Admin.AppServiceTier mariaDBTier =_baseModels.AppViewModel.MariaDBTiers.First();
-                    await _baseModels.AppViewModel.ServicesViewModel.CreateSubscription(mariaDBTier);
+                    AppServiceTier mariaDBTier =_baseModels.TargetViewModel.MariaDBTiers.First();
+                    await _baseModels.TargetViewModel.ServicesViewModel.CreateSubscription(mariaDBTier);
                 }
-                else if (_baseModels.AppViewModel.SelectedMariaDBTier != null && !MariaDBEnabled.IsToggled)
+                else if (_baseModels.TargetViewModel.SelectedMariaDBService != null && !MariaDBEnabled.IsToggled)
                 {
-                    Admin.AppServiceSubscription subscription = _baseModels.AppViewModel.EditApp.Subscriptions.FirstOrDefault(
+                    AppServiceSubscription subscription = _baseModels.TargetViewModel.EditApp.Subscriptions.FirstOrDefault(
                         x => x.ServiceTier.Service.Tag == "mariadb");
 
                     if (subscription != null)
                     {
-                        await _baseModels.AppViewModel.ServicesViewModel.RemoveSubscription(subscription);
+                        await _baseModels.TargetViewModel.ServicesViewModel.RemoveSubscription(subscription);
                     }
                 }
 
-                await _baseModels.AppViewModel.NestModel.InitAsync();
+                await _baseModels.TargetViewModel.NestModel.InitAsync();
 
                 AppNestsView nestsView = new AppNestsView(_baseModels);
                 nestsView.MainSideView = MainSideView;

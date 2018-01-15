@@ -23,16 +23,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
+using Inkton.Nester.Models;
+using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
-    public partial class UserView : Inkton.Nester.Views.View
+    public partial class UserView : View
     {
-        public UserView(Views.BaseModels baseModels)
+        public UserView(BaseModels baseModels)
         {
             InitializeComponent();
 
@@ -41,7 +40,7 @@ namespace Inkton.Nester.Views
             SecurityCodeLabel.IsVisible = _baseModels.WizardMode;
             int selectedTerritoryIndex = -1;
 
-            foreach (Admin.Geography.ISO3166Country territory in Admin.Geography.Territories)
+            foreach (Geography.ISO3166Country territory in Geography.Territories)
             {
                 Territories.Items.Add(territory.ToString());
 
@@ -84,7 +83,7 @@ namespace Inkton.Nester.Views
 /*            string nickname = (sender as Xamarin.Forms.Entry).Text;
             if (nickname != null && nickname.Length > 0)
             {
-                Admin.User searchUser = new Admin.User();
+                User searchUser = new User();
                 searchUser.Nickname = nickname;
 
                 Cloud.ServerStatus status = await _appViewModel.QueryAppAsync(
@@ -125,7 +124,7 @@ namespace Inkton.Nester.Views
 
                 string territoryName = Territories.Items.ElementAt(Territories.SelectedIndex);
 
-                foreach (Admin.Geography.ISO3166Country territory in Admin.Geography.Territories)
+                foreach (Geography.ISO3166Country territory in Geography.Territories)
                 {
                     if (territoryName == territory.ToString())
                     {
@@ -140,11 +139,11 @@ namespace Inkton.Nester.Views
                 {
                     Cloud.ServerStatus status = _baseModels.AuthViewModel.Signup(false);
 
-                    if (status.Code == Cloud.Result.NEST_RESULT_ERROR_AUTH_SECCODE)
+                    if (status.Code == Cloud.ServerStatus.NEST_RESULT_ERROR_AUTH_SECCODE)
                     {
                         await DisplayAlert("Nester", "Invalid security code", "OK");
                     }
-                    else if (status.Code == Cloud.Result.NEST_RESULT_ERROR)
+                    else if (status.Code == Cloud.ServerStatus.NEST_RESULT_ERROR)
                     {
                         await DisplayAlert("Nester", status.Notes, "OK");
                     }
@@ -172,7 +171,7 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                ResetView();
+                await NesterControl.ResetViewAsync();
             }
             catch (Exception ex)
             {

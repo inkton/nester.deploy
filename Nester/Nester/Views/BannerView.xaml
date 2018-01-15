@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              xmlns:views="clr-namespace:Inkton.Nester.Views"
-             xmlns:validators="clr-namespace:Inkton.Nester.Utils.Validators"
-             xmlns:utils="clr-namespace:Inkton.Nester.Utils"
+             xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
+             xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
              xmlns:local="clr-namespace:Nester"
              x:Class="Inkton.Nester.Views.BannerView">
   

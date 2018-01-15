@@ -1,20 +1,8 @@
-﻿using PCLAppConfig;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices.WindowsRuntime;
+﻿using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 namespace Inkton.Nester.UWP
@@ -60,25 +48,12 @@ namespace Inkton.Nester.UWP
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                // you'll need to add `using System.Reflection;`
-                List<Assembly> assembliesToInclude = new List<Assembly>();
-
-                //Now, add all the assemblies your app uses
-                assembliesToInclude.Add(typeof(Syncfusion.ListView.XForms.UWP.SfListViewRenderer).GetTypeInfo().Assembly);
-                assembliesToInclude.Add(typeof(Syncfusion.SfChart.XForms.UWP.SfChartRenderer).GetTypeInfo().Assembly);
-
-                // replaces Xamarin.Forms.Forms.Init(e);        
-                Xamarin.Forms.Forms.Init(e, assembliesToInclude);
+                Xamarin.Forms.Forms.Init(e);
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     //TODO: Load state from previously suspended application
                 }
-
-                // comment below to test file based app config
-                // Added by RHW
-                // instrutions https://github.com/mrbrl/PCLAppConfig
-                ConfigurationManager.Initialise(PCLAppConfig.FileSystemStream.PortableStream.Current);
 
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;

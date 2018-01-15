@@ -23,13 +23,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
+using Inkton.Nester.Models;
+using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
-    public partial class EntryView : Inkton.Nester.Views.View
+    public partial class EntryView : View
     {
         public EntryView()
         {
@@ -79,8 +78,7 @@ namespace Inkton.Nester.Views
         private void BeginNewSession()
         {
             _baseModels.AuthViewModel.Reset();
-            AppCollectionViewModel appCollection = _baseModels.AppViewModel as AppCollectionViewModel;
-            appCollection.AppModels.Clear();
+            _baseModels.AllApps.AppModels.Clear();
             _baseModels.WizardMode = true;
         }
 
@@ -105,7 +103,7 @@ namespace Inkton.Nester.Views
         {
             PushEngageView();
 
-            Views.UserView userView = new Views.UserView(_baseModels);
+            UserView userView = new UserView(_baseModels);
             userView.MainSideView = MainSideView;
 
             MainSideView.Detail.Navigation.InsertPageBefore(userView, this);
@@ -119,9 +117,9 @@ namespace Inkton.Nester.Views
             {
                 BeginNewSession();
 
-                Cloud.ServerStatus status = _baseModels.AuthViewModel.QueryToken(false);
+                Cloud.ServerStatus status = await _baseModels.AuthViewModel.QueryTokenAsync(false);
 
-                if (status.Code == Cloud.Result.NEST_RESULT_ERROR_AUTH_SECCODE)
+                if (status.Code == Cloud.ServerStatus.NEST_RESULT_ERROR_AUTH_SECCODE)
                 {
                     // the user can be hanging in inactive state
                     // if he/she did not confirm the security code
@@ -132,15 +130,13 @@ namespace Inkton.Nester.Views
 
                     PushEngageViewWithUserUpdate();
                 }
-                else if (status.Code == Cloud.Result.NEST_RESULT_SUCCESS)
+                else if (status.Code == Cloud.ServerStatus.NEST_RESULT_SUCCESS)
                 {
                     await _baseModels.PaymentViewModel.InitAsync();
 
-                    AppCollectionViewModel appCollection = _baseModels.AppViewModel as AppCollectionViewModel;
+                    await _baseModels.AllApps.LoadApps();
 
-                    await appCollection.LoadApps();
-
-                    if (!appCollection.AppModels.Any())
+                    if (!_baseModels.AllApps.AppModels.Any())
                     {
                         PushEngageView();
 
@@ -150,17 +146,12 @@ namespace Inkton.Nester.Views
                     {
                         await MainSideView.Detail.Navigation.PopAsync();
 
-                        BaseModels baseModels = new BaseModels(
-                                _baseModels.AuthViewModel,
-                                _baseModels.PaymentViewModel,
-                                appCollection.AppModels.First());
-
-                        NesterControl.ResetView(baseModels);
+                        await NesterControl.ResetViewAsync(_baseModels.AllApps.AppModels.First());
                     }
                 }
                 else
                 {
-                    Cloud.Result.ThrowError(status);
+                    status.Throw();
                 }
             }
             catch (Exception ex)
@@ -207,7 +198,7 @@ namespace Inkton.Nester.Views
                 {
                     status = await _baseModels.AuthViewModel.RecoverPasswordAsync(false);
 
-                    if (status.Code == Cloud.Result.NEST_RESULT_ERROR_USER_NFOUND)
+                    if (status.Code == Cloud.ServerStatus.NEST_RESULT_ERROR_USER_NFOUND)
                     {
                         await DisplayAlert("Nester", "The user not found", "OK");
                     }

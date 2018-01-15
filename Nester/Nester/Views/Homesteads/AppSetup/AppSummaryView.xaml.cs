@@ -23,16 +23,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
-using Xamarin.Forms;
+using Inkton.Nester.Models;
+using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
-    public partial class AppSummaryView : Inkton.Nester.Views.View
+    public partial class AppSummaryView : View
     {
-        public AppSummaryView(Views.BaseModels baseModels)
+        public AppSummaryView(BaseModels baseModels)
         {
             _baseModels = baseModels;
 
@@ -43,9 +42,9 @@ namespace Inkton.Nester.Views
                     ButtonDone
                 });
 
-            BindingContext = _baseModels.AppViewModel;
+            BindingContext = _baseModels.TargetViewModel;
             
-            _baseModels.AppViewModel.DeploymentModel.DotnetVersions.All(version =>
+            _baseModels.TargetViewModel.DeploymentModel.DotnetVersions.All(version =>
             {
                 SoftwareVersion.Items.Add(version.Name);
                 return true;
@@ -54,7 +53,7 @@ namespace Inkton.Nester.Views
             SoftwareVersion.SelectedIndex = 0;
             DeployWarning.Text = "The deployment will take some time to complete. ";
 
-            if (_baseModels.AppViewModel.EditApp.IsDeployed)
+            if (_baseModels.TargetViewModel.EditApp.IsDeployed)
             {
                 DeployWarning.Text += "New DevKits will be rebuilt with new access keys. ";
                 DeployWarning.Text += "Download the Devkits again once the deployment is complete. ";
@@ -64,11 +63,14 @@ namespace Inkton.Nester.Views
         
         private async Task<bool> IsDnsOkAsync()
         {
-            Admin.AppDomain defaultDomain = (from domain in _baseModels.AppViewModel.DomainModel.Domains
+            // The custom domains and aliases must point to 
+            // the App IP in the DNS.
+
+            AppDomain defaultDomain = (from domain in _baseModels.TargetViewModel.DomainModel.Domains
                                              where domain.Default == true
                                              select domain).First();
 
-            foreach (Admin.AppDomain domain in _baseModels.AppViewModel.DomainModel.Domains)
+            foreach (AppDomain domain in _baseModels.TargetViewModel.DomainModel.Domains)
             {
                 if (domain.Default)
                     continue;
@@ -80,7 +82,7 @@ namespace Inkton.Nester.Views
                     wildcardStripped = domain.Name.Remove(0, 2);
                 }
 
-                string ip = await NesterControl.NesterService.GetIPAsync(wildcardStripped);
+                string ip = await NesterControl.Service.GetIPAsync(wildcardStripped);
 
                 if (ip == null || ip != defaultDomain.Ip)
                 {
@@ -95,7 +97,7 @@ namespace Inkton.Nester.Views
                 {
                     foreach (string alias in domain.Aliases.Split(' '))
                     {
-                        ip = await NesterControl.NesterService.GetIPAsync(alias);
+                        ip = await NesterControl.Service.GetIPAsync(alias);
 
                         if (ip == null || ip != defaultDomain.Ip)
                         {
@@ -116,11 +118,8 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                if (!await IsDnsOkAsync())
-                    return;
-
-                Admin.SoftwareFramework.Version selVersion = null;
-                foreach (var version in _baseModels.AppViewModel.DeploymentModel.DotnetVersions)
+                SoftwareFramework.Version selVersion = null;
+                foreach (var version in _baseModels.TargetViewModel.DeploymentModel.DotnetVersions)
                 {
                     if (version.Name == SoftwareVersion.SelectedItem as string)
                     {
@@ -129,30 +128,56 @@ namespace Inkton.Nester.Views
                     }
                 }
 
-                if (_baseModels.AppViewModel.DeploymentModel.Deployments.Any())
+                if (_baseModels.TargetViewModel.DeploymentModel.Deployments.Any())
                 {
-                    Admin.Deployment deployment =
-                        _baseModels.AppViewModel.DeploymentModel.Deployments.First();
+                    if (_baseModels.TargetViewModel.EditApp.IsDeployed)
+                    {
+                        if (!await IsDnsOkAsync())
+                            return;
+                    }
+
+                    Deployment deployment =
+                        _baseModels.TargetViewModel.DeploymentModel.Deployments.First();
                     deployment.FrameworkVersionId = selVersion.Id;
 
-                    await _baseModels.AppViewModel.DeploymentModel.UpdateDeploymentAsync(deployment);
+                    await _baseModels.TargetViewModel.DeploymentModel.UpdateDeploymentAsync(deployment);
                 }
                 else
                 {
-                    _baseModels.AppViewModel.DeploymentModel.EditDeployment.FrameworkVersionId = selVersion.Id;
+                    if (!_baseModels.TargetViewModel.EditApp.IsDeployed)
+                    {
+                        var customDomains = _baseModels.TargetViewModel.DomainModel.Domains.Where(domain => !domain.Default).ToList();
 
-                    await _baseModels.AppViewModel.DeploymentModel.CreateDeployment(
-                        _baseModels.AppViewModel.DeploymentModel.EditDeployment);
+                        if (customDomains.Any())
+                        {
+                            string domainList = "\n";
+                            foreach (var domain in customDomains)
+                            {
+                                domainList += domain.Name + "\n";
+                            }
 
-                    _baseModels.AppViewModel.EditApp.Deployment = 
-                        _baseModels.AppViewModel.DeploymentModel.EditDeployment;
+                            await DisplayAlert("Nester", "The following custom domains will be removed. " +
+                                "Add the domains and re-deploy when the App IP is known.\n" + domainList, "OK");
+
+                            foreach (var domain in customDomains)
+                            {
+                                await _baseModels.TargetViewModel.DomainModel.RemoveDomainAsync(domain);
+                            }
+                        }
+                    }
+
+                    _baseModels.TargetViewModel.DeploymentModel.EditDeployment.FrameworkVersionId = selVersion.Id;
+
+                    await _baseModels.TargetViewModel.DeploymentModel.CreateDeployment(
+                        _baseModels.TargetViewModel.DeploymentModel.EditDeployment);
+
+                    _baseModels.TargetViewModel.EditApp.Deployment = 
+                        _baseModels.TargetViewModel.DeploymentModel.EditDeployment;
                 }
 
-                await _baseModels.AppViewModel.InitAsync();
+                await _baseModels.TargetViewModel.InitAsync();
 
-                ResetView();
-
-                NesterControl.CreateAppView(_baseModels);
+                await NesterControl.ResetViewAsync();
             }
             catch (Exception ex)
             {
@@ -169,7 +194,7 @@ namespace Inkton.Nester.Views
             {
                 // Head back to homepage if the 
                 // page was called from here
-                ResetView();
+                await NesterControl.ResetViewAsync();
             }
             catch (Exception ex)
             {

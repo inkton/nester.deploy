@@ -22,16 +22,13 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
+using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
-    public partial class NotificationView : Inkton.Nester.Views.View
+    public partial class NotificationView : View
     {
-        public NotificationView(Views.BaseModels baseModels)
+        public NotificationView(BaseModels baseModels)
         {
             InitializeComponent();
 
@@ -41,14 +38,14 @@ namespace Inkton.Nester.Views
                 });
 
             _baseModels = baseModels;
-            BindingContext = _baseModels.AppViewModel;
+            BindingContext = _baseModels.TargetViewModel;
         }
 
         async private void OnDoneButtonClickedAsync(object sender, EventArgs e)
         {
             try
             {
-                ResetView();
+                await NesterControl.ResetViewAsync();
             }
             catch (Exception ex)
             {

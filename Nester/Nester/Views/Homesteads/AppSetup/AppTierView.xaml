@@ -2,8 +2,8 @@
 <views:View xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Inkton.Nester.Views"
-             xmlns:validators="clr-namespace:Inkton.Nester.Utils.Validators"
-             xmlns:utils="clr-namespace:Inkton.Nester.Utils"
+             xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
+             xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
              xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Title="App Tier Select"             
              x:Class="Inkton.Nester.Views.AppTierView">
@@ -32,8 +32,7 @@
                   SelectionGesture="Tap"
                   SelectionMode="Single"                         
                   SelectionBackgroundColor="{StaticResource selectionColor}"                         
-                  ItemsSource="{Binding AppServiceTiers}"
-                  Loaded="AppTypeTierView_Loaded" >
+                  ItemsSource="{Binding AppFeaturesTable}">
           <sync:SfListView.ItemTemplate>
             <DataTemplate>
               <ViewCell>
@@ -80,13 +79,13 @@
                       <!-- Users -->
 
                       <Label Grid.Row="0" Grid.Column="0"
-                              Text="{Binding Service.FeaturesAllArray[12]}"
+                              Text="{Binding FeaturesAll[12]}"
                               Style="{StaticResource nesterListInfoLabelMinor}"
                              >
                       </Label>
 
                       <Label Grid.Row="1" Grid.Column="0"
-                             Text="{Binding FeaturesIncludedArray[12]}"
+                             Text="{Binding FeaturesIncluded[12]}"
                              Style="{StaticResource nesterListInfoBodyMinor}"
                       >
                       </Label>
@@ -94,13 +93,13 @@
                       <!-- CPU -->
                       
                      <Label Grid.Row="0" Grid.Column="1"
-                             Text="{Binding Service.FeaturesAllArray[0]}"
+                             Text="{Binding FeaturesAll[0]}"
                              Style="{StaticResource nesterListInfoLabelMinor}"
                              >
                       </Label>
 
                       <Label Grid.Row="1" Grid.Column="1"
-                             Text="{Binding FeaturesIncludedArray[0]}"
+                             Text="{Binding FeaturesIncluded[0]}"
                              Style="{StaticResource nesterListInfoBodyMinor}"                        
                       >                                              
                       </Label>
@@ -108,13 +107,13 @@
                       <!-- Memory -->
                       
                       <Label Grid.Row="0" Grid.Column="2"
-                             Text="{Binding Service.FeaturesAllArray[1]}"
+                             Text="{Binding FeaturesAll[1]}"
                              Style="{StaticResource nesterListInfoLabelMinor}"
                              >
                       </Label>
 
                       <Label Grid.Row="1" Grid.Column="2"
-                             Text="{Binding FeaturesIncludedArray[1], StringFormat='{0} MB'}"
+                             Text="{Binding FeaturesIncluded[1], StringFormat='{0} MB'}"
                              Style="{StaticResource nesterListInfoBodyMinor}" 
                       >
                       </Label>
@@ -122,26 +121,26 @@
                       <!-- Drive -->
                       
                       <Label Grid.Row="0" Grid.Column="3"
-                             Text="{Binding Service.FeaturesAllArray[2]}"
+                             Text="{Binding FeaturesAll[2]}"
                              Style="{StaticResource nesterListInfoLabelMinor}"
                              >
                       </Label>
 
                       <Label Grid.Row="1" Grid.Column="3"
-                             Text="{Binding FeaturesIncludedArray[2], StringFormat='{0} GB'}"
+                             Text="{Binding FeaturesIncluded[2], StringFormat='{0} GB'}"
                              Style="{StaticResource nesterListInfoBodyMinor}">
                       </Label>
 
                       <!-- Bandwidth -->
                       
                       <Label Grid.Row="0" Grid.Column="4"
-                             Text="{Binding Service.FeaturesAllArray[3]}"
+                             Text="{Binding FeaturesAll[3]}"
                              Style="{StaticResource nesterListInfoLabelMinor}"
                              >
                       </Label>
 
                       <Label Grid.Row="1" Grid.Column="4"
-                             Text="{Binding FeaturesIncludedArray[3], StringFormat='{0} MB'}"
+                             Text="{Binding FeaturesIncluded[3], StringFormat='{0} MB'}"
                              Style="{StaticResource nesterListInfoBodyMinor}"
                       >
                       </Label>
@@ -149,13 +148,13 @@
                       <!-- Backup -->
                       
                       <Label Grid.Row="0" Grid.Column="5"
-                             Text="{Binding Service.FeaturesAllArray[4]}"
+                             Text="{Binding FeaturesAll[4]}"
                              Style="{StaticResource nesterListInfoLabelMinor}"
                              >
                       </Label>
 
                       <Label Grid.Row="1" Grid.Column="5"
-                             Text="{Binding FeaturesIncludedArray[4]}"
+                             Text="{Binding FeaturesIncluded[4]}"
                              Style="{StaticResource nesterListInfoBodyMinor}"                        
                       >
                       </Label>                      
@@ -163,13 +162,13 @@
                       <!-- Price -->
                       
                       <Label Grid.Row="0" Grid.Column="6"
-                             Text="{Binding ItemCost, StringFormat='$ {0}'}"
+                             Text="{Binding Tier.ItemCost, StringFormat='$ {0}'}"
                              Style="{StaticResource nesterListInfoLabelMinor}"
                              >
                       </Label>
 
                       <Label Grid.Row="1" Grid.Column="6"
-                             Text="{Binding Period}"
+                             Text="{Binding Tier.Period}"
                              Style="{StaticResource nesterListInfoBodyMinor}"                             
                              >
                       </Label>
