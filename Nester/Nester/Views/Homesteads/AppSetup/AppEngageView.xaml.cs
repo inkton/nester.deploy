@@ -22,17 +22,13 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
+using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
-    public partial class AppEngageView : Inkton.Nester.Views.View
+    public partial class AppEngageView : View
     {
-        public AppEngageView(Views.BaseModels baseModels)
+        public AppEngageView(BaseModels baseModels)
         {
             _baseModels = baseModels;
 
@@ -44,13 +40,14 @@ namespace Inkton.Nester.Views
                                 ButtonJoin
                 });
 
-            BindingContext = baseModels.AppViewModel;
+            BindingContext = baseModels.TargetViewModel;
         }
 
         async private void OnCreateAppClickedAsync(object sender, EventArgs e)
         {
             IsServiceActive = true;
 
+            _baseModels.WizardMode = true;
             AppBasicDetailView basicView = new AppBasicDetailView(_baseModels);
             basicView.MainSideView = MainSideView;
             MainSideView.Detail.Navigation.InsertPageBefore(basicView, this);
@@ -63,7 +60,7 @@ namespace Inkton.Nester.Views
         {
             IsServiceActive = true;
 
-            await _baseModels.AppViewModel.ContactModel.QueryInvitationsAsync();
+            await _baseModels.TargetViewModel.ContactModel.QueryInvitationsAsync();
 
             AppJoinDetailView joinView = new AppJoinDetailView(_baseModels);
             joinView.MainSideView = MainSideView;

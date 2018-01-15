@@ -22,17 +22,14 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Inkton.Nester.Admin;
 using Xamarin.Forms;
-using PCLAppConfig;
+using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
-    public partial class HomeView : Inkton.Nester.Views.View
+    public partial class HomeView : View
     {
         private long _updatInterval;
         private long _lastUpdate = 0;
@@ -68,18 +65,11 @@ namespace Inkton.Nester.Views
             ButtonPayment.Clicked += ButtonPayment_ClickedAsync;
             ButtonHistory.Clicked += ButtonHistory_ClickedAsync;
 
-            _updatInterval = Convert.ToInt64(
-                ConfigurationManager.AppSettings["appStatusRefreshInterval"]);
+            _updatInterval = Settings.AppStatusRefreshInterval;
 
-            BindingContext = _baseModels.AppViewModel;
-        }
+            BindingContext = _baseModels.AllApps;
 
-        public AppCollectionViewModel AppCollectionModel
-        {
-            get
-            {
-                return BaseModels.AppViewModel as AppCollectionViewModel;
-            }
+            Monitor();
         }
 
         public void Monitor()
@@ -96,7 +86,7 @@ namespace Inkton.Nester.Views
                     {
                         Task.Factory.StartNew(async () =>
                         {
-                            foreach (AppViewModel appModel in AppCollectionModel.AppModels)
+                            foreach (AppViewModel appModel in BaseModels.AllApps.AppModels)
                             {
                                 if (!appModel.EditApp.IsBusy)
                                 {
@@ -126,12 +116,12 @@ namespace Inkton.Nester.Views
 
                                 if (MainSideView.CurrentView != null && MainSideView.CurrentView is AppView && 
                                     MainSideView.CurrentView.BaseModels != null && 
-                                    MainSideView.CurrentView.BaseModels.AppViewModel.EditApp.Id == appModel.EditApp.Id)
+                                    MainSideView.CurrentView.BaseModels.TargetViewModel.EditApp.Id == appModel.EditApp.Id)
                                 {
                                     System.Diagnostics.Debug.WriteLine("Displayed App - {0}, currently Deployed - {1}, Busy - {2}, View - {3}",
-                                        MainSideView.CurrentView.BaseModels.AppViewModel.EditApp.Tag,
-                                        MainSideView.CurrentView.BaseModels.AppViewModel.EditApp.IsDeployed, 
-                                        MainSideView.CurrentView.BaseModels.AppViewModel.EditApp.IsBusy,
+                                        MainSideView.CurrentView.BaseModels.TargetViewModel.EditApp.Tag,
+                                        MainSideView.CurrentView.BaseModels.TargetViewModel.EditApp.IsDeployed, 
+                                        MainSideView.CurrentView.BaseModels.TargetViewModel.EditApp.IsBusy,
                                         (MainSideView.CurrentView as AppView).State);
 
                                     viewLoadNeeded = ((MainSideView.CurrentView as AppView).State != newState);
@@ -139,11 +129,10 @@ namespace Inkton.Nester.Views
 
                                 if (viewLoadNeeded)
                                 {
-                                    NesterControl.CreateAppView(
-                                        new BaseModels(
-                                            _baseModels.AuthViewModel,
-                                            _baseModels.PaymentViewModel,
-                                            appModel));
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        NesterControl.ResetViewAsync(appModel);
+                                    });
                                 }
                             }
                         });
@@ -170,15 +159,14 @@ namespace Inkton.Nester.Views
             {
                 _baseModels.WizardMode = false;
 
-                BaseModels baseModels = new BaseModels(_baseModels.AuthViewModel);
                 AppViewModel appModel = AppModels.SelectedItem as AppViewModel;
                 if (appModel != null)
                 {
-                    baseModels.AppViewModel = appModel;
+                    NesterControl.Target = appModel;
                 }
 
                 MainSideView.LoadView(
-                    Activator.CreateInstance(pageType, new object[] { baseModels }) as Views.View);
+                    Activator.CreateInstance(pageType, new object[] { _baseModels }) as View);
                 MainSideView.IsPresented = false;
             }
             catch (Exception ex)
@@ -193,9 +181,9 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                _baseModels.AppViewModel.ContactModel.EditInvitation.User = NesterControl.User;
+                _baseModels.TargetViewModel.ContactModel.EditInvitation.User = NesterControl.User;
 
-                await _baseModels.AppViewModel.ContactModel.QueryInvitationsAsync();
+                await _baseModels.TargetViewModel.ContactModel.QueryInvitationsAsync();
 
                 MainSideView.LoadView(
                    new AppJoinDetailView(_baseModels));
@@ -215,7 +203,9 @@ namespace Inkton.Nester.Views
                 if (AppModels.SelectedItem != null)
                 {
                     AppViewModel appModel = AppModels.SelectedItem as AppViewModel;
-                    MainSideView.Reload(appModel);
+
+                    if (appModel.EditApp.IsActive)
+                        MainSideView.Reload();
                 }
             }
             catch (Exception ex)
@@ -255,19 +245,8 @@ namespace Inkton.Nester.Views
                         try
                         {
                             await appModel.RemoveAppAsync();
-                            AppCollectionModel.RemoveApp(appModel);
-
-                            BaseModels baseModels = null;
-
-                            if (AppCollectionModel.AppModels.Any())
-                            {
-                                baseModels = new BaseModels(
-                                        _baseModels.AuthViewModel,
-                                        _baseModels.PaymentViewModel,
-                                        AppCollectionModel.AppModels.First());
-                            }
-
-                            NesterControl.ResetView(baseModels);
+                            BaseModels.AllApps.RemoveApp(appModel);
+                            await NesterControl.ResetViewAsync(BaseModels.AllApps.AppModels.FirstOrDefault());
                         }
                         catch (Exception ex)
                         {
@@ -315,14 +294,11 @@ namespace Inkton.Nester.Views
                 AppViewModel newAppModel = new AppViewModel();
                 newAppModel.NewAppAsync();
 
-                BaseModels baseModels = new BaseModels(
-                    _baseModels.AuthViewModel,
-                    _baseModels.PaymentViewModel,
-                    newAppModel);
-                baseModels.WizardMode = true;
+                NesterControl.Target = newAppModel;
+                BaseModels.WizardMode = true;
 
                 MainSideView.LoadView(
-                   new AppBasicDetailView(baseModels));
+                   new AppBasicDetailView(BaseModels));
 
                 MainSideView.IsPresented = false;
             }
@@ -334,29 +310,12 @@ namespace Inkton.Nester.Views
             IsServiceActive = false;
         }
 
-        private void AppModels_SelectionChangedAsync(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        private async void AppModels_SelectionChangedAsync(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             AppViewModel appModel = e.AddedItems.FirstOrDefault() as AppViewModel;
             if (appModel != null)
             {
-                NesterControl.CreateAppView(
-                    new BaseModels(
-                        _baseModels.AuthViewModel,
-                        _baseModels.PaymentViewModel,
-                        appModel));
-            }
-        }
-
-        public void InitViews()
-        {
-            AppViewModel appModel = AppCollectionModel.AppModels.FirstOrDefault();
-            if (appModel != null)
-            {
-                NesterControl.CreateAppView(
-                    new BaseModels(
-                        _baseModels.AuthViewModel,
-                        _baseModels.PaymentViewModel,
-                        appModel));
+                await NesterControl.ResetViewAsync(appModel);
             }
         }
     }

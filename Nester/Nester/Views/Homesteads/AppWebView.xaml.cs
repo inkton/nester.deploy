@@ -21,17 +21,14 @@
 */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
+using Inkton.Nester.Models;
+using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
-    public partial class AppWebView : Inkton.Nester.Views.View
+    public partial class AppWebView : View
     {
-        public AppWebView(Views.BaseModels baseModels)
+        public AppWebView(BaseModels baseModels)
         {
             _baseModels = baseModels;
             _baseModels.WizardMode = false;
@@ -40,22 +37,17 @@ namespace Inkton.Nester.Views
 
             _activityIndicator = ServiceActive;
 
-            if (_baseModels.AppViewModel.EditApp.Id != 0)
+            if (_baseModels.TargetViewModel.EditApp.Id != 0)
             {
-                Title = _baseModels.AppViewModel.EditApp.Name;
-                Browser.Source = "https://" + _baseModels.AppViewModel.DomainModel.DefaultDomain.Name;
+                Title = _baseModels.TargetViewModel.EditApp.Name;
+                Browser.Source = "https://" + _baseModels.TargetViewModel.DomainModel.DefaultDomain.Name;
             }
             else
             {
-                //var htmlSource = new HtmlWebViewSource();
-                //htmlSource.Html = "ms-appx-web:///index.html";
                 Browser.Source = "ms-appx-web:///index.html";
             }
 
-            BindingContext = _baseModels.AppViewModel;
-
-            //ButtonBrowserBack.Clicked += ButtonBrowserBack_Clicked;
-            //ButtonBrowserForward.Clicked += ButtonBrowserForward_Clicked;
+            BindingContext = _baseModels.TargetViewModel;
         }
 
         private string DefaultPage
@@ -92,31 +84,12 @@ namespace Inkton.Nester.Views
 
             }
         }
-        private void ButtonBrowserForward_Clicked(object sender, EventArgs e)
-        {
-            if (Browser.CanGoForward)
-            {
-                Browser.GoForward();
-            }
-        }
-
-        private void ButtonBrowserBack_Clicked(object sender, EventArgs e)
-        {
-            if (Browser.CanGoBack)
-            {
-                Browser.GoBack();
-            }
-            else
-            { // If not, leave the view
-                ResetView();
-            }
-        }
 
         async private void OnDoneButtonClickedAsync(object sender, EventArgs e)
         {
             try
             {
-                ResetView();
+                await NesterControl.ResetViewAsync();
             }
             catch (Exception ex)
             {

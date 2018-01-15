@@ -2,8 +2,8 @@
 <views:View xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Inkton.Nester.Views"
-             xmlns:validators="clr-namespace:Inkton.Nester.Utils.Validators"
-             xmlns:utils="clr-namespace:Inkton.Nester.Utils"
+             xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
+             xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
              xmlns:syncList="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Title="Home"
              x:Class="Inkton.Nester.Views.HomeView">
@@ -34,15 +34,15 @@
                               WidthRequest="32"-->
 
                                 <Image Source="{Binding EditApp.Icon}"
-                              HeightRequest="32"
-                              WidthRequest="32"                             
-                              VerticalOptions="Center"
-                              HorizontalOptions="Center"/>
+                                  HeightRequest="32"
+                                  WidthRequest="32"                             
+                                  VerticalOptions="Center"
+                                  HorizontalOptions="Center"/>
 
                                 <Grid Grid.Column="1"
-                              RowSpacing="1"
-                              Padding="15,0,0,0"
-                              VerticalOptions="Center">
+                                  RowSpacing="1"
+                                  Padding="15,0,0,0"
+                                  VerticalOptions="Center">
 
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*" />
@@ -50,8 +50,8 @@
                                     </Grid.RowDefinitions>
 
                                     <Grid RowSpacing="0" 
-                                    ColumnSpacing="0"
-                                    Grid.Row="0" >
+                                        ColumnSpacing="0"
+                                        Grid.Row="0" >
 
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
@@ -59,22 +59,22 @@
                                         </Grid.ColumnDefinitions>
 
                                         <Label LineBreakMode="NoWrap"
-                                    Grid.Column="0"                                         
-                                    Style="{StaticResource nesterFieldLabel}"
-                                    Text="{Binding EditApp.Name}">
+                                            Grid.Column="0"                                         
+                                            Style="{StaticResource nesterFieldLabel}"
+                                            Text="{Binding EditApp.Name}">
                                         </Label>
 
                                         <ActivityIndicator 
-                                  VerticalOptions="CenterAndExpand"
-                                  HorizontalOptions="CenterAndExpand"                    
-                                  Grid.Column="1"                      
-                                  x:Name="AppBusy"      
-                                  Color="{StaticResource noteColor}"
-                                  IsRunning="{Binding EditApp.IsBusy}"                                 
-                                  IsVisible="{Binding EditApp.IsBusy}" 
-                                  BackgroundColor="Transparent"
-                                  HeightRequest="8"
-                                  WidthRequest="80">
+                                            VerticalOptions="CenterAndExpand"
+                                            HorizontalOptions="CenterAndExpand"                    
+                                            Grid.Column="1"                      
+                                            x:Name="AppBusy"      
+                                            Color="{StaticResource noteColor}"
+                                            IsRunning="{Binding EditApp.IsBusy}"                                 
+                                            IsVisible="{Binding EditApp.IsBusy}" 
+                                            BackgroundColor="Transparent"
+                                            HeightRequest="8"
+                                            WidthRequest="80">
                                         </ActivityIndicator>
                                     </Grid>
 
@@ -88,17 +88,17 @@
                                         </Grid.ColumnDefinitions>
 
                                         <Label Style="{StaticResource nesterListInfoLabelMinor}"
-                                     LineBreakMode="NoWrap"
-                                     Text="{Binding EditApp.Tag}">
+                                            LineBreakMode="NoWrap"
+                                            Text="{Binding EditApp.Tag}">
                                         </Label>
 
                                         <Label TextColor="#474747"
-                                    Margin="0,0,10,0"
-                                    Grid.Column="1"
-                                    LineBreakMode="NoWrap"
-                                    HorizontalTextAlignment="Center"
-                                    Text="{Binding EditApp.CurrentActivity}"
-                                    Style="{StaticResource nesterListInfoLabelMinor}">
+                                            Margin="0,0,10,0"
+                                            Grid.Column="1"
+                                            LineBreakMode="NoWrap"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding EditApp.CurrentActivity}"
+                                            Style="{StaticResource nesterListInfoLabelMinor}">
                                         </Label>
                                     </Grid>
 

@@ -2,8 +2,8 @@
 <views:View xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Inkton.Nester.Views"
-             xmlns:validators="clr-namespace:Inkton.Nester.Utils.Validators"
-             xmlns:utils="clr-namespace:Inkton.Nester.Utils"
+             xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
+             xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
              xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Title="Invitations"
              x:Class="Inkton.Nester.Views.AppJoinDetailView">
