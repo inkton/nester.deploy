@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Inkton.Nester.Deploy.UWP")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Inkon")]
+[assembly: AssemblyCompany("Inkton")]
 [assembly: AssemblyProduct("Inkton.Nester.Deploy.UWP")]
-[assembly: AssemblyCopyright("Copyright Inkon ©  2017")]
+[assembly: AssemblyCopyright("Copyright Inkton ©  2017")]
 [assembly: AssemblyTrademark("nest.yt")]
 [assembly: AssemblyCulture("")]
 
@@ -24,6 +24,6 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.4.0.0")]
-[assembly: AssemblyFileVersion("1.4.0.0")]
+[assembly: AssemblyVersion("1.5.0.0")]
+[assembly: AssemblyFileVersion("1.5.0.0")]
 [assembly: ComVisible(false)]

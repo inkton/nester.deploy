@@ -22,16 +22,14 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
+using Inkton.Nester.Models;
+using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
-    public partial class UserHistoryView : Inkton.Nester.Views.View
+    public partial class UserHistoryView : View
     {
-        public UserHistoryView(Views.BaseModels baseModels)
+        public UserHistoryView(BaseModels baseModels)
         {
             InitializeComponent();
 
@@ -56,14 +54,7 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                if (_baseModels.AppViewModel != null)
-                {
-                    MainSideView.CreateAppView(_baseModels);
-                }
-                else
-                {
-                    MainSideView.ResetView();
-                }
+                await MainSideView.ResetViewAsync(_baseModels);
             }
             catch (Exception ex)
             {
@@ -75,7 +66,7 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                ResetView();
+                await NesterControl.ResetViewAsync();
             }
             catch (Exception ex)
             {

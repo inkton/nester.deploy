@@ -23,9 +23,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Inkton.Nester.Models;
+using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
@@ -34,7 +35,7 @@ namespace Inkton.Nester.Views
         protected ActivityIndicator _activityIndicator;
         protected List<Xamarin.Forms.View> _blockWhenActive;
         protected List<Xamarin.Forms.View> _activeBlockViews;
-        protected Views.BaseModels _baseModels;
+        protected BaseModels _baseModels;
         protected MainSideView _mainSideView;
 
         public View()
@@ -54,34 +55,19 @@ namespace Inkton.Nester.Views
             set { _mainSideView = value; }
         }
 
-        public Admin.INesterControl NesterControl
+        public INesterControl NesterControl
         {
             get
             {
-                return Application.Current as Admin.INesterControl;
+                return Application.Current as INesterControl;
             }
         }
 
-        public Admin.App App
+        public App App
         {
             get
             {
-                return _baseModels.AppViewModel.EditApp;
-            }
-        }
-
-        protected void ResetView()
-        {
-            if (_baseModels == null || _baseModels.AppViewModel == null)
-            {
-                // models has not been set or there is no
-                // apps to begin with. the dashboard is set 
-                // to a blank view.
-                NesterControl.ResetView();
-            }
-            else
-            {
-                NesterControl.CreateAppView(_baseModels);
+                return _baseModels.TargetViewModel.EditApp;
             }
         }
 
@@ -134,7 +120,7 @@ namespace Inkton.Nester.Views
 
         virtual protected void SubscribeToMessages()
         {
-            MessagingCenter.Subscribe<Nester.Views.AlertMessage>(this, "popup", (alertMessage) =>
+            MessagingCenter.Subscribe<AlertMessage>(this, "popup", (alertMessage) =>
             {
                 DisplayAlert("Nester", alertMessage.Message, "OK");
             });
@@ -142,7 +128,7 @@ namespace Inkton.Nester.Views
 
         virtual protected void UnsubscribeFromMessages()
         {
-            MessagingCenter.Unsubscribe<Nester.Views.AlertMessage>(this, "popup");
+            MessagingCenter.Unsubscribe<AlertMessage>(this, "popup");
         }
 
         async protected Task Process<T>(T obj, bool doCache,

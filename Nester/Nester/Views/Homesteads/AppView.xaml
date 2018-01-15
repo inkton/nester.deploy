@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Inkton.Nester.Views"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-             xmlns:validators="clr-namespace:Inkton.Nester.Utils.Validators"
+             xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-             xmlns:utils="clr-namespace:Inkton.Nester.Utils"
+             xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
              Title="Hello World"
              x:Class="Inkton.Nester.Views.AppView">
 
@@ -70,7 +70,7 @@
       <StackLayout Orientation="Horizontal" Spacing="5">
 
         <Button x:Name="ButtonAppSettings"
-              IsVisible="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
+              IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}"
               Style="{StaticResource appFuncButton}"
               Image="appsettings24.png" >
         </Button>

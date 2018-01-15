@@ -22,17 +22,13 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
+using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
-    public partial class PaymentView : Inkton.Nester.Views.View
+    public partial class PaymentView : View
     {
-        public PaymentView(Views.BaseModels baseModels)
+        public PaymentView(BaseModels baseModels)
         {
             InitializeComponent();
 
@@ -100,7 +96,7 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                ResetView();
+                await NesterControl.ResetViewAsync();
             }
             catch (Exception ex)
             {
