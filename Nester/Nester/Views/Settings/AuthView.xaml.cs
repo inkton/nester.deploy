@@ -22,17 +22,14 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
+using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
-    public partial class AuthView : Inkton.Nester.Views.View
+    public partial class AuthView : View
     {
-        public AuthView(Views.BaseModels baseModels)
+        public AuthView(BaseModels baseModels)
         {
             InitializeComponent();
 
@@ -103,7 +100,7 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                ResetView();
+                await NesterControl.ResetViewAsync();
             }
             catch (Exception ex)
             {

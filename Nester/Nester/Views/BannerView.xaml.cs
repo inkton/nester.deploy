@@ -20,11 +20,7 @@
     OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using Xamarin.Forms;
-using System.Net;
 using Syncfusion.SfBusyIndicator.XForms;
 
 namespace Inkton.Nester.Views

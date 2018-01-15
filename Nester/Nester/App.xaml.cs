@@ -20,80 +20,119 @@
     OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Xamarin.Forms;
 using System.Resources;
 using System.Reflection;
+using System.Threading.Tasks;
+using Xamarin.Forms;
+using Inkton.Nester.Models;
+using Inkton.Nester.ViewModels;
+using Inkton.Nester.Cloud;
+using Inkton.Nester.Cache;
+using Inkton.Nester.Views;
 
 namespace Inkton.Nester
 {
-    public partial class DeployApp : Application, Admin.INesterControl
+    public partial class DeployApp : Application, INesterControl
     {
-        private Admin.User _user;
-        private Cloud.INesterService _nester;
-        private Cache.IStorageService _storage;
-        private Views.BaseModels _baseModels;
-        private Views.MainSideView _mainSideView;
+        private User _user;
+        private const int ServiceVersion = 1;
+        private NesterService _service, _target;
+        private StorageService _storage;
+        private BaseModels _baseModels;
+        private MainSideView _mainSideView;
 
         public DeployApp()
         {
             InitializeComponent();
 
-            _user = new Admin.User();
-            _nester = DependencyService.Get<Cloud.INesterService>();
-            _storage = DependencyService.Get<Cache.IStorageService>();
+            _user = new User();
+
+            _service = new NesterService();
+            _service.Version = ServiceVersion;
+
+            _target = new NesterService();
+            _storage = new StorageService();
             _storage.Clear();
 
-            _baseModels = new Views.BaseModels(
-                new Views.AuthViewModel(), 
-                new Views.PaymentViewModel(),
-                new Views.AppCollectionViewModel());
-            _mainSideView = new Views.MainSideView();
+            _baseModels = new BaseModels(
+                new AuthViewModel(), 
+                new PaymentViewModel(),
+                new AppViewModel(),
+                new AppCollectionViewModel());
+
+            _mainSideView = new MainSideView();
 
             MainPage = _mainSideView;
 
             _mainSideView.ShowEntry();
         }
 
-        public Views.BaseModels BaseModels
+        public BaseModels BaseModels
         {
             get { return _baseModels; }
         }
 
-        public Admin.User User
+        public User User
         {
             get { return _user; }
+            set { _user = value; }
         }
 
-        public Cloud.INesterService NesterService
+        public AppViewModel Target
         {
-            get { return _nester; }
+            get { return _baseModels.TargetViewModel; }
+            set {
+                _baseModels.TargetViewModel = value;
+
+                if (value != null)
+                {
+                    _target.Version = ServiceVersion;
+                    _target.Endpoint = string.Format(
+                        "https://{0}/", value.EditApp.Hostname);
+                    _target.BasicAuth = new Cloud.BasicAuth(
+                        true, value.EditApp.Tag, value.EditApp.NetworkPassword);
+                }
+            }
         }
 
-        public Cache.IStorageService StorageService
+        public Cloud.NesterService Service
+        {
+            get { return _service; }
+        }
+
+        public Cloud.NesterService DeployedApp
+        {
+            get { return _target; }
+        }
+
+        public Cache.StorageService StorageService
         {
             get { return _storage; }
+        }
+
+        public string StoragePath
+        {
+            get {
+                return System.IO.Path.GetTempPath();
+            }
         }
 
         public ResourceManager GetResourceManager()
         {
             ResourceManager resmgr = new ResourceManager(
-                "Inkon.Nester.Properties.Resources",
+                "Inkton.Nester.Resources",
                 typeof(DeployApp).GetTypeInfo().Assembly);
             return resmgr;
         }
 
-        public void ResetView(Views.BaseModels baseModels = null)
+        public async Task ResetViewAsync(AppViewModel appModel = null)
         {
-            _mainSideView.ResetView(baseModels);
-        }
+            if (appModel != null)
+            {
+                Target = appModel;
+            }
 
-        public bool CreateAppView(Views.BaseModels baseModels)
-        {
-            return _mainSideView.CreateAppView(baseModels);
+            await _mainSideView.ResetViewAsync(_baseModels);
         }
     }
 }

@@ -20,21 +20,15 @@
     OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Inkton.Nester.Admin;
 using Xamarin.Forms;
-using Syncfusion.SfBusyIndicator.XForms;
+using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
     public partial class MainSideView : MasterDetailPage
     {
-        private Views.View _currentView;
+        private View _currentView;
         
         public MainSideView()
         {
@@ -46,7 +40,7 @@ namespace Inkton.Nester.Views
             }
         }
 
-        public Views.View CurrentView
+        public View CurrentView
         {
             get
             {
@@ -66,21 +60,7 @@ namespace Inkton.Nester.Views
             Detail.Navigation.PushAsync(entry);
         }
 
-        public void ResetView(Views.BaseModels baseModels = null)
-        {             
-            if (baseModels == null)
-            {
-                BannerView view = new BannerView();
-                view.ShowProgress = false;
-                LoadView(view);
-            }
-            else
-            {
-                CreateAppView(baseModels);
-            }
-        }
-
-        public bool LoadView(Views.View view)
+        public bool LoadView(View view)
         {
             Detail = new NavigationPage(view);
             _currentView = view;
@@ -88,60 +68,58 @@ namespace Inkton.Nester.Views
             return true;
         }
 
-        public bool CreateAppView(Views.BaseModels baseModels)
+        public async Task ResetViewAsync(BaseModels baseModels)
         {
-            AppView.Status newState;
-            bool viewLoadNeeded = true;
-
-            if (baseModels.AppViewModel.EditApp.IsBusy)
+            if (baseModels.TargetViewModel == null)
             {
-                newState = AppView.Status.Updating;
-            }
-            else if (!baseModels.AppViewModel.EditApp.IsDeployed)
-            {
-                newState = AppView.Status.WaitingDeployment;
+                BannerView view = new BannerView();
+                view.ShowProgress = false;
+                LoadView(view);
             }
             else
             {
-                newState = AppView.Status.Deployed;
-            }
+                AppView.Status newState;
+                bool viewLoadNeeded = true;
 
-            if (_currentView != null && _currentView is AppView && _currentView.BaseModels != null &&
-                _currentView.BaseModels.AppViewModel.EditApp.Id == baseModels.AppViewModel.EditApp.Id)
-            {
-                viewLoadNeeded = ((_currentView as AppView).State != newState);
-            }
-
-            if (viewLoadNeeded)
-            {
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                if (baseModels.TargetViewModel.EditApp.IsBusy)
                 {
-                    Views.AppView appView = new Views.AppView(baseModels);
+                    newState = AppView.Status.Updating;
+                }
+                else if (!baseModels.TargetViewModel.EditApp.IsDeployed)
+                {
+                    newState = AppView.Status.WaitingDeployment;
+                }
+                else
+                {
+                    newState = AppView.Status.Deployed;
+                }
+
+                if (_currentView != null && _currentView is AppView && _currentView.BaseModels != null &&
+                    _currentView.BaseModels.TargetViewModel.EditApp.Id == baseModels.TargetViewModel.EditApp.Id)
+                {
+                    viewLoadNeeded = ((_currentView as AppView).State != newState);
+                }
+
+                if (viewLoadNeeded)
+                {
+                    AppView appView = new AppView(baseModels);
                     appView.State = AppView.Status.Refreshing;
                     appView.BaseModels = baseModels;
                     if (newState == AppView.Status.Deployed)
                     {
-                        appView.GetAnalyticsAsync();
+                        await appView.GetAnalyticsAsync();
                     }
                     LoadView(appView);
                     appView.State = newState;
-
-                });
+                }
             }
-
-            return true;
         }
 
-        public void Reload(AppViewModel appModel)
+        public void Reload()
         {
-            if (_currentView != null && _currentView is AppView && _currentView.BaseModels != null &&
-                _currentView.BaseModels.AppViewModel.EditApp.Id == appModel.EditApp.Id)
+            if (_currentView != null && _currentView is AppView)
             {
                 (_currentView as AppView).ReloadAsync();
-            }
-            else
-            {
-                appModel.Reload();
             }
         }
     }

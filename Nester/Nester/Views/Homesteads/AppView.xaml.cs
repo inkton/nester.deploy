@@ -23,14 +23,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
-using Syncfusion.SfChart.XForms;
-using System.Collections.ObjectModel;
-using Syncfusion.SfBusyIndicator.XForms;
-using Inkton.Nester.Admin;
 using System.Net;
+using Xamarin.Forms;
+using Syncfusion.SfBusyIndicator.XForms;
+using Inkton.Nester.Models;
+using Inkton.Nester.ViewModels;
+using System.Threading.Tasks;
 
 namespace Inkton.Nester.Views
 {
@@ -46,7 +44,7 @@ namespace Inkton.Nester.Views
 
         private Status _status = Status.Deployed;
 
-        public AppView(Views.BaseModels baseModels)
+        public AppView(BaseModels baseModels)
         {
             _baseModels = baseModels;
             _baseModels.WizardMode = false;
@@ -58,16 +56,16 @@ namespace Inkton.Nester.Views
                 {
                 });
 
-            if (_baseModels.AppViewModel.EditApp != null)
+            if (_baseModels.TargetViewModel.EditApp != null)
             {
-                Title = _baseModels.AppViewModel.EditApp.Name;
+                Title = _baseModels.TargetViewModel.EditApp.Name;
             }
             else
             {
                 Title = "Hello World";
             }
 
-            BindingContext = _baseModels.AppViewModel;
+            BindingContext = _baseModels.TargetViewModel;
 
             DateTime endTime = DateTime.Now.ToUniversalTime();
             AnalyzeDateUTC.Date = endTime;
@@ -100,18 +98,18 @@ namespace Inkton.Nester.Views
 
             NestLogs.SelectionChanged += NestLogs_SelectionChanged;
 
-            _baseModels.AppViewModel.LogViewModel.SetupDiskSpaceSeries(
+            _baseModels.TargetViewModel.LogViewModel.SetupDiskSpaceSeries(
                 DiskSpaceData.Series[0]
                 );
 
-            _baseModels.AppViewModel.LogViewModel.SetupRAMSeries(
+            _baseModels.TargetViewModel.LogViewModel.SetupRAMSeries(
                 RamData.Series[0],
                 RamData.Series[1],
                 RamData.Series[2],
                 RamData.Series[3]
                 );
 
-            _baseModels.AppViewModel.LogViewModel.SetupCPUSeries(
+            _baseModels.TargetViewModel.LogViewModel.SetupCPUSeries(
                 CpuData.Series[0],
                 CpuData.Series[1],
                 CpuData.Series[2],
@@ -119,7 +117,7 @@ namespace Inkton.Nester.Views
                 CpuData.Series[4]
                 );
 
-            _baseModels.AppViewModel.LogViewModel.SetupIpv4Series(
+            _baseModels.TargetViewModel.LogViewModel.SetupIpv4Series(
                 Ipv4Data.Series[0],
                 Ipv4Data.Series[1]);
         }
@@ -180,13 +178,13 @@ namespace Inkton.Nester.Views
 
                 Cloud.ServerStatus status;
 
-                status = await _baseModels.AppViewModel.InitAsync();
+                status = await _baseModels.TargetViewModel.InitAsync();
                 if (status.Code < 0)
                 {
                     await DisplayAlert("Nester", "Failed to get an update of " + App.Name, "OK");
                 }
 
-                GetAnalyticsAsync();
+                await GetAnalyticsAsync();
 
                 OnPropertyChanged("App");
 
@@ -198,29 +196,39 @@ namespace Inkton.Nester.Views
             }
         }
 
-        public async void GetAnalyticsAsync()
+        public async Task GetAnalyticsAsync()
         {
-            DateTime unixEpoch = new DateTime(1970, 1, 1);
-            DateTime analyzeDateUTC = AnalyzeDateUTC.Date;
-
-            long beginId = (long)(new DateTime(
-                    analyzeDateUTC.Year, analyzeDateUTC.Month, analyzeDateUTC.Day,
-                    StartTime.Time.Hours,
-                    StartTime.Time.Minutes,
-                    StartTime.Time.Seconds) - unixEpoch).TotalMilliseconds;
-            long endId = (long)(new DateTime(
-                    analyzeDateUTC.Year, analyzeDateUTC.Month, analyzeDateUTC.Day,
-                    EndTime.Time.Hours,
-                    EndTime.Time.Minutes,
-                    EndTime.Time.Seconds) - unixEpoch).TotalMilliseconds;
-
-            if (beginId >= endId)
+            try
             {
-                await DisplayAlert("Nester", "Make sure begin time is less than end time", "OK");
-                return;
-            }
+                DateTime unixEpoch = new DateTime(1970, 1, 1);
+                DateTime analyzeDateUTC = AnalyzeDateUTC.Date;
 
-            _baseModels.AppViewModel.QueryMetricsAsync(beginId, endId);
+                long beginId = (long)(new DateTime(
+                        analyzeDateUTC.Year, analyzeDateUTC.Month, analyzeDateUTC.Day,
+                        StartTime.Time.Hours,
+                        StartTime.Time.Minutes,
+                        StartTime.Time.Seconds) - unixEpoch).TotalSeconds;
+                long endId = (long)(new DateTime(
+                        analyzeDateUTC.Year, analyzeDateUTC.Month, analyzeDateUTC.Day,
+                        EndTime.Time.Hours,
+                        EndTime.Time.Minutes,
+                        EndTime.Time.Seconds) - unixEpoch).TotalSeconds;
+
+                if (beginId >= endId)
+                {
+                    await DisplayAlert("Nester", "Make sure begin time is less than end time", "OK");
+                }
+                else
+                {
+                    await _baseModels.TargetViewModel
+                        .LogViewModel.QueryAsync(beginId, endId, 10000000);
+                }
+            }
+            catch (Exception)
+            {
+                await DisplayAlert("Nester", "Failed to retrieve metrics from the app " +
+                    _baseModels.TargetViewModel.EditApp.Name , "OK");
+            }
         }
 
         private void NestLogs_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
@@ -229,7 +237,7 @@ namespace Inkton.Nester.Views
 
             if (nestLog != null)
             {
-                _baseModels.AppViewModel.LogViewModel.EditNestLog = nestLog;
+                _baseModels.TargetViewModel.LogViewModel.EditNestLog = nestLog;
                 Message.Text = nestLog.Message;
                 /*                
                                 if (_baseModels.AppViewModel.LogViewModel.DiskSpaceLogs != null)
@@ -284,7 +292,7 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                GetAnalyticsAsync();
+                await GetAnalyticsAsync();
             }
             catch (Exception ex)
             {
@@ -296,10 +304,10 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                Admin.Devkit devkit = new Admin.Devkit();
-                devkit.Contact = _baseModels.AppViewModel.ContactModel.OwnerContact;
+                Devkit devkit = new Devkit();
+                devkit.Contact = _baseModels.TargetViewModel.ContactModel.OwnerContact;
 
-                await _baseModels.AppViewModel.DeploymentModel.QueryDevkitAsync(devkit);
+                await _baseModels.TargetViewModel.DeploymentModel.QueryDevkitAsync(devkit);
 
                 await DisplayAlert("Nester", "The devkit has been emailed to you", "OK");
             }
@@ -313,7 +321,7 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                await _baseModels.AppViewModel.QueryAppNotificationsAsync();
+                await _baseModels.TargetViewModel.QueryAppNotificationsAsync();
 
                 MainSideView.LoadView(new NotificationView(_baseModels));
             }
@@ -327,7 +335,7 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                await _baseModels.AppViewModel.ContactModel.QueryContactCollaborateAccountAsync();
+                await _baseModels.TargetViewModel.ContactModel.QueryContactCollaborateAccountAsync();
 
                 string clientId = "237221988247.245551261632";
                 string scope = "incoming-webhook,chat:write:bot";
@@ -335,7 +343,7 @@ namespace Inkton.Nester.Views
                 string url = "https://slack.com/oauth/authorize?" +
                     "&client_id=" + WebUtility.UrlEncode(clientId) +
                     "&scope=" + WebUtility.UrlEncode(scope) +
-                    "&state=" + WebUtility.UrlEncode(_baseModels.AppViewModel.ContactModel.Collaboration.State);
+                    "&state=" + WebUtility.UrlEncode(_baseModels.TargetViewModel.ContactModel.Collaboration.State);
 
                 Device.OpenUri(new Uri(url));
 
@@ -372,15 +380,15 @@ namespace Inkton.Nester.Views
 
                 if (yes)
                 {
-                    if (_baseModels.AppViewModel.EditApp.IsDeploymentValid)
+                    if (_baseModels.TargetViewModel.EditApp.IsDeploymentValid)
                     {
                         State = Status.Updating;
 
-                        await Process(_baseModels.AppViewModel.EditApp.Deployment, true,
-                            _baseModels.AppViewModel.DeploymentModel.RemoveDeploymentAsync
+                        await Process(_baseModels.TargetViewModel.EditApp.Deployment, true,
+                            _baseModels.TargetViewModel.DeploymentModel.RemoveDeploymentAsync
                         );
 
-                        await _baseModels.AppViewModel.InitAsync();
+                        await _baseModels.TargetViewModel.InitAsync();
                     }
                 }
             }
@@ -396,19 +404,19 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                await _baseModels.AppViewModel.InitAsync();
+                await _baseModels.TargetViewModel.InitAsync();
 
-                if (_baseModels.PaymentViewModel.PaymentMethod.Proof == null ||
-                    _baseModels.PaymentViewModel.PaymentMethod.Proof.Last4 == 0)
+                if (_baseModels.PaymentViewModel.EditPaymentMethod.Proof == null ||
+                    _baseModels.PaymentViewModel.EditPaymentMethod.Proof.Last4 == 0)
                 {
                     await DisplayAlert("Nester", "Please enter a payment method before app creation", "OK");
                     return;
                 }
 
-                Admin.NestPlatform workerPlatform = _baseModels.AppViewModel.NestModel.Platforms.First(
+                NestPlatform workerPlatform = _baseModels.TargetViewModel.NestModel.Platforms.First(
                     x => x.Tag == "worker");
 
-                var handlerNests = from nest in _baseModels.AppViewModel.NestModel.Nests
+                var handlerNests = from nest in _baseModels.TargetViewModel.NestModel.Nests
                                    where nest.PlatformId != workerPlatform.Id
                                    select nest;
 
@@ -418,13 +426,13 @@ namespace Inkton.Nester.Views
                     return;
                 }
 
-                await _baseModels.AppViewModel.DeploymentModel.CollectInfoAsync();
+                await _baseModels.TargetViewModel.DeploymentModel.CollectInfoAsync();
 
-                if (!_baseModels.AppViewModel.DeploymentModel.Deployments.Any())
+                if (!_baseModels.TargetViewModel.DeploymentModel.Deployments.Any())
                 {
-                    Cloud.ServerStatus status = await _baseModels.AppViewModel.QueryAppServiceTierLocationsAsync(
-                        _baseModels.AppViewModel.SelectedAppServiceTier, false);
-                    var forests = status.PayloadToList<Admin.Forest>();
+                    Cloud.ServerStatus status = await _baseModels.TargetViewModel.QueryAppServiceTierLocationsAsync(
+                        _baseModels.TargetViewModel.SelectedAppService.Tier, false);
+                    var forests = status.PayloadToList<Forest>();
                     MainSideView.LoadView(new AppLocationView(_baseModels, forests));
                 }
                 else
@@ -442,9 +450,8 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                _baseModels.WizardMode = false;
-
-                MainSideView.LoadView(new AppBasicDetailView(_baseModels));
+                BaseModels.WizardMode = false; ;
+                MainSideView.LoadView(new AppBasicDetailView(BaseModels));
             }
             catch (Exception ex)
             {

@@ -24,15 +24,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using Xamarin.Forms;
+using Inkton.Nester.Models;
+using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
-    public partial class AppLocationView : Inkton.Nester.Views.View
+    public partial class AppLocationView : View
     {
         struct ForestButton
         {
@@ -40,8 +39,8 @@ namespace Inkton.Nester.Views
             {
                 TapGestureRecognizer tap = new TapGestureRecognizer
                 {
-                    Command = new Command<Admin.Forest>(async (forest) => await view.OnSelectLocation(forest, true)),
-                    CommandParameter = view.BaseModels.AppViewModel.DeploymentModel.ForestsByTag[forestTag.Replace('_', '-')]
+                    Command = new Command<Forest>(async (forest) => await view.OnSelectLocation(forest, true)),
+                    CommandParameter = view.BaseModels.TargetViewModel.DeploymentModel.ForestsByTag[forestTag.Replace('_', '-')]
                 };
 
                 FlagLabel = view.FindByName<Label>("FlagLabel_" + forestTag);
@@ -61,8 +60,8 @@ namespace Inkton.Nester.Views
 
         private Dictionary<string, ForestButton> _forestButtons;
 
-        public AppLocationView(Views.BaseModels baseModels, 
-            ObservableCollection<Admin.Forest> validForests)
+        public AppLocationView(BaseModels baseModels, 
+            ObservableCollection<Forest> validForests)
         {
             _baseModels = baseModels;
 
@@ -87,7 +86,7 @@ namespace Inkton.Nester.Views
                     FlagImage_hoh
                 });
 
-            BindingContext = _baseModels.AppViewModel.DeploymentModel;
+            BindingContext = _baseModels.TargetViewModel.DeploymentModel;
             _forestButtons = new Dictionary<string, ForestButton>();
 
             foreach (string forestTag in new string[] 
@@ -100,7 +99,7 @@ namespace Inkton.Nester.Views
                 })
             {
                 var tagUnderscores = forestTag.Replace('_', '-');
-                Admin.Forest found = validForests.FirstOrDefault(x => x.Tag == tagUnderscores);
+                Forest found = validForests.FirstOrDefault(x => x.Tag == tagUnderscores);
                 if (found != null)
                 {
                     _forestButtons.Add(forestTag, new ForestButton(this, forestTag));
@@ -133,17 +132,17 @@ namespace Inkton.Nester.Views
         {
             base.SubscribeToMessages();
 
-            ProcessMessage<Admin.Forest>("select",
-                    new Func<Admin.Forest, bool, bool, Task<Cloud.ServerStatus>>(OnSelectLocation));
+            ProcessMessage<Forest>("select",
+                    new Func<Forest, bool, bool, Task<Cloud.ServerStatus>>(OnSelectLocation));
         }
 
         protected override void UnsubscribeFromMessages()
         {
             base.UnsubscribeFromMessages();
-            MessagingCenter.Unsubscribe<ManagedObjectMessage<Admin.Forest>>(this, "select");
+            MessagingCenter.Unsubscribe<ManagedObjectMessage<Forest>>(this, "select");
         }
 
-        private async Task<Cloud.ServerStatus> OnSelectLocation(Admin.Forest forest, bool doCache, bool throwIfError = true)
+        private async Task<Cloud.ServerStatus> OnSelectLocation(Forest forest, bool doCache, bool throwIfError = true)
         {
             IsServiceActive = true;
             Cloud.ServerStatus status = new Cloud.ServerStatus();
@@ -160,7 +159,7 @@ namespace Inkton.Nester.Views
                 AnimateButtonTouched(button.FlagHolder, 1500, "#66b9f1", "#E4F1FE", 1);
                 AnimateButtonTouched(button.FlagHolder, 1500, "#66b9f1", "#E4F1FE", 1);
 
-                _baseModels.AppViewModel.DeploymentModel.EditDeployment.ForestId = forest.Id;
+                _baseModels.TargetViewModel.DeploymentModel.EditDeployment.ForestId = forest.Id;
                 MainSideView.LoadView(new AppSummaryView(_baseModels));
             }
             catch (Exception ex)
@@ -180,7 +179,7 @@ namespace Inkton.Nester.Views
             {
                 // Head back to homepage if the 
                 // page was called from here
-                ResetView();
+                await NesterControl.ResetViewAsync();
             }
             catch (Exception ex)
             {
