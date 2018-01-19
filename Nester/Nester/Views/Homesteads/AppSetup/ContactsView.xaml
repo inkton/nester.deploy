@@ -201,7 +201,7 @@
 
           <Button x:Name="ButtonAdd"
             Text="Add"
-            IsEnabled="{Binding Validated, Mode=TwoWay}"
+            IsEnabled="{Binding Validated}"
             Style="{StaticResource buttonUtilStyle1}"
             Clicked="OnAddButtonClickedAsync">
           </Button>
@@ -222,7 +222,7 @@
           
           <Button x:Name="ButtonUpdate"
             Text="Update"
-            IsEnabled="{Binding CanUpdate, Mode=TwoWay}"
+            IsEnabled="{Binding CanUpdate}"
             Style="{StaticResource buttonUtilStyle1}"
             Clicked="OnUpdateButtonClickedAsync">
           </Button>
@@ -308,56 +308,56 @@
  
             <StackLayout Grid.Row="1" 
                           Grid.Column="3"
-                          Style="{StaticResource PermHolder}">                           
-              <Switch x:Name ="SwitchCanViewApp" IsEnabled="{Binding CanUpdate, Mode=TwoWay}"
+                          Style="{StaticResource PermHolder}">
+                <Switch x:Name ="SwitchCanViewApp" IsEnabled="{Binding IsAppOwner}"
                     IsToggled="{Binding EditContact.OwnerCapabilities.CanViewApp, Mode=TwoWay}"
                     Style="{StaticResource PermSwitch}" />
             </StackLayout>
               
             <StackLayout Grid.Row="1" 
                           Grid.Column="4"
-                          Style="{StaticResource PermHolder}">                           
-              <Switch x:Name ="SwitchCanUpdateApp" IsEnabled="{Binding CanUpdate, Mode=TwoWay}"
+                          Style="{StaticResource PermHolder}">
+               <Switch x:Name ="SwitchCanUpdateApp" IsEnabled="{Binding IsAppOwner}"
                     IsToggled="{Binding EditContact.OwnerCapabilities.CanUpdateApp, Mode=TwoWay}" 
                     Style="{StaticResource PermSwitch}" />
             </StackLayout>
               
             <StackLayout Grid.Row="1" 
                           Grid.Column="5"
-                          Style="{StaticResource PermHolder}">                           
-              <Switch x:Name ="SwitchCanDeleteApp" IsEnabled="{Binding CanUpdate, Mode=TwoWay}"
+                          Style="{StaticResource PermHolder}">
+               <Switch x:Name ="SwitchCanDeleteApp" IsEnabled="{Binding IsAppOwner}"
                     IsToggled="{Binding EditContact.OwnerCapabilities.CanDeleteApp, Mode=TwoWay}" 
                     Style="{StaticResource PermSwitch}" />
             </StackLayout>
 
             <StackLayout Grid.Row="2" 
                           Grid.Column="2" 
-                          Style="{StaticResource PermHolder}">                           
-              <Switch x:Name ="SwitchCanCreateNest" IsEnabled="{Binding CanUpdate, Mode=TwoWay}" 
+                          Style="{StaticResource PermHolder}">
+                <Switch x:Name ="SwitchCanCreateNest" IsEnabled="{Binding IsAppOwner}" 
                       IsToggled="{Binding EditContact.OwnerCapabilities.CanCreateNest, Mode=TwoWay}" 
                     Style="{StaticResource PermSwitch}" />
             </StackLayout>
                 
             <StackLayout Grid.Row="2" 
                           Grid.Column="3"
-                          Style="{StaticResource PermHolder}">                           
-              <Switch x:Name ="SwitchCanViewNest" IsEnabled="{Binding CanUpdate, Mode=TwoWay}"
+                          Style="{StaticResource PermHolder}">
+                <Switch x:Name ="SwitchCanViewNest" IsEnabled="{Binding IsAppOwner}"
                     IsToggled="{Binding EditContact.OwnerCapabilities.CanViewNest, Mode=TwoWay}" 
                     Style="{StaticResource PermSwitch}" />
             </StackLayout>
                 
             <StackLayout Grid.Row="2" 
                           Grid.Column="4"
-                          Style="{StaticResource PermHolder}">                           
-              <Switch x:Name ="SwitchCanUpdateNest" IsEnabled="{Binding CanUpdate, Mode=TwoWay}"
+                          Style="{StaticResource PermHolder}">
+                <Switch x:Name ="SwitchCanUpdateNest" IsEnabled="{Binding IsAppOwner}"
                     IsToggled="{Binding EditContact.OwnerCapabilities.CanUpdateNest, Mode=TwoWay}"
                     Style="{StaticResource PermSwitch}" />
             </StackLayout>
                 
             <StackLayout Grid.Row="2" 
                           Grid.Column="5"
-                          Style="{StaticResource PermHolder}">                           
-              <Switch x:Name ="SwitchCanDeleteNest" IsEnabled="{Binding CanUpdate, Mode=TwoWay}"
+                          Style="{StaticResource PermHolder}">
+                 <Switch x:Name ="SwitchCanDeleteNest" IsEnabled="{Binding IsAppOwner}"
                     IsToggled="{Binding EditContact.OwnerCapabilities.CanDeleteNest, Mode=TwoWay}" 
                     Style="{StaticResource PermSwitch}" />
               </StackLayout>                
