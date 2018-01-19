@@ -359,6 +359,17 @@ namespace Inkton.Nester.Views
             try
             {
                 Contact browseContact = AppContactsList.SelectedItem as Contact;
+
+                if (browseContact.OwnerCapabilities.CanCreateNest ||
+                    browseContact.OwnerCapabilities.CanDeleteNest ||
+                    browseContact.OwnerCapabilities.CanUpdateNest ||
+                    browseContact.OwnerCapabilities.CanViewNest)
+                {
+                    // if nest operations are permitted then
+                    // the app must me at least viewable
+                    browseContact.OwnerCapabilities.CanViewApp = true;
+                }
+
                 browseContact.Email = NewContactEmail.Text;
 
                 await Process(browseContact, true,

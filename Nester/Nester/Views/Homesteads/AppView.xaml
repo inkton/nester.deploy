@@ -70,7 +70,7 @@
       <StackLayout Orientation="Horizontal" Spacing="5">
 
         <Button x:Name="ButtonAppSettings"
-              IsVisible="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
+              IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}"
               Style="{StaticResource appFuncButton}"
               Image="appsettings24.png" >
         </Button>

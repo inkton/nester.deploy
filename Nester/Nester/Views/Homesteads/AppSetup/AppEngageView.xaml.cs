@@ -60,9 +60,11 @@ namespace Inkton.Nester.Views
         {
             IsServiceActive = true;
 
-            await _baseModels.TargetViewModel.ContactModel.QueryInvitationsAsync();
+            ContactViewModel contactsModel = new ContactViewModel(null);
+            contactsModel.EditInvitation.User = NesterControl.User;
+            await contactsModel.QueryInvitationsAsync();
 
-            AppJoinDetailView joinView = new AppJoinDetailView(_baseModels);
+            AppJoinDetailView joinView = new AppJoinDetailView(contactsModel);
             joinView.MainSideView = MainSideView;
             MainSideView.Detail.Navigation.InsertPageBefore(joinView, this);
             await MainSideView.Detail.Navigation.PopAsync();

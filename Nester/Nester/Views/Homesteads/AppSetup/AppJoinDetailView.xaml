@@ -103,7 +103,7 @@
                       SelectionGesture="Tap"
                       SelectionMode="Single"
                       SelectionBackgroundColor="{StaticResource selectionColor}"                         
-                      ItemsSource="{Binding ContactModel.Invitations}"
+                      ItemsSource="{Binding Invitations}"
                       ItemTemplate="{StaticResource ItemTemplate}"
                       Loaded="AppInviteList_Loaded"
                       ItemSize="65">

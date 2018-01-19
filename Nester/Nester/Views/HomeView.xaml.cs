@@ -181,12 +181,12 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                _baseModels.TargetViewModel.ContactModel.EditInvitation.User = NesterControl.User;
-
-                await _baseModels.TargetViewModel.ContactModel.QueryInvitationsAsync();
+                ContactViewModel contactsModel = new ContactViewModel(null);
+                contactsModel.EditInvitation.User = NesterControl.User;
+                await contactsModel.QueryInvitationsAsync();
 
                 MainSideView.LoadView(
-                   new AppJoinDetailView(_baseModels));
+                   new AppJoinDetailView(contactsModel));
             }
             catch (Exception ex)
             {
@@ -246,7 +246,9 @@ namespace Inkton.Nester.Views
                         {
                             await appModel.RemoveAppAsync();
                             BaseModels.AllApps.RemoveApp(appModel);
-                            await NesterControl.ResetViewAsync(BaseModels.AllApps.AppModels.FirstOrDefault());
+                            NesterControl.Target = NesterControl.BaseModels.AllApps
+                                .AppModels.FirstOrDefault();
+                            await NesterControl.ResetViewAsync();
                         }
                         catch (Exception ex)
                         {
