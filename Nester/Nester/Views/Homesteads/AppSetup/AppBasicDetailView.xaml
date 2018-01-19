@@ -77,6 +77,7 @@
           <Label Style="{StaticResource nesterFieldLabel}"
                   Text="App Tag"></Label>
           <Entry Style="{StaticResource nesterField}"
+               IsEnabled="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
                 x:Name="Tag"
                   Text="{
                     Binding Path=EditApp.Tag, 
@@ -105,6 +106,7 @@
           <Entry Style="{StaticResource nesterField}"
                 x:Name="Name"
                   Text="{ Binding Path=EditApp.Name}"
+                IsEnabled="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
                 Keyboard="Keyboard.Text"
                 VerticalOptions="LayoutOptions.CenterAndExpand"
                 Placeholder="Give the app a memorable name">
@@ -126,6 +128,7 @@
                   Text="Password"></Label>
           <Entry Style="{StaticResource nesterField}"
               x:Name="Password"
+              IsEnabled="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
               Text="{Binding Path=EditApp.UnifiedPassword, Mode=TwoWay}"
               IsPassword="True"
               PropertyChanged="OnFieldValidation"
