@@ -21,14 +21,23 @@
 */
 
 using System;
-using Inkton.Nester.Models;
+using System.Net;
+using Xamarin.Forms;
 using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
     public partial class AppWebView : View
     {
-        public AppWebView(BaseModels baseModels)
+        public enum Pages
+        {
+            DefaultPage,
+            TargetSite,
+            TargetSlackConnect
+        }
+
+        public AppWebView(BaseModels baseModels, 
+            Pages page = Pages.DefaultPage)
         {
             _baseModels = baseModels;
             _baseModels.WizardMode = false;
@@ -37,25 +46,29 @@ namespace Inkton.Nester.Views
 
             _activityIndicator = ServiceActive;
 
-            if (_baseModels.TargetViewModel.EditApp.Id != 0)
+            if (page == Pages.DefaultPage)
             {
-                Title = _baseModels.TargetViewModel.EditApp.Name;
-                Browser.Source = "https://" + _baseModels.TargetViewModel.DomainModel.DefaultDomain.Name;
+                LoadDefaultPage();
+            }
+            else if (page == Pages.TargetSlackConnect)
+            {
+                LoadSlackPageAsync();
             }
             else
             {
-                Browser.Source = "ms-appx-web:///index.html";
+                if (_baseModels.TargetViewModel.EditApp.Id != 0)
+                {
+                    Title = _baseModels.TargetViewModel.EditApp.Name;
+                    Browser.Source = "https://" + _baseModels.TargetViewModel.DomainModel.DefaultDomain.Name;
+                }
             }
 
             BindingContext = _baseModels.TargetViewModel;
         }
 
-        private string DefaultPage
+        private void LoadDefaultPage()
         {
-            get
-            {
-                return
-                    @"
+            string page = @"
 <html>
     <head> 
         <title> Nest </title> 
@@ -64,9 +77,17 @@ namespace Inkton.Nester.Views
         <meta name = 'keywords'pass, sass, docker, platform, developers, build, deploy, scale, php, java, dot.net, python, ruby, nodejs'>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto' rel='stylesheet'>
         <style>
-            html, body { height: 100 %; }
-                body { margin: 0; padding: 0; width: 100 %; display: table; font-family: 'Open Sans'; }
-            .container { text-align: center; display: table-cell; vertical-align: middle; }
+            body {
+              background-color: #fcfcfc;
+              font-family: 'Open Sans';
+            }
+            .container
+            {
+              position: fixed;
+              top: 10%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
             .content { text-align: center; display: inline-block; }
             .title { font-size: 66px; font-family: 'Roboto'; }
             .sub-title { font-size: 20px; }
@@ -81,8 +102,63 @@ namespace Inkton.Nester.Views
         </div>
     </body>
 </html>";
+            var htmlSource = new HtmlWebViewSource();
+            htmlSource.Html = page;
+            Browser.Source = htmlSource;
+        }
 
+        private async void LoadSlackPageAsync()
+        {
+            await _baseModels.TargetViewModel.ContactModel.QueryContactCollaborateAccountAsync();
+
+            string clientId = "237221988247.245551261632";
+            string scope = "incoming-webhook,chat:write:bot";
+
+            string url = "https://slack.com/oauth/authorize?" +
+                "&client_id=" + WebUtility.UrlEncode(clientId) +
+                "&scope=" + WebUtility.UrlEncode(scope) +
+                "&state=" + WebUtility.UrlEncode(_baseModels.TargetViewModel.ContactModel.Collaboration.State);
+
+            string page = @"
+<html>
+    <head> 
+        <title> Nest </title> 
+        <meta charset = 'UTF-8'>  
+        <meta name = 'description' content = 'nest.yt Platform as a Service (PaaS) micro-container platform'>     
+        <meta name = 'keywords'pass, sass, docker, platform, developers, build, deploy, scale, php, java, dot.net, python, ruby, nodejs'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto' rel='stylesheet'>
+        <style>
+            body {
+              background-color: #fcfcfc;
+              font-family: 'Open Sans';
             }
+            .container
+            {
+              position: fixed;
+              top: 10%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
+            .content { text-align: center; display: inline-block; }
+            .title { font-size: 20px; font-family:'Roboto';margin-bottom:15px; }
+            .sub-title { font-size: 10px; }
+            .slack {  }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <div class='content'>
+                <div class='slack'>
+                    <div class='title'>Connect " + _baseModels.TargetViewModel.EditApp.Name + @" to Slack and stay updated</div>
+                    <a target='_blank' href='" + url + @"' ><img alt='Add to Slack height='40' width='139' src='https://platform.slack-edge.com/img/add_to_slack.png' srcset='https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x' /></a>
+                <div>
+            </div>
+        </div>
+    </body>
+</html>";
+            var htmlSource = new HtmlWebViewSource();
+            htmlSource.Html = page;
+            Browser.Source = htmlSource;
         }
 
         async private void OnDoneButtonClickedAsync(object sender, EventArgs e)

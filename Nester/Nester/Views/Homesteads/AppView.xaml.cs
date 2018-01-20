@@ -335,6 +335,9 @@ namespace Inkton.Nester.Views
         {
             try
             {
+                MainSideView.LoadView(new AppWebView(_baseModels,
+                    AppWebView.Pages.TargetSlackConnect));
+/*
                 await _baseModels.TargetViewModel.ContactModel.QueryContactCollaborateAccountAsync();
 
                 string clientId = "237221988247.245551261632";
@@ -346,7 +349,7 @@ namespace Inkton.Nester.Views
                     "&state=" + WebUtility.UrlEncode(_baseModels.TargetViewModel.ContactModel.Collaboration.State);
 
                 Device.OpenUri(new Uri(url));
-
+                */
             }
             catch (Exception ex)
             {
@@ -360,7 +363,8 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.LoadView(new AppWebView(_baseModels));
+                MainSideView.LoadView(new AppWebView(_baseModels, 
+                    AppWebView.Pages.TargetSite));
             }
             catch (Exception ex)
             {
