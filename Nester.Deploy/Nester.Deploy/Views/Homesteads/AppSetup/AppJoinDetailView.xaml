@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:View xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Inkton.Nester.Views"
+             xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
+             xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
+             xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             Title="Invitations"
+             x:Class="Inkton.Nester.Views.AppJoinDetailView">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <utils:ObjectToBoolConverter x:Key="objBoolConverter" />
+      <DataTemplate x:Name="ItemTemplate"  x:Key="ItemTemplate">
+
+        <ViewCell>
+          <ViewCell.View>
+
+            <Grid Padding="5,5,5,5" RowSpacing="0" ColumnSpacing="0">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="1" />
+              </Grid.RowDefinitions>
+
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="48" />
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Image x:Name="Icon"
+                    Source="{Binding Icon}"
+                    Grid.RowSpan="2"
+                    HeightRequest="32"
+                    WidthRequest="32"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+
+                <Label x:Name="AppName"
+                        Text="{Binding AppName}"
+                        Style="{StaticResource nesterFieldLabel}"
+                        Grid.ColumnSpan="2"
+                        Grid.Column="1"
+                        HorizontalOptions="FillAndExpand" />
+                <Label x:Name="AppTag"
+                        Text="{Binding AppTag, Mode=TwoWay}"
+                        Style="{StaticResource nesterListInfoLabelMinor}"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                          />
+              </Grid>
+
+              <Frame Grid.Row="1" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
+            </Grid>
+
+          </ViewCell.View>
+        </ViewCell>
+
+      </DataTemplate>      
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="5*"/>
+      <RowDefinition Height="10*"/>
+      <RowDefinition Height="60*"/>
+      <RowDefinition Height="20"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="5*"/>
+    </Grid.RowDefinitions>
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="20*"/>
+      <ColumnDefinition Width="60*"/>
+      <ColumnDefinition Width="20*"/>
+    </Grid.ColumnDefinitions>
+
+    <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center">
+
+      <StackLayout Padding="0" VerticalOptions="Center">
+        <Button x:Name="ButtonMembership"
+          Text="Join"
+          IsEnabled="{Binding Source={x:Reference AppInviteList}, Path=SelectedItem, Converter={StaticResource objBoolConverter}}"    
+          Style="{StaticResource buttonUtilStyle1}" >      
+        </Button>
+        <BoxView BackgroundColor="{StaticResource minorColor2}" HeightRequest="1" Margin="0,-8,0,0" />
+      </StackLayout>
+        
+    </StackLayout>
+
+    <StackLayout Grid.Row="2" Grid.Column="1">
+
+      <Label Style="{StaticResource nesterFieldLabel}"
+                Text="Invitations"></Label>
+
+      <sync:SfListView x:Name="AppInviteList"
+                      SelectionGesture="Tap"
+                      SelectionMode="Single"
+                      SelectionBackgroundColor="{StaticResource selectionColor}"                         
+                      ItemsSource="{Binding Invitations}"
+                      ItemTemplate="{StaticResource ItemTemplate}"
+                      Loaded="AppInviteList_Loaded"
+                      ItemSize="65">
+      </sync:SfListView> 
+ 
+    </StackLayout>
+
+    <ActivityIndicator Grid.Row="3" Grid.Column="1" x:Name="ServiceActive" >
+    </ActivityIndicator>
+      
+    <StackLayout Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
+      <Button x:Name="ButtonDone"
+              Text="Proceed"
+              Style="{StaticResource buttonPageFlow}"
+              Clicked="OnDoneButtonClickedAsync">
+      </Button>
+    </StackLayout>
+
+  </Grid>
+
+</views:View>
+
+

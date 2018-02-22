@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
+             x:Class="Nester.Deploy.App">
+  <Application.Resources>
+
+    <!-- Application resource dictionary -->
+   <ResourceDictionary>
+        <utils:TranslateConverter x:Key="i18n" />
+        <utils:CapitalizeConverter x:Key="capIt" />
+      
+        <Color x:Key="mainColor">#34495e</Color>
+        <Color x:Key="minorColor">#6c7a89</Color>
+        <Color x:Key="minorColor2">#317589</Color>
+        <Color x:Key="subColor">#bdc3c7</Color>
+        <Color x:Key="noteColor">#2574A9</Color>
+        <Color x:Key="tableBackColor">#E4F1FE</Color>
+        <Color x:Key="selectionColor">#bbd7ea</Color>
+        <Color x:Key="paneColor">#3b5998</Color>
+
+        <Style x:Key="nesterActive" TargetType="ActivityIndicator">
+            <Setter Property="Color" Value="{StaticResource subColor}" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        </Style>
+
+        <Style x:Key="validateFailMsg" TargetType="Label">
+            <Setter Property="TextColor" Value="#2574A9" />
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HeightRequest" Value="12" />
+        </Style>
+
+        <Style x:Key="nesterFieldLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource mainColor}" />
+        </Style>
+
+        <Style x:Key="nesterFieldLabelPicker" TargetType="Picker">
+            <Setter Property="TextColor" Value="{StaticResource mainColor}" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        </Style>
+      
+        <Style x:Key="nesterInfoLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource minorColor2}" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+      
+        <Style x:Key="nesterInfoLabelMinor" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource minorColor2}" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>      
+
+        <Style x:Key="nesterInfoBody" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource mainColor}" />
+            <Setter Property="LineBreakMode" Value="WordWrap" />
+        </Style>
+            
+        <Style x:Key="nesterListInfoLabelMinor" TargetType="Label">
+            <Setter Property="TextColor" Value="#25373D" />
+            <Setter Property="LineBreakMode" Value="WordWrap" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+
+        <Style x:Key="nesterListInfoBodyMinor" TargetType="Label">
+            <Setter Property="TextColor" Value="#6C7A89" />
+            <Setter Property="LineBreakMode" Value="WordWrap" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+
+        <Style x:Key="nesterListInfoLabelTiny" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource mainColor}" />
+            <Setter Property="LineBreakMode" Value="WordWrap" />
+            <Setter Property="FontSize" Value="13" />
+        </Style>
+      
+        <Style x:Key="nesterListInfoBodyTiny" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource minorColor2}" />
+            <Setter Property="LineBreakMode" Value="WordWrap" />
+            <Setter Property="FontSize" Value="13" />
+        </Style>
+
+        <Style x:Key="nesterSenior" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource mainColor}" />
+            <Setter Property="LineBreakMode" Value="WordWrap" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+
+        <Style x:Key="nesterField" TargetType="Entry">
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="Keyboard" Value="Keyboard.Text" />
+        </Style>
+
+        <Style x:Key="buttonPageFlow" TargetType="Button">
+            <Setter Property="TextColor" Value="{StaticResource mainColor}" />
+            <Setter Property="BackgroundColor" Value="White" />
+        </Style>
+      
+        <Style x:Key="buttonUtilStyle1" TargetType="Button">
+            <Setter Property="VerticalOptions" Value="LayoutOptions.Center" />
+            <Setter Property="HorizontalOptions" Value="LayoutOptions.Fill" />
+            <Setter Property="BorderWidth" Value="0" />
+            <Setter Property="TextColor" Value="{StaticResource minorColor2}" />
+            <Setter Property="BackgroundColor" Value="White" />
+            <Style.Triggers>
+                <Trigger TargetType="Button" Property="IsEnabled" Value="False">
+                    <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+                </Trigger>
+                <Trigger TargetType="Button" Property="IsFocused" Value="True">
+                    <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+                </Trigger>
+            </Style.Triggers>
+       </Style>
+
+        <Style x:Key="buttonUtilStyle2" TargetType="Button">
+            <Setter Property="VerticalOptions" Value="LayoutOptions.Center" />
+            <Setter Property="HorizontalOptions" Value="LayoutOptions.End" />
+            <Setter Property="BorderWidth" Value="1" />
+            <Setter Property="TextColor" Value="{StaticResource minorColor2}" />
+            <Setter Property="BorderColor" Value="{StaticResource minorColor2}" />
+            <Setter Property="BackgroundColor" Value="{StaticResource tableBackColor}" />
+        </Style>
+
+        <Style x:Key="buttonFlag" TargetType="Button">
+            <Setter Property="VerticalOptions" Value="LayoutOptions.FillAndExpand" />
+            <Setter Property="HorizontalOptions" Value="LayoutOptions.FillAndExpand" />
+            <Setter Property="BorderWidth" Value="0" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="TextColor" Value="{StaticResource minorColor2}" />
+            <Setter Property="BorderColor" Value="{StaticResource minorColor2}" />
+            <Setter Property="BackgroundColor" Value="White" />
+        </Style>
+
+        <Style x:Key="buttonListInline" TargetType="Button">
+            <Setter Property="VerticalOptions" Value="LayoutOptions.Center" />
+            <Setter Property="HorizontalOptions" Value="LayoutOptions.End" />
+            <Setter Property="BorderWidth" Value="1" />
+            <Setter Property="TextColor" Value="{StaticResource minorColor2}" />
+            <Setter Property="BorderColor" Value="{StaticResource minorColor2}" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="BackgroundColor" Value="{StaticResource tableBackColor}" />
+        </Style>
+            
+        <Style x:Key="appFuncButton" TargetType="Button">
+            <Setter Property="BorderColor" Value="Transparent" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="BorderRadius" Value="0" />
+            <Setter Property="BorderWidth" Value="0" />
+            <Setter Property="Margin" Value="0,0,0,0" />
+            <Style.Triggers>
+                <Trigger TargetType="Button" Property="IsEnabled" Value="False">
+                    <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+                </Trigger>
+                <Trigger TargetType="Button" Property="IsFocused" Value="True">
+                    <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="bannerH1" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource mainColor}" />
+            <Setter Property="LineBreakMode" Value="WordWrap" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+
+    </ResourceDictionary>
+
+  </Application.Resources>
+</Application>

@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:View xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Inkton.Nester.Views"
+             xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
+             xmlns:local="clr-namespace:Nester"
+             x:Class="Inkton.Nester.Views.EntryView"
+             Title="Welcome">
+
+  <ContentPage.Content>
+
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="5*"/>
+        <RowDefinition Height="65*"/>
+        <RowDefinition Height="5*"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="5*"/>
+      </Grid.RowDefinitions>
+
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="20*"/>
+        <ColumnDefinition Width="60*"/>
+        <ColumnDefinition Width="20*"/>
+      </Grid.ColumnDefinitions>
+                
+      <StackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="Start">
+
+        <Label Style="{StaticResource nesterFieldLabel}" 
+                Text="Email"></Label>
+        <Entry Style="{StaticResource nesterField}"                  
+              x:Name="Email"
+              Text="{Binding Path=Permit.Owner.Email, Mode=TwoWay}"
+              Keyboard="Email"
+              PropertyChanged="OnFieldValidation"
+              Placeholder="Enter email address">
+          <Entry.Behaviors>
+            <validators:EntryValidatorBehavior
+                IsCheckEmpty="True"
+                IsCheckEmail="True"
+                MinLength="0"
+                MaxLength="255"
+                x:Name="EmailValidator"
+                PropertyChanged="OnFieldValidation" />
+          </Entry.Behaviors>
+        </Entry>
+        <Label Style="{StaticResource validateFailMsg}"
+                Text="{Binding Source={x:Reference EmailValidator}, Path=Message}"
+                Opacity="{Binding Source={x:Reference EmailValidator}, Path=IsVisibleMessage}" />
+
+        <Label Style="{StaticResource nesterFieldLabel}" 
+                Text="Password"></Label>
+        <Entry Style="{StaticResource nesterField}"
+            x:Name="Password"
+            Text="{Binding Path=Permit.Password, Mode=TwoWay}"
+            IsPassword="True"
+            PropertyChanged="OnFieldValidation"
+            Placeholder="Enter password">
+          <Entry.Behaviors>
+            <validators:EntryValidatorBehavior
+                IsCheckEmpty="True"
+                MinLength="8"
+                MaxLength="32"
+                x:Name="PasswordValidator" />
+          </Entry.Behaviors>
+        </Entry>
+        <Label Style="{StaticResource validateFailMsg}"
+              Text="{Binding Source={x:Reference PasswordValidator}, Path=Message}"
+              Opacity="{Binding Source={x:Reference PasswordValidator}, Path=IsVisibleMessage}" />
+
+      </StackLayout>
+
+      <ActivityIndicator Grid.Row="2" Grid.Column="1" x:Name="ServiceActive" >          
+      </ActivityIndicator>
+
+      <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal" >
+        <Button x:Name="ButtonLogin"
+                Text="Login"
+                IsEnabled="{Binding Validated}"
+                Style="{StaticResource buttonPageFlow}"
+                Clicked="OnLoginButtonClickedAsync">
+        </Button>
+        <Button x:Name="ButtonSignup"
+                Text="Sign-up"
+                IsEnabled="{Binding Validated}"
+                Style="{StaticResource buttonPageFlow}"
+                Clicked="OnSignUpButtonClickedAsync">
+        </Button>
+        <Button x:Name="ButtonRecoverPassword"
+                Text="Recover Password"
+                IsEnabled="{Binding CanRecoverPassword}"
+                Style="{StaticResource buttonPageFlow}"
+                Clicked="OnRecoverPasswordButtonClickedAsync">
+        </Button>
+
+        <Label x:Name="Version"
+            HorizontalOptions="EndAndExpand"
+            Style="{StaticResource nesterListInfoLabelTiny}">
+            </Label>
+        </StackLayout>
+
+        </Grid>
+                  
+  </ContentPage.Content>
+</views:View>
