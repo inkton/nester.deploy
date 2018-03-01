@@ -1,1 +1,0 @@
-C:\Users\rajitha\Documents\inkton\github\nester.deploy\Nester\Nester.UWP\AppPackages\DeployApp.UWP_1.5.0.0\DeployApp.UWP_1.5.0.0_x64.appxbundle

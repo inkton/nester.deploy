@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>1.6.0</Version>
+    <Authors>nest.yt</Authors>
+    <Company>Inkton</Company>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Images\**" />
+    <EmbeddedResource Remove="Images\**" />
+    <None Remove="Images\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="settingsprofile32.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Flurl.Http" Version="2.1.0" />
+    <PackageReference Include="Inkton.NesterLibrary" Version="1.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="15.4.0.20" />
+    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="15.4.0.20" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="15.4.0.20" />
+    <PackageReference Include="System.Net.NameResolution" Version="4.3.0" />
+    <PackageReference Include="Xamarin.Forms" Version="2.4.0.74863" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\AboutPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ItemDetailPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ItemsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\MainPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NewItemPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+</Project>
