@@ -128,9 +128,9 @@
     </Grid.RowDefinitions>
 
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="30*"/>
+      <ColumnDefinition Width="10*"/>
       <ColumnDefinition Width="80*"/>
-      <ColumnDefinition Width="20*"/>
+      <ColumnDefinition Width="10*"/>
     </Grid.ColumnDefinitions>
 
     <StackLayout x:Name="TopButtonPanel" Grid.Row="0" Grid.Column="1"
@@ -140,6 +140,13 @@
         Text="Home"
         Style="{StaticResource buttonUtilStyle1}"
         Clicked="OnDoneButtonClickedAsync">
+      </Button>
+        
+      <Button x:Name="ButtonAppServices"
+        Text="Service"
+        IsVisible="{Binding EditApp.IsDeployed, Converter={StaticResource inverseBoolConverter}}"
+        Style="{StaticResource buttonUtilStyle1}"
+        Clicked="OnButtonServiceClickedAsync">
       </Button>
 
       <Button x:Name="ButtonBasicDetails"

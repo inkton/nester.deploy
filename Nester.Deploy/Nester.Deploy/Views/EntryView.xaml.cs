@@ -151,7 +151,6 @@ namespace Inkton.Nester.Views
                     {
                         await MainSideView.Detail.Navigation.PopAsync();
                         NesterControl.Target = _baseModels.AllApps.AppModels.First();
-                        NesterControl.Target.Reload();
                         NesterControl.ResetView(NesterControl.Target);
                     }
                 }

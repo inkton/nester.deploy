@@ -93,14 +93,28 @@ namespace Inkton.Nester.Views
             IsServiceActive = false;
         }
 
+        async private void OnButtonServiceClickedAsync(object sender, EventArgs e)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                MainSideView.CurrentLevelViewAsync(new AppTierView(_baseModels));
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+
+            IsServiceActive = false;
+        }
+
         async private void OnButtonDomainsClickedAsync(object sender, EventArgs e)
         {
             IsServiceActive = true;
 
             try
             {
-                await _baseModels.TargetViewModel.DomainModel.InitAsync();
-
                 MainSideView.CurrentLevelViewAsync(new AppDomainView(_baseModels));
             }
             catch (Exception ex)
@@ -117,8 +131,6 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseModels.TargetViewModel.ContactModel.InitAsync();
-
                 MainSideView.CurrentLevelViewAsync(new ContactsView(_baseModels));
             }
             catch (Exception ex)

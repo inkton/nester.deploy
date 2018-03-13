@@ -26,9 +26,9 @@
     </Grid.RowDefinitions>
 
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="20*"/>
-      <ColumnDefinition Width="60*"/>
-      <ColumnDefinition Width="20*"/>
+      <ColumnDefinition Width="10*"/>
+      <ColumnDefinition Width="80*"/>
+      <ColumnDefinition Width="10*"/>
     </Grid.ColumnDefinitions>
 
     <StackLayout x:Name="TopButtonPanel" Grid.Row="0" Grid.Column="1" 
@@ -40,6 +40,12 @@
         Clicked="OnDoneButtonClickedAsync">
       </Button>
 
+      <Button x:Name="ButtonAppServices"
+        IsVisible="{Binding EditApp.IsDeployed, Converter={StaticResource inverseBoolConverter}}"
+        Text="Service"
+        Style="{StaticResource buttonUtilStyle1}">
+      </Button>
+        
       <Button x:Name="ButtonNests"
         IsVisible="{Binding EditApp.OwnerCapabilities.CanViewNest}"
         Text="Nests"
@@ -65,19 +71,20 @@
         <Grid.RowDefinitions>
           <RowDefinition Height="2*"/>
           <RowDefinition Height="2*"/>
-          <RowDefinition Height="6*"/>
+          <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
           
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="30*"/>
-          <ColumnDefinition Width="70*"/>
+          <ColumnDefinition Width="35*"/>
+          <ColumnDefinition Width="35*"/>
         </Grid.ColumnDefinitions>
 
         <StackLayout Grid.Row="0" Grid.Column="0">
           <Label Style="{StaticResource nesterFieldLabel}"
                   Text="App Tag"></Label>
           <Entry Style="{StaticResource nesterField}"
-               IsEnabled="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
+                IsEnabled="{Binding IsValidApp, Converter={StaticResource inverseBoolConverter}}"
                 x:Name="Tag"
                   Text="{
                     Binding Path=EditApp.Tag, 
@@ -100,7 +107,7 @@
 
         </StackLayout>
 
-        <StackLayout Grid.Row="0" Grid.Column="1">
+       <StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
           <Label Style="{StaticResource nesterFieldLabel}"
                   Text="Name"></Label>
           <Entry Style="{StaticResource nesterField}"
@@ -123,7 +130,7 @@
                 Opacity="{Binding Source={x:Reference NameValidator}, Path=IsVisibleMessage}" />
         </StackLayout>
 
-        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+        <StackLayout Grid.Row="1" Grid.Column="0" >
           <Label Style="{StaticResource nesterFieldLabel}"
                   Text="Password"></Label>
           <Entry Style="{StaticResource nesterField}"
@@ -131,6 +138,7 @@
               IsEnabled="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
               Text="{Binding Path=EditApp.UnifiedPassword, Mode=TwoWay}"
               IsPassword="True"
+              VerticalOptions="LayoutOptions.CenterAndExpand"
               PropertyChanged="OnFieldValidation"
               Placeholder="Enter password">
             <Entry.Behaviors>
@@ -141,11 +149,49 @@
                   x:Name="PasswordValidator" />
             </Entry.Behaviors>
           </Entry>
-          <Label Style="{StaticResource validateFailMsg}"
+          <Label Style="{StaticResource validateFailMsg}"   
                 Text="{Binding Source={x:Reference PasswordValidator}, Path=Message}"
                 Opacity="{Binding Source={x:Reference PasswordValidator}, Path=IsVisibleMessage}" />
         </StackLayout>
 
+       <StackLayout Grid.Row="1" Grid.Column="1" >
+          <Label Style="{StaticResource nesterFieldLabel}"
+                  Text="Daily Backup Hour"></Label>
+             <Picker x:Name="BackupHour" SelectedIndex="0" WidthRequest="100"
+                    HorizontalOptions="FillAndExpand"                    
+                    VerticalOptions="LayoutOptions.CenterAndExpand"
+                    Style="{StaticResource nesterFieldLabelPicker}">
+                    <Picker.Items>
+                        <x:String>0</x:String>
+                        <x:String>1</x:String>
+                        <x:String>2</x:String>
+                        <x:String>3</x:String>
+                        <x:String>4</x:String>
+                        <x:String>5</x:String>
+                        <x:String>6</x:String>
+                        <x:String>7</x:String>
+                        <x:String>8</x:String>
+                        <x:String>9</x:String>
+                        <x:String>10</x:String>
+                        <x:String>11</x:String>
+                        <x:String>12</x:String>
+                        <x:String>13</x:String>
+                        <x:String>14</x:String>
+                        <x:String>15</x:String>
+                        <x:String>16</x:String>
+                        <x:String>17</x:String>
+                        <x:String>18</x:String>
+                        <x:String>19</x:String>
+                        <x:String>20</x:String>
+                        <x:String>21</x:String>
+                        <x:String>22</x:String>
+                        <x:String>23</x:String>
+                    </Picker.Items>
+                </Picker>
+
+          <Label Text="24 Hour UMT" Style="{StaticResource validateFailMsg}"></Label>
+        </StackLayout>
+        
         <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Opacity = "0">
           <Label Style="{StaticResource nesterFieldLabel}"
                   Text="Type"></Label>
@@ -232,7 +278,6 @@
       <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Start" >
           <Button x:Name="ButtonUpdate"
               IsVisible="{Binding IsValidApp}"
-              IsEnabled="{Binding EditApp.IsDeployed, Converter={StaticResource inverseBoolConverter}}"
               VerticalOptions="Start"
               HorizontalOptions="Start"
               Text="Update"

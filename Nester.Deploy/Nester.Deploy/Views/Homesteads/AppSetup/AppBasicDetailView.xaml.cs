@@ -53,8 +53,9 @@ namespace Inkton.Nester.Views
                     ButtonDomains,
                     ButtonDone,
                     ButtonUpdate
-                });
+            });
 
+            ButtonAppServices.Clicked += ButtonAppServices_ClickedAsync;
             ButtonNests.Clicked += ButtonNests_ClickedAsync;
             ButtonContacts.Clicked += ButtonContacts_ClickedAsync;
             ButtonDomains.Clicked += ButtonDomains_ClickedAsync;
@@ -72,6 +73,8 @@ namespace Inkton.Nester.Views
                 TopButtonPanel.Opacity = 1;
                 BottomButtonPanel.Opacity = 0;
             }
+
+            UpdateBackupParameters();
         }
 
         async private void ButtonUpdate_ClickedAsync(object sender, EventArgs e)
@@ -80,6 +83,8 @@ namespace Inkton.Nester.Views
 
             try
             {
+                GetBackupParameters();
+
                 await _baseModels.TargetViewModel.UpdateAppAsync();
             }
             catch (Exception ex)
@@ -88,7 +93,23 @@ namespace Inkton.Nester.Views
             }
 
             IsServiceActive = false;
-        } 
+        }
+
+        async private void ButtonAppServices_ClickedAsync(object sender, EventArgs e)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                MainSideView.CurrentLevelViewAsync(new AppTierView(_baseModels));
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+
+            IsServiceActive = false;
+        }
 
         async private void ButtonDomains_ClickedAsync(object sender, EventArgs e)
         {
@@ -96,8 +117,6 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseModels.TargetViewModel.DomainModel.InitAsync();
-
                 MainSideView.CurrentLevelViewAsync(new AppDomainView(_baseModels));
             }
             catch (Exception ex)
@@ -114,8 +133,6 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseModels.TargetViewModel.ContactModel.InitAsync();
-
                 MainSideView.CurrentLevelViewAsync(new ContactsView(_baseModels));
             }
             catch (Exception ex)
@@ -132,8 +149,6 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseModels.TargetViewModel.NestModel.InitAsync();
-
                 MainSideView.CurrentLevelViewAsync(new AppNestsView(_baseModels));
             }
             catch (Exception ex)
@@ -240,12 +255,24 @@ namespace Inkton.Nester.Views
             Validate();
         }
 
+        private void UpdateBackupParameters()
+        {
+            BackupHour.SelectedItem = _baseModels.TargetViewModel.EditApp.BackupHour.ToString();
+        }
+
+        private void GetBackupParameters()
+        {
+            _baseModels.TargetViewModel.EditApp.BackupHour = int.Parse(BackupHour.SelectedItem as string);
+        }
+
         async void OnDoneButtonClickedAsync(object sender, EventArgs e)
         {
             IsServiceActive = true;
 
             try
             {
+                GetBackupParameters();
+
                 if (_baseModels.WizardMode)
                 {
                     AppTierView tierView = new AppTierView(_baseModels);

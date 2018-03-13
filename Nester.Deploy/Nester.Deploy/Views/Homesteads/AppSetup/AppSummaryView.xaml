@@ -758,7 +758,12 @@
           TextColor="#22313F"
           FontSize="14">
         </Label>
-      </StackLayout>
+        <!--<StackLayout Orientation="Horizontal" VerticalOptions="Center">
+            <Label IsVisible="{Binding EditApp.IsDeployed}" Text="Create a backup beforehand" TextColor="#22313F" VerticalOptions="Center"></Label>
+            <Switch x:Name="BackupFirst" IsToggled="True" IsVisible="{Binding EditApp.IsDeployed}" VerticalOptions="Center">
+            </Switch>
+        </StackLayout>-->
+       </StackLayout>
 
       <StackLayout Padding="5,5,5,5" Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
         <Picker x:Name="SoftwareVersion" Title="Software Version" SelectedIndex="0"

@@ -32,6 +32,8 @@ namespace Inkton.Nester.Views
 {
     public partial class AppSummaryView : View
     {
+        SoftwareFramework.Version _selVersion = null;
+
         public AppSummaryView(BaseModels baseModels)
         {
             InitializeComponent();
@@ -40,23 +42,47 @@ namespace Inkton.Nester.Views
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {                   
-                    ButtonDone
+                    ButtonDone,
+                    ButtonCancel
                 });
             
-            _baseModels.TargetViewModel.DeploymentModel.DotnetVersions.All(version =>
-            {
-                SoftwareVersion.Items.Add(version.Name);
-                return true;
-            });
-
-            SoftwareVersion.SelectedIndex = 0;
             DeployWarning.Text = "The deployment will take some time to complete. ";
+        }
 
-            if (_baseModels.TargetViewModel.EditApp.IsDeployed)
+        public override void UpdateBindings()
+        {
+            if (_baseModels.TargetViewModel.EditApp != null)
             {
-                DeployWarning.Text += "New DevKits will be rebuilt with new access keys. ";
-                DeployWarning.Text += "Download the Devkits again once the deployment is complete. ";
-                DeployWarning.Text += "The project files should be updated to reflect the runtime framework version. ";
+                Title = _baseModels.TargetViewModel.EditApp.Name;
+            }
+
+            if (_baseModels.TargetViewModel.DeploymentModel.UpgradableAppTiers.Any())
+            {
+                // The app is being created and deployed. Only selected services are applicable
+                BindingContext = _baseModels.TargetViewModel
+                    .DeploymentModel;
+                SoftwareVersion.IsVisible = false;
+                ButtonDone.Text = "Upgrade";
+            }
+            else
+            {
+                // The app is being created or updated. All services are applicable
+                BindingContext = _baseModels.TargetViewModel;
+
+                _baseModels.TargetViewModel.DeploymentModel.DotnetVersions.All(version =>
+                {
+                    SoftwareVersion.Items.Add(version.Name);
+                    return true;
+                });
+
+                SoftwareVersion.SelectedIndex = 0;
+
+                if (_baseModels.TargetViewModel.EditApp.IsDeployed)
+                {
+                    DeployWarning.Text += "New DevKits will be rebuilt with new access keys. ";
+                    DeployWarning.Text += "Download the Devkits again once the deployment is complete. ";
+                    DeployWarning.Text += "The project files should be updated to reflect the runtime framework version. ";
+                }
             }
         }
 
@@ -96,70 +122,34 @@ namespace Inkton.Nester.Views
 
         private async void OnDoneButtonClickedAsync(object sender, EventArgs e)
         {
+            IsServiceActive = true;
+
             try
             {
-                SoftwareFramework.Version selVersion = null;
-                foreach (var version in _baseModels.TargetViewModel.DeploymentModel.DotnetVersions)
+                if (_baseModels.TargetViewModel.DeploymentModel.UpgradableAppTiers.Any())
                 {
-                    if (version.Name == SoftwareVersion.SelectedItem as string)
-                    {
-                        selVersion = version;
-                        break;
-                    }
-                }
-
-                if (_baseModels.TargetViewModel.DeploymentModel.Deployments.Any())
-                {
-                    if (_baseModels.TargetViewModel.EditApp.IsDeployed)
-                    {
-                        if (!await IsDnsOkAsync())
-                            return;
-
-                        bool proceed = await DisplayAlert("Nester",
-                            "This will invalidate current DevKits. Please ensure to \n" +
-                            "commit code changes before deploying. Proceed?", "Yes", "No");
-
-                        if (!proceed)
-                            return;
-                    }
-
-                    Deployment deployment =
-                        _baseModels.TargetViewModel.DeploymentModel.Deployments.First();
-                    deployment.FrameworkVersionId = selVersion.Id;
-
-                    await _baseModels.TargetViewModel.DeploymentModel.UpdateDeploymentAsync(deployment);
+                    await UpgradeAsync();
                 }
                 else
                 {
-                    if (!_baseModels.TargetViewModel.EditApp.IsDeployed)
+                    
+                    foreach (var version in _baseModels.TargetViewModel.DeploymentModel.DotnetVersions)
                     {
-                        var customDomains = _baseModels.TargetViewModel.DomainModel.Domains.Where(domain => !domain.Default).ToList();
-
-                        if (customDomains.Any())
+                        if (version.Name == SoftwareVersion.SelectedItem as string)
                         {
-                            string domainList = "\n";
-                            foreach (var domain in customDomains)
-                            {
-                                domainList += domain.Name + "\n";
-                            }
-
-                            await DisplayAlert("Nester", "The following custom domains will be removed. " +
-                                "Add the domains and re-deploy when the App IP is known.\n" + domainList, "OK");
-
-                            foreach (var domain in customDomains)
-                            {
-                                await _baseModels.TargetViewModel.DomainModel.RemoveDomainAsync(domain);
-                            }
+                            _selVersion = version;
+                            break;
                         }
                     }
 
-                    _baseModels.TargetViewModel.DeploymentModel.EditDeployment.FrameworkVersionId = selVersion.Id;
-
-                    await _baseModels.TargetViewModel.DeploymentModel.CreateDeployment(
-                        _baseModels.TargetViewModel.DeploymentModel.EditDeployment);
-
-                    _baseModels.TargetViewModel.EditApp.Deployment = 
-                        _baseModels.TargetViewModel.DeploymentModel.EditDeployment;
+                    if (_baseModels.TargetViewModel.DeploymentModel.Deployments.Any())
+                    {
+                        await UpdateAsync();
+                    }
+                    else
+                    {
+                        await InstallAsync();
+                    }
                 }
 
                 await _baseModels.TargetViewModel.QueryStatusAsync();
@@ -175,14 +165,13 @@ namespace Inkton.Nester.Views
             catch (Exception ex)
             {
                 await DisplayAlert("Nester", ex.Message, "OK");
-                IsServiceActive = false;
             }
+
+            IsServiceActive = false;
         }
 
         private async void OnCancelButtonClickedAsync(object sender, EventArgs e)
         {
-            IsServiceActive = true;
-
             try
             {
                 // Head back to homepage if the 
@@ -193,6 +182,80 @@ namespace Inkton.Nester.Views
             {
                 await DisplayAlert("Nester", ex.Message, "OK");
             }
+        }
+
+        private async Task UpgradeAsync()
+        {
+            IsServiceActive = true;
+
+            AppService appService = _baseModels
+                .TargetViewModel
+                .ServicesViewModel
+                .Services.FirstOrDefault(
+                x => x.Tag == "nest-oak");
+
+            // 'users/{uid}/apps/{aid}/deployments/{dep}/app_services/{sid}/app_service_tiers/{tierid}'
+            await _baseModels.TargetViewModel
+                .DeploymentModel
+                .UpdateAppUpgradeServiceTiersAsync(appService);
+
+            IsServiceActive = false;
+        }
+
+        private async Task UpdateAsync()
+        {
+            if (!await IsDnsOkAsync())
+                return;
+
+            bool proceed = await DisplayAlert("Nester",
+                "This will invalidate current DevKits. Please ensure to \n" +
+                "commit code changes before deploying. Proceed?", "Yes", "No");
+
+            if (!proceed)
+                return;
+
+            IsServiceActive = true;
+
+            Deployment deployment =
+                _baseModels.TargetViewModel.DeploymentModel.Deployments.First();
+            deployment.FrameworkVersionId = _selVersion.Id;
+            deployment.MakeBackup = false;
+
+            await _baseModels.TargetViewModel.DeploymentModel.UpdateDeploymentAsync(deployment);
+
+            IsServiceActive = false;
+        }
+
+        private async Task InstallAsync()
+        {
+            var customDomains = _baseModels.TargetViewModel.DomainModel.Domains.Where(domain => !domain.Default).ToList();
+
+            if (customDomains.Any())
+            {
+                string domainList = "\n";
+                foreach (var domain in customDomains)
+                {
+                    domainList += domain.Name + "\n";
+                }
+
+                await DisplayAlert("Nester", "The following custom domains will be removed. " +
+                    "Add the domains and re-deploy when the App IP is known.\n" + domainList, "OK");
+
+                foreach (var domain in customDomains)
+                {
+                    await _baseModels.TargetViewModel.DomainModel.RemoveDomainAsync(domain);
+                }
+            }
+
+            IsServiceActive = true;
+
+            _baseModels.TargetViewModel.DeploymentModel.EditDeployment.FrameworkVersionId = _selVersion.Id;
+
+            await _baseModels.TargetViewModel.DeploymentModel.CreateDeployment(
+                _baseModels.TargetViewModel.DeploymentModel.EditDeployment);
+
+            _baseModels.TargetViewModel.EditApp.Deployment =
+                _baseModels.TargetViewModel.DeploymentModel.EditDeployment;
 
             IsServiceActive = false;
         }

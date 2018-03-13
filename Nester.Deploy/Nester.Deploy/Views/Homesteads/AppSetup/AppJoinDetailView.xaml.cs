@@ -151,7 +151,7 @@ namespace Inkton.Nester.Views
 
                 if (invitation.Status == "active")
                 {
-                    await appCollection.AddAppAsync(joinApp);
+                    appCollection.AddApp(joinApp);
                 }
                 else
                 {
@@ -167,12 +167,6 @@ namespace Inkton.Nester.Views
 
                 NesterControl.Target = NesterControl.BaseModels.AllApps
                     .AppModels.FirstOrDefault();
-
-                if (NesterControl.Target != null)
-                {
-                    NesterControl.Target.Reload();
-                }
-
                 NesterControl.ResetView(NesterControl.Target);
                 ToggleMembershipButton(invitation);
             }
