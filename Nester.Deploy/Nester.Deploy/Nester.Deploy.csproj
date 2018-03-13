@@ -2,9 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.6.0</Version>
+    <Version>1.6.1</Version>
     <Authors>nest.yt</Authors>
     <Company>Inkton</Company>
+    <Copyright>Inkton 2018</Copyright>
+    <RepositoryUrl>https://nest.yt/</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,13 +21,16 @@
 
   <ItemGroup>
     <PackageReference Include="Flurl.Http" Version="2.1.0" />
-    <PackageReference Include="Inkton.NesterLibrary" Version="1.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="15.4.0.20" />
     <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="15.4.0.20" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="15.4.0.20" />
     <PackageReference Include="System.Net.NameResolution" Version="4.3.0" />
     <PackageReference Include="Xamarin.Forms" Version="2.4.0.74863" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\nester.library\Nester.Library\Nester.Library.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,6 +49,12 @@
     <Compile Update="Views\NewItemPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\Homesteads\AppBackupView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

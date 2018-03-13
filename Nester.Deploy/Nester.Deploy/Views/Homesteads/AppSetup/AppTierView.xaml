@@ -18,14 +18,51 @@
     </Grid.RowDefinitions>
 
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="30*"/>
+      <ColumnDefinition Width="10*"/>
       <ColumnDefinition Width="80*"/>
-      <ColumnDefinition Width="20*"/>
+      <ColumnDefinition Width="10*"/>
     </Grid.ColumnDefinitions>
 
+    <StackLayout x:Name="TopButtonPanel" Grid.Row="0" Grid.Column="1"
+        Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Start">
+
+      <Button x:Name="ButtonHome"
+        Text="Home"
+        Style="{StaticResource buttonUtilStyle1}"
+        Clicked="OnDoneButtonClickedAsync">
+      </Button>
+        
+      <Button x:Name="ButtonBasicDetails"
+        Text="Basic"
+        Style="{StaticResource buttonUtilStyle1}"
+        Clicked="OnButtonBasicDetailsClickedAsync">
+      </Button>
+
+      <Button x:Name="ButtonNests"
+        IsVisible="{Binding EditApp.OwnerCapabilities.CanViewNest}"
+        Text="Nests"
+        Style="{StaticResource buttonUtilStyle1}"
+        Clicked="OnButtonNestsClickedAsync">
+      </Button>
+
+      <Button x:Name="ButtonDomains"
+        IsVisible="{Binding EditApp.IsDeployed}"
+        Text="Domains"
+        Style="{StaticResource buttonUtilStyle1}"
+        Clicked="OnButtonDomainsClickedAsync">
+      </Button>
+        
+      <Button x:Name="ButtonContacts"
+        Text="Contacts"
+        Style="{StaticResource buttonUtilStyle1}"
+        Clicked="OnButtonContactsClickedAsync">
+      </Button>        
+
+    </StackLayout>
+        
     <StackLayout Grid.Row="1" Grid.Column="1" >
 
-        <Label Style="{StaticResource nesterFieldLabel}"
+        <Label x:Name="AppTierTitle" Style="{StaticResource nesterFieldLabel}"
                Text="Application Tier"></Label>
         
         <sync:SfListView x:Name="AppTypeTierView"
@@ -197,7 +234,7 @@
           </sync:SfListView.FooterTemplate>      
         </sync:SfListView>
       
-        <StackLayout Orientation="Horizontal">
+        <StackLayout x:Name="DatabaseOption" Orientation="Horizontal">
           <Label Style="{StaticResource nesterFieldLabel}"
               Text="MariaDB (MySQL)" HorizontalOptions="Start" VerticalOptions="Center">
           </Label>

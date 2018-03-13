@@ -103,9 +103,9 @@
     </Grid.RowDefinitions>
 
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="20*"/>
-      <ColumnDefinition Width="60*"/>
-      <ColumnDefinition Width="20*"/>
+      <ColumnDefinition Width="10*"/>
+      <ColumnDefinition Width="80*"/>
+      <ColumnDefinition Width="10*"/>
     </Grid.ColumnDefinitions>
 
     <StackLayout x:Name="TopButtonPanel" Grid.Row="0" Grid.Column="1"
@@ -123,6 +123,13 @@
         Clicked="OnButtonBasicDetailsClickedAsync">
       </Button>
 
+      <Button x:Name="ButtonAppServices"
+        Text="Service"
+        IsVisible="{Binding EditApp.IsDeployed, Converter={StaticResource inverseBoolConverter}}"
+        Style="{StaticResource buttonUtilStyle1}"
+        Clicked="OnButtonServiceClickedAsync">
+      </Button>        
+        
       <Button x:Name="ButtonContacts"
         Text="Contacts"
         Style="{StaticResource buttonUtilStyle1}"
@@ -141,103 +148,102 @@
     <StackLayout Grid.Row="1" Grid.Column="1" >
         
       <!--Parent/child (level 2)-->        
-      <StackLayout Orientation="Horizontal">
         <Grid>
-          <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>          
-          </Grid.RowDefinitions>                    
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="33*"/>
-            <ColumnDefinition Width="33*"/>
-            <ColumnDefinition Width="33*"/>
-          </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>          
+            </Grid.RowDefinitions>                    
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="33*"/>
+            </Grid.ColumnDefinitions>
           
-          <!--Tag-->
-          <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+            <!--Tag-->
+            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical">
 
             <Label Style="{StaticResource nesterFieldLabel}"
                 Text="Tag"></Label>
             <Entry Style="{StaticResource nesterField}"
-                  x:Name="Tag"
-                  Text="{
+                    x:Name="Tag"
+                    Text="{
                     Binding Path=EditNest.Tag, 
                     Converter={StaticResource identityConverter},
                     ConverterParameter=16,
                     Mode=TwoWay
                     }"
-                  Keyboard="Keyboard.Text"
-                  VerticalOptions="LayoutOptions.CenterAndExpand"
-                  Placeholder="Enter an identifier">
-              <Entry.Behaviors>
+                    Keyboard="Keyboard.Text"
+                    VerticalOptions="LayoutOptions.CenterAndExpand"
+                    Placeholder="Enter an identifier">
+                <Entry.Behaviors>
                 <validators:EntryValidatorBehavior
                     IsCheckEmpty="True"
                     MaxLength="16"
                     PropertyChanged="OnFieldValidation"
                     x:Name="TagValidator" />
-              </Entry.Behaviors>
+                </Entry.Behaviors>
             </Entry>
             <Label Style="{StaticResource validateFailMsg}"
-                  Text="{Binding Source={x:Reference TagValidator}, Path=Message}"
-                  Opacity="{Binding Source={x:Reference TagValidator}, Path=IsVisibleMessage}" />
+                    Text="{Binding Source={x:Reference TagValidator}, Path=Message}"
+                    Opacity="{Binding Source={x:Reference TagValidator}, Path=IsVisibleMessage}" />
             
-          </StackLayout>
+            </StackLayout>
 
-          <!--Name-->
-          <StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <!--Name-->
+            <StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal">
 
             <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" >
               
-              <Label Style="{StaticResource nesterFieldLabel}"
-                    Text="Name"></Label>
-              <Entry Style="{StaticResource nesterField}"
-                x:Name="Name"                
-                Text="{Binding Path=EditNest.Name, Mode=TwoWay}"
-                Keyboard="Keyboard.Text"
-                VerticalOptions="LayoutOptions.CenterAndExpand"
-                Placeholder="Enter a name">
+                <Label Style="{StaticResource nesterFieldLabel}"
+                    Text="Name">                    
+                </Label>
+                <Entry Style="{StaticResource nesterField}"
+                        x:Name="Name"                
+                        Text="{Binding Path=EditNest.Name, Mode=TwoWay}"
+                        Keyboard="Keyboard.Text"
+                        VerticalOptions="LayoutOptions.CenterAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Placeholder="Enter a name">
                 <Entry.Behaviors>
-                  <validators:EntryValidatorBehavior
-                      IsCheckEmpty="True"
-                      MaxLength="255"
-                      PropertyChanged="OnFieldValidation"
-                      x:Name="NameValidator" />
+                    <validators:EntryValidatorBehavior
+                        IsCheckEmpty="True"
+                        MaxLength="255"
+                        PropertyChanged="OnFieldValidation"
+                        x:Name="NameValidator" />
                 </Entry.Behaviors>
-              </Entry>
-              <Label Style="{StaticResource validateFailMsg}"
-                  Text="{Binding Source={x:Reference NameValidator}, Path=Message}"
-                  Opacity="{Binding Source={x:Reference NameValidator}, Path=IsVisibleMessage}" />
+                </Entry>
+                <Label Style="{StaticResource validateFailMsg}"
+                    Text="{Binding Source={x:Reference NameValidator}, Path=Message}"
+                    Opacity="{Binding Source={x:Reference NameValidator}, Path=IsVisibleMessage}" />
 
             </StackLayout>
-
           
-          
-          </StackLayout>
+            </StackLayout>
 
-          <!--Type-->
-          <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical">
+            <!--Type-->
+            <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical">
 
             <Picker x:Name="Type" Title="Type" SelectedIndex="0"
                     VerticalOptions="LayoutOptions.CenterAndExpand"
                     Style="{StaticResource nesterFieldLabelPicker}">
-              <Picker.Items>
+                <Picker.Items>
                 <x:String>MVC Handler</x:String>
                 <x:String>API Handler</x:String>
                 <x:String>Worker</x:String>
-              </Picker.Items>
+                </Picker.Items>
             </Picker>
             
             <Label Opacity="0" />
 
-          </StackLayout>
+            </StackLayout>
 
-          <!--Memory-->
-          <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+            <!--Memory-->
+            <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Vertical">
 
             <Picker x:Name="Memory" Title="Cushion Memory" SelectedIndex="0"                    
                     Style="{StaticResource nesterFieldLabelPicker}"
                     >
-              <Picker.Items>
+                <Picker.Items>
                 <x:String>128m</x:String>
                 <x:String>256m</x:String>
                 <x:String>512m</x:String>
@@ -246,36 +252,36 @@
                 <x:String>4g</x:String>
                 <x:String>8g</x:String>
                 <x:String>16g</x:String>
-              </Picker.Items>
+                </Picker.Items>
             </Picker>
             <Label Opacity="0" />
 
-          </StackLayout>
+            </StackLayout>
 
-          <!--Total Memory-->
-          <StackLayout Grid.Row="1" Grid.Column="2" Orientation="Horizontal">
+            <!--Total Memory-->
+            <StackLayout Grid.Row="1" Grid.Column="2" Orientation="Horizontal">
 
             <StackLayout Orientation="Vertical">
                 <Label Style="{StaticResource nesterFieldLabel}"
-                  Text="Scaling "></Label>
+                    Text="Scaling "></Label>
 
                 <Stepper Value="1" Minimum="1" Maximum="126" Increment="1"
                         x:Name="Scaling" ValueChanged="OnScaleSizeValueChanged" />
             </StackLayout>
             
             <StackLayout Orientation="Vertical">
-              <Label Style="{StaticResource nesterFieldLabel}"
+                <Label Style="{StaticResource nesterFieldLabel}"
                 Text="Memory"></Label>
-              <Label x:Name="UsedMemory"
+                <Label x:Name="UsedMemory"
                 Margin="0,5,0,0"
                 VerticalOptions="LayoutOptions.Center"
                 HorizontalOptions="LayoutOptions.Center"/>
             </StackLayout>
 
-          </StackLayout>
+            </StackLayout>
                 
         </Grid>     
-      </StackLayout>
+
 
       <StackLayout Orientation="Horizontal">
         <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center">

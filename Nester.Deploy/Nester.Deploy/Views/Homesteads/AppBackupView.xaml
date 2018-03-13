@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:View xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Inkton.Nester.Views"
+             xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
+             xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
+             xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             Title="Backups"                          
+             x:Class="Inkton.Nester.Views.AppBackupView">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Name="ItemTemplate"  x:Key="ItemTemplate">        
+            <ViewCell>
+              <ViewCell.View>
+                <Grid RowSpacing="0" ColumnSpacing="0">
+
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="1" />
+                  </Grid.RowDefinitions>
+
+                  <Grid>
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="100" />
+                      <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="{Binding Tag}"
+                       Style="{StaticResource nesterInfoLabelMinor}"
+                       Margin="0,5,0,5"
+                           >
+                    </Label>
+                    
+                    <Grid Grid.Column="1"
+                        RowSpacing="1"
+                        Padding="15,0,0,0"
+                          VerticalOptions="Center"> 
+
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                      </Grid.RowDefinitions>
+
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="22*" />
+                        <ColumnDefinition Width="30*" />
+                        <ColumnDefinition Width="30*" />                          
+                        <ColumnDefinition Width="18*" />
+                      </Grid.ColumnDefinitions>
+
+                      <Label Grid.Row="0" Grid.Column="0"
+                              Text="Date Created"
+                              Style="{StaticResource nesterListInfoLabelMinor}"
+                             >
+                      </Label>
+
+                      <Label Grid.Row="1" Grid.Column="0"
+                              Text="{Binding TimeCreated}"
+                              Style="{StaticResource nesterListInfoLabelMinor}"
+                             >
+                      </Label>
+
+                      <Label Grid.Row="0" Grid.Column="1"
+                              Text="Status"
+                              Style="{StaticResource nesterListInfoLabelMinor}"
+                             >
+                      </Label>
+                        
+                     <Label Grid.Row="1" Grid.Column="1"
+                             Text="{Binding Status}"
+                             Style="{StaticResource nesterListInfoLabelMinor}"
+                             >
+                      </Label>
+                        
+                      <Label Grid.Row="0" Grid.Column="2"
+                              Text="Description"
+                              Style="{StaticResource nesterListInfoLabelMinor}"
+                             >
+                      </Label>
+                        
+                     <Label Grid.Row="1" Grid.Column="2"
+                             Text="{Binding Description}"
+                             Style="{StaticResource nesterListInfoLabelMinor}"
+                             >
+                      </Label>
+                        
+                      <Label Grid.Row="0" Grid.Column="3"
+                              Text="Size (Bytes)"
+                              Style="{StaticResource nesterListInfoLabelMinor}"
+                             >
+                      </Label>
+                        
+                      <Label Grid.Row="1" Grid.Column="3"
+                             Text="{Binding DeploymentSize}"
+                             Style="{StaticResource nesterListInfoBodyMinor}"
+                      >
+                      </Label>
+                        
+                    </Grid>
+
+                  </Grid>
+
+                  <Frame Grid.Row="1" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
+                </Grid>
+              </ViewCell.View>
+              </ViewCell>
+                
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="80*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Row="1" Grid.Column="1">
+
+                <Label Style="{StaticResource nesterFieldLabel}"
+                    Text="Backups"></Label>
+                
+                <sync:SfListView x:Name="AppBackups"
+                        ItemsSource="{Binding AppBackups}"
+                        SelectionBackgroundColor="{StaticResource selectionColor}"
+                        ItemTemplate="{StaticResource ItemTemplate}">
+                </sync:SfListView>
+                
+                <ActivityIndicator x:Name="ServiceActive" ></ActivityIndicator>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Padding="10,10" VerticalOptions="LayoutOptions.Center" HorizontalOptions="FillAndExpand">
+                <Button x:Name="ButtonCancel" 
+                    Style="{StaticResource buttonPageFlow}"                       
+                    Text="Cancel" HorizontalOptions="End" />
+                <Button x:Name="ButtonRestore" 
+                    Style="{StaticResource buttonPageFlow}"
+                    Text="Restore" HorizontalOptions="End"  />
+                <Button x:Name="ButtonBackup" 
+                    Style="{StaticResource buttonPageFlow}"
+                    Text="Backup" HorizontalOptions="End"  />
+                <Button x:Name="ButtonRefresh" 
+                    Style="{StaticResource buttonPageFlow}"
+                    Text="Refresh" HorizontalOptions="End"  />
+
+            </StackLayout>
+        </Grid>
+
+    </ContentPage.Content>
+</views:View>
