@@ -5,6 +5,8 @@
     <Version>1.6.1</Version>
     <Authors>nest.yt</Authors>
     <Company>Inkton</Company>
+    <Copyright>Inkton 2018</Copyright>
+    <RepositoryUrl>https://nest.yt/</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

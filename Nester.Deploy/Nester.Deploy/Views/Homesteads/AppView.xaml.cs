@@ -137,6 +137,7 @@ namespace Inkton.Nester.Views
 
         public void UpdateState()
         {
+            ResetTimeFilter();
             Status newState = Status.Refreshing;
 
             if (App.IsBusy)
