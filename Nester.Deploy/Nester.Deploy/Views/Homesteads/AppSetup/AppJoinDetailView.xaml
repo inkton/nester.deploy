@@ -76,9 +76,9 @@
     </Grid.RowDefinitions>
 
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="20*"/>
-      <ColumnDefinition Width="60*"/>
-      <ColumnDefinition Width="20*"/>
+      <ColumnDefinition Width="10*"/>
+      <ColumnDefinition Width="80*"/>
+      <ColumnDefinition Width="10*"/>
     </Grid.ColumnDefinitions>
 
     <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center">

@@ -104,9 +104,9 @@
     </Grid.RowDefinitions>
 
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="20*"/>
-      <ColumnDefinition Width="60*"/>
-      <ColumnDefinition Width="20*"/>
+      <ColumnDefinition Width="10*"/>
+      <ColumnDefinition Width="80*"/>
+      <ColumnDefinition Width="10*"/>
     </Grid.ColumnDefinitions>
 
     <StackLayout x:Name="TopButtonPanel" Grid.Row="0" Grid.Column="1" 
@@ -124,6 +124,13 @@
         Clicked="OnButtonBasicDetailsClickedAsync">
       </Button>
 
+      <Button x:Name="ButtonAppServices"
+        IsVisible="{Binding EditApp.IsDeployed, Converter={StaticResource inverseBoolConverter}}"
+        Text="Service"
+        Style="{StaticResource buttonUtilStyle1}"
+        Clicked="OnButtonServiceClickedAsync">
+      </Button>
+
       <Button x:Name="ButtonNests"
         IsVisible="{Binding EditApp.OwnerCapabilities.CanViewNest}"
         Text="Nests"
@@ -132,7 +139,7 @@
       </Button>
 
       <Button x:Name="ButtonContacts"
-        Text="Domains"
+        Text="Contacts"
         Style="{StaticResource buttonUtilStyle1}"
         Clicked="OnButtonContactsClickedAsync">
       </Button>

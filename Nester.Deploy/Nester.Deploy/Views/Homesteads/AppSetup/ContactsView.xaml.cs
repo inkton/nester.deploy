@@ -89,14 +89,28 @@ namespace Inkton.Nester.Views
             IsServiceActive = false;
         }
 
+        async private void OnButtonServiceClickedAsync(object sender, EventArgs e)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                MainSideView.CurrentLevelViewAsync(new AppTierView(_baseModels));
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+
+            IsServiceActive = false;
+        }
+
         async private void OnButtonDomainsClickedAsync(object sender, EventArgs e)
         {
             IsServiceActive = true;
 
             try
             {
-                await _baseModels.TargetViewModel.DomainModel.InitAsync();
-
                 MainSideView.CurrentLevelViewAsync(new AppDomainView(_baseModels));
             }
             catch (Exception ex)
@@ -113,8 +127,6 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseModels.TargetViewModel.NestModel.InitAsync();
-
                 MainSideView.CurrentLevelViewAsync(new AppNestsView(_baseModels));
             }
             catch (Exception ex)
@@ -434,9 +446,7 @@ namespace Inkton.Nester.Views
                     }
 
                     await MainSideView.Detail.Navigation.PopAsync();
-                    _baseModels.WizardMode = false;
- 
-                    NesterControl.Target.Reload();
+                    _baseModels.WizardMode = false; 
                     NesterControl.ResetView(NesterControl.Target);
                 }
                 else
@@ -445,7 +455,7 @@ namespace Inkton.Nester.Views
                     // page was called from here
                     MainSideView.UnstackViewAsync();
                 }
-            }
+            } 
             catch (Exception ex)
             {
                 await DisplayAlert("Nester", ex.Message, "OK");

@@ -57,7 +57,9 @@ namespace Inkton.Nester.Views
                     ButtonAppSettings,
                     ButtonNotifications,
                     ButtonAppDeploy,
+                    ButtonAppRestore,
                     ButtonAppDepRemove,
+                    ButtonAppUpgrade,
                     ButtonAppDownload,
                     ButtonAppView,
                     ButtonAddToSlack
@@ -67,6 +69,8 @@ namespace Inkton.Nester.Views
 
             ButtonAppSettings.Clicked += ButtonAppSettings_ClickedAsync;
             ButtonNotifications.Clicked += ButtonNotifications_ClickedAsync;
+            ButtonAppRestore.Clicked += ButtonAppRestore_ClickedAsync;
+            ButtonAppUpgrade.Clicked += ButtonAppUpgrade_ClickedAsync;
             ButtonAppDepRemove.Clicked += ButtonAppDepRemove_ClickedAsync;
             ButtonAppDeploy.Clicked += ButtonAppDeploy_ClickedAsync;
             ButtonAppView.Clicked += ButtonAppView_ClickedAsync;
@@ -149,6 +153,13 @@ namespace Inkton.Nester.Views
             }
 
             State = newState;
+
+            ButtonAppDeploy.IsEnabled = !App.IsBusy;
+            ButtonAppRestore.IsEnabled = App.IsDeployed;
+            ButtonAppDepRemove.IsEnabled = App.IsDeployed;
+            ButtonAppDownload.IsEnabled = App.IsDeployed;
+            ButtonAppView.IsEnabled = App.IsDeployed;
+            ButtonAppUpgrade.IsEnabled = App.IsDeployed;
         }
 
         public void ReloadAnalytics()
@@ -321,6 +332,8 @@ namespace Inkton.Nester.Views
 
         async private void ButtonAppDownload_ClickedAsync(object sender, EventArgs e)
         {
+            IsServiceActive = true;
+
             try
             {
                 Devkit devkit = new Devkit();
@@ -334,24 +347,31 @@ namespace Inkton.Nester.Views
             {
                 await DisplayAlert("Nester", ex.Message, "OK");
             }
+
+            IsServiceActive = false;
         }
 
         async private void ButtonNotifications_ClickedAsync(object sender, EventArgs e)
         {
+            IsServiceActive = true;
+
             try
             {
                 await _baseModels.TargetViewModel.QueryAppNotificationsAsync();
-
                 MainSideView.StackViewAsync(new NotificationView(_baseModels));
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Nester", ex.Message, "OK");
             }
+
+            IsServiceActive = false;
         }
 
         async private void ButtonAddToSlack_ClickedAsync(object sender, EventArgs e)
         {
+            IsServiceActive = true;
+
             try
             {
                 MainSideView.StackViewAsync(new AppWebView(_baseModels,
@@ -361,6 +381,8 @@ namespace Inkton.Nester.Views
             {
                 await DisplayAlert("Nester", ex.Message, "OK");
             }
+
+            IsServiceActive = false;
         }
 
         async private void ButtonAppView_ClickedAsync(object sender, EventArgs e)
@@ -380,10 +402,53 @@ namespace Inkton.Nester.Views
             IsServiceActive = false;
         }
 
-        async private void ButtonAppDepRemove_ClickedAsync(object sender, EventArgs e)
+        async private void ButtonAppUpgrade_ClickedAsync(object sender, EventArgs e)
         {
             IsServiceActive = true;
 
+            try
+            {
+                AppService appService = _baseModels
+                    .TargetViewModel
+                    .ServicesViewModel
+                    .Services.FirstOrDefault(
+                    x => x.Tag == "nest-oak");
+
+                await _baseModels.TargetViewModel
+                    .DeploymentModel
+                    .QueryAppUpgradeServiceTiersAsync(appService);
+
+                _baseModels.WizardMode = false;
+                MainSideView.StackViewAsync(new AppTierView(_baseModels));
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+
+            IsServiceActive = false;
+            }
+
+        async private void ButtonAppRestore_ClickedAsync(object sender, EventArgs e)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                await _baseModels.TargetViewModel.DeploymentModel.QueryAppBackupsAsync();
+
+                MainSideView.StackViewAsync(new AppBackupView(_baseModels));
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+
+            IsServiceActive = false;
+        }
+
+        async private void ButtonAppDepRemove_ClickedAsync(object sender, EventArgs e)
+        {
             try
             {
                 var yes = await DisplayAlert("Nester", "Would you like to remove this deployment", "Yes", "No");
@@ -406,15 +471,20 @@ namespace Inkton.Nester.Views
             {
                 await DisplayAlert("Nester", ex.Message, "OK");
             }
-
-            IsServiceActive = false;
         }
 
         async private void ButtonAppDeploy_ClickedAsync(object sender, EventArgs e)
         {
+            IsServiceActive = true;
+
             try
             {
-                await _baseModels.TargetViewModel.InitAsync();
+                if (_baseModels.TargetViewModel
+                    .DeploymentModel.UpgradableAppTiers != null)
+                {
+                    _baseModels.TargetViewModel
+                        .DeploymentModel.UpgradableAppTiers.Clear();
+                }
 
                 if (_baseModels.PaymentViewModel.EditPaymentMethod.Proof == null ||
                     _baseModels.PaymentViewModel.EditPaymentMethod.Proof.Last4 == 0)
@@ -454,19 +524,25 @@ namespace Inkton.Nester.Views
             {
                 await DisplayAlert("Nester", ex.Message, "OK");
             }
+
+            IsServiceActive = false;
         }
 
         async private void ButtonAppSettings_ClickedAsync(object sender, EventArgs e)
         {
+            IsServiceActive = true;
+
             try
             {
-                BaseModels.WizardMode = false; ;
+                BaseModels.WizardMode = false;
                 MainSideView.StackViewAsync(new AppBasicDetailView(BaseModels));
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Nester", ex.Message, "OK");
             }
+
+            IsServiceActive = false;
         }
     }
 }
