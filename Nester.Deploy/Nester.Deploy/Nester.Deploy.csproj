@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.6.1</Version>
+    <Version>1.6.2</Version>
     <Authors>nest.yt</Authors>
     <Company>Inkton</Company>
-    <Copyright>Inkton 2018</Copyright>
+    <Copyright>Copyright ©  2018</Copyright>
     <RepositoryUrl>https://nest.yt/</RepositoryUrl>
   </PropertyGroup>
 
