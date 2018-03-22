@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <PackageReference Include="Flurl.Http" Version="2.1.0" />
-    <PackageReference Include="Inkton.NesterLibrary" Version="1.2.1" />
+    <PackageReference Include="Inkton.NesterLibrary" Version="1.2.2" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="15.4.0.20" />
     <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="15.4.0.20" />
