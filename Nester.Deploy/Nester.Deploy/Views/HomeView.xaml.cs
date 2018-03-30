@@ -110,7 +110,7 @@ namespace Inkton.Nester.Views
                                             {
                                                 appView.UpdateState();
 
-                                                if (appModel.EditApp.IsDeployed)
+                                                if (appModel.EditApp.IsActive)
                                                 {
                                                     appView.ReloadAnalytics();
                                                 }
