@@ -146,7 +146,7 @@ namespace Inkton.Nester.Views
                              nesterControl.BaseModels);
                         appView.UpdateBindings();
 
-                        if (appModel.EditApp.IsDeployed)
+                        if (appModel.EditApp.IsActive)
                         {
                             appView.ReloadAnalytics();
                         }
