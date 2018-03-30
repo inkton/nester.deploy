@@ -90,8 +90,20 @@ namespace Inkton.Nester.Views
                 switch (_status)
                 {
                     case Status.Deployed:
-                        InactiveApp.IsVisible = false;
-                        Metrics.IsVisible = true;
+                        if (App.IsActive)
+                        {
+                            // Deplyed and active
+                            InactiveApp.IsVisible = false;
+                            Metrics.IsVisible = true;
+                        }
+                        else
+                        {
+                            // Deplyed but failed
+                            ProgressControl.IsVisible = false;
+                            Logo.IsVisible = true;
+                            InactiveApp.IsVisible = true;
+                            Metrics.IsVisible = false;
+                        }
                         break;
 
                     case Status.Refreshing:
@@ -156,11 +168,11 @@ namespace Inkton.Nester.Views
             State = newState;
 
             ButtonAppDeploy.IsEnabled = !App.IsBusy;
-            ButtonAppRestore.IsEnabled = App.IsDeployed;
+            ButtonAppRestore.IsEnabled = App.IsActive;
             ButtonAppDepRemove.IsEnabled = App.IsDeployed;
-            ButtonAppDownload.IsEnabled = App.IsDeployed;
-            ButtonAppView.IsEnabled = App.IsDeployed;
-            ButtonAppUpgrade.IsEnabled = App.IsDeployed;
+            ButtonAppDownload.IsEnabled = App.IsActive;
+            ButtonAppView.IsEnabled = App.IsActive;
+            ButtonAppUpgrade.IsEnabled = App.IsActive;
         }
 
         public void ReloadAnalytics()
