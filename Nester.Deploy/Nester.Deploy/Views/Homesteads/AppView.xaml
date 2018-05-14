@@ -137,6 +137,13 @@
                 Image="appview24.png" >
         </Button>
                     
+         <Button x:Name="ButtonAppAudit"
+                IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}"
+                IsEnabled="{Binding EditApp.IsActive}"
+                Style="{StaticResource appFuncButton}"
+                Image="appaudit24.png" >
+        </Button>         
+          
       </StackLayout>
       
     </StackLayout>

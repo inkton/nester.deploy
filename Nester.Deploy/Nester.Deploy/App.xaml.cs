@@ -36,7 +36,7 @@ namespace Nester.Deploy
     public partial class App : Application, INesterControl
     {
         private User _user;
-        private const int ServiceVersion = 1;
+        private const int ServiceVersion = 2;
         private NesterService _service, _target;
         private StorageService _storage;
         private BaseModels _baseModels;

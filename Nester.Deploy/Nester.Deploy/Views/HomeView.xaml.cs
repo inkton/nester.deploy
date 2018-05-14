@@ -267,6 +267,7 @@ namespace Inkton.Nester.Views
         private async void ButtonPayment_ClickedAsync(object sender, EventArgs e)
         {
             await _baseModels.PaymentViewModel.QueryPaymentMethodAsync(false, false);
+            await _baseModels.PaymentViewModel.QueryBillingCyclesAsync();
 
             LoadSettingsPage(typeof(PaymentView));
         }

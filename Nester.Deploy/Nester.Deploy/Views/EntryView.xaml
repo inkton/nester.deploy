@@ -81,11 +81,17 @@
                 Clicked="OnLoginButtonClickedAsync">
         </Button>
         <Button x:Name="ButtonSignup"
-                Text="Sign-up"
+                Text="Sign-In"
                 IsEnabled="{Binding Validated}"
                 Style="{StaticResource buttonPageFlow}"
                 Clicked="OnSignUpButtonClickedAsync">
         </Button>
+        <Button x:Name="ButtonSignoff"
+                Text="Sign-Out"
+                IsEnabled="{Binding Validated}"
+                Style="{StaticResource buttonPageFlow}"
+                Clicked="OnSignOffButtonClickedAsync">
+        </Button>          
         <Button x:Name="ButtonRecoverPassword"
                 Text="Recover Password"
                 IsEnabled="{Binding CanRecoverPassword}"
@@ -95,7 +101,7 @@
 
         <Label x:Name="Version"
             HorizontalOptions="EndAndExpand"
-            Style="{StaticResource nesterListInfoLabelTiny}">
+            Style="{StaticResource infoTag}">
             </Label>
         </StackLayout>
 

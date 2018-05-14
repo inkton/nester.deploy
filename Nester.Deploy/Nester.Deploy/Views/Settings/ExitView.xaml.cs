@@ -22,78 +22,44 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
+using Inkton.Nester.Models;
 using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
-    public partial class AuthView : View
-    {
-        public AuthView(BaseModels baseModels)
+    public partial class ExitView : View
+	{
+        public ExitView(BaseModels baseModels)
         {
             InitializeComponent();
+
+            _baseModels = baseModels;
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
                     ButtonDone
                 });
 
-            Password.Unfocused += Password_Unfocused;
-            PasswordVerify.Unfocused += Password_Unfocused;
-
-            _baseModels = baseModels;
+            Message.Text = "Click 'Close Account' to close the account.\n\nAll private details will be removed from the database and remaining credit balance refunded.";
             BindingContext = _baseModels.AuthViewModel;
-        }
-
-        private void Password_Unfocused(object sender, FocusEventArgs e)
-        {
-            Validate();
-        }
-
-        void Validate()
-        {
-            if (PasswordValidator != null)
-            {
-                _baseModels.AuthViewModel.Validated = (
-                     PasswordValidator.IsValid &&
-                     PasswordRepeatValidator.IsValid
-                     );
-                
-                if (_baseModels.AuthViewModel.Validated)
-                {
-                    if (Password.Text != PasswordVerify.Text)
-                    {
-                        PasswordValidator.Message = "The passwords do not match";
-                        PasswordValidator.IsValid = false;
-
-                        PasswordRepeatValidator.Message = "The passwords do not match";
-                        PasswordRepeatValidator.IsValid = false;
-                    }
-                }
-            }
-        }
-
-        void OnFieldValidation(object sender, EventArgs e)
-        {
-            Validate();
         }
 
         async void OnDoneButtonClickedAsync(object sender, EventArgs e)
         {
             try
             {
-                if (!Password.Text.Equals(PasswordVerify.Text))
-                {
-                    await DisplayAlert("Nester", "Passwords do not match", "OK");
-                    return;
-                }
-
                 IsServiceActive = true;
 
-                await _baseModels.AuthViewModel.ResetTokenAsync();
-                await DisplayAlert("Nester", "Password was saved", "OK");
+                var yes = await DisplayAlert("Nester", "This will permenently close the account, proceed ?", "Yes", "No");
 
-                IsServiceActive = false;
+                if (yes)
+                {
+                    Cloud.ServerStatus status = await _baseModels.AuthViewModel.DeleteUserAsync();
+                    await DisplayAlert("Nester", status.LocalDescription, "OK");
+                    await MainSideView.Detail.Navigation.PopAsync();
+                } 
             }
             catch (Exception ex)
             {
@@ -106,7 +72,7 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                MainSideView.UnstackViewAsync();
+                await MainSideView.Detail.Navigation.PopAsync();
             }
             catch (Exception ex)
             {
