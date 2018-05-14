@@ -199,18 +199,20 @@ namespace Inkton.Nester.Views
 
         async Task UpdateServicesAsync()
         {
+            if (_selectedAppRow == null)
+            {
+                return;
+            }
+            
             // At present only the wizard mode brings up this page.
             if (_isUpgrading)
             {
-                if (_selectedAppRow != null)
-                {
-                    _baseModels.TargetViewModel.DeploymentModel.SelectedAppService = _selectedAppRow;
-                    _baseModels.TargetViewModel.DeploymentModel.MariaDBEnabled =
-                            _baseModels.TargetViewModel.MariaDBEnabled;
-                    AppSummaryView summaryView = new AppSummaryView(_baseModels);
-                    summaryView.MainSideView = MainSideView;
-                    MainSideView.Detail.Navigation.InsertPageBefore(summaryView, this);
-                }
+                _baseModels.TargetViewModel.DeploymentModel.SelectedAppService = _selectedAppRow;
+                _baseModels.TargetViewModel.DeploymentModel.MariaDBEnabled =
+                        _baseModels.TargetViewModel.MariaDBEnabled;
+                AppSummaryView summaryView = new AppSummaryView(_baseModels);
+                summaryView.MainSideView = MainSideView;
+                MainSideView.Detail.Navigation.InsertPageBefore(summaryView, this);
             }
             else
             {
@@ -273,6 +275,12 @@ namespace Inkton.Nester.Views
 
             try
             {
+                if (_selectedAppRow == null)
+                {
+                    await DisplayAlert("Nester", "Select an App Tier first", "OK");
+                    return;
+                }
+
                 await UpdateServicesAsync();
 
                 if (_baseModels.WizardMode)

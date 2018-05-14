@@ -72,9 +72,6 @@ namespace Inkton.Nester.Views
 <html>
     <head> 
         <title> Nest </title> 
-        <meta charset = 'UTF-8'>  
-        <meta name = 'description' content = 'nest.yt Platform as a Service (PaaS) micro-container platform'>     
-        <meta name = 'keywords'pass, sass, docker, platform, developers, build, deploy, scale, php, java, dot.net, python, ruby, nodejs'>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto' rel='stylesheet'>
         <style>
             body {

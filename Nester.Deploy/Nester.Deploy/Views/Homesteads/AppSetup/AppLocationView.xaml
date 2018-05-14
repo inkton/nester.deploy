@@ -33,24 +33,23 @@
   <Grid>
 
     <Grid.RowDefinitions>
-      <RowDefinition Height="5*"/>        
-      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="10*"/>        
+      <RowDefinition Height="70*"/>
       <RowDefinition Height="10*"/>
-      <RowDefinition Height="5*"/>
+      <RowDefinition Height="10*"/>
     </Grid.RowDefinitions>
 
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="20*"/>
-      <ColumnDefinition Width="60*"/>
-      <ColumnDefinition Width="20*"/>
+       <ColumnDefinition Width="10*"/>          
+       <ColumnDefinition Width="80*"/>
+       <ColumnDefinition Width="10*"/>
     </Grid.ColumnDefinitions>
+
+    <ActivityIndicator Grid.Row="0" Grid.Column="1" x:Name="ServiceActive" HeightRequest="10"></ActivityIndicator>
 
     <StackLayout Grid.Row="1" Grid.Column="1" >
 
-        <StackLayout Orientation="Horizontal" >
-            <Label Style="{StaticResource nesterFieldLabel}" Text="Locations"></Label>
-            <ActivityIndicator x:Name="ServiceActive" HorizontalOptions="End" WidthRequest="100" HeightRequest="10"></ActivityIndicator>
-        </StackLayout>
+      <Label HorizontalOptions="Start" Style="{StaticResource nesterFieldLabel}" Text="Locations"></Label>
         
       <Grid>
         <Grid.RowDefinitions>

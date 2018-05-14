@@ -95,10 +95,10 @@
     <!--Main Page (level 1)-->
     <Grid.RowDefinitions>
       <RowDefinition Height="5*"/>
+      <RowDefinition Height="5*"/>        
       <RowDefinition Height="40*"/>
-      <RowDefinition Height="40*"/>
-      <RowDefinition Height="20"/>
-      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="35*"/>
+      <RowDefinition Height="10*"/>
       <RowDefinition Height="5*"/>
     </Grid.RowDefinitions>
 
@@ -108,7 +108,10 @@
       <ColumnDefinition Width="10*"/>
     </Grid.ColumnDefinitions>
 
-    <StackLayout x:Name="TopButtonPanel" Grid.Row="0" Grid.Column="1"
+    <ActivityIndicator Grid.Row="0" Grid.Column="1" x:Name="ServiceActive" >
+    </ActivityIndicator>
+      
+    <StackLayout Grid.Row="1" Grid.Column="1" x:Name="TopButtonPanel"
         Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Start">
 
       <Button x:Name="ButtonHome"
@@ -145,7 +148,7 @@
 
     </StackLayout>
 
-    <StackLayout Grid.Row="1" Grid.Column="1" >
+    <StackLayout Grid.Row="2" Grid.Column="1" >
         
       <!--Parent/child (level 2)-->        
         <Grid>
@@ -342,7 +345,7 @@
         
     </StackLayout>
     
-    <StackLayout Grid.Row="2" Grid.Column="1">
+    <StackLayout Grid.Row="3" Grid.Column="1">
 
         <sync:SfListView x:Name="AppNestsList" 
                         Margin="0,10,0,0"
@@ -356,13 +359,11 @@
         </sync:SfListView>
       
     </StackLayout>
-
-    <ActivityIndicator Grid.Row="3" Grid.Column="1" x:Name="ServiceActive" >
-    </ActivityIndicator>
       
     <StackLayout Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
       <Button x:Name="ButtonDone"
               Text="Proceed"
+              VerticalOptions="LayoutOptions.Center"    
               Style="{StaticResource buttonPageFlow}"
               Clicked="OnDoneButtonClickedAsync">
       </Button>

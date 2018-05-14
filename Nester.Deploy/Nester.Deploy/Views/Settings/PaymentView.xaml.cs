@@ -22,6 +22,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Inkton.Nester.Models;
 using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
@@ -35,11 +37,34 @@ namespace Inkton.Nester.Views
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
                     ButtonNew,
-                    ButtonReenterDone
+                    ButtonReenterDone,
+                    BillingCycle
                 });
 
             _baseModels = baseModels;
             BindingContext = _baseModels.PaymentViewModel;
+
+            BillingCycle.SelectedIndex = 0;
+            UpdateBillingInfoAsync();
+
+            BillingCycle.SelectedIndexChanged += BillingCycle_SelectedIndexChanged;
+        }
+
+        private void BillingCycle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateBillingInfoAsync();
+        }
+
+        private async void UpdateBillingInfoAsync()
+        {
+            BillingCycle cycle = BillingCycle.SelectedItem as BillingCycle;
+
+            if (cycle != null)
+            {
+                Dictionary<string, string> filter = new Dictionary<string, string>();
+                filter.Add("billing_cycle_id", cycle.Id.ToString());
+                await _baseModels.PaymentViewModel.QueryUserBillingTasksAsync(filter);
+            }
         }
 
         void Validate()

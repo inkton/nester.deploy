@@ -20,17 +20,19 @@
     <Grid.RowDefinitions>
       <RowDefinition Height="5*"/>
       <RowDefinition Height="80*"/>
-      <RowDefinition Height="20"/>
-      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="10*"/>
       <RowDefinition Height="5*"/>
     </Grid.RowDefinitions>
 
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="20*"/>
-      <ColumnDefinition Width="60*"/>
-      <ColumnDefinition Width="20*"/>
+      <ColumnDefinition Width="10*"/>
+      <ColumnDefinition Width="80*"/>
+      <ColumnDefinition Width="10*"/>
     </Grid.ColumnDefinitions>
 
+    <ActivityIndicator Grid.Row="0" Grid.Column="1" x:Name="ServiceActive" >
+    </ActivityIndicator>
+      
     <StackLayout Grid.Row="1" Grid.Column="1" >
 
       <Label Style="{StaticResource nesterFieldLabel}"
@@ -108,11 +110,8 @@
       </StackLayout>
 
     </StackLayout>
-
-    <ActivityIndicator Grid.Row="2" Grid.Column="1" x:Name="ServiceActive" >
-    </ActivityIndicator>
       
-    <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+    <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
       <Button x:Name="ButtonDone"
               Text="Proceed"
               Style="{StaticResource buttonPageFlow}"

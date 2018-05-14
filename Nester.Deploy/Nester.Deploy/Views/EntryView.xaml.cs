@@ -43,6 +43,7 @@ namespace Inkton.Nester.Views
                     Email,
                     Password,
                     ButtonLogin,
+                    ButtonSignoff,
                     ButtonSignup,
                     ButtonRecoverPassword
                 });
@@ -104,9 +105,9 @@ namespace Inkton.Nester.Views
             MainSideView.Detail.Navigation.InsertPageBefore(engageView, this);
         }
 
-        private void PushEngageViewWithUserUpdate()
+        private void PushUserUpdate()
         {
-            PushEngageView();
+            DisplayAlert("Nester", "A security code was sent to the email address. Confirm by entering the code.", "OK");
 
             UserView userView = new UserView(_baseModels);
             userView.MainSideView = MainSideView;
@@ -133,7 +134,9 @@ namespace Inkton.Nester.Views
                     // sound but need to confirm the security code.
                     // a new sec code would have been sent too.
 
-                    PushEngageViewWithUserUpdate();
+                    PushUserUpdate();
+
+                    await MainSideView.Detail.Navigation.PopAsync();
                 }
                 else if (status.Code == Cloud.ServerStatus.NEST_RESULT_SUCCESS)
                 {
@@ -177,9 +180,47 @@ namespace Inkton.Nester.Views
 
                 _baseModels.AuthViewModel.Signup();
 
-                PushEngageViewWithUserUpdate();
+                PushUserUpdate();
 
                 await MainSideView.Detail.Navigation.PopAsync();
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+                IsServiceActive = false;
+            }
+
+            IsServiceActive = false;
+        }
+
+        async void OnSignOffButtonClickedAsync(object sender, EventArgs e)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                BeginNewSession();
+
+                Cloud.ServerStatus status = await _baseModels.AuthViewModel.QueryTokenAsync(false);
+
+                if (status.Code == Cloud.ServerStatus.NEST_RESULT_SUCCESS)
+                {
+                    // the user can be hanging in inactive state
+                    // if he/she did not confirm the security code
+                    // in the second stage after registration.
+                    // this result suggests the credentials were
+                    // sound but need to confirm the security code.
+                    // a new sec code would have been sent too.
+
+                    ExitView exitView = new ExitView(_baseModels);
+                    exitView.MainSideView = MainSideView;
+
+                    await MainSideView.Detail.Navigation.PushAsync(exitView);
+                }
+                else
+                {
+                    status.Throw();
+                }
             }
             catch (Exception ex)
             {

@@ -111,6 +111,7 @@
   <ItemGroup>
     <Content Include="app-background.png" />
     <Content Include="appadd32.png" />
+    <Content Include="appaudit24.png" />
     <Content Include="appdeploy24.png" />
     <Content Include="appdeploymentremove24.png" />
     <Content Include="appdownload24.png" />

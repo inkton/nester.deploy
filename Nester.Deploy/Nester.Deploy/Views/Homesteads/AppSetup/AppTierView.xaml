@@ -11,9 +11,9 @@
     <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="5*"/>
-      <RowDefinition Height="70*"/>
-      <RowDefinition Height="5"/>
-      <RowDefinition Height="Auto"/>    
+      <RowDefinition Height="5*"/>
+      <RowDefinition Height="75*"/>
+      <RowDefinition Height="10*"/>    
       <RowDefinition Height="5*"/>
     </Grid.RowDefinitions>
 
@@ -23,7 +23,10 @@
       <ColumnDefinition Width="10*"/>
     </Grid.ColumnDefinitions>
 
-    <StackLayout x:Name="TopButtonPanel" Grid.Row="0" Grid.Column="1"
+    <ActivityIndicator Grid.Row="0" Grid.Column="1" x:Name="ServiceActive" >
+    </ActivityIndicator>
+        
+    <StackLayout Grid.Row="1" Grid.Column="1" x:Name="TopButtonPanel"
         Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Start">
 
       <Button x:Name="ButtonHome"
@@ -60,7 +63,7 @@
 
     </StackLayout>
         
-    <StackLayout Grid.Row="1" Grid.Column="1" >
+    <StackLayout Grid.Row="2" Grid.Column="1" >
 
         <Label x:Name="AppTierTitle" Style="{StaticResource nesterFieldLabel}"
                Text="Application Tier"></Label>
@@ -245,13 +248,11 @@
 
     </StackLayout>
 
-    <ActivityIndicator Grid.Row="2" Grid.Column="1" x:Name="ServiceActive" >
-    </ActivityIndicator>
-
     <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
       <Button x:Name="ButtonDone"
               Text="Proceed"
               IsEnabled="{Binding Validated}"
+              VerticalOptions="Center"
               Style="{StaticResource buttonPageFlow}"
               Clicked="OnDoneButtonClickedAsync">
       </Button>
