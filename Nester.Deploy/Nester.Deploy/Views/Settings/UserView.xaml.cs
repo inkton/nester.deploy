@@ -76,6 +76,8 @@ namespace Inkton.Nester.Views
             NickName.Unfocused += NickName_Unfocused;
 
             BindingContext = _baseModels.AuthViewModel;
+
+            LoadExplainPage();
         }
 
         private void NickName_Unfocused(object sender, FocusEventArgs e)
@@ -94,6 +96,73 @@ namespace Inkton.Nester.Views
                     NicknameValidator.Message = "The nickname is taken, try another nickname";
                 }
             }*/
+        }
+
+        private void LoadExplainPage()
+        {
+            string page = @"
+<html>
+    <head> 
+        <title> Nest </title> 
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto' rel='stylesheet'>
+        <style>
+            body {
+              background-color: #F3F9FF;
+              font-family: 'Open Sans';
+              font-size: 12px;
+            }
+            .container
+            {
+              padding: 1%;
+            }
+            .content { text-align: center; display: inline-block; }
+            .title { font-size: 18px; font-family: 'Roboto'; }
+            .sub-title { font-size: 12px; font-family: 'Roboto'; text-decoration: underline; }
+            p { text-align: left; }
+            ul {
+              margin: 0
+            }
+            ul.dashed {
+              list-style-type: none;
+              text-align: left;
+            }
+            ul.dashed > li {
+              text-indent: -8px;
+            }
+            ul.dashed > li:before {
+              content: '-';
+              text-indent: -8px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <div class='content'>
+                <div class='title'>Terms</div>
+                <p>Follow the links below for the terms of service and the privacy policy.</p>
+                <p>
+                    <ul class='dashed'>
+                      <li><a href='https://nestyt.com/terms.html' target='_blank'>The Terms of Service</a></li>
+                      <li><a href='https://nestyt.com/privacy.html' target='_blank'>The Privacy Policy.</a></li>
+                    </ul>
+                </p>
+                <p>
+                    Nest.yt complies with the <a href='https://www.eugdpr.org/ target='_blank'>EU General Data Protection Regulation (GDPR)</a>. Please read the privacy policy for details.
+                </p>
+                <div class='sub-title'>Support</div>
+                <p>The Nester Deploy manual is found in the following link.</p>
+                <a href='https://github.com/inkton/nester.deploy/wiki' target='_blank'>https://github.com/inkton/nester.deploy/wiki</a>
+                <p>Open a ticket for issues relating to the open source project here. </p>
+                <a href='https://github.com/inkton/nester.deploy/issues' target='_blank'>https://github.com/inkton/nester.deploy/issues</a>
+                <p>Follow the link below and login with the Nester Deploy user and password for any support issues relating to the account. </p>
+                <a href='https://my.nest.yt/' target='_blank'>https://my.nest.yt/</a>
+            </div>
+        </div>
+    </body>
+</html>";
+            var htmlSource = new HtmlWebViewSource();
+            htmlSource.Html = page;
+            Browser.Source = htmlSource;
         }
 
         void Validate()
@@ -151,7 +220,20 @@ namespace Inkton.Nester.Views
                     {
                         _baseModels.AuthViewModel.QueryToken();
 
-                        MainSideView.UnstackViewAsync();
+                        AppViewModel newAppModel = new AppViewModel();
+                        newAppModel.NewAppAsync();
+
+                        BaseModels baseModels = new BaseModels(
+                            _baseModels.AuthViewModel,
+                            _baseModels.PaymentViewModel,
+                            newAppModel);
+                        baseModels.WizardMode = true;
+
+                        AppEngageView engageView = new AppEngageView(baseModels);
+                        engageView.MainSideView = MainSideView;
+
+                        MainSideView.Detail.Navigation.InsertPageBefore(engageView, this);
+                        await MainSideView.Detail.Navigation.PopAsync();
                     }
                 }
                 else
@@ -171,7 +253,7 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                MainSideView.UnstackViewAsync();
+                await MainSideView.Detail.Navigation.PopAsync();
             }
             catch (Exception ex)
             {

@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:View xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Inkton.Nester.Views"
+             xmlns:local="clr-namespace:Nester"
+             xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
+             xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
+             x:Class="Inkton.Nester.Views.ExitView"
+             Title="Your Details">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <utils:InverseBoolConverter x:Key="inverseBoolConverter" />
+      <utils:IdentifierMaker x:Key="identityConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <ContentPage.Content>
+
+    <StackLayout>
+      
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="5*"/>
+          <RowDefinition Height="80*"/>
+          <RowDefinition Height="10*"/>
+          <RowDefinition Height="5*"/>          
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="10*"/>
+          <ColumnDefinition Width="60*"/>
+          <ColumnDefinition Width="20*"/>            
+          <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+
+        <ActivityIndicator Grid.Row="0" Grid.Column="1" x:Name="ServiceActive" ></ActivityIndicator>
+
+        <StackLayout Grid.Row="1" Grid.Column="1"  VerticalOptions="LayoutOptions.CenterAndExpand" >
+          
+          <Label Style="{StaticResource nesterFieldLabel}"
+                  VerticalOptions="LayoutOptions.CenterAndExpand" Text="Nickname"></Label>
+          <Label Style="{StaticResource nesterFieldValue}"
+                 VerticalOptions="LayoutOptions.CenterAndExpand" Text="{ Binding Path=Permit.Owner.Nickname }"></Label>
+                    
+          <Label Style="{StaticResource nesterFieldLabel}"
+                  VerticalOptions="LayoutOptions.CenterAndExpand" Text="First Name"></Label>
+          <Label Style="{StaticResource nesterFieldValue}"
+                 VerticalOptions="LayoutOptions.CenterAndExpand" Text="{ Binding Path=Permit.Owner.FirstName }"></Label>
+            
+          <Label Style="{StaticResource nesterFieldLabel}"
+                 VerticalOptions="LayoutOptions.CenterAndExpand" Text="Last Name"></Label>
+          <Label Style="{StaticResource nesterFieldValue}"
+                 VerticalOptions="LayoutOptions.CenterAndExpand" Text="{ Binding Path=Permit.Owner.LastName }"></Label>
+
+          <Label Style="{StaticResource nesterFieldLabel}"
+                 VerticalOptions="LayoutOptions.CenterAndExpand" Text="Credit Balance"></Label>
+          <Label Style="{StaticResource nesterFieldValue}"
+                 VerticalOptions="LayoutOptions.CenterAndExpand" Text="{ Binding Path=Permit.Owner.CreditsBalance, StringFormat='{0:c}' }"></Label>
+            
+        </StackLayout>
+
+        <StackLayout Grid.Row="1" Grid.Column="2" VerticalOptions="LayoutOptions.CenterAndExpand" >            
+            <ScrollView 
+                    Padding="10" 
+                    VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+                    <Label x:Name="Message" 
+                           TextColor="{StaticResource noteColor}" 
+                           LineBreakMode="WordWrap" />                
+            </ScrollView>
+        </StackLayout>
+          
+        <StackLayout Grid.Row="2" Grid.Column="1"
+                     VerticalOptions="LayoutOptions.CenterAndExpand"
+                     Orientation="Horizontal">
+          <Button x:Name="ButtonDone"
+                  Text="Close Account"
+                  IsEnabled="{Binding Validated}"
+                  VerticalOptions="LayoutOptions.Center"
+                  Style="{StaticResource buttonPageFlow}"
+                  Clicked="OnDoneButtonClickedAsync">
+          </Button>
+          <Button x:Name="ButtonClose"
+                  Text="Exit"
+                  Style="{StaticResource buttonPageFlow}"
+                  VerticalOptions="LayoutOptions.Center"                  
+                  Clicked="OnCloseButtonClickedAsync">
+          </Button>
+        </StackLayout>
+
+      </Grid>
+
+    </StackLayout>
+
+  </ContentPage.Content>
+
+</views:View>

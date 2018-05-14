@@ -36,6 +36,10 @@
             <Setter Property="TextColor" Value="{StaticResource mainColor}" />
         </Style>
 
+        <Style x:Key="nesterFieldValue" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource minorColor2}" />
+        </Style>
+       
         <Style x:Key="nesterFieldLabelPicker" TargetType="Picker">
             <Setter Property="TextColor" Value="{StaticResource mainColor}" />
             <Setter Property="HorizontalOptions" Value="FillAndExpand" />
@@ -48,6 +52,11 @@
       
         <Style x:Key="nesterInfoLabelMinor" TargetType="Label">
             <Setter Property="TextColor" Value="{StaticResource minorColor2}" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>      
+       
+        <Style x:Key="nesterInfodataMinor" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource minorColor}" />
             <Setter Property="FontSize" Value="12" />
         </Style>      
 
@@ -86,6 +95,12 @@
             <Setter Property="FontSize" Value="12" />
         </Style>
 
+        <Style x:Key="infoTag" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource minorColor2}" />
+            <Setter Property="LineBreakMode" Value="WordWrap" />
+            <Setter Property="FontSize" Value="10" />
+        </Style>
+       
         <Style x:Key="nesterField" TargetType="Entry">
             <Setter Property="VerticalOptions" Value="CenterAndExpand" />
             <Setter Property="Keyboard" Value="Keyboard.Text" />

@@ -44,9 +44,7 @@ namespace Inkton.Nester.Views
                 new List<Xamarin.Forms.View> {                   
                     ButtonDone,
                     ButtonCancel
-                });
-            
-            DeployWarning.Text = "The deployment will take some time to complete. ";
+                });            
         }
 
         public override void UpdateBindings()
@@ -77,11 +75,16 @@ namespace Inkton.Nester.Views
 
                 SoftwareVersion.SelectedIndex = 0;
 
+                DeployWarning.Text =  "- Read and understand the terms for deployed apps.\n";
+                DeployWarning.Text += "- The deployment progress will be reported on Slack if integrated.\n";
+
                 if (_baseModels.TargetViewModel.EditApp.IsDeployed)
                 {
-                    DeployWarning.Text += "New DevKits will be rebuilt with new access keys. ";
-                    DeployWarning.Text += "Download the Devkits again once the deployment is complete. ";
-                    DeployWarning.Text += "The project files should be updated to reflect the runtime framework version. ";
+                    DeployWarning.Text += "- New DevKits will be rebuilt with new access keys.\n";
+                    DeployWarning.Text += "- Download the Devkits again once the deployment is complete.\n";
+                    DeployWarning.Text += "- Ensure the custom domains and aliases point to the IP address " + _baseModels.TargetViewModel.EditApp.IPAddress + ".\n";
+                    DeployWarning.Text += "- Ensure the custom domain IP has been fully propagted.\n";
+                    DeployWarning.Text += "- The app has a backup to restore state.\n";
                 }
             }
         }
@@ -205,13 +208,6 @@ namespace Inkton.Nester.Views
         private async Task UpdateAsync()
         {
             if (!await IsDnsOkAsync())
-                return;
-
-            bool proceed = await DisplayAlert("Nester",
-                "This will invalidate current DevKits. Please ensure to \n" +
-                "commit code changes before deploying. Proceed?", "Yes", "No");
-
-            if (!proceed)
                 return;
 
             IsServiceActive = true;

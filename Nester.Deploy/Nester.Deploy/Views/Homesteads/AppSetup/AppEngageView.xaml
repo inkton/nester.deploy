@@ -11,29 +11,31 @@
       <Grid VerticalOptions="LayoutOptions.Center" HorizontalOptions="LayoutOptions.Center">
 
         <Grid.RowDefinitions>
-          <RowDefinition Height="15*"/>
-          <RowDefinition Height="35*"/>
-          <RowDefinition Height="35*"/>
           <RowDefinition Height="5*"/>
-          <RowDefinition Height="10*"/>
+          <RowDefinition Height="45*"/>
+          <RowDefinition Height="45*"/>
+          <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="20*"/>          
-          <ColumnDefinition Width="60*"/>
-          <ColumnDefinition Width="20*"/>
+          <ColumnDefinition Width="10*"/>          
+          <ColumnDefinition Width="80*"/>
+          <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
-       
+
+        <ActivityIndicator Grid.Row="0" Grid.Column="1" x:Name="ServiceActive" ></ActivityIndicator>
+          
         <StackLayout Grid.Row="1" Grid.Column="1"
               BackgroundColor="{StaticResource tableBackColor}" 
               Padding="10"
+              WidthRequest="500"
               Orientation="Horizontal"
               VerticalOptions="Center" 
               HorizontalOptions="Center">
           
           <Button x:Name="ButtonCreate"
                   BorderColor="Transparent"
-                  BackgroundColor = "Transparent"
+                  BackgroundColor = "#F3F9FF"
                   Style="{StaticResource buttonUtilStyle1}"
                   Image="pluscircle.png"
                   Clicked="OnCreateAppClickedAsync">
@@ -65,13 +67,14 @@
         <StackLayout Grid.Row="2" Grid.Column="1"
               BackgroundColor="{StaticResource tableBackColor}"                      
               Padding="10"
+              WidthRequest="500"
               Orientation="Horizontal"                     
               VerticalOptions="Center"
               HorizontalOptions="Center">
 
           <Button x:Name="ButtonJoin"
                   BorderColor="Transparent"
-                  BackgroundColor = "Transparent"                  
+                  BackgroundColor = "#F3F9FF"                  
                   Style="{StaticResource buttonUtilStyle1}"
                   Image="signin.png"
                   Clicked="OnJoinAppClickedAsync">
@@ -98,8 +101,6 @@
           </StackLayout>
         
         </StackLayout>
-
-        <ActivityIndicator Grid.Row="3" Grid.Column="1" x:Name="ServiceActive" ></ActivityIndicator>
 
       </Grid>
     

@@ -69,9 +69,8 @@
     <Grid.RowDefinitions>
       <RowDefinition Height="5*"/>
       <RowDefinition Height="10*"/>
-      <RowDefinition Height="60*"/>
-      <RowDefinition Height="20"/>
-      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="70*"/>
+      <RowDefinition Height="10"/>
       <RowDefinition Height="5*"/>
     </Grid.RowDefinitions>
 
@@ -81,6 +80,9 @@
       <ColumnDefinition Width="10*"/>
     </Grid.ColumnDefinitions>
 
+    <ActivityIndicator Grid.Row="0" Grid.Column="1" x:Name="ServiceActive" >
+    </ActivityIndicator>
+      
     <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center">
 
       <StackLayout Padding="0" VerticalOptions="Center">
@@ -110,11 +112,8 @@
       </sync:SfListView> 
  
     </StackLayout>
-
-    <ActivityIndicator Grid.Row="3" Grid.Column="1" x:Name="ServiceActive" >
-    </ActivityIndicator>
       
-    <StackLayout Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
+    <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
       <Button x:Name="ButtonDone"
               Text="Proceed"
               Style="{StaticResource buttonPageFlow}"

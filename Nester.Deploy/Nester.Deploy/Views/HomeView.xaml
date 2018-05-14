@@ -112,8 +112,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
             <RowDefinition Height="70*"/>
@@ -212,68 +211,74 @@
 
         </StackLayout>
         
-        <StackLayout Grid.Row="1" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+        <StackLayout Grid.Row="1" Grid.Column="0" 
+            VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+            
+            <Grid HeightRequest="45">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="1" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0"
+                    Margin="10,0,0,0" Text="Apps" 
+                    FontSize="18" TextColor="{StaticResource mainColor}" HorizontalOptions="Start"
+                    VerticalOptions="Center"/>
+                <Frame Grid.Row="1" OutlineColor="{StaticResource subColor}" HeightRequest="1"/>
+            </Grid>
+
             <syncList:SfListView x:Name="AppModels"
                         SelectionMode="Single"
                         ItemsSource="{Binding AppModels}"
                         SelectionBackgroundColor="{StaticResource selectionColor}"
                         ItemTemplate="{StaticResource ItemTemplate}"
+                        VerticalOptions="FillAndExpand" 
+                        HorizontalOptions="FillAndExpand"
                         ItemSize="65">
-                <syncList:SfListView.HeaderTemplate>
-                    <DataTemplate>
-                        <Grid HeightRequest="45">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="1" />
-                            </Grid.RowDefinitions>
-                            <Label Grid.Row="0" LineBreakMode="NoWrap"
-                               Margin="10,0,0,0" Text="Apps" 
-                               FontSize="18" TextColor="{StaticResource mainColor}" HorizontalOptions="Start"
-                               VerticalOptions="Center"/>
-                            <Frame Grid.Row="1" OutlineColor="{StaticResource subColor}" HeightRequest="1"/>
-                        </Grid>
-                    </DataTemplate>
-                </syncList:SfListView.HeaderTemplate>
             </syncList:SfListView>
-
-          <ActivityIndicator VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Grid.Row="2" Grid.Column="0" x:Name="ServiceActive">
-          </ActivityIndicator>
-
+            
         </StackLayout>
 
         <StackLayout Grid.Row="2" 
-                Grid.Column="0" 
-                Orientation="Horizontal" 
-                VerticalOptions="FillAndExpand"
-                HorizontalOptions="End"                     
-                Spacing = "0"
-                Padding = "0,0,0,0">
+           Grid.Column="0">
 
-            <Button x:Name="ButtonAppReload"
-                Style="{StaticResource appFuncButton}"
-                Image="appreload32.png"
-                IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}" 
-                IsEnabled="{Binding Source={x:Reference AppModels}, Path=SelectedItem, Converter={StaticResource objBoolConverter}}">
-            </Button>
+            <StackLayout Orientation="Vertical">
+                <ActivityIndicator HorizontalOptions="FillAndExpand" x:Name="ServiceActive">
+                </ActivityIndicator>
+            </StackLayout>
 
-            <Button x:Name="ButtonAppRemove"     
-                Style="{StaticResource appFuncButton}"
-                Image="appremove32.png"
-                IsVisible="{Binding EditApp.OwnerCapabilities.CanDeleteApp}"
-                IsEnabled="{Binding Source={x:Reference AppModels}, Path=SelectedItem, Converter={StaticResource objBoolConverter}}">
-            </Button>
+            <StackLayout Orientation="Horizontal"                                  
+                Padding="10,0,10,0"
+                VerticalOptions="End" 
+                HorizontalOptions="EndAndExpand">
+                <Button x:Name="ButtonAppReload"
+                    VerticalOptions="End"                     
+                    Style="{StaticResource appFuncButton}"
+                    Image="appreload32.png"
+                    IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}" 
+                    IsEnabled="{Binding Source={x:Reference AppModels}, Path=SelectedItem, Converter={StaticResource objBoolConverter}}">
+                </Button>
 
-            <Button x:Name="ButtonAppAdd"
-                Style="{StaticResource appFuncButton}"
-                Image="appadd32.png">
-            </Button>
+                <Button x:Name="ButtonAppRemove"
+                    VerticalOptions="End"                                         
+                    Style="{StaticResource appFuncButton}"
+                    Image="appremove32.png"
+                    IsVisible="{Binding EditApp.OwnerCapabilities.CanDeleteApp}"
+                    IsEnabled="{Binding Source={x:Reference AppModels}, Path=SelectedItem, Converter={StaticResource objBoolConverter}}">
+                </Button>
 
-            <Button x:Name="ButtonAppJoin"
-                Style="{StaticResource appFuncButton}"
-                Image="appjoin32.png">
-            </Button>
+                <Button x:Name="ButtonAppAdd"
+                    VerticalOptions="End"                                         
+                    Style="{StaticResource appFuncButton}"
+                    Image="appadd32.png">
+                </Button>
 
-          
+                <Button x:Name="ButtonAppJoin"
+                    VerticalOptions="End"                    
+                    Style="{StaticResource appFuncButton}"
+                    Image="appjoin32.png">
+                </Button>
+                
+            </StackLayout>
         </StackLayout>
 
     </Grid>

@@ -15,8 +15,7 @@
       <RowDefinition Height="5*"/>
       <RowDefinition Height="15*"/>
       <RowDefinition Height="1"/>
-      <RowDefinition Height="75*"/>
-      <RowDefinition Height="20"/>
+      <RowDefinition Height="65*"/>
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="5*"/>
     </Grid.RowDefinitions>
@@ -27,6 +26,9 @@
       <ColumnDefinition Width="10*"/>
     </Grid.ColumnDefinitions>
 
+    <ActivityIndicator Grid.Row="0" Grid.Column="1" x:Name="ServiceActive" >
+    </ActivityIndicator>
+      
     <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
         
       <!--FontAttributes="Bold"-->
@@ -737,12 +739,8 @@
       </StackLayout>
 
     </ScrollView>
-        
-        
-    <ActivityIndicator Grid.Row="4" Grid.Column="1" x:Name="ServiceActive" >
-    </ActivityIndicator>
-
-    <Grid Grid.Row="5" Grid.Column="1">
+    
+    <Grid Grid.Row="4" Grid.Column="1">
       <Grid.RowDefinitions>
         <RowDefinition Height="*" />
       </Grid.RowDefinitions>
@@ -752,11 +750,12 @@
       </Grid.ColumnDefinitions>
 
       <StackLayout Padding="5,5,5,5" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+
+        <Label Text="Please Note:" Style="{StaticResource nesterListInfoBodyMinor}"></Label>
         <Label x:Name="DeployWarning"
           HorizontalOptions="FillAndExpand"
           VerticalOptions="FillAndExpand"
-          TextColor="#22313F"
-          FontSize="14">
+          Style="{StaticResource nesterInfodataMinor}" >
         </Label>
         <!--<StackLayout Orientation="Horizontal" VerticalOptions="Center">
             <Label IsVisible="{Binding EditApp.IsDeployed}" Text="Create a backup beforehand" TextColor="#22313F" VerticalOptions="Center"></Label>

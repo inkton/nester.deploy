@@ -21,33 +21,21 @@
       <Grid>
 
         <Grid.RowDefinitions>
-          <RowDefinition Height="2*"/>
+          <RowDefinition Height="5*"/>
+          <RowDefinition Height="80*"/>
           <RowDefinition Height="10*"/>
-          <RowDefinition Height="70*"/>
-          <RowDefinition Height="16*"/>
-          <RowDefinition Height="2*"/>
+          <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="20*"/>
-          <ColumnDefinition Width="60*"/>
-          <ColumnDefinition Width="20*"/>
+          <ColumnDefinition Width="10*"/>
+          <ColumnDefinition Width="80*"/>
+          <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
-  
-        <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center"
-               Spacing = "0"
-               Padding = "0,0,0,0">
 
-          <StackLayout Orientation="Horizontal" Spacing="5">
-
-
-          </StackLayout>
-
-          <ActivityIndicator x:Name="ServiceActive" ></ActivityIndicator>
-
-        </StackLayout>
-        
-        <StackLayout Grid.Row="2" Grid.Column="1">
+        <ActivityIndicator Grid.Row="0" Grid.Column="1"  x:Name="ServiceActive" ></ActivityIndicator>
+          
+        <StackLayout Grid.Row="1" Grid.Column="1">
 
           <Label Style="{StaticResource nesterFieldLabel}"
                 x:Name="Email"
@@ -94,10 +82,9 @@
           
         </StackLayout>
 
-        <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+        <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
           <Button x:Name="ButtonDone"
                   Text="Save"
-                  IsEnabled="{Binding Validated}"
                   VerticalOptions="LayoutOptions.Center"   
                   Style="{StaticResource buttonPageFlow}"
                   Clicked="OnDoneButtonClickedAsync">

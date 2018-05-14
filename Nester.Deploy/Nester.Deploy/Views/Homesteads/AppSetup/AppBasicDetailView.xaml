@@ -18,9 +18,9 @@
   <Grid >
       
     <Grid.RowDefinitions>
-      <RowDefinition Height="10*"/>
-      <RowDefinition Height="70*"/>
-      <RowDefinition Height="10"/>
+      <RowDefinition Height="5*"/>
+      <RowDefinition Height="5*"/>        
+      <RowDefinition Height="75*"/>
       <RowDefinition Height="10*"/>
       <RowDefinition Height="5*"/>  
     </Grid.RowDefinitions>
@@ -31,7 +31,10 @@
       <ColumnDefinition Width="10*"/>
     </Grid.ColumnDefinitions>
 
-    <StackLayout x:Name="TopButtonPanel" Grid.Row="0" Grid.Column="1" 
+    <ActivityIndicator Grid.Row="0" Grid.Column="1" x:Name="ServiceActive">
+    </ActivityIndicator>
+      
+    <StackLayout Grid.Row="1" Grid.Column="1" x:Name="TopButtonPanel" 
         Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Start">
 
       <Button x:Name="ButtonHome"
@@ -65,7 +68,7 @@
 
     </StackLayout>
 
-    <StackLayout Grid.Row="1" Grid.Column="1" Padding="0">
+    <StackLayout Grid.Row="2" Grid.Column="1" Padding="0">
       
       <Grid>
         <Grid.RowDefinitions>
@@ -287,10 +290,7 @@
       
     </StackLayout>
     
-    <ActivityIndicator Grid.Row="2" Grid.Column="1" x:Name="ServiceActive">
-    </ActivityIndicator>
-
-    <StackLayout x:Name="BottomButtonPanel" Grid.Row="3" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+    <StackLayout Grid.Row="3" Grid.Column="1" x:Name="BottomButtonPanel" Orientation="Horizontal" VerticalOptions="Center">
       <Button x:Name="ButtonDone"
               Text="Proceed"
               IsEnabled="{Binding Validated}"

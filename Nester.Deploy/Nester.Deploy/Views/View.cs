@@ -176,35 +176,5 @@ namespace Inkton.Nester.Views
                     processAsync, confirmAsync);
             });
         }
-
-        protected override void OnAppearing()
-        {
-            IsServiceActive = false;
-
-            base.OnAppearing();
-
-            if (_blockWhenActive != null)
-            {
-                _blockWhenActive.All(control =>
-                {
-                    control.FadeTo(1, 1000, Easing.Linear);
-                    return true;
-                });
-            }
-        }
-
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-
-            if (_blockWhenActive != null)
-            {
-                _blockWhenActive.All(control =>
-                {
-                    control.FadeTo(0, 1000, Easing.Linear);
-                    return true;
-                });
-            }
-        }
     }
 }

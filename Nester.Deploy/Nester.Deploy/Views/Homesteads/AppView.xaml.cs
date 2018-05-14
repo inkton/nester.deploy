@@ -62,7 +62,8 @@ namespace Inkton.Nester.Views
                     ButtonAppUpgrade,
                     ButtonAppDownload,
                     ButtonAppView,
-                    ButtonAddToSlack
+                    ButtonAddToSlack,
+                    ButtonAppAudit
                 });
 
             ResetTimeFilter();
@@ -77,6 +78,7 @@ namespace Inkton.Nester.Views
             ButtonAppDownload.Clicked += ButtonAppDownload_ClickedAsync;
             ButtonGetAnalytics.Clicked += ButtonGetLogs_Clicked;
             ButtonAddToSlack.Clicked += ButtonAddToSlack_ClickedAsync;
+            ButtonAppAudit.Clicked += ButtonAppAudit_ClickedAsync; 
 
             NestLogs.SelectionChanged += NestLogs_SelectionChanged;
         }
@@ -172,6 +174,7 @@ namespace Inkton.Nester.Views
             ButtonAppDepRemove.IsEnabled = App.IsDeployed;
             ButtonAppDownload.IsEnabled = App.IsActive;
             ButtonAppView.IsEnabled = App.IsActive;
+            ButtonAppAudit.IsEnabled = App.IsActive;
             ButtonAppUpgrade.IsEnabled = App.IsActive;
         }
 
@@ -179,10 +182,12 @@ namespace Inkton.Nester.Views
         {
             try
             {
-
                 ResetTimeFilter();
 
-                GetLogs();
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await GetLogsAsync();
+                });
             }
             catch (Exception)
             {
@@ -190,7 +195,7 @@ namespace Inkton.Nester.Views
             }
         }
 
-        private void GetLogs(int maxRows = 200, 
+        private async Task GetLogsAsync(int maxRows = 200,
             bool doCache = false, bool throwIfError = true)
         {
             IsServiceActive = true;
@@ -215,15 +220,9 @@ namespace Inkton.Nester.Views
             }
             else
             {
-                Task.Run(() =>
-                {
-                    Device.BeginInvokeOnMainThread(() =>
-                   {
-                       _baseModels.TargetViewModel
-                             .LogViewModel.QueryAsync(beginId, endId,
-                             maxRows, doCache, throwIfError);
-                   });
-                });
+                await _baseModels.TargetViewModel
+                      .LogViewModel.QueryAsync(beginId, endId,
+                      maxRows, doCache, throwIfError);
             }
 
             IsServiceActive = false;
@@ -333,7 +332,7 @@ namespace Inkton.Nester.Views
                 }
                 else
                 {
-                    GetLogs();
+                    await GetLogsAsync();
                 }
             }
             catch (Exception)
@@ -549,6 +548,22 @@ namespace Inkton.Nester.Views
             {
                 BaseModels.WizardMode = false;
                 MainSideView.StackViewAsync(new AppBasicDetailView(BaseModels));
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+
+            IsServiceActive = false;
+        }
+
+        async private void ButtonAppAudit_ClickedAsync(object sender, EventArgs e)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                MainSideView.StackViewAsync(new AppAuditView(_baseModels));
             }
             catch (Exception ex)
             {
