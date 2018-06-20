@@ -349,9 +349,9 @@ namespace Inkton.Nester.Views
             try
             {
                 Devkit devkit = new Devkit();
-                devkit.Contact = _baseModels.TargetViewModel.ContactModel.OwnerContact;
+                devkit.Contact = _baseModels.TargetViewModel.ContactViewModel.OwnerContact;
 
-                await _baseModels.TargetViewModel.DeploymentModel.QueryDevkitAsync(devkit);
+                await _baseModels.TargetViewModel.DeploymentViewModel.QueryDevkitAsync(devkit);
 
                 await DisplayAlert("Nester", "The devkit has been emailed to you", "OK");
             }
@@ -420,15 +420,10 @@ namespace Inkton.Nester.Views
 
             try
             {
-                AppService appService = _baseModels
-                    .TargetViewModel
-                    .ServicesViewModel
-                    .Services.FirstOrDefault(
-                    x => x.Tag == "nest-oak");
-
                 await _baseModels.TargetViewModel
-                    .DeploymentModel
-                    .QueryAppUpgradeServiceTiersAsync(appService);
+                    .ServicesViewModel
+                    .QueryAppUpgradeServiceTiersAsync(
+                    _baseModels.TargetViewModel.ServicesViewModel.SelectedAppService.Tier.Service);
 
                 _baseModels.WizardMode = false;
                 MainSideView.StackViewAsync(new AppTierView(_baseModels));
@@ -447,12 +442,12 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseModels.TargetViewModel.DeploymentModel.QueryAppBackupsAsync();
+                await _baseModels.TargetViewModel.DeploymentViewModel.QueryAppBackupsAsync();
 
                 MainSideView.StackViewAsync(new AppBackupView(_baseModels));
             }
             catch (Exception ex)
-            {
+            {   
                 await DisplayAlert("Nester", ex.Message, "OK");
             }
 
@@ -470,7 +465,7 @@ namespace Inkton.Nester.Views
                     if (_baseModels.TargetViewModel.EditApp.IsDeploymentValid)
                     {
                         await Process(_baseModels.TargetViewModel.EditApp.Deployment, true,
-                            _baseModels.TargetViewModel.DeploymentModel.RemoveDeploymentAsync
+                            _baseModels.TargetViewModel.DeploymentViewModel.RemoveDeploymentAsync
                         );
 
                         await _baseModels.TargetViewModel.QueryStatusAsync();
@@ -492,10 +487,10 @@ namespace Inkton.Nester.Views
             try
             {
                 if (_baseModels.TargetViewModel
-                    .DeploymentModel.UpgradableAppTiers != null)
+                    .ServicesViewModel.UpgradableAppTiers != null)
                 {
                     _baseModels.TargetViewModel
-                        .DeploymentModel.UpgradableAppTiers.Clear();
+                        .ServicesViewModel.UpgradableAppTiers.Clear();
                 }
 
                 if (_baseModels.PaymentViewModel.EditPaymentMethod.Proof == null ||
@@ -505,10 +500,10 @@ namespace Inkton.Nester.Views
                     return;
                 }
 
-                NestPlatform workerPlatform = _baseModels.TargetViewModel.NestModel.Platforms.First(
+                NestPlatform workerPlatform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
                     x => x.Tag == "worker");
 
-                var handlerNests = from nest in _baseModels.TargetViewModel.NestModel.Nests
+                var handlerNests = from nest in _baseModels.TargetViewModel.NestViewModel.Nests
                                    where nest.PlatformId != workerPlatform.Id
                                    select nest;
 
@@ -518,12 +513,12 @@ namespace Inkton.Nester.Views
                     return;
                 }
 
-                await _baseModels.TargetViewModel.DeploymentModel.CollectInfoAsync();
+                await _baseModels.TargetViewModel.DeploymentViewModel.CollectInfoAsync();
 
-                if (!_baseModels.TargetViewModel.DeploymentModel.Deployments.Any())
+                if (!_baseModels.TargetViewModel.DeploymentViewModel.Deployments.Any())
                 {
                     Cloud.ServerStatus status = await _baseModels.TargetViewModel.QueryAppServiceTierLocationsAsync(
-                        _baseModels.TargetViewModel.SelectedAppService.Tier, false);
+                        _baseModels.TargetViewModel.ServicesViewModel.SelectedAppService.Tier, false);
                     var forests = status.PayloadToList<Forest>();
                     MainSideView.StackViewAsync(new AppLocationView(_baseModels, forests));
                 }

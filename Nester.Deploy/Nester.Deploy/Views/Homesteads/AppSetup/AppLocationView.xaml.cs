@@ -40,7 +40,7 @@ namespace Inkton.Nester.Views
                 TapGestureRecognizer tap = new TapGestureRecognizer
                 {
                     Command = new Command<Forest>(async (forest) => await view.OnSelectLocation(forest, true)),
-                    CommandParameter = view.BaseModels.TargetViewModel.DeploymentModel.ForestsByTag[forestTag.Replace('_', '-')]
+                    CommandParameter = view.BaseModels.TargetViewModel.DeploymentViewModel.ForestsByTag[forestTag.Replace('_', '-')]
                 };
 
                 FlagLabel = view.FindByName<Label>("FlagLabel_" + forestTag);
@@ -67,6 +67,32 @@ namespace Inkton.Nester.Views
 
             BaseModels = baseModels;
 
+            _forestButtons = new Dictionary<string, ForestButton>();
+            
+            if (baseModels.TargetViewModel.ServicesViewModel.SelectedAppserviceTag == "nest-oak")
+            {
+                SetupOakLocations(validForests);
+            }
+            else
+            {
+                SetupRedbudLocations(validForests);
+            }
+
+            ButtonCancel.Clicked += ButtonCancel_ClickedAsync;
+        }
+
+        public override void UpdateBindings()
+        {
+            base.UpdateBindings();
+
+            BindingContext = _baseModels.TargetViewModel.DeploymentViewModel;
+        }
+
+        private void SetupOakLocations(ObservableCollection<Forest> validForests)
+        {
+            OakLocations.IsVisible = true;
+            RedbudLocations.IsVisible = false;
+
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
                     FlagImage_blue_mountain,
@@ -86,9 +112,7 @@ namespace Inkton.Nester.Views
                     FlagImage_hoh
                 });
 
-            _forestButtons = new Dictionary<string, ForestButton>();
-
-            foreach (string forestTag in new string[] 
+            foreach (string forestTag in new string[]
                 {
                     "blue_mountain", "stadtwald", "bois_de_boulogne",
                     "sherwood","aokigahara", "vondelpark",
@@ -110,15 +134,52 @@ namespace Inkton.Nester.Views
                     _forestButtons.Add(forestTag, new ForestButton(this, forestTag));
                 }
             }
-
-            ButtonCancel.Clicked += ButtonCancel_ClickedAsync;
         }
 
-        public override void UpdateBindings()
+        private void SetupRedbudLocations(ObservableCollection<Forest> validForests)
         {
-            base.UpdateBindings();
+            OakLocations.IsVisible = false;
+            RedbudLocations.IsVisible = true;
 
-            BindingContext = _baseModels.TargetViewModel.DeploymentModel;
+            SetActivityMonotoring(ServiceActive,
+                new List<Xamarin.Forms.View> {
+                    FlagHolder_cumberland,
+                    FlagHolder_bourassa,
+                    FlagHolder_gifford,
+                    FlagHolder_elliott,
+                    FlagHolder_glendalough,
+                    FlagHolder_epping,
+                    FlagHolder_vincennes_woods,
+                    FlagHolder_waldspielpark_scheerwald,
+                    FlagHolder_bukit_timah,
+                    FlagHolder_hinohara,
+                    FlagHolder_bukhansan,
+                    FlagHolder_sanjay_gandhi,
+                    FlagHolder_mont_royal 
+                });
+
+            foreach (string forestTag in new string[]
+                {
+                    "cumberland", "bourassa", "gifford",
+                    "elliott","glendalough", "epping",
+                    "vincennes_woods", "waldspielpark_scheerwald", "bukit_timah",
+                    "hinohara", "bukhansan", "sanjay_gandhi",
+                    "mont_royal"
+                })
+            {
+                var tagUnderscores = forestTag.Replace('_', '-');
+                Forest found = validForests.FirstOrDefault(x => x.Tag == tagUnderscores);
+                if (found == null)
+                {
+                    AppLocationView view = this;
+                    StackLayout flagHolder = view.FindByName<StackLayout>("FlagHolder_" + forestTag);
+                    flagHolder.Opacity = 0.5;
+                }
+                else
+                {
+                    _forestButtons.Add(forestTag, new ForestButton(this, forestTag));
+                }
+            }
         }
 
         private void AnimateButtonTouched(Xamarin.Forms.View view, uint duration, string hexColorInitial, string hexColorFinal, int repeatCountMax)
@@ -171,7 +232,7 @@ namespace Inkton.Nester.Views
                 AnimateButtonTouched(button.FlagHolder, 1500, "#66b9f1", "#E4F1FE", 1);
                 AnimateButtonTouched(button.FlagHolder, 1500, "#66b9f1", "#E4F1FE", 1);
 
-                _baseModels.TargetViewModel.DeploymentModel.EditDeployment.ForestId = forest.Id;
+                _baseModels.TargetViewModel.DeploymentViewModel.EditDeployment.ForestId = forest.Id;
                 MainSideView.CurrentLevelViewAsync(new AppSummaryView(_baseModels));
             }
             catch (Exception ex)

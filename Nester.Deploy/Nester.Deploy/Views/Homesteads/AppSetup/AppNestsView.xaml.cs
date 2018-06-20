@@ -73,7 +73,7 @@ namespace Inkton.Nester.Views
         {
             base.UpdateBindings();
 
-            BindingContext = _baseModels.TargetViewModel.NestModel;
+            BindingContext = _baseModels.TargetViewModel.NestViewModel;
         }
 
         async private void OnButtonBasicDetailsClickedAsync(object sender, EventArgs e)
@@ -148,8 +148,8 @@ namespace Inkton.Nester.Views
                 AppNestsList.SelectedItems.RemoveAt(0);
             }
 
-            _baseModels.TargetViewModel.NestModel.EditNest = new Nest();
-            _baseModels.TargetViewModel.NestModel.EditNest.App = _baseModels.TargetViewModel.EditApp;
+            _baseModels.TargetViewModel.NestViewModel.EditNest = new Nest();
+            _baseModels.TargetViewModel.NestViewModel.EditNest.App = _baseModels.TargetViewModel.EditApp;
 
             SetDefaults();
 
@@ -174,7 +174,7 @@ namespace Inkton.Nester.Views
             Nest browseNest = AppNestsList.SelectedItem as Nest;
             Nest copy = new Nest();
             Cloud.Object.CopyPropertiesTo(browseNest, copy);
-            _baseModels.TargetViewModel.NestModel.EditNest = copy;
+            _baseModels.TargetViewModel.NestViewModel.EditNest = copy;
 
             int index = 0;
 
@@ -189,7 +189,7 @@ namespace Inkton.Nester.Views
 
             Scaling.Value = browseNest.Scale;
 
-            NestPlatform platform = _baseModels.TargetViewModel.NestModel.Platforms.First(
+            NestPlatform platform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
                 x => x.Id == browseNest.PlatformId);
 
             if (platform.Tag == "mvc")
@@ -217,17 +217,17 @@ namespace Inkton.Nester.Views
 
             if (Type.SelectedIndex == 0)
             {
-                platform = _baseModels.TargetViewModel.NestModel.Platforms.First(
+                platform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
                         x => x.Tag == "mvc");
             }
             else if (Type.SelectedIndex == 1)
             {
-                platform = _baseModels.TargetViewModel.NestModel.Platforms.First(
+                platform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
                         x => x.Tag == "api");
             }
             else if (Type.SelectedIndex == 2)
             {
-                platform = _baseModels.TargetViewModel.NestModel.Platforms.First(
+                platform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
                         x => x.Tag == "worker");
             }
 
@@ -269,17 +269,17 @@ namespace Inkton.Nester.Views
             int totalMemoryMbytes = value * multiplier * scale;
             UsedMemory.Text = totalMemoryMbytes.ToString() + "m";
 
-            if (_baseModels.TargetViewModel.NestModel.EditNest != null)
+            if (_baseModels.TargetViewModel.NestViewModel.EditNest != null)
             {
-                _baseModels.TargetViewModel.NestModel.EditNest.ScaleSize = memoryString;
-                _baseModels.TargetViewModel.NestModel.EditNest.Scale = scale;
+                _baseModels.TargetViewModel.NestViewModel.EditNest.ScaleSize = memoryString;
+                _baseModels.TargetViewModel.NestViewModel.EditNest.Scale = scale;
             }
         }
 
         private void Validate()
         {
-            _baseModels.TargetViewModel.NestModel.Validated = false;
-            _baseModels.TargetViewModel.NestModel.CanUpdate = false;
+            _baseModels.TargetViewModel.NestViewModel.Validated = false;
+            _baseModels.TargetViewModel.NestViewModel.CanUpdate = false;
 
             if (TagValidator != null)
             {
@@ -287,7 +287,7 @@ namespace Inkton.Nester.Views
                  * be added only if valid fields and no list item 
                  * has been selected and currenly receivng focus.
                  */
-                _baseModels.TargetViewModel.NestModel.Validated = (
+                _baseModels.TargetViewModel.NestViewModel.Validated = (
                     TagValidator.IsValid &&
                     NameValidator.IsValid 
                 );
@@ -296,9 +296,12 @@ namespace Inkton.Nester.Views
                  * be updaed only if valid fields has been selected 
                  * and an item from a list is selected.
                  */
-                _baseModels.TargetViewModel.NestModel.CanUpdate =
-                    _baseModels.TargetViewModel.NestModel.Validated &&
+                _baseModels.TargetViewModel.NestViewModel.CanUpdate =
+                    _baseModels.TargetViewModel.NestViewModel.Validated &&
                     AppNestsList.SelectedItem != null;
+
+                System.Diagnostics.Debug.WriteLine("Selected - {0}",
+                    AppNestsList.SelectedItem != null);
             }
         }
 
@@ -308,9 +311,9 @@ namespace Inkton.Nester.Views
 
             try
             {
-                if (_baseModels.TargetViewModel.NestModel.Nests.Any())
+                if (_baseModels.TargetViewModel.NestViewModel.Nests.Any())
                 {
-                    Nest nest = _baseModels.TargetViewModel.NestModel.Nests.First();
+                    Nest nest = _baseModels.TargetViewModel.NestViewModel.Nests.First();
                     AppNestsList.SelectedItem = nest;
                 }
 
@@ -356,7 +359,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                var existNests = from nest in _baseModels.TargetViewModel.NestModel.Nests
+                var existNests = from nest in _baseModels.TargetViewModel.NestViewModel.Nests
                                     where nest.Tag == Tag.Text
                                     select nest;
                 if (existNests.Any())
@@ -367,11 +370,11 @@ namespace Inkton.Nester.Views
                 }
 
                 Nest newNest = CopyUpdate(new Nest());
-                NestPlatform workerPlatform = _baseModels.TargetViewModel.NestModel.Platforms.First(
+                NestPlatform workerPlatform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
                     x => x.Tag == "worker");
 
                 // the new nest is a handler
-                var handlerNests = from nest in _baseModels.TargetViewModel.NestModel.Nests
+                var handlerNests = from nest in _baseModels.TargetViewModel.NestViewModel.Nests
                                    where nest.PlatformId != workerPlatform.Id
                                    select nest;
 
@@ -383,7 +386,7 @@ namespace Inkton.Nester.Views
                     return;
                 }
 
-                await _baseModels.TargetViewModel.NestModel.CreateNestAsync(newNest);
+                await _baseModels.TargetViewModel.NestViewModel.CreateNestAsync(newNest);
 
                 Clear();
             }
@@ -402,7 +405,7 @@ namespace Inkton.Nester.Views
             try
             {
                 await Process(AppNestsList.SelectedItem as Nest, true,
-                    _baseModels.TargetViewModel.NestModel.QueryNestAsync
+                    _baseModels.TargetViewModel.NestViewModel.QueryNestAsync
                 );
 
                 SetDefaults();
@@ -423,7 +426,7 @@ namespace Inkton.Nester.Views
             {
                 Nest updatingNest = AppNestsList.SelectedItem as Nest;
 
-                var existNests = from nest in _baseModels.TargetViewModel.NestModel.Nests
+                var existNests = from nest in _baseModels.TargetViewModel.NestViewModel.Nests
                                  where nest.Tag == Tag.Text && nest.Id != updatingNest.Id
                                  select nest;
                 if (existNests.Any())
@@ -437,7 +440,7 @@ namespace Inkton.Nester.Views
                 if (updateNest != null)
                 {
                     await Process(updateNest, true,
-                        _baseModels.TargetViewModel.NestModel.UpdateNestAsync
+                        _baseModels.TargetViewModel.NestViewModel.UpdateNestAsync
                     );
 
                     SetDefaults();
@@ -469,7 +472,7 @@ namespace Inkton.Nester.Views
                 }
 
                 await Process(nest, true,
-                    _baseModels.TargetViewModel.NestModel.RemoveNestAsync,
+                    _baseModels.TargetViewModel.NestViewModel.RemoveNestAsync,
                        new Func<Nest, Task<bool>>(
                             async (obj) =>
                             {
@@ -492,10 +495,10 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                NestPlatform workerPlatform = _baseModels.TargetViewModel.NestModel.Platforms.First(
+                NestPlatform workerPlatform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
                     x => x.Tag == "worker");
 
-                var handlerNests = from nest in _baseModels.TargetViewModel.NestModel.Nests
+                var handlerNests = from nest in _baseModels.TargetViewModel.NestViewModel.Nests
                                    where nest.PlatformId != workerPlatform.Id
                                    select nest;
 
@@ -507,7 +510,7 @@ namespace Inkton.Nester.Views
 
                 if (_baseModels.WizardMode)
                 {
-                    await _baseModels.TargetViewModel.ContactModel.InitAsync();
+                    await _baseModels.TargetViewModel.ContactViewModel.InitAsync();
 
                     // if currently trvelling back and forth on the 
                     // app wizard - move to the next

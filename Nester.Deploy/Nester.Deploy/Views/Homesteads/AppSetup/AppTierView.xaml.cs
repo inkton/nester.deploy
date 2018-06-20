@@ -41,7 +41,7 @@ namespace Inkton.Nester.Views
 
             _isUpgrading = baseModels
                 .TargetViewModel
-                .DeploymentModel
+                .ServicesViewModel
                 .UpgradableAppTiers.Any();
 
             BaseModels = baseModels;
@@ -61,6 +61,26 @@ namespace Inkton.Nester.Views
             }
 
             AppTypeTierView.Loaded += AppTypeTierView_Loaded;
+
+            Supplier.SelectedIndexChanged += Supplier_SelectedIndexChanged;
+
+            if (_isUpgrading)
+            {
+                if (baseModels.TargetViewModel.ServicesViewModel.SelectedAppService.Tier.Service.Tag == "nest-redbud")
+                {
+                    Supplier.SelectedIndex = 0;
+                }
+                else
+                {
+                    Supplier.SelectedIndex = 1;
+                }
+
+                Supplier.IsEnabled = false;
+            }
+            else
+            {
+                Supplier.SelectedIndex = 0;
+            }
         }
 
         public override void UpdateBindings()
@@ -70,19 +90,18 @@ namespace Inkton.Nester.Views
                 Title = _baseModels.TargetViewModel.EditApp.Name;
             }
 
+            BindingContext = _baseModels;
+
             if (_isUpgrading)
             {
                 // The app is being created and deployed. Only selected services are applicable
                 AppTierTitle.Text = "Select an App Tier to Upgrade";
-                BindingContext = _baseModels.TargetViewModel
-                    .DeploymentModel;
                 DatabaseOption.Opacity = 0;
             }
             else
             {
                 // The app is being created. All services are applicable
                 AppTierTitle.Text = "Select an App Tier to Install";
-                BindingContext = _baseModels.TargetViewModel;
             }
         }
 
@@ -92,13 +111,25 @@ namespace Inkton.Nester.Views
             {
                 AppTypeTierView.SelectedItems.Clear();
 
-                if (_baseModels.TargetViewModel.SelectedAppService != null)
+                if (_baseModels.TargetViewModel.ServicesViewModel.SelectedAppService != null)
                 {
                     ServicesViewModel.ServiceTableItem serviceTableItem = 
                         (AppTypeTierView.ItemsSource as ObservableCollection<ServicesViewModel.ServiceTableItem>).Where(
-                                         x => x.Tier.Id == _baseModels.TargetViewModel.SelectedAppService.Tier.Id).First();
+                                         x => x.Tier.Id == _baseModels.TargetViewModel.ServicesViewModel.SelectedAppService.Tier.Id).First();
                     AppTypeTierView.SelectedItems.Add(serviceTableItem);
                 }
+            }
+        }
+
+        private void Supplier_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((Supplier.SelectedItem as string) == "AWS")
+            {
+                _baseModels.TargetViewModel.ServicesViewModel.SelectedAppserviceTag = "nest-redbud";
+            }
+            else
+            {
+                _baseModels.TargetViewModel.ServicesViewModel.SelectedAppserviceTag = "nest-oak";
             }
         }
 
@@ -175,11 +206,11 @@ namespace Inkton.Nester.Views
         {
             if (_isUpgrading)
             {
-                _baseModels.TargetViewModel.DeploymentModel.Validated = (
+                _baseModels.TargetViewModel.Validated = (
                      e.AddedItems.Any()
                     );
 
-                if (_baseModels.TargetViewModel.DeploymentModel.Validated)
+                if (_baseModels.TargetViewModel.Validated)
                 {
                     _selectedAppRow = e.AddedItems.First() as ServicesViewModel.ServiceTableItem;
                 }
@@ -207,9 +238,7 @@ namespace Inkton.Nester.Views
             // At present only the wizard mode brings up this page.
             if (_isUpgrading)
             {
-                _baseModels.TargetViewModel.DeploymentModel.SelectedAppService = _selectedAppRow;
-                _baseModels.TargetViewModel.DeploymentModel.MariaDBEnabled =
-                        _baseModels.TargetViewModel.MariaDBEnabled;
+                _baseModels.TargetViewModel.ServicesViewModel.UpgradeAppServiceTier = _selectedAppRow.Tier;
                 AppSummaryView summaryView = new AppSummaryView(_baseModels);
                 summaryView.MainSideView = MainSideView;
                 MainSideView.Detail.Navigation.InsertPageBefore(summaryView, this);
@@ -225,46 +254,19 @@ namespace Inkton.Nester.Views
                 }
 
                 if (_selectedAppRow != null && (
-                    _baseModels.TargetViewModel.SelectedAppService == null ||
-                    _baseModels.TargetViewModel.SelectedAppService.Tier.Id != _selectedAppRow.Tier.Id))
+                    _baseModels.TargetViewModel.ServicesViewModel.SelectedAppService == null ||
+                    _baseModels.TargetViewModel.ServicesViewModel.SelectedAppService.Tier.Id != _selectedAppRow.Tier.Id))
                 {
-                    AppServiceSubscription subscription = _baseModels.TargetViewModel.EditApp.Subscriptions.FirstOrDefault(
-                        x => x.ServiceTier.Service.Tag == "nest-oak");
-
-                    if (subscription != null)
-                    {
-                        await _baseModels.TargetViewModel.ServicesViewModel.RemoveSubscription(subscription);
-                    }
-
-                    await _baseModels.TargetViewModel.ServicesViewModel.CreateSubscription(_selectedAppRow.Tier);
-                    await _baseModels.TargetViewModel.ServicesViewModel.QueryAppSubscriptions();
-                }
-                else if (_baseModels.TargetViewModel.SelectedMariaDBService != null && !MariaDBEnabled.IsToggled)
-                {
-                    AppServiceSubscription subscription = _baseModels.TargetViewModel.EditApp.Subscriptions.FirstOrDefault(
-                        x => x.ServiceTier.Service.Tag == "mariadb");
-
-                    if (subscription != null)
-                    {
-                        await _baseModels.TargetViewModel.ServicesViewModel.RemoveSubscription(subscription);
-                    }
+                    _baseModels.TargetViewModel.ServicesViewModel.SwitchAppServiceTierAsync(_selectedAppRow.Tier);
                 }
 
-                if (_baseModels.TargetViewModel.SelectedMariaDBService == null && MariaDBEnabled.IsToggled)
+                if (_baseModels.TargetViewModel.ServicesViewModel.SelectedStorageService == null && MariaDBEnabled.IsToggled)
                 {
-                    // Only one tier available at present
-                    AppServiceTier mariaDBTier = _baseModels.TargetViewModel.MariaDBTiers.First();
-                    await _baseModels.TargetViewModel.ServicesViewModel.CreateSubscription(mariaDBTier);
+                    _baseModels.TargetViewModel.ServicesViewModel.CreateDefaultStorageServiceAsync();
                 }
-                else if (_baseModels.TargetViewModel.SelectedMariaDBService != null && !MariaDBEnabled.IsToggled)
+                else if (_baseModels.TargetViewModel.ServicesViewModel.SelectedStorageService != null && !MariaDBEnabled.IsToggled)
                 {
-                    AppServiceSubscription subscription = _baseModels.TargetViewModel.EditApp.Subscriptions.FirstOrDefault(
-                        x => x.ServiceTier.Service.Tag == "mariadb");
-
-                    if (subscription != null)
-                    {
-                        await _baseModels.TargetViewModel.ServicesViewModel.RemoveSubscription(subscription);
-                    }
+                    _baseModels.TargetViewModel.ServicesViewModel.RemoveDefaultStorageServiceAsync();
                 }
             }
         }
@@ -285,7 +287,7 @@ namespace Inkton.Nester.Views
 
                 if (_baseModels.WizardMode)
                 {
-                    await _baseModels.TargetViewModel.NestModel.InitAsync();
+                    await _baseModels.TargetViewModel.NestViewModel.InitAsync();
 
                     AppNestsView nestsView = new AppNestsView(_baseModels);
                     nestsView.MainSideView = MainSideView;
