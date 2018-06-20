@@ -57,7 +57,7 @@ namespace Inkton.Nester.Views
                 if (yes)
                 {
                     Cloud.ServerStatus status = await _baseModels.AuthViewModel.DeleteUserAsync();
-                    await DisplayAlert("Nester", status.LocalDescription, "OK");
+                    await DisplayAlert("Nester", status.GetLocalDescription(), "OK");
                     await MainSideView.Detail.Navigation.PopAsync();
                 } 
             }

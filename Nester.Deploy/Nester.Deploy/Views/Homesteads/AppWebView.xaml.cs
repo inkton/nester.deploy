@@ -59,7 +59,7 @@ namespace Inkton.Nester.Views
                 if (_baseModels.TargetViewModel.EditApp.Id != 0)
                 {
                     Title = _baseModels.TargetViewModel.EditApp.Name;
-                    Browser.Source = "https://" + _baseModels.TargetViewModel.DomainModel.DefaultDomain.Name;
+                    Browser.Source = "https://" + _baseModels.TargetViewModel.DomainViewModel.DefaultDomain.Name;
                 }
             }
 
@@ -106,7 +106,7 @@ namespace Inkton.Nester.Views
 
         private async void LoadSlackPageAsync()
         {
-            await _baseModels.TargetViewModel.ContactModel.QueryContactCollaborateAccountAsync();
+            await _baseModels.TargetViewModel.ContactViewModel.QueryContactCollaborateAccountAsync();
 
             string clientId = "237221988247.245551261632";
             string scope = "incoming-webhook,chat:write:bot";
@@ -114,7 +114,7 @@ namespace Inkton.Nester.Views
             string url = "https://slack.com/oauth/authorize?" +
                 "&client_id=" + WebUtility.UrlEncode(clientId) +
                 "&scope=" + WebUtility.UrlEncode(scope) +
-                "&state=" + WebUtility.UrlEncode(_baseModels.TargetViewModel.ContactModel.Collaboration.State);
+                "&state=" + WebUtility.UrlEncode(_baseModels.TargetViewModel.ContactViewModel.Collaboration.State);
 
             string page = @"
 <html>

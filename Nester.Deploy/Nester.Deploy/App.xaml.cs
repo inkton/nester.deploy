@@ -24,6 +24,8 @@ using System.Resources;
 using System.Reflection;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Plugin.DeviceInfo;
+using Newtonsoft.Json;
 using Inkton.Nester.Models;
 using Inkton.Nester.ViewModels;
 using Inkton.Nester.Cloud;
@@ -50,6 +52,8 @@ namespace Nester.Deploy
 
             _service = new NesterService();
             _service.Version = ServiceVersion;
+            _service.DeviceSignature =
+                JsonConvert.SerializeObject(CrossDeviceInfo.Current);
 
             _target = new NesterService();
             _storage = new StorageService();
@@ -88,6 +92,8 @@ namespace Nester.Deploy
                 if (value != null)
                 {
                     _target.Version = ServiceVersion;
+                    _target.DeviceSignature = 
+                        JsonConvert.SerializeObject(CrossDeviceInfo.Current);
                     _target.Endpoint = string.Format(
                         "https://{0}/", value.EditApp.Hostname);
                     _target.BasicAuth = new Inkton.Nester.Cloud.BasicAuth(

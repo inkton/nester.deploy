@@ -69,7 +69,7 @@ namespace Inkton.Nester.Views
         {
             base.UpdateBindings();
 
-            BindingContext = _baseModels.TargetViewModel.ContactModel;
+            BindingContext = _baseModels.TargetViewModel.ContactViewModel;
         }
 
         async private void OnButtonBasicDetailsClickedAsync(object sender, EventArgs e)
@@ -150,7 +150,7 @@ namespace Inkton.Nester.Views
                 AppContactsList.SelectedItems.RemoveAt(0);
             }
 
-            _baseModels.TargetViewModel.ContactModel.EditContact = new Contact();
+            _baseModels.TargetViewModel.ContactViewModel.EditContact = new Contact();
 
             SetDefaults();
 
@@ -167,13 +167,13 @@ namespace Inkton.Nester.Views
             Contact browseContact = AppContactsList.SelectedItem as Contact;
             Contact copy = new Contact();
             Cloud.Object.CopyPropertiesTo(browseContact, copy);
-            _baseModels.TargetViewModel.ContactModel.EditContact = copy;
+            _baseModels.TargetViewModel.ContactViewModel.EditContact = copy;
         }
 
         void Validate()
         {
-            _baseModels.TargetViewModel.ContactModel.Validated = false;
-            _baseModels.TargetViewModel.ContactModel.CanUpdate = false;
+            _baseModels.TargetViewModel.ContactViewModel.Validated = false;
+            _baseModels.TargetViewModel.ContactViewModel.CanUpdate = false;
 
             if (EmailValidator != null)
             {
@@ -181,7 +181,7 @@ namespace Inkton.Nester.Views
                  * be added only if valid fields and no list item 
                  * has been selected and currenly receivng focus.
                  */
-                _baseModels.TargetViewModel.ContactModel.Validated = (
+                _baseModels.TargetViewModel.ContactViewModel.Validated = (
                     EmailValidator.IsValid 
                 );
 
@@ -189,8 +189,8 @@ namespace Inkton.Nester.Views
                  * be updaed only if valid fields has been selected 
                  * and an item from a list is selected.
                  */
-                _baseModels.TargetViewModel.ContactModel.CanUpdate =
-                    _baseModels.TargetViewModel.ContactModel.Validated &&
+                _baseModels.TargetViewModel.ContactViewModel.CanUpdate =
+                    _baseModels.TargetViewModel.ContactViewModel.Validated &&
                     AppContactsList.SelectedItem != null;
             }
         }
@@ -201,7 +201,7 @@ namespace Inkton.Nester.Views
 
         //    ProcessMessage<Contact>("re-invite",
         //        new Func<Contact, bool, Task<Cloud.ServerStatus>>(
-        //        _baseModels.AppViewModel.ContactModel.ReinviteContact));
+        //        _baseModels.AppViewModel.ContactViewModel.ReinviteContact));
 
 
         //    MessagingCenter.Subscribe<ManagedObjectMessage<Contact>>(this, "remove", async (objMessage) =>
@@ -212,7 +212,7 @@ namespace Inkton.Nester.Views
         //        {
         //            try
         //            {
-        //                await _baseModels.AppViewModel.ContactModel.RemoveContact(objMessage.Object);
+        //                await _baseModels.AppViewModel.ContactViewModel.RemoveContact(objMessage.Object);
         //            }
         //            catch (Exception ex)
         //            {
@@ -236,9 +236,9 @@ namespace Inkton.Nester.Views
 
             try
             {
-                if (_baseModels.TargetViewModel.ContactModel.Contacts.Any())
+                if (_baseModels.TargetViewModel.ContactViewModel.Contacts.Any())
                 {
-                    Contact contact = _baseModels.TargetViewModel.ContactModel.Contacts.First();
+                    Contact contact = _baseModels.TargetViewModel.ContactViewModel.Contacts.First();
                     AppContactsList.SelectedItem = contact;
                 }
 
@@ -278,7 +278,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                var existContacts = from contact in _baseModels.TargetViewModel.ContactModel.Contacts
+                var existContacts = from contact in _baseModels.TargetViewModel.ContactViewModel.Contacts
                                     where ((Contact)contact).Email == NewContactEmail.Text
                                     select contact;
                 if (existContacts.ToArray().Length > 0)
@@ -292,7 +292,7 @@ namespace Inkton.Nester.Views
                 newContact.App = _baseModels.TargetViewModel.EditApp;
                 newContact.Email = NewContactEmail.Text;
 
-                await _baseModels.TargetViewModel.ContactModel.CreateContactAsync(newContact);
+                await _baseModels.TargetViewModel.ContactViewModel.CreateContactAsync(newContact);
 
                 Clear();
             }
@@ -321,7 +321,7 @@ namespace Inkton.Nester.Views
         //        OnSyncDiscordButtonClickedAsync
 
         //       await Process(AppContactsList.SelectedItem as Contact, false,
-        //            _baseModels.AppViewModel.ContactModel.UpdateContactDiscordAsync
+        //            _baseModels.AppViewModel.ContactViewModel.UpdateContactDiscordAsync
         //        );
         //    }
         //    catch (Exception ex)
@@ -339,7 +339,7 @@ namespace Inkton.Nester.Views
             try
             {
                 await Process(AppContactsList.SelectedItem as Contact, true,
-                    _baseModels.TargetViewModel.ContactModel.QueryContactAsync
+                    _baseModels.TargetViewModel.ContactViewModel.QueryContactAsync
                 );
 
                 SetDefaults();
@@ -358,7 +358,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseModels.TargetViewModel.ContactModel.QueryContactsAsync();
+                await _baseModels.TargetViewModel.ContactViewModel.QueryContactsAsync();
 
                 SetDefaults();
             }
@@ -391,7 +391,7 @@ namespace Inkton.Nester.Views
                 browseContact.Email = NewContactEmail.Text;
 
                 await Process(browseContact, true,
-                    _baseModels.TargetViewModel.ContactModel.UpdatePermissionAsync
+                    _baseModels.TargetViewModel.ContactViewModel.UpdatePermissionAsync
                 );
 
                 SetDefaults();
@@ -411,7 +411,7 @@ namespace Inkton.Nester.Views
             try
             {
                 await Process(AppContactsList.SelectedItem as Contact, true,
-                    _baseModels.TargetViewModel.ContactModel.RemoveContactAsync,
+                    _baseModels.TargetViewModel.ContactViewModel.RemoveContactAsync,
                        new Func<Contact, Task<bool>>(
                             async (obj) =>
                             {

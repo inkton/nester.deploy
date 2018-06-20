@@ -42,14 +42,14 @@
       </Button>
 
       <Button x:Name="ButtonNests"
-        IsVisible="{Binding EditApp.OwnerCapabilities.CanViewNest}"
+        IsVisible="{Binding TargetViewModel.EditApp.OwnerCapabilities.CanViewNest}"
         Text="Nests"
         Style="{StaticResource buttonUtilStyle1}"
         Clicked="OnButtonNestsClickedAsync">
       </Button>
 
       <Button x:Name="ButtonDomains"
-        IsVisible="{Binding EditApp.IsDeployed}"
+        IsVisible="{Binding TargetViewModel.EditApp.IsDeployed}"
         Text="Domains"
         Style="{StaticResource buttonUtilStyle1}"
         Clicked="OnButtonDomainsClickedAsync">
@@ -65,6 +65,15 @@
         
     <StackLayout Grid.Row="2" Grid.Column="1" >
 
+         <Picker x:Name="Supplier" Title="Supplier" SelectedIndex="0"
+                HorizontalOptions="Start" VerticalOptions="Center"
+                Style="{StaticResource nesterFieldLabelPicker}">
+            <Picker.Items>
+            <x:String>AWS</x:String>
+            <x:String>Vultr</x:String>
+            </Picker.Items>
+        </Picker>
+        
         <Label x:Name="AppTierTitle" Style="{StaticResource nesterFieldLabel}"
                Text="Application Tier"></Label>
         
@@ -72,7 +81,7 @@
                   SelectionGesture="Tap"
                   SelectionMode="Single"                         
                   SelectionBackgroundColor="{StaticResource selectionColor}"                         
-                  ItemsSource="{Binding AppFeaturesTable}">
+                  ItemsSource="{Binding TargetViewModel.ServicesViewModel.AppFeaturesTable}">
           <sync:SfListView.ItemTemplate>
             <DataTemplate>
               <ViewCell>
@@ -227,7 +236,7 @@
           <sync:SfListView.FooterTemplate>
             <DataTemplate>
               <Grid HeightRequest="45">
-                <Label Text="{Binding PaymentNotice}" 
+                   <Label Text="{Binding PaymentViewModel.PaymentNotice}" 
                        Style="{StaticResource nesterInfoLabelMinor}"
                        Margin="5,0,0,0"
                        HorizontalOptions="Start"
@@ -251,7 +260,7 @@
     <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
       <Button x:Name="ButtonDone"
               Text="Proceed"
-              IsEnabled="{Binding Validated}"
+              IsEnabled="{Binding TargetViewModel.Validated}"
               VerticalOptions="Center"
               Style="{StaticResource buttonPageFlow}"
               Clicked="OnDoneButtonClickedAsync">
