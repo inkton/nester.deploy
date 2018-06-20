@@ -62,14 +62,14 @@ namespace Inkton.Nester.Views
         {
             base.UpdateBindings();
 
-            BindingContext = _baseModels.TargetViewModel.DeploymentModel;
+            BindingContext = _baseModels.TargetViewModel.DeploymentViewModel;
 
             UpdateDescriptions();
         }
 
         private void UpdateDescriptions()
         {
-            foreach (AppBackup backup in _baseModels.TargetViewModel.DeploymentModel.AppBackups)
+            foreach (AppBackup backup in _baseModels.TargetViewModel.DeploymentViewModel.AppBackups)
             {
                 switch (backup.Status)
                 {
@@ -114,7 +114,7 @@ namespace Inkton.Nester.Views
                         return;
                     }
 
-                    await _baseModels.TargetViewModel.DeploymentModel.RestoreAppAsync(
+                    await _baseModels.TargetViewModel.DeploymentViewModel.RestoreAppAsync(
                         AppBackups.SelectedItem as Models.AppBackup);
 
                     // Reload everything
@@ -153,7 +153,7 @@ namespace Inkton.Nester.Views
                 }
 
                 await _baseModels.TargetViewModel
-                    .DeploymentModel.BackupAppAsync();
+                    .DeploymentViewModel.BackupAppAsync();
 
                 UpdateDescriptions();
             }
@@ -172,7 +172,7 @@ namespace Inkton.Nester.Views
             try
             {
                 await _baseModels.TargetViewModel
-                    .DeploymentModel.QueryAppBackupsAsync();
+                    .DeploymentViewModel.QueryAppBackupsAsync();
 
                 UpdateDescriptions();
             }

@@ -64,7 +64,7 @@ namespace Inkton.Nester.Views
             StartTime.Time = new TimeSpan(0, 0, 0);
             EndTime.Time = new TimeSpan(23, 59, 59);
 
-            _baseModels.TargetViewModel.DeploymentModel.AppAudits.Clear();
+            _baseModels.TargetViewModel.DeploymentViewModel.AppAudits.Clear();
         }
 
         private async void QueryAsync()
@@ -73,7 +73,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                _baseModels.TargetViewModel.DeploymentModel.AppAudits.Clear();
+                _baseModels.TargetViewModel.DeploymentViewModel.AppAudits.Clear();
 
                 if (StartTime.Time > EndTime.Time)
                 {
@@ -96,7 +96,7 @@ namespace Inkton.Nester.Views
                         EndTime.Time.Hours, EndTime.Time.Minutes, EndTime.Time.Seconds
                     ));
 
-                await _baseModels.TargetViewModel.DeploymentModel.QueryAppAuditsAsync(filter);
+                await _baseModels.TargetViewModel.DeploymentViewModel.QueryAppAuditsAsync(filter);
             }
             catch (Exception ex)
             {
@@ -115,7 +115,7 @@ namespace Inkton.Nester.Views
         {
             base.UpdateBindings();
 
-            BindingContext = _baseModels.TargetViewModel.DeploymentModel;
+            BindingContext = _baseModels.TargetViewModel.DeploymentViewModel;
         }
         
         private void ButtonCancel_Clicked(object sender, EventArgs e)

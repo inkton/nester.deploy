@@ -44,7 +44,13 @@ namespace Inkton.Nester.Views
                 new List<Xamarin.Forms.View> {                   
                     ButtonDone,
                     ButtonCancel
-                });            
+                });
+
+            ButtonDoDiscount.Clicked += ButtonDoDiscount_ClickedAsync;
+            CreditCode.TextChanged += CreditCode_TextChanged;
+            ButtonClearDiscount.Clicked += ButtonClearDiscount_Clicked;
+
+            _baseModels.TargetViewModel.DeploymentViewModel.ApplyCredit = null;
         }
 
         public override void UpdateBindings()
@@ -54,20 +60,22 @@ namespace Inkton.Nester.Views
                 Title = _baseModels.TargetViewModel.EditApp.Name;
             }
 
-            if (_baseModels.TargetViewModel.DeploymentModel.UpgradableAppTiers.Any())
+            if (_baseModels.TargetViewModel.ServicesViewModel.UpgradableAppTiers.Any())
             {
                 // The app is being created and deployed. Only selected services are applicable
                 BindingContext = _baseModels.TargetViewModel
-                    .DeploymentModel;
+                    .DeploymentViewModel;
                 SoftwareVersion.IsVisible = false;
                 ButtonDone.Text = "Upgrade";
+
+                ButtonDoDiscount.Text = "Show";
             }
             else
             {
                 // The app is being created or updated. All services are applicable
                 BindingContext = _baseModels.TargetViewModel;
 
-                _baseModels.TargetViewModel.DeploymentModel.DotnetVersions.All(version =>
+                _baseModels.TargetViewModel.DeploymentViewModel.DotnetVersions.All(version =>
                 {
                     SoftwareVersion.Items.Add(version.Name);
                     return true;
@@ -85,17 +93,25 @@ namespace Inkton.Nester.Views
                     DeployWarning.Text += "- Ensure the custom domains and aliases point to the IP address " + _baseModels.TargetViewModel.EditApp.IPAddress + ".\n";
                     DeployWarning.Text += "- Ensure the custom domain IP has been fully propagted.\n";
                     DeployWarning.Text += "- The app has a backup to restore state.\n";
+
+                    ButtonDoDiscount.Text = "Show";
+                }
+                else
+                {
+                    ButtonDoDiscount.Text = "Apply";
                 }
             }
+
+            DisplayTotals();
         }
 
         private async Task<bool> IsDnsOkAsync()
         {
-            Nester.Models.AppDomain defaultDomain = (from domain in _baseModels.TargetViewModel.DomainModel.Domains
+            Nester.Models.AppDomain defaultDomain = (from domain in _baseModels.TargetViewModel.DomainViewModel.Domains
                                                      where domain.Default == true
                                                      select domain).First();
 
-            foreach (Nester.Models.AppDomain domain in _baseModels.TargetViewModel.DomainModel.Domains)
+            foreach (Nester.Models.AppDomain domain in _baseModels.TargetViewModel.DomainViewModel.Domains)
             {
                 if (domain.Default)
                     continue;
@@ -123,20 +139,73 @@ namespace Inkton.Nester.Views
             return true;
         }
 
+        private async void ButtonDoDiscount_ClickedAsync(object sender, EventArgs e)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                _baseModels.TargetViewModel.ServicesViewModel.CreateServicesTable();
+                _baseModels.TargetViewModel.DeploymentViewModel.ApplyCredit = null;
+
+                if (CreditCode.Text.Length > 0)
+                {
+                    Credit credit = _baseModels.PaymentViewModel.EditCredit;
+                    credit.Code = CreditCode.Text.Trim();
+
+                    Cloud.ServerStatus status = await _baseModels.PaymentViewModel
+                        .QueryCreditAsync();
+
+                    if (status.Code == 0)
+                    {
+                        credit = _baseModels.PaymentViewModel.EditCredit;
+                        DisplayTotals(credit);
+                        _baseModels.TargetViewModel.DeploymentViewModel.ApplyCredit = credit;
+                    }
+                }   
+                else
+                {
+                    DisplayTotals();
+                }
+
+                await PricesGrid.ScrollToAsync(0, PricesGrid.Content.Height, true);
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+
+            IsServiceActive = false;
+
+        }
+
+        private void CreditCode_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            if (CreditCode.Text.Length == 0)
+            {
+                ClearDiscountAsync();
+            }
+        }
+
+        private void ButtonClearDiscount_Clicked(object sender, EventArgs e)
+        {
+            ClearDiscountAsync();
+        }
+
         private async void OnDoneButtonClickedAsync(object sender, EventArgs e)
         {
             IsServiceActive = true;
 
             try
             {
-                if (_baseModels.TargetViewModel.DeploymentModel.UpgradableAppTiers.Any())
+                if (_baseModels.TargetViewModel.ServicesViewModel.UpgradableAppTiers.Any())
                 {
                     await UpgradeAsync();
                 }
                 else
                 {
                     
-                    foreach (var version in _baseModels.TargetViewModel.DeploymentModel.DotnetVersions)
+                    foreach (var version in _baseModels.TargetViewModel.DeploymentViewModel.DotnetVersions)
                     {
                         if (version.Name == SoftwareVersion.SelectedItem as string)
                         {
@@ -145,7 +214,7 @@ namespace Inkton.Nester.Views
                         }
                     }
 
-                    if (_baseModels.TargetViewModel.DeploymentModel.Deployments.Any())
+                    if (_baseModels.TargetViewModel.DeploymentViewModel.Deployments.Any())
                     {
                         await UpdateAsync();
                     }
@@ -199,7 +268,7 @@ namespace Inkton.Nester.Views
 
             // 'users/{uid}/apps/{aid}/deployments/{dep}/app_services/{sid}/app_service_tiers/{tierid}'
             await _baseModels.TargetViewModel
-                .DeploymentModel
+                .ServicesViewModel
                 .UpdateAppUpgradeServiceTiersAsync(appService);
 
             IsServiceActive = false;
@@ -213,18 +282,18 @@ namespace Inkton.Nester.Views
             IsServiceActive = true;
 
             Deployment deployment =
-                _baseModels.TargetViewModel.DeploymentModel.Deployments.First();
+                _baseModels.TargetViewModel.DeploymentViewModel.Deployments.First();
             deployment.FrameworkVersionId = _selVersion.Id;
             deployment.MakeBackup = false;
 
-            await _baseModels.TargetViewModel.DeploymentModel.UpdateDeploymentAsync(deployment);
+            await _baseModels.TargetViewModel.DeploymentViewModel.UpdateDeploymentAsync(deployment);
 
             IsServiceActive = false;
         }
 
         private async Task InstallAsync()
         {
-            var customDomains = _baseModels.TargetViewModel.DomainModel.Domains.Where(domain => !domain.Default).ToList();
+            var customDomains = _baseModels.TargetViewModel.DomainViewModel.Domains.Where(domain => !domain.Default).ToList();
 
             if (customDomains.Any())
             {
@@ -239,19 +308,66 @@ namespace Inkton.Nester.Views
 
                 foreach (var domain in customDomains)
                 {
-                    await _baseModels.TargetViewModel.DomainModel.RemoveDomainAsync(domain);
+                    await _baseModels.TargetViewModel.DomainViewModel.RemoveDomainAsync(domain);
                 }
             }
 
             IsServiceActive = true;
 
-            _baseModels.TargetViewModel.DeploymentModel.EditDeployment.FrameworkVersionId = _selVersion.Id;
+            _baseModels.TargetViewModel.DeploymentViewModel.EditDeployment.FrameworkVersionId = _selVersion.Id;
 
-            await _baseModels.TargetViewModel.DeploymentModel.CreateDeployment(
-                _baseModels.TargetViewModel.DeploymentModel.EditDeployment);
+            await _baseModels.TargetViewModel.DeploymentViewModel.CreateDeployment(
+                _baseModels.TargetViewModel.DeploymentViewModel.EditDeployment);
 
             _baseModels.TargetViewModel.EditApp.Deployment =
-                _baseModels.TargetViewModel.DeploymentModel.EditDeployment;
+                _baseModels.TargetViewModel.DeploymentViewModel.EditDeployment;
+
+            IsServiceActive = false;
+        }
+
+        private void DisplayTotals(Credit credit = null)
+        {
+            decimal total = _baseModels.TargetViewModel.ServicesViewModel.SelectedAppService.Cost +
+            _baseModels.TargetViewModel.ServicesViewModel.SelectedTrackService.Cost +
+            _baseModels.TargetViewModel.ServicesViewModel.SelectedDomainService.Cost +
+            _baseModels.TargetViewModel.ServicesViewModel.SelectedMonitorService.Cost +
+            _baseModels.TargetViewModel.ServicesViewModel.SelectedBatchService.Cost;
+
+            if (_baseModels.TargetViewModel.ServicesViewModel.StorageServiceEnabled)
+            {
+                total += _baseModels.TargetViewModel.ServicesViewModel.SelectedAppService.Cost;
+            }
+
+            decimal discount = 0;
+
+            if (credit != null)
+            {
+                decimal amount = Convert.ToDecimal(credit.Amount);
+                bool isPercentage = credit.Type == "percentage";
+
+                if (isPercentage)
+                {
+                    discount = total * amount;
+                }
+                else
+                {
+                    discount = total - amount;
+                }
+            }
+
+            DiscountTotal.Text = string.Format("{0:C2}", discount);
+            Total.Text = string.Format("{0:C2}", total - discount);
+        }
+
+        private async void ClearDiscountAsync()
+        {
+            IsServiceActive = true;
+
+            _baseModels.TargetViewModel.ServicesViewModel.CreateServicesTable();
+            _baseModels.TargetViewModel.DeploymentViewModel.ApplyCredit = null;
+
+            DisplayTotals();
+            await PricesGrid.ScrollToAsync(0, PricesGrid.Content.Height, true);
 
             IsServiceActive = false;
         }

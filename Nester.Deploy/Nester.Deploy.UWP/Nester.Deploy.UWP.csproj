@@ -148,6 +148,7 @@
     <Content Include="Assets\StoreLogo.scale-200.png" />
     <Content Include="Assets\StoreLogo.scale-400.png" />
     <Content Include="australia.png" />
+    <Content Include="canada.png" />
     <Content Include="contact32.png" />
     <Content Include="contactverified32.png" />
     <Content Include="creditcardtick.png" />
@@ -161,8 +162,10 @@
     <Content Include="germany.png" />
     <Content Include="homesteadactive32.png" />
     <Content Include="homesteadinactive32.png" />
+    <Content Include="india.png" />
     <Content Include="invitejoin32.png" />
     <Content Include="inviteleave32.png" />
+    <Content Include="ireland.png" />
     <Content Include="japan.png" />
     <Content Include="netherlands.png" />
     <Content Include="notifications24.png" />
@@ -201,6 +204,7 @@
     <Content Include="settingsprofile32.png" />
     <Content Include="signin.png" />
     <Content Include="singapore.png" />
+    <Content Include="skorea.png" />
     <Content Include="slack24.png" />
     <Content Include="uk.png" />
     <Content Include="usa.png" />

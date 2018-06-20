@@ -138,7 +138,7 @@ namespace Inkton.Nester.Views
                 myContact.App.Owner = NesterControl.User;
 
                 status = await appModel
-                    .ContactModel.UpdateContactAsync(myContact);
+                    .ContactViewModel.UpdateContactAsync(myContact);
 
                 if (status.Code != Cloud.ServerStatus.NEST_RESULT_SUCCESS)
                 {
