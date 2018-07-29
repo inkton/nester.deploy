@@ -67,6 +67,11 @@ namespace Inkton.Nester.Views
 
                 NavigationPage.SetHasNavigationBar(this, true);
             }
+
+            if (_baseModels.TargetViewModel.EditApp.Type == "biflow")
+            {
+                Type.Items.Remove("API Handler");
+            }
         }
 
         public override void UpdateBindings()
@@ -188,21 +193,46 @@ namespace Inkton.Nester.Views
             }
 
             Scaling.Value = browseNest.Scale;
-
             NestPlatform platform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
                 x => x.Id == browseNest.PlatformId);
 
-            if (platform.Tag == "mvc")
+            if (_baseModels.TargetViewModel.EditApp.Type == "uniflow")
             {
-                Type.SelectedIndex = 0;
+                /*
+                 * The standard webserver can be a mvc or api type 
+                 * + worker makes 3 nest types
+                 */
+                System.Diagnostics.Debug.Assert(Type.Items.Count == 3);
+
+                if (platform.Tag == "mvc")
+                {
+                    Type.SelectedIndex = 0;
+                }
+                else if (platform.Tag == "api")
+                {
+                    Type.SelectedIndex = 1;
+                }
+                else
+                {
+                    Type.SelectedIndex = 2;
+                }
             }
-            else if (platform.Tag == "api")
+            else if (_baseModels.TargetViewModel.EditApp.Type == "biflow")
             {
-                Type.SelectedIndex = 1;
-            }
-            else
-            {
-                Type.SelectedIndex = 2;
+                /*
+                 * The websocket can be a mvc type only
+                 * + worker makes 2 nest types
+                 */
+                System.Diagnostics.Debug.Assert(Type.Items.Count == 2);
+
+                if (platform.Tag == "mvc")
+                {
+                    Type.SelectedIndex = 0;
+                }
+                else
+                {
+                    Type.SelectedIndex = 1;
+                }
             }
         }
 
@@ -215,20 +245,48 @@ namespace Inkton.Nester.Views
 
             NestPlatform platform = null;
 
-            if (Type.SelectedIndex == 0)
+            if (_baseModels.TargetViewModel.EditApp.Type == "uniflow")
             {
-                platform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
-                        x => x.Tag == "mvc");
+                /*
+                 * The standard webserver can be a mvc or api type 
+                 * + worker makes 3 nest types
+                 */
+                System.Diagnostics.Debug.Assert(Type.Items.Count == 3);
+
+                if (Type.SelectedIndex == 0)
+                {
+                    platform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
+                            x => x.Tag == "mvc");
+                }
+                else if (Type.SelectedIndex == 1)
+                {
+                    platform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
+                            x => x.Tag == "api");
+                }
+                else if (Type.SelectedIndex == 2)
+                {
+                    platform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
+                            x => x.Tag == "worker");
+                }
             }
-            else if (Type.SelectedIndex == 1)
+            else if (_baseModels.TargetViewModel.EditApp.Type == "biflow")
             {
-                platform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
-                        x => x.Tag == "api");
-            }
-            else if (Type.SelectedIndex == 2)
-            {
-                platform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
-                        x => x.Tag == "worker");
+                /*
+                 * The websocket can be a mvc type only
+                 * + worker makes 2 nest types
+                 */
+                System.Diagnostics.Debug.Assert(Type.Items.Count == 2);
+
+                if (Type.SelectedIndex == 0)
+                {
+                    platform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
+                            x => x.Tag == "mvc");
+                }
+                else if (Type.SelectedIndex == 1)
+                {
+                    platform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
+                            x => x.Tag == "worker");
+                }
             }
 
             browseNest.Platform = platform;

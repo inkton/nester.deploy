@@ -95,7 +95,7 @@
                     ConverterParameter=16
                     }"
                 Keyboard="Keyboard.Text"
-                VerticalOptions="LayoutOptions.CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
                 Placeholder="The App identifier">
             <Entry.Behaviors>
               <validators:EntryValidatorBehavior
@@ -118,7 +118,7 @@
                   Text="{ Binding Path=EditApp.Name}"
                 IsEnabled="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
                 Keyboard="Keyboard.Text"
-                VerticalOptions="LayoutOptions.CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
                 Placeholder="Give the app a memorable name">
             <Entry.Behaviors>
               <validators:EntryValidatorBehavior
@@ -141,7 +141,7 @@
               IsEnabled="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
               Text="{Binding Path=EditApp.UnifiedPassword, Mode=TwoWay}"
               IsPassword="True"
-              VerticalOptions="LayoutOptions.CenterAndExpand"
+              VerticalOptions="CenterAndExpand"
               PropertyChanged="OnFieldValidation"
               Placeholder="Enter password">
             <Entry.Behaviors>
@@ -162,7 +162,7 @@
                   Text="Daily Backup Hour"></Label>
              <Picker x:Name="BackupHour" SelectedIndex="0" WidthRequest="100"
                     HorizontalOptions="FillAndExpand"                    
-                    VerticalOptions="LayoutOptions.CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
                     Style="{StaticResource nesterFieldLabelPicker}">
                     <Picker.Items>
                         <x:String>0</x:String>
@@ -195,7 +195,7 @@
           <Label Text="24 Hour UMT" Style="{StaticResource validateFailMsg}"></Label>
         </StackLayout>
         
-        <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Opacity = "0">
+        <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Opacity = "1">
           <Label Style="{StaticResource nesterFieldLabel}"
                   Text="Type"></Label>
 
@@ -203,7 +203,6 @@
                     SelectionMode="Single"
                     SelectionBackgroundColor="{StaticResource selectionColor}"
                     ItemsSource="{Binding ApplicationTypes}"
-                    SelectedItem="{Binding EditApplicationType}"
                     ItemSize="50">
             <sync:SfListView.ItemTemplate>
               <DataTemplate>

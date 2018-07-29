@@ -260,16 +260,13 @@ namespace Inkton.Nester.Views
         {
             IsServiceActive = true;
 
-            AppService appService = _baseModels
-                .TargetViewModel
-                .ServicesViewModel
-                .Services.FirstOrDefault(
-                x => x.Tag == "nest-oak");
-
-            // 'users/{uid}/apps/{aid}/deployments/{dep}/app_services/{sid}/app_service_tiers/{tierid}'
             await _baseModels.TargetViewModel
                 .ServicesViewModel
-                .UpdateAppUpgradeServiceTiersAsync(appService);
+                .UpdateAppUpgradeServiceTiersAsync(_baseModels
+                    .TargetViewModel
+                    .ServicesViewModel
+                    .SelectedAppService
+                    .Tier.Service);
 
             IsServiceActive = false;
         }
@@ -284,9 +281,11 @@ namespace Inkton.Nester.Views
             Deployment deployment =
                 _baseModels.TargetViewModel.DeploymentViewModel.Deployments.First();
             deployment.FrameworkVersionId = _selVersion.Id;
-            deployment.MakeBackup = false;
 
-            await _baseModels.TargetViewModel.DeploymentViewModel.UpdateDeploymentAsync(deployment);
+            await _baseModels
+                .TargetViewModel
+                .DeploymentViewModel
+                .UpdateDeploymentAsync("reapply", deployment);
 
             IsServiceActive = false;
         }

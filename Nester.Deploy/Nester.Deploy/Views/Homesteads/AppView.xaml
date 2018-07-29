@@ -121,6 +121,20 @@
                 Image="appdeploymentremove24.png" >
         </Button>
         
+       <Button x:Name="ButtonAppHide"
+                IsVisible="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
+                IsEnabled="{Binding EditApp.IsDeployed}}"
+                Style="{StaticResource appFuncButton}"
+                Image="appstop24.png" >
+       </Button>
+          
+       <Button x:Name="ButtonAppShow"
+                IsVisible="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
+                IsEnabled="{Binding EditApp.IsDeployed}}"
+                Style="{StaticResource appFuncButton}"
+                Image="appstart24.png" >
+        </Button>
+          
        <!--Actions when the app is running and active-->
                     
         <Button x:Name="ButtonAppDownload"

@@ -22,6 +22,9 @@
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x64</AppxBundlePlatforms>
     <PackageCertificateThumbprint>43AF1CD213998B143E3BAEB89FB128BE8AD03B98</PackageCertificateThumbprint>
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+    <AppInstallerUpdateFrequency>1</AppInstallerUpdateFrequency>
+    <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -120,6 +123,8 @@
     <Content Include="appremove32.png" />
     <Content Include="apprestore24.png" />
     <Content Include="appsettings24.png" />
+    <Content Include="appstart24.png" />
+    <Content Include="appstop24.png" />
     <Content Include="appupgrade24.png" />
     <Content Include="appview24.png" />
     <Content Include="Assets\BadgeLogo.scale-100.png" />
