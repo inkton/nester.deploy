@@ -172,7 +172,6 @@ namespace Inkton.Nester.Views
                     if (_baseModels.TargetViewModel.EditApp.Type == appType.Tag)
                     {
                         AppTypeListView.SelectedItems.Add(appType);
-                        _baseModels.TargetViewModel.EditApplicationType = appType;
                         break;
                     }
                 }
@@ -197,7 +196,7 @@ namespace Inkton.Nester.Views
                 {
                     if (appType != null)
                     {
-                        _baseModels.TargetViewModel.EditApplicationType = appType;
+                        _baseModels.TargetViewModel.EditApp.Type = appType.Tag;
                         break;
                     }
                 }
@@ -245,7 +244,7 @@ namespace Inkton.Nester.Views
                     TagValidator.IsValid &&
                     NameValidator.IsValid &&
                     PasswordValidator.IsValid &&
-                    _baseModels.TargetViewModel.EditApplicationType != null
+                    _baseModels.TargetViewModel.EditApp.Type != null
                     );
             }
         }
@@ -272,6 +271,14 @@ namespace Inkton.Nester.Views
             try
             {
                 GetBackupParameters();
+
+                _baseModels.TargetViewModel.EditApp.Type = "uniflow";
+
+                if (AppTypeListView.SelectedItem != null)
+                {
+                    _baseModels.TargetViewModel.EditApp.Type = 
+                        (AppTypeListView.SelectedItem as AppViewModel.AppType).Tag;
+                }
 
                 if (_baseModels.WizardMode)
                 {

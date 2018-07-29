@@ -59,6 +59,8 @@ namespace Inkton.Nester.Views
                     ButtonAppDeploy,
                     ButtonAppRestore,
                     ButtonAppDepRemove,
+                    ButtonAppHide,
+                    ButtonAppShow,
                     ButtonAppUpgrade,
                     ButtonAppDownload,
                     ButtonAppView,
@@ -73,6 +75,8 @@ namespace Inkton.Nester.Views
             ButtonAppRestore.Clicked += ButtonAppRestore_ClickedAsync;
             ButtonAppUpgrade.Clicked += ButtonAppUpgrade_ClickedAsync;
             ButtonAppDepRemove.Clicked += ButtonAppDepRemove_ClickedAsync;
+            ButtonAppHide.Clicked += ButtonAppHide_Clicked;
+            ButtonAppShow.Clicked += ButtonAppShow_ClickedAsync;
             ButtonAppDeploy.Clicked += ButtonAppDeploy_ClickedAsync;
             ButtonAppView.Clicked += ButtonAppView_ClickedAsync;
             ButtonAppDownload.Clicked += ButtonAppDownload_ClickedAsync;
@@ -172,6 +176,8 @@ namespace Inkton.Nester.Views
             ButtonAppDeploy.IsEnabled = !App.IsBusy;
             ButtonAppRestore.IsEnabled = App.IsActive;
             ButtonAppDepRemove.IsEnabled = App.IsDeployed;
+            ButtonAppHide.IsEnabled = App.IsDeployed;
+            ButtonAppShow.IsEnabled = App.IsDeployed;
             ButtonAppDownload.IsEnabled = App.IsActive;
             ButtonAppView.IsEnabled = App.IsActive;
             ButtonAppAudit.IsEnabled = App.IsActive;
@@ -423,7 +429,11 @@ namespace Inkton.Nester.Views
                 await _baseModels.TargetViewModel
                     .ServicesViewModel
                     .QueryAppUpgradeServiceTiersAsync(
-                    _baseModels.TargetViewModel.ServicesViewModel.SelectedAppService.Tier.Service);
+                    _baseModels
+                        .TargetViewModel
+                        .ServicesViewModel
+                        .SelectedAppService
+                        .Tier.Service);
 
                 _baseModels.WizardMode = false;
                 MainSideView.StackViewAsync(new AppTierView(_baseModels));
@@ -473,6 +483,44 @@ namespace Inkton.Nester.Views
                         UpdateState();
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+        }
+
+        async private void ButtonAppShow_ClickedAsync(object sender, EventArgs e)
+        {
+            try
+            {
+                Deployment deployment =
+                    _baseModels.TargetViewModel
+                        .DeploymentViewModel.Deployments.First();
+
+                await _baseModels
+                    .TargetViewModel
+                    .DeploymentViewModel
+                    .UpdateDeploymentAsync("show", deployment);
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+        }
+
+        async private void ButtonAppHide_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                Deployment deployment =
+                    _baseModels.TargetViewModel
+                        .DeploymentViewModel.Deployments.First();
+
+                await _baseModels
+                    .TargetViewModel
+                    .DeploymentViewModel
+                    .UpdateDeploymentAsync("hide", deployment);
             }
             catch (Exception ex)
             {

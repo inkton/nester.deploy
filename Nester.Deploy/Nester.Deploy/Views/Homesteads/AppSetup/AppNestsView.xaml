@@ -176,7 +176,7 @@
                     Mode=TwoWay
                     }"
                     Keyboard="Keyboard.Text"
-                    VerticalOptions="LayoutOptions.CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
                     Placeholder="Enter an identifier">
                 <Entry.Behaviors>
                 <validators:EntryValidatorBehavior
@@ -204,7 +204,7 @@
                         x:Name="Name"                
                         Text="{Binding Path=EditNest.Name, Mode=TwoWay}"
                         Keyboard="Keyboard.Text"
-                        VerticalOptions="LayoutOptions.CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"
                         HorizontalOptions="FillAndExpand"
                         Placeholder="Enter a name">
                 <Entry.Behaviors>
@@ -227,7 +227,7 @@
             <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical">
 
             <Picker x:Name="Type" Title="Type" SelectedIndex="0"
-                    VerticalOptions="LayoutOptions.CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
                     Style="{StaticResource nesterFieldLabelPicker}">
                 <Picker.Items>
                 <x:String>MVC Handler</x:String>
@@ -277,8 +277,8 @@
                 Text="Memory"></Label>
                 <Label x:Name="UsedMemory"
                 Margin="0,5,0,0"
-                VerticalOptions="LayoutOptions.Center"
-                HorizontalOptions="LayoutOptions.Center"/>
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
             </StackLayout>
 
             </StackLayout>
@@ -363,7 +363,7 @@
     <StackLayout Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
       <Button x:Name="ButtonDone"
               Text="Proceed"
-              VerticalOptions="LayoutOptions.Center"    
+              VerticalOptions="Center"    
               Style="{StaticResource buttonPageFlow}"
               Clicked="OnDoneButtonClickedAsync">
       </Button>
