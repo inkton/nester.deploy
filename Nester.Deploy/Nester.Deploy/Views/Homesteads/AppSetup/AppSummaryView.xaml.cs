@@ -75,7 +75,7 @@ namespace Inkton.Nester.Views
                 // The app is being created or updated. All services are applicable
                 BindingContext = _baseModels.TargetViewModel;
 
-                _baseModels.TargetViewModel.DeploymentViewModel.DotnetVersions.All(version =>
+                _baseModels.TargetViewModel.DeploymentViewModel.DotnetVersions.Reverse().All(version =>
                 {
                     SoftwareVersion.Items.Add(version.Name);
                     return true;
