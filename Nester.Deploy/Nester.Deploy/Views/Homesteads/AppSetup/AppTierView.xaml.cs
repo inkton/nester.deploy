@@ -49,7 +49,12 @@ namespace Inkton.Nester.Views
             AppTypeTierView.SelectionChanged += AppTypeTierView_SelectionChanged;
 
             SetActivityMonotoring(ServiceActive,
-                new List<Xamarin.Forms.View> {  
+                new List<Xamarin.Forms.View> {
+                    ButtonHome,
+                    ButtonBasicDetails,
+                    ButtonNests,
+                    ButtonDomains,
+                    ButtonContacts,
                     ButtonDone
                 });
 
@@ -117,6 +122,9 @@ namespace Inkton.Nester.Views
                         (AppTypeTierView.ItemsSource as ObservableCollection<ServicesViewModel.ServiceTableItem>).Where(
                                          x => x.Tier.Id == _baseModels.TargetViewModel.ServicesViewModel.SelectedAppService.Tier.Id).First();
                     AppTypeTierView.SelectedItems.Add(serviceTableItem);
+                    _selectedAppRow = serviceTableItem;
+
+                    MariaDBEnabled.IsToggled = (_baseModels.TargetViewModel.ServicesViewModel.SelectedStorageService != null);
                 }
             }
         }
@@ -257,16 +265,16 @@ namespace Inkton.Nester.Views
                     _baseModels.TargetViewModel.ServicesViewModel.SelectedAppService == null ||
                     _baseModels.TargetViewModel.ServicesViewModel.SelectedAppService.Tier.Id != _selectedAppRow.Tier.Id))
                 {
-                    _baseModels.TargetViewModel.ServicesViewModel.SwitchAppServiceTierAsync(_selectedAppRow.Tier);
+                    await _baseModels.TargetViewModel.ServicesViewModel.SwitchAppServiceTierAsync(_selectedAppRow.Tier);
                 }
 
                 if (_baseModels.TargetViewModel.ServicesViewModel.SelectedStorageService == null && MariaDBEnabled.IsToggled)
                 {
-                    _baseModels.TargetViewModel.ServicesViewModel.CreateDefaultStorageServiceAsync();
+                    await _baseModels.TargetViewModel.ServicesViewModel.CreateDefaultStorageServiceAsync();
                 }
                 else if (_baseModels.TargetViewModel.ServicesViewModel.SelectedStorageService != null && !MariaDBEnabled.IsToggled)
                 {
-                    _baseModels.TargetViewModel.ServicesViewModel.RemoveDefaultStorageServiceAsync();
+                    await _baseModels.TargetViewModel.ServicesViewModel.RemoveDefaultStorageServiceAsync();
                 }
             }
         }
