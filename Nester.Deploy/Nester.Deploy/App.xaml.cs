@@ -23,24 +23,26 @@
 using System.Resources;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.IO;
 using Xamarin.Forms;
 using Plugin.DeviceInfo;
 using Newtonsoft.Json;
+using Inkton.Nester;
 using Inkton.Nester.Models;
 using Inkton.Nester.ViewModels;
 using Inkton.Nester.Cloud;
-using Inkton.Nester.Cache;
+using Inkton.Nester.Storage;
 using Inkton.Nester.Views;
-using Inkton.Nester;
+using Inkton.Nester.Helpers;
 
 namespace Nester.Deploy
 {
-    public partial class App : Application, INesterControl
+    public partial class App : Application, IKeeper, INesterControl
     {
         private User _user;
         private const int ServiceVersion = 2;
-        private NesterService _service, _target;
-        private StorageService _storage;
+        private LogService _log;
+        private NesterService _platform, _target;
         private BaseModels _baseModels;
         private MainSideView _mainSideView;
 
@@ -50,14 +52,19 @@ namespace Nester.Deploy
 
             _user = new User();
 
-            _service = new NesterService();
-            _service.Version = ServiceVersion;
-            _service.DeviceSignature =
+            StorageService cache = new StorageService(Path.Combine(
+                    Path.GetTempPath(), "NesterCache"));
+            cache.Clear();
+
+            string deviceSignature =
                 JsonConvert.SerializeObject(CrossDeviceInfo.Current);
 
-            _target = new NesterService();
-            _storage = new StorageService();
-            _storage.Clear();
+            _log = new LogService(Path.Combine(
+                    Path.GetTempPath(), "NesterLog"));
+            _platform = new NesterService(
+                ServiceVersion, deviceSignature, cache);
+            _target = new NesterService(
+                ServiceVersion, deviceSignature, cache);
 
             _baseModels = new BaseModels(
                 new AuthViewModel(), 
@@ -91,9 +98,6 @@ namespace Nester.Deploy
 
                 if (value != null)
                 {
-                    _target.Version = ServiceVersion;
-                    _target.DeviceSignature = 
-                        JsonConvert.SerializeObject(CrossDeviceInfo.Current);
                     _target.Endpoint = string.Format(
                         "https://{0}/", value.EditApp.Hostname);
                     _target.BasicAuth = new Inkton.Nester.Cloud.BasicAuth(
@@ -102,26 +106,19 @@ namespace Nester.Deploy
             }
         }
 
-        public Inkton.Nester.Cloud.NesterService Service
+        public NesterService Service
         {
-            get { return _service; }
+            get { return _platform; }
         }
 
-        public Inkton.Nester.Cloud.NesterService DeployedApp
+        public NesterService Backend
         {
             get { return _target; }
         }
 
-        public Inkton.Nester.Cache.StorageService StorageService
+        public LogService Log
         {
-            get { return _storage; }
-        }
-
-        public string StoragePath
-        {
-            get {
-                return System.IO.Path.GetTempPath();
-            }
+            get { return _log; }
         }
 
         public ResourceManager GetResourceManager()

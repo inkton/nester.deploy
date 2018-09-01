@@ -446,8 +446,8 @@ namespace Inkton.Nester.Views
                     }
 
                     await MainSideView.Detail.Navigation.PopAsync();
-                    _baseModels.WizardMode = false; 
-                    NesterControl.ResetView(NesterControl.Target);
+                    _baseModels.WizardMode = false;
+                    Keeper.ResetView(Keeper.Target);
                 }
                 else
                 {

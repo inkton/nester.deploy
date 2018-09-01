@@ -58,6 +58,14 @@ namespace Inkton.Nester.Views
             set { _mainSideView = value; }
         }
 
+        public IKeeper Keeper
+        {
+            get
+            {
+                return Application.Current as IKeeper;
+            }
+        }
+
         public INesterControl NesterControl
         {
             get

@@ -127,6 +127,8 @@ namespace Inkton.Nester.Views
                     MariaDBEnabled.IsToggled = (_baseModels.TargetViewModel.ServicesViewModel.SelectedStorageService != null);
                 }
             }
+
+            SetMariaDBSupport();
         }
 
         private void Supplier_SelectedIndexChanged(object sender, EventArgs e)
@@ -234,6 +236,23 @@ namespace Inkton.Nester.Views
                     _selectedAppRow = e.AddedItems.First() as ServicesViewModel.ServiceTableItem;
                 }
             }
+
+            SetMariaDBSupport();
+        }
+
+        private void SetMariaDBSupport()
+        {
+            const int FEATURE_MEMORY = 3;
+
+            // MariaDB on instances less than 1024 MB not supported.
+            bool isMariaDBSupported = int.Parse(_selectedAppRow.FeaturesIncluded[FEATURE_MEMORY]) > 1024;
+
+            if (!isMariaDBSupported)
+            {
+                MariaDBEnabled.IsToggled = false;
+            }
+
+            MariaDBEnabled.IsEnabled = isMariaDBSupported;
         }
 
         async Task UpdateServicesAsync()
@@ -257,8 +276,8 @@ namespace Inkton.Nester.Views
                 {
                     await _baseModels.TargetViewModel.CreateAppAsync(_selectedAppRow.Tier);
 
-                    NesterControl.Target = _baseModels.TargetViewModel;
-                    NesterControl.BaseModels.AllApps.AddModel(_baseModels.TargetViewModel);
+                    Keeper.Target = _baseModels.TargetViewModel;
+                    Keeper.BaseModels.AllApps.AddModel(_baseModels.TargetViewModel);
                 }
 
                 if (_selectedAppRow != null && (

@@ -46,7 +46,7 @@ namespace Inkton.Nester.Views
 
                 if (baseModels.WizardMode == false)
                 {
-                    if (NesterControl.User.TerritoryISOCode == territory.Alpha2)
+                    if (Keeper.User.TerritoryISOCode == territory.Alpha2)
                     {
                         selectedTerritoryIndex = Territories.Items.Count - 1;
                     }
@@ -197,7 +197,7 @@ namespace Inkton.Nester.Views
                 {
                     if (territoryName == territory.ToString())
                     {
-                        NesterControl.User.TerritoryISOCode = territory.Alpha2;
+                        Keeper.User.TerritoryISOCode = territory.Alpha2;
                         break;
                     }
                 }
@@ -238,7 +238,7 @@ namespace Inkton.Nester.Views
                 }
                 else
                 {
-                    await _baseModels.AuthViewModel.UpdateUserAsync(NesterControl.User);
+                    await _baseModels.AuthViewModel.UpdateUserAsync(Keeper.User);
                     await DisplayAlert("Nester", "Your information was saved", "OK");
                 }
             }
