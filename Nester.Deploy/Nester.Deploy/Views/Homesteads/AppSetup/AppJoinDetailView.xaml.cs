@@ -104,7 +104,7 @@ namespace Inkton.Nester.Views
                 if (invitation == null)
                     return;
 
-                AppViewModel appModel = NesterControl.BaseModels.AllApps.AppModels.Where(
+                AppViewModel appModel = Keeper.BaseModels.AllApps.AppModels.Where(
                         m => m.EditApp.Tag == invitation.AppTag).FirstOrDefault(); ;
 
                 App joinApp;
@@ -135,7 +135,7 @@ namespace Inkton.Nester.Views
                 Contact myContact = new Contact();
                 Cloud.Object.CopyPropertiesTo(invitation, myContact);
                 myContact.App = joinApp;
-                myContact.App.Owner = NesterControl.User;
+                myContact.App.Owner = Keeper.User;
 
                 status = await appModel
                     .ContactViewModel.UpdateContactAsync(myContact);
@@ -147,7 +147,7 @@ namespace Inkton.Nester.Views
                 }
 
                 Cloud.Object.CopyPropertiesTo(status.PayloadToObject<Contact>(), invitation);
-                AppCollectionViewModel appCollection = NesterControl.BaseModels.AllApps;
+                AppCollectionViewModel appCollection = Keeper.BaseModels.AllApps;
 
                 if (invitation.Status == "active")
                 {
@@ -165,9 +165,9 @@ namespace Inkton.Nester.Views
                     }
                 }
 
-                NesterControl.Target = NesterControl.BaseModels.AllApps
+                Keeper.Target = Keeper.BaseModels.AllApps
                     .AppModels.FirstOrDefault();
-                NesterControl.ResetView(NesterControl.Target);
+                Keeper.ResetView(Keeper.Target);
                 ToggleMembershipButton(invitation);
             }
             catch (Exception ex)
@@ -184,15 +184,15 @@ namespace Inkton.Nester.Views
 
             try
             {
-                NesterControl.Target = NesterControl
+                Keeper.Target = Keeper
                     .BaseModels.AllApps.AppModels.FirstOrDefault();
 
-                if (NesterControl.Target != null)
+                if (Keeper.Target != null)
                 {
-                    NesterControl.Target.Reload();
+                    Keeper.Target.Reload();
                 }
 
-                NesterControl.ResetView(NesterControl.Target);
+                Keeper.ResetView(Keeper.Target);
             }
             catch (Exception ex)
             {

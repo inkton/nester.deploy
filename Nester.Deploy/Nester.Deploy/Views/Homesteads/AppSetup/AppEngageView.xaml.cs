@@ -59,7 +59,7 @@ namespace Inkton.Nester.Views
             IsServiceActive = true;
 
             ContactViewModel contactsModel = new ContactViewModel(null);
-            contactsModel.EditInvitation.User = NesterControl.User;
+            contactsModel.EditInvitation.User = Keeper.User;
             await contactsModel.QueryInvitationsAsync();
 
             AppJoinDetailView joinView = new AppJoinDetailView(contactsModel);
