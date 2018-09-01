@@ -34,7 +34,7 @@ namespace Inkton.Nester.Views
     {
         public EntryView()
         {
-            _baseModels = NesterControl.BaseModels;
+            _baseModels = Keeper.BaseModels;
 
             InitializeComponent();
 
@@ -153,8 +153,8 @@ namespace Inkton.Nester.Views
                     else
                     {
                         await MainSideView.Detail.Navigation.PopAsync();
-                        NesterControl.Target = _baseModels.AllApps.AppModels.First();
-                        NesterControl.ResetView(NesterControl.Target);
+                        Keeper.Target = _baseModels.AllApps.AppModels.First();
+                        Keeper.ResetView(Keeper.Target);
                     }
                 }
                 else

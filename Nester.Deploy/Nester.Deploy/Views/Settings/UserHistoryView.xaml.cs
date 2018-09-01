@@ -47,7 +47,7 @@ namespace Inkton.Nester.Views
 
             base.OnAppearing();
 
-            await _baseModels.AuthViewModel.QueryUserEventsAsync(NesterControl.User);
+            await _baseModels.AuthViewModel.QueryUserEventsAsync(Keeper.User);
         }
 
         async private void OnDoneButtonClickedAsync(object sender, EventArgs e)

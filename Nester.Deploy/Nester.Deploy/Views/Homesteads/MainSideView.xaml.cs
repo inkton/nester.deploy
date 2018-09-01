@@ -22,6 +22,7 @@
 
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Inkton.Nester;
 using Inkton.Nester.ViewModels;
 using System.Collections.Generic;
 
@@ -134,16 +135,16 @@ namespace Inkton.Nester.Views
 
                 if (createView)
                 {
-                    INesterControl nesterControl = 
-                        (Application.Current as INesterControl);                        
-                    nesterControl.Target = appModel;
+                    IKeeper keeper = 
+                        (Application.Current as IKeeper);
+                    keeper.Target = appModel;
 
                     AppView appView = GetAppView(appModel.EditApp.Id); 
 
                     if (appView == null)
                     {
                         appView = new AppView(
-                             nesterControl.BaseModels);
+                             keeper.BaseModels);
                         appView.UpdateBindings();
 
                         if (appModel.EditApp.IsActive)

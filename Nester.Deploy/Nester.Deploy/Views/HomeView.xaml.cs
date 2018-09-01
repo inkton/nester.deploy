@@ -36,7 +36,7 @@ namespace Inkton.Nester.Views
 
         public HomeView()
         {
-            _baseModels = NesterControl.BaseModels;
+            _baseModels = Keeper.BaseModels;
 
             InitializeComponent();
 
@@ -151,7 +151,7 @@ namespace Inkton.Nester.Views
                 AppViewModel appModel = AppModels.SelectedItem as AppViewModel;
                 if (appModel != null)
                 {
-                    NesterControl.Target = appModel;
+                    Keeper.Target = appModel;
                 }
 
                 MainSideView.StackViewAsync(
@@ -171,7 +171,7 @@ namespace Inkton.Nester.Views
             try
             {
                 ContactViewModel contactsModel = new ContactViewModel(null);
-                contactsModel.EditInvitation.User = NesterControl.User;
+                contactsModel.EditInvitation.User = Keeper.User;
                 await contactsModel.QueryInvitationsAsync();
 
                 MainSideView.StackViewAsync(
@@ -229,15 +229,15 @@ namespace Inkton.Nester.Views
                         {
                             await appModel.RemoveAppAsync();
                             BaseModels.AllApps.RemoveApp(appModel);
-                            NesterControl.Target = NesterControl.BaseModels.AllApps
+                            Keeper.Target = Keeper.BaseModels.AllApps
                                 .AppModels.FirstOrDefault();
 
-                            if (NesterControl.Target != null)
+                            if (Keeper.Target != null)
                             {
-                                NesterControl.Target.Reload();
+                                Keeper.Target.Reload();
                             }
 
-                            NesterControl.ResetView(NesterControl.Target);
+                            Keeper.ResetView(Keeper.Target);
                         }
                         catch (Exception ex)
                         {
@@ -286,7 +286,7 @@ namespace Inkton.Nester.Views
                 AppViewModel newAppModel = new AppViewModel();
                 newAppModel.NewAppAsync();
 
-                NesterControl.Target = newAppModel;
+                Keeper.Target = newAppModel;
                 BaseModels.WizardMode = true;
 
                 MainSideView.StackViewAsync(
@@ -307,7 +307,7 @@ namespace Inkton.Nester.Views
             AppViewModel appModel = e.AddedItems.FirstOrDefault() as AppViewModel;
             if (appModel != null)
             {
-               NesterControl.ResetView(appModel);
+                Keeper.ResetView(appModel);
             }
         }
     }
