@@ -231,6 +231,9 @@
     <PackageReference Include="Flurl.Http">
       <Version>2.3.2</Version>
     </PackageReference>
+    <PackageReference Include="Inkton.NesterLibrary">
+      <Version>1.3.5</Version>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>11.0.2</Version>
     </PackageReference>
@@ -256,7 +259,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nester.Deploy\Nester.Deploy.csproj">
-      <Project>{A0603BDF-8DCB-4FEC-A0A7-DF81F64FAB5D}</Project>
+      <Project>{e6e24809-f81b-458f-aa59-4e982aa67c6b}</Project>
       <Name>Nester.Deploy</Name>
     </ProjectReference>
   </ItemGroup>
