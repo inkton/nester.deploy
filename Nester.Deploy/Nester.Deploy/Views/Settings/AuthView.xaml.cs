@@ -29,7 +29,7 @@ namespace Inkton.Nester.Views
 {
     public partial class AuthView : View
     {
-        public AuthView(BaseModels baseModels)
+        public AuthView(BaseViewModels baseModels)
         {
             InitializeComponent();
 
@@ -41,8 +41,8 @@ namespace Inkton.Nester.Views
             Password.Unfocused += Password_Unfocused;
             PasswordVerify.Unfocused += Password_Unfocused;
 
-            _baseModels = baseModels;
-            BindingContext = _baseModels.AuthViewModel;
+            _baseViewModels = baseModels;
+            BindingContext = _baseViewModels.AuthViewModel;
         }
 
         private void Password_Unfocused(object sender, FocusEventArgs e)
@@ -54,12 +54,12 @@ namespace Inkton.Nester.Views
         {
             if (PasswordValidator != null)
             {
-                _baseModels.AuthViewModel.Validated = (
+                _baseViewModels.AuthViewModel.Validated = (
                      PasswordValidator.IsValid &&
                      PasswordRepeatValidator.IsValid
                      );
                 
-                if (_baseModels.AuthViewModel.Validated)
+                if (_baseViewModels.AuthViewModel.Validated)
                 {
                     if (Password.Text != PasswordVerify.Text)
                     {
@@ -90,7 +90,7 @@ namespace Inkton.Nester.Views
 
                 IsServiceActive = true;
 
-                await _baseModels.AuthViewModel.ResetTokenAsync();
+                await _baseViewModels.AuthViewModel.ResetTokenAsync();
                 await DisplayAlert("Nester", "Password was saved", "OK");
 
                 IsServiceActive = false;

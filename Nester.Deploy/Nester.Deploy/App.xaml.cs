@@ -23,12 +23,13 @@
 using System.Resources;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Linq;
 using System.IO;
 using Xamarin.Forms;
 using Plugin.DeviceInfo;
 using Newtonsoft.Json;
+using Inkton.Nest.Model;
 using Inkton.Nester;
-using Inkton.Nester.Models;
 using Inkton.Nester.ViewModels;
 using Inkton.Nester.Cloud;
 using Inkton.Nester.Storage;
@@ -42,8 +43,8 @@ namespace Nester.Deploy
         private User _user;
         private const int ServiceVersion = 2;
         private LogService _log;
-        private NesterService _platform, _target;
-        private BaseModels _baseModels;
+        private NesterService _platform, _backend;
+        private BaseViewModels _baseModels;
         private MainSideView _mainSideView;
 
         public App()
@@ -63,10 +64,10 @@ namespace Nester.Deploy
                     Path.GetTempPath(), "NesterLog"));
             _platform = new NesterService(
                 ServiceVersion, deviceSignature, cache);
-            _target = new NesterService(
+            _backend = new NesterService(
                 ServiceVersion, deviceSignature, cache);
 
-            _baseModels = new BaseModels(
+            _baseModels = new BaseViewModels(
                 new AuthViewModel(), 
                 new PaymentViewModel(),
                 new AppViewModel(),
@@ -79,7 +80,7 @@ namespace Nester.Deploy
             _mainSideView.ShowEntry();
         }
 
-        public BaseModels BaseModels
+        public BaseViewModels ViewModels
         {
             get { return _baseModels; }
         }
@@ -92,18 +93,7 @@ namespace Nester.Deploy
 
         public AppViewModel Target
         {
-            get { return _baseModels.TargetViewModel; }
-            set {
-                _baseModels.TargetViewModel = value;
-
-                if (value != null)
-                {
-                    _target.Endpoint = string.Format(
-                        "https://{0}/", value.EditApp.Hostname);
-                    _target.BasicAuth = new Inkton.Nester.Cloud.BasicAuth(
-                        true, value.EditApp.Tag, value.EditApp.NetworkPassword);
-                }
-            }
+            get { return _baseModels.AppViewModel; }
         }
 
         public NesterService Service
@@ -113,7 +103,7 @@ namespace Nester.Deploy
 
         public NesterService Backend
         {
-            get { return _target; }
+            get { return _backend; }
         }
 
         public LogService Log
@@ -131,7 +121,18 @@ namespace Nester.Deploy
 
         public void ResetView(AppViewModel appModel = null)
         {
-            _mainSideView.ResetView(appModel);
+            if (appModel == null)
+            {
+                _baseModels.AppViewModel = _baseModels
+                    .AppCollectionViewModel
+                    .AppModels.FirstOrDefault();
+            }
+            else
+            {
+                _baseModels.AppViewModel = appModel;
+            }
+
+            _mainSideView.UpdateView();
         }
     }
 }

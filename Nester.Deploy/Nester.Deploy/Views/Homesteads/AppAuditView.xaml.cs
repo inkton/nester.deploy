@@ -25,22 +25,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
-using Inkton.Nester.Models;
 
 namespace Inkton.Nester.Views
 {
     public partial class AppAuditView : View
     {
-        public AppAuditView(BaseModels baseModels)
+        public AppAuditView(BaseViewModels baseModels)
         {
             InitializeComponent();
 
-            BaseModels = baseModels;
+            ViewModels = baseModels;
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
@@ -64,7 +62,7 @@ namespace Inkton.Nester.Views
             StartTime.Time = new TimeSpan(0, 0, 0);
             EndTime.Time = new TimeSpan(23, 59, 59);
 
-            _baseModels.TargetViewModel.DeploymentViewModel.AppAudits.Clear();
+            _baseViewModels.AppViewModel.DeploymentViewModel.AppAudits.Clear();
         }
 
         private async void QueryAsync()
@@ -73,7 +71,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                _baseModels.TargetViewModel.DeploymentViewModel.AppAudits.Clear();
+                _baseViewModels.AppViewModel.DeploymentViewModel.AppAudits.Clear();
 
                 if (StartTime.Time > EndTime.Time)
                 {
@@ -96,7 +94,7 @@ namespace Inkton.Nester.Views
                         EndTime.Time.Hours, EndTime.Time.Minutes, EndTime.Time.Seconds
                     ));
 
-                await _baseModels.TargetViewModel.DeploymentViewModel.QueryAppAuditsAsync(filter);
+                await _baseViewModels.AppViewModel.DeploymentViewModel.QueryAppAuditsAsync(filter);
             }
             catch (Exception ex)
             {
@@ -115,7 +113,7 @@ namespace Inkton.Nester.Views
         {
             base.UpdateBindings();
 
-            BindingContext = _baseModels.TargetViewModel.DeploymentViewModel;
+            BindingContext = _baseViewModels.AppViewModel.DeploymentViewModel;
         }
         
         private void ButtonCancel_Clicked(object sender, EventArgs e)

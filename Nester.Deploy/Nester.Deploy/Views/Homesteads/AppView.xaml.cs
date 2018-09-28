@@ -26,7 +26,7 @@ using System.Linq;
 using System.Net;
 using Xamarin.Forms;
 using Syncfusion.SfBusyIndicator.XForms;
-using Inkton.Nester.Models;
+using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
 using System.Threading.Tasks;
 
@@ -34,21 +34,20 @@ namespace Inkton.Nester.Views
 {
     public partial class AppView : View
     {
-        public enum Status
+        public enum ViewStatus
         {
             Updating,
-            Refreshing,
             WaitingDeployment,
             Deployed
         }
 
-        private Status _status = Status.Deployed;
+        private ViewStatus _status = ViewStatus.WaitingDeployment;
 
-        public AppView(BaseModels baseModels)
+        public AppView(BaseViewModels baseModels)
         {
             InitializeComponent();
 
-            BaseModels = baseModels;
+            ViewModels = baseModels;
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View>
@@ -85,93 +84,65 @@ namespace Inkton.Nester.Views
             ButtonAppAudit.Clicked += ButtonAppAudit_ClickedAsync; 
 
             NestLogs.SelectionChanged += NestLogs_SelectionChanged;
+
+            MessagingCenter.Subscribe<AppViewModel, App>(
+                baseModels.AppViewModel, "Updated", (sender, updateApp) => {
+                    Device.BeginInvokeOnMainThread(() => {
+
+                        System.Diagnostics.Debug.WriteLine(
+                            string.Format("MessagingCenter @ AppView - {0}", App.Tag));
+
+                        if (updateApp.Id == App.Id)
+                        {
+                            // Set the backend address for querying logs and metrics
+                            NesterControl.Backend.Endpoint = string.Format(
+                                    "https://{0}/", App.Hostname);
+                            NesterControl.Backend.BasicAuth = new Inkton.Nester.Cloud.BasicAuth(true,
+                                    App.Tag, App.NetworkPassword);
+
+                            UpdateStatus();
+
+                            if (Status == ViewStatus.Deployed)
+                            {
+                                ReloadAnalytics();
+                            }
+                        }
+                    });
+                });
+
+            SetRefresing();
         }
 
-        public Status State
+        public ViewStatus Status
         {
-            set
-            {
-                _status = value;
-
-                switch (_status)
-                {
-                    case Status.Deployed:
-                        if (App.IsActive)
-                        {
-                            // Deplyed and active
-                            InactiveApp.IsVisible = false;
-                            Metrics.IsVisible = true;
-                        }
-                        else
-                        {
-                            // Deplyed but failed
-                            ProgressControl.IsVisible = false;
-                            Logo.IsVisible = true;
-                            InactiveApp.IsVisible = true;
-                            Metrics.IsVisible = false;
-                        }
-                        break;
-
-                    case Status.Refreshing:
-                        ProgressControl.Title = "Refreshing ...";
-                        ProgressControl.AnimationType = AnimationTypes.Rectangle;
-
-                        ProgressControl.IsVisible = true;
-                        Logo.IsVisible = false;
-                        InactiveApp.IsVisible = true;
-                        Metrics.IsVisible = false;
-                        break;
-
-                    case Status.Updating:
-                        ProgressControl.Title = "Updating ...";
-                        ProgressControl.AnimationType = AnimationTypes.Gear;
-
-                        ProgressControl.IsVisible = true;
-                        Logo.IsVisible = false;
-                        InactiveApp.IsVisible = true;
-                        Metrics.IsVisible = false;
-                        break;
-
-                    case Status.WaitingDeployment:
-                        ProgressControl.IsVisible = false;
-                        Logo.IsVisible = true;
-                        InactiveApp.IsVisible = true;
-                        Metrics.IsVisible = false;
-                        break;
-                }
-            }
             get
             {
                 return _status;
             }
         }
 
-        public override void UpdateBindings()
+        public void SetRefresing()
         {
-            base.UpdateBindings();
+            System.Diagnostics.Debug.WriteLine(
+                string.Format("Refreshing {0}", App.Tag));
 
-            UpdateState();
+            ProgressControl.Title = "Refreshing ...";
+            ProgressControl.AnimationType = AnimationTypes.Rectangle;
+
+            ProgressControl.IsVisible = true;
+            Logo.IsVisible = false;
+            InactiveApp.IsVisible = true;
+            Metrics.IsVisible = false;
         }
 
-        public void UpdateState()
+        public void UpdateStatus()
         {
-            ResetTimeFilter();
-            Status newState = Status.Refreshing;
-
-            if (App.IsBusy)
-            {
-                newState = Status.Updating;
-            }
-            else if (!App.IsDeployed)
-            {
-                newState = Status.WaitingDeployment;
-            }
-            else
-            {
-                newState = Status.Deployed;
-            }
-
-            State = newState;
+            /* -> App Busy (Installing/Updating/Upgrading)
+             * -> App Deployed
+             *      Active - Working
+             *      Not Active - Failed
+             * -> App Not Deployed
+             */
 
             ButtonAppDeploy.IsEnabled = !App.IsBusy;
             ButtonAppRestore.IsEnabled = App.IsActive;
@@ -182,9 +153,61 @@ namespace Inkton.Nester.Views
             ButtonAppView.IsEnabled = App.IsActive;
             ButtonAppAudit.IsEnabled = App.IsActive;
             ButtonAppUpgrade.IsEnabled = App.IsActive;
+
+            if (App.IsBusy)
+            {
+                _status = ViewStatus.Updating;
+            }
+            else
+            {
+                if (App.IsDeployed)
+                {
+                    if (App.IsActive)
+                    {
+                        _status = ViewStatus.Deployed;
+                    }
+                    else
+                    {
+                        _status = ViewStatus.WaitingDeployment;
+                    }
+                }
+                else
+                {
+                    _status = ViewStatus.WaitingDeployment;
+                }
+
+                System.Diagnostics.Debug.WriteLine(
+                    string.Format("Set Status {0}, {1}", App.Tag, _status));
+            }
+
+            switch (_status)
+            {
+                case ViewStatus.Updating:
+                    ProgressControl.Title = "Updating ...";
+                    ProgressControl.AnimationType = AnimationTypes.Gear;
+
+                    ProgressControl.IsVisible = true;
+                    Logo.IsVisible = false;
+                    InactiveApp.IsVisible = true;
+                    Metrics.IsVisible = false;
+                    break;
+
+                case ViewStatus.Deployed:
+                    // Deployed and active
+                    InactiveApp.IsVisible = false;
+                    Metrics.IsVisible = true;
+                    break;
+
+                case ViewStatus.WaitingDeployment:
+                    ProgressControl.IsVisible = false;
+                    Logo.IsVisible = true;
+                    InactiveApp.IsVisible = true;
+                    Metrics.IsVisible = false;
+                    break;
+            }
         }
 
-        public void ReloadAnalytics()
+        private void ReloadAnalytics()
         {
             try
             {
@@ -201,9 +224,12 @@ namespace Inkton.Nester.Views
             }
         }
 
-        private async Task GetLogsAsync(int maxRows = 200,
+        private async Task GetLogsAsync(int maxRows = 10,
             bool doCache = false, bool throwIfError = true)
         {
+            System.Diagnostics.Debug.WriteLine(
+                string.Format("GetLogsAsync"));
+
             IsServiceActive = true;
 
             DateTime unixEpoch = new DateTime(1970, 1, 1);
@@ -226,7 +252,7 @@ namespace Inkton.Nester.Views
             }
             else
             {
-                await _baseModels.TargetViewModel
+                await _baseViewModels.AppViewModel
                       .LogViewModel.QueryAsync(beginId, endId,
                       maxRows, doCache, throwIfError);
             }
@@ -263,7 +289,7 @@ namespace Inkton.Nester.Views
 
             if (nestLog != null)
             {
-                _baseModels.TargetViewModel.LogViewModel.EditNestLog = nestLog;
+                _baseViewModels.AppViewModel.LogViewModel.EditNestLog = nestLog;
                 /* 
                     Message.Text = nestLog.Message;
 
@@ -312,8 +338,8 @@ namespace Inkton.Nester.Views
                     }
                 }
 */
-            }
         }
+    }
 
         private async void ButtonGetLogs_Clicked(object sender, EventArgs e)
         {
@@ -343,8 +369,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception)
             {
-                await DisplayAlert("Nester", "Failed to retrieve metrics from the app " +
-                    _baseModels.TargetViewModel.EditApp.Name, "OK");
+                await DisplayAlert("Nester", "Failed to retrieve metrics from the app " + App.Name, "OK");
             }
         }
 
@@ -355,11 +380,11 @@ namespace Inkton.Nester.Views
             try
             {
                 Devkit devkit = new Devkit();
-                devkit.Contact = _baseModels.TargetViewModel.ContactViewModel.OwnerContact;
+                devkit.OwnedBy = _baseViewModels.AppViewModel.ContactViewModel.OwnerContact;
 
-                await _baseModels.TargetViewModel.DeploymentViewModel.QueryDevkitAsync(devkit);
+                await _baseViewModels.AppViewModel.DeploymentViewModel.QueryDevkitAsync(devkit);
 
-                await DisplayAlert("Nester", "The devkit has been emailed to you", "OK");
+                await DisplayAlert("Nester", "The Devkit has been requested", "OK");
             }
             catch (Exception ex)
             {
@@ -375,8 +400,8 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseModels.TargetViewModel.QueryAppNotificationsAsync();
-                MainSideView.StackViewAsync(new NotificationView(_baseModels));
+                await _baseViewModels.AppViewModel.QueryAppNotificationsAsync();
+                MainSideView.StackViewAsync(new NotificationView(_baseViewModels));
             }
             catch (Exception ex)
             {
@@ -392,7 +417,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.StackViewAsync(new AppWebView(_baseModels,
+                MainSideView.StackViewAsync(new AppWebView(_baseViewModels,
                     AppWebView.Pages.TargetSlackConnect));
             }
             catch (Exception ex)
@@ -409,7 +434,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.StackViewAsync(new AppWebView(_baseModels, 
+                MainSideView.StackViewAsync(new AppWebView(_baseViewModels, 
                     AppWebView.Pages.TargetSite));
             }
             catch (Exception ex)
@@ -426,17 +451,17 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseModels.TargetViewModel
+                await _baseViewModels.AppViewModel
                     .ServicesViewModel
                     .QueryAppUpgradeServiceTiersAsync(
-                    _baseModels
-                        .TargetViewModel
-                        .ServicesViewModel
-                        .SelectedAppService
-                        .Tier.Service);
+                        (_baseViewModels
+                            .AppViewModel
+                            .ServicesViewModel
+                            .SelectedAppService
+                            .Tier.OwnedBy as AppService));
 
-                _baseModels.WizardMode = false;
-                MainSideView.StackViewAsync(new AppTierView(_baseModels));
+                _baseViewModels.WizardMode = false;
+                MainSideView.StackViewAsync(new AppTierView(_baseViewModels));
             }
             catch (Exception ex)
             {
@@ -452,9 +477,9 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseModels.TargetViewModel.DeploymentViewModel.QueryAppBackupsAsync();
+                await _baseViewModels.AppViewModel.DeploymentViewModel.QueryAppBackupsAsync();
 
-                MainSideView.StackViewAsync(new AppBackupView(_baseModels));
+                MainSideView.StackViewAsync(new AppBackupView(_baseViewModels));
             }
             catch (Exception ex)
             {   
@@ -472,15 +497,15 @@ namespace Inkton.Nester.Views
 
                 if (yes)
                 {
-                    if (_baseModels.TargetViewModel.EditApp.IsDeploymentValid)
+                    if (App.IsDeploymentValid)
                     {
-                        await Process(_baseModels.TargetViewModel.EditApp.Deployment, true,
-                            _baseModels.TargetViewModel.DeploymentViewModel.RemoveDeploymentAsync
+                        await Process(App.Deployment, true,
+                            _baseViewModels.AppViewModel.DeploymentViewModel.RemoveDeploymentAsync
                         );
 
-                        await _baseModels.TargetViewModel.QueryStatusAsync();
+                        await _baseViewModels.AppViewModel.QueryStatusAsync();
 
-                        UpdateState();
+                        UpdateStatus();
                     }
                 }
             }
@@ -495,11 +520,11 @@ namespace Inkton.Nester.Views
             try
             {
                 Deployment deployment =
-                    _baseModels.TargetViewModel
+                    _baseViewModels.AppViewModel
                         .DeploymentViewModel.Deployments.First();
 
-                await _baseModels
-                    .TargetViewModel
+                await _baseViewModels
+                    .AppViewModel
                     .DeploymentViewModel
                     .UpdateDeploymentAsync("show", deployment);
             }
@@ -514,11 +539,11 @@ namespace Inkton.Nester.Views
             try
             {
                 Deployment deployment =
-                    _baseModels.TargetViewModel
+                    _baseViewModels.AppViewModel
                         .DeploymentViewModel.Deployments.First();
 
-                await _baseModels
-                    .TargetViewModel
+                await _baseViewModels
+                    .AppViewModel
                     .DeploymentViewModel
                     .UpdateDeploymentAsync("hide", deployment);
             }
@@ -534,45 +559,48 @@ namespace Inkton.Nester.Views
 
             try
             {
-                if (_baseModels.TargetViewModel
+                if (_baseViewModels.AppViewModel
                     .ServicesViewModel.UpgradableAppTiers != null)
                 {
-                    _baseModels.TargetViewModel
+                    _baseViewModels.AppViewModel
                         .ServicesViewModel.UpgradableAppTiers.Clear();
                 }
 
-                if (_baseModels.PaymentViewModel.EditPaymentMethod.Proof == null ||
-                    _baseModels.PaymentViewModel.EditPaymentMethod.Proof.Last4 == 0)
+                if (Keeper.User.Id == App.Id)
                 {
-                    await DisplayAlert("Nester", "Please enter a payment method before app creation", "OK");
-                    return;
+                    if (_baseViewModels.PaymentViewModel.EditPaymentMethod.IsActive)
+                    {
+                        IsServiceActive = false;
+                        await DisplayAlert("Nester", "Please enter a payment method before app creation", "OK");
+                        return;
+                    }
                 }
 
-                NestPlatform workerPlatform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
+                NestPlatform workerPlatform = _baseViewModels.AppViewModel.NestViewModel.Platforms.First(
                     x => x.Tag == "worker");
 
-                var handlerNests = from nest in _baseModels.TargetViewModel.NestViewModel.Nests
+                var handlerNests = from nest in _baseViewModels.AppViewModel.NestViewModel.Nests
                                    where nest.PlatformId != workerPlatform.Id
                                    select nest;
 
                 if (handlerNests.ToArray().Length == 0)
                 {
+                    IsServiceActive = false;
                     await DisplayAlert("Nester", "Please add a handler nest to process queries", "OK");
                     return;
                 }
 
-                await _baseModels.TargetViewModel.DeploymentViewModel.CollectInfoAsync();
+                await _baseViewModels.AppViewModel.DeploymentViewModel.CollectInfoAsync();
 
-                if (!_baseModels.TargetViewModel.DeploymentViewModel.Deployments.Any())
+                if (!_baseViewModels.AppViewModel.DeploymentViewModel.Deployments.Any())
                 {
-                    Cloud.ServerStatus status = await _baseModels.TargetViewModel.QueryAppServiceTierLocationsAsync(
-                        _baseModels.TargetViewModel.ServicesViewModel.SelectedAppService.Tier, false);
-                    var forests = status.PayloadToList<Forest>();
-                    MainSideView.StackViewAsync(new AppLocationView(_baseModels, forests));
+                    Cloud.ResultMultiple<Forest> result = await _baseViewModels.AppViewModel.QueryAppServiceTierLocationsAsync(
+                        _baseViewModels.AppViewModel.ServicesViewModel.SelectedAppService.Tier, false);
+                    MainSideView.StackViewAsync(new AppLocationView(_baseViewModels, result.Data.Payload));
                 }
                 else
                 {
-                    MainSideView.StackViewAsync(new AppSummaryView(_baseModels));
+                    MainSideView.StackViewAsync(new AppSummaryView(_baseViewModels));
                 }
             }
             catch (Exception ex)
@@ -589,8 +617,8 @@ namespace Inkton.Nester.Views
 
             try
             {
-                BaseModels.WizardMode = false;
-                MainSideView.StackViewAsync(new AppBasicDetailView(BaseModels));
+                ViewModels.WizardMode = false;
+                MainSideView.StackViewAsync(new AppBasicDetailView(ViewModels));
             }
             catch (Exception ex)
             {
@@ -606,7 +634,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.StackViewAsync(new AppAuditView(_baseModels));
+                MainSideView.StackViewAsync(new AppAuditView(_baseViewModels));
             }
             catch (Exception ex)
             {

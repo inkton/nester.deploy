@@ -24,20 +24,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
-using Inkton.Nester.Models;
+using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
     public partial class UserView : View
     {
-        public UserView(BaseModels baseModels)
+        public UserView(BaseViewModels baseModels)
         {
             InitializeComponent();
 
-            _baseModels = baseModels;
-            SecurityCode.IsVisible = _baseModels.WizardMode;
-            SecurityCodeLabel.IsVisible = _baseModels.WizardMode;
+            _baseViewModels = baseModels;
+            SecurityCode.IsVisible = _baseViewModels.WizardMode;
+            SecurityCodeLabel.IsVisible = _baseViewModels.WizardMode;
             int selectedTerritoryIndex = -1;
 
             foreach (Geography.ISO3166Country territory in Geography.Territories)
@@ -75,7 +75,7 @@ namespace Inkton.Nester.Views
 
             NickName.Unfocused += NickName_Unfocused;
 
-            BindingContext = _baseModels.AuthViewModel;
+            BindingContext = _baseViewModels.AuthViewModel;
 
             LoadExplainPage();
         }
@@ -88,9 +88,9 @@ namespace Inkton.Nester.Views
                 User searchUser = new User();
                 searchUser.Nickname = nickname;
 
-                Cloud.ServerStatus status = await _appViewModel.QueryAppAsync(
+                Cloud.ServerStatus result = await _appViewModel.QueryAppAsync(
                     searchApp, true, false);
-                if (status.Code == Cloud.Result.NEST_RESULT_SUCCESS)
+                if (result.Code == Cloud.Result.NEST_RESULT_SUCCESS)
                 {
                     NicknameValidator.IsValid = false;
                     NicknameValidator.Message = "The nickname is taken, try another nickname";
@@ -169,14 +169,14 @@ namespace Inkton.Nester.Views
         {
             if (NicknameValidator != null)
             {
-                _baseModels.AuthViewModel.Validated = (
+                _baseViewModels.AuthViewModel.Validated = (
                      NicknameValidator.IsValid &&
                      FirstNameValidator.IsValid &&
                      LastNameValidator.IsValid
                      );
 
-                SecurityCode.IsVisible = _baseModels.WizardMode;
-                SecurityCodeLabel.IsVisible = _baseModels.WizardMode;
+                SecurityCode.IsVisible = _baseViewModels.WizardMode;
+                SecurityCodeLabel.IsVisible = _baseViewModels.WizardMode;
             }
         }
 
@@ -204,28 +204,28 @@ namespace Inkton.Nester.Views
 
                 IsServiceActive = false;
 
-                if (_baseModels.WizardMode)
+                if (_baseViewModels.WizardMode)
                 {
-                    Cloud.ServerStatus status = _baseModels.AuthViewModel.Signup(false);
+                    Cloud.ResultSingle<Permit> result = _baseViewModels.AuthViewModel.Signup(false);
 
-                    if (status.Code == Cloud.ServerStatus.NEST_RESULT_ERROR_AUTH_SECCODE)
+                    if (result.Code == Cloud.ServerStatus.NEST_RESULT_ERROR_AUTH_SECCODE)
                     {
                         await DisplayAlert("Nester", "Invalid security code", "OK");
                     }
-                    else if (status.Code == Cloud.ServerStatus.NEST_RESULT_ERROR)
+                    else if (result.Code == Cloud.ServerStatus.NEST_RESULT_ERROR)
                     {
-                        await DisplayAlert("Nester", status.Notes, "OK");
+                        await DisplayAlert("Nester", result.Notes, "OK");
                     }
                     else
                     {
-                        _baseModels.AuthViewModel.QueryToken();
+                        _baseViewModels.AuthViewModel.QueryToken();
 
                         AppViewModel newAppModel = new AppViewModel();
                         newAppModel.NewAppAsync();
 
-                        BaseModels baseModels = new BaseModels(
-                            _baseModels.AuthViewModel,
-                            _baseModels.PaymentViewModel,
+                        BaseViewModels baseModels = new BaseViewModels(
+                            _baseViewModels.AuthViewModel,
+                            _baseViewModels.PaymentViewModel,
                             newAppModel);
                         baseModels.WizardMode = true;
 
@@ -238,7 +238,7 @@ namespace Inkton.Nester.Views
                 }
                 else
                 {
-                    await _baseModels.AuthViewModel.UpdateUserAsync(Keeper.User);
+                    await _baseViewModels.AuthViewModel.UpdateUserAsync(Keeper.User);
                     await DisplayAlert("Nester", "Your information was saved", "OK");
                 }
             }

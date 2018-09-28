@@ -22,7 +22,7 @@
 
 using System;
 using Xamarin.Forms;
-using Inkton.Nester.Models;
+using Inkton.Nest.Model;
 
 namespace Inkton.Nester.Helpers
 {
@@ -35,7 +35,7 @@ namespace Inkton.Nester.Helpers
                 return false;
             }
 
-            Nester.Models.AppDomain domain = value as Nester.Models.AppDomain;
+            Nest.Model.AppDomain domain = value as Nest.Model.AppDomain;
             if (domain != null && domain.Default)
             {
                 return false;

@@ -24,7 +24,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Xamarin.Forms;
-using Inkton.Nester.Models;
+using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
@@ -33,11 +33,11 @@ namespace Inkton.Nester.Views
     {
         private Regex _domainVerifier;
 
-        public AppDomainCertView(BaseModels baseModels)
+        public AppDomainCertView(BaseViewModels baseModels)
         {
             InitializeComponent();
 
-            BaseModels = baseModels;
+            ViewModels = baseModels;
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
@@ -63,7 +63,7 @@ namespace Inkton.Nester.Views
         {
             base.UpdateBindings();
 
-            BindingContext = _baseModels.TargetViewModel.DomainViewModel;
+            BindingContext = _baseViewModels.AppViewModel.DomainViewModel;
         }
 
         private void PrivateKey_TextChanged(object sender, TextChangedEventArgs e)
@@ -88,17 +88,17 @@ namespace Inkton.Nester.Views
              * names */
             bool canAddFreeCert = true;
 
-            if (_baseModels.TargetViewModel.DomainViewModel.EditDomain.Name != null &&
-                !_domainVerifier.Match(_baseModels.TargetViewModel.DomainViewModel.EditDomain.Name).Success)
+            if (_baseViewModels.AppViewModel.DomainViewModel.EditDomain.Name != null &&
+                !_domainVerifier.Match(_baseViewModels.AppViewModel.DomainViewModel.EditDomain.Name).Success)
             {
                 canAddFreeCert = false;
             }
             else
             {
-                if (_baseModels.TargetViewModel.DomainViewModel.EditDomain.Aliases != null &&
-                    _baseModels.TargetViewModel.DomainViewModel.EditDomain.Aliases.Length > 0)
+                if (_baseViewModels.AppViewModel.DomainViewModel.EditDomain.Aliases != null &&
+                    _baseViewModels.AppViewModel.DomainViewModel.EditDomain.Aliases.Length > 0)
                 {
-                    string[] aliasArray = _baseModels.TargetViewModel.DomainViewModel.EditDomain.Aliases.Split(new char[] { ',', ' ' });
+                    string[] aliasArray = _baseViewModels.AppViewModel.DomainViewModel.EditDomain.Aliases.Split(new char[] { ',', ' ' });
 
                     foreach (string alias in aliasArray)
                     {
@@ -119,9 +119,9 @@ namespace Inkton.Nester.Views
 
             Type.Items.Add("Custom");
 
-            if (_baseModels.TargetViewModel.DomainViewModel.EditDomain.Certificate != null)
+            if (_baseViewModels.AppViewModel.DomainViewModel.EditDomain.Certificate != null)
             {
-                string type = _baseModels.TargetViewModel.DomainViewModel.EditDomain.Certificate.Type;
+                string type = _baseViewModels.AppViewModel.DomainViewModel.EditDomain.Certificate.Type;
                 type = char.ToUpper(type[0]) + type.Substring(1);
 
                 int index = Type.Items.IndexOf(type);
@@ -151,8 +151,8 @@ namespace Inkton.Nester.Views
             }
             else
             {
-                PrivateKey.Text = _baseModels.TargetViewModel.DomainViewModel.EditDomain.Certificate.PrivateKey;
-                Chain.Text = _baseModels.TargetViewModel.DomainViewModel.EditDomain.Certificate.CertificateChain;
+                PrivateKey.Text = _baseViewModels.AppViewModel.DomainViewModel.EditDomain.Certificate.PrivateKey;
+                Chain.Text = _baseViewModels.AppViewModel.DomainViewModel.EditDomain.Certificate.CertificateChain;
             }
 
             Validate();
@@ -165,8 +165,8 @@ namespace Inkton.Nester.Views
 
         private void Validate()
         {
-            _baseModels.TargetViewModel.DomainViewModel.CanUpdate = false;
-            _baseModels.TargetViewModel.DomainViewModel.Validated = false;
+            _baseViewModels.AppViewModel.DomainViewModel.CanUpdate = false;
+            _baseViewModels.AppViewModel.DomainViewModel.Validated = false;
 
             string type = Type.SelectedItem as string;
 
@@ -175,7 +175,7 @@ namespace Inkton.Nester.Views
                 PrivateKey.IsEnabled = true;
                 Chain.IsEnabled = true;
 
-                _baseModels.TargetViewModel.DomainViewModel.Validated = (
+                _baseViewModels.AppViewModel.DomainViewModel.Validated = (
                         PrivateKey.Text != null &&
                         PrivateKey.Text.Length > 0 &&
                         Chain.Text != null &&
@@ -187,14 +187,14 @@ namespace Inkton.Nester.Views
                 PrivateKey.IsEnabled = false;
                 Chain.IsEnabled = false;
 
-                _baseModels.TargetViewModel.DomainViewModel.Validated = true;
+                _baseViewModels.AppViewModel.DomainViewModel.Validated = true;
             }
 
             /* used to enable the update function. a certificate can
                 * be updaed only if valid fields has been selected 
                 * and an item from a list is selected.
                 */
-            _baseModels.TargetViewModel.DomainViewModel.CanUpdate = _baseModels.TargetViewModel.DomainViewModel.Validated;
+            _baseViewModels.AppViewModel.DomainViewModel.CanUpdate = _baseViewModels.AppViewModel.DomainViewModel.Validated;
         }
 
         protected async override void OnAppearing()
@@ -222,10 +222,10 @@ namespace Inkton.Nester.Views
 
             try
             {
-                if (_baseModels.TargetViewModel.DomainViewModel.EditDomain.Certificate != null)
+                if (_baseViewModels.AppViewModel.DomainViewModel.EditDomain.Certificate != null)
                 {
-                    await Process(_baseModels.TargetViewModel.DomainViewModel.EditDomain.Certificate, true,
-                        _baseModels.TargetViewModel.DomainViewModel.RemoveDomainCertificateAsync
+                    await Process(_baseViewModels.AppViewModel.DomainViewModel.EditDomain.Certificate, true,
+                         _baseViewModels.AppViewModel.DomainViewModel.RemoveDomainCertificateAsync
                     );
                 }
 
@@ -234,14 +234,14 @@ namespace Inkton.Nester.Views
                 if (type != "None")
                 {
                     AppDomainCertificate cert = new AppDomainCertificate();
-                    cert.AppDomain = _baseModels.TargetViewModel.DomainViewModel.EditDomain;
-                    cert.Tag = _baseModels.TargetViewModel.DomainViewModel.EditDomain.Tag;
+                    cert.OwnedBy = _baseViewModels.AppViewModel.DomainViewModel.EditDomain;
+                    cert.Tag = _baseViewModels.AppViewModel.DomainViewModel.EditDomain.Tag;
                     cert.Type = type.ToLower();
                     cert.PrivateKey = PrivateKey.Text;
                     cert.CertificateChain = Chain.Text;
 
                     await Process(cert, true,
-                        _baseModels.TargetViewModel.DomainViewModel.CreateDomainCertificateAsync
+                        _baseViewModels.AppViewModel.DomainViewModel.CreateDomainCertificateAsync
                     );
                 }
             }

@@ -23,7 +23,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Inkton.Nester.Models;
+using Inkton.Nest;
+using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
@@ -104,11 +105,10 @@ namespace Inkton.Nester.Views
                 if (invitation == null)
                     return;
 
-                AppViewModel appModel = Keeper.BaseModels.AllApps.AppModels.Where(
+                AppViewModel appModel = Keeper.ViewModels.AppCollectionViewModel.AppModels.Where(
                         m => m.EditApp.Tag == invitation.AppTag).FirstOrDefault(); ;
 
                 App joinApp;
-                Cloud.ServerStatus status;
 
                 if (appModel != null)
                 {
@@ -120,10 +120,10 @@ namespace Inkton.Nester.Views
                     searchApp.Tag = invitation.AppTag;
 
                     appModel = new AppViewModel();
-                    status = await appModel.QueryAppAsync(
+                    Cloud.ResultSingle<App> appResult = await appModel.QueryAppAsync(
                         searchApp, false);
 
-                    if (status.Code != Cloud.ServerStatus.NEST_RESULT_SUCCESS)
+                    if (appResult.Code != Cloud.ServerStatus.NEST_RESULT_SUCCESS)
                     {
                         await DisplayAlert("Nester", "This app no longer exisit", "OK");
                         return;
@@ -133,21 +133,22 @@ namespace Inkton.Nester.Views
                 }
 
                 Contact myContact = new Contact();
-                Cloud.Object.CopyPropertiesTo(invitation, myContact);
-                myContact.App = joinApp;
-                myContact.App.Owner = Keeper.User;
+                invitation.CopyTo(myContact);
 
-                status = await appModel
+                joinApp.OwnedBy = Keeper.User;
+                myContact.OwnedBy = joinApp;
+
+                Cloud.ResultSingle<Contact> contactResult = await appModel
                     .ContactViewModel.UpdateContactAsync(myContact);
 
-                if (status.Code != Cloud.ServerStatus.NEST_RESULT_SUCCESS)
+                if (contactResult.Code != Cloud.ServerStatus.NEST_RESULT_SUCCESS)
                 {
                     await DisplayAlert("Nester", "Could not confirm the invitation", "OK");
                     return;
                 }
 
-                Cloud.Object.CopyPropertiesTo(status.PayloadToObject<Contact>(), invitation);
-                AppCollectionViewModel appCollection = Keeper.BaseModels.AllApps;
+                contactResult.Data.Payload.CopyTo(invitation);
+                AppCollectionViewModel appCollection = Keeper.ViewModels.AppCollectionViewModel;
 
                 if (invitation.Status == "active")
                 {
@@ -165,10 +166,9 @@ namespace Inkton.Nester.Views
                     }
                 }
 
-                Keeper.Target = Keeper.BaseModels.AllApps
-                    .AppModels.FirstOrDefault();
-                Keeper.ResetView(Keeper.Target);
                 ToggleMembershipButton(invitation);
+
+                Keeper.ResetView();
             }
             catch (Exception ex)
             {
@@ -184,15 +184,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                Keeper.Target = Keeper
-                    .BaseModels.AllApps.AppModels.FirstOrDefault();
-
-                if (Keeper.Target != null)
-                {
-                    Keeper.Target.Reload();
-                }
-
-                Keeper.ResetView(Keeper.Target);
+                Keeper.ResetView();
             }
             catch (Exception ex)
             {

@@ -25,7 +25,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Inkton.Nester.Models;
+using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
@@ -35,7 +35,7 @@ namespace Inkton.Nester.Views
         protected ActivityIndicator _activityIndicator;
         protected List<Xamarin.Forms.View> _blockWhenActive;
         protected List<Xamarin.Forms.View> _activeBlockViews;
-        protected BaseModels _baseModels;
+        protected BaseViewModels _baseViewModels;
         protected MainSideView _mainSideView;
 
         public View()
@@ -43,11 +43,11 @@ namespace Inkton.Nester.Views
             SubscribeToMessages();
         }
 
-        public virtual BaseModels BaseModels
+        public virtual BaseViewModels ViewModels
         {
-            get { return _baseModels; }
+            get { return _baseViewModels; }
             set {
-                _baseModels = value;
+                _baseViewModels = value;
                 UpdateBindings();
             }
         }
@@ -78,18 +78,18 @@ namespace Inkton.Nester.Views
         {
             get
             {
-                return _baseModels.TargetViewModel.EditApp;
+                return _baseViewModels.AppViewModel.EditApp;
             }
         }
 
         public virtual void UpdateBindings()
         {
-            if (_baseModels.TargetViewModel.EditApp != null)
+            if (App != null)
             {
-                Title = _baseModels.TargetViewModel.EditApp.Name;
+                Title = App.Name;
             }
 
-            BindingContext = _baseModels.TargetViewModel;
+            BindingContext = _baseViewModels.AppViewModel;
         }
 
         protected void SetActivityMonotoring(ActivityIndicator activityIndicator,
@@ -152,8 +152,8 @@ namespace Inkton.Nester.Views
             MessagingCenter.Unsubscribe<AlertMessage>(this, "popup");
         }
 
-        async protected Task Process<T>(T obj, bool doCache,
-            Func<T, bool, bool, Task<Cloud.ServerStatus>> processAsync,
+        async protected Task Process<T, ResultT>(T obj, bool doCache,
+            Func<T, bool, bool, Task<ResultT>> processAsync,
             Func<T, Task<bool>> confirmAsync = null)
         {
             try
