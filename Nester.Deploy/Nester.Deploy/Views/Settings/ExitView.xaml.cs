@@ -24,18 +24,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
-using Inkton.Nester.Models;
+using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
     public partial class ExitView : View
 	{
-        public ExitView(BaseModels baseModels)
+        public ExitView(BaseViewModels baseModels)
         {
             InitializeComponent();
 
-            _baseModels = baseModels;
+            _baseViewModels = baseModels;
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
@@ -43,7 +43,7 @@ namespace Inkton.Nester.Views
                 });
 
             Message.Text = "Click 'Close Account' to close the account.\n\nAll private details will be removed from the database and remaining credit balance refunded.";
-            BindingContext = _baseModels.AuthViewModel;
+            BindingContext = _baseViewModels.AuthViewModel;
         }
 
         async void OnDoneButtonClickedAsync(object sender, EventArgs e)
@@ -56,8 +56,8 @@ namespace Inkton.Nester.Views
 
                 if (yes)
                 {
-                    Cloud.ServerStatus status = await _baseModels.AuthViewModel.DeleteUserAsync();
-                    await DisplayAlert("Nester", status.GetLocalDescription(), "OK");
+                    Cloud.ResultSingle<User> result = await _baseViewModels.AuthViewModel.DeleteUserAsync();
+                    await DisplayAlert("Nester", result.GetLocalDescription(), "OK");
                     await MainSideView.Detail.Navigation.PopAsync();
                 } 
             }

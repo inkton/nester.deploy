@@ -28,11 +28,11 @@ namespace Inkton.Nester.Views
 {
     public partial class AppEngageView : View
     {
-        public AppEngageView(BaseModels baseModels)
+        public AppEngageView(BaseViewModels baseModels)
         {
             InitializeComponent();
 
-            BaseModels = baseModels;
+            ViewModels = baseModels;
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
@@ -45,8 +45,8 @@ namespace Inkton.Nester.Views
         {
             IsServiceActive = true;
 
-            _baseModels.WizardMode = true;
-            AppBasicDetailView basicView = new AppBasicDetailView(_baseModels);
+            _baseViewModels.WizardMode = true;
+            AppBasicDetailView basicView = new AppBasicDetailView(_baseViewModels);
             basicView.MainSideView = MainSideView;
             MainSideView.Detail.Navigation.InsertPageBefore(basicView, this);
             await MainSideView.Detail.Navigation.PopAsync();
@@ -59,7 +59,7 @@ namespace Inkton.Nester.Views
             IsServiceActive = true;
 
             ContactViewModel contactsModel = new ContactViewModel(null);
-            contactsModel.EditInvitation.User = Keeper.User;
+            contactsModel.EditInvitation.OwnedBy = Keeper.User;
             await contactsModel.QueryInvitationsAsync();
 
             AppJoinDetailView joinView = new AppJoinDetailView(contactsModel);

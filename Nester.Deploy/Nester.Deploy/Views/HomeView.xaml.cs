@@ -36,7 +36,7 @@ namespace Inkton.Nester.Views
 
         public HomeView()
         {
-            _baseModels = Keeper.BaseModels;
+            _baseViewModels = Keeper.ViewModels;
 
             InitializeComponent();
 
@@ -67,7 +67,7 @@ namespace Inkton.Nester.Views
 
             _updatInterval = Settings.AppStatusRefreshInterval;
 
-            BindingContext = _baseModels.AllApps;
+            BindingContext = _baseViewModels.AppCollectionViewModel;
 
             Monitor();
         }
@@ -84,7 +84,7 @@ namespace Inkton.Nester.Views
                     {
                         Task.Run(async () =>
                         {
-                            foreach (AppViewModel appModel in BaseModels.AllApps.AppModels)
+                            foreach (AppViewModel appModel in ViewModels.AppCollectionViewModel.AppModels)
                             {
                                 if (!appModel.EditApp.IsBusy)
                                 {
@@ -101,21 +101,6 @@ namespace Inkton.Nester.Views
                                     if (!appModel.EditApp.IsBusy)
                                     {
                                         appModel.Reload();
-
-                                        AppView appView = MainSideView.GetAppView(appModel.EditApp.Id);
-
-                                        if (appView != null)
-                                        {
-                                            Device.BeginInvokeOnMainThread(() =>
-                                            {
-                                                appView.UpdateState();
-
-                                                if (appModel.EditApp.IsActive)
-                                                {
-                                                    appView.ReloadAnalytics();
-                                                }
-                                            });
-                                        }
                                     }
                                 }
                                 catch(Exception ex)
@@ -146,16 +131,10 @@ namespace Inkton.Nester.Views
 
             try
             {
-                _baseModels.WizardMode = false;
-
-                AppViewModel appModel = AppModels.SelectedItem as AppViewModel;
-                if (appModel != null)
-                {
-                    Keeper.Target = appModel;
-                }
+                _baseViewModels.WizardMode = false;
 
                 MainSideView.StackViewAsync(
-                    Activator.CreateInstance(pageType, new object[] { _baseModels }) as View);
+                    Activator.CreateInstance(pageType, new object[] { _baseViewModels }) as View);
                 MainSideView.IsPresented = false;
             }
             catch (Exception ex)
@@ -171,7 +150,7 @@ namespace Inkton.Nester.Views
             try
             {
                 ContactViewModel contactsModel = new ContactViewModel(null);
-                contactsModel.EditInvitation.User = Keeper.User;
+                contactsModel.EditInvitation.OwnedBy = Keeper.User;
                 await contactsModel.QueryInvitationsAsync();
 
                 MainSideView.StackViewAsync(
@@ -228,16 +207,12 @@ namespace Inkton.Nester.Views
                         try
                         {
                             await appModel.RemoveAppAsync();
-                            BaseModels.AllApps.RemoveApp(appModel);
-                            Keeper.Target = Keeper.BaseModels.AllApps
-                                .AppModels.FirstOrDefault();
 
-                            if (Keeper.Target != null)
-                            {
-                                Keeper.Target.Reload();
-                            }
+                            ViewModels.AppCollectionViewModel.RemoveApp(appModel);
 
-                            Keeper.ResetView(Keeper.Target);
+                            Keeper.ResetView(Keeper.ViewModels
+                                .AppCollectionViewModel
+                                .AppModels.FirstOrDefault());
                         }
                         catch (Exception ex)
                         {
@@ -266,8 +241,8 @@ namespace Inkton.Nester.Views
 
         private async void ButtonPayment_ClickedAsync(object sender, EventArgs e)
         {
-            await _baseModels.PaymentViewModel.QueryPaymentMethodAsync(false, false);
-            await _baseModels.PaymentViewModel.QueryBillingCyclesAsync();
+            await _baseViewModels.PaymentViewModel.QueryPaymentMethodAsync(false, false);
+            await _baseViewModels.PaymentViewModel.QueryBillingCyclesAsync();
 
             LoadSettingsPage(typeof(PaymentView));
         }
@@ -283,14 +258,12 @@ namespace Inkton.Nester.Views
 
             try
             {
-                AppViewModel newAppModel = new AppViewModel();
-                newAppModel.NewAppAsync();
-
-                Keeper.Target = newAppModel;
-                BaseModels.WizardMode = true;
+                _baseViewModels.AppViewModel = new AppViewModel();
+                _baseViewModels.AppViewModel.NewAppAsync();
+                _baseViewModels.WizardMode = true;
 
                 MainSideView.StackViewAsync(
-                   new AppBasicDetailView(BaseModels));
+                   new AppBasicDetailView(_baseViewModels));
 
                 MainSideView.IsPresented = false;
             }

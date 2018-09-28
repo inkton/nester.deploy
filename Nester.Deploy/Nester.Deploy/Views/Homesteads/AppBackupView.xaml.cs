@@ -25,22 +25,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
-using Inkton.Nester.Models;
 
 namespace Inkton.Nester.Views
 {
     public partial class AppBackupView : View
     {
-        public AppBackupView(BaseModels baseModels)
+        public AppBackupView(BaseViewModels baseModels)
         {
             InitializeComponent();
 
-            BaseModels = baseModels;
+            ViewModels = baseModels;
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
@@ -62,14 +60,14 @@ namespace Inkton.Nester.Views
         {
             base.UpdateBindings();
 
-            BindingContext = _baseModels.TargetViewModel.DeploymentViewModel;
+            BindingContext = _baseViewModels.AppViewModel.DeploymentViewModel;
 
             UpdateDescriptions();
         }
 
         private void UpdateDescriptions()
         {
-            foreach (AppBackup backup in _baseModels.TargetViewModel.DeploymentViewModel.AppBackups)
+            foreach (AppBackup backup in _baseViewModels.AppViewModel.DeploymentViewModel.AppBackups)
             {
                 switch (backup.Status)
                 {
@@ -114,16 +112,16 @@ namespace Inkton.Nester.Views
                         return;
                     }
 
-                    await _baseModels.TargetViewModel.DeploymentViewModel.RestoreAppAsync(
-                        AppBackups.SelectedItem as Models.AppBackup);
+                    await _baseViewModels.AppViewModel.DeploymentViewModel.RestoreAppAsync(
+                        AppBackups.SelectedItem as Nest.Model.AppBackup);
 
                     // Reload everything
-                    await _baseModels.TargetViewModel.InitAsync();
+                    await _baseViewModels.AppViewModel.InitAsync();
 
-                    AppView appView = MainSideView.GetAppView(_baseModels.TargetViewModel.EditApp.Id);
+                    AppView appView = MainSideView.GetAppView(App.Id);
                     if (appView != null)
                     {
-                        appView.UpdateState();
+                        appView.UpdateStatus();
                     }
                 }
 
@@ -152,7 +150,7 @@ namespace Inkton.Nester.Views
                     return;
                 }
 
-                await _baseModels.TargetViewModel
+                await _baseViewModels.AppViewModel
                     .DeploymentViewModel.BackupAppAsync();
 
                 UpdateDescriptions();
@@ -171,7 +169,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseModels.TargetViewModel
+                await _baseViewModels.AppViewModel
                     .DeploymentViewModel.QueryAppBackupsAsync();
 
                 UpdateDescriptions();

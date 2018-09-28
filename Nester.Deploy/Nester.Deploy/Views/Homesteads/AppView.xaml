@@ -165,26 +165,30 @@
     <StackLayout Grid.Row="2" Grid.Column="1"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
       
       <StackLayout x:Name="InactiveApp"
+              IsVisible="True" 
               HorizontalOptions="CenterAndExpand"
               VerticalOptions="CenterAndExpand">
             
               <Image x:Name="Logo"
+                IsVisible="True"  
                 VerticalOptions="Center"
                 HorizontalOptions="Center"            
                 Source="app-background.png" />
           
               <syncfusion:SfBusyIndicator x:Name="ProgressControl"
+                  IsVisible="True"                                          
                   VerticalOptions="Center"
                   HorizontalOptions="Center"
                   TitlePlacement = "Bottom"
-                  AnimationType="Gear"
+                  AnimationType="Rectangle"
                   ViewBoxWidth = "150"
                   ViewBoxHeight="150"
                   Title="Please wait ..."
                   TextColor="{StaticResource mainColor}" />        
         </StackLayout>
           
-      <Grid x:Name="Metrics" RowSpacing="0" ColumnSpacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+      <Grid x:Name="Metrics" RowSpacing="0" ColumnSpacing="0" IsVisible="False" 
+            VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
 
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto"/>
@@ -195,7 +199,7 @@
           <ColumnDefinition Width="64*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0" Grid.Column="0" Scale=".8" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid Grid.Row="0" Grid.Column="0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Scale=".8" >
 
           <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
@@ -207,23 +211,22 @@
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100*"/>
           </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" HorizontalOptions="EndAndExpand" >
+                        <Label Text="Analyze Time Period (UTC)" />
+                        <DatePicker x:Name="AnalyzeDateUTC" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand"  />
+                    </StackLayout>
 
-          <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" HorizontalOptions="EndAndExpand" >
-            <Label Text="Analyze Time Period (UTC)" />
-            <DatePicker x:Name="AnalyzeDateUTC" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand"  />
-          </StackLayout>  
+                    <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" >
+                        <Label Text="Start" HorizontalOptions="Start" />
+                        <TimePicker x:Name="StartTime" HorizontalOptions="End" />
+                    </StackLayout>
 
-          <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" >
-            <Label Text="Start" HorizontalOptions="Start" />
-            <TimePicker x:Name="StartTime" HorizontalOptions="End" />
-          </StackLayout>  
+                    <StackLayout Grid.Row="2" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" >
+                        <Label Text="End" HorizontalOptions="Start" />
+                        <TimePicker x:Name="EndTime" HorizontalOptions="End"  />
+                    </StackLayout>
 
-          <StackLayout Grid.Row="2" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" >
-            <Label Text="End" HorizontalOptions="Start" />
-            <TimePicker x:Name="EndTime" HorizontalOptions="End"  />
-          </StackLayout>
-
-           <StackLayout Grid.Row="3" Grid.Column="0" HorizontalOptions="FillAndExpand">
+                    <StackLayout Grid.Row="3" Grid.Column="0" HorizontalOptions="FillAndExpand">
              <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
                 <Button x:Name="ButtonGetAnalytics" Text="Get Analytics" HorizontalOptions="Start" />
                 <ActivityIndicator x:Name="ServiceActive" HorizontalOptions="End" WidthRequest="100" HeightRequest="10"></ActivityIndicator>

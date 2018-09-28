@@ -104,9 +104,12 @@ namespace Inkton.Nester.Views
             _currentView = (Detail as NavigationPage).CurrentPage as View;
         }
 
-        public void ResetView(AppViewModel appModel = null)
+        public void UpdateView()
         {
-            if (appModel == null)
+            IKeeper keeper =
+                (Application.Current as IKeeper);
+
+            if (keeper.Target == null)
             {
                 BannerView view = new BannerView();
                 view.ShowProgress = false;
@@ -118,41 +121,38 @@ namespace Inkton.Nester.Views
                     _currentView != null && 
                     _currentView is AppView );
 
-                bool createView = false;
+                bool changeView = false;
 
                 if (isAppViewCurrent)
                 {
-                    if (_currentView.BaseModels.TargetViewModel.EditApp.Id
-                            != appModel.EditApp.Id)
+                    if (_currentView.ViewModels.AppViewModel.EditApp.Id
+                            != keeper.Target.EditApp.Id)
                     {
-                        createView = true;
+                        changeView = true;
                     }
                 }
                 else
                 {
-                    createView = true;
+                    changeView = true;
                 }
 
-                if (createView)
+                if (changeView)
                 {
-                    IKeeper keeper = 
-                        (Application.Current as IKeeper);
-                    keeper.Target = appModel;
-
-                    AppView appView = GetAppView(appModel.EditApp.Id); 
+                    AppView appView = GetAppView(keeper.Target.EditApp.Id); 
 
                     if (appView == null)
                     {
                         appView = new AppView(
-                             keeper.BaseModels);
-                        appView.UpdateBindings();
+                            new BaseViewModels(keeper.ViewModels));
 
-                        if (appModel.EditApp.IsActive)
+                        if (keeper.Target.EditApp.Id > 0)
                         {
-                            appView.ReloadAnalytics();
+                            Task.Run(async () => {
+                                await keeper.Target.InitAsync();
+                            });
                         }
 
-                        _viewCache[appModel.EditApp.Id] = appView;
+                        _viewCache[keeper.Target.EditApp.Id] = appView;
                     }
 
                     CreateRootView(appView);
@@ -165,7 +165,7 @@ namespace Inkton.Nester.Views
             if (_currentView != null && _currentView is AppView)
             {
                 (_currentView as AppView)
-                    .BaseModels.TargetViewModel.Reload();
+                    .ViewModels.AppViewModel.Reload();
             }
         }
     }

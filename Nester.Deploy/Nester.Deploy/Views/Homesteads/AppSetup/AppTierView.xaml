@@ -42,14 +42,14 @@
       </Button>
 
       <Button x:Name="ButtonNests"
-        IsVisible="{Binding TargetViewModel.EditApp.OwnerCapabilities.CanViewNest}"
+        IsVisible="{Binding AppViewModel.EditApp.OwnerCapabilities.CanViewNest}"
         Text="Nests"
         Style="{StaticResource buttonUtilStyle1}"
         Clicked="OnButtonNestsClickedAsync">
       </Button>
 
       <Button x:Name="ButtonDomains"
-        IsVisible="{Binding TargetViewModel.EditApp.IsDeployed}"
+        IsVisible="{Binding AppViewModel.EditApp.IsDeployed}"
         Text="Domains"
         Style="{StaticResource buttonUtilStyle1}"
         Clicked="OnButtonDomainsClickedAsync">
@@ -81,7 +81,7 @@
                   SelectionGesture="Tap"
                   SelectionMode="Single"                         
                   SelectionBackgroundColor="{StaticResource selectionColor}"                         
-                  ItemsSource="{Binding TargetViewModel.ServicesViewModel.AppFeaturesTable}">
+                  ItemsSource="{Binding AppViewModel.ServicesViewModel.AppFeaturesTable}">
           <sync:SfListView.ItemTemplate>
             <DataTemplate>
               <ViewCell>
@@ -260,7 +260,7 @@
     <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
       <Button x:Name="ButtonDone"
               Text="Proceed"
-              IsEnabled="{Binding TargetViewModel.Validated}"
+              IsEnabled="{Binding AppViewModel.Validated}"
               VerticalOptions="Center"
               Style="{StaticResource buttonPageFlow}"
               Clicked="OnDoneButtonClickedAsync">

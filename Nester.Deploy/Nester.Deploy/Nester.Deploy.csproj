@@ -23,15 +23,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Flurl.Http" Version="2.3.2" />
-    <PackageReference Include="Inkton.NesterLibrary" Version="1.3.5" />
+    <PackageReference Include="Flurl.Http" Version="2.4.0" />
+    <PackageReference Include="Inkton.NesterLibrary" Version="1.3.8" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="15.4.0.20" />
     <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="15.4.0.20" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="15.4.0.20" />
     <PackageReference Include="System.Net.NameResolution" Version="4.3.0" />
     <PackageReference Include="Xam.Plugin.DeviceInfo" Version="4.0.0.13" />
-    <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
+    <PackageReference Include="Xamarin.Forms" Version="2.5.1.527436" />
   </ItemGroup>
 
   <ItemGroup>
@@ -101,7 +101,7 @@
     <EmbeddedResource Update="Views\Homesteads\AppWebView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Homesteads\MainSideView.xaml">
+    <EmbeddedResource Update="Views\MainSideView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\HomeView.xaml">

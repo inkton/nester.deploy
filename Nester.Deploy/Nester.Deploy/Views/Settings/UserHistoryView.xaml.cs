@@ -22,14 +22,14 @@
 
 using System;
 using System.Collections.Generic;
-using Inkton.Nester.Models;
+using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
     public partial class UserHistoryView : View
     {
-        public UserHistoryView(BaseModels baseModels)
+        public UserHistoryView(BaseViewModels baseModels)
         {
             InitializeComponent();
 
@@ -37,17 +37,17 @@ namespace Inkton.Nester.Views
                 new List<Xamarin.Forms.View> {
                 });
 
-            _baseModels = baseModels;
-            BindingContext = _baseModels.AuthViewModel;
+            _baseViewModels = baseModels;
+            BindingContext = _baseViewModels.AuthViewModel;
         }
 
         protected async override void OnAppearing()
         {
-            BindingContext = _baseModels.AuthViewModel;
+            BindingContext = _baseViewModels.AuthViewModel;
 
             base.OnAppearing();
 
-            await _baseModels.AuthViewModel.QueryUserEventsAsync(Keeper.User);
+            await _baseViewModels.AuthViewModel.QueryUserEventsAsync(Keeper.User);
         }
 
         async private void OnDoneButtonClickedAsync(object sender, EventArgs e)

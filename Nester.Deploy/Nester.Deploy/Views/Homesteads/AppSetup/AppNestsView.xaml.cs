@@ -26,18 +26,18 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Inkton.Nester.Models;
+using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
     public partial class AppNestsView : View
     {
-        public AppNestsView(BaseModels baseModels)
+        public AppNestsView(BaseViewModels baseModels)
         {
             InitializeComponent();
 
-            BaseModels = baseModels;
+            ViewModels = baseModels;
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
@@ -59,8 +59,8 @@ namespace Inkton.Nester.Views
             AppNestsList.SelectionChanged += AppNestsList_SelectionChanged;
             Memory.SelectedIndexChanged += Memory_SelectedIndexChanged;
 
-            ButtonDone.IsVisible = _baseModels.WizardMode;
-            if (_baseModels.WizardMode)
+            ButtonDone.IsVisible = _baseViewModels.WizardMode;
+            if (_baseViewModels.WizardMode)
             {
                 // hide but do not collapse
                 TopButtonPanel.Opacity = 0;
@@ -68,7 +68,7 @@ namespace Inkton.Nester.Views
                 NavigationPage.SetHasNavigationBar(this, true);
             }
 
-            if (_baseModels.TargetViewModel.EditApp.Type == "biflow")
+            if (App.Type == "biflow")
             {
                 Type.Items.Remove("API Handler");
             }
@@ -78,7 +78,7 @@ namespace Inkton.Nester.Views
         {
             base.UpdateBindings();
 
-            BindingContext = _baseModels.TargetViewModel.NestViewModel;
+            BindingContext = _baseViewModels.AppViewModel.NestViewModel;
         }
 
         async private void OnButtonBasicDetailsClickedAsync(object sender, EventArgs e)
@@ -87,8 +87,8 @@ namespace Inkton.Nester.Views
 
             try
             {
-                _baseModels.WizardMode = false;
-                MainSideView.CurrentLevelViewAsync(new AppBasicDetailView(_baseModels));
+                _baseViewModels.WizardMode = false;
+                MainSideView.CurrentLevelViewAsync(new AppBasicDetailView(_baseViewModels));
             }
             catch (Exception ex)
             {
@@ -104,7 +104,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new AppTierView(_baseModels));
+                MainSideView.CurrentLevelViewAsync(new AppTierView(_baseViewModels));
             }
             catch (Exception ex)
             {
@@ -120,7 +120,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new AppDomainView(_baseModels));
+                MainSideView.CurrentLevelViewAsync(new AppDomainView(_baseViewModels));
             }
             catch (Exception ex)
             {
@@ -136,7 +136,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new ContactsView(_baseModels));
+                MainSideView.CurrentLevelViewAsync(new ContactsView(_baseViewModels));
             }
             catch (Exception ex)
             {
@@ -153,8 +153,8 @@ namespace Inkton.Nester.Views
                 AppNestsList.SelectedItems.RemoveAt(0);
             }
 
-            _baseModels.TargetViewModel.NestViewModel.EditNest = new Nest();
-            _baseModels.TargetViewModel.NestViewModel.EditNest.App = _baseModels.TargetViewModel.EditApp;
+            _baseViewModels.AppViewModel.NestViewModel.EditNest = new Inkton.Nest.Model.Nest();
+            _baseViewModels.AppViewModel.NestViewModel.EditNest.OwnedBy = App;
 
             SetDefaults();
 
@@ -176,10 +176,10 @@ namespace Inkton.Nester.Views
                 Type.IsEnabled = false;
             }
 
-            Nest browseNest = AppNestsList.SelectedItem as Nest;
-            Nest copy = new Nest();
-            Cloud.Object.CopyPropertiesTo(browseNest, copy);
-            _baseModels.TargetViewModel.NestViewModel.EditNest = copy;
+            Inkton.Nest.Model.Nest browseNest = AppNestsList.SelectedItem as Inkton.Nest.Model.Nest;
+            Inkton.Nest.Model.Nest copy = new Inkton.Nest.Model.Nest();
+            browseNest.CopyTo(copy);
+            _baseViewModels.AppViewModel.NestViewModel.EditNest = copy;
 
             int index = 0;
 
@@ -193,10 +193,10 @@ namespace Inkton.Nester.Views
             }
 
             Scaling.Value = browseNest.Scale;
-            NestPlatform platform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
+            NestPlatform platform = _baseViewModels.AppViewModel.NestViewModel.Platforms.First(
                 x => x.Id == browseNest.PlatformId);
 
-            if (_baseModels.TargetViewModel.EditApp.Type == "uniflow")
+            if (App.Type == "uniflow")
             {
                 /*
                  * The standard webserver can be a mvc or api type 
@@ -217,7 +217,7 @@ namespace Inkton.Nester.Views
                     Type.SelectedIndex = 2;
                 }
             }
-            else if (_baseModels.TargetViewModel.EditApp.Type == "biflow")
+            else if (App.Type == "biflow")
             {
                 /*
                  * The websocket can be a mvc type only
@@ -236,16 +236,16 @@ namespace Inkton.Nester.Views
             }
         }
 
-        private Nest CopyUpdate(Nest browseNest)
+        private Inkton.Nest.Model.Nest CopyUpdate(Inkton.Nest.Model.Nest browseNest)
         {
-            browseNest.App = _baseModels.TargetViewModel.EditApp;
+            browseNest.OwnedBy = App;
             browseNest.Tag = Tag.Text;
             browseNest.Name = Name.Text;
             browseNest.NestStatus = "active";
 
             NestPlatform platform = null;
 
-            if (_baseModels.TargetViewModel.EditApp.Type == "uniflow")
+            if (App.Type == "uniflow")
             {
                 /*
                  * The standard webserver can be a mvc or api type 
@@ -255,21 +255,21 @@ namespace Inkton.Nester.Views
 
                 if (Type.SelectedIndex == 0)
                 {
-                    platform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
+                    platform = _baseViewModels.AppViewModel.NestViewModel.Platforms.First(
                             x => x.Tag == "mvc");
                 }
                 else if (Type.SelectedIndex == 1)
                 {
-                    platform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
+                    platform = _baseViewModels.AppViewModel.NestViewModel.Platforms.First(
                             x => x.Tag == "api");
                 }
                 else if (Type.SelectedIndex == 2)
                 {
-                    platform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
+                    platform = _baseViewModels.AppViewModel.NestViewModel.Platforms.First(
                             x => x.Tag == "worker");
                 }
             }
-            else if (_baseModels.TargetViewModel.EditApp.Type == "biflow")
+            else if (App.Type == "biflow")
             {
                 /*
                  * The websocket can be a mvc type only
@@ -279,12 +279,12 @@ namespace Inkton.Nester.Views
 
                 if (Type.SelectedIndex == 0)
                 {
-                    platform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
+                    platform = _baseViewModels.AppViewModel.NestViewModel.Platforms.First(
                             x => x.Tag == "mvc");
                 }
                 else if (Type.SelectedIndex == 1)
                 {
-                    platform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
+                    platform = _baseViewModels.AppViewModel.NestViewModel.Platforms.First(
                             x => x.Tag == "worker");
                 }
             }
@@ -327,17 +327,17 @@ namespace Inkton.Nester.Views
             int totalMemoryMbytes = value * multiplier * scale;
             UsedMemory.Text = totalMemoryMbytes.ToString() + "m";
 
-            if (_baseModels.TargetViewModel.NestViewModel.EditNest != null)
+            if (_baseViewModels.AppViewModel.NestViewModel.EditNest != null)
             {
-                _baseModels.TargetViewModel.NestViewModel.EditNest.ScaleSize = memoryString;
-                _baseModels.TargetViewModel.NestViewModel.EditNest.Scale = scale;
+                _baseViewModels.AppViewModel.NestViewModel.EditNest.ScaleSize = memoryString;
+                _baseViewModels.AppViewModel.NestViewModel.EditNest.Scale = scale;
             }
         }
 
         private void Validate()
         {
-            _baseModels.TargetViewModel.NestViewModel.Validated = false;
-            _baseModels.TargetViewModel.NestViewModel.CanUpdate = false;
+            _baseViewModels.AppViewModel.NestViewModel.Validated = false;
+            _baseViewModels.AppViewModel.NestViewModel.CanUpdate = false;
 
             if (TagValidator != null)
             {
@@ -345,7 +345,7 @@ namespace Inkton.Nester.Views
                  * be added only if valid fields and no list item 
                  * has been selected and currenly receivng focus.
                  */
-                _baseModels.TargetViewModel.NestViewModel.Validated = (
+                _baseViewModels.AppViewModel.NestViewModel.Validated = (
                     TagValidator.IsValid &&
                     NameValidator.IsValid 
                 );
@@ -354,8 +354,8 @@ namespace Inkton.Nester.Views
                  * be updaed only if valid fields has been selected 
                  * and an item from a list is selected.
                  */
-                _baseModels.TargetViewModel.NestViewModel.CanUpdate =
-                    _baseModels.TargetViewModel.NestViewModel.Validated &&
+                _baseViewModels.AppViewModel.NestViewModel.CanUpdate =
+                    _baseViewModels.AppViewModel.NestViewModel.Validated &&
                     AppNestsList.SelectedItem != null;
 
                 System.Diagnostics.Debug.WriteLine("Selected - {0}",
@@ -369,9 +369,9 @@ namespace Inkton.Nester.Views
 
             try
             {
-                if (_baseModels.TargetViewModel.NestViewModel.Nests.Any())
+                if (_baseViewModels.AppViewModel.NestViewModel.Nests.Any())
                 {
-                    Nest nest = _baseModels.TargetViewModel.NestViewModel.Nests.First();
+                    Inkton.Nest.Model.Nest nest = _baseViewModels.AppViewModel.NestViewModel.Nests.First();
                     AppNestsList.SelectedItem = nest;
                 }
 
@@ -417,7 +417,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                var existNests = from nest in _baseModels.TargetViewModel.NestViewModel.Nests
+                var existNests = from nest in _baseViewModels.AppViewModel.NestViewModel.Nests
                                     where nest.Tag == Tag.Text
                                     select nest;
                 if (existNests.Any())
@@ -427,12 +427,12 @@ namespace Inkton.Nester.Views
                     return;
                 }
 
-                Nest newNest = CopyUpdate(new Nest());
-                NestPlatform workerPlatform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
+                Inkton.Nest.Model.Nest newNest = CopyUpdate(new Inkton.Nest.Model.Nest());
+                NestPlatform workerPlatform = _baseViewModels.AppViewModel.NestViewModel.Platforms.First(
                     x => x.Tag == "worker");
 
                 // the new nest is a handler
-                var handlerNests = from nest in _baseModels.TargetViewModel.NestViewModel.Nests
+                var handlerNests = from nest in _baseViewModels.AppViewModel.NestViewModel.Nests
                                    where nest.PlatformId != workerPlatform.Id
                                    select nest;
 
@@ -444,7 +444,7 @@ namespace Inkton.Nester.Views
                     return;
                 }
 
-                await _baseModels.TargetViewModel.NestViewModel.CreateNestAsync(newNest);
+                await _baseViewModels.AppViewModel.NestViewModel.CreateNestAsync(newNest);
 
                 Clear();
             }
@@ -462,8 +462,8 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await Process(AppNestsList.SelectedItem as Nest, true,
-                    _baseModels.TargetViewModel.NestViewModel.QueryNestAsync
+                await Process(AppNestsList.SelectedItem as Inkton.Nest.Model.Nest, true,
+                    _baseViewModels.AppViewModel.NestViewModel.QueryNestAsync
                 );
 
                 SetDefaults();
@@ -482,9 +482,9 @@ namespace Inkton.Nester.Views
 
             try
             {
-                Nest updatingNest = AppNestsList.SelectedItem as Nest;
+                Inkton.Nest.Model.Nest updatingNest = AppNestsList.SelectedItem as Inkton.Nest.Model.Nest;
 
-                var existNests = from nest in _baseModels.TargetViewModel.NestViewModel.Nests
+                var existNests = from nest in _baseViewModels.AppViewModel.NestViewModel.Nests
                                  where nest.Tag == Tag.Text && nest.Id != updatingNest.Id
                                  select nest;
                 if (existNests.Any())
@@ -494,11 +494,11 @@ namespace Inkton.Nester.Views
                     return;
                 }
 
-                Nest updateNest = CopyUpdate(updatingNest);
+                Inkton.Nest.Model.Nest updateNest = CopyUpdate(updatingNest);
                 if (updateNest != null)
                 {
                     await Process(updateNest, true,
-                        _baseModels.TargetViewModel.NestViewModel.UpdateNestAsync
+                        _baseViewModels.AppViewModel.NestViewModel.UpdateNestAsync
                     );
 
                     SetDefaults();
@@ -518,9 +518,9 @@ namespace Inkton.Nester.Views
 
             try
             {
-                Nest nest = AppNestsList.SelectedItem as Nest;
+                Inkton.Nest.Model.Nest nest = AppNestsList.SelectedItem as Inkton.Nest.Model.Nest;
 
-                if (_baseModels.TargetViewModel.EditApp.IsDeployed)
+                if (App.IsDeployed)
                 {
                     if (nest.Platform.Tag != "worker")
                     {
@@ -530,8 +530,8 @@ namespace Inkton.Nester.Views
                 }
 
                 await Process(nest, true,
-                    _baseModels.TargetViewModel.NestViewModel.RemoveNestAsync,
-                       new Func<Nest, Task<bool>>(
+                    _baseViewModels.AppViewModel.NestViewModel.RemoveNestAsync,
+                       new Func<Inkton.Nest.Model.Nest, Task<bool>>(
                             async (obj) =>
                             {
                                 return await DisplayAlert("Nester", "Would you like to remove this nest", "Yes", "No");
@@ -553,10 +553,10 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                NestPlatform workerPlatform = _baseModels.TargetViewModel.NestViewModel.Platforms.First(
+                NestPlatform workerPlatform = _baseViewModels.AppViewModel.NestViewModel.Platforms.First(
                     x => x.Tag == "worker");
 
-                var handlerNests = from nest in _baseModels.TargetViewModel.NestViewModel.Nests
+                var handlerNests = from nest in _baseViewModels.AppViewModel.NestViewModel.Nests
                                    where nest.PlatformId != workerPlatform.Id
                                    select nest;
 
@@ -566,14 +566,14 @@ namespace Inkton.Nester.Views
                     return;
                 }
 
-                if (_baseModels.WizardMode)
+                if (_baseViewModels.WizardMode)
                 {
-                    await _baseModels.TargetViewModel.ContactViewModel.InitAsync();
+                    await _baseViewModels.AppViewModel.ContactViewModel.InitAsync();
 
                     // if currently trvelling back and forth on the 
                     // app wizard - move to the next
 
-                    ContactsView contactsView = new ContactsView(_baseModels);
+                    ContactsView contactsView = new ContactsView(_baseViewModels);
                     contactsView.MainSideView = MainSideView;
                     await MainSideView.Detail.Navigation.PushAsync(contactsView);
                 }

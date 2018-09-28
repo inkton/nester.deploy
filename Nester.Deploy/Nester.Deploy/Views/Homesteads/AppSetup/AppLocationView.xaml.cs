@@ -26,7 +26,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Inkton.Nester.Models;
+using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
@@ -40,7 +40,7 @@ namespace Inkton.Nester.Views
                 TapGestureRecognizer tap = new TapGestureRecognizer
                 {
                     Command = new Command<Forest>(async (forest) => await view.OnSelectLocation(forest, true)),
-                    CommandParameter = view.BaseModels.TargetViewModel.DeploymentViewModel.ForestsByTag[forestTag.Replace('_', '-')]
+                    CommandParameter = view.ViewModels.AppViewModel.DeploymentViewModel.ForestsByTag[forestTag.Replace('_', '-')]
                 };
 
                 FlagLabel = view.FindByName<Label>("FlagLabel_" + forestTag);
@@ -60,16 +60,16 @@ namespace Inkton.Nester.Views
 
         private Dictionary<string, ForestButton> _forestButtons;
 
-        public AppLocationView(BaseModels baseModels, 
+        public AppLocationView(BaseViewModels baseModels, 
             ObservableCollection<Forest> validForests)
         {
             InitializeComponent();
 
-            BaseModels = baseModels;
+            ViewModels = baseModels;
 
             _forestButtons = new Dictionary<string, ForestButton>();
             
-            if (baseModels.TargetViewModel.ServicesViewModel.SelectedAppserviceTag == "nest-oak")
+            if (baseModels.AppViewModel.ServicesViewModel.SelectedAppserviceTag == "nest-oak")
             {
                 SetupOakLocations(validForests);
             }
@@ -85,7 +85,7 @@ namespace Inkton.Nester.Views
         {
             base.UpdateBindings();
 
-            BindingContext = _baseModels.TargetViewModel.DeploymentViewModel;
+            BindingContext = _baseViewModels.AppViewModel.DeploymentViewModel;
         }
 
         private void SetupOakLocations(ObservableCollection<Forest> validForests)
@@ -232,8 +232,8 @@ namespace Inkton.Nester.Views
                 AnimateButtonTouched(button.FlagHolder, 1500, "#66b9f1", "#E4F1FE", 1);
                 AnimateButtonTouched(button.FlagHolder, 1500, "#66b9f1", "#E4F1FE", 1);
 
-                _baseModels.TargetViewModel.DeploymentViewModel.EditDeployment.ForestId = forest.Id;
-                MainSideView.CurrentLevelViewAsync(new AppSummaryView(_baseModels));
+                _baseViewModels.AppViewModel.DeploymentViewModel.EditDeployment.ForestId = forest.Id;
+                MainSideView.CurrentLevelViewAsync(new AppSummaryView(_baseViewModels));
             }
             catch (Exception ex)
             {

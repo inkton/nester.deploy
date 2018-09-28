@@ -23,14 +23,14 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Inkton.Nester.Models;
+using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
     public partial class PaymentView : View
     {
-        public PaymentView(BaseModels baseModels)
+        public PaymentView(BaseViewModels baseModels)
         {
             InitializeComponent();
 
@@ -41,8 +41,8 @@ namespace Inkton.Nester.Views
                     BillingCycle
                 });
 
-            _baseModels = baseModels;
-            BindingContext = _baseModels.PaymentViewModel;
+            _baseViewModels = baseModels;
+            BindingContext = _baseViewModels.PaymentViewModel;
 
             BillingCycle.SelectedIndex = 0;
             UpdateBillingInfoAsync();
@@ -63,7 +63,7 @@ namespace Inkton.Nester.Views
             {
                 Dictionary<string, string> filter = new Dictionary<string, string>();
                 filter.Add("billing_cycle_id", cycle.Id.ToString());
-                await _baseModels.PaymentViewModel.QueryUserBillingTasksAsync(filter);
+                await _baseViewModels.PaymentViewModel.QueryUserBillingTasksAsync(filter);
             }
         }
 
@@ -71,7 +71,7 @@ namespace Inkton.Nester.Views
         {
             if (CardNumberValidator != null)
             {
-                _baseModels.PaymentViewModel.Validated = (
+                _baseViewModels.PaymentViewModel.Validated = (
                         CardNumberValidator.IsValid &&
                         ExpMonthValidator.IsValid &&
                         ExpYearValidator.IsValid &&
@@ -89,8 +89,8 @@ namespace Inkton.Nester.Views
         {
             IsServiceActive = true;
 
-            _baseModels.PaymentViewModel.DisplayPaymentMethodProof = false;
-            _baseModels.PaymentViewModel.DisplayPaymentMethodEntry = true;
+            _baseViewModels.PaymentViewModel.DisplayPaymentMethodProof = false;
+            _baseViewModels.PaymentViewModel.DisplayPaymentMethodEntry = true;
 
             IsServiceActive = false;
         }
@@ -101,7 +101,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseModels.PaymentViewModel.CreatePaymentMethodAsync(CardNumber.Text,
+                await _baseViewModels.PaymentViewModel.CreatePaymentMethodAsync(CardNumber.Text,
                     int.Parse(ExpMonth.Text), int.Parse(ExpYear.Text), CVVNumber.Text);
 
                 MainSideView.UnstackViewAsync();
