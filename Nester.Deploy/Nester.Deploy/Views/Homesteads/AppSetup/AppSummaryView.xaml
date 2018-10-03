@@ -808,6 +808,7 @@
                 <Grid.RowDefinitions>
                   <RowDefinition Height="*" />
                   <RowDefinition Height="*" />
+                  <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -819,29 +820,27 @@
                   <!-- Title -->
                       
                   <Label Grid.Row="0" Grid.Column="0"
-                          Text="Discount"
-                          Style="{StaticResource nesterListInfoLabelTiny}"
-                          >                    
+                          Text="Discount" Style="{StaticResource nesterListInfoLabelTiny}">                    
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="0"
-                          Text="Total"
-                          Style="{StaticResource nesterListInfoBodyTiny}"
-                  >                                              
+                          Text="Total" Style="{StaticResource nesterListInfoBodyTiny}">                                              
                   </Label>
 
+                  <Label Grid.Row="2" Grid.Column="0" x:Name="AdditionalInfo"
+                          Grid.ColumnSpan = "3" Style="{StaticResource nesterListInfoLabelTiny}">
+                  </Label>
+                  
                   <!-- Price -->
                       
                   <Label Grid.Row="0" Grid.Column="2" x:Name="DiscountTotal"
-                          Style="{StaticResource nesterListInfoLabelTiny}"
-                          >
+                          Style="{StaticResource nesterListInfoLabelTiny}">
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="2" x:Name="Total"
-                          Style="{StaticResource nesterListInfoBodyTiny}"                             
-                          >
+                          Style="{StaticResource nesterListInfoBodyTiny}">
                   </Label>
-
+                  
               </Grid>
 
             </Grid>
