@@ -566,16 +566,6 @@ namespace Inkton.Nester.Views
                         .ServicesViewModel.UpgradableAppTiers.Clear();
                 }
 
-                if (Keeper.User.Id == App.Id)
-                {
-                    if (_baseViewModels.PaymentViewModel.EditPaymentMethod.IsActive)
-                    {
-                        IsServiceActive = false;
-                        await DisplayAlert("Nester", "Please enter a payment method before app creation", "OK");
-                        return;
-                    }
-                }
-
                 NestPlatform workerPlatform = _baseViewModels.AppViewModel.NestViewModel.Platforms.First(
                     x => x.Tag == "worker");
 
