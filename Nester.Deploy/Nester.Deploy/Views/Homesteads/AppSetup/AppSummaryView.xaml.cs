@@ -349,16 +349,32 @@ namespace Inkton.Nester.Views
 
             if (credit != null)
             {
-                decimal amount = Convert.ToDecimal(credit.Amount);
-                bool isPercentage = credit.Type == "percentage";
+                if (credit.Type != "trial")
+                {
+                    decimal value = Convert.ToDecimal(credit.Value);
+                    bool isPercentage = credit.Type == "percentage";
 
-                if (isPercentage)
-                {
-                    discount = total * amount;
+                    if (isPercentage)
+                    {
+                        discount = total * value;
+                    }
+                    else
+                    {
+                        discount = total - value;
+                    }
                 }
-                else
+
+                switch (credit.Type)
                 {
-                    discount = total - amount;
+                    case "percentage":
+                        AdditionalInfo.Text = string.Format("The discount is %{0}", credit.Value);
+                        break;
+                    case "amount":
+                        AdditionalInfo.Text = string.Format("A ${0} deduction apply", credit.Value);
+                        break;
+                    case "trial":
+                        AdditionalInfo.Text = string.Format("Trial the app for {0} hours ", credit.Value);
+                        break;
                 }
             }
 
