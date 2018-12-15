@@ -81,7 +81,7 @@
                   SelectionGesture="Tap"
                   SelectionMode="Single"                         
                   SelectionBackgroundColor="{StaticResource selectionColor}"                         
-                  ItemsSource="{Binding AppViewModel.ServicesViewModel.AppFeaturesTable}">
+                  ItemsSource="{Binding AppViewModel.ServicesViewModel.AppTierTable}">
           <sync:SfListView.ItemTemplate>
             <DataTemplate>
               <ViewCell>

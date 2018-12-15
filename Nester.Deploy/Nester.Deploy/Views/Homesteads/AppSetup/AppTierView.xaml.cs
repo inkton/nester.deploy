@@ -44,6 +44,11 @@ namespace Inkton.Nester.Views
                 .ServicesViewModel
                 .UpgradableAppTiers.Any();
 
+            baseModels
+                .AppViewModel
+                .ServicesViewModel
+                .ResetAppServiceTable();
+
             ViewModels = baseModels;
 
             AppTypeTierView.SelectionChanged += AppTypeTierView_SelectionChanged;
@@ -58,7 +63,6 @@ namespace Inkton.Nester.Views
                     ButtonDone
                 });
 
-            ButtonDone.IsVisible = _baseViewModels.WizardMode || _isUpgrading;
             if (_baseViewModels.WizardMode || _isUpgrading)
             {
                 // hide but do not collapse
@@ -67,13 +71,13 @@ namespace Inkton.Nester.Views
 
             AppTypeTierView.Loaded += AppTypeTierView_Loaded;
 
-            Supplier.SelectedIndexChanged += Supplier_SelectedIndexChanged;
-
-            if (_isUpgrading)
+            if (baseModels.AppViewModel
+                .ServicesViewModel
+                .SelectedAppServiceTableItem != null)
             {
                 if ((baseModels.AppViewModel
                     .ServicesViewModel
-                    .SelectedAppService.Tier.OwnedBy as AppService).Tag == "nest-redbud")
+                    .SelectedAppServiceTableItem.Tier.OwnedBy as AppService).Tag == "nest-redbud")
                 {
                     Supplier.SelectedIndex = 0;
                 }
@@ -81,12 +85,17 @@ namespace Inkton.Nester.Views
                 {
                     Supplier.SelectedIndex = 1;
                 }
-
-                Supplier.IsEnabled = false;
             }
             else
             {
                 Supplier.SelectedIndex = 0;
+            }
+
+            Supplier.IsEnabled = !_isUpgrading;
+            
+            if (Supplier.IsEnabled)
+            {
+                Supplier.SelectedIndexChanged += Supplier_SelectedIndexChanged;
             }
         }
 
@@ -112,24 +121,29 @@ namespace Inkton.Nester.Views
             }
         }
 
+        private void ResetSelections()
+        {
+            AppTypeTierView.SelectedItems.Clear();
+
+            ServicesViewModel.ServiceTableItem serviceTableItem = _baseViewModels
+                .AppViewModel.ServicesViewModel.SelectedAppServiceTableItem;
+
+            if (serviceTableItem != null)
+            {
+                AppTypeTierView.SelectedItems.Add(serviceTableItem);
+                _selectedAppRow = serviceTableItem;
+
+                MariaDBEnabled.IsToggled = (_baseViewModels.AppViewModel.ServicesViewModel.SelectedStorageServiceTableItem != null);
+
+                SetMariaDBSupport();
+            }
+        }
+
         private void AppTypeTierView_Loaded(object sender, Syncfusion.ListView.XForms.ListViewLoadedEventArgs e)
         {
             if (!_isUpgrading)
             {
-                AppTypeTierView.SelectedItems.Clear();
-
-                if (_baseViewModels.AppViewModel.ServicesViewModel.SelectedAppService != null)
-                {
-                    ServicesViewModel.ServiceTableItem serviceTableItem = 
-                        (AppTypeTierView.ItemsSource as ObservableCollection<ServicesViewModel.ServiceTableItem>).Where(
-                                         x => x.Tier.Id == _baseViewModels.AppViewModel.ServicesViewModel.SelectedAppService.Tier.Id).First();
-                    AppTypeTierView.SelectedItems.Add(serviceTableItem);
-                    _selectedAppRow = serviceTableItem;
-
-                    MariaDBEnabled.IsToggled = (_baseViewModels.AppViewModel.ServicesViewModel.SelectedStorageService != null);
-
-                    SetMariaDBSupport();
-                }
+                ResetSelections();
             }
         }
 
@@ -137,12 +151,16 @@ namespace Inkton.Nester.Views
         {
             if ((Supplier.SelectedItem as string) == "AWS")
             {
-                _baseViewModels.AppViewModel.ServicesViewModel.SelectedAppserviceTag = "nest-redbud";
+                _baseViewModels.AppViewModel
+                    .ServicesViewModel.BuildAppServiceTable("nest-redbud");
             }
             else
             {
-                _baseViewModels.AppViewModel.ServicesViewModel.SelectedAppserviceTag = "nest-oak";
+                _baseViewModels.AppViewModel
+                    .ServicesViewModel.BuildAppServiceTable("nest-oak");
             }
+
+            ResetSelections();
         }
 
         async private void OnButtonBasicDetailsClickedAsync(object sender, EventArgs e)
@@ -253,7 +271,8 @@ namespace Inkton.Nester.Views
             // At present only the wizard mode brings up this page.
             if (_isUpgrading)
             {
-                _baseViewModels.AppViewModel.ServicesViewModel.UpgradeAppServiceTier = _selectedAppRow.Tier;
+                _baseViewModels.AppViewModel.ServicesViewModel.UpgradeAppServiceTier(_selectedAppRow.Tier);
+
                 AppSummaryView summaryView = new AppSummaryView(_baseViewModels);
                 summaryView.MainSideView = MainSideView;
                 MainSideView.Detail.Navigation.InsertPageBefore(summaryView, this);
@@ -267,17 +286,17 @@ namespace Inkton.Nester.Views
                 }
 
                 if (_selectedAppRow != null && (
-                    _baseViewModels.AppViewModel.ServicesViewModel.SelectedAppService == null ||
-                    _baseViewModels.AppViewModel.ServicesViewModel.SelectedAppService.Tier.Id != _selectedAppRow.Tier.Id))
+                    _baseViewModels.AppViewModel.ServicesViewModel.SelectedAppServiceTableItem == null ||
+                    _baseViewModels.AppViewModel.ServicesViewModel.SelectedAppServiceTableItem.Tier.Id != _selectedAppRow.Tier.Id))
                 {
                     await _baseViewModels.AppViewModel.ServicesViewModel.SwitchAppServiceTierAsync(_selectedAppRow.Tier);
                 }
 
-                if (_baseViewModels.AppViewModel.ServicesViewModel.SelectedStorageService == null && MariaDBEnabled.IsToggled)
+                if (_baseViewModels.AppViewModel.ServicesViewModel.SelectedStorageServiceTableItem == null && MariaDBEnabled.IsToggled)
                 {
                     await _baseViewModels.AppViewModel.ServicesViewModel.CreateDefaultStorageServiceAsync();
                 }
-                else if (_baseViewModels.AppViewModel.ServicesViewModel.SelectedStorageService != null && !MariaDBEnabled.IsToggled)
+                else if (_baseViewModels.AppViewModel.ServicesViewModel.SelectedStorageServiceTableItem != null && !MariaDBEnabled.IsToggled)
                 {
                     await _baseViewModels.AppViewModel.ServicesViewModel.RemoveDefaultStorageServiceAsync();
                 }

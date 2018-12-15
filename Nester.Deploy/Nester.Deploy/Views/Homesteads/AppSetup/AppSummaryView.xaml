@@ -116,16 +116,16 @@
               </Grid.ColumnDefinitions>
 
               <StackLayout Grid.Column="0">
-                <Label Grid.Column="0" Text="{Binding ServicesViewModel.SelectedAppService.ProvidedBy}"
+                <Label Grid.Column="0" Text="{Binding ServicesViewModel.SelectedAppServiceTableItem.ProvidedBy}"
                     Style="{StaticResource nesterInfoLabelMinor}">
                 </Label>
               </StackLayout>
                
               <StackLayout Grid.Column="1">
-                <Label Text="{Binding ServicesViewModel.SelectedAppService.Name, Converter={StaticResource i18n}}"
+                <Label Text="{Binding ServicesViewModel.SelectedAppServiceTableItem.Name, Converter={StaticResource i18n}}"
                     Style="{StaticResource nesterInfoLabelMinor}">
                 </Label>                
-                <Label Text="{Binding ServicesViewModel.SelectedAppService.Type, Converter={StaticResource i18n}}"
+                <Label Text="{Binding ServicesViewModel.SelectedAppServiceTableItem.Type, Converter={StaticResource i18n}}"
                     Style="{StaticResource nesterInfoLabelMinor}">
                 </Label>
               </StackLayout>
@@ -151,13 +151,13 @@
                   <!-- CPU -->
                       
                   <Label Grid.Row="0" Grid.Column="0"
-                          Text="{Binding ServicesViewModel.SelectedAppService.FeaturesAll[0]}"
+                          Text="{Binding ServicesViewModel.SelectedAppServiceTableItem.FeaturesAll[0]}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >                    
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="0"
-                          Text="{Binding ServicesViewModel.SelectedAppService.FeaturesIncluded[0]}"
+                          Text="{Binding ServicesViewModel.SelectedAppServiceTableItem.FeaturesIncluded[0]}"
                           Style="{StaticResource nesterListInfoBodyTiny}"
                   >                                              
                   </Label>
@@ -165,13 +165,13 @@
                   <!-- Memory -->
                       
                   <Label Grid.Row="0" Grid.Column="1"
-                          Text="{Binding ServicesViewModel.SelectedAppService.FeaturesAll[1]}"
+                          Text="{Binding ServicesViewModel.SelectedAppServiceTableItem.FeaturesAll[1]}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="1"
-                          Text="{Binding ServicesViewModel.SelectedAppService.FeaturesIncluded[1], StringFormat='{0} MB'}"
+                          Text="{Binding ServicesViewModel.SelectedAppServiceTableItem.FeaturesIncluded[1], StringFormat='{0} MB'}"
                           Style="{StaticResource nesterListInfoBodyTiny}" 
                   >
                   </Label>
@@ -179,13 +179,13 @@
                   <!-- Drive -->
                       
                   <Label Grid.Row="0" Grid.Column="2"
-                          Text="{Binding ServicesViewModel.SelectedAppService.FeaturesAll[2]}"
+                          Text="{Binding ServicesViewModel.SelectedAppServiceTableItem.FeaturesAll[2]}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="2"
-                          Text="{Binding ServicesViewModel.SelectedAppService.FeaturesIncluded[2], StringFormat='{0} GB'}"
+                          Text="{Binding ServicesViewModel.SelectedAppServiceTableItem.FeaturesIncluded[2], StringFormat='{0} GB'}"
                           Style="{StaticResource nesterListInfoBodyTiny}"
                   >
                   </Label>
@@ -193,13 +193,13 @@
                   <!-- Bandwidth -->
                       
                   <Label Grid.Row="0" Grid.Column="3"
-                          Text="{Binding ServicesViewModel.SelectedAppService.FeaturesAll[3]}"
+                          Text="{Binding ServicesViewModel.SelectedAppServiceTableItem.FeaturesAll[3]}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="3"
-                          Text="{Binding ServicesViewModel.SelectedAppService.FeaturesIncluded[3], StringFormat='{0} MB'}"
+                          Text="{Binding ServicesViewModel.SelectedAppServiceTableItem.FeaturesIncluded[3], StringFormat='{0} MB'}"
                           Style="{StaticResource nesterListInfoBodyTiny}"
                   >
                   </Label>
@@ -207,13 +207,13 @@
                   <!-- Backup -->
                       
                   <Label Grid.Row="0" Grid.Column="4"
-                          Text="{Binding ServicesViewModel.SelectedAppService.FeaturesAll[4]}"
+                          Text="{Binding ServicesViewModel.SelectedAppServiceTableItem.FeaturesAll[4]}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="4"
-                          Text="{Binding ServicesViewModel.SelectedAppService.FeaturesIncluded[4]}"
+                          Text="{Binding ServicesViewModel.SelectedAppServiceTableItem.FeaturesIncluded[4]}"
                           Style="{StaticResource nesterListInfoBodyTiny}"                        
                   >
                   </Label>
@@ -221,13 +221,13 @@
                   <!-- Price -->
                       
                   <Label Grid.Row="0" Grid.Column="5" x:Name="AppServiceCost"
-                          Text="{Binding ServicesViewModel.SelectedAppService.Cost, StringFormat='{0:C2}'}"
+                          Text="{Binding ServicesViewModel.SelectedAppServiceTableItem.Cost, StringFormat='{0:C2}'}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="5"
-                          Text="{Binding ServicesViewModel.SelectedAppService.Period}"
+                          Text="{Binding ServicesViewModel.SelectedAppServiceTableItem.Period}"
                           Style="{StaticResource nesterListInfoBodyTiny}"                             
                           >
                   </Label>
@@ -255,16 +255,16 @@
               </Grid.ColumnDefinitions>
 
               <StackLayout Grid.Column="0">
-                <Label Grid.Column="0" Text="{Binding ServicesViewModel.SelectedStorageService.ProvidedBy}"
+                <Label Grid.Column="0" Text="{Binding ServicesViewModel.SelectedStorageServiceTableItem.ProvidedBy}"
                     Style="{StaticResource nesterInfoLabelMinor}">
                 </Label>               
               </StackLayout>
                
               <StackLayout Grid.Column="1">
-                <Label Text="{Binding ServicesViewModel.SelectedStorageService.Name, Converter={StaticResource i18n}}"
+                <Label Text="{Binding ServicesViewModel.SelectedStorageServiceTableItem.Name, Converter={StaticResource i18n}}"
                     Style="{StaticResource nesterInfoLabelMinor}">
                 </Label>                
-                <Label Text="{Binding ServicesViewModel.SelectedStorageService.Type, Converter={StaticResource i18n}}"
+                <Label Text="{Binding ServicesViewModel.SelectedStorageServiceTableItem.Type, Converter={StaticResource i18n}}"
                     Style="{StaticResource nesterInfoLabelMinor}">
                 </Label>
               </StackLayout>
@@ -288,13 +288,13 @@
                   <!-- Configuration -->
                       
                   <Label Grid.Row="0" Grid.Column="0"
-                          Text="{Binding ServicesViewModel.SelectedStorageService.FeaturesAll[0]}"
+                          Text="{Binding ServicesViewModel.SelectedStorageServiceTableItem.FeaturesAll[0]}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >                    
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="0"
-                          Text="{Binding ServicesViewModel.SelectedStorageService.FeaturesIncluded[0]}"
+                          Text="{Binding ServicesViewModel.SelectedStorageServiceTableItem.FeaturesIncluded[0]}"
                           Style="{StaticResource nesterListInfoBodyTiny}"
                   >                                              
                   </Label>
@@ -302,13 +302,13 @@
                   <!-- Optimization -->
                       
                   <Label Grid.Row="0" Grid.Column="1"
-                          Text="{Binding ServicesViewModel.SelectedStorageService.FeaturesAll[1]}"
+                          Text="{Binding ServicesViewModel.SelectedStorageServiceTableItem.FeaturesAll[1]}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="1"
-                          Text="{Binding ServicesViewModel.SelectedStorageService.FeaturesIncluded[1]}"
+                          Text="{Binding ServicesViewModel.SelectedStorageServiceTableItem.FeaturesIncluded[1]}"
                           Style="{StaticResource nesterListInfoBodyTiny}" 
                   >
                   </Label>
@@ -316,13 +316,13 @@
                   <!-- Backup -->
                       
                   <Label Grid.Row="0" Grid.Column="2"
-                          Text="{Binding ServicesViewModel.SelectedStorageService.FeaturesAll[2]}"
+                          Text="{Binding ServicesViewModel.SelectedStorageServiceTableItem.FeaturesAll[2]}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="2"
-                          Text="{Binding ServicesViewModel.SelectedStorageService.FeaturesIncluded[2]}"
+                          Text="{Binding ServicesViewModel.SelectedStorageServiceTableItem.FeaturesIncluded[2]}"
                           Style="{StaticResource nesterListInfoBodyTiny}"                        
                   >
                   </Label>
@@ -330,13 +330,13 @@
                   <!-- Price -->
                       
                   <Label Grid.Row="0" Grid.Column="3" x:Name="StorageServiceCost"
-                          Text="{Binding ServicesViewModel.SelectedStorageService.Cost, StringFormat='{0:C2}'}"
+                          Text="{Binding ServicesViewModel.SelectedStorageServiceTableItem.Cost, StringFormat='{0:C2}'}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="3"
-                          Text="{Binding ServicesViewModel.SelectedStorageService.Period}"
+                          Text="{Binding ServicesViewModel.SelectedStorageServiceTableItem.Period}"
                           Style="{StaticResource nesterListInfoBodyTiny}"                             
                           >
                   </Label>
@@ -364,16 +364,16 @@
               </Grid.ColumnDefinitions>
 
               <StackLayout Grid.Column="0">
-                <Label Grid.Column="0" Text="{Binding ServicesViewModel.SelectedTrackService.ProvidedBy}"
+                <Label Grid.Column="0" Text="{Binding ServicesViewModel.SelectedTrackServiceTableItem.ProvidedBy}"
                     Style="{StaticResource nesterInfoLabelMinor}">
                 </Label>               
               </StackLayout>
                
               <StackLayout Grid.Column="1">
-                <Label Text="{Binding ServicesViewModel.SelectedTrackService.Name, Converter={StaticResource i18n}}"
+                <Label Text="{Binding ServicesViewModel.SelectedTrackServiceTableItem.Name, Converter={StaticResource i18n}}"
                     Style="{StaticResource nesterInfoLabelMinor}">
                 </Label>                
-                <Label Text="{Binding ServicesViewModel.SelectedTrackService.Type, Converter={StaticResource i18n}}"
+                <Label Text="{Binding ServicesViewModel.SelectedTrackServiceTableItem.Type, Converter={StaticResource i18n}}"
                     Style="{StaticResource nesterInfoLabelMinor}">
                 </Label>
               </StackLayout>
@@ -397,13 +397,13 @@
                   <!-- Configuration -->
                       
                   <Label Grid.Row="0" Grid.Column="0"
-                          Text="{Binding ServicesViewModel.SelectedTrackService.FeaturesAll[0]}"
+                          Text="{Binding ServicesViewModel.SelectedTrackServiceTableItem.FeaturesAll[0]}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >                    
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="0"
-                          Text="{Binding ServicesViewModel.SelectedTrackService.FeaturesIncluded[0]}"
+                          Text="{Binding ServicesViewModel.SelectedTrackServiceTableItem.FeaturesIncluded[0]}"
                           Style="{StaticResource nesterListInfoBodyTiny}"
                   >                                              
                   </Label>
@@ -411,13 +411,13 @@
                   <!-- Optimization -->
                       
                   <Label Grid.Row="0" Grid.Column="1"
-                          Text="{Binding ServicesViewModel.SelectedTrackService.FeaturesAll[1]}"
+                          Text="{Binding ServicesViewModel.SelectedTrackServiceTableItem.FeaturesAll[1]}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="1"
-                          Text="{Binding ServicesViewModel.SelectedTrackService.FeaturesIncluded[1]}"
+                          Text="{Binding ServicesViewModel.SelectedTrackServiceTableItem.FeaturesIncluded[1]}"
                           Style="{StaticResource nesterListInfoBodyTiny}" 
                   >
                   </Label>
@@ -425,13 +425,13 @@
                   <!-- Backup -->
                       
                   <Label Grid.Row="0" Grid.Column="2"
-                          Text="{Binding ServicesViewModel.SelectedTrackService.FeaturesAll[2]}"
+                          Text="{Binding ServicesViewModel.SelectedTrackServiceTableItem.FeaturesAll[2]}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="2"
-                          Text="{Binding ServicesViewModel.SelectedTrackService.FeaturesIncluded[2]}"
+                          Text="{Binding ServicesViewModel.SelectedTrackServiceTableItem.FeaturesIncluded[2]}"
                           Style="{StaticResource nesterListInfoBodyTiny}"                        
                   >
                   </Label>
@@ -439,13 +439,13 @@
                   <!-- Price -->
                       
                   <Label Grid.Row="0" Grid.Column="3" x:Name="TrackServiceCost"
-                          Text="{Binding ServicesViewModel.SelectedTrackService.Cost, StringFormat='{0:C2}'}"
+                          Text="{Binding ServicesViewModel.SelectedTrackServiceTableItem.Cost, StringFormat='{0:C2}'}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="3"
-                          Text="{Binding ServicesViewModel.SelectedTrackService.Period}"
+                          Text="{Binding ServicesViewModel.SelectedTrackServiceTableItem.Period}"
                           Style="{StaticResource nesterListInfoBodyTiny}"                             
                           >
                   </Label>
@@ -473,16 +473,16 @@
               </Grid.ColumnDefinitions>
 
               <StackLayout Grid.Column="0">
-                <Label Grid.Column="0" Text="{Binding ServicesViewModel.SelectedBatchService.ProvidedBy}"
+                <Label Grid.Column="0" Text="{Binding ServicesViewModel.SelectedBatchServiceTableItem.ProvidedBy}"
                     Style="{StaticResource nesterInfoLabelMinor}">
                 </Label>               
               </StackLayout>
                
               <StackLayout Grid.Column="1">
-                <Label Text="{Binding ServicesViewModel.SelectedBatchService.Name, Converter={StaticResource i18n}}"
+                <Label Text="{Binding ServicesViewModel.SelectedBatchServiceTableItem.Name, Converter={StaticResource i18n}}"
                     Style="{StaticResource nesterInfoLabelMinor}">
                 </Label>                
-                <Label Text="{Binding ServicesViewModel.SelectedBatchService.Type, Converter={StaticResource i18n}}"
+                <Label Text="{Binding ServicesViewModel.SelectedBatchServiceTableItem.Type, Converter={StaticResource i18n}}"
                     Style="{StaticResource nesterInfoLabelMinor}">
                 </Label>
               </StackLayout>
@@ -506,13 +506,13 @@
                   <!-- Configuration -->
                       
                   <Label Grid.Row="0" Grid.Column="0"
-                          Text="{Binding ServicesViewModel.SelectedBatchService.FeaturesAll[0]}"
+                          Text="{Binding ServicesViewModel.SelectedBatchServiceTableItem.FeaturesAll[0]}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >                    
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="0"
-                          Text="{Binding ServicesViewModel.SelectedBatchService.FeaturesIncluded[0]}"
+                          Text="{Binding ServicesViewModel.SelectedBatchServiceTableItem.FeaturesIncluded[0]}"
                           Style="{StaticResource nesterListInfoBodyTiny}"
                   >                                              
                   </Label>
@@ -520,13 +520,13 @@
                   <!-- Optimization -->
                       
                   <Label Grid.Row="0" Grid.Column="1"
-                          Text="{Binding ServicesViewModel.SelectedBatchService.FeaturesAll[1]}"
+                          Text="{Binding ServicesViewModel.SelectedBatchServiceTableItem.FeaturesAll[1]}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="1"
-                          Text="{Binding ServicesViewModel.SelectedBatchService.FeaturesIncluded[1]}"
+                          Text="{Binding ServicesViewModel.SelectedBatchServiceTableItem.FeaturesIncluded[1]}"
                           Style="{StaticResource nesterListInfoBodyTiny}" 
                   >
                   </Label>
@@ -534,13 +534,13 @@
                   <!-- Backup -->
                       
                   <Label Grid.Row="0" Grid.Column="2"
-                          Text="{Binding ServicesViewModel.SelectedBatchService.FeaturesAll[2]}"
+                          Text="{Binding ServicesViewModel.SelectedBatchServiceTableItem.FeaturesAll[2]}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="2"
-                          Text="{Binding ServicesViewModel.SelectedBatchService.FeaturesIncluded[2]}"
+                          Text="{Binding ServicesViewModel.SelectedBatchServiceTableItem.FeaturesIncluded[2]}"
                           Style="{StaticResource nesterListInfoBodyTiny}"                        
                   >
                   </Label>
@@ -548,13 +548,13 @@
                   <!-- Price -->
                       
                   <Label Grid.Row="0" Grid.Column="3" x:Name="BatchServiceCost"
-                          Text="{Binding ServicesViewModel.SelectedBatchService.Cost, StringFormat='$ {0}'}"
+                          Text="{Binding ServicesViewModel.SelectedBatchServiceTableItem.Cost, StringFormat='$ {0}'}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="3"
-                          Text="{Binding ServicesViewModel.SelectedBatchService.Period}"
+                          Text="{Binding ServicesViewModel.SelectedBatchServiceTableItem.Period}"
                           Style="{StaticResource nesterListInfoBodyTiny}"                             
                           >
                   </Label>
@@ -582,16 +582,16 @@
               </Grid.ColumnDefinitions>
 
               <StackLayout Grid.Column="0">
-                <Label Grid.Column="0" Text="{Binding ServicesViewModel.SelectedMonitorService.ProvidedBy}"
+                <Label Grid.Column="0" Text="{Binding ServicesViewModel.SelectedMonitorServiceTableItem.ProvidedBy}"
                     Style="{StaticResource nesterInfoLabelMinor}">
                 </Label>               
               </StackLayout>
                
               <StackLayout Grid.Column="1">
-                <Label Text="{Binding ServicesViewModel.SelectedMonitorService.Name, Converter={StaticResource i18n}}"
+                <Label Text="{Binding ServicesViewModel.SelectedMonitorServiceTableItem.Name, Converter={StaticResource i18n}}"
                     Style="{StaticResource nesterInfoLabelMinor}">
                 </Label>                
-                <Label Text="{Binding ServicesViewModel.SelectedMonitorService.Type, Converter={StaticResource i18n}}"
+                <Label Text="{Binding ServicesViewModel.SelectedMonitorServiceTableItem.Type, Converter={StaticResource i18n}}"
                     Style="{StaticResource nesterInfoLabelMinor}">
                 </Label>
               </StackLayout>
@@ -615,13 +615,13 @@
                   <!-- Configuration -->
                       
                   <Label Grid.Row="0" Grid.Column="0"
-                          Text="{Binding ServicesViewModel.SelectedMonitorService.FeaturesAll[0]}"
+                          Text="{Binding ServicesViewModel.SelectedMonitorServiceTableItem.FeaturesAll[0]}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >                    
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="0"
-                          Text="{Binding ServicesViewModel.SelectedMonitorService.FeaturesIncluded[0]}"
+                          Text="{Binding ServicesViewModel.SelectedMonitorServiceTableItem.FeaturesIncluded[0]}"
                           Style="{StaticResource nesterListInfoBodyTiny}"
                   >                                              
                   </Label>
@@ -629,13 +629,13 @@
                   <!-- Optimization -->
                       
                   <Label Grid.Row="0" Grid.Column="1"
-                          Text="{Binding ServicesViewModel.SelectedMonitorService.FeaturesAll[1]}"
+                          Text="{Binding ServicesViewModel.SelectedMonitorServiceTableItem.FeaturesAll[1]}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="1"
-                          Text="{Binding ServicesViewModel.SelectedMonitorService.FeaturesIncluded[1]}"
+                          Text="{Binding ServicesViewModel.SelectedMonitorServiceTableItem.FeaturesIncluded[1]}"
                           Style="{StaticResource nesterListInfoBodyTiny}" 
                   >
                   </Label>
@@ -643,13 +643,13 @@
                   <!-- Backup -->
                       
                   <Label Grid.Row="0" Grid.Column="2"
-                          Text="{Binding ServicesViewModel.SelectedMonitorService.FeaturesAll[2]}"
+                          Text="{Binding ServicesViewModel.SelectedMonitorServiceTableItem.FeaturesAll[2]}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="2"
-                          Text="{Binding ServicesViewModel.SelectedMonitorService.FeaturesIncluded[2]}"
+                          Text="{Binding ServicesViewModel.SelectedMonitorServiceTableItem.FeaturesIncluded[2]}"
                           Style="{StaticResource nesterListInfoBodyTiny}"                        
                   >
                   </Label>
@@ -657,13 +657,13 @@
                   <!-- Price -->
                       
                   <Label Grid.Row="0" Grid.Column="3" x:Name="MonitorServiceCost"
-                          Text="{Binding ServicesViewModel.SelectedMonitorService.Cost, StringFormat='$ {0}'}"
+                          Text="{Binding ServicesViewModel.SelectedMonitorServiceTableItem.Cost, StringFormat='$ {0}'}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="3"
-                          Text="{Binding ServicesViewModel.SelectedMonitorService.Period}"
+                          Text="{Binding ServicesViewModel.SelectedMonitorServiceTableItem.Period}"
                           Style="{StaticResource nesterListInfoBodyTiny}"                             
                           >
                   </Label>
@@ -691,16 +691,16 @@
               </Grid.ColumnDefinitions>
 
               <StackLayout Grid.Column="0">
-                <Label Grid.Column="0" Text="{Binding ServicesViewModel.SelectedDomainService.ProvidedBy}"
+                <Label Grid.Column="0" Text="{Binding ServicesViewModel.SelectedDomainServiceTableItem.ProvidedBy}"
                     Style="{StaticResource nesterInfoLabelMinor}">
                 </Label>               
               </StackLayout>
                
               <StackLayout Grid.Column="1">
-                <Label Text="{Binding ServicesViewModel.SelectedDomainService.Name, Converter={StaticResource i18n}}"
+                <Label Text="{Binding ServicesViewModel.SelectedDomainServiceTableItem.Name, Converter={StaticResource i18n}}"
                     Style="{StaticResource nesterInfoLabelMinor}">
                 </Label>                
-                <Label Text="{Binding ServicesViewModel.SelectedDomainService.Type, Converter={StaticResource i18n}}"
+                <Label Text="{Binding ServicesViewModel.SelectedDomainServiceTableItem.Type, Converter={StaticResource i18n}}"
                     Style="{StaticResource nesterInfoLabelMinor}">
                 </Label>
               </StackLayout>
@@ -723,13 +723,13 @@
                   <!-- Register -->
                       
                   <Label Grid.Row="0" Grid.Column="0"
-                          Text="{Binding ServicesViewModel.SelectedDomainService.FeaturesAll[0]}"
+                          Text="{Binding ServicesViewModel.SelectedDomainServiceTableItem.FeaturesAll[0]}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >                    
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="0"
-                          Text="{Binding ServicesViewModel.SelectedDomainService.FeaturesIncluded[0]}"
+                          Text="{Binding ServicesViewModel.SelectedDomainServiceTableItem.FeaturesIncluded[0]}"
                           Style="{StaticResource nesterListInfoBodyTiny}"
                   >                                              
                   </Label>
@@ -737,13 +737,13 @@
                   <!-- Renew -->
                       
                   <Label Grid.Row="0" Grid.Column="1"
-                          Text="{Binding ServicesViewModel.SelectedDomainService.FeaturesAll[1]}"
+                          Text="{Binding ServicesViewModel.SelectedDomainServiceTableItem.FeaturesAll[1]}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="1"
-                          Text="{Binding ServicesViewModel.SelectedDomainService.FeaturesIncluded[1]}"
+                          Text="{Binding ServicesViewModel.SelectedDomainServiceTableItem.FeaturesIncluded[1]}"
                           Style="{StaticResource nesterListInfoBodyTiny}" 
                   >
                   </Label>
@@ -751,13 +751,13 @@
                   <!-- Price -->
                       
                   <Label Grid.Row="0" Grid.Column="2"  x:Name="DomainServiceCost"
-                          Text="{Binding ServicesViewModel.SelectedDomainService.Cost, StringFormat='$ {0}'}"
+                          Text="{Binding ServicesViewModel.SelectedDomainServiceTableItem.Cost, StringFormat='$ {0}'}"
                           Style="{StaticResource nesterListInfoLabelTiny}"
                           >
                   </Label>
 
                   <Label Grid.Row="1" Grid.Column="2"
-                          Text="{Binding ServicesViewModel.SelectedDomainService.Period}"
+                          Text="{Binding ServicesViewModel.SelectedDomainServiceTableItem.Period}"
                           Style="{StaticResource nesterListInfoBodyTiny}"                             
                           >
                   </Label>

@@ -26,6 +26,8 @@ using System.Linq;
 using Inkton.Nest;
 using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
+using Inkton.Nest.Cloud;
+using Inkton.Nester.Cloud;
 
 namespace Inkton.Nester.Views
 {
@@ -120,7 +122,7 @@ namespace Inkton.Nester.Views
                     searchApp.Tag = invitation.AppTag;
 
                     appModel = new AppViewModel();
-                    Cloud.ResultSingle<App> appResult = await appModel.QueryAppAsync(
+                    ResultSingle<App> appResult = await appModel.QueryAppAsync(
                         searchApp, false);
 
                     if (appResult.Code != Cloud.ServerStatus.NEST_RESULT_SUCCESS)
@@ -138,7 +140,7 @@ namespace Inkton.Nester.Views
                 joinApp.OwnedBy = Keeper.User;
                 myContact.OwnedBy = joinApp;
 
-                Cloud.ResultSingle<Contact> contactResult = await appModel
+                ResultSingle<Contact> contactResult = await appModel
                     .ContactViewModel.UpdateContactAsync(myContact);
 
                 if (contactResult.Code != Cloud.ServerStatus.NEST_RESULT_SUCCESS)

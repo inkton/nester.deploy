@@ -69,7 +69,7 @@ namespace Inkton.Nester.Views
 
             _forestButtons = new Dictionary<string, ForestButton>();
             
-            if (baseModels.AppViewModel.ServicesViewModel.SelectedAppserviceTag == "nest-oak")
+            if (baseModels.AppViewModel.ServicesViewModel.SelectedAppServiceTag == "nest-oak")
             {
                 SetupOakLocations(validForests);
             }
