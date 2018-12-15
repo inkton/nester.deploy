@@ -25,7 +25,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Resources;
 using System.Reflection;
+using Inkton.Nest.Cloud;
 using Inkton.Nest.Model;
+using Inkton.Nester.Cloud;
 using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
@@ -123,7 +125,7 @@ namespace Inkton.Nester.Views
             {
                 BeginNewSession();
 
-                Cloud.ResultSingle<Permit> result = await _baseViewModels
+                ResultSingle<Permit> result = await _baseViewModels
                     .AuthViewModel.QueryTokenAsync(false);
 
                 if (result.Code == Cloud.ServerStatus.NEST_RESULT_ERROR_AUTH_SECCODE)
@@ -162,7 +164,7 @@ namespace Inkton.Nester.Views
                 }
                 else
                 {
-                    result.Throw();
+                    new ResultHandler<Permit>(result).Throw();
                 }
             }
             catch (Exception ex)
@@ -204,7 +206,7 @@ namespace Inkton.Nester.Views
             {
                 BeginNewSession();
 
-                Cloud.ResultSingle<Permit> result = await _baseViewModels
+                ResultSingle<Permit> result = await _baseViewModels
                     .AuthViewModel.QueryTokenAsync(false);
 
                 if (result.Code == Cloud.ServerStatus.NEST_RESULT_SUCCESS)
@@ -223,7 +225,7 @@ namespace Inkton.Nester.Views
                 }
                 else
                 {
-                    result.Throw();
+                    new ResultHandler<Permit>(result).Throw();
                 }
             }
             catch (Exception ex)
@@ -241,7 +243,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                Cloud.ResultSingle<Permit> result = _baseViewModels
+                ResultSingle<Permit> result = _baseViewModels
                     .AuthViewModel.QueryToken(false);
 
                 if (result.Code < 0)

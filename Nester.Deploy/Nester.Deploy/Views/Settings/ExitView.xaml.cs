@@ -25,6 +25,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
 using Inkton.Nest.Model;
+using Inkton.Nest.Cloud;
+using Inkton.Nester.Cloud;
 using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
@@ -56,8 +58,8 @@ namespace Inkton.Nester.Views
 
                 if (yes)
                 {
-                    Cloud.ResultSingle<User> result = await _baseViewModels.AuthViewModel.DeleteUserAsync();
-                    await DisplayAlert("Nester", result.GetLocalDescription(), "OK");
+                    ResultSingle<User> result = await _baseViewModels.AuthViewModel.DeleteUserAsync();
+                    await DisplayAlert("Nester", new ResultHandler<User>(result).GetMessage(), "OK");
                     await MainSideView.Detail.Navigation.PopAsync();
                 } 
             }

@@ -24,6 +24,8 @@ using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Inkton.Nest.Model;
+using Inkton.Nest.Cloud;
+using Inkton.Nester.Cloud;
 using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
@@ -225,7 +227,7 @@ namespace Inkton.Nester.Views
                 _appSearch.EditApp.OwnedBy = null;
                 _appSearch.EditApp.Tag = tagTrimmed;
 
-                Cloud.ResultSingle<App> result = await _appSearch
+                ResultSingle<App> result = await _appSearch
                     .QueryAppAsync(null, true, false);
                 if (result.Code == Cloud.ServerStatus.NEST_RESULT_SUCCESS)
                 {
