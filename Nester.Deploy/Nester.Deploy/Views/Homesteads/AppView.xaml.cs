@@ -23,12 +23,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Net;
 using Xamarin.Forms;
 using Syncfusion.SfBusyIndicator.XForms;
 using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
 using System.Threading.Tasks;
+using Inkton.Nest.Cloud;
+using Inkton.Nester.Cloud;
 
 namespace Inkton.Nester.Views
 {
@@ -379,12 +382,33 @@ namespace Inkton.Nester.Views
 
             try
             {
+                var folder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                var filePath = Path.Combine(folder, string.Format("{0}.devkit", App.Tag));
+
+                var alreadyExist = File.Exists(filePath);
+
+                if (alreadyExist)
+                {
+                    var yes = await DisplayAlert("Nester", "A downloaded Devkit already exists here. Overwrite? \n" + filePath, "Yes", "No");
+
+                    if (!yes)
+                    {
+                        return;
+                    }
+
+                    File.Delete(filePath);
+                }
+
                 Devkit devkit = new Devkit();
                 devkit.OwnedBy = _baseViewModels.AppViewModel.ContactViewModel.OwnerContact;
 
                 await _baseViewModels.AppViewModel.DeploymentViewModel.QueryDevkitAsync(devkit);
 
-                await DisplayAlert("Nester", "The Devkit has been requested", "OK");
+                File.WriteAllText(filePath, devkit.Script);
+
+                await DisplayAlert("Nester", "The Devkit was emailed. A copy was downloaded here:\n" + filePath, "OK");
+
+                Device.OpenUri(new Uri("file://" + folder.Replace("\\", "/")));
             }
             catch (Exception ex)
             {
@@ -453,12 +477,7 @@ namespace Inkton.Nester.Views
             {
                 await _baseViewModels.AppViewModel
                     .ServicesViewModel
-                    .QueryAppUpgradeServiceTiersAsync(
-                        (_baseViewModels
-                            .AppViewModel
-                            .ServicesViewModel
-                            .SelectedAppService
-                            .Tier.OwnedBy as AppService));
+                    .SetAppUpgradingAsync();
 
                 _baseViewModels.WizardMode = false;
                 MainSideView.StackViewAsync(new AppTierView(_baseViewModels));
@@ -469,7 +488,7 @@ namespace Inkton.Nester.Views
             }
 
             IsServiceActive = false;
-            }
+        }
 
         async private void ButtonAppRestore_ClickedAsync(object sender, EventArgs e)
         {
@@ -559,12 +578,9 @@ namespace Inkton.Nester.Views
 
             try
             {
-                if (_baseViewModels.AppViewModel
-                    .ServicesViewModel.UpgradableAppTiers != null)
-                {
-                    _baseViewModels.AppViewModel
-                        .ServicesViewModel.UpgradableAppTiers.Clear();
-                }
+                await _baseViewModels.AppViewModel
+                    .ServicesViewModel
+                    .SetAppUpgradingAsync(false);
 
                 NestPlatform workerPlatform = _baseViewModels.AppViewModel.NestViewModel.Platforms.First(
                     x => x.Tag == "worker");
@@ -584,8 +600,8 @@ namespace Inkton.Nester.Views
 
                 if (!_baseViewModels.AppViewModel.DeploymentViewModel.Deployments.Any())
                 {
-                    Cloud.ResultMultiple<Forest> result = await _baseViewModels.AppViewModel.QueryAppServiceTierLocationsAsync(
-                        _baseViewModels.AppViewModel.ServicesViewModel.SelectedAppService.Tier, false);
+                    ResultMultiple<Forest> result = await _baseViewModels.AppViewModel.QueryAppServiceTierLocationsAsync(
+                        _baseViewModels.AppViewModel.ServicesViewModel.SelectedAppServiceTableItem.Tier, false);
                     MainSideView.StackViewAsync(new AppLocationView(_baseViewModels, result.Data.Payload));
                 }
                 else
@@ -607,6 +623,10 @@ namespace Inkton.Nester.Views
 
             try
             {
+                await _baseViewModels.AppViewModel
+                    .ServicesViewModel
+                    .SetAppUpgradingAsync(false);
+
                 ViewModels.WizardMode = false;
                 MainSideView.StackViewAsync(new AppBasicDetailView(ViewModels));
             }

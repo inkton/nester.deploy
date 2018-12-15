@@ -25,6 +25,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
 using Inkton.Nest.Model;
+using Inkton.Nest.Cloud;
+using Inkton.Nester.Cloud;
 using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
@@ -206,7 +208,7 @@ namespace Inkton.Nester.Views
 
                 if (_baseViewModels.WizardMode)
                 {
-                    Cloud.ResultSingle<Permit> result = _baseViewModels.AuthViewModel.Signup(false);
+                    ResultSingle<Permit> result = _baseViewModels.AuthViewModel.Signup(false);
 
                     if (result.Code == Cloud.ServerStatus.NEST_RESULT_ERROR_AUTH_SECCODE)
                     {

@@ -27,6 +27,8 @@ using System.Threading.Tasks;
 using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
 using Nester.Deploy.Helpers;
+using Inkton.Nest.Cloud;
+using Inkton.Nester.Cloud;
 
 namespace Inkton.Nester.Views
 {
@@ -60,12 +62,17 @@ namespace Inkton.Nester.Views
                 Title = App.Name;
             }
 
+            BindingContext = _baseViewModels.AppViewModel;
+
             if (_baseViewModels.AppViewModel.ServicesViewModel.UpgradableAppTiers.Any())
             {
                 // The app is being created and deployed. Only selected services are applicable
-                BindingContext = _baseViewModels.AppViewModel
-                    .DeploymentViewModel;
+
                 SoftwareVersion.IsVisible = false;
+
+                DeployWarning.Text = "• Read and understand the terms for deployed apps.\n";
+                DeployWarning.Text += "• The upgrade progress will be reported on Slack if integrated.\n";
+
                 ButtonDone.Text = "Upgrade";
 
                 ButtonDoDiscount.Text = "Show";
@@ -73,7 +80,6 @@ namespace Inkton.Nester.Views
             else
             {
                 // The app is being created or updated. All services are applicable
-                BindingContext = _baseViewModels.AppViewModel;
 
                 _baseViewModels.AppViewModel.DeploymentViewModel.DotnetVersions.Reverse().All(version =>
                 {
@@ -146,7 +152,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                _baseViewModels.AppViewModel.ServicesViewModel.CreateServicesTable();
+                _baseViewModels.AppViewModel.ServicesViewModel.CreateServicesTables();
                 _baseViewModels.AppViewModel.DeploymentViewModel.ApplyCredit = null;
 
                 if (CreditCode.Text.Length > 0)
@@ -154,7 +160,7 @@ namespace Inkton.Nester.Views
                     Credit credit = _baseViewModels.PaymentViewModel.EditCredit;
                     credit.Code = CreditCode.Text.Trim();
 
-                    Cloud.ResultSingle<Credit> result = await _baseViewModels
+                    ResultSingle<Credit> result = await _baseViewModels
                         .PaymentViewModel.QueryCreditAsync();
 
                     if (result.Code == 0)
@@ -197,13 +203,15 @@ namespace Inkton.Nester.Views
 
         private async void OnDoneButtonClickedAsync(object sender, EventArgs e)
         {
-            IsServiceActive = true;
-
             try
             {
                 if (_baseViewModels.AppViewModel.ServicesViewModel.UpgradableAppTiers.Any())
                 {
                     await UpgradeAsync();
+
+                    await _baseViewModels.AppViewModel
+                        .ServicesViewModel
+                        .SetAppUpgradingAsync(false);
                 }
                 else
                 {
@@ -245,8 +253,6 @@ namespace Inkton.Nester.Views
             {
                 await DisplayAlert("Nester", ex.Message, "OK");
             }
-
-            IsServiceActive = false;
         }
 
         private async void OnCancelButtonClickedAsync(object sender, EventArgs e)
@@ -269,11 +275,7 @@ namespace Inkton.Nester.Views
 
             await _baseViewModels.AppViewModel
                 .ServicesViewModel
-                .UpdateAppUpgradeServiceTiersAsync((_baseViewModels
-                    .AppViewModel
-                    .ServicesViewModel
-                    .SelectedAppService
-                    .Tier.OwnedBy as AppService));
+                .UpdateAppUpgradeServiceTierAsync();
 
             IsServiceActive = false;
         }
@@ -334,16 +336,10 @@ namespace Inkton.Nester.Views
 
         private void DisplayTotals(Credit credit = null)
         {
-            decimal total = _baseViewModels.AppViewModel.ServicesViewModel.SelectedAppService.Cost +
-            _baseViewModels.AppViewModel.ServicesViewModel.SelectedTrackService.Cost +
-            _baseViewModels.AppViewModel.ServicesViewModel.SelectedDomainService.Cost +
-            _baseViewModels.AppViewModel.ServicesViewModel.SelectedMonitorService.Cost +
-            _baseViewModels.AppViewModel.ServicesViewModel.SelectedBatchService.Cost;
-
-            if (_baseViewModels.AppViewModel.ServicesViewModel.StorageServiceEnabled)
-            {
-                total += _baseViewModels.AppViewModel.ServicesViewModel.SelectedAppService.Cost;
-            }
+            decimal total = _baseViewModels
+                    .AppViewModel
+                    .ServicesViewModel
+                    .CalculateServiceCost();
 
             decimal discount = 0;
 
@@ -386,7 +382,7 @@ namespace Inkton.Nester.Views
         {
             IsServiceActive = true;
 
-            _baseViewModels.AppViewModel.ServicesViewModel.CreateServicesTable();
+            _baseViewModels.AppViewModel.ServicesViewModel.CreateServicesTables();
             _baseViewModels.AppViewModel.DeploymentViewModel.ApplyCredit = null;
 
             DisplayTotals();
