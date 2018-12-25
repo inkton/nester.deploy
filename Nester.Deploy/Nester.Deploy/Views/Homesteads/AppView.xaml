@@ -304,57 +304,54 @@
         
           </Grid>-->
 
-          <chart:SfChart x:Name="DiskSpaceData" Grid.Row="0" Grid.Column="0" >
+            <chart:SfChart x:Name="SystemIOData" Grid.Row="0" Grid.Column="0" >
 
-            <chart:SfChart.Title>
-              <chart:ChartTitle Text="Disk Space"  TextColor="{StaticResource mainColor}" Font="Bold,12" />
-            </chart:SfChart.Title>
+                <chart:SfChart.Title>
+                    <chart:ChartTitle Text="System IO" TextColor="{StaticResource mainColor}" Font="Bold,12">
+                    </chart:ChartTitle>
+                </chart:SfChart.Title>
 
-            <chart:SfChart.Legend>
-              <chart:ChartLegend DockPosition="Left"
-                Orientation="Vertical">
-                <chart:ChartLegend.LabelStyle>
-                  <chart:ChartLegendLabelStyle TextColor="{StaticResource minorColor}" Font="None,10">
-                  </chart:ChartLegendLabelStyle>
-                </chart:ChartLegend.LabelStyle>
-              </chart:ChartLegend>
-            </chart:SfChart.Legend>
+                <chart:SfChart.Legend>
+                    <chart:ChartLegend DockPosition="Bottom" Orientation="Horizontal">
+                        <chart:ChartLegend.LabelStyle>
+                            <chart:ChartLegendLabelStyle TextColor="{StaticResource minorColor}" Font="None,10">
+                            </chart:ChartLegendLabelStyle>
+                        </chart:ChartLegend.LabelStyle>
+                    </chart:ChartLegend>
+                </chart:SfChart.Legend>
 
-            <chart:SfChart.PrimaryAxis>
-              <chart:CategoryAxis>
-                <chart:CategoryAxis.Title>
-                  <chart:ChartAxisTitle Text="Memory"> </chart:ChartAxisTitle>
-                </chart:CategoryAxis.Title>
-              </chart:CategoryAxis>
-            </chart:SfChart.PrimaryAxis>
+                <chart:SfChart.PrimaryAxis>
+                    <chart:DateTimeAxis IntervalType="Minutes" >
+                        <chart:DateTimeAxis.LabelStyle>
+                            <chart:ChartAxisLabelStyle LabelFormat="HH:mm:ss" Font="None,10"/>
+                        </chart:DateTimeAxis.LabelStyle>
+                    </chart:DateTimeAxis>
+                </chart:SfChart.PrimaryAxis>
 
-            <chart:SfChart.SecondaryAxis>
-              <chart:NumericalAxis>
-                <chart:NumericalAxis.Title>
-                  <chart:ChartAxisTitle Text="Time"></chart:ChartAxisTitle>
-                </chart:NumericalAxis.Title>
-              </chart:NumericalAxis>
-            </chart:SfChart.SecondaryAxis>
+                <chart:SfChart.SecondaryAxis >
+                    <chart:NumericalAxis>
+                        <chart:NumericalAxis.LabelStyle>
+                            <chart:ChartAxisLabelStyle Font="None,10"/>
+                        </chart:NumericalAxis.LabelStyle>
+                    </chart:NumericalAxis  >
+                </chart:SfChart.SecondaryAxis>
 
-            <chart:PieSeries
-              ItemsSource="{Binding LogViewModel.DiskSpaceSeries.DataLog.Fields}"
-              XBindingPath="Key"
-              YBindingPath="Value"
-              EnableAnimation="false">
+                <chart:SplineSeries
+                    ItemsSource="{Binding LogViewModel.IoSeriesIn}"
+                    EnableTooltip="True"
+                    Label="In"
+                    Color="#34495E"
+                    XBindingPath="Time"
+                    YBindingPath="Value" />
 
-              <chart:PieSeries.ColorModel>
-                <chart:ChartColorModel Palette="Custom" >
-                  <chart:ChartColorModel.CustomBrushes>
-                    <Color>#34495E</Color>
-                    <Color>#27AE60</Color>
-                    <Color>#E67E22</Color>
-                    <Color>#44BBFF</Color>
-                  </chart:ChartColorModel.CustomBrushes>
-                </chart:ChartColorModel>
-              </chart:PieSeries.ColorModel>
-
-            </chart:PieSeries>
-
+                 <chart:SplineSeries
+                    ItemsSource="{Binding LogViewModel.IoSeriesOut}"
+                    Label="Out"
+                    EnableTooltip="True"                
+                    Color="#2980B9"
+                    XBindingPath="Time"
+                    YBindingPath="Value" />
+                
           </chart:SfChart>
 
           <chart:SfChart x:Name="CpuData" Grid.Row="1" Grid.Column="0" >
@@ -496,10 +493,10 @@
 
           </chart:SfChart>
         
-          <chart:SfChart x:Name="Ipv4Data" Grid.Row="1" Grid.Column="1" >
+          <chart:SfChart x:Name="IpData" Grid.Row="1" Grid.Column="1" >
 
             <chart:SfChart.Title>
-              <chart:ChartTitle Text="IpV4 Network IO" TextColor="{StaticResource mainColor}" Font="Bold,12">
+              <chart:ChartTitle Text="Ip Network IO" TextColor="{StaticResource mainColor}" Font="Bold,12">
               </chart:ChartTitle>
             </chart:SfChart.Title>
 
@@ -521,23 +518,23 @@
             </chart:SfChart.PrimaryAxis>
 
             <chart:SfChart.SecondaryAxis >
-              <chart:NumericalAxis Minimum="-5000" Maximum="2000" >
+              <chart:NumericalAxis  >
                 <chart:NumericalAxis.LabelStyle>
                   <chart:ChartAxisLabelStyle Font="None,10"/>
                 </chart:NumericalAxis.LabelStyle>              
               </chart:NumericalAxis  >
             </chart:SfChart.SecondaryAxis>
 
-            <chart:LineSeries
-              ItemsSource="{Binding LogViewModel.Ipv4SeriesSent}"
+            <chart:SplineSeries
+              ItemsSource="{Binding LogViewModel.IpSeriesSent}"
               Color="#34495E"
               Label="Sent" 
               EnableTooltip="True"                
               XBindingPath="Time"
               YBindingPath="Value" />
 
-            <chart:LineSeries
-              ItemsSource="{Binding LogViewModel.Ipv4SeriesReceived}"
+            <chart:SplineSeries
+              ItemsSource="{Binding LogViewModel.IpSeriesReceived}"
               Color="#2980B9"
               Label="Received" 
               EnableTooltip="True"                
