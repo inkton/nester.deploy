@@ -110,7 +110,7 @@ namespace Inkton.Nester.Views
 
             string clientId = "237221988247.245551261632";
             string scope = "incoming-webhook,chat:write:bot";
-
+            
             string url = "https://slack.com/oauth/authorize?" +
                 "&client_id=" + WebUtility.UrlEncode(clientId) +
                 "&scope=" + WebUtility.UrlEncode(scope) +
