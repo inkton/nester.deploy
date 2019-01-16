@@ -766,8 +766,102 @@
 
             </Grid>
             <Frame Grid.Row="1" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
-          </Grid>
+          </Grid>          
+          
+          <!-- Build Service -->
+          
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*" />
+              <RowDefinition Height="1" />
+            </Grid.RowDefinitions>
+            
+            <Grid>
+              
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*" />
+                <ColumnDefinition Width="15*" /> 
+                <ColumnDefinition Width="65*" />
+              </Grid.ColumnDefinitions>
 
+              <StackLayout Grid.Column="0">
+                <Label Grid.Column="0" Text="{Binding ServicesViewModel.SelectedBuildServiceTableItem.ProvidedBy}"
+                    Style="{StaticResource nesterInfoLabelMinor}">
+                </Label>               
+              </StackLayout>
+               
+              <StackLayout Grid.Column="1">
+                <Label Text="{Binding ServicesViewModel.SelectedBuildServiceTableItem.Name, Converter={StaticResource i18n}}"
+                    Style="{StaticResource nesterInfoLabelMinor}">
+                </Label>                
+                <Label Text="{Binding ServicesViewModel.SelectedBuildServiceTableItem.Type, Converter={StaticResource i18n}}"
+                    Style="{StaticResource nesterInfoLabelMinor}">
+                </Label>
+              </StackLayout>
+                
+              <Grid Grid.Column="2"
+                BackgroundColor="{StaticResource tableBackColor}"
+                Padding="5,5,0,0">
+
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="*" />
+                  <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="50*" />
+                    <ColumnDefinition Width="20*" />
+                </Grid.ColumnDefinitions>
+
+                  <!-- Configuration -->
+                      
+                  <Label Grid.Row="0" Grid.Column="0"
+                          Text="{Binding ServicesViewModel.SelectedBuildServiceTableItem.FeaturesAll[0]}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >                    
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="0"
+                          Text="{Binding ServicesViewModel.SelectedBuildServiceTableItem.FeaturesIncluded[0]}"
+                          Style="{StaticResource nesterListInfoBodyTiny}"
+                  >                                              
+                  </Label>
+
+                  <!-- Managed -->
+                      
+                  <Label Grid.Row="0" Grid.Column="1"
+                          Text="{Binding ServicesViewModel.SelectedDomainServiceTableItem.FeaturesAll[1]}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="1"
+                          Text="{Binding ServicesViewModel.SelectedBuildServiceTableItem.FeaturesIncluded[1]}"
+                          Style="{StaticResource nesterListInfoBodyTiny}" 
+                  >
+                  </Label>
+
+                  <!-- Price -->
+                      
+                  <Label Grid.Row="0" Grid.Column="2"  x:Name="BuildServiceCost"
+                          Text="{Binding ServicesViewModel.SelectedBuildServiceTableItem.Cost, StringFormat='$ {0}'}"
+                          Style="{StaticResource nesterListInfoLabelTiny}"
+                          >
+                  </Label>
+
+                  <Label Grid.Row="1" Grid.Column="2"
+                          Text="{Binding ServicesViewModel.SelectedBuildServiceTableItem.Period}"
+                          Style="{StaticResource nesterListInfoBodyTiny}"                             
+                          >
+                  </Label>
+
+              </Grid>
+
+            </Grid>
+            <Frame Grid.Row="1" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
+          </Grid>          
+                    
           <!-- Totals -->
           
           <Grid>
