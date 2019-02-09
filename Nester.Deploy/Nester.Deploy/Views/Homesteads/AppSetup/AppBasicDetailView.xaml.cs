@@ -216,16 +216,15 @@ namespace Inkton.Nester.Views
 
         private async void Tag_UnfocusedAsync(object sender, FocusEventArgs e)
         {
-            string tag = (sender as Xamarin.Forms.Entry).Text;
-            if (tag == null)
+            if (Tag.Text == null)
                 return;
 
-            string tagTrimmed = tag.Trim();
+            Tag.Text = Inkton.Nester.Helpers.Tag.Clean(Tag.Text);
 
-            if (tagTrimmed.Length > 0)
+            if (Tag.Text.Length > 0)
             {
                 _appSearch.EditApp.OwnedBy = null;
-                _appSearch.EditApp.Tag = tagTrimmed;
+                _appSearch.EditApp.Tag = Tag.Text;
 
                 ResultSingle<App> result = await _appSearch
                     .QueryAppAsync(null, true, false);
