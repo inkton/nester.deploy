@@ -37,7 +37,8 @@ namespace Inkton.Nester.Views
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
                                 ButtonCreate,
-                                ButtonJoin
+                                ButtonJoin,
+                                ButtonSkip
                 });
         }
 
@@ -45,11 +46,18 @@ namespace Inkton.Nester.Views
         {
             IsServiceActive = true;
 
-            _baseViewModels.WizardMode = true;
-            AppBasicDetailView basicView = new AppBasicDetailView(_baseViewModels);
-            basicView.MainSideView = MainSideView;
-            MainSideView.Detail.Navigation.InsertPageBefore(basicView, this);
-            await MainSideView.Detail.Navigation.PopAsync();
+            try
+            {
+                _baseViewModels.WizardMode = true;
+                AppBasicDetailView basicView = new AppBasicDetailView(_baseViewModels);
+                basicView.MainSideView = MainSideView;
+                MainSideView.Detail.Navigation.InsertPageBefore(basicView, this);
+                await MainSideView.Detail.Navigation.PopAsync();
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
 
             IsServiceActive = false;
         }
@@ -58,14 +66,37 @@ namespace Inkton.Nester.Views
         {
             IsServiceActive = true;
 
-            ContactViewModel contactsModel = new ContactViewModel(null);
-            contactsModel.EditInvitation.OwnedBy = Keeper.User;
-            await contactsModel.QueryInvitationsAsync();
+            try
+            {
+                ContactViewModel contactsModel = new ContactViewModel(null);
+                contactsModel.EditInvitation.OwnedBy = Keeper.User;
+                await contactsModel.QueryInvitationsAsync();
 
-            AppJoinDetailView joinView = new AppJoinDetailView(contactsModel);
-            joinView.MainSideView = MainSideView;
-            MainSideView.Detail.Navigation.InsertPageBefore(joinView, this);
-            await MainSideView.Detail.Navigation.PopAsync();
+                AppJoinDetailView joinView = new AppJoinDetailView(contactsModel);
+                joinView.MainSideView = MainSideView;
+                MainSideView.Detail.Navigation.InsertPageBefore(joinView, this);
+                await MainSideView.Detail.Navigation.PopAsync();
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
+
+            IsServiceActive = false;
+        }
+
+        async private void OnSkipButtonClickedAsync(object sender, EventArgs e)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                Keeper.ResetView();
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Nester", ex.Message, "OK");
+            }
 
             IsServiceActive = false;
         }

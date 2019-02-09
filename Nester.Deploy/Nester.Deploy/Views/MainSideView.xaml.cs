@@ -90,6 +90,7 @@ namespace Inkton.Nester.Views
             _currentView = view;
             _currentView.MainSideView = this;
         }
+
         public async void CurrentLevelViewAsync(View view)
         {
             Detail.Navigation.InsertPageBefore(view, _currentView);

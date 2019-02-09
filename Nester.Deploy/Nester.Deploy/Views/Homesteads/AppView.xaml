@@ -71,91 +71,82 @@
           
        <!--Actions when the app is in any state -->
 
-        <Button x:Name="ButtonAppSettings"
-              IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}"
-              Style="{StaticResource appFuncButton}"
-              Image="appsettings24.png" >
+        <Button x:Name="ButtonNotifications"
+            IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}"
+            Style="{StaticResource appFuncButton}"
+            Image="notifications24.png" >
         </Button>
 
-        <Button x:Name="ButtonNotifications"
-                IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}"
-                Style="{StaticResource appFuncButton}"
-                Image="notifications24.png" >
+       <!--Actions when the app is not being updated -->
+          
+        <Button x:Name="ButtonAppSettings"
+            IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}"
+            Style="{StaticResource appFuncButton}"
+            Image="appsettings24.png" >
         </Button>
 
         <Button x:Name="ButtonAddToSlack"
-                IsVisible="{Binding IsAppOwner}"                
-                Style="{StaticResource appFuncButton}"
-                Image="slack24.png" >
+            IsVisible="{Binding IsAppOwner}"
+            Style="{StaticResource appFuncButton}"
+            Image="slack24.png" >
         </Button>
-          
-        <!--Actions when the app is not busy updating -->
-          
+                    
         <Button x:Name="ButtonAppDeploy"
-                IsVisible="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
-                IsEnabled="{Binding EditApp.IsBusy, Converter={StaticResource inverseBoolConverter}}"
-                Style="{StaticResource appFuncButton}"
-                Image="appdeploy24.png" >
+            IsVisible="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
+            Style="{StaticResource appFuncButton}"
+            Image="appdeploy24.png" >
         </Button>
 
         <!--Actions when the app has been deployed - may not be active due to failure -->
-          
-       <Button x:Name="ButtonAppRestore"
-                IsVisible="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
-                IsEnabled="{Binding EditApp.IsActive}}"
-                Style="{StaticResource appFuncButton}"
-                Image="apprestore24.png" >
-       </Button>
-          
-       <Button x:Name="ButtonAppUpgrade"
-                IsVisible="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
-                IsEnabled="{Binding EditApp.IsActive}}"
-                Style="{StaticResource appFuncButton}"
-                Image="appupgrade24.png" >
-       </Button>
-          
+                    
        <Button x:Name="ButtonAppDepRemove"
-                IsVisible="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
-                IsEnabled="{Binding EditApp.IsDeployed}}"
-                Style="{StaticResource appFuncButton}"
-                Image="appdeploymentremove24.png" >
+            IsVisible="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
+            Style="{StaticResource appFuncButton}"
+            Image="appdeploymentremove24.png" >
         </Button>
         
        <Button x:Name="ButtonAppHide"
-                IsVisible="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
-                IsEnabled="{Binding EditApp.IsDeployed}}"
-                Style="{StaticResource appFuncButton}"
-                Image="appstop24.png" >
+            IsVisible="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
+            Style="{StaticResource appFuncButton}"
+            Image="appstop24.png" >
        </Button>
           
        <Button x:Name="ButtonAppShow"
-                IsVisible="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
-                IsEnabled="{Binding EditApp.IsDeployed}}"
-                Style="{StaticResource appFuncButton}"
-                Image="appstart24.png" >
+            IsVisible="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
+            Style="{StaticResource appFuncButton}"
+            Image="appstart24.png" >
         </Button>
           
        <!--Actions when the app is running and active-->
                     
+       <Button x:Name="ButtonAppRestore"
+            IsVisible="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
+            Style="{StaticResource appFuncButton}"
+            Image="apprestore24.png" >
+       </Button>
+          
+       <Button x:Name="ButtonAppUpgrade"
+            IsVisible="{Binding EditApp.OwnerCapabilities.CanUpdateApp}"
+            Style="{StaticResource appFuncButton}"
+            Image="appupgrade24.png" >
+       </Button>
+          
         <Button x:Name="ButtonAppDownload"
-                IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}"
-                IsEnabled="{Binding EditApp.IsActive}"
-                Style="{StaticResource appFuncButton}"
-                Image="appdownload24.png" >
+            IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}"
+            Style="{StaticResource appFuncButton}"
+            Image="appdownload24.png" >
         </Button>
 
         <Button x:Name="ButtonAppView"
-                IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}"
-                IsEnabled="{Binding EditApp.IsActive}"
-                Style="{StaticResource appFuncButton}"
-                Image="appview24.png" >
+            IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}"
+            Style="{StaticResource appFuncButton}"
+            Image="appview24.png" >
         </Button>
                     
          <Button x:Name="ButtonAppAudit"
-                IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}"
-                IsEnabled="{Binding EditApp.IsActive}"
-                Style="{StaticResource appFuncButton}"
-                Image="appaudit24.png" >
+            IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}"
+            Style="{StaticResource appFuncButton}"
+            Image="appaudit24.png" >
         </Button>         
           
       </StackLayout>

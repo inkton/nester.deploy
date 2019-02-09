@@ -26,9 +26,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
-using Nester.Deploy.Helpers;
 using Inkton.Nest.Cloud;
 using Inkton.Nester.Cloud;
+using Inkton.Nester.Helpers;
 
 namespace Inkton.Nester.Views
 {

@@ -58,6 +58,7 @@ namespace Inkton.Nester.Views
 
             AppNestsList.SelectionChanged += AppNestsList_SelectionChanged;
             Memory.SelectedIndexChanged += Memory_SelectedIndexChanged;
+            Tag.Unfocused += Tag_Unfocused;
 
             ButtonDone.IsVisible = _baseViewModels.WizardMode;
             if (_baseViewModels.WizardMode)
@@ -237,9 +238,9 @@ namespace Inkton.Nester.Views
         }
 
         private Inkton.Nest.Model.Nest CopyUpdate(Inkton.Nest.Model.Nest browseNest)
-        {
+        {           
             browseNest.OwnedBy = App;
-            browseNest.Tag = Tag.Text;
+            browseNest.Tag = Inkton.Nester.Helpers.Tag.Clean(Tag.Text);
             browseNest.Name = Name.Text;
             browseNest.NestStatus = "active";
 
@@ -306,6 +307,11 @@ namespace Inkton.Nester.Views
         private void Memory_SelectedIndexChanged(object sender, EventArgs e)
         {
             DisplayMemory();
+        }
+
+        private void Tag_Unfocused(object sender, FocusEventArgs e)
+        {
+            Tag.Text = Inkton.Nester.Helpers.Tag.Clean(Tag.Text);
         }
 
         private void DisplayMemory()

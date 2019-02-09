@@ -30,7 +30,7 @@ using Xamarin.Forms;
 using Inkton.Nest;
 using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
-using Nester.Deploy.Helpers;
+using Inkton.Nester.Helpers;
 
 namespace Inkton.Nester.Views
 {
