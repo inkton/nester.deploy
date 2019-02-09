@@ -136,6 +136,10 @@ namespace Inkton.Nester.Views
             Logo.IsVisible = false;
             InactiveApp.IsVisible = true;
             Metrics.IsVisible = false;
+
+            ViewModels.AppViewModel.IsBusy = true;
+
+            ToggleOperations();
         }
 
         public void UpdateStatus()
@@ -146,16 +150,6 @@ namespace Inkton.Nester.Views
              *      Not Active - Failed
              * -> App Not Deployed
              */
-
-            ButtonAppDeploy.IsEnabled = !App.IsBusy;
-            ButtonAppRestore.IsEnabled = App.IsActive;
-            ButtonAppDepRemove.IsEnabled = App.IsDeployed;
-            ButtonAppHide.IsEnabled = App.IsDeployed;
-            ButtonAppShow.IsEnabled = App.IsDeployed;
-            ButtonAppDownload.IsEnabled = App.IsActive;
-            ButtonAppView.IsEnabled = App.IsActive;
-            ButtonAppAudit.IsEnabled = App.IsActive;
-            ButtonAppUpgrade.IsEnabled = App.IsActive;
 
             if (App.IsBusy)
             {
@@ -181,6 +175,8 @@ namespace Inkton.Nester.Views
 
                 System.Diagnostics.Debug.WriteLine(
                     string.Format("Set Status {0}, {1}", App.Tag, _status));
+
+                ToggleOperations();
             }
 
             switch (_status)
@@ -193,12 +189,16 @@ namespace Inkton.Nester.Views
                     Logo.IsVisible = false;
                     InactiveApp.IsVisible = true;
                     Metrics.IsVisible = false;
+
+                    ViewModels.AppViewModel.IsBusy = true;
                     break;
 
                 case ViewStatus.Deployed:
                     // Deployed and active
                     InactiveApp.IsVisible = false;
                     Metrics.IsVisible = true;
+
+                    ViewModels.AppViewModel.IsBusy = false;
                     break;
 
                 case ViewStatus.WaitingDeployment:
@@ -206,8 +206,35 @@ namespace Inkton.Nester.Views
                     Logo.IsVisible = true;
                     InactiveApp.IsVisible = true;
                     Metrics.IsVisible = false;
+
+                    ViewModels.AppViewModel.IsBusy = false;
                     break;
             }
+
+            ToggleOperations();
+        }
+
+        public void ToggleOperations()
+        {
+            // Actions availabe all the time
+            ButtonNotifications.IsEnabled = true;
+
+            // Actions when the app is not busy
+            ButtonAppSettings.IsEnabled = ViewModels.AppViewModel.IsInteractive;
+            ButtonAddToSlack.IsEnabled = ViewModels.AppViewModel.IsInteractive;
+            ButtonAppDeploy.IsEnabled = ViewModels.AppViewModel.IsInteractive;
+
+            // Actions when the app has been deployed - may not be active due to failure
+            ButtonAppDepRemove.IsEnabled = ViewModels.AppViewModel.IsDeployed;
+            ButtonAppHide.IsEnabled = ViewModels.AppViewModel.IsDeployed;
+            ButtonAppShow.IsEnabled = ViewModels.AppViewModel.IsDeployed;
+
+            // -Actions when the app is running and active
+            ButtonAppRestore.IsEnabled = ViewModels.AppViewModel.IsActive;
+            ButtonAppUpgrade.IsEnabled = ViewModels.AppViewModel.IsActive;
+            ButtonAppDownload.IsEnabled = ViewModels.AppViewModel.IsActive;
+            ButtonAppView.IsEnabled = ViewModels.AppViewModel.IsActive;
+            ButtonAppAudit.IsEnabled = ViewModels.AppViewModel.IsActive;
         }
 
         private void ReloadAnalytics()

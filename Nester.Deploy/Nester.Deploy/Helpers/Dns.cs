@@ -24,8 +24,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Nester.Deploy;
 
-namespace Nester.Deploy.Helpers
+namespace Inkton.Nester.Helpers
 {
     public class Dns
     {

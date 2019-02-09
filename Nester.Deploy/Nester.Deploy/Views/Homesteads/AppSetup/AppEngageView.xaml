@@ -12,8 +12,9 @@
 
         <Grid.RowDefinitions>
           <RowDefinition Height="5*"/>
-          <RowDefinition Height="45*"/>
-          <RowDefinition Height="45*"/>
+          <RowDefinition Height="40*"/>
+          <RowDefinition Height="40*"/>
+          <RowDefinition Height="10*"/>            
           <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
 
@@ -102,7 +103,17 @@
         
         </StackLayout>
 
-      </Grid>
+        <StackLayout Grid.Row="3" Grid.Column="1">
+          <Button x:Name="ButtonSkip"
+                Text="Skip"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Style="{StaticResource buttonPageFlow}"
+                Clicked="OnSkipButtonClickedAsync">
+          </Button>
+        </StackLayout>
+          
+        </Grid>
     
   </ContentPage.Content>
 </views:View>
