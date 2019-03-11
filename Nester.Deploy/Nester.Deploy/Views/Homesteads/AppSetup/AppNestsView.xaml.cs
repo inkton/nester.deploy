@@ -311,7 +311,10 @@ namespace Inkton.Nester.Views
 
         private void Tag_Unfocused(object sender, FocusEventArgs e)
         {
-            Tag.Text = Inkton.Nester.Helpers.Tag.Clean(Tag.Text);
+            if (Tag.Text != null)
+            {
+                Tag.Text = Inkton.Nester.Helpers.Tag.Clean(Tag.Text);
+            }
         }
 
         private void DisplayMemory()
