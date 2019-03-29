@@ -23,6 +23,7 @@
 using System.Resources;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using Xamarin.Forms;
@@ -57,15 +58,20 @@ namespace Nester.Deploy
                     Path.GetTempPath(), "NesterCache"));
             cache.Clear();
 
-            string deviceSignature =
-                JsonConvert.SerializeObject(CrossDeviceInfo.Current);
+            Dictionary<string, string> clientSignature = new Dictionary<string, string>();
+            clientSignature["device"] = JsonConvert.SerializeObject(CrossDeviceInfo.Current);
+            clientSignature["app_version"] = typeof(EntryView).GetTypeInfo()
+                    .Assembly.GetName().Version.ToString();
+
+            string clientSignatureJSON =
+                JsonConvert.SerializeObject(clientSignature);
 
             _log = new LogService(Path.Combine(
                     Path.GetTempPath(), "NesterLog"));
             _platform = new NesterService(
-                ServiceVersion, deviceSignature, cache);
+                ServiceVersion, clientSignatureJSON, cache);
             _backend = new NesterService(
-                ServiceVersion, deviceSignature, cache);
+                ServiceVersion, clientSignatureJSON, cache);
 
             _baseModels = new BaseViewModels(
                 new AuthViewModel(), 
