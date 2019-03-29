@@ -3,16 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Inkton.Nester.Views"
              xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
+             xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
              xmlns:local="clr-namespace:Nester"
              x:Class="Inkton.Nester.Views.EntryView"
              Title="Welcome">
 
-  <ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <utils:InverseBoolConverter x:Key="inverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
 
     <Grid>
       <Grid.RowDefinitions>
         <RowDefinition Height="5*"/>
-        <RowDefinition Height="65*"/>
+        <RowDefinition Height="25*"/>
+        <RowDefinition Height="25*"/>          
         <RowDefinition Height="5*"/>
         <RowDefinition Height="Auto"/>
         <RowDefinition Height="5*"/>
@@ -70,10 +78,17 @@
 
       </StackLayout>
 
-      <ActivityIndicator Grid.Row="2" Grid.Column="1" x:Name="ServiceActive" >          
+     <WebView  Grid.Row="2" Grid.Column="1" x:Name="StartHelp" 
+        IsVisible="{Binding Validated, Converter={StaticResource inverseBoolConverter}}"
+        WidthRequest="1000" HeightRequest="200"
+        VerticalOptions="CenterAndExpand" 
+        HorizontalOptions="CenterAndExpand">
+     </WebView>
+        
+      <ActivityIndicator Grid.Row="3" Grid.Column="1" x:Name="ServiceActive" >          
       </ActivityIndicator>
-
-      <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal" >
+        
+      <StackLayout Grid.Row="4" Grid.Column="1" Orientation="Horizontal" >
         <Button x:Name="ButtonLogin"
                 Text="Login"
                 IsEnabled="{Binding Validated}"
@@ -99,13 +114,10 @@
                 Clicked="OnRecoverPasswordButtonClickedAsync">
         </Button>
 
-        <Label x:Name="Version"
-            HorizontalOptions="EndAndExpand"
-            Style="{StaticResource infoTag}">
-            </Label>
+
         </StackLayout>
 
-        </Grid>
+    </Grid>
                   
   </ContentPage.Content>
 </views:View>
