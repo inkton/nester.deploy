@@ -21,10 +21,12 @@
 */
 
 using System;
+using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using System.Resources;
 using System.Reflection;
+using Xamarin.Forms;
 using Inkton.Nest.Cloud;
 using Inkton.Nest.Model;
 using Inkton.Nester.Cloud;
@@ -50,10 +52,89 @@ namespace Inkton.Nester.Views
                     ButtonRecoverPassword
                 });
 
+            _baseViewModels.AuthViewModel.Validated = false;
+
             BindingContext = _baseViewModels.AuthViewModel;
 
-            Version.Text = "Version " + typeof(EntryView).GetTypeInfo()
-                .Assembly.GetName().Version.ToString(); 
+            LoadHelpPage();
+        }
+
+        private void LoadHelpPage()
+        {
+            string page = @"
+<html>
+    <head> 
+        <title> Nest </title> 
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto' rel='stylesheet'>
+        <style>
+            body {
+              background-color: #F3F9FF;
+              color: #34495e;
+              font-family: 'Open Sans';
+              font-size: 12px;
+            }
+            .container
+            {
+              padding: 1%;
+            }
+            .content { font-size: 12px; font-family: 'Open Sans'; }
+            .title { font-size: 18px; font-family: 'Roboto'; }
+            .sub-title { font-size: 12px; color: #317589; }
+            .content p { font-size: 11px; text-align: left; color: #48929B }
+            .content table { margin-top:10px;  margin-bottom:10px;}
+            .content table td { vertical-align:top;} 
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <div class='content'>
+                <div>
+                   <span class='title'>Nester Deploy</span>&nbsp;
+                   <span class='sub-title'>Version " + typeof(EntryView).GetTypeInfo()
+                    .Assembly.GetName().Version.ToString() + @"</span>
+                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <div class='sub-title'>How to Register</div>
+                            <p>
+                                Enter email, password and click 'Sigin-In' below
+                            </p>
+                        </td>
+                        <td>
+                            <div class='sub-title'>How to Login</div>
+                            <p>
+                                Enter email, password and click 'Login' below
+                            </p>
+                        </td>
+                        <td>
+                            <div class='sub-title'>How to Unregister</div>
+                            <p>
+                                Enter email, password and click 'Sigin-Out' below
+                            </p>
+                        </td>
+                        <td>
+                            <div class='sub-title'>How to Recover Password</div>
+                            <p>
+                                Enter email and click 'Recover Password' below
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+                <div>
+                    <a href='https://nestyt.com/blog/' target='_blank'>Blog</a>&nbsp;•&nbsp;
+                    <a href='https://github.com/inkton/nester.deploy/wiki' target='_bl0nk'>Wiki</a>&nbsp;•&nbsp
+                    <a href='https://github.com/inkton/nester.deploy/issues' target='_blank'>Discuss</a>&nbsp;•&nbsp
+                    <a href='https://my.nest.yt/' target='_blank'>Support</a>
+                </div><br/>
+                <div class='sub-title'>By Inkton</div>
+            </div>
+        </div>
+    </body>
+</html>";
+            var htmlSource = new HtmlWebViewSource();
+            htmlSource.Html = page;
+            StartHelp.Source = htmlSource;
         }
 
         void Validate()
