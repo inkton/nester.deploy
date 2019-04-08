@@ -21,38 +21,26 @@
 */
 
 using System;
-using System.Resources;
+using System.Threading.Tasks;
 using Xamarin.Forms;
+using NesterDeploy = Nester.Deploy.App;
 
 namespace Inkton.Nester.Helpers
 {
-    public class BoolToDomainStatusConverter : IValueConverter
+    public static class ErrorHandler
     {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        public static async Task ExceptionAsync(Page page, Exception e)
         {
-            ResourceManager resmgr = (Application.Current as INesterClient)
-                .GetResourceManager();
-
-            if (value == null)
-            {
-                return resmgr.GetString("DomainNormal",
-                     System.Globalization.CultureInfo.CurrentUICulture);
-            }
-
-            return (bool)value ?
-                    resmgr.GetString("DomainPrimary",
-                         System.Globalization.CultureInfo.CurrentUICulture) :
-                    resmgr.GetString("DomainNormal",
-                         System.Globalization.CultureInfo.CurrentUICulture);
+            await page.DisplayAlert("Nester Deploy", e.Message, "OK");
+            (Application.Current as NesterDeploy).Log
+                .Trace(e.Message, e.Source, LogSeverity.LogSeverityCritical);
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        public static async Task ExceptionAsync(Page page, string error)
         {
-            ResourceManager resmgr = (Application.Current as INesterClient)
-                .GetResourceManager();
-
-            return resmgr.GetString("DomainPrimary",
-                 System.Globalization.CultureInfo.CurrentUICulture);
+            await page.DisplayAlert("Nester Deploy", error, "OK");
+            (Application.Current as NesterDeploy).Log
+                .Trace(error, "--", LogSeverity.LogSeverityCritical);
         }
     }
 }

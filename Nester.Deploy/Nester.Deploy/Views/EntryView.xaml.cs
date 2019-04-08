@@ -31,6 +31,7 @@ using Inkton.Nest.Cloud;
 using Inkton.Nest.Model;
 using Inkton.Nester.Cloud;
 using Inkton.Nester.ViewModels;
+using Inkton.Nester.Helpers;
 
 namespace Inkton.Nester.Views
 {
@@ -38,7 +39,7 @@ namespace Inkton.Nester.Views
     {
         public EntryView()
         {
-            _baseViewModels = Keeper.ViewModels;
+            _baseViewModels = ViewModels;
 
             InitializeComponent();
 
@@ -58,7 +59,7 @@ namespace Inkton.Nester.Views
 
             LoadHelpPage();
         }
-
+            
         private void LoadHelpPage()
         {
             string page = @"
@@ -146,8 +147,8 @@ namespace Inkton.Nester.Views
                     PasswordValidator.IsValid);
 
                 _baseViewModels.AuthViewModel.CanRecoverPassword = (
-                    _baseViewModels.AuthViewModel.Permit.Owner.Email != null &&
-                    _baseViewModels.AuthViewModel.Permit.Owner.Email.Length > 0 &&
+                    Client.User.Email != null &&
+                    Client.User.Email.Length > 0 &&
                     EmailValidator.IsValid);
             }
         }
@@ -173,7 +174,9 @@ namespace Inkton.Nester.Views
 
         private void PushEngageView()
         {
-            AppViewModel newAppModel = new AppViewModel();
+            AppViewModel newAppModel = new AppViewModel(
+                Client.ApiVersion, Client.Signature, 
+                ViewModels.AppViewModel.Platform);
             newAppModel.NewAppAsync();
 
             BaseViewModels baseModels = new BaseViewModels(
@@ -238,9 +241,7 @@ namespace Inkton.Nester.Views
                     {
                         await MainSideView.Detail.Navigation.PopAsync();
 
-                        Keeper.ResetView(_baseViewModels
-                            .AppCollectionViewModel
-                            .AppModels.FirstOrDefault());
+                        Client.RefreshView();
                     }
                 }
                 else
@@ -250,7 +251,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -272,7 +273,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
                 IsServiceActive = false;
             }
 
@@ -311,7 +312,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
                 IsServiceActive = false;
             }
 
@@ -347,7 +348,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
                 IsServiceActive = false;
             }
 

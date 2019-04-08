@@ -32,84 +32,61 @@ using Newtonsoft.Json;
 using Inkton.Nest.Model;
 using Inkton.Nester;
 using Inkton.Nester.ViewModels;
-using Inkton.Nester.Cloud;
 using Inkton.Nester.Storage;
 using Inkton.Nester.Views;
 using Inkton.Nester.Helpers;
 
 namespace Nester.Deploy
 {
-    public partial class App : Application, IKeeper, INesterControl
+    public partial class App : Application, INesterClient
     {
-        private User _user;
-        private const int ServiceVersion = 2;
         private LogService _log;
-        private NesterService _platform, _backend;
         private BaseViewModels _baseModels;
         private MainSideView _mainSideView;
+        private string _signature;
 
         public App()
         {
             InitializeComponent();
+                        
+            _log = new LogService(Path.Combine(
+                    Path.GetTempPath(), "NesterLog"));
+            _baseModels = new BaseViewModels();
 
-            _user = new User();
-
-            StorageService cache = new StorageService(Path.Combine(
-                    Path.GetTempPath(), "NesterCache"));
-            cache.Clear();
-
+            // This is helps to trace issues with the API calls on the server 
             Dictionary<string, string> clientSignature = new Dictionary<string, string>();
             clientSignature["device"] = JsonConvert.SerializeObject(CrossDeviceInfo.Current);
             clientSignature["app_version"] = typeof(EntryView).GetTypeInfo()
                     .Assembly.GetName().Version.ToString();
-
-            string clientSignatureJSON =
-                JsonConvert.SerializeObject(clientSignature);
-
-            _log = new LogService(Path.Combine(
-                    Path.GetTempPath(), "NesterLog"));
-            _platform = new NesterService(
-                ServiceVersion, clientSignatureJSON, cache);
-            _backend = new NesterService(
-                ServiceVersion, clientSignatureJSON, cache);
-
-            _baseModels = new BaseViewModels(
-                new AuthViewModel(), 
-                new PaymentViewModel(),
-                new AppViewModel(),
-                new AppCollectionViewModel());
+            _signature = JsonConvert.SerializeObject(clientSignature);
 
             _mainSideView = new MainSideView();
-
             MainPage = _mainSideView;
-
             _mainSideView.ShowEntry();
         }
 
-        public BaseViewModels ViewModels
+        public BaseViewModels BaseViewModels
         {
             get { return _baseModels; }
         }
 
         public User User
         {
-            get { return _user; }
-            set { _user = value; }
+            get { return _baseModels.User; }
+            set { _baseModels.User = value; }
         }
 
-        public AppViewModel Target
+        public int ApiVersion
         {
-            get { return _baseModels.AppViewModel; }
+            get { return 2; }
         }
 
-        public NesterService Service
+        public string Signature
         {
-            get { return _platform; }
-        }
-
-        public NesterService Backend
-        {
-            get { return _backend; }
+            get
+            {
+                return _signature;
+            }
         }
 
         public LogService Log
@@ -121,23 +98,13 @@ namespace Nester.Deploy
         {
             ResourceManager resmgr = new ResourceManager(
                 "Inkton.Nester.Resources",
-                typeof(INesterControl).GetTypeInfo().Assembly);
+                typeof(INesterClient).GetTypeInfo().Assembly);
             return resmgr;
         }
 
-        public void ResetView(AppViewModel appModel = null)
+        public void RefreshView()
         {
-            if (appModel == null)
-            {
-                _baseModels.AppViewModel = _baseModels
-                    .AppCollectionViewModel
-                    .AppModels.FirstOrDefault();
-            }
-            else
-            {
-                _baseModels.AppViewModel = appModel;
-            }
-
+            _baseModels.ResetApp();
             _mainSideView.UpdateView();
         }
     }

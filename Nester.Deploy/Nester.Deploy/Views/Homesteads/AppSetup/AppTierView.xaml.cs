@@ -27,6 +27,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
+using Inkton.Nester.Helpers;
 
 namespace Inkton.Nester.Views
 {
@@ -175,7 +176,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -192,7 +193,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -209,7 +210,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -226,7 +227,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -282,7 +283,7 @@ namespace Inkton.Nester.Views
                 if (App.Status != "assigned")
                 {
                     await _baseViewModels.AppViewModel.CreateAppAsync(_selectedAppRow.Tier);
-                    Keeper.ViewModels.AppCollectionViewModel.AddModel(_baseViewModels.AppViewModel);
+                    ViewModels.AppCollectionViewModel.AddModel(_baseViewModels.AppViewModel);
                 }
 
                 if (_selectedAppRow != null && (
@@ -311,7 +312,7 @@ namespace Inkton.Nester.Views
             {
                 if (_selectedAppRow == null)
                 {
-                    await DisplayAlert("Nester", "Select an App Tier first", "OK");
+                    await ErrorHandler.ExceptionAsync(this, "Select an App Tier first");
                     return;
                 }
 
@@ -336,7 +337,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;

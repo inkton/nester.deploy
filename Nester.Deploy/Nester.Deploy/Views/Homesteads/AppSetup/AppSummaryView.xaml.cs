@@ -125,9 +125,9 @@ namespace Inkton.Nester.Views
 
                 if (!await Dns.IsDomainIPAsync(domain.Name, defaultDomain.IPAddress))
                 {
-                    await DisplayAlert("Nester", "The domain name " + domain.Name +
+                    await ErrorHandler.ExceptionAsync(this, "The domain name " + domain.Name +
                         " currently does not resolve to " + defaultDomain.IPAddress +
-                        ". Make sure to update the DNS", "OK");
+                        ". Make sure to update the DNS");
                     return false;
                 }
 
@@ -136,9 +136,9 @@ namespace Inkton.Nester.Views
 
                 if (unmatchedAlias != null)
                 {
-                    await DisplayAlert("Nester", "The alias " + unmatchedAlias +
+                    await ErrorHandler.ExceptionAsync(this, "The alias " + unmatchedAlias +
                         " currently does not resolve to " + defaultDomain.IPAddress +
-                        ". Make sure to update the DNS", "OK");
+                        ". Make sure to update the DNS");
                     return false;
                 }
             }
@@ -181,7 +181,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -251,7 +251,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
         }
 
@@ -265,7 +265,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
         }
 
@@ -311,8 +311,8 @@ namespace Inkton.Nester.Views
                     domainList += domain.Name + "\n";
                 }
 
-                await DisplayAlert("Nester", "The following custom domains will be removed. " +
-                    "Add the domains and re-deploy when the App IP is known.\n" + domainList, "OK");
+                await ErrorHandler.ExceptionAsync(this, "The following custom domains will be removed. " +
+                    "Add the domains and re-deploy when the App IP is known.\n" + domainList);
 
                 foreach (var domain in customDomains)
                 {

@@ -28,6 +28,7 @@ using Inkton.Nest.Model;
 using Inkton.Nest.Cloud;
 using Inkton.Nester.Cloud;
 using Inkton.Nester.ViewModels;
+using Inkton.Nester.Helpers;
 
 namespace Inkton.Nester.Views
 {
@@ -65,7 +66,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
                 IsServiceActive = false;
             }
         }

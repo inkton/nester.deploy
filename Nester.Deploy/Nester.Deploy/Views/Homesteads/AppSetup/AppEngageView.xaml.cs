@@ -23,6 +23,7 @@
 using System;
 using System.Collections.Generic;
 using Inkton.Nester.ViewModels;
+using Inkton.Nester.Helpers;
 
 namespace Inkton.Nester.Views
 {
@@ -56,7 +57,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -68,8 +69,8 @@ namespace Inkton.Nester.Views
 
             try
             {
-                ContactViewModel contactsModel = new ContactViewModel(null);
-                contactsModel.EditInvitation.OwnedBy = Keeper.User;
+                ContactViewModel contactsModel = new ContactViewModel(ViewModels.Platform, null);
+                contactsModel.EditInvitation.OwnedBy = Client.User;
                 await contactsModel.QueryInvitationsAsync();
 
                 AppJoinDetailView joinView = new AppJoinDetailView(contactsModel);
@@ -79,7 +80,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -91,11 +92,11 @@ namespace Inkton.Nester.Views
 
             try
             {
-                Keeper.ResetView();
+                Client.RefreshView();
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;

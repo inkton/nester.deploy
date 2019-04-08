@@ -29,6 +29,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
+using Inkton.Nester.Helpers;
 
 namespace Inkton.Nester.Views
 {
@@ -75,7 +76,7 @@ namespace Inkton.Nester.Views
 
                 if (StartTime.Time > EndTime.Time)
                 {
-                    await DisplayAlert("Nester", "Start time must be earler than the end time", "OK");
+                    await ErrorHandler.ExceptionAsync(this, "Start time must be earler than the end time");
                     return;
                 }
 
@@ -98,7 +99,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, "Start time must be earler than the end time");
             }
 
             IsServiceActive = false;

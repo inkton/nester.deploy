@@ -25,6 +25,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Nester.Deploy;
 using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
@@ -36,8 +37,6 @@ namespace Inkton.Nester.Views
 
         public HomeView()
         {
-            _baseViewModels = Keeper.ViewModels;
-
             InitializeComponent();
 
             SetActivityMonotoring(ServiceActive,
@@ -149,8 +148,8 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                ContactViewModel contactsModel = new ContactViewModel(null);
-                contactsModel.EditInvitation.OwnedBy = Keeper.User;
+                ContactViewModel contactsModel = new ContactViewModel(_baseViewModels.Platform, null);
+                contactsModel.EditInvitation.OwnedBy = Client.User;
                 await contactsModel.QueryInvitationsAsync();
 
                 MainSideView.StackViewAsync(
@@ -210,9 +209,7 @@ namespace Inkton.Nester.Views
 
                             ViewModels.AppCollectionViewModel.RemoveApp(appModel);
 
-                            Keeper.ResetView(Keeper.ViewModels
-                                .AppCollectionViewModel
-                                .AppModels.FirstOrDefault());
+                            Client.RefreshView();
                         }
                         catch (Exception ex)
                         {
@@ -258,8 +255,8 @@ namespace Inkton.Nester.Views
 
             try
             {
-                _baseViewModels.AppViewModel = new AppViewModel();
-                _baseViewModels.AppViewModel.NewAppAsync();
+                _baseViewModels.AppViewModel = new AppViewModel(
+                    Client.ApiVersion, Client.Signature, _baseViewModels.Platform);
                 _baseViewModels.WizardMode = true;
 
                 MainSideView.StackViewAsync(
@@ -277,11 +274,7 @@ namespace Inkton.Nester.Views
 
         private void AppModels_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
-            AppViewModel appModel = e.AddedItems.FirstOrDefault() as AppViewModel;
-            if (appModel != null)
-            {
-                Keeper.ResetView(appModel);
-            }
+            Client.RefreshView();
         }
     }
 }

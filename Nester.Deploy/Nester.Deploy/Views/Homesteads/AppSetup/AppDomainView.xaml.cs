@@ -98,11 +98,12 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
         }
+
         async private void OnButtonBasicDetailsClickedAsync(object sender, EventArgs e)
         {
             IsServiceActive = true;
@@ -114,7 +115,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -130,7 +131,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -146,7 +147,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -162,7 +163,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -243,7 +244,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
         }
 
@@ -333,9 +334,9 @@ namespace Inkton.Nester.Views
             if (!await Dns.IsDomainIPAsync(Name.Text, defaultDomain.IPAddress))
             {
                 IsServiceActive = false;
-                await DisplayAlert("Nester", "The domain name " + Name.Text +
+                await ErrorHandler.ExceptionAsync(this, "The domain name " + Name.Text +
                     " currently does not resolve to " + defaultDomain.IPAddress +
-                    ". Make sure to update the DNS", "OK");
+                    ". Make sure to update the DNS");
                 return false;
             }
 
@@ -345,9 +346,9 @@ namespace Inkton.Nester.Views
             if (unmatchedAlias != null)
             {
                 IsServiceActive = false;
-                await DisplayAlert("Nester", "The alias " + unmatchedAlias +
+                await ErrorHandler.ExceptionAsync(this, "The alias " + unmatchedAlias +
                     " currently does not resolve to " + defaultDomain.IPAddress +
-                    ". Make sure to update the DNS", "OK");
+                    ". Make sure to update the DNS");
                 return false;
             }
 
@@ -398,7 +399,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
         }
 
@@ -426,7 +427,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -444,7 +445,7 @@ namespace Inkton.Nester.Views
                 if (existDomains.Any())
                 {
                     IsServiceActive = false;
-                    await DisplayAlert("Nester", "The domain with this tag already exist", "OK");
+                    await ErrorHandler.ExceptionAsync(this, "The domain with this tag already exist");
                     return;
                 }
 
@@ -454,7 +455,7 @@ namespace Inkton.Nester.Views
                 if (existDomains.Any())
                 {
                     IsServiceActive = false;
-                    await DisplayAlert("Nester", "The domain already exist", "OK");
+                    await ErrorHandler.ExceptionAsync(this, "The domain already exist");
                     return;
                 }
 
@@ -474,7 +475,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -491,7 +492,7 @@ namespace Inkton.Nester.Views
                 if (updatingDomain.Default)
                 {
                     IsServiceActive = false;
-                    await DisplayAlert("Nester", "Cannot make changes to the default domain", "OK");
+                    await ErrorHandler.ExceptionAsync(this, "Cannot make changes to the default domain");
                     return;
                 }
 
@@ -501,7 +502,7 @@ namespace Inkton.Nester.Views
                 if (existDomains.Any())
                 {
                     IsServiceActive = false;
-                    await DisplayAlert("Nester", "The domain with this tag already exist", "OK");
+                    await ErrorHandler.ExceptionAsync(this, "The domain with this tag already exist");
                     return;
                 }
 
@@ -511,7 +512,7 @@ namespace Inkton.Nester.Views
                 if (existDomains.Any())
                 {
                     IsServiceActive = false;
-                    await DisplayAlert("Nester", "The domain already exist", "OK");
+                    await ErrorHandler.ExceptionAsync(this, "The domain already exist");
                     return;
                 }
 
@@ -548,7 +549,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -575,7 +576,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -592,8 +593,8 @@ namespace Inkton.Nester.Views
                 MainSideView.UnstackViewAsync();
             }
             catch (Exception ex)
-            { 
-                await DisplayAlert("Nester", ex.Message, "OK");
+            {
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;

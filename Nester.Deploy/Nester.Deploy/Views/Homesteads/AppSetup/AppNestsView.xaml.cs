@@ -28,6 +28,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
+using Inkton.Nester.Helpers;
 
 namespace Inkton.Nester.Views
 {
@@ -93,7 +94,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -109,7 +110,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -125,7 +126,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -141,7 +142,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -390,7 +391,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
         }
 
@@ -414,7 +415,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -432,7 +433,7 @@ namespace Inkton.Nester.Views
                 if (existNests.Any())
                 {
                     IsServiceActive = false;
-                    await DisplayAlert("Nester", "The nest with this tag already exist", "OK");
+                    await ErrorHandler.ExceptionAsync(this, "The nest with this tag already exist");
                     return;
                 }
 
@@ -449,7 +450,7 @@ namespace Inkton.Nester.Views
                     handlerNests.Any())
                 {
                     IsServiceActive = false;
-                    await DisplayAlert("Nester", "Only one handler type nest can exist.", "OK");
+                    await ErrorHandler.ExceptionAsync(this, "Only one handler type nest can exist.");
                     return;
                 }
 
@@ -459,7 +460,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -479,7 +480,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -499,7 +500,7 @@ namespace Inkton.Nester.Views
                 if (existNests.Any())
                 {
                     IsServiceActive = false;
-                    await DisplayAlert("Nester", "The nest with this tag already exist", "OK");
+                    await ErrorHandler.ExceptionAsync(this, "The nest with this tag already exist");
                     return;
                 }
 
@@ -515,7 +516,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -552,7 +553,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -571,7 +572,7 @@ namespace Inkton.Nester.Views
 
                 if (handlerNests.ToArray().Length == 0)
                 {
-                    await DisplayAlert("Nester", "Please add a handler nest to process queries", "OK");
+                    await ErrorHandler.ExceptionAsync(this, "Please add a handler nest to process queries");
                     return;
                 }
 
@@ -595,7 +596,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
         }
     }

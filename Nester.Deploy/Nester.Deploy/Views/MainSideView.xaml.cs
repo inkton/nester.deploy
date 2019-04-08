@@ -25,6 +25,7 @@ using Xamarin.Forms;
 using Inkton.Nester;
 using Inkton.Nester.ViewModels;
 using System.Collections.Generic;
+using DeployApp = Nester.Deploy.App;
 
 namespace Inkton.Nester.Views
 {
@@ -107,10 +108,10 @@ namespace Inkton.Nester.Views
 
         public void UpdateView()
         {
-            IKeeper keeper =
-                (Application.Current as IKeeper);
+            BaseViewModels baseModels = ((DeployApp)Application.Current)
+                .BaseViewModels;
 
-            if (keeper.Target == null)
+            if (baseModels.AppViewModel == null)
             {
                 BannerView view = new BannerView();
                 view.ShowProgress = false;
@@ -127,7 +128,7 @@ namespace Inkton.Nester.Views
                 if (isAppViewCurrent)
                 {
                     if (_currentView.ViewModels.AppViewModel.EditApp.Id
-                            != keeper.Target.EditApp.Id)
+                            != baseModels.AppViewModel.EditApp.Id)
                     {
                         changeView = true;
                     }
@@ -139,21 +140,21 @@ namespace Inkton.Nester.Views
 
                 if (changeView)
                 {
-                    AppView appView = GetAppView(keeper.Target.EditApp.Id); 
+                    AppView appView = GetAppView(baseModels.AppViewModel.EditApp.Id); 
 
                     if (appView == null)
                     {
                         appView = new AppView(
-                            new BaseViewModels(keeper.ViewModels));
+                            new BaseViewModels(baseModels));
 
-                        if (keeper.Target.EditApp.Id > 0)
+                        if (baseModels.AppViewModel.EditApp.Id > 0)
                         {
                             Task.Run(async () => {
-                                await keeper.Target.InitAsync();
+                                await baseModels.AppViewModel.InitAsync();
                             });
                         }
 
-                        _viewCache[keeper.Target.EditApp.Id] = appView;
+                        _viewCache[baseModels.AppViewModel.EditApp.Id] = appView;
                     }
 
                     CreateRootView(appView);
