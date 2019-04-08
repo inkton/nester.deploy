@@ -27,6 +27,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
+using DeployApp = Nester.Deploy.App;
 
 namespace Inkton.Nester.Views
 {
@@ -41,6 +42,7 @@ namespace Inkton.Nester.Views
         public View()
         {
             SubscribeToMessages();
+            _baseViewModels = ((DeployApp)Application.Current).ViewModels;
         }
 
         public virtual BaseViewModels ViewModels
@@ -58,19 +60,11 @@ namespace Inkton.Nester.Views
             set { _mainSideView = value; }
         }
 
-        public IKeeper Keeper
+        public INesterClient Client
         {
             get
             {
-                return Application.Current as IKeeper;
-            }
-        }
-
-        public INesterControl NesterControl
-        {
-            get
-            {
-                return Application.Current as INesterControl;
+                return Application.Current as INesterClient;
             }
         }
 

@@ -32,13 +32,15 @@ namespace Inkton.Nester.Views
 {
     public partial class AppBasicDetailView : View
     {
-        private AppViewModel _appSearch = new AppViewModel();
+        private AppViewModel _appSearch;
 
         public AppBasicDetailView(BaseViewModels baseModels)
         {
             InitializeComponent();
 
             ViewModels = baseModels;
+            _appSearch = new AppViewModel(
+                Client.ApiVersion, Client.Signature, baseModels.Platform);
 
             Tag.Unfocused += Tag_UnfocusedAsync;
 

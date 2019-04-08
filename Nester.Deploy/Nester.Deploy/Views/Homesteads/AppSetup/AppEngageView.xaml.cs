@@ -68,8 +68,8 @@ namespace Inkton.Nester.Views
 
             try
             {
-                ContactViewModel contactsModel = new ContactViewModel(null);
-                contactsModel.EditInvitation.OwnedBy = Keeper.User;
+                ContactViewModel contactsModel = new ContactViewModel(ViewModels.Platform, null);
+                contactsModel.EditInvitation.OwnedBy = Client.User;
                 await contactsModel.QueryInvitationsAsync();
 
                 AppJoinDetailView joinView = new AppJoinDetailView(contactsModel);
@@ -91,7 +91,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                Keeper.ResetView();
+                Client.ResetView();
             }
             catch (Exception ex)
             {

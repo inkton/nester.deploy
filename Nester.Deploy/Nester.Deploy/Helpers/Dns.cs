@@ -38,9 +38,8 @@ namespace Inkton.Nester.Helpers
             {
                 wildcardStripped = domain.Remove(0, 2);
             }
-
-            string domainIp = await (App.Current as Inkton.Nester.IKeeper)
-                .Service.GetIPAsync(wildcardStripped);
+            
+            string domainIp = await IpTools.GetIPAsync(wildcardStripped);
 
             return (domainIp != null && domainIp == ip);
         }

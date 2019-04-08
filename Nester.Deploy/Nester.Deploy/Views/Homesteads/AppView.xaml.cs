@@ -98,10 +98,8 @@ namespace Inkton.Nester.Views
                         if (updateApp.Id == App.Id)
                         {
                             // Set the backend address for querying logs and metrics
-                            NesterControl.Backend.Endpoint = string.Format(
-                                    "https://{0}/", App.Hostname);
-                            NesterControl.Backend.BasicAuth = new Inkton.Nester.Cloud.BasicAuth(true,
-                                    App.Tag, App.NetworkPassword);
+                            // The IP address is only available after an update recvd
+                            baseModels.AppViewModel.LogViewModel.ResetBackend();
 
                             UpdateStatus();
 

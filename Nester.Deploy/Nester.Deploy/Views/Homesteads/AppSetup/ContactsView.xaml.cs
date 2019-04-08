@@ -451,7 +451,7 @@ namespace Inkton.Nester.Views
 
                     await MainSideView.Detail.Navigation.PopAsync();
                     _baseViewModels.WizardMode = false;
-                    Keeper.ResetView();
+                    Client.ResetView();
                 }
                 else
                 {

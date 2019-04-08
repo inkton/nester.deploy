@@ -38,7 +38,7 @@ namespace Inkton.Nester.Views
     {
         public EntryView()
         {
-            _baseViewModels = Keeper.ViewModels;
+            _baseViewModels = ViewModels;
 
             InitializeComponent();
 
@@ -58,7 +58,7 @@ namespace Inkton.Nester.Views
 
             LoadHelpPage();
         }
-
+            
         private void LoadHelpPage()
         {
             string page = @"
@@ -173,7 +173,9 @@ namespace Inkton.Nester.Views
 
         private void PushEngageView()
         {
-            AppViewModel newAppModel = new AppViewModel();
+            AppViewModel newAppModel = new AppViewModel(
+                Client.ApiVersion, Client.Signature, 
+                ViewModels.AppViewModel.Platform);
             newAppModel.NewAppAsync();
 
             BaseViewModels baseModels = new BaseViewModels(
@@ -238,7 +240,7 @@ namespace Inkton.Nester.Views
                     {
                         await MainSideView.Detail.Navigation.PopAsync();
 
-                        Keeper.ResetView(_baseViewModels
+                        Client.ResetView(_baseViewModels
                             .AppCollectionViewModel
                             .AppModels.FirstOrDefault());
                     }

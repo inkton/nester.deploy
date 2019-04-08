@@ -30,7 +30,7 @@ namespace Inkton.Nester.Helpers
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            ResourceManager resmgr = (Application.Current as INesterControl)
+            ResourceManager resmgr = (Application.Current as INesterClient)
                 .GetResourceManager();
 
             if (value == null)
@@ -48,7 +48,7 @@ namespace Inkton.Nester.Helpers
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            ResourceManager resmgr = (Application.Current as INesterControl)
+            ResourceManager resmgr = (Application.Current as INesterClient)
                 .GetResourceManager();
 
             return resmgr.GetString("DomainPrimary",

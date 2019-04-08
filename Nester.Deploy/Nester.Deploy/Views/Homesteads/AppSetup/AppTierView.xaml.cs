@@ -282,7 +282,7 @@ namespace Inkton.Nester.Views
                 if (App.Status != "assigned")
                 {
                     await _baseViewModels.AppViewModel.CreateAppAsync(_selectedAppRow.Tier);
-                    Keeper.ViewModels.AppCollectionViewModel.AddModel(_baseViewModels.AppViewModel);
+                    ViewModels.AppCollectionViewModel.AddModel(_baseViewModels.AppViewModel);
                 }
 
                 if (_selectedAppRow != null && (
