@@ -23,13 +23,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Flurl.Http" Version="2.4.0" />
+    <PackageReference Include="Flurl.Http" Version="2.4.1" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="15.4.0.20" />
     <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="15.4.0.20" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="15.4.0.20" />
     <PackageReference Include="System.Net.NameResolution" Version="4.3.0" />
     <PackageReference Include="Xam.Plugin.DeviceInfo" Version="4.0.0.13" />
+    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
     <PackageReference Include="Xamarin.Forms" Version="3.6.0.293080" />
     <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.0.135" />
   </ItemGroup>
@@ -141,6 +143,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\nest.model\Nest.Model\Nest.Model.csproj" />
     <ProjectReference Include="..\..\..\nester.library\Nester.Library\Nester.Library.csproj" />
   </ItemGroup>
 </Project>

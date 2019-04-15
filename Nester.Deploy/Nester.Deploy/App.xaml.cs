@@ -27,7 +27,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using Xamarin.Forms;
-using Plugin.DeviceInfo;
+using Xamarin.Essentials;
 using Newtonsoft.Json;
 using Inkton.Nest.Model;
 using Inkton.Nester;
@@ -48,17 +48,27 @@ namespace Nester.Deploy
         public App()
         {
             InitializeComponent();
-                        
+
+            // This is helps to trace issues with 
+            // the API calls on the server 
+
+            var clientSignature = new {
+                Model = DeviceInfo.Model,
+                Manufacturer = DeviceInfo.Manufacturer,
+                Name = DeviceInfo.Name,
+                Platform = DeviceInfo.Platform,
+                Idiom = DeviceInfo.Idiom,
+                DeviceType = DeviceInfo.DeviceType,
+                HardwareVersion = DeviceInfo.VersionString,
+                SoftwareVersion = typeof(EntryView).GetTypeInfo()
+                    .Assembly.GetName().Version.ToString(),
+                ApiVersion = ApiVersion
+            };
+
+            _signature = JsonConvert.SerializeObject(clientSignature);
             _log = new LogService(Path.Combine(
                     Path.GetTempPath(), "NesterLog"));
             _baseModels = new BaseViewModels();
-
-            // This is helps to trace issues with the API calls on the server 
-            Dictionary<string, string> clientSignature = new Dictionary<string, string>();
-            clientSignature["device"] = JsonConvert.SerializeObject(CrossDeviceInfo.Current);
-            clientSignature["app_version"] = typeof(EntryView).GetTypeInfo()
-                    .Assembly.GetName().Version.ToString();
-            _signature = JsonConvert.SerializeObject(clientSignature);
 
             _mainSideView = new MainSideView();
             MainPage = _mainSideView;
@@ -78,7 +88,7 @@ namespace Nester.Deploy
 
         public int ApiVersion
         {
-            get { return 2; }
+            get { return 888; }
         }
 
         public string Signature

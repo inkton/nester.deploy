@@ -41,6 +41,8 @@ namespace Inkton.Nester.Views
         {
             _baseViewModels = ViewModels;
 
+            BindingContext = _baseViewModels.AuthViewModel;
+
             InitializeComponent();
 
             SetActivityMonotoring(ServiceActive,
@@ -52,10 +54,6 @@ namespace Inkton.Nester.Views
                     ButtonSignup,
                     ButtonRecoverPassword
                 });
-
-            _baseViewModels.AuthViewModel.Validated = false;
-
-            BindingContext = _baseViewModels.AuthViewModel;
 
             LoadHelpPage();
         }
@@ -147,8 +145,8 @@ namespace Inkton.Nester.Views
                     PasswordValidator.IsValid);
 
                 _baseViewModels.AuthViewModel.CanRecoverPassword = (
-                    Client.User.Email != null &&
-                    Client.User.Email.Length > 0 &&
+                    _baseViewModels.AuthViewModel.Platform.Permit.Owner.Email != null &&
+                    _baseViewModels.AuthViewModel.Platform.Permit.Owner.Email.Length > 0 &&
                     EmailValidator.IsValid);
             }
         }
@@ -156,6 +154,8 @@ namespace Inkton.Nester.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            BeginNewSession();
 
             Validate();
         }
@@ -207,8 +207,6 @@ namespace Inkton.Nester.Views
 
             try
             {
-                BeginNewSession();
-
                 ResultSingle<Permit> result = await _baseViewModels
                     .AuthViewModel.QueryTokenAsync(false);
 
@@ -263,8 +261,6 @@ namespace Inkton.Nester.Views
 
             try
             {
-                BeginNewSession();
-
                 _baseViewModels.AuthViewModel.Signup();
 
                 PushUserUpdate();
@@ -286,8 +282,6 @@ namespace Inkton.Nester.Views
 
             try
             {
-                BeginNewSession();
-
                 ResultSingle<Permit> result = await _baseViewModels
                     .AuthViewModel.QueryTokenAsync(false);
 

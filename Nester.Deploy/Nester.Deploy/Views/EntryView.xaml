@@ -38,7 +38,7 @@
                 Text="Email"></Label>
         <Entry Style="{StaticResource nesterField}"                  
               x:Name="Email"
-              Text="{Binding Path=Permit.Owner.Email, Mode=TwoWay}"
+              Text="{Binding Path=Platform.Permit.Owner.Email, Mode=TwoWay}"
               Keyboard="Email"
               PropertyChanged="OnFieldValidation"
               Placeholder="Enter email address">
@@ -60,7 +60,7 @@
                 Text="Password"></Label>
         <Entry Style="{StaticResource nesterField}"
             x:Name="Password"
-            Text="{Binding Path=Permit.Password, Mode=TwoWay}"
+            Text="{Binding Path=Platform.Permit.Password, Mode=TwoWay}"
             IsPassword="True"
             PropertyChanged="OnFieldValidation"
             Placeholder="Enter password">
