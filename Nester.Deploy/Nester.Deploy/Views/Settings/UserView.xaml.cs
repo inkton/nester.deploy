@@ -48,7 +48,7 @@ namespace Inkton.Nester.Views
 
                 if (baseModels.WizardMode == false)
                 {
-                    if (Client.User.TerritoryISOCode == territory.Alpha2)
+                    if (BaseViewModels.Platform.Permit.Owner.TerritoryISOCode == territory.Alpha2)
                     {
                         selectedTerritoryIndex = Territories.Items.Count - 1;
                     }
@@ -199,16 +199,16 @@ namespace Inkton.Nester.Views
                 {
                     if (territoryName == territory.ToString())
                     {
-                        Client.User.TerritoryISOCode = territory.Alpha2;
+                        BaseViewModels.Platform.Permit.Owner.TerritoryISOCode = territory.Alpha2;
                         break;
                     }
                 }
-
+                
                 IsServiceActive = false;
 
                 if (_baseViewModels.WizardMode)
                 {
-                    ResultSingle<Permit> result = _baseViewModels.AuthViewModel.Signup(false);
+                    ResultSingle<Permit> result = await _baseViewModels.AuthViewModel.SignupAsync(false);
 
                     if (result.Code == Cloud.ServerStatus.NEST_RESULT_ERROR_AUTH_SECCODE)
                     {
@@ -220,18 +220,11 @@ namespace Inkton.Nester.Views
                     }
                     else
                     {
-                        _baseViewModels.AuthViewModel.QueryToken();
+                        await _baseViewModels.AuthViewModel.QueryTokenAsync();
+        
+                        AppViewModel newAppModel = new AppViewModel(_baseViewModels.Platform);
 
-                        AppViewModel newAppModel = new AppViewModel(
-                            Client.ApiVersion, Client.Signature, _baseViewModels.Platform);
-
-                        BaseViewModels baseModels = new BaseViewModels(
-                            _baseViewModels.AuthViewModel,
-                            _baseViewModels.PaymentViewModel,
-                            newAppModel);
-                        baseModels.WizardMode = true;
-
-                        AppEngageView engageView = new AppEngageView(baseModels);
+                        AppEngageView engageView = new AppEngageView(newAppModel);
                         engageView.MainSideView = MainSideView;
 
                         MainSideView.Detail.Navigation.InsertPageBefore(engageView, this);
@@ -240,7 +233,7 @@ namespace Inkton.Nester.Views
                 }
                 else
                 {
-                    await _baseViewModels.AuthViewModel.UpdateUserAsync(Client.User);
+                    await _baseViewModels.AuthViewModel.UpdateUserAsync(BaseViewModels.Platform.Permit.Owner);
                     await DisplayAlert("Nester", "Your information was saved", "OK");
                 }
             }

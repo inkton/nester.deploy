@@ -21,10 +21,11 @@
 */
 
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
 using Inkton.Nester;
 using Inkton.Nester.ViewModels;
-using System.Collections.Generic;
 using DeployApp = Nester.Deploy.App;
 
 namespace Inkton.Nester.Views
@@ -106,68 +107,75 @@ namespace Inkton.Nester.Views
             _currentView = (Detail as NavigationPage).CurrentPage as View;
         }
 
-        public void UpdateView()
+        public void UpdateView(AppViewModel loadAppViewModel = null)
         {
             BaseViewModels baseModels = ((DeployApp)Application.Current)
                 .BaseViewModels;
 
-            if (baseModels.AppViewModel == null)
+            if (loadAppViewModel == null)
             {
-                BannerView view = new BannerView();
-                view.ShowProgress = false;
-                CreateRootView(view);
-            }
-            else
-            {
-                bool isAppViewCurrent = (
-                    _currentView != null && 
-                    _currentView is AppView );
+                loadAppViewModel = baseModels.AppCollectionViewModel
+                    .AppModels.FirstOrDefault();
 
-                bool changeView = false;
-
-                if (isAppViewCurrent)
+                if (loadAppViewModel == null)
                 {
-                    if (_currentView.ViewModels.AppViewModel.EditApp.Id
-                            != baseModels.AppViewModel.EditApp.Id)
-                    {
-                        changeView = true;
-                    }
-                }
-                else
+                    BannerView view = new BannerView();
+                    view.ShowProgress = false;
+                    CreateRootView(view);
+                    return;
+                }                
+            }
+
+            bool isAppViewCurrent = (
+                _currentView != null && 
+                _currentView is AppView );
+
+            bool changeView = false;
+
+            if (isAppViewCurrent)
+            {
+                if (_currentView.AppViewModel.EditApp.Id
+                        != loadAppViewModel.EditApp.Id)
                 {
                     changeView = true;
                 }
+            }
+            else
+            {
+                changeView = true;
+            }
 
-                if (changeView)
-                {
-                    AppView appView = GetAppView(baseModels.AppViewModel.EditApp.Id); 
+            if (changeView)
+            {
+                AppView appView = GetAppView(loadAppViewModel.EditApp.Id); 
 
-                    if (appView == null)
+                if (appView == null)
+                {                  
+                    appView = new AppView(loadAppViewModel);
+
+                    System.Diagnostics.Debug.WriteLine(
+                        string.Format("Created a view for", loadAppViewModel.EditApp.Tag));
+
+                    if (loadAppViewModel.EditApp.Id > 0)
                     {
-                        appView = new AppView(
-                            new BaseViewModels(baseModels));
-
-                        if (baseModels.AppViewModel.EditApp.Id > 0)
-                        {
-                            Task.Run(async () => {
-                                await baseModels.AppViewModel.InitAsync();
-                            });
-                        }
-
-                        _viewCache[baseModels.AppViewModel.EditApp.Id] = appView;
+                        Task.Run(async () => {
+                            await appView.AppViewModel.InitAsync();
+                        });
                     }
 
-                    CreateRootView(appView);
+                    _viewCache[loadAppViewModel.EditApp.Id] = appView;
                 }
+
+                CreateRootView(appView);
             }
         }
 
-        public void Reload()
+        async public Task ReloadAsync()
         {
             if (_currentView != null && _currentView is AppView)
             {
-                (_currentView as AppView)
-                    .ViewModels.AppViewModel.Reload();
+                await (_currentView as AppView)
+                    .AppViewModel.ReloadAsync();
             }
         }
     }

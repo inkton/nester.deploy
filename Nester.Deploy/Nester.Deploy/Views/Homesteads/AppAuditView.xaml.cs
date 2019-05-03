@@ -35,11 +35,11 @@ namespace Inkton.Nester.Views
 {
     public partial class AppAuditView : View
     {
-        public AppAuditView(BaseViewModels baseModels)
+        public AppAuditView(AppViewModel appViewModel)
         {
             InitializeComponent();
 
-            ViewModels = baseModels;
+            AppViewModel = appViewModel;
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
@@ -63,7 +63,7 @@ namespace Inkton.Nester.Views
             StartTime.Time = new TimeSpan(0, 0, 0);
             EndTime.Time = new TimeSpan(23, 59, 59);
 
-            _baseViewModels.AppViewModel.DeploymentViewModel.AppAudits.Clear();
+            AppViewModel.DeploymentViewModel.AppAudits.Clear();
         }
 
         private async void QueryAsync()
@@ -72,7 +72,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                _baseViewModels.AppViewModel.DeploymentViewModel.AppAudits.Clear();
+                AppViewModel.DeploymentViewModel.AppAudits.Clear();
 
                 if (StartTime.Time > EndTime.Time)
                 {
@@ -95,9 +95,9 @@ namespace Inkton.Nester.Views
                         EndTime.Time.Hours, EndTime.Time.Minutes, EndTime.Time.Seconds
                     ));
 
-                await _baseViewModels.AppViewModel.DeploymentViewModel.QueryAppAuditsAsync(filter);
+                await AppViewModel.DeploymentViewModel.QueryAppAuditsAsync(filter);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await ErrorHandler.ExceptionAsync(this, "Start time must be earler than the end time");
             }
@@ -114,7 +114,7 @@ namespace Inkton.Nester.Views
         {
             base.UpdateBindings();
 
-            BindingContext = _baseViewModels.AppViewModel.DeploymentViewModel;
+            BindingContext = AppViewModel.DeploymentViewModel;
         }
         
         private void ButtonCancel_Clicked(object sender, EventArgs e)

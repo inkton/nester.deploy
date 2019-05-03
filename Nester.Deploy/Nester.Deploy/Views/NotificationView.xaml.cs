@@ -28,17 +28,16 @@ namespace Inkton.Nester.Views
 {
     public partial class NotificationView : View
     {
-        public NotificationView(BaseViewModels baseModels)
+        public NotificationView(AppViewModel appViewModel)
         {
             InitializeComponent();
+
+            AppViewModel = appViewModel;
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
                     ButtonDone
                 });
-
-            _baseViewModels = baseModels;
-            BindingContext = _baseViewModels.AppViewModel;
         }
 
         async private void OnDoneButtonClickedAsync(object sender, EventArgs e)

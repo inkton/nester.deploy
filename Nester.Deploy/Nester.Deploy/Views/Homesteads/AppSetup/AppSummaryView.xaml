@@ -4,7 +4,6 @@
              xmlns:views="clr-namespace:Inkton.Nester.Views"
              xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
              xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
-             xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Padding="20"
              Title="Deploy"             
              x:Class="Inkton.Nester.Views.AppSummaryView">
@@ -49,8 +48,8 @@
         <Label Text="{Binding DomainViewModel.DefaultDomain.Name}"
                Style="{StaticResource nesterListInfoLabelMinor}"
                VerticalOptions="Start">
-        </Label>                    
-        <Label Text="{Binding ContactViewModel.ContactsCount, StringFormat='{0} user(s) in the team'}"
+        </Label>
+          <Label Text="{Binding ContactViewModel.ContactsCount, StringFormat='{0} user(s) in the team'}"
                 Style="{StaticResource nesterListInfoLabelMinor}"
                VerticalOptions="Start">
         </Label>                    

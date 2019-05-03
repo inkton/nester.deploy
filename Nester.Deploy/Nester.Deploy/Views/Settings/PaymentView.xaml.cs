@@ -30,7 +30,7 @@ namespace Inkton.Nester.Views
 {
     public partial class PaymentView : View
     {
-        public PaymentView(BaseViewModels baseModels)
+        public PaymentView()
         {
             InitializeComponent();
 
@@ -41,7 +41,6 @@ namespace Inkton.Nester.Views
                     BillingCycle
                 });
 
-            _baseViewModels = baseModels;
             BindingContext = _baseViewModels.PaymentViewModel;
 
             BillingCycle.SelectedIndex = 0;

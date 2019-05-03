@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Inkton.Nester.Views"
              xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
-             xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:local="clr-namespace:Nester"
              x:Class="Inkton.Nester.Views.NotificationView"
              Title="Notifications">
@@ -45,11 +44,10 @@
 
       <StackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
 
-        <sync:SfListView x:Name="Notifications"
+        <ListView x:Name="Notifications"
                         ItemsSource="{Binding Notifications}"
-                        SelectionBackgroundColor="{StaticResource selectionColor}"
                         ItemTemplate="{StaticResource ItemTemplate}">
-        </sync:SfListView>
+        </ListView>
               
     </StackLayout>
 

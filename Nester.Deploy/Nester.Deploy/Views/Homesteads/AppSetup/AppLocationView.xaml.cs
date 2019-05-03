@@ -41,7 +41,7 @@ namespace Inkton.Nester.Views
                 TapGestureRecognizer tap = new TapGestureRecognizer
                 {
                     Command = new Command<Forest>(async (forest) => await view.OnSelectLocation(forest, true)),
-                    CommandParameter = view.ViewModels.AppViewModel.DeploymentViewModel.ForestsByTag[forestTag.Replace('_', '-')]
+                    CommandParameter = view.AppViewModel.DeploymentViewModel.ForestsByTag[forestTag.Replace('_', '-')]
                 };
 
                 FlagLabel = view.FindByName<Label>("FlagLabel_" + forestTag);
@@ -61,16 +61,16 @@ namespace Inkton.Nester.Views
 
         private Dictionary<string, ForestButton> _forestButtons;
 
-        public AppLocationView(BaseViewModels baseModels, 
+        public AppLocationView(AppViewModel appViewModel, 
             ObservableCollection<Forest> validForests)
         {
             InitializeComponent();
 
-            ViewModels = baseModels;
+            AppViewModel = appViewModel;
 
             _forestButtons = new Dictionary<string, ForestButton>();
             
-            if (baseModels.AppViewModel.ServicesViewModel.SelectedAppServiceTag == "nest-oak")
+            if (AppViewModel.ServicesViewModel.SelectedAppServiceTag == "nest-oak")
             {
                 SetupOakLocations(validForests);
             }
@@ -86,7 +86,7 @@ namespace Inkton.Nester.Views
         {
             base.UpdateBindings();
 
-            BindingContext = _baseViewModels.AppViewModel.DeploymentViewModel;
+            BindingContext = AppViewModel.DeploymentViewModel;
         }
 
         private void SetupOakLocations(ObservableCollection<Forest> validForests)
@@ -233,8 +233,8 @@ namespace Inkton.Nester.Views
                 AnimateButtonTouched(button.FlagHolder, 1500, "#66b9f1", "#E4F1FE", 1);
                 AnimateButtonTouched(button.FlagHolder, 1500, "#66b9f1", "#E4F1FE", 1);
 
-                _baseViewModels.AppViewModel.DeploymentViewModel.EditDeployment.ForestId = forest.Id;
-                MainSideView.CurrentLevelViewAsync(new AppSummaryView(_baseViewModels));
+                AppViewModel.DeploymentViewModel.EditDeployment.ForestId = forest.Id;
+                MainSideView.CurrentLevelViewAsync(new AppSummaryView(AppViewModel));
             }
             catch (Exception ex)
             {

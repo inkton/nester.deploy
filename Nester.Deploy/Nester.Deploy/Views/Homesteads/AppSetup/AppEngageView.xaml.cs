@@ -22,18 +22,20 @@
 
 using System;
 using System.Collections.Generic;
+using Xamarin.Forms;
 using Inkton.Nester.ViewModels;
 using Inkton.Nester.Helpers;
+using DeployApp = Nester.Deploy.App;
 
 namespace Inkton.Nester.Views
 {
     public partial class AppEngageView : View
     {
-        public AppEngageView(BaseViewModels baseModels)
+        public AppEngageView(AppViewModel appViewModel)
         {
             InitializeComponent();
 
-            ViewModels = baseModels;
+            AppViewModel = appViewModel;
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
@@ -50,7 +52,7 @@ namespace Inkton.Nester.Views
             try
             {
                 _baseViewModels.WizardMode = true;
-                AppBasicDetailView basicView = new AppBasicDetailView(_baseViewModels);
+                AppBasicDetailView basicView = new AppBasicDetailView(AppViewModel);
                 basicView.MainSideView = MainSideView;
                 MainSideView.Detail.Navigation.InsertPageBefore(basicView, this);
                 await MainSideView.Detail.Navigation.PopAsync();
@@ -69,8 +71,8 @@ namespace Inkton.Nester.Views
 
             try
             {
-                ContactViewModel contactsModel = new ContactViewModel(ViewModels.Platform, null);
-                contactsModel.EditInvitation.OwnedBy = Client.User;
+                ContactViewModel contactsModel = new ContactViewModel(BaseViewModels.Platform, null);
+                contactsModel.EditInvitation.OwnedBy = BaseViewModels.Platform.Permit.Owner;
                 await contactsModel.QueryInvitationsAsync();
 
                 AppJoinDetailView joinView = new AppJoinDetailView(contactsModel);
@@ -92,7 +94,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                Client.RefreshView();
+                ((DeployApp)Application.Current).RefreshView();
             }
             catch (Exception ex)
             {

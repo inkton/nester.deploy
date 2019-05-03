@@ -27,6 +27,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Nester.Deploy;
 using Inkton.Nester.ViewModels;
+using DeployApp = Nester.Deploy.App;
 
 namespace Inkton.Nester.Views
 {
@@ -52,7 +53,7 @@ namespace Inkton.Nester.Views
                     AppModels
                 });
 
-            AppModels.SelectionChanged += AppModels_SelectionChanged;
+            AppModels.ItemSelected += AppModels_ItemSelected;
 
             ButtonAppJoin.Clicked += ButtonAppJoin_ClickedAsync;
             ButtonAppReload.Clicked += ButtonAppReload_ClickedAsync;
@@ -83,7 +84,7 @@ namespace Inkton.Nester.Views
                     {
                         Task.Run(async () =>
                         {
-                            foreach (AppViewModel appModel in ViewModels.AppCollectionViewModel.AppModels)
+                            foreach (AppViewModel appModel in BaseViewModels.AppCollectionViewModel.AppModels)
                             {
                                 if (!appModel.EditApp.IsBusy)
                                 {
@@ -99,7 +100,7 @@ namespace Inkton.Nester.Views
 
                                     if (!appModel.EditApp.IsBusy)
                                     {
-                                        appModel.Reload();
+                                        await appModel.ReloadAsync();
                                     }
                                 }
                                 catch(Exception ex)
@@ -149,7 +150,7 @@ namespace Inkton.Nester.Views
             try
             {
                 ContactViewModel contactsModel = new ContactViewModel(_baseViewModels.Platform, null);
-                contactsModel.EditInvitation.OwnedBy = Client.User;
+                contactsModel.EditInvitation.OwnedBy = BaseViewModels.Platform.Permit.Owner;
                 await contactsModel.QueryInvitationsAsync();
 
                 MainSideView.StackViewAsync(
@@ -167,7 +168,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.Reload();
+                await MainSideView.ReloadAsync();
             }
             catch (Exception ex)
             {
@@ -207,9 +208,10 @@ namespace Inkton.Nester.Views
                         {
                             await appModel.RemoveAppAsync();
 
-                            ViewModels.AppCollectionViewModel.RemoveApp(appModel);
+                            BaseViewModels.AppCollectionViewModel.RemoveApp(appModel);
 
-                            Client.RefreshView();
+                            ((DeployApp)Application.Current).RefreshView();
+
                         }
                         catch (Exception ex)
                         {
@@ -255,12 +257,11 @@ namespace Inkton.Nester.Views
 
             try
             {
-                _baseViewModels.AppViewModel = new AppViewModel(
-                    Client.ApiVersion, Client.Signature, _baseViewModels.Platform);
+                AppViewModel = new AppViewModel(_baseViewModels.Platform);
                 _baseViewModels.WizardMode = true;
 
                 MainSideView.StackViewAsync(
-                   new AppBasicDetailView(_baseViewModels));
+                   new AppBasicDetailView(AppViewModel));
 
                 MainSideView.IsPresented = false;
             }
@@ -272,9 +273,13 @@ namespace Inkton.Nester.Views
             IsServiceActive = false;
         }
 
-        private void AppModels_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        private void AppModels_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Client.RefreshView();
+            AppViewModel appModel = e.SelectedItem as AppViewModel;
+            if (appModel != null)
+            {
+                ((DeployApp)Application.Current).RefreshView(appModel);
+            }
         }
     }
 }

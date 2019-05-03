@@ -34,11 +34,9 @@ namespace Inkton.Nester.Views
 {
     public partial class ExitView : View
 	{
-        public ExitView(BaseViewModels baseModels)
+        public ExitView()
         {
             InitializeComponent();
-
-            _baseViewModels = baseModels;
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {

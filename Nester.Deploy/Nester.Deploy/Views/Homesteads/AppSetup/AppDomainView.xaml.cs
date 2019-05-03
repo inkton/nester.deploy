@@ -38,11 +38,11 @@ namespace Inkton.Nester.Views
     {
         private Regex _domainVerifier;
 
-        public AppDomainView(BaseViewModels baseModels)
+        public AppDomainView(AppViewModel appViewModel)
         {
             InitializeComponent();
 
-            ViewModels = baseModels;
+            AppViewModel = appViewModel;
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
@@ -61,7 +61,9 @@ namespace Inkton.Nester.Views
 
             Aliases.Unfocused += Aliases_Unfocused;
             Name.Unfocused += Name_Unfocused;
-            AppDomainsList.SelectionChanged += AppDomainsList_SelectionChanged;
+
+            AppDomainsList.ItemSelected += AppDomainsList_ItemSelected;
+
             ButtonCert.Clicked += ButtonCert_Clicked;
 
             ButtonDone.IsVisible = _baseViewModels.WizardMode;
@@ -85,7 +87,7 @@ namespace Inkton.Nester.Views
         {
             base.UpdateBindings();
 
-            BindingContext = _baseViewModels.AppViewModel.DomainViewModel;
+            BindingContext = AppViewModel.DomainViewModel;
         }
 
         async private void OnButtonServiceClickedAsync(object sender, EventArgs e)
@@ -94,7 +96,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new AppTierView(_baseViewModels));
+                MainSideView.CurrentLevelViewAsync(new AppTierView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -111,7 +113,7 @@ namespace Inkton.Nester.Views
             try
             {
                 _baseViewModels.WizardMode = false;
-                MainSideView.CurrentLevelViewAsync(new AppBasicDetailView(_baseViewModels));
+                MainSideView.CurrentLevelViewAsync(new AppBasicDetailView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -127,7 +129,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new AppTierView(_baseViewModels));
+                MainSideView.CurrentLevelViewAsync(new AppTierView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -143,7 +145,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new ContactsView(_baseViewModels));
+                MainSideView.CurrentLevelViewAsync(new ContactsView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -159,7 +161,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new AppNestsView(_baseViewModels));
+                MainSideView.CurrentLevelViewAsync(new AppNestsView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -174,21 +176,17 @@ namespace Inkton.Nester.Views
             if (AppDomainsList.SelectedItem != null)
             {
                 Nest.Model.AppDomain browseDomain = AppDomainsList.SelectedItem as Nest.Model.AppDomain;
-                _baseViewModels.AppViewModel.DomainViewModel.EditDomain = browseDomain;
-                AppDomainCertView certView = new AppDomainCertView(_baseViewModels);
+                AppViewModel.DomainViewModel.EditDomain = browseDomain;
+                AppDomainCertView certView = new AppDomainCertView(AppViewModel);
                 MainSideView.StackViewAsync(certView);
             }
         }
 
         private void Clear()
         {
-            if (AppDomainsList.SelectedItems.Any())
-            {
-                AppDomainsList.SelectedItems.RemoveAt(0);
-            }
-
-            _baseViewModels.AppViewModel.DomainViewModel.EditDomain = new Nest.Model.AppDomain();
-            _baseViewModels.AppViewModel.DomainViewModel.EditDomain.OwnedBy = App;
+            AppDomainsList.SelectedItem = null;
+            AppViewModel.DomainViewModel.EditDomain = new Nest.Model.AppDomain();
+            AppViewModel.DomainViewModel.EditDomain.OwnedBy = AppViewModel.EditApp;
 
             SetDefaults();
 
@@ -202,9 +200,9 @@ namespace Inkton.Nester.Views
             if (AppDomainsList.SelectedItem != null)
             {
                 Nest.Model.AppDomain browseDomain = AppDomainsList.SelectedItem as Nest.Model.AppDomain;
-                browseDomain.CopyTo(_baseViewModels.AppViewModel.DomainViewModel.EditDomain);
+                browseDomain.CopyTo(AppViewModel.DomainViewModel.EditDomain);
                 enableEdits = !browseDomain.Default;
-                IsPrimary.IsToggled = _baseViewModels.AppViewModel
+                IsPrimary.IsToggled = AppViewModel
                     .EditApp.PrimaryDomainId == browseDomain.Id;
             }
 
@@ -216,7 +214,7 @@ namespace Inkton.Nester.Views
 
         private Nest.Model.AppDomain CopyUpdate(Nest.Model.AppDomain browsDomain)
         {
-            browsDomain.OwnedBy = App;
+            browsDomain.OwnedBy = AppViewModel.EditApp;
             browsDomain.Tag = Tag.Text;
             browsDomain.Name = Name.Text;
             if (Aliases.Text == null || Aliases.Text.Length == 0)
@@ -239,8 +237,8 @@ namespace Inkton.Nester.Views
             try
             {
                 priaryDomain.Primary = true;
-                App.PrimaryDomainId = priaryDomain.Id;
-                await _baseViewModels.AppViewModel.UpdateAppAsync(App);
+                AppViewModel.EditApp.PrimaryDomainId = priaryDomain.Id;
+                await AppViewModel.UpdateAppAsync(AppViewModel.EditApp);
             }
             catch (Exception ex)
             {
@@ -248,7 +246,7 @@ namespace Inkton.Nester.Views
             }
         }
 
-        private void AppDomainsList_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        private void AppDomainsList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             SetDefaults();
             Validate();
@@ -327,7 +325,7 @@ namespace Inkton.Nester.Views
         
         private async Task<bool> DoesIPMatchAppIPAsync()
         {
-            Nest.Model.AppDomain defaultDomain = (from domain in _baseViewModels.AppViewModel.DomainViewModel.Domains
+            Nest.Model.AppDomain defaultDomain = (from domain in AppViewModel.DomainViewModel.Domains
                                                      where domain.Default == true
                                                      select domain).First();
 
@@ -357,8 +355,8 @@ namespace Inkton.Nester.Views
 
         private void Validate()
         {
-            _baseViewModels.AppViewModel.DomainViewModel.Validated = false;
-            _baseViewModels.AppViewModel.DomainViewModel.CanUpdate = false;
+            AppViewModel.DomainViewModel.Validated = false;
+            AppViewModel.DomainViewModel.CanUpdate = false;
 
             if (TagValidator != null)
             {
@@ -366,7 +364,7 @@ namespace Inkton.Nester.Views
                  * be added only if valid fields and no list item 
                  * has been selected and currenly receivng focus.
                  */
-                _baseViewModels.AppViewModel.DomainViewModel.Validated = (
+                AppViewModel.DomainViewModel.Validated = (
                     TagValidator.IsValid &&
                     NameValidator.IsValid &&
                     AliasesValidator.IsValid                      
@@ -376,8 +374,8 @@ namespace Inkton.Nester.Views
                  * be updaed only if valid fields has been selected 
                  * and an item from a list is selected.
                  */
-                _baseViewModels.AppViewModel.DomainViewModel.CanUpdate =
-                    _baseViewModels.AppViewModel.DomainViewModel.Validated &&
+                AppViewModel.DomainViewModel.CanUpdate =
+                    AppViewModel.DomainViewModel.Validated &&
                    AppDomainsList.SelectedItem != null &&
                     !(AppDomainsList.SelectedItem as Nest.Model.AppDomain).Default;
             }
@@ -389,10 +387,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                if (AppDomainsList.SelectedItems.Any())
-                {
-                    AppDomainsList.SelectedItems.RemoveAt(0);
-                }
+                AppDomainsList.SelectedItem = null;
 
                 SetDefaults();
                 Validate();
@@ -420,7 +415,7 @@ namespace Inkton.Nester.Views
             try
             {
                 await Process(AppDomainsList.SelectedItem as Nest.Model.AppDomain, true,
-                    _baseViewModels.AppViewModel.DomainViewModel.QueryDomainAsync
+                    AppViewModel.DomainViewModel.QueryDomainAsync
                 );
 
                 SetDefaults();
@@ -439,7 +434,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                var existDomains = from domain in _baseViewModels.AppViewModel.DomainViewModel.Domains
+                var existDomains = from domain in AppViewModel.DomainViewModel.Domains
                                  where domain.Tag == Tag.Text
                                  select domain;
                 if (existDomains.Any())
@@ -449,7 +444,7 @@ namespace Inkton.Nester.Views
                     return;
                 }
 
-                existDomains = from domain in _baseViewModels.AppViewModel.DomainViewModel.Domains
+                existDomains = from domain in AppViewModel.DomainViewModel.Domains
                                    where domain.Name == Name.Text
                                select domain;
                 if (existDomains.Any())
@@ -467,7 +462,7 @@ namespace Inkton.Nester.Views
                 Nest.Model.AppDomain newDomain = CopyUpdate(new Nest.Model.AppDomain());
                 if (newDomain != null)
                 {
-                    await _baseViewModels.AppViewModel.DomainViewModel.CreateDomainAsync(newDomain);
+                    await AppViewModel.DomainViewModel.CreateDomainAsync(newDomain);
                     SetPrimaryDomain(newDomain);
                 }
 
@@ -496,7 +491,7 @@ namespace Inkton.Nester.Views
                     return;
                 }
 
-                var existDomains = from domain in _baseViewModels.AppViewModel.DomainViewModel.Domains
+                var existDomains = from domain in AppViewModel.DomainViewModel.Domains
                                    where domain.Tag == Tag.Text && domain.Id != updatingDomain.Id 
                                    select domain;
                 if (existDomains.Any())
@@ -506,7 +501,7 @@ namespace Inkton.Nester.Views
                     return;
                 }
 
-                existDomains = from domain in _baseViewModels.AppViewModel.DomainViewModel.Domains
+                existDomains = from domain in AppViewModel.DomainViewModel.Domains
                                where domain.Name == Name.Text && domain.Id != updatingDomain.Id
                                select domain;
                 if (existDomains.Any())
@@ -536,13 +531,13 @@ namespace Inkton.Nester.Views
                         updateDomain.Certificate = null;
 
                         await Process(updateDomain, true,
-                            _baseViewModels.AppViewModel.DomainViewModel.UpdateDomainAsync
+                            AppViewModel.DomainViewModel.UpdateDomainAsync
                         );
                         SetDefaults();
 
-                        if (!_baseViewModels.AppViewModel.DomainViewModel.Domains.Where(x => x.Primary == true).Any())
+                        if (!AppViewModel.DomainViewModel.Domains.Where(x => x.Primary == true).Any())
                         {
-                            SetPrimaryDomain(_baseViewModels.AppViewModel.DomainViewModel.Domains.First());
+                            SetPrimaryDomain(AppViewModel.DomainViewModel.Domains.First());
                         }
                     }
                 }
@@ -562,7 +557,7 @@ namespace Inkton.Nester.Views
             try
             {
                 await Process(AppDomainsList.SelectedItem as Nest.Model.AppDomain, true,
-                    _baseViewModels.AppViewModel.DomainViewModel.RemoveDomainAsync,
+                    AppViewModel.DomainViewModel.RemoveDomainAsync,
                        new Func<Nest.Model.AppDomain, Task<bool>>(
                             async (obj) =>
                             {
@@ -572,7 +567,7 @@ namespace Inkton.Nester.Views
                 );
 
                 Clear();
-                SetPrimaryDomain(_baseViewModels.AppViewModel.DomainViewModel.Domains.First());
+                SetPrimaryDomain(AppViewModel.DomainViewModel.Domains.First());
             }
             catch (Exception ex)
             {

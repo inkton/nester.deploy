@@ -4,7 +4,6 @@
              xmlns:views="clr-namespace:Inkton.Nester.Views"
              xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
              xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
-             xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Title="Backups"                          
              x:Class="Inkton.Nester.Views.AppAuditView">    
     
@@ -181,12 +180,12 @@
             
             <StackLayout Grid.Row="2" Grid.Column="1" >
 
-                <sync:SfListView x:Name="AppAudits"
+                <ListView x:Name="AppAudits"
                         ItemsSource="{Binding AppAudits}"
                         SelectionBackgroundColor="{StaticResource selectionColor}"
                         HorizontalOptions="FillAndExpand"
                         ItemTemplate="{StaticResource ItemTemplate}">
-                </sync:SfListView>
+                </ListView>
 
             </StackLayout>
 

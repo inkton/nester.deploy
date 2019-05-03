@@ -36,6 +36,7 @@ namespace Inkton.Nester.Views
         protected ActivityIndicator _activityIndicator;
         protected List<Xamarin.Forms.View> _blockWhenActive;
         protected List<Xamarin.Forms.View> _activeBlockViews;
+        protected AppViewModel _appViewModel;
         protected BaseViewModels _baseViewModels;
         protected MainSideView _mainSideView;
 
@@ -47,13 +48,10 @@ namespace Inkton.Nester.Views
                 .BaseViewModels;
         }
 
-        public virtual BaseViewModels ViewModels
+        public virtual BaseViewModels BaseViewModels
         {
             get { return _baseViewModels; }
-            set {
-                _baseViewModels = value;
-                UpdateBindings();
-            }
+            set { _baseViewModels = value; }
         }
 
         public virtual MainSideView MainSideView
@@ -70,22 +68,27 @@ namespace Inkton.Nester.Views
             }
         }
 
-        public App App
+        public AppViewModel AppViewModel
         {
             get
             {
-                return _baseViewModels.AppViewModel.EditApp;
+                return _appViewModel;
+            }
+            set
+            {
+                _appViewModel = value;
+                UpdateBindings();
             }
         }
 
         public virtual void UpdateBindings()
         {
-            if (App != null)
+            if (_appViewModel.EditApp != null)
             {
-                Title = App.Name;
+                Title = _appViewModel.EditApp.Name;
             }
 
-            BindingContext = _baseViewModels.AppViewModel;
+            BindingContext = _appViewModel;
         }
 
         protected void SetActivityMonotoring(ActivityIndicator activityIndicator,

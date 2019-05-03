@@ -30,7 +30,7 @@ namespace Inkton.Nester.Views
 {
     public partial class AuthView : View
     {
-        public AuthView(BaseViewModels baseModels)
+        public AuthView()
         {
             InitializeComponent();
 
@@ -42,7 +42,6 @@ namespace Inkton.Nester.Views
             Password.Unfocused += Password_Unfocused;
             PasswordVerify.Unfocused += Password_Unfocused;
 
-            _baseViewModels = baseModels;
             BindingContext = _baseViewModels.AuthViewModel;
         }
 

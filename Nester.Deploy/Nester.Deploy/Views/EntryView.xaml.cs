@@ -32,6 +32,7 @@ using Inkton.Nest.Model;
 using Inkton.Nester.Cloud;
 using Inkton.Nester.ViewModels;
 using Inkton.Nester.Helpers;
+using DeployApp = Nester.Deploy.App;
 
 namespace Inkton.Nester.Views
 {
@@ -39,8 +40,6 @@ namespace Inkton.Nester.Views
     {
         public EntryView()
         {
-            _baseViewModels = ViewModels;
-
             BindingContext = _baseViewModels.AuthViewModel;
 
             InitializeComponent();
@@ -170,22 +169,19 @@ namespace Inkton.Nester.Views
             _baseViewModels.AuthViewModel.Reset();
             _baseViewModels.AppCollectionViewModel.AppModels.Clear();
             _baseViewModels.WizardMode = true;
+
+            // TODO: binding does not update sometimes
+            // this a temp fix to capture inputs
+            _baseViewModels.AuthViewModel.Platform.Permit.Password = Password.Text;
+            _baseViewModels.AuthViewModel.Platform.Permit.Owner.Email = Email.Text;
         }
 
         private void PushEngageView()
         {
-            AppViewModel newAppModel = new AppViewModel(
-                Client.ApiVersion, Client.Signature, 
-                ViewModels.AppViewModel.Platform);
-            newAppModel.NewAppAsync();
+            AppViewModel newAppModel = new AppViewModel(BaseViewModels.Platform);   
+            BaseViewModels.WizardMode = true;
 
-            BaseViewModels baseModels = new BaseViewModels(
-                _baseViewModels.AuthViewModel,
-                _baseViewModels.PaymentViewModel,
-                newAppModel);
-            baseModels.WizardMode = true;
-
-            AppEngageView engageView = new AppEngageView(baseModels);
+            AppEngageView engageView = new AppEngageView(newAppModel);
             engageView.MainSideView = MainSideView;
 
             MainSideView.Detail.Navigation.InsertPageBefore(engageView, this);
@@ -239,7 +235,7 @@ namespace Inkton.Nester.Views
                     {
                         await MainSideView.Detail.Navigation.PopAsync();
 
-                        Client.RefreshView();
+                        ((DeployApp)Application.Current).RefreshView();
                     }
                 }
                 else
@@ -261,7 +257,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                _baseViewModels.AuthViewModel.Signup();
+                await _baseViewModels.AuthViewModel.SignupAsync();
 
                 PushUserUpdate();
 
@@ -294,7 +290,7 @@ namespace Inkton.Nester.Views
                     // sound but need to confirm the security code.
                     // a new sec code would have been sent too.
 
-                    ExitView exitView = new ExitView(_baseViewModels);
+                    ExitView exitView = new ExitView();
                     exitView.MainSideView = MainSideView;
 
                     await MainSideView.Detail.Navigation.PushAsync(exitView);
@@ -319,8 +315,8 @@ namespace Inkton.Nester.Views
 
             try
             {
-                ResultSingle<Permit> result = _baseViewModels
-                    .AuthViewModel.QueryToken(false);
+                ResultSingle<Permit> result = await _baseViewModels
+                    .AuthViewModel.QueryTokenAsync(false);
 
                 if (result.Code < 0)
                 {

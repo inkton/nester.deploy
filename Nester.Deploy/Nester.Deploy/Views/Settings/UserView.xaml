@@ -44,7 +44,7 @@
           <Entry Style="{StaticResource nesterField}"
                 x:Name="SecurityCode"
                   Text="{
-                    Binding Path=Permit.SecurityCode
+                    Binding Path=Platform.Permit.SecurityCode
                   }"
                 Keyboard="Keyboard.Text"
                 VerticalOptions="LayoutOptions.CenterAndExpand"
@@ -63,7 +63,7 @@
           <Entry Style="{StaticResource nesterField}"
                 x:Name="NickName"
                   Text="{
-                  Binding Path=Permit.Owner.Nickname, 
+                  Binding Path=Platform.Permit.Owner.Nickname,
                   Converter={StaticResource identityConverter},
                   ConverterParameter=16
                   }"
@@ -91,7 +91,7 @@
                  Text="First Name"></Label>
           <Entry Style="{StaticResource nesterField}"
               x:Name="FirstName"
-              Text="{Binding Path=Permit.Owner.FirstName, Mode=TwoWay}"
+              Text="{Binding Path=Platform.Permit.Owner.FirstName}"
               Keyboard="Keyboard.Text"
               VerticalOptions="LayoutOptions.CenterAndExpand"
               Placeholder="Enter first name">
@@ -111,7 +111,7 @@
                  Text="Last Name"></Label>
           <Entry Style="{StaticResource nesterField}"
               x:Name="LastName"
-              Text="{Binding Path=Permit.Owner.LastName, Mode=TwoWay}"
+              Text="{Binding Path=Platform.Permit.Owner.LastName, Mode=TwoWay}"
               Keyboard="Keyboard.Text"
               VerticalOptions="LayoutOptions.CenterAndExpand"
               Placeholder="Enter last name">

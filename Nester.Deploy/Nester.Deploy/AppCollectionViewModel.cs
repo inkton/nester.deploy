@@ -33,10 +33,11 @@ namespace Inkton.Nester.ViewModels
     {
         private ObservableCollection<AppViewModel> _appModels;
 
-        public AppCollectionViewModel(NesterService service)
-            :base(service)
+        public AppCollectionViewModel(NesterService platform)
+            :base(platform)
         {
             _editApp = new App();
+            _editApp.OwnedBy = platform.Permit.Owner;
             _appModels = new ObservableCollection<AppViewModel>();
         }
 
@@ -49,16 +50,6 @@ namespace Inkton.Nester.ViewModels
             set
             {
                 SetProperty(ref _appModels, value);
-            }
-        }
-
-        public void ResetOwner(User owner)
-        {
-            _editApp.OwnedBy = owner;
-
-            foreach (AppViewModel appModel in _appModels)
-            {
-                appModel.EditApp.OwnedBy = owner;
             }
         }
 
@@ -86,8 +77,7 @@ namespace Inkton.Nester.ViewModels
 
         public AppViewModel AddApp(App app)
         {
-            AppViewModel appModel = new AppViewModel(
-                Client.ApiVersion, Client.Signature, _platform);
+            AppViewModel appModel = new AppViewModel(_platform);
             appModel.EditApp = app;
             AddModel(appModel);
             return appModel;

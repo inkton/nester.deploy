@@ -37,12 +37,12 @@ namespace Inkton.Nester.Views
             TargetSlackConnect
         }
 
-        public AppWebView(BaseViewModels baseModels, 
+        public AppWebView(AppViewModel appViewModel, 
             Pages page = Pages.DefaultPage)
         {
             InitializeComponent();
 
-            ViewModels = baseModels;
+            AppViewModel = appViewModel;
             _baseViewModels.WizardMode = false;
 
             _activityIndicator = ServiceActive;
@@ -57,14 +57,12 @@ namespace Inkton.Nester.Views
             }
             else
             {
-                if (App.Id != 0)
+                if (AppViewModel.EditApp.Id != 0)
                 {
-                    Title = App.Name;
-                    Browser.Source = "https://" + _baseViewModels.AppViewModel.DomainViewModel.DefaultDomain.Name;
+                    Title = AppViewModel.EditApp.Name;
+                    Browser.Source = "https://" + AppViewModel.DomainViewModel.DefaultDomain.Name;
                 }
             }
-
-            BindingContext = _baseViewModels.AppViewModel;
         }
 
         private void LoadDefaultPage()
@@ -107,7 +105,7 @@ namespace Inkton.Nester.Views
 
         private async void LoadSlackPageAsync()
         {
-            await _baseViewModels.AppViewModel.ContactViewModel.QueryContactCollaborateAccountAsync();
+            await AppViewModel.ContactViewModel.QueryContactCollaborateAccountAsync();
 
             string clientId = "237221988247.245551261632";
             string scope = "incoming-webhook,chat:write:bot";
@@ -115,7 +113,7 @@ namespace Inkton.Nester.Views
             string url = "https://slack.com/oauth/authorize?" +
                 "&client_id=" + WebUtility.UrlEncode(clientId) +
                 "&scope=" + WebUtility.UrlEncode(scope) +
-                "&state=" + WebUtility.UrlEncode(_baseViewModels.AppViewModel.ContactViewModel.Collaboration.State);
+                "&state=" + WebUtility.UrlEncode(AppViewModel.ContactViewModel.Collaboration.State);
 
             string page = @"
 <html>
@@ -147,7 +145,7 @@ namespace Inkton.Nester.Views
         <div class='container'>
             <div class='content'>
                 <div class='slack'>
-                    <div class='title'>Connect " + App.Name + @" to Slack and stay updated</div>
+                    <div class='title'>Connect " + AppViewModel.EditApp.Name + @" to Slack and stay updated</div>
                     <a target='_blank' href='" + url + @"' ><img alt='Add to Slack height='40' width='139' src='https://platform.slack-edge.com/img/add_to_slack.png' srcset='https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x' /></a>
                 <div>
             </div>

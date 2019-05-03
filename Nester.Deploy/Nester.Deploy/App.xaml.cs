@@ -27,7 +27,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using Xamarin.Forms;
-using Xamarin.Essentials;
 using Newtonsoft.Json;
 using Inkton.Nest.Model;
 using Inkton.Nester;
@@ -43,7 +42,6 @@ namespace Nester.Deploy
         private LogService _log;
         private BaseViewModels _baseModels;
         private MainSideView _mainSideView;
-        private string _signature;
 
         public App()
         {
@@ -52,20 +50,6 @@ namespace Nester.Deploy
             // This is helps to trace issues with 
             // the API calls on the server 
 
-            var clientSignature = new {
-                Model = DeviceInfo.Model,
-                Manufacturer = DeviceInfo.Manufacturer,
-                Name = DeviceInfo.Name,
-                Platform = DeviceInfo.Platform,
-                Idiom = DeviceInfo.Idiom,
-                DeviceType = DeviceInfo.DeviceType,
-                HardwareVersion = DeviceInfo.VersionString,
-                SoftwareVersion = typeof(EntryView).GetTypeInfo()
-                    .Assembly.GetName().Version.ToString(),
-                ApiVersion = ApiVersion
-            };
-
-            _signature = JsonConvert.SerializeObject(clientSignature);
             _log = new LogService(Path.Combine(
                     Path.GetTempPath(), "NesterLog"));
             _baseModels = new BaseViewModels();
@@ -80,25 +64,6 @@ namespace Nester.Deploy
             get { return _baseModels; }
         }
 
-        public User User
-        {
-            get { return _baseModels.User; }
-            set { _baseModels.User = value; }
-        }
-
-        public int ApiVersion
-        {
-            get { return 888; }
-        }
-
-        public string Signature
-        {
-            get
-            {
-                return _signature;
-            }
-        }
-
         public LogService Log
         {
             get { return _log; }
@@ -107,15 +72,14 @@ namespace Nester.Deploy
         public ResourceManager GetResourceManager()
         {
             ResourceManager resmgr = new ResourceManager(
-                "Inkton.Nester.Resources",
+                "Inkton.Nester.Text",
                 typeof(INesterClient).GetTypeInfo().Assembly);
             return resmgr;
         }
 
-        public void RefreshView()
+        public void RefreshView(AppViewModel appModel = null)
         {
-            _baseModels.ResetApp();
-            _mainSideView.UpdateView();
+            _mainSideView.UpdateView(appModel);
         }
     }
 }

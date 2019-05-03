@@ -5,7 +5,6 @@
              xmlns:local="clr-namespace:Nester"
              xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
              xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
-             xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"            
              x:Class="Inkton.Nester.Views.PaymentView"
              Title="Payment Method">
       
@@ -191,11 +190,10 @@
                 Style="{StaticResource nesterFieldLabelPicker}">
              </Picker>
 
-            <sync:SfListView x:Name="UserBillingTasks"
+            <ListView x:Name="UserBillingTasks"
                 ItemsSource="{Binding UserBillingTasks}"
-                SelectionBackgroundColor="{StaticResource selectionColor}"
                 HorizontalOptions="FillAndExpand">
-                    <sync:SfListView.ItemTemplate>
+                    <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                             <ViewCell.View>
@@ -298,8 +296,8 @@
                             </ViewCell.View>
                             </ViewCell>
                         </DataTemplate>
-                    </sync:SfListView.ItemTemplate>
-                </sync:SfListView>
+                    </ListView.ItemTemplate>
+                </ListView>
 
         </StackLayout>
                     

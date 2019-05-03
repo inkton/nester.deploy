@@ -35,11 +35,11 @@ namespace Inkton.Nester.Views
 {
     public partial class AppBackupView : View
     {
-        public AppBackupView(BaseViewModels baseModels)
+        public AppBackupView(AppViewModel appViewModel)
         {
             InitializeComponent();
 
-            ViewModels = baseModels;
+            AppViewModel = appViewModel;
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
@@ -61,14 +61,12 @@ namespace Inkton.Nester.Views
         {
             base.UpdateBindings();
 
-            BindingContext = _baseViewModels.AppViewModel.DeploymentViewModel;
-
             UpdateDescriptions();
         }
 
         private void UpdateDescriptions()
         {
-            foreach (AppBackup backup in _baseViewModels.AppViewModel.DeploymentViewModel.AppBackups)
+            foreach (AppBackup backup in AppViewModel.DeploymentViewModel.AppBackups)
             {
                 switch (backup.Status)
                 {
@@ -113,13 +111,13 @@ namespace Inkton.Nester.Views
                         return;
                     }
 
-                    await _baseViewModels.AppViewModel.DeploymentViewModel.RestoreAppAsync(
+                    await AppViewModel.DeploymentViewModel.RestoreAppAsync(
                         AppBackups.SelectedItem as Nest.Model.AppBackup);
 
                     // Reload everything
-                    await _baseViewModels.AppViewModel.InitAsync();
+                    await AppViewModel.InitAsync();
 
-                    AppView appView = MainSideView.GetAppView(App.Id);
+                    AppView appView = MainSideView.GetAppView(AppViewModel.EditApp.Id);
                     if (appView != null)
                     {
                         appView.UpdateStatus();
@@ -151,7 +149,7 @@ namespace Inkton.Nester.Views
                     return;
                 }
 
-                await _baseViewModels.AppViewModel
+                await AppViewModel
                     .DeploymentViewModel.BackupAppAsync();
 
                 UpdateDescriptions();
@@ -170,7 +168,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseViewModels.AppViewModel
+                await AppViewModel
                     .DeploymentViewModel.QueryAppBackupsAsync();
 
                 UpdateDescriptions();

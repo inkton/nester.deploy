@@ -65,7 +65,6 @@ namespace Nester.Deploy.UWP
                 List<System.Reflection.Assembly> assembliesToInclude = new List<System.Reflection.Assembly>();
 
                 //Now, add all the assemblies your app uses
-                assembliesToInclude.Add(typeof(Syncfusion.ListView.XForms.UWP.SfListViewRenderer).GetTypeInfo().Assembly);
                 assembliesToInclude.Add(typeof(Syncfusion.SfChart.XForms.UWP.SfChartRenderer).GetTypeInfo().Assembly);
                 assembliesToInclude.Add(typeof(Syncfusion.SfBusyIndicator.XForms.UWP.SfBusyIndicatorRenderer).GetTypeInfo().Assembly);
 

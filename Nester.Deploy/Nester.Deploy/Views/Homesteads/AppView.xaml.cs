@@ -47,11 +47,11 @@ namespace Inkton.Nester.Views
 
         private ViewStatus _status = ViewStatus.WaitingDeployment;
 
-        public AppView(BaseViewModels baseModels)
+        public AppView(AppViewModel appViewModel)
         {
             InitializeComponent();
 
-            ViewModels = baseModels;
+            AppViewModel = appViewModel;
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View>
@@ -85,22 +85,25 @@ namespace Inkton.Nester.Views
             ButtonAppDownload.Clicked += ButtonAppDownload_ClickedAsync;
             ButtonGetAnalytics.Clicked += ButtonGetLogs_Clicked;
             ButtonAddToSlack.Clicked += ButtonAddToSlack_ClickedAsync;
-            ButtonAppAudit.Clicked += ButtonAppAudit_ClickedAsync; 
+            ButtonAppAudit.Clicked += ButtonAppAudit_ClickedAsync;
 
-            NestLogs.SelectionChanged += NestLogs_SelectionChanged;
+            NestLogs.ItemSelected += NestLogs_ItemSelected;
 
-            MessagingCenter.Subscribe<AppViewModel, App>(
-                baseModels.AppViewModel, "Updated", (sender, updateApp) => {
+            MessagingCenter.Subscribe<App>(
+                this, "Updated", (updateApp) => {
                     Device.BeginInvokeOnMainThread(() => {
 
                         System.Diagnostics.Debug.WriteLine(
-                            string.Format("MessagingCenter @ AppView - {0}", App.Tag));
+                            string.Format("Notify arrived for app - {0}", updateApp.Tag));
 
-                        if (updateApp.Id == App.Id)
+                        if (updateApp.Tag == AppViewModel.EditApp.Tag)
                         {
+                            System.Diagnostics.Debug.WriteLine(
+                               string.Format("Updating View for app - {0}", updateApp.Tag));
+
                             // Set the backend address for querying logs and metrics
                             // The IP address is only available after an update recvd
-                            baseModels.AppViewModel.LogViewModel.ResetBackend();
+                            AppViewModel.LogViewModel.ResetBackend();
 
                             UpdateStatus();
 
@@ -126,7 +129,7 @@ namespace Inkton.Nester.Views
         public void SetRefresing()
         {
             System.Diagnostics.Debug.WriteLine(
-                string.Format("Refreshing {0}", App.Tag));
+                string.Format("Refreshing {0}", AppViewModel.EditApp.Tag));
 
             ProgressControl.Title = "Refreshing ...";
             ProgressControl.AnimationType = AnimationTypes.Rectangle;
@@ -136,7 +139,7 @@ namespace Inkton.Nester.Views
             InactiveApp.IsVisible = true;
             Metrics.IsVisible = false;
 
-            ViewModels.AppViewModel.IsBusy = true;
+            AppViewModel.IsBusy = true;
 
             ToggleOperations();
         }
@@ -150,15 +153,15 @@ namespace Inkton.Nester.Views
              * -> App Not Deployed
              */
 
-            if (App.IsBusy)
+            if (AppViewModel.EditApp.IsBusy)
             {
                 _status = ViewStatus.Updating;
             }
             else
             {
-                if (App.IsDeployed)
+                if (AppViewModel.EditApp.IsDeployed)
                 {
-                    if (App.IsActive)
+                    if (AppViewModel.EditApp.IsActive)
                     {
                         _status = ViewStatus.Deployed;
                     }
@@ -173,7 +176,7 @@ namespace Inkton.Nester.Views
                 }
 
                 System.Diagnostics.Debug.WriteLine(
-                    string.Format("Set Status {0}, {1}", App.Tag, _status));
+                    string.Format("Set Status {0}, {1}", AppViewModel.EditApp.Tag, _status));
 
                 ToggleOperations();
             }
@@ -189,7 +192,7 @@ namespace Inkton.Nester.Views
                     InactiveApp.IsVisible = true;
                     Metrics.IsVisible = false;
 
-                    ViewModels.AppViewModel.IsBusy = true;
+                    AppViewModel.IsBusy = true;
                     break;
 
                 case ViewStatus.Deployed:
@@ -197,7 +200,7 @@ namespace Inkton.Nester.Views
                     InactiveApp.IsVisible = false;
                     Metrics.IsVisible = true;
 
-                    ViewModels.AppViewModel.IsBusy = false;
+                    AppViewModel.IsBusy = false;
                     break;
 
                 case ViewStatus.WaitingDeployment:
@@ -206,7 +209,7 @@ namespace Inkton.Nester.Views
                     InactiveApp.IsVisible = true;
                     Metrics.IsVisible = false;
 
-                    ViewModels.AppViewModel.IsBusy = false;
+                    AppViewModel.IsBusy = false;
                     break;
             }
 
@@ -219,21 +222,21 @@ namespace Inkton.Nester.Views
             ButtonNotifications.IsEnabled = true;
 
             // Actions when the app is not busy
-            ButtonAppSettings.IsEnabled = ViewModels.AppViewModel.IsInteractive;
-            ButtonAddToSlack.IsEnabled = ViewModels.AppViewModel.IsInteractive;
-            ButtonAppDeploy.IsEnabled = ViewModels.AppViewModel.IsInteractive;
+            ButtonAppSettings.IsEnabled = AppViewModel.IsInteractive;
+            ButtonAddToSlack.IsEnabled = AppViewModel.IsInteractive;
+            ButtonAppDeploy.IsEnabled = AppViewModel.IsInteractive;
 
             // Actions when the app has been deployed - may not be active due to failure
-            ButtonAppDepRemove.IsEnabled = ViewModels.AppViewModel.IsDeployed;
-            ButtonAppHide.IsEnabled = ViewModels.AppViewModel.IsDeployed;
-            ButtonAppShow.IsEnabled = ViewModels.AppViewModel.IsDeployed;
+            ButtonAppDepRemove.IsEnabled = AppViewModel.IsDeployed;
+            ButtonAppHide.IsEnabled = AppViewModel.IsDeployed;
+            ButtonAppShow.IsEnabled = AppViewModel.IsDeployed;
 
             // -Actions when the app is running and active
-            ButtonAppRestore.IsEnabled = ViewModels.AppViewModel.IsActive;
-            ButtonAppUpgrade.IsEnabled = ViewModels.AppViewModel.IsActive;
-            ButtonAppDownload.IsEnabled = ViewModels.AppViewModel.IsActive;
-            ButtonAppView.IsEnabled = ViewModels.AppViewModel.IsActive;
-            ButtonAppAudit.IsEnabled = ViewModels.AppViewModel.IsActive;
+            ButtonAppRestore.IsEnabled = AppViewModel.IsActive;
+            ButtonAppUpgrade.IsEnabled = AppViewModel.IsActive;
+            ButtonAppDownload.IsEnabled = AppViewModel.IsActive;
+            ButtonAppView.IsEnabled = AppViewModel.IsActive;
+            ButtonAppAudit.IsEnabled = AppViewModel.IsActive;
         }
 
         private void ReloadAnalytics()
@@ -281,7 +284,7 @@ namespace Inkton.Nester.Views
             }
             else
             {
-                await _baseViewModels.AppViewModel
+                await AppViewModel
                       .LogViewModel.QueryAsync(beginId, endId,
                       maxRows, doCache, throwIfError);
             }
@@ -312,19 +315,19 @@ namespace Inkton.Nester.Views
             EndTime.Time = new TimeSpan(endTime.Hour, endTime.Minute, endTime.Second);
         }
 
-        private void NestLogs_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        private void NestLogs_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            NestLog nestLog = e.AddedItems.FirstOrDefault() as NestLog;
+            NestLog nestLog = e.SelectedItem as NestLog;
 
             if (nestLog != null)
             {
-                _baseViewModels.AppViewModel.LogViewModel.EditNestLog = nestLog;
+                AppViewModel.LogViewModel.EditNestLog = nestLog;
                 /* 
                     Message.Text = nestLog.Message;
 
-                if (_baseModels.AppViewModel.LogViewModel.DiskSpaceLogs != null)
+                if (_AppViewModel.LogViewModel.DiskSpaceLogs != null)
                 {
-                    var diskspaceLog = _baseModels.AppViewModel.LogViewModel.DiskSpaceLogs.FirstOrDefault(
+                    var diskspaceLog = _AppViewModel.LogViewModel.DiskSpaceLogs.FirstOrDefault(
                             x => x.Time >= nestLog.Time);
                     if (diskspaceLog != null)
                     {
@@ -333,9 +336,9 @@ namespace Inkton.Nester.Views
                     }
                 }
 
-                if (_baseModels.AppViewModel.LogViewModel.SystemCPULogs != null)
+                if (_AppViewModel.LogViewModel.SystemCPULogs != null)
                 {
-                    var cpuLog = _baseModels.AppViewModel.LogViewModel.SystemCPULogs.FirstOrDefault(
+                    var cpuLog = _AppViewModel.LogViewModel.SystemCPULogs.FirstOrDefault(
                             x => x.Time >= nestLog.Time);
                     if (cpuLog != null)
                     {
@@ -344,9 +347,9 @@ namespace Inkton.Nester.Views
                     }
                 }
 
-                if (_baseModels.AppViewModel.LogViewModel.SystemIPV4Logs != null)
+                if (_AppViewModel.LogViewModel.SystemIPV4Logs != null)
                 {
-                    var ipv4Log = _baseModels.AppViewModel.LogViewModel.SystemIPV4Logs.FirstOrDefault(
+                    var ipv4Log = _AppViewModel.LogViewModel.SystemIPV4Logs.FirstOrDefault(
                             x => x.Time >= nestLog.Time);
                     if (ipv4Log != null)
                     {
@@ -356,9 +359,9 @@ namespace Inkton.Nester.Views
                     }
                 }
 
-                if (_baseModels.AppViewModel.LogViewModel.SystemRAMLogs != null)
+                if (_AppViewModel.LogViewModel.SystemRAMLogs != null)
                 {
-                    var ramLog = _baseModels.AppViewModel.LogViewModel.SystemRAMLogs.FirstOrDefault(
+                    var ramLog = _AppViewModel.LogViewModel.SystemRAMLogs.FirstOrDefault(
                              x => x.Time >= nestLog.Time);
                     if (ramLog != null)
                     {
@@ -398,7 +401,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception)
             {
-                await ErrorHandler.ExceptionAsync(this, "Failed to retrieve metrics from the app " + App.Name);
+                await ErrorHandler.ExceptionAsync(this, "Failed to retrieve metrics from the app " + AppViewModel.EditApp.Name);
             }
         }
 
@@ -409,7 +412,7 @@ namespace Inkton.Nester.Views
             try
             {
                 var folder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-                var filePath = Path.Combine(folder, string.Format("{0}.devkit", App.Tag));
+                var filePath = Path.Combine(folder, string.Format("{0}.devkit", AppViewModel.EditApp.Tag));
 
                 var alreadyExist = File.Exists(filePath);
 
@@ -426,9 +429,9 @@ namespace Inkton.Nester.Views
                 }
 
                 Devkit devkit = new Devkit();
-                devkit.OwnedBy = _baseViewModels.AppViewModel.ContactViewModel.OwnerContact;
+                devkit.OwnedBy = AppViewModel.ContactViewModel.OwnerContact;
 
-                await _baseViewModels.AppViewModel.DeploymentViewModel.QueryDevkitAsync(devkit);
+                await AppViewModel.DeploymentViewModel.QueryDevkitAsync(devkit);
 
                 File.WriteAllText(filePath, devkit.Script);
 
@@ -450,8 +453,8 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseViewModels.AppViewModel.QueryAppNotificationsAsync();
-                MainSideView.StackViewAsync(new NotificationView(_baseViewModels));
+                await AppViewModel.QueryAppNotificationsAsync();
+                MainSideView.StackViewAsync(new NotificationView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -467,7 +470,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.StackViewAsync(new AppWebView(_baseViewModels,
+                MainSideView.StackViewAsync(new AppWebView(AppViewModel,
                     AppWebView.Pages.TargetSlackConnect));
             }
             catch (Exception ex)
@@ -484,7 +487,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.StackViewAsync(new AppWebView(_baseViewModels, 
+                MainSideView.StackViewAsync(new AppWebView(AppViewModel, 
                     AppWebView.Pages.TargetSite));
             }
             catch (Exception ex)
@@ -501,12 +504,12 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseViewModels.AppViewModel
+                await AppViewModel
                     .ServicesViewModel
                     .SetAppUpgradingAsync();
 
                 _baseViewModels.WizardMode = false;
-                MainSideView.StackViewAsync(new AppTierView(_baseViewModels));
+                MainSideView.StackViewAsync(new AppTierView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -522,9 +525,9 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseViewModels.AppViewModel.DeploymentViewModel.QueryAppBackupsAsync();
+                await AppViewModel.DeploymentViewModel.QueryAppBackupsAsync();
 
-                MainSideView.StackViewAsync(new AppBackupView(_baseViewModels));
+                MainSideView.StackViewAsync(new AppBackupView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -542,13 +545,13 @@ namespace Inkton.Nester.Views
 
                 if (yes)
                 {
-                    if (App.IsDeploymentValid)
+                    if (AppViewModel.EditApp.IsDeploymentValid)
                     {
-                        await Process(App.Deployment, true,
-                            _baseViewModels.AppViewModel.DeploymentViewModel.RemoveDeploymentAsync
+                        await Process(AppViewModel.EditApp.Deployment, true,
+                            AppViewModel.DeploymentViewModel.RemoveDeploymentAsync
                         );
 
-                        await _baseViewModels.AppViewModel.QueryStatusAsync();
+                        await AppViewModel.QueryStatusAsync();
 
                         UpdateStatus();
                     }
@@ -565,11 +568,10 @@ namespace Inkton.Nester.Views
             try
             {
                 Deployment deployment =
-                    _baseViewModels.AppViewModel
+                    AppViewModel
                         .DeploymentViewModel.Deployments.First();
 
-                await _baseViewModels
-                    .AppViewModel
+                await AppViewModel
                     .DeploymentViewModel
                     .UpdateDeploymentAsync("show", deployment);
             }
@@ -584,11 +586,10 @@ namespace Inkton.Nester.Views
             try
             {
                 Deployment deployment =
-                    _baseViewModels.AppViewModel
+                    AppViewModel
                         .DeploymentViewModel.Deployments.First();
 
-                await _baseViewModels
-                    .AppViewModel
+                await AppViewModel
                     .DeploymentViewModel
                     .UpdateDeploymentAsync("hide", deployment);
             }
@@ -604,14 +605,14 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseViewModels.AppViewModel
+                await AppViewModel
                     .ServicesViewModel
                     .SetAppUpgradingAsync(false);
 
-                NestPlatform workerPlatform = _baseViewModels.AppViewModel.NestViewModel.Platforms.First(
+                NestPlatform workerPlatform = AppViewModel.NestViewModel.Platforms.First(
                     x => x.Tag == "worker");
 
-                var handlerNests = from nest in _baseViewModels.AppViewModel.NestViewModel.Nests
+                var handlerNests = from nest in AppViewModel.NestViewModel.Nests
                                    where nest.PlatformId != workerPlatform.Id
                                    select nest;
 
@@ -622,17 +623,17 @@ namespace Inkton.Nester.Views
                     return;
                 }
 
-                await _baseViewModels.AppViewModel.DeploymentViewModel.CollectInfoAsync();
+                await AppViewModel.DeploymentViewModel.CollectInfoAsync();
 
-                if (!_baseViewModels.AppViewModel.DeploymentViewModel.Deployments.Any())
+                if (!AppViewModel.DeploymentViewModel.Deployments.Any())
                 {
-                    ResultMultiple<Forest> result = await _baseViewModels.AppViewModel.QueryAppServiceTierLocationsAsync(
-                        _baseViewModels.AppViewModel.ServicesViewModel.SelectedAppServiceTableItem.Tier, false);
-                    MainSideView.StackViewAsync(new AppLocationView(_baseViewModels, result.Data.Payload));
+                    ResultMultiple<Forest> result = await AppViewModel.QueryAppServiceTierLocationsAsync(
+                        AppViewModel.ServicesViewModel.SelectedAppServiceTableItem.Tier, false);
+                    MainSideView.StackViewAsync(new AppLocationView(AppViewModel, result.Data.Payload));
                 }
                 else
                 {
-                    MainSideView.StackViewAsync(new AppSummaryView(_baseViewModels));
+                    MainSideView.StackViewAsync(new AppSummaryView(AppViewModel));
                 }
             }
             catch (Exception ex)
@@ -649,12 +650,12 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseViewModels.AppViewModel
+                await AppViewModel
                     .ServicesViewModel
                     .SetAppUpgradingAsync(false);
 
-                ViewModels.WizardMode = false;
-                MainSideView.StackViewAsync(new AppBasicDetailView(ViewModels));
+                BaseViewModels.WizardMode = false;
+                MainSideView.StackViewAsync(new AppBasicDetailView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -670,7 +671,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.StackViewAsync(new AppAuditView(_baseViewModels));
+                MainSideView.StackViewAsync(new AppAuditView(AppViewModel));
             }
             catch (Exception ex)
             {
