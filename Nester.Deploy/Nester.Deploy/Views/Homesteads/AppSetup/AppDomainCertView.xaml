@@ -4,7 +4,6 @@
              xmlns:views="clr-namespace:Inkton.Nester.Views"
              xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
              xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
-             xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Title="Domain Certificates"
              x:Class="Inkton.Nester.Views.AppDomainCertView">
 

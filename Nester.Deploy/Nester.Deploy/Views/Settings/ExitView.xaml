@@ -41,22 +41,22 @@
           <Label Style="{StaticResource nesterFieldLabel}"
                   VerticalOptions="LayoutOptions.CenterAndExpand" Text="Nickname"></Label>
           <Label Style="{StaticResource nesterFieldValue}"
-                 VerticalOptions="LayoutOptions.CenterAndExpand" Text="{ Binding Path=Permit.Owner.Nickname }"></Label>
+                 VerticalOptions="LayoutOptions.CenterAndExpand" Text="{ Binding Path=Platform.Permit.Owner.Nickname }"></Label>
                     
           <Label Style="{StaticResource nesterFieldLabel}"
                   VerticalOptions="LayoutOptions.CenterAndExpand" Text="First Name"></Label>
           <Label Style="{StaticResource nesterFieldValue}"
-                 VerticalOptions="LayoutOptions.CenterAndExpand" Text="{ Binding Path=Permit.Owner.FirstName }"></Label>
+                 VerticalOptions="LayoutOptions.CenterAndExpand" Text="{ Binding Path=Platform.Permit.Owner.FirstName }"></Label>
             
           <Label Style="{StaticResource nesterFieldLabel}"
                  VerticalOptions="LayoutOptions.CenterAndExpand" Text="Last Name"></Label>
           <Label Style="{StaticResource nesterFieldValue}"
-                 VerticalOptions="LayoutOptions.CenterAndExpand" Text="{ Binding Path=Permit.Owner.LastName }"></Label>
+                 VerticalOptions="LayoutOptions.CenterAndExpand" Text="{ Binding Path=Platform.Permit.Owner.LastName }"></Label>
 
           <Label Style="{StaticResource nesterFieldLabel}"
                  VerticalOptions="LayoutOptions.CenterAndExpand" Text="Credit Balance"></Label>
           <Label Style="{StaticResource nesterFieldValue}"
-                 VerticalOptions="LayoutOptions.CenterAndExpand" Text="{ Binding Path=Permit.Owner.CreditsBalance, StringFormat='{0:c}' }"></Label>
+                 VerticalOptions="LayoutOptions.CenterAndExpand" Text="{ Binding Path=Platform.Permit.Owner.CreditsBalance, StringFormat='{0:c}' }"></Label>
             
         </StackLayout>
 

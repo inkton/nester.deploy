@@ -134,7 +134,7 @@
                     Text="Backups"></Label>
                 
                 <sync:SfListView x:Name="AppBackups"
-                        ItemsSource="{Binding AppBackups}"
+                        ItemsSource="{Binding DeploymentViewModel.AppBackups}"
                         SelectionBackgroundColor="{StaticResource selectionColor}"
                         ItemTemplate="{StaticResource ItemTemplate}">
                 </sync:SfListView>

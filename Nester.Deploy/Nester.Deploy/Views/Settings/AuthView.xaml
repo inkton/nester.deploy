@@ -67,6 +67,7 @@
           <Entry Style="{StaticResource nesterField}"
               x:Name="PasswordVerify"
               IsPassword="True"
+              Text="{Binding Path=Platform.Permit.Password, Mode=TwoWay}"
               Placeholder="Enter the password again">
             <Entry.Behaviors>
               <validators:EntryValidatorBehavior

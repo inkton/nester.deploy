@@ -30,7 +30,7 @@ namespace Inkton.Nester.Views
 {
     public partial class PaymentView : View
     {
-        public PaymentView(BaseViewModels baseModels)
+        public PaymentView()
         {
             InitializeComponent();
 
@@ -41,8 +41,7 @@ namespace Inkton.Nester.Views
                     BillingCycle
                 });
 
-            _baseViewModels = baseModels;
-            BindingContext = _baseViewModels.PaymentViewModel;
+            BindingContext = BaseViewModels.PaymentViewModel;
 
             BillingCycle.SelectedIndex = 0;
             UpdateBillingInfoAsync();
@@ -63,7 +62,7 @@ namespace Inkton.Nester.Views
             {
                 Dictionary<string, string> filter = new Dictionary<string, string>();
                 filter.Add("billing_cycle_id", cycle.Id.ToString());
-                await _baseViewModels.PaymentViewModel.QueryUserBillingTasksAsync(filter);
+                await BaseViewModels.PaymentViewModel.QueryUserBillingTasksAsync(filter);
             }
         }
 
@@ -71,7 +70,7 @@ namespace Inkton.Nester.Views
         {
             if (CardNumberValidator != null)
             {
-                _baseViewModels.PaymentViewModel.Validated = (
+                BaseViewModels.PaymentViewModel.Validated = (
                         CardNumberValidator.IsValid &&
                         ExpMonthValidator.IsValid &&
                         ExpYearValidator.IsValid &&
@@ -89,8 +88,8 @@ namespace Inkton.Nester.Views
         {
             IsServiceActive = true;
 
-            _baseViewModels.PaymentViewModel.DisplayPaymentMethodProof = false;
-            _baseViewModels.PaymentViewModel.DisplayPaymentMethodEntry = true;
+            BaseViewModels.PaymentViewModel.DisplayPaymentMethodProof = false;
+            BaseViewModels.PaymentViewModel.DisplayPaymentMethodEntry = true;
 
             IsServiceActive = false;
         }
@@ -101,10 +100,10 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseViewModels.PaymentViewModel.CreatePaymentMethodAsync(CardNumber.Text,
+                await BaseViewModels.PaymentViewModel.CreatePaymentMethodAsync(CardNumber.Text,
                     int.Parse(ExpMonth.Text), int.Parse(ExpYear.Text), CVVNumber.Text);
 
-                MainSideView.UnstackViewAsync();
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
             {
@@ -118,7 +117,7 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                MainSideView.UnstackViewAsync();
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
             {

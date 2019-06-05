@@ -22,17 +22,20 @@
 
 using System;
 using System.Collections.Generic;
+using Xamarin.Forms;
 using Inkton.Nester.ViewModels;
+using Inkton.Nester.Helpers;
+using DeployApp = Nester.Deploy.App;
 
 namespace Inkton.Nester.Views
 {
-    public partial class AppEngageView : View
+    public partial class AppLaunchView : View
     {
-        public AppEngageView(BaseViewModels baseModels)
+        public AppLaunchView(AppViewModel appViewModel)
         {
             InitializeComponent();
 
-            ViewModels = baseModels;
+            AppViewModel = appViewModel;
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
@@ -48,15 +51,12 @@ namespace Inkton.Nester.Views
 
             try
             {
-                _baseViewModels.WizardMode = true;
-                AppBasicDetailView basicView = new AppBasicDetailView(_baseViewModels);
-                basicView.MainSideView = MainSideView;
-                MainSideView.Detail.Navigation.InsertPageBefore(basicView, this);
-                await MainSideView.Detail.Navigation.PopAsync();
+                await MainView.StackViewSkipBackAsync(
+                    new AppBasicDetailView(AppViewModel, true));
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -68,18 +68,21 @@ namespace Inkton.Nester.Views
 
             try
             {
-                ContactViewModel contactsModel = new ContactViewModel(null);
-                contactsModel.EditInvitation.OwnedBy = Keeper.User;
+                // The invitations appear under each app and also under 
+                // the user for all apps. Here we query invitations for
+                // the user
+
+                ContactViewModel contactsModel = new ContactViewModel(BaseViewModels.Platform, null);
+                contactsModel.EditInvitation.OwnedBy = BaseViewModels.Platform.Permit.Owner;
+
                 await contactsModel.QueryInvitationsAsync();
 
-                AppJoinDetailView joinView = new AppJoinDetailView(contactsModel);
-                joinView.MainSideView = MainSideView;
-                MainSideView.Detail.Navigation.InsertPageBefore(joinView, this);
-                await MainSideView.Detail.Navigation.PopAsync();
+                await MainView.StackViewSkipBackAsync(
+                    new AppJoinDetailView(contactsModel));
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -91,11 +94,11 @@ namespace Inkton.Nester.Views
 
             try
             {
-                Keeper.ResetView();
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;

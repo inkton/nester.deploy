@@ -20,8 +20,8 @@
 
         <Grid.RowDefinitions>
           <RowDefinition Height="2*"/>
-          <RowDefinition Height="10*"/>
           <RowDefinition Height="86*"/>
+          <RowDefinition Height="10*"/>            
           <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
@@ -31,7 +31,7 @@
           <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+        <StackLayout Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
               HorizontalOptions="CenterAndExpand"
               VerticalOptions="CenterAndExpand">
 
@@ -39,7 +39,7 @@
             VerticalOptions="Center"
             HorizontalOptions="Center"            
             Source="app-background.png" />
-          
+            
           <ActivityIndicator x:Name="ServiceActive"></ActivityIndicator>
 
           <syncfusion:SfBusyIndicator x:Name="ProgressControl"
@@ -53,6 +53,12 @@
               TextColor="{StaticResource minorColor}" />
 
         </StackLayout>
+
+        <Button Grid.Row="2" Grid.Column="1" x:Name="ButtonAuthenticate"
+            HorizontalOptions="Center"
+            Text="Login" WidthRequest="100">
+        </Button>
+
      </Grid>      
     </ContentPage.Content>
 </views:View>

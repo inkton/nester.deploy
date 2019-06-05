@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.7.9</Version>
+    <Version>1.8.1</Version>
     <Authors>nest.yt</Authors>
     <Company>Inkton</Company>
     <Copyright>Copyright ©  2019</Copyright>
     <RepositoryUrl>https://nest.yt/</RepositoryUrl>
-    <AssemblyVersion>1.7.9.0</AssemblyVersion>
-    <FileVersion>1.7.9.0</FileVersion>
+    <AssemblyVersion>1.8.1.0</AssemblyVersion>
+    <FileVersion>1.8.1.0</FileVersion>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
@@ -23,15 +23,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Flurl.Http" Version="2.4.0" />
-    <PackageReference Include="Inkton.NesterLibrary" Version="1.4.4" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Flurl.Http" Version="2.4.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="15.4.0.20" />
     <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="15.4.0.20" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="15.4.0.20" />
     <PackageReference Include="System.Net.NameResolution" Version="4.3.0" />
-    <PackageReference Include="Xam.Plugin.DeviceInfo" Version="4.0.0.13" />
-    <PackageReference Include="Xamarin.Forms" Version="2.5.1.527436" />
+    <PackageReference Include="Xam.Plugin.DeviceInfo" Version="4.1.1" />
+    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
+    <PackageReference Include="Xamarin.Forms" Version="3.6.0.344457" />
     <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.0.135" />
   </ItemGroup>
 
@@ -43,8 +44,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\WebView.xaml.cs">
+      <DependentUpon>WebView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\AboutPage.xaml.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Homesteads\AppSetup\AppLaunchView.xaml.cs">
+      <DependentUpon>AppLaunchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\ItemDetailPage.xaml.cs">
       <SubType>Code</SubType>
@@ -55,6 +65,9 @@
     <Compile Update="Views\MainPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\NewItemPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -64,10 +77,13 @@
     <EmbeddedResource Update="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Google-Fonts.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\BannerView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\EntryView.xaml">
+    <EmbeddedResource Update="Views\LoginView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Homesteads\AppAuditView.xaml">
@@ -85,7 +101,7 @@
     <EmbeddedResource Update="Views\Homesteads\AppSetup\AppDomainView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Homesteads\AppSetup\AppEngageView.xaml">
+    <EmbeddedResource Update="Views\Homesteads\AppSetup\AppLaunchView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Homesteads\AppSetup\AppJoinDetailView.xaml">
@@ -100,16 +116,13 @@
     <EmbeddedResource Update="Views\Homesteads\AppSetup\AppSummaryView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Homesteads\AppSetup\AppTierView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\Homesteads\AppView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Homesteads\AppWebView.xaml">
+    <EmbeddedResource Update="Views\WebView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MainSideView.xaml">
+    <EmbeddedResource Update="Views\MainView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\HomeView.xaml">
@@ -141,4 +154,7 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\nester.library\Nester.Library\Nester.Library.csproj" />
+  </ItemGroup>
 </Project>

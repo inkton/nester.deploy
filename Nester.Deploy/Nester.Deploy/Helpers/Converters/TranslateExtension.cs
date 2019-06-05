@@ -59,7 +59,7 @@ namespace Inkton.Nester.Helpers
                 return "";
 
             ResourceManager resmgr = 
-                (Application.Current as INesterControl).GetResourceManager();
+                (Application.Current as INesterClient).GetResourceManager();
             var translation = resmgr.GetString(Text, ci);
 
             if (translation == null)

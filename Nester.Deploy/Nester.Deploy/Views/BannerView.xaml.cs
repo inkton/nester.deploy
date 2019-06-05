@@ -35,6 +35,29 @@ namespace Inkton.Nester.Views
                 new List<Xamarin.Forms.View>
                 {
                 });
+
+            ProgressControl.IsVisible = false;
+
+            if (BaseViewModels.AuthViewModel.IsAuthenticated)
+            {
+                ButtonAuthenticate.Text = "Logout";
+            }
+            else
+            {
+                ButtonAuthenticate.Text = "Login";
+            }
+
+            ButtonAuthenticate.Clicked += ButtonAuthenticate_ClickedAsync;
+        }
+
+        private async void ButtonAuthenticate_ClickedAsync(object sender, System.EventArgs e)
+        {
+            if (BaseViewModels.AuthViewModel.IsAuthenticated)
+            {
+                BaseViewModels.AuthViewModel.Platform.Permit.Invalid();
+            }
+
+            await MainView.StackViewAsync(new LoginView());
         }
 
         public string Text

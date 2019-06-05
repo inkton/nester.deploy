@@ -27,89 +27,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using Xamarin.Forms;
-using Plugin.DeviceInfo;
 using Newtonsoft.Json;
 using Inkton.Nest.Model;
 using Inkton.Nester;
 using Inkton.Nester.ViewModels;
-using Inkton.Nester.Cloud;
 using Inkton.Nester.Storage;
 using Inkton.Nester.Views;
 using Inkton.Nester.Helpers;
 
 namespace Nester.Deploy
 {
-    public partial class App : Application, IKeeper, INesterControl
+    public partial class App : Application, INesterClient
     {
-        private User _user;
-        private const int ServiceVersion = 2;
         private LogService _log;
-        private NesterService _platform, _backend;
         private BaseViewModels _baseModels;
-        private MainSideView _mainSideView;
+        private MainView _mainSideView;
 
         public App()
         {
             InitializeComponent();
 
-            _user = new User();
-
-            StorageService cache = new StorageService(Path.Combine(
-                    Path.GetTempPath(), "NesterCache"));
-            cache.Clear();
-
-            Dictionary<string, string> clientSignature = new Dictionary<string, string>();
-            clientSignature["device"] = JsonConvert.SerializeObject(CrossDeviceInfo.Current);
-            clientSignature["app_version"] = typeof(EntryView).GetTypeInfo()
-                    .Assembly.GetName().Version.ToString();
-
-            string clientSignatureJSON =
-                JsonConvert.SerializeObject(clientSignature);
+            // This is helps to trace issues with 
+            // the API calls on the server 
 
             _log = new LogService(Path.Combine(
                     Path.GetTempPath(), "NesterLog"));
-            _platform = new NesterService(
-                ServiceVersion, clientSignatureJSON, cache);
-            _backend = new NesterService(
-                ServiceVersion, clientSignatureJSON, cache);
+            _baseModels = new BaseViewModels();
 
-            _baseModels = new BaseViewModels(
-                new AuthViewModel(), 
-                new PaymentViewModel(),
-                new AppViewModel(),
-                new AppCollectionViewModel());
-
-            _mainSideView = new MainSideView();
-
+            _mainSideView = new MainView();
             MainPage = _mainSideView;
-
-            _mainSideView.ShowEntry();
         }
 
-        public BaseViewModels ViewModels
+        public BaseViewModels BaseViewModels
         {
             get { return _baseModels; }
-        }
-
-        public User User
-        {
-            get { return _user; }
-            set { _user = value; }
-        }
-
-        public AppViewModel Target
-        {
-            get { return _baseModels.AppViewModel; }
-        }
-
-        public NesterService Service
-        {
-            get { return _platform; }
-        }
-
-        public NesterService Backend
-        {
-            get { return _backend; }
         }
 
         public LogService Log
@@ -120,25 +71,14 @@ namespace Nester.Deploy
         public ResourceManager GetResourceManager()
         {
             ResourceManager resmgr = new ResourceManager(
-                "Inkton.Nester.Resources",
-                typeof(INesterControl).GetTypeInfo().Assembly);
+                "Inkton.Nester.Text",
+                typeof(INesterClient).GetTypeInfo().Assembly);
             return resmgr;
         }
 
-        public void ResetView(AppViewModel appModel = null)
+        public async Task RefreshViewAsync(AppViewModel appModel = null)
         {
-            if (appModel == null)
-            {
-                _baseModels.AppViewModel = _baseModels
-                    .AppCollectionViewModel
-                    .AppModels.FirstOrDefault();
-            }
-            else
-            {
-                _baseModels.AppViewModel = appModel;
-            }
-
-            _mainSideView.UpdateView();
+            await _mainSideView.UpdateViewAsync(appModel);
         }
     }
 }

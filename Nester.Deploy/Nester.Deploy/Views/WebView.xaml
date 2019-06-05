@@ -5,7 +5,7 @@
              xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
              xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
              Title="Hello World"
-             x:Class="Inkton.Nester.Views.AppWebView">
+             x:Class="Inkton.Nester.Views.WebView">
 
   <ContentPage.Resources>
     <ResourceDictionary>
@@ -22,14 +22,14 @@
     </Grid.RowDefinitions>
 
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="10*"/>
-      <ColumnDefinition Width="80*"/>
-      <ColumnDefinition Width="10*"/>
+      <ColumnDefinition Width="5*"/>
+      <ColumnDefinition Width="90*"/>
+      <ColumnDefinition Width="5*"/>
     </Grid.ColumnDefinitions>
 
     <StackLayout Grid.Row="1" Grid.Column="1">
-          <WebView x:Name="Browser" WidthRequest="1000" HeightRequest="1000" />
-          <ActivityIndicator x:Name="ServiceActive" ></ActivityIndicator>
+            <WebView x:Name="Browser" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+            <ActivityIndicator x:Name="ServiceActive" ></ActivityIndicator>
     </StackLayout>
 
     <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Padding="10,10" VerticalOptions="LayoutOptions.Center" HorizontalOptions="LayoutOptions.Center">

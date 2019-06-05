@@ -5,7 +5,7 @@
              xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
              xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
              xmlns:local="clr-namespace:Nester"
-             x:Class="Inkton.Nester.Views.EntryView"
+             x:Class="Inkton.Nester.Views.LoginView"
              Title="Welcome">
 
     <ContentPage.Resources>
@@ -38,7 +38,7 @@
                 Text="Email"></Label>
         <Entry Style="{StaticResource nesterField}"                  
               x:Name="Email"
-              Text="{Binding Path=Permit.Owner.Email, Mode=TwoWay}"
+              Text="{Binding Path=Platform.Permit.Owner.Email, Mode=TwoWay}"
               Keyboard="Email"
               PropertyChanged="OnFieldValidation"
               Placeholder="Enter email address">
@@ -60,7 +60,7 @@
                 Text="Password"></Label>
         <Entry Style="{StaticResource nesterField}"
             x:Name="Password"
-            Text="{Binding Path=Permit.Password, Mode=TwoWay}"
+            Text="{Binding Path=Platform.Permit.Password, Mode=TwoWay}"
             IsPassword="True"
             PropertyChanged="OnFieldValidation"
             Placeholder="Enter password">
@@ -77,13 +77,6 @@
               Opacity="{Binding Source={x:Reference PasswordValidator}, Path=IsVisibleMessage}" />
 
       </StackLayout>
-
-     <WebView  Grid.Row="2" Grid.Column="1" x:Name="StartHelp" 
-        IsVisible="{Binding Validated, Converter={StaticResource inverseBoolConverter}}"
-        WidthRequest="1000" HeightRequest="200"
-        VerticalOptions="CenterAndExpand" 
-        HorizontalOptions="CenterAndExpand">
-     </WebView>
         
       <ActivityIndicator Grid.Row="3" Grid.Column="1" x:Name="ServiceActive" >          
       </ActivityIndicator>
@@ -113,7 +106,11 @@
                 Style="{StaticResource buttonPageFlow}"
                 Clicked="OnRecoverPasswordButtonClickedAsync">
         </Button>
-
+        <Button x:Name="ButtonAbout"
+                Text="About"
+                Style="{StaticResource buttonPageFlow}"
+                Clicked="OnAboutButtonClickedAsync">
+        </Button>
 
         </StackLayout>
 

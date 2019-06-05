@@ -29,16 +29,17 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
+using Inkton.Nester.Helpers;
 
 namespace Inkton.Nester.Views
 {
     public partial class AppAuditView : View
     {
-        public AppAuditView(BaseViewModels baseModels)
+        public AppAuditView(AppViewModel appViewModel)
         {
             InitializeComponent();
 
-            ViewModels = baseModels;
+            AppViewModel = appViewModel;
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
@@ -49,7 +50,7 @@ namespace Inkton.Nester.Views
             _activityIndicator = ServiceActive;
 
             ButtonQuery.Clicked += ButtonQuery_Clicked;
-            ButtonCancel.Clicked += ButtonCancel_Clicked;
+            ButtonCancel.Clicked += ButtonCancel_ClickedAsync;
 
             ResetTimeFilter();
 
@@ -62,7 +63,7 @@ namespace Inkton.Nester.Views
             StartTime.Time = new TimeSpan(0, 0, 0);
             EndTime.Time = new TimeSpan(23, 59, 59);
 
-            _baseViewModels.AppViewModel.DeploymentViewModel.AppAudits.Clear();
+            AppViewModel.DeploymentViewModel.AppAudits.Clear();
         }
 
         private async void QueryAsync()
@@ -71,11 +72,11 @@ namespace Inkton.Nester.Views
 
             try
             {
-                _baseViewModels.AppViewModel.DeploymentViewModel.AppAudits.Clear();
+                AppViewModel.DeploymentViewModel.AppAudits.Clear();                
 
-                if (StartTime.Time > EndTime.Time)
+                if (TimeSpan.Compare(StartTime.Time, EndTime.Time) >= 0)
                 {
-                    await DisplayAlert("Nester", "Start time must be earler than the end time", "OK");
+                    await ErrorHandler.ExceptionAsync(this, "Start time must be earler than the end time");
                     return;
                 }
 
@@ -94,11 +95,11 @@ namespace Inkton.Nester.Views
                         EndTime.Time.Hours, EndTime.Time.Minutes, EndTime.Time.Seconds
                     ));
 
-                await _baseViewModels.AppViewModel.DeploymentViewModel.QueryAppAuditsAsync(filter);
+                await AppViewModel.DeploymentViewModel.QueryAppAuditsAsync(filter);
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -113,13 +114,13 @@ namespace Inkton.Nester.Views
         {
             base.UpdateBindings();
 
-            BindingContext = _baseViewModels.AppViewModel.DeploymentViewModel;
+            BindingContext = AppViewModel.DeploymentViewModel;
         }
         
-        private void ButtonCancel_Clicked(object sender, EventArgs e)
+        private async void ButtonCancel_ClickedAsync(object sender, EventArgs e)
         {
             IsServiceActive = true;
-            MainSideView.UnstackViewAsync();
+            await MainView.UnstackViewAsync();
             IsServiceActive = false;
         }
     }
