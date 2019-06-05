@@ -25,8 +25,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
+using Inkton.Nester.Helpers;
+using DeployApp = Nester.Deploy.App;
 
 namespace Inkton.Nester.Views
 {
@@ -35,23 +38,22 @@ namespace Inkton.Nester.Views
         private ServicesViewModel.ServiceTableItem _selectedAppRow;
         private bool _isUpgrading;
 
-        public AppTierView(BaseViewModels baseModels)
+        public AppTierView(AppViewModel appViewModel, bool wizardMode = false)
+            :base(wizardMode)
         {
             InitializeComponent();
 
-            _isUpgrading = baseModels
-                .AppViewModel
+            AppViewModel = appViewModel;
+
+            _isUpgrading = AppViewModel
                 .ServicesViewModel
                 .UpgradableAppTiers.Any();
 
-            baseModels
-                .AppViewModel
+            AppViewModel
                 .ServicesViewModel
                 .ResetAppServiceTable();
 
-            ViewModels = baseModels;
-
-            AppTypeTierView.SelectionChanged += AppTypeTierView_SelectionChanged;
+            AppTypeTierView.ItemSelected += AppTypeTierView_ItemSelected;
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
@@ -62,21 +64,48 @@ namespace Inkton.Nester.Views
                     ButtonContacts,
                     ButtonDone
                 });
+        }
 
-            if (_baseViewModels.WizardMode || _isUpgrading)
+        public override void UpdateBindings()
+        {
+            AppTypeTierView.ItemsSource = AppViewModel.ServicesViewModel.AppTierTable;
+
+            if (AppViewModel.EditApp != null)
+            {
+                Title = AppViewModel.EditApp.Name;
+            }
+
+            if (_isUpgrading)
+            {
+                // The app is being created and deployed. Only selected services are applicable
+                AppTierTitle.Text = "Select an App Tier to Upgrade";
+                DatabaseOption.Opacity = 0;
+            }
+            else
+            {
+                // The app is being created. All services are applicable
+                AppTierTitle.Text = "Select an App Tier to Install";
+            }
+
+            if (BaseViewModels.Platform.Permit.Owner.TerritoryISOCode == "AU")
+            {
+                PaymentNotice.Text = "The prices are in US Dollars and do not include GST.";
+            }
+            else
+            {
+                PaymentNotice.Text = "The prices are in US Dollars. ";
+            }
+
+            if (_wizardMode || _isUpgrading)
             {
                 // hide but do not collapse
                 TopButtonPanel.Opacity = 0;
             }
 
-            AppTypeTierView.Loaded += AppTypeTierView_Loaded;
-
-            if (baseModels.AppViewModel
-                .ServicesViewModel
+            if (AppViewModel.ServicesViewModel
                 .SelectedAppServiceTableItem != null)
             {
-                if ((baseModels.AppViewModel
-                    .ServicesViewModel
+                if ((AppViewModel.ServicesViewModel
                     .SelectedAppServiceTableItem.Tier.OwnedBy as AppService).Tag == "nest-redbud")
                 {
                     Supplier.SelectedIndex = 0;
@@ -92,71 +121,64 @@ namespace Inkton.Nester.Views
             }
 
             Supplier.IsEnabled = !_isUpgrading;
-            
+
             if (Supplier.IsEnabled)
             {
                 Supplier.SelectedIndexChanged += Supplier_SelectedIndexChanged;
             }
-        }
 
-        public override void UpdateBindings()
-        {
-            if (App != null)
-            {
-                Title = App.Name;
-            }
-
-            BindingContext = _baseViewModels;
-
-            if (_isUpgrading)
-            {
-                // The app is being created and deployed. Only selected services are applicable
-                AppTierTitle.Text = "Select an App Tier to Upgrade";
-                DatabaseOption.Opacity = 0;
-            }
-            else
-            {
-                // The app is being created. All services are applicable
-                AppTierTitle.Text = "Select an App Tier to Install";
-            }
-        }
-
-        private void ResetSelections()
-        {
-            AppTypeTierView.SelectedItems.Clear();
-
-            ServicesViewModel.ServiceTableItem serviceTableItem = _baseViewModels
-                .AppViewModel.ServicesViewModel.SelectedAppServiceTableItem;
-
-            if (serviceTableItem != null)
-            {
-                AppTypeTierView.SelectedItems.Add(serviceTableItem);
-                _selectedAppRow = serviceTableItem;
-
-                MariaDBEnabled.IsToggled = (_baseViewModels.AppViewModel.ServicesViewModel.SelectedStorageServiceTableItem != null);
-
-                SetMariaDBSupport();
-            }
-        }
-
-        private void AppTypeTierView_Loaded(object sender, Syncfusion.ListView.XForms.ListViewLoadedEventArgs e)
-        {
             if (!_isUpgrading)
             {
                 ResetSelections();
             }
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            ResetSelections();
+        }
+
+        private void ResetSelections()
+        {
+            ServicesViewModel.ServiceTableItem serviceTableItem = AppViewModel
+                .ServicesViewModel.SelectedAppServiceTableItem;
+
+            if (serviceTableItem != null)
+            {
+                AppTypeTierView.SelectedItem = serviceTableItem;
+                _selectedAppRow = serviceTableItem;
+
+                MariaDBEnabled.IsToggled = (AppViewModel
+                    .ServicesViewModel.SelectedStorageServiceTableItem != null);
+
+                SetMariaDBSupport();
+            }
+        }
+
+        private void AppTypeTierView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            AppViewModel.Validated = e.SelectedItem != null;
+            
+            if (AppViewModel.Validated)
+            {
+                _selectedAppRow = e.SelectedItem as ServicesViewModel.ServiceTableItem;
+            }
+
+            SetMariaDBSupport();
+        }
+
         private void Supplier_SelectedIndexChanged(object sender, EventArgs e)
         {
             if ((Supplier.SelectedItem as string) == "AWS")
             {
-                _baseViewModels.AppViewModel
+                AppViewModel
                     .ServicesViewModel.BuildAppServiceTable("nest-redbud");
             }
             else
             {
-                _baseViewModels.AppViewModel
+                AppViewModel
                     .ServicesViewModel.BuildAppServiceTable("nest-oak");
             }
 
@@ -169,13 +191,12 @@ namespace Inkton.Nester.Views
 
             try
             {
-                ViewModels.WizardMode = false;
                 await UpdateServicesAsync();
-                MainSideView.CurrentLevelViewAsync(new AppBasicDetailView(ViewModels));
+                await MainView.StackViewSkipBackAsync(new AppBasicDetailView(AppViewModel));
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -188,11 +209,11 @@ namespace Inkton.Nester.Views
             try
             {
                 await UpdateServicesAsync();
-                MainSideView.CurrentLevelViewAsync(new AppDomainView(_baseViewModels));
+                await MainView.StackViewSkipBackAsync(new AppDomainView(AppViewModel));
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -205,11 +226,11 @@ namespace Inkton.Nester.Views
             try
             {
                 await UpdateServicesAsync();
-                MainSideView.CurrentLevelViewAsync(new AppNestsView(_baseViewModels));
+                await MainView.StackViewSkipBackAsync(new AppNestsView(AppViewModel));
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -222,28 +243,14 @@ namespace Inkton.Nester.Views
             try
             {
                 await UpdateServicesAsync();
-                MainSideView.CurrentLevelViewAsync(new ContactsView(_baseViewModels));
+                await MainView.StackViewSkipBackAsync(new ContactsView(AppViewModel));
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
-        }
-
-        private void AppTypeTierView_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
-        {
-            _baseViewModels.AppViewModel.Validated = (
-                 e.AddedItems.Any()
-                );
-
-            if (_baseViewModels.AppViewModel.Validated)
-            {
-                _selectedAppRow = e.AddedItems.First() as ServicesViewModel.ServiceTableItem;
-            }
-
-            SetMariaDBSupport();
         }
 
         private void SetMariaDBSupport()
@@ -251,7 +258,8 @@ namespace Inkton.Nester.Views
             const int FEATURE_MEMORY = 3;
 
             // MariaDB on instances less than 1024 MB not supported.
-            bool isMariaDBSupported = int.Parse(_selectedAppRow.FeaturesIncluded[FEATURE_MEMORY]) > 1024;
+            bool isMariaDBSupported = int.Parse(
+                _selectedAppRow.FeaturesIncluded[FEATURE_MEMORY]) > 1024;
 
             if (!isMariaDBSupported)
             {
@@ -268,37 +276,35 @@ namespace Inkton.Nester.Views
                 return;
             }
             
-            // At present only the wizard mode brings up this page.
             if (_isUpgrading)
             {
-                _baseViewModels.AppViewModel.ServicesViewModel.UpgradeAppServiceTier(_selectedAppRow.Tier);
-
-                AppSummaryView summaryView = new AppSummaryView(_baseViewModels);
-                summaryView.MainSideView = MainSideView;
-                MainSideView.Detail.Navigation.InsertPageBefore(summaryView, this);
+                AppViewModel.ServicesViewModel.UpgradeAppServiceTier(_selectedAppRow.Tier);
+                await MainView.StackViewSkipBackAsync(new AppSummaryView(AppViewModel));
             }
             else
             {
-                if (App.Status != "assigned")
+                if (AppViewModel.EditApp.Status != "assigned")
                 {
-                    await _baseViewModels.AppViewModel.CreateAppAsync(_selectedAppRow.Tier);
-                    Keeper.ViewModels.AppCollectionViewModel.AddModel(_baseViewModels.AppViewModel);
+                    await AppViewModel.CreateAppAsync(_selectedAppRow.Tier);
+                    await AppViewModel.InitAsync();
+
+                    BaseViewModels.AppCollectionViewModel.AddModel(AppViewModel);
                 }
 
                 if (_selectedAppRow != null && (
-                    _baseViewModels.AppViewModel.ServicesViewModel.SelectedAppServiceTableItem == null ||
-                    _baseViewModels.AppViewModel.ServicesViewModel.SelectedAppServiceTableItem.Tier.Id != _selectedAppRow.Tier.Id))
+                    AppViewModel.ServicesViewModel.SelectedAppServiceTableItem == null ||
+                    AppViewModel.ServicesViewModel.SelectedAppServiceTableItem.Tier.Id != _selectedAppRow.Tier.Id))
                 {
-                    await _baseViewModels.AppViewModel.ServicesViewModel.SwitchAppServiceTierAsync(_selectedAppRow.Tier);
+                    await AppViewModel.ServicesViewModel.SwitchAppServiceTierAsync(_selectedAppRow.Tier);
                 }
 
-                if (_baseViewModels.AppViewModel.ServicesViewModel.SelectedStorageServiceTableItem == null && MariaDBEnabled.IsToggled)
+                if (AppViewModel.ServicesViewModel.SelectedStorageServiceTableItem == null && MariaDBEnabled.IsToggled)
                 {
-                    await _baseViewModels.AppViewModel.ServicesViewModel.CreateDefaultStorageServiceAsync();
+                    await AppViewModel.ServicesViewModel.CreateDefaultStorageServiceAsync();
                 }
-                else if (_baseViewModels.AppViewModel.ServicesViewModel.SelectedStorageServiceTableItem != null && !MariaDBEnabled.IsToggled)
+                else if (AppViewModel.ServicesViewModel.SelectedStorageServiceTableItem != null && !MariaDBEnabled.IsToggled)
                 {
-                    await _baseViewModels.AppViewModel.ServicesViewModel.RemoveDefaultStorageServiceAsync();
+                    await AppViewModel.ServicesViewModel.RemoveDefaultStorageServiceAsync();
                 }
             }
         }
@@ -311,32 +317,32 @@ namespace Inkton.Nester.Views
             {
                 if (_selectedAppRow == null)
                 {
-                    await DisplayAlert("Nester", "Select an App Tier first", "OK");
+                    await ErrorHandler.ExceptionAsync(this, "Select an App Tier first");
                     return;
                 }
 
                 await UpdateServicesAsync();
 
-                if (_baseViewModels.WizardMode)
+                if (_wizardMode)
                 {
-                    await _baseViewModels.AppViewModel.NestViewModel.InitAsync();
+                    if (!AppViewModel.NestViewModel.Platforms.Any())
+                    {
+                        await AppViewModel.NestViewModel.InitAsync();
+                    }
 
-                    AppNestsView nestsView = new AppNestsView(_baseViewModels);
-                    nestsView.MainSideView = MainSideView;
-                    MainSideView.Detail.Navigation.InsertPageBefore(nestsView, this);
-
-                    await MainSideView.Detail.Navigation.PopAsync();
+                    await MainView.StackViewAsync(
+                        new AppNestsView(AppViewModel, _wizardMode));
                 }
                 else
                 {
                     // Head back to homepage if the 
                     // page was called from here
-                    MainSideView.UnstackViewAsync();
+                    await MainView.UnstackViewAsync();
                 }
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Inkton.Nester.Views"
              xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
-             x:Class="Inkton.Nester.Views.AppEngageView"
+             x:Class="Inkton.Nester.Views.AppLaunchView"
             Title="App Setup">
   
   <ContentPage.Content>

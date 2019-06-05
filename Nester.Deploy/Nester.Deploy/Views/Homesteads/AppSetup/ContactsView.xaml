@@ -4,7 +4,6 @@
              xmlns:views="clr-namespace:Inkton.Nester.Views"
              xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
              xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
-             xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Title="Contacts"                          
              x:Class="Inkton.Nester.Views.ContactsView">
 
@@ -380,15 +379,11 @@
 
     <StackLayout Grid.Row="3" Grid.Column="1">
 
-      <sync:SfListView x:Name="AppContactsList"
+      <ListView x:Name="AppContactsList"
                       ItemsSource="{Binding Contacts}"
-                      SelectionGesture="Tap"
                       SelectionMode="Single"
-                      SelectionBackgroundColor="{StaticResource selectionColor}"     
-                      ItemTemplate="{StaticResource ItemTemplate}"
-                      ItemSize="65"
-                >
-      </sync:SfListView>
+                      ItemTemplate="{StaticResource ItemTemplate}">
+      </ListView>
 
     </StackLayout>
             

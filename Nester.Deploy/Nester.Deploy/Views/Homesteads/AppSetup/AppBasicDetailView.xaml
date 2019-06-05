@@ -4,7 +4,6 @@
              xmlns:views="clr-namespace:Inkton.Nester.Views"
              xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
              xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
-             xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Title="Basic"
              x:Class="Inkton.Nester.Views.AppBasicDetailView">
 
@@ -199,12 +198,10 @@
           <Label Style="{StaticResource nesterFieldLabel}"
                   Text="Type"></Label>
 
-          <sync:SfListView x:Name="AppTypeListView"
+          <ListView x:Name="AppTypeListView"
                     SelectionMode="Single"
-                    SelectionBackgroundColor="{StaticResource selectionColor}"
-                    ItemsSource="{Binding ApplicationTypes}"
-                    ItemSize="50">
-            <sync:SfListView.ItemTemplate>
+                    ItemsSource="{Binding ApplicationTypes}">
+            <ListView.ItemTemplate>
               <DataTemplate>
                 <ViewCell>
 
@@ -271,8 +268,8 @@
 			        </StackLayout>-->
                 </ViewCell>
               </DataTemplate>
-            </sync:SfListView.ItemTemplate>
-          </sync:SfListView>
+            </ListView.ItemTemplate>
+          </ListView>
 
         </StackLayout>
       </Grid>

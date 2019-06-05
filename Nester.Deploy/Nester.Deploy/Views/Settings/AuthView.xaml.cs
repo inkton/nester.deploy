@@ -24,12 +24,13 @@ using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Inkton.Nester.ViewModels;
+using Inkton.Nester.Helpers;
 
 namespace Inkton.Nester.Views
 {
     public partial class AuthView : View
     {
-        public AuthView(BaseViewModels baseModels)
+        public AuthView()
         {
             InitializeComponent();
 
@@ -41,8 +42,7 @@ namespace Inkton.Nester.Views
             Password.Unfocused += Password_Unfocused;
             PasswordVerify.Unfocused += Password_Unfocused;
 
-            _baseViewModels = baseModels;
-            BindingContext = _baseViewModels.AuthViewModel;
+            BindingContext = BaseViewModels.AuthViewModel;
         }
 
         private void Password_Unfocused(object sender, FocusEventArgs e)
@@ -54,12 +54,12 @@ namespace Inkton.Nester.Views
         {
             if (PasswordValidator != null)
             {
-                _baseViewModels.AuthViewModel.Validated = (
+                BaseViewModels.AuthViewModel.Validated = (
                      PasswordValidator.IsValid &&
                      PasswordRepeatValidator.IsValid
                      );
                 
-                if (_baseViewModels.AuthViewModel.Validated)
+                if (BaseViewModels.AuthViewModel.Validated)
                 {
                     if (Password.Text != PasswordVerify.Text)
                     {
@@ -90,14 +90,14 @@ namespace Inkton.Nester.Views
 
                 IsServiceActive = true;
 
-                await _baseViewModels.AuthViewModel.ResetTokenAsync();
+                await BaseViewModels.AuthViewModel.ResetTokenAsync();
                 await DisplayAlert("Nester", "Password was saved", "OK");
 
                 IsServiceActive = false;
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
                 IsServiceActive = false;
             }
         }
@@ -106,11 +106,11 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                MainSideView.UnstackViewAsync();
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
         }
     }

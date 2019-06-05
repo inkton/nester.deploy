@@ -38,11 +38,11 @@ namespace Inkton.Nester.Views
     {
         private Regex _domainVerifier;
 
-        public AppDomainView(BaseViewModels baseModels)
+        public AppDomainView(AppViewModel appViewModel)
         {
             InitializeComponent();
 
-            ViewModels = baseModels;
+            AppViewModel = appViewModel;
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
@@ -61,15 +61,10 @@ namespace Inkton.Nester.Views
 
             Aliases.Unfocused += Aliases_Unfocused;
             Name.Unfocused += Name_Unfocused;
-            AppDomainsList.SelectionChanged += AppDomainsList_SelectionChanged;
-            ButtonCert.Clicked += ButtonCert_Clicked;
 
-            ButtonDone.IsVisible = _baseViewModels.WizardMode;
-            if (_baseViewModels.WizardMode)
-            {
-                // hide but do not collapse
-                TopButtonPanel.Opacity = 0;
-            }
+            AppDomainsList.ItemSelected += AppDomainsList_ItemSelected;
+
+            ButtonCert.Clicked += ButtonCert_ClickedAsync;
 
             // Thanks - http://stackoverflow.com/questions/10306690/domain-name-validation-with-regex
             _domainVerifier = new Regex(
@@ -85,7 +80,7 @@ namespace Inkton.Nester.Views
         {
             base.UpdateBindings();
 
-            BindingContext = _baseViewModels.AppViewModel.DomainViewModel;
+            BindingContext = AppViewModel.DomainViewModel;
         }
 
         async private void OnButtonServiceClickedAsync(object sender, EventArgs e)
@@ -94,27 +89,27 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new AppTierView(_baseViewModels));
+                await MainView.StackViewSkipBackAsync(new AppTierView(AppViewModel));
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
         }
+
         async private void OnButtonBasicDetailsClickedAsync(object sender, EventArgs e)
         {
             IsServiceActive = true;
 
             try
             {
-                _baseViewModels.WizardMode = false;
-                MainSideView.CurrentLevelViewAsync(new AppBasicDetailView(_baseViewModels));
+                await MainView.StackViewSkipBackAsync(new AppBasicDetailView(AppViewModel));
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -126,11 +121,11 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new AppTierView(_baseViewModels));
+                await MainView.StackViewSkipBackAsync(new AppTierView(AppViewModel));
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -142,11 +137,11 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new ContactsView(_baseViewModels));
+                await MainView.StackViewSkipBackAsync(new ContactsView(AppViewModel));
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -158,36 +153,31 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new AppNestsView(_baseViewModels));
+                await MainView.StackViewSkipBackAsync(new AppNestsView(AppViewModel));
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
         }
 
-        private void ButtonCert_Clicked(object sender, EventArgs e)
+        private async void ButtonCert_ClickedAsync(object sender, EventArgs e)
         {
             if (AppDomainsList.SelectedItem != null)
             {
                 Nest.Model.AppDomain browseDomain = AppDomainsList.SelectedItem as Nest.Model.AppDomain;
-                _baseViewModels.AppViewModel.DomainViewModel.EditDomain = browseDomain;
-                AppDomainCertView certView = new AppDomainCertView(_baseViewModels);
-                MainSideView.StackViewAsync(certView);
+                AppViewModel.DomainViewModel.EditDomain = browseDomain;
+                await MainView.StackViewAsync(new AppDomainCertView(AppViewModel));
             }
         }
 
         private void Clear()
         {
-            if (AppDomainsList.SelectedItems.Any())
-            {
-                AppDomainsList.SelectedItems.RemoveAt(0);
-            }
-
-            _baseViewModels.AppViewModel.DomainViewModel.EditDomain = new Nest.Model.AppDomain();
-            _baseViewModels.AppViewModel.DomainViewModel.EditDomain.OwnedBy = App;
+            AppDomainsList.SelectedItem = null;
+            AppViewModel.DomainViewModel.EditDomain = new Nest.Model.AppDomain();
+            AppViewModel.DomainViewModel.EditDomain.OwnedBy = AppViewModel.EditApp;
 
             SetDefaults();
 
@@ -201,9 +191,9 @@ namespace Inkton.Nester.Views
             if (AppDomainsList.SelectedItem != null)
             {
                 Nest.Model.AppDomain browseDomain = AppDomainsList.SelectedItem as Nest.Model.AppDomain;
-                browseDomain.CopyTo(_baseViewModels.AppViewModel.DomainViewModel.EditDomain);
+                browseDomain.CopyTo(AppViewModel.DomainViewModel.EditDomain);
                 enableEdits = !browseDomain.Default;
-                IsPrimary.IsToggled = _baseViewModels.AppViewModel
+                IsPrimary.IsToggled = AppViewModel
                     .EditApp.PrimaryDomainId == browseDomain.Id;
             }
 
@@ -215,7 +205,7 @@ namespace Inkton.Nester.Views
 
         private Nest.Model.AppDomain CopyUpdate(Nest.Model.AppDomain browsDomain)
         {
-            browsDomain.OwnedBy = App;
+            browsDomain.OwnedBy = AppViewModel.EditApp;
             browsDomain.Tag = Tag.Text;
             browsDomain.Name = Name.Text;
             if (Aliases.Text == null || Aliases.Text.Length == 0)
@@ -238,16 +228,16 @@ namespace Inkton.Nester.Views
             try
             {
                 priaryDomain.Primary = true;
-                App.PrimaryDomainId = priaryDomain.Id;
-                await _baseViewModels.AppViewModel.UpdateAppAsync(App);
+                AppViewModel.EditApp.PrimaryDomainId = priaryDomain.Id;
+                await AppViewModel.UpdateAppAsync(AppViewModel.EditApp);
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
         }
 
-        private void AppDomainsList_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        private void AppDomainsList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             SetDefaults();
             Validate();
@@ -326,16 +316,16 @@ namespace Inkton.Nester.Views
         
         private async Task<bool> DoesIPMatchAppIPAsync()
         {
-            Nest.Model.AppDomain defaultDomain = (from domain in _baseViewModels.AppViewModel.DomainViewModel.Domains
+            Nest.Model.AppDomain defaultDomain = (from domain in AppViewModel.DomainViewModel.Domains
                                                      where domain.Default == true
                                                      select domain).First();
 
             if (!await Dns.IsDomainIPAsync(Name.Text, defaultDomain.IPAddress))
             {
                 IsServiceActive = false;
-                await DisplayAlert("Nester", "The domain name " + Name.Text +
+                await ErrorHandler.ExceptionAsync(this, "The domain name " + Name.Text +
                     " currently does not resolve to " + defaultDomain.IPAddress +
-                    ". Make sure to update the DNS", "OK");
+                    ". Make sure to update the DNS");
                 return false;
             }
 
@@ -345,9 +335,9 @@ namespace Inkton.Nester.Views
             if (unmatchedAlias != null)
             {
                 IsServiceActive = false;
-                await DisplayAlert("Nester", "The alias " + unmatchedAlias +
+                await ErrorHandler.ExceptionAsync(this, "The alias " + unmatchedAlias +
                     " currently does not resolve to " + defaultDomain.IPAddress +
-                    ". Make sure to update the DNS", "OK");
+                    ". Make sure to update the DNS");
                 return false;
             }
 
@@ -356,8 +346,8 @@ namespace Inkton.Nester.Views
 
         private void Validate()
         {
-            _baseViewModels.AppViewModel.DomainViewModel.Validated = false;
-            _baseViewModels.AppViewModel.DomainViewModel.CanUpdate = false;
+            AppViewModel.DomainViewModel.Validated = false;
+            AppViewModel.DomainViewModel.CanUpdate = false;
 
             if (TagValidator != null)
             {
@@ -365,7 +355,7 @@ namespace Inkton.Nester.Views
                  * be added only if valid fields and no list item 
                  * has been selected and currenly receivng focus.
                  */
-                _baseViewModels.AppViewModel.DomainViewModel.Validated = (
+                AppViewModel.DomainViewModel.Validated = (
                     TagValidator.IsValid &&
                     NameValidator.IsValid &&
                     AliasesValidator.IsValid                      
@@ -375,8 +365,8 @@ namespace Inkton.Nester.Views
                  * be updaed only if valid fields has been selected 
                  * and an item from a list is selected.
                  */
-                _baseViewModels.AppViewModel.DomainViewModel.CanUpdate =
-                    _baseViewModels.AppViewModel.DomainViewModel.Validated &&
+                AppViewModel.DomainViewModel.CanUpdate =
+                    AppViewModel.DomainViewModel.Validated &&
                    AppDomainsList.SelectedItem != null &&
                     !(AppDomainsList.SelectedItem as Nest.Model.AppDomain).Default;
             }
@@ -388,17 +378,14 @@ namespace Inkton.Nester.Views
 
             try
             {
-                if (AppDomainsList.SelectedItems.Any())
-                {
-                    AppDomainsList.SelectedItems.RemoveAt(0);
-                }
+                AppDomainsList.SelectedItem = null;
 
                 SetDefaults();
                 Validate();
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
         }
 
@@ -419,14 +406,14 @@ namespace Inkton.Nester.Views
             try
             {
                 await Process(AppDomainsList.SelectedItem as Nest.Model.AppDomain, true,
-                    _baseViewModels.AppViewModel.DomainViewModel.QueryDomainAsync
+                    AppViewModel.DomainViewModel.QueryDomainAsync
                 );
 
                 SetDefaults();
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -438,23 +425,23 @@ namespace Inkton.Nester.Views
 
             try
             {
-                var existDomains = from domain in _baseViewModels.AppViewModel.DomainViewModel.Domains
+                var existDomains = from domain in AppViewModel.DomainViewModel.Domains
                                  where domain.Tag == Tag.Text
                                  select domain;
                 if (existDomains.Any())
                 {
                     IsServiceActive = false;
-                    await DisplayAlert("Nester", "The domain with this tag already exist", "OK");
+                    await ErrorHandler.ExceptionAsync(this, "The domain with this tag already exist");
                     return;
                 }
 
-                existDomains = from domain in _baseViewModels.AppViewModel.DomainViewModel.Domains
+                existDomains = from domain in AppViewModel.DomainViewModel.Domains
                                    where domain.Name == Name.Text
                                select domain;
                 if (existDomains.Any())
                 {
                     IsServiceActive = false;
-                    await DisplayAlert("Nester", "The domain already exist", "OK");
+                    await ErrorHandler.ExceptionAsync(this, "The domain already exist");
                     return;
                 }
 
@@ -466,7 +453,7 @@ namespace Inkton.Nester.Views
                 Nest.Model.AppDomain newDomain = CopyUpdate(new Nest.Model.AppDomain());
                 if (newDomain != null)
                 {
-                    await _baseViewModels.AppViewModel.DomainViewModel.CreateDomainAsync(newDomain);
+                    await AppViewModel.DomainViewModel.CreateDomainAsync(newDomain);
                     SetPrimaryDomain(newDomain);
                 }
 
@@ -474,7 +461,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -491,27 +478,27 @@ namespace Inkton.Nester.Views
                 if (updatingDomain.Default)
                 {
                     IsServiceActive = false;
-                    await DisplayAlert("Nester", "Cannot make changes to the default domain", "OK");
+                    await ErrorHandler.ExceptionAsync(this, "Cannot make changes to the default domain");
                     return;
                 }
 
-                var existDomains = from domain in _baseViewModels.AppViewModel.DomainViewModel.Domains
+                var existDomains = from domain in AppViewModel.DomainViewModel.Domains
                                    where domain.Tag == Tag.Text && domain.Id != updatingDomain.Id 
                                    select domain;
                 if (existDomains.Any())
                 {
                     IsServiceActive = false;
-                    await DisplayAlert("Nester", "The domain with this tag already exist", "OK");
+                    await ErrorHandler.ExceptionAsync(this, "The domain with this tag already exist");
                     return;
                 }
 
-                existDomains = from domain in _baseViewModels.AppViewModel.DomainViewModel.Domains
+                existDomains = from domain in AppViewModel.DomainViewModel.Domains
                                where domain.Name == Name.Text && domain.Id != updatingDomain.Id
                                select domain;
                 if (existDomains.Any())
                 {
                     IsServiceActive = false;
-                    await DisplayAlert("Nester", "The domain already exist", "OK");
+                    await ErrorHandler.ExceptionAsync(this, "The domain already exist");
                     return;
                 }
 
@@ -535,20 +522,20 @@ namespace Inkton.Nester.Views
                         updateDomain.Certificate = null;
 
                         await Process(updateDomain, true,
-                            _baseViewModels.AppViewModel.DomainViewModel.UpdateDomainAsync
+                            AppViewModel.DomainViewModel.UpdateDomainAsync
                         );
                         SetDefaults();
 
-                        if (!_baseViewModels.AppViewModel.DomainViewModel.Domains.Where(x => x.Primary == true).Any())
+                        if (!AppViewModel.DomainViewModel.Domains.Where(x => x.Primary == true).Any())
                         {
-                            SetPrimaryDomain(_baseViewModels.AppViewModel.DomainViewModel.Domains.First());
+                            SetPrimaryDomain(AppViewModel.DomainViewModel.Domains.First());
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -561,7 +548,7 @@ namespace Inkton.Nester.Views
             try
             {
                 await Process(AppDomainsList.SelectedItem as Nest.Model.AppDomain, true,
-                    _baseViewModels.AppViewModel.DomainViewModel.RemoveDomainAsync,
+                    AppViewModel.DomainViewModel.RemoveDomainAsync,
                        new Func<Nest.Model.AppDomain, Task<bool>>(
                             async (obj) =>
                             {
@@ -571,11 +558,11 @@ namespace Inkton.Nester.Views
                 );
 
                 Clear();
-                SetPrimaryDomain(_baseViewModels.AppViewModel.DomainViewModel.Domains.First());
+                SetPrimaryDomain(AppViewModel.DomainViewModel.Domains.First());
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -589,11 +576,11 @@ namespace Inkton.Nester.Views
             {
                 // Head back to homepage if the 
                 // page was called from here
-                MainSideView.UnstackViewAsync();
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
-            { 
-                await DisplayAlert("Nester", ex.Message, "OK");
+            {
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;

@@ -33,22 +33,22 @@ namespace Inkton.Nester.Views
 {
     public partial class UserView : View
     {
-        public UserView(BaseViewModels baseModels)
+        public UserView(bool wizardMode = false)
+            :base(wizardMode)
         {
             InitializeComponent();
 
-            _baseViewModels = baseModels;
-            SecurityCode.IsVisible = _baseViewModels.WizardMode;
-            SecurityCodeLabel.IsVisible = _baseViewModels.WizardMode;
+            SecurityCode.IsVisible = _wizardMode;
+            SecurityCodeLabel.IsVisible = _wizardMode;
             int selectedTerritoryIndex = -1;
 
             foreach (Geography.ISO3166Country territory in Geography.Territories)
             {
                 Territories.Items.Add(territory.ToString());
 
-                if (baseModels.WizardMode == false)
+                if (_wizardMode == false)
                 {
-                    if (Keeper.User.TerritoryISOCode == territory.Alpha2)
+                    if (BaseViewModels.Platform.Permit.Owner.TerritoryISOCode == territory.Alpha2)
                     {
                         selectedTerritoryIndex = Territories.Items.Count - 1;
                     }
@@ -77,7 +77,7 @@ namespace Inkton.Nester.Views
 
             NickName.Unfocused += NickName_Unfocused;
 
-            BindingContext = _baseViewModels.AuthViewModel;
+            BindingContext = BaseViewModels.AuthViewModel;
 
             LoadExplainPage();
         }
@@ -106,10 +106,11 @@ namespace Inkton.Nester.Views
 <html>
     <head> 
         <title> Nest </title> 
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto' rel='stylesheet'>
+        <link href='ms-appx-web:///googlefonts.css' rel='stylesheet'>
         <style>
             body {
               background-color: #F3F9FF;
+              color: #34495e;
               font-family: 'Open Sans';
               font-size: 12px;
             }
@@ -171,14 +172,14 @@ namespace Inkton.Nester.Views
         {
             if (NicknameValidator != null)
             {
-                _baseViewModels.AuthViewModel.Validated = (
+                BaseViewModels.AuthViewModel.Validated = (
                      NicknameValidator.IsValid &&
                      FirstNameValidator.IsValid &&
                      LastNameValidator.IsValid
                      );
 
-                SecurityCode.IsVisible = _baseViewModels.WizardMode;
-                SecurityCodeLabel.IsVisible = _baseViewModels.WizardMode;
+                SecurityCode.IsVisible = _wizardMode;
+                SecurityCodeLabel.IsVisible = _wizardMode;
             }
         }
 
@@ -199,16 +200,16 @@ namespace Inkton.Nester.Views
                 {
                     if (territoryName == territory.ToString())
                     {
-                        Keeper.User.TerritoryISOCode = territory.Alpha2;
+                        BaseViewModels.Platform.Permit.Owner.TerritoryISOCode = territory.Alpha2;
                         break;
                     }
                 }
-
+                
                 IsServiceActive = false;
 
-                if (_baseViewModels.WizardMode)
+                if (_wizardMode)
                 {
-                    ResultSingle<Permit> result = _baseViewModels.AuthViewModel.Signup(false);
+                    ResultSingle<Permit> result = await BaseViewModels.AuthViewModel.SignupAsync(false);
 
                     if (result.Code == Cloud.ServerStatus.NEST_RESULT_ERROR_AUTH_SECCODE)
                     {
@@ -220,27 +221,15 @@ namespace Inkton.Nester.Views
                     }
                     else
                     {
-                        _baseViewModels.AuthViewModel.QueryToken();
-
-                        AppViewModel newAppModel = new AppViewModel();
-                        newAppModel.NewAppAsync();
-
-                        BaseViewModels baseModels = new BaseViewModels(
-                            _baseViewModels.AuthViewModel,
-                            _baseViewModels.PaymentViewModel,
-                            newAppModel);
-                        baseModels.WizardMode = true;
-
-                        AppEngageView engageView = new AppEngageView(baseModels);
-                        engageView.MainSideView = MainSideView;
-
-                        MainSideView.Detail.Navigation.InsertPageBefore(engageView, this);
-                        await MainSideView.Detail.Navigation.PopAsync();
+                        await BaseViewModels.AuthViewModel.QueryTokenAsync();
+        
+                        await MainView.StackViewSkipBackAsync(
+                            new AppLaunchView(new AppViewModel(BaseViewModels.Platform)));
                     }
                 }
                 else
                 {
-                    await _baseViewModels.AuthViewModel.UpdateUserAsync(Keeper.User);
+                    await BaseViewModels.AuthViewModel.UpdateUserAsync(BaseViewModels.Platform.Permit.Owner);
                     await DisplayAlert("Nester", "Your information was saved", "OK");
                 }
             }
@@ -255,7 +244,7 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                await MainSideView.Detail.Navigation.PopAsync();
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
             {

@@ -25,7 +25,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Nester.Deploy;
 using Inkton.Nester.ViewModels;
+using DeployApp = Nester.Deploy.App;
 
 namespace Inkton.Nester.Views
 {
@@ -36,8 +38,6 @@ namespace Inkton.Nester.Views
 
         public HomeView()
         {
-            _baseViewModels = Keeper.ViewModels;
-
             InitializeComponent();
 
             SetActivityMonotoring(ServiceActive,
@@ -53,7 +53,7 @@ namespace Inkton.Nester.Views
                     AppModels
                 });
 
-            AppModels.SelectionChanged += AppModels_SelectionChanged;
+            AppModels.ItemSelected += AppModels_ItemSelectedAsync;
 
             ButtonAppJoin.Clicked += ButtonAppJoin_ClickedAsync;
             ButtonAppReload.Clicked += ButtonAppReload_ClickedAsync;
@@ -67,7 +67,7 @@ namespace Inkton.Nester.Views
 
             _updatInterval = Settings.AppStatusRefreshInterval;
 
-            BindingContext = _baseViewModels.AppCollectionViewModel;
+            BindingContext = BaseViewModels.AppCollectionViewModel;
 
             Monitor();
         }
@@ -84,7 +84,7 @@ namespace Inkton.Nester.Views
                     {
                         Task.Run(async () =>
                         {
-                            foreach (AppViewModel appModel in ViewModels.AppCollectionViewModel.AppModels)
+                            foreach (AppViewModel appModel in BaseViewModels.AppCollectionViewModel.AppModels)
                             {
                                 if (!appModel.EditApp.IsBusy)
                                 {
@@ -100,7 +100,7 @@ namespace Inkton.Nester.Views
 
                                     if (!appModel.EditApp.IsBusy)
                                     {
-                                        appModel.Reload();
+                                        await appModel.ReloadAsync();
                                     }
                                 }
                                 catch(Exception ex)
@@ -131,11 +131,9 @@ namespace Inkton.Nester.Views
 
             try
             {
-                _baseViewModels.WizardMode = false;
-
-                MainSideView.StackViewAsync(
-                    Activator.CreateInstance(pageType, new object[] { _baseViewModels }) as View);
-                MainSideView.IsPresented = false;
+                await MainView.StackViewAsync(
+                    Activator.CreateInstance(pageType) as View);
+                MainView.IsPresented = false;
             }
             catch (Exception ex)
             {
@@ -149,12 +147,17 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                ContactViewModel contactsModel = new ContactViewModel(null);
-                contactsModel.EditInvitation.OwnedBy = Keeper.User;
+                // The invitations appear under each app and also under 
+                // the user for all apps. Here we query invitations for
+                // the user
+
+                ContactViewModel contactsModel = new ContactViewModel(BaseViewModels.Platform, null);
+                contactsModel.EditInvitation.OwnedBy = BaseViewModels.Platform.Permit.Owner;
+
                 await contactsModel.QueryInvitationsAsync();
 
-                MainSideView.StackViewAsync(
-                   new AppJoinDetailView(contactsModel));
+                await MainView.StackViewSkipBackAsync(
+                    new AppJoinDetailView(contactsModel));
             }
             catch (Exception ex)
             {
@@ -168,7 +171,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.Reload();
+                await MainView.ReloadAsync();
             }
             catch (Exception ex)
             {
@@ -208,11 +211,10 @@ namespace Inkton.Nester.Views
                         {
                             await appModel.RemoveAppAsync();
 
-                            ViewModels.AppCollectionViewModel.RemoveApp(appModel);
+                            BaseViewModels.AppCollectionViewModel.RemoveApp(appModel);
 
-                            Keeper.ResetView(Keeper.ViewModels
-                                .AppCollectionViewModel
-                                .AppModels.FirstOrDefault());
+                            await ((DeployApp)Application.Current).RefreshViewAsync();
+
                         }
                         catch (Exception ex)
                         {
@@ -241,8 +243,8 @@ namespace Inkton.Nester.Views
 
         private async void ButtonPayment_ClickedAsync(object sender, EventArgs e)
         {
-            await _baseViewModels.PaymentViewModel.QueryPaymentMethodAsync(false, false);
-            await _baseViewModels.PaymentViewModel.QueryBillingCyclesAsync();
+            await BaseViewModels.PaymentViewModel.QueryPaymentMethodAsync(false, false);
+            await BaseViewModels.PaymentViewModel.QueryBillingCyclesAsync();
 
             LoadSettingsPage(typeof(PaymentView));
         }
@@ -258,14 +260,10 @@ namespace Inkton.Nester.Views
 
             try
             {
-                _baseViewModels.AppViewModel = new AppViewModel();
-                _baseViewModels.AppViewModel.NewAppAsync();
-                _baseViewModels.WizardMode = true;
+                await MainView.StackViewAsync(new AppBasicDetailView(
+                    new AppViewModel(BaseViewModels.Platform), true));
 
-                MainSideView.StackViewAsync(
-                   new AppBasicDetailView(_baseViewModels));
-
-                MainSideView.IsPresented = false;
+                MainView.IsPresented = false;
             }
             catch (Exception ex)
             {
@@ -275,12 +273,12 @@ namespace Inkton.Nester.Views
             IsServiceActive = false;
         }
 
-        private void AppModels_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        private async void AppModels_ItemSelectedAsync(object sender, SelectedItemChangedEventArgs e)
         {
-            AppViewModel appModel = e.AddedItems.FirstOrDefault() as AppViewModel;
+            AppViewModel appModel = e.SelectedItem as AppViewModel;
             if (appModel != null)
             {
-                Keeper.ResetView(appModel);
+                await ((DeployApp)Application.Current).RefreshViewAsync(appModel);
             }
         }
     }

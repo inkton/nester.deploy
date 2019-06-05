@@ -36,11 +36,11 @@ namespace Inkton.Nester.Views
     {
         SoftwareFramework.Version _selVersion = null;
 
-        public AppSummaryView(BaseViewModels baseModels)
+        public AppSummaryView(AppViewModel appViewModel)
         {
             InitializeComponent();
 
-            ViewModels = baseModels;
+            AppViewModel = appViewModel;
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {                   
@@ -52,19 +52,19 @@ namespace Inkton.Nester.Views
             CreditCode.TextChanged += CreditCode_TextChanged;
             ButtonClearDiscount.Clicked += ButtonClearDiscount_Clicked;
 
-            _baseViewModels.AppViewModel.DeploymentViewModel.ApplyCredit = null;
+            AppViewModel.DeploymentViewModel.ApplyCredit = null;
         }
 
         public override void UpdateBindings()
         {
-            if (App != null)
+            if (AppViewModel.EditApp != null)
             {
-                Title = App.Name;
+                Title = AppViewModel.EditApp.Name;
             }
 
-            BindingContext = _baseViewModels.AppViewModel;
+            BindingContext = AppViewModel;
 
-            if (_baseViewModels.AppViewModel.ServicesViewModel.UpgradableAppTiers.Any())
+            if (AppViewModel.ServicesViewModel.UpgradableAppTiers.Any())
             {
                 // The app is being created and deployed. Only selected services are applicable
 
@@ -81,7 +81,7 @@ namespace Inkton.Nester.Views
             {
                 // The app is being created or updated. All services are applicable
 
-                _baseViewModels.AppViewModel.DeploymentViewModel.DotnetVersions.Reverse().All(version =>
+                AppViewModel.DeploymentViewModel.DotnetVersions.Reverse().All(version =>
                 {
                     SoftwareVersion.Items.Add(version.Name);
                     return true;
@@ -92,12 +92,12 @@ namespace Inkton.Nester.Views
                 DeployWarning.Text = "• Read and understand the terms for deployed apps.\n";
                 DeployWarning.Text += "• The deployment progress will be reported on Slack if integrated.\n";
 
-                if (App.IsDeployed)
+                if (AppViewModel.EditApp.IsDeployed)
                 {
                     DeployWarning.Text += "• New DevKits will be rebuilt with new access keys.\n";
                     DeployWarning.Text += "• Download the Devkits again once the deployment is complete.\n";
                     DeployWarning.Text += "• Please ensure the following things are inplace:\n";
-                    DeployWarning.Text += "    ‣ The custom domains and aliases point to the IP address " + App.IPAddress + ".\n";
+                    DeployWarning.Text += "    ‣ The custom domains and aliases point to the IP address " + AppViewModel.EditApp.IPAddress + ".\n";
                     DeployWarning.Text += "    ‣ The custom domain IP has been fully propagted.\n";
                     DeployWarning.Text += "    ‣ The app has a backup to restore state.\n";
 
@@ -114,20 +114,20 @@ namespace Inkton.Nester.Views
 
         private async Task<bool> IsDnsOkAsync()
         {
-            Nest.Model.AppDomain defaultDomain = (from domain in _baseViewModels.AppViewModel.DomainViewModel.Domains
+            Nest.Model.AppDomain defaultDomain = (from domain in AppViewModel.DomainViewModel.Domains
                                                      where domain.Default == true
                                                      select domain).First();
 
-            foreach (Nest.Model.AppDomain domain in _baseViewModels.AppViewModel.DomainViewModel.Domains)
+            foreach (Nest.Model.AppDomain domain in AppViewModel.DomainViewModel.Domains)
             {
                 if (domain.Default)
                     continue;
 
                 if (!await Dns.IsDomainIPAsync(domain.Name, defaultDomain.IPAddress))
                 {
-                    await DisplayAlert("Nester", "The domain name " + domain.Name +
+                    await ErrorHandler.ExceptionAsync(this, "The domain name " + domain.Name +
                         " currently does not resolve to " + defaultDomain.IPAddress +
-                        ". Make sure to update the DNS", "OK");
+                        ". Make sure to update the DNS");
                     return false;
                 }
 
@@ -136,9 +136,9 @@ namespace Inkton.Nester.Views
 
                 if (unmatchedAlias != null)
                 {
-                    await DisplayAlert("Nester", "The alias " + unmatchedAlias +
+                    await ErrorHandler.ExceptionAsync(this, "The alias " + unmatchedAlias +
                         " currently does not resolve to " + defaultDomain.IPAddress +
-                        ". Make sure to update the DNS", "OK");
+                        ". Make sure to update the DNS");
                     return false;
                 }
             }
@@ -152,22 +152,22 @@ namespace Inkton.Nester.Views
 
             try
             {
-                _baseViewModels.AppViewModel.ServicesViewModel.CreateServicesTables();
-                _baseViewModels.AppViewModel.DeploymentViewModel.ApplyCredit = null;
+                AppViewModel.ServicesViewModel.CreateServicesTables();
+                AppViewModel.DeploymentViewModel.ApplyCredit = null;
 
                 if (CreditCode.Text.Length > 0)
                 {
-                    Credit credit = _baseViewModels.PaymentViewModel.EditCredit;
+                    Credit credit = BaseViewModels.PaymentViewModel.EditCredit;
                     credit.Code = CreditCode.Text.Trim();
 
-                    ResultSingle<Credit> result = await _baseViewModels
+                    ResultSingle<Credit> result = await BaseViewModels
                         .PaymentViewModel.QueryCreditAsync();
 
                     if (result.Code == 0)
                     {
-                        credit = _baseViewModels.PaymentViewModel.EditCredit;
+                        credit = BaseViewModels.PaymentViewModel.EditCredit;
                         DisplayTotals(credit);
-                        _baseViewModels.AppViewModel
+                        AppViewModel
                             .DeploymentViewModel
                             .ApplyCredit = credit;
                     }
@@ -181,7 +181,7 @@ namespace Inkton.Nester.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -205,19 +205,18 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                if (_baseViewModels.AppViewModel.ServicesViewModel.UpgradableAppTiers.Any())
+                if (AppViewModel.ServicesViewModel.UpgradableAppTiers.Any())
                 {
                     await UpgradeAsync();
 
-                    await _baseViewModels.AppViewModel
+                    await AppViewModel
                         .ServicesViewModel
                         .SetAppUpgradingAsync(false);
                 }
                 else
                 {
                     
-                    foreach (var version in _baseViewModels
-                        .AppViewModel.DeploymentViewModel
+                    foreach (var version in AppViewModel.DeploymentViewModel
                         .DotnetVersions)
                     {
                         if (version.Name == SoftwareVersion.SelectedItem as string)
@@ -227,7 +226,7 @@ namespace Inkton.Nester.Views
                         }
                     }
 
-                    if (_baseViewModels.AppViewModel
+                    if (AppViewModel
                         .DeploymentViewModel
                         .Deployments.Any())
                     {
@@ -239,19 +238,19 @@ namespace Inkton.Nester.Views
                     }
                 }
 
-                await _baseViewModels.AppViewModel.QueryStatusAsync();
+                await AppViewModel.QueryStatusAsync();
 
-                AppView appView = MainSideView.GetAppView(App.Id);
+                AppView appView = MainView.GetAppView(AppViewModel.EditApp.Id);
                 if (appView != null)
                 {
                     appView.UpdateStatus();
                 }
 
-                MainSideView.UnstackViewAsync();
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
         }
 
@@ -261,11 +260,11 @@ namespace Inkton.Nester.Views
             {
                 // Head back to homepage if the 
                 // page was called from here
-                MainSideView.UnstackViewAsync();
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
         }
 
@@ -273,7 +272,7 @@ namespace Inkton.Nester.Views
         {
             IsServiceActive = true;
 
-            await _baseViewModels.AppViewModel
+            await AppViewModel
                 .ServicesViewModel
                 .UpdateAppUpgradeServiceTierAsync();
 
@@ -288,11 +287,10 @@ namespace Inkton.Nester.Views
             IsServiceActive = true;
 
             Deployment deployment =
-                _baseViewModels.AppViewModel.DeploymentViewModel.Deployments.First();
+                AppViewModel.DeploymentViewModel.Deployments.First();
             deployment.FrameworkVersionId = _selVersion.Id;
 
-            await _baseViewModels
-                .AppViewModel
+            await AppViewModel
                 .DeploymentViewModel
                 .UpdateDeploymentAsync("reapply", deployment);
 
@@ -301,7 +299,7 @@ namespace Inkton.Nester.Views
 
         private async Task InstallAsync()
         {
-            var customDomains = _baseViewModels.AppViewModel.DomainViewModel.Domains.Where(domain => !domain.Default).ToList();
+            var customDomains = AppViewModel.DomainViewModel.Domains.Where(domain => !domain.Default).ToList();
 
             if (customDomains.Any())
             {
@@ -311,23 +309,23 @@ namespace Inkton.Nester.Views
                     domainList += domain.Name + "\n";
                 }
 
-                await DisplayAlert("Nester", "The following custom domains will be removed. " +
-                    "Add the domains and re-deploy when the App IP is known.\n" + domainList, "OK");
+                await ErrorHandler.ExceptionAsync(this, "The following custom domains will be removed. " +
+                    "Add the domains and re-deploy when the App IP is known.\n" + domainList);
 
                 foreach (var domain in customDomains)
                 {
-                    await _baseViewModels.AppViewModel.DomainViewModel.RemoveDomainAsync(domain);
+                    await AppViewModel.DomainViewModel.RemoveDomainAsync(domain);
                 }
             }
 
             IsServiceActive = true;
 
-            _baseViewModels.AppViewModel.DeploymentViewModel.EditDeployment.FrameworkVersionId = _selVersion.Id;
+            AppViewModel.DeploymentViewModel.EditDeployment.FrameworkVersionId = _selVersion.Id;
 
-            await _baseViewModels.AppViewModel.DeploymentViewModel.CreateDeployment(
-                _baseViewModels.AppViewModel.DeploymentViewModel.EditDeployment);
+            await AppViewModel.DeploymentViewModel.CreateDeployment(
+                AppViewModel.DeploymentViewModel.EditDeployment);
 
-            App.Deployment = _baseViewModels.AppViewModel
+            AppViewModel.EditApp.Deployment = AppViewModel
                 .DeploymentViewModel
                 .EditDeployment;
 
@@ -336,8 +334,7 @@ namespace Inkton.Nester.Views
 
         private void DisplayTotals(Credit credit = null)
         {
-            decimal total = _baseViewModels
-                    .AppViewModel
+            decimal total = AppViewModel
                     .ServicesViewModel
                     .CalculateServiceCost();
 
@@ -382,8 +379,8 @@ namespace Inkton.Nester.Views
         {
             IsServiceActive = true;
 
-            _baseViewModels.AppViewModel.ServicesViewModel.CreateServicesTables();
-            _baseViewModels.AppViewModel.DeploymentViewModel.ApplyCredit = null;
+            AppViewModel.ServicesViewModel.CreateServicesTables();
+            AppViewModel.DeploymentViewModel.ApplyCredit = null;
 
             DisplayTotals();
             await PricesGrid.ScrollToAsync(0, PricesGrid.Content.Height, true);

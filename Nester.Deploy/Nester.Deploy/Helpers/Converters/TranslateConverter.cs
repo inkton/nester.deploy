@@ -35,7 +35,7 @@ namespace Inkton.Nester.Helpers
 
         public TranslateConverter()
         {
-            _resmgr = (Application.Current as INesterControl).GetResourceManager();
+            _resmgr = (Application.Current as INesterClient).GetResourceManager();
             _ci = System.Globalization.CultureInfo.CurrentUICulture;
         }
 

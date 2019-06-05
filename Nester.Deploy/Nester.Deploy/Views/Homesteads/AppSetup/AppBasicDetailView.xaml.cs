@@ -25,27 +25,27 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using Inkton.Nest.Model;
 using Inkton.Nest.Cloud;
-using Inkton.Nester.Cloud;
+using Inkton.Nester.Helpers;
 using Inkton.Nester.ViewModels;
 
 namespace Inkton.Nester.Views
 {
     public partial class AppBasicDetailView : View
     {
-        private AppViewModel _appSearch = new AppViewModel();
+        private AppViewModel _appSearch;
 
-        public AppBasicDetailView(BaseViewModels baseModels)
+        public AppBasicDetailView(AppViewModel appViewModel, bool wizardMode = false)
+            :base(wizardMode)
         {
             InitializeComponent();
 
-            ViewModels = baseModels;
+            AppViewModel = appViewModel;
+
+            _appSearch = new AppViewModel(BaseViewModels.Platform);
 
             Tag.Unfocused += Tag_UnfocusedAsync;
 
-            AppTypeListView.SelectionMode = Syncfusion.ListView.XForms.SelectionMode.Single;
-            AppTypeListView.Loaded += AppTypeListView_Loaded;
-            AppTypeListView.SelectionChanged += AppTypeListView_SelectionChanged;
-
+            AppTypeListView.ItemSelected += AppTypeListView_ItemSelected;
             // ButtonServices to be enabled later
             // when upgrading is supported.
             SetActivityMonotoring(ServiceActive,
@@ -64,8 +64,8 @@ namespace Inkton.Nester.Views
             ButtonDomains.Clicked += ButtonDomains_ClickedAsync;
             ButtonUpdate.Clicked += ButtonUpdate_ClickedAsync;
 
-            ButtonDone.IsVisible = _baseViewModels.WizardMode;
-            if (_baseViewModels.WizardMode)
+            ButtonDone.IsVisible = _wizardMode;
+            if (_wizardMode)
             {
                 // hide but do not collapse
                 TopButtonPanel.Opacity = 0;
@@ -78,6 +78,17 @@ namespace Inkton.Nester.Views
             }
 
             UpdateBackupParameters();
+
+            foreach (AppViewModel.AppType appType in AppViewModel.ApplicationTypes)
+            {
+                if (AppViewModel.EditApp.Type == appType.Tag)
+                {
+                    AppTypeListView.SelectedItem = appType;
+                    break;
+                }
+            }
+
+            Validate();
         }
 
         async private void ButtonUpdate_ClickedAsync(object sender, EventArgs e)
@@ -88,11 +99,11 @@ namespace Inkton.Nester.Views
             {
                 GetBackupParameters();
 
-                await _baseViewModels.AppViewModel.UpdateAppAsync();
+                await AppViewModel.UpdateAppAsync();
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -104,11 +115,11 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new AppTierView(_baseViewModels));
+                await MainView.StackViewSkipBackAsync(new AppTierView(AppViewModel));
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -120,11 +131,11 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new AppDomainView(_baseViewModels));
+               await MainView.StackViewSkipBackAsync(new AppDomainView(AppViewModel));
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -136,11 +147,11 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new ContactsView(_baseViewModels));
+                await MainView.StackViewSkipBackAsync(new ContactsView(AppViewModel));
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -152,66 +163,19 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new AppNestsView(_baseViewModels));
+                await MainView.StackViewSkipBackAsync(new AppNestsView(AppViewModel));
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
         }
 
-        async private void AppTypeListView_Loaded(object sender, Syncfusion.ListView.XForms.ListViewLoadedEventArgs e)
+        private void AppTypeListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            IsServiceActive = true;
-
-            try
-            {
-                AppTypeListView.SelectedItems.Clear();
-
-                foreach (AppViewModel.AppType appType in _baseViewModels.AppViewModel.ApplicationTypes)
-                {
-                    if (App.Type == appType.Tag)
-                    {
-                        AppTypeListView.SelectedItems.Add(appType);
-                        break;
-                    }
-                }
-
-                Validate();
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Nester", ex.Message, "OK");
-            }
-
-            IsServiceActive = false;
-        }
-
-        async private void AppTypeListView_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
-        {
-            IsServiceActive = true;
-
-            try
-            {
-                foreach (AppViewModel.AppType appType in e.AddedItems)
-                {
-                    if (appType != null)
-                    {
-                        App.Type = appType.Tag;
-                        break;
-                    }
-                }
-
-                Validate();
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Nester", ex.Message, "OK");
-            }
-
-            IsServiceActive = false;
+            AppViewModel.EditApp.Type = (e.SelectedItem as AppViewModel.AppType).Tag;
         }
 
         private async void Tag_UnfocusedAsync(object sender, FocusEventArgs e)
@@ -242,11 +206,11 @@ namespace Inkton.Nester.Views
         {
             if (TagValidator != null)
             {
-                _baseViewModels.AppViewModel.Validated = (
+                AppViewModel.Validated = (
                     TagValidator.IsValid &&
                     NameValidator.IsValid &&
                     PasswordValidator.IsValid &&
-                    App.Type != null
+                    AppViewModel.EditApp.Type != null
                     );
             }
         }
@@ -258,12 +222,12 @@ namespace Inkton.Nester.Views
 
         private void UpdateBackupParameters()
         {
-            BackupHour.SelectedItem = App.BackupHour.ToString();
+            BackupHour.SelectedItem = AppViewModel.EditApp.BackupHour.ToString();
         }
 
         private void GetBackupParameters()
         {
-            App.BackupHour = int.Parse(BackupHour.SelectedItem as string);
+            AppViewModel.EditApp.BackupHour = int.Parse(BackupHour.SelectedItem as string);
         }
 
         async void OnDoneButtonClickedAsync(object sender, EventArgs e)
@@ -274,30 +238,28 @@ namespace Inkton.Nester.Views
             {
                 GetBackupParameters();
 
-                App.Type = "uniflow";
+                AppViewModel.EditApp.Type = "uniflow";
 
                 if (AppTypeListView.SelectedItem != null)
                 {
-                    App.Type = (AppTypeListView.SelectedItem as AppViewModel.AppType).Tag;
+                    AppViewModel.EditApp.Type = (AppTypeListView.SelectedItem as AppViewModel.AppType).Tag;
                 }
 
-                if (_baseViewModels.WizardMode)
+                if (_wizardMode)
                 {
-                    AppTierView tierView = new AppTierView(_baseViewModels);
-                    tierView.MainSideView = MainSideView;
-                    MainSideView.Detail.Navigation.InsertPageBefore(tierView, this);
-                    await MainSideView.Detail.Navigation.PopAsync();
+                    await MainView.StackViewAsync(
+                        new AppTierView(AppViewModel, _wizardMode));
                 }
                 else
                 {
                     // Head back to homepage if the 
                     // page was called from here
-                    MainSideView.UnstackViewAsync();
+                    await MainView.UnstackViewAsync();
                 }
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;

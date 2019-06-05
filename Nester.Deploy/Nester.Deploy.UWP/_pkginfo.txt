@@ -1,1 +1,1 @@
-C:\Users\rajitha\Documents\inkton\github\nester.deploy\Nester.Deploy\Nester.Deploy.UWP\bin\x64\Release\Upload\Nester.Deploy.UWP_1.7.9.0\Nester.Deploy.UWP_1.7.9.0_x64.appxbundle
+C:\Users\rajitha\Documents\inkton\github\nester.deploy\Nester.Deploy\Nester.Deploy.UWP\bin\x64\Release\Upload\Nester.Deploy.UWP_1.8.1.0\Nester.Deploy.UWP_1.8.1.0_x64.appxbundle

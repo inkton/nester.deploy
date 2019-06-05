@@ -27,69 +27,78 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
+using DeployApp = Nester.Deploy.App;
 
 namespace Inkton.Nester.Views
 {
     public class View : ContentPage
     {
+        protected bool _wizardMode = false;
+        protected AppViewModel _appViewModel;
+
         protected ActivityIndicator _activityIndicator;
         protected List<Xamarin.Forms.View> _blockWhenActive;
         protected List<Xamarin.Forms.View> _activeBlockViews;
-        protected BaseViewModels _baseViewModels;
-        protected MainSideView _mainSideView;
 
         public View()
         {
             SubscribeToMessages();
         }
 
-        public virtual BaseViewModels ViewModels
+        public View(bool wizardMode = false)
         {
-            get { return _baseViewModels; }
-            set {
-                _baseViewModels = value;
+            _wizardMode = wizardMode;
+
+            SubscribeToMessages();
+        }
+
+        public bool WizardMode
+        {
+            get { return _wizardMode; }
+            set { _wizardMode = value; }
+        }
+
+        public virtual BaseViewModels BaseViewModels
+        {
+            get { return ((DeployApp)Application.Current)
+                .BaseViewModels; }
+        }
+
+        public virtual MainView MainView
+        {
+            get { return Application.Current.MainPage as MainView; }
+        }
+
+        public INesterClient Client
+        {
+            get
+            {
+                return Application.Current as INesterClient;
+            }
+        }
+
+        public AppViewModel AppViewModel
+        {
+            get
+            {
+                return _appViewModel;
+            }
+            set
+            {
+                _appViewModel = value;
+
                 UpdateBindings();
-            }
-        }
-
-        public virtual MainSideView MainSideView
-        {
-            get { return _mainSideView; }
-            set { _mainSideView = value; }
-        }
-
-        public IKeeper Keeper
-        {
-            get
-            {
-                return Application.Current as IKeeper;
-            }
-        }
-
-        public INesterControl NesterControl
-        {
-            get
-            {
-                return Application.Current as INesterControl;
-            }
-        }
-
-        public App App
-        {
-            get
-            {
-                return _baseViewModels.AppViewModel.EditApp;
             }
         }
 
         public virtual void UpdateBindings()
         {
-            if (App != null)
+            if (_appViewModel.EditApp != null)
             {
-                Title = App.Name;
+                Title = _appViewModel.EditApp.Name;
             }
 
-            BindingContext = _baseViewModels.AppViewModel;
+            BindingContext = _appViewModel;
         }
 
         protected void SetActivityMonotoring(ActivityIndicator activityIndicator,

@@ -23,11 +23,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Xamarin.Forms;
 using Inkton.Nest;
 using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
 using Inkton.Nest.Cloud;
-using Inkton.Nester.Cloud;
+using Inkton.Nester.Helpers;
+using DeployApp = Nester.Deploy.App;
 
 namespace Inkton.Nester.Views
 {
@@ -47,25 +49,12 @@ namespace Inkton.Nester.Views
                                 ButtonMembership
                 });
 
-            if (_contactsModel.Invitations.Any())
-            {
-                _contactsModel.EditInvitation = _contactsModel.Invitations.First();
-            }
-            else
-            {
-                _contactsModel.EditInvitation = null;
-            }
-
             BindingContext = _contactsModel;
 
-            AppInviteList.Loaded += AppInviteList_Loaded;
-            AppInviteList.SelectionChanged += AppInviteList_SelectionChanged;
+            AppInviteList.ItemSelected += AppInviteList_ItemSelected;
 
             ButtonMembership.Clicked += ButtonMembership_ClickedAsync;
-        }
 
-        private void AppInviteList_Loaded(object sender, Syncfusion.ListView.XForms.ListViewLoadedEventArgs e)
-        {
             if (_contactsModel.Invitations.Any())
             {
                 Invitation invitation = _contactsModel.Invitations.First();
@@ -74,9 +63,9 @@ namespace Inkton.Nester.Views
             }
         }
 
-        private void AppInviteList_SelectionChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        private void AppInviteList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Invitation invitation = AppInviteList.SelectedItem as Invitation;
+            Invitation invitation = e.SelectedItem as Invitation;
 
             if (invitation == null)
                 return;
@@ -107,7 +96,7 @@ namespace Inkton.Nester.Views
                 if (invitation == null)
                     return;
 
-                AppViewModel appModel = Keeper.ViewModels.AppCollectionViewModel.AppModels.Where(
+                AppViewModel appModel = BaseViewModels.AppCollectionViewModel.AppModels.Where(
                         m => m.EditApp.Tag == invitation.AppTag).FirstOrDefault(); ;
 
                 App joinApp;
@@ -121,13 +110,13 @@ namespace Inkton.Nester.Views
                     App searchApp = new App();
                     searchApp.Tag = invitation.AppTag;
 
-                    appModel = new AppViewModel();
+                    appModel = new AppViewModel(_contactsModel.Platform);
                     ResultSingle<App> appResult = await appModel.QueryAppAsync(
                         searchApp, false);
 
                     if (appResult.Code != Cloud.ServerStatus.NEST_RESULT_SUCCESS)
                     {
-                        await DisplayAlert("Nester", "This app no longer exisit", "OK");
+                        await ErrorHandler.ExceptionAsync(this, "This app no longer exisit");
                         return;
                     }
 
@@ -137,7 +126,7 @@ namespace Inkton.Nester.Views
                 Contact myContact = new Contact();
                 invitation.CopyTo(myContact);
 
-                joinApp.OwnedBy = Keeper.User;
+                joinApp.OwnedBy = BaseViewModels.Platform.Permit.Owner;
                 myContact.OwnedBy = joinApp;
 
                 ResultSingle<Contact> contactResult = await appModel
@@ -145,12 +134,12 @@ namespace Inkton.Nester.Views
 
                 if (contactResult.Code != Cloud.ServerStatus.NEST_RESULT_SUCCESS)
                 {
-                    await DisplayAlert("Nester", "Could not confirm the invitation", "OK");
+                    await ErrorHandler.ExceptionAsync(this, "Could not confirm the invitation");
                     return;
                 }
 
                 contactResult.Data.Payload.CopyTo(invitation);
-                AppCollectionViewModel appCollection = Keeper.ViewModels.AppCollectionViewModel;
+                AppCollectionViewModel appCollection = BaseViewModels.AppCollectionViewModel;
 
                 if (invitation.Status == "active")
                 {
@@ -169,12 +158,10 @@ namespace Inkton.Nester.Views
                 }
 
                 ToggleMembershipButton(invitation);
-
-                Keeper.ResetView();
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -186,11 +173,13 @@ namespace Inkton.Nester.Views
 
             try
             {
-                Keeper.ResetView();
+                await ((DeployApp)Application.Current).RefreshViewAsync();
+
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;

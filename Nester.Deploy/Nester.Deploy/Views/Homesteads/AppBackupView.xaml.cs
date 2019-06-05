@@ -29,16 +29,17 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
+using Inkton.Nester.Helpers;
 
 namespace Inkton.Nester.Views
 {
     public partial class AppBackupView : View
     {
-        public AppBackupView(BaseViewModels baseModels)
+        public AppBackupView(AppViewModel appViewModel)
         {
             InitializeComponent();
 
-            ViewModels = baseModels;
+            AppViewModel = appViewModel;
 
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View> {
@@ -50,7 +51,7 @@ namespace Inkton.Nester.Views
 
             _activityIndicator = ServiceActive;
 
-            ButtonCancel.Clicked += ButtonCancel_Clicked;
+            ButtonCancel.Clicked += ButtonCancel_ClickedAsync;
             ButtonRestore.Clicked += ButtonRestore_ClickedAsync;
             ButtonBackup.Clicked += ButtonBackup_ClickedAsync;
             ButtonRefresh.Clicked += ButtonRefresh_ClickedAsync;
@@ -60,14 +61,12 @@ namespace Inkton.Nester.Views
         {
             base.UpdateBindings();
 
-            BindingContext = _baseViewModels.AppViewModel.DeploymentViewModel;
-
             UpdateDescriptions();
         }
 
         private void UpdateDescriptions()
         {
-            foreach (AppBackup backup in _baseViewModels.AppViewModel.DeploymentViewModel.AppBackups)
+            foreach (AppBackup backup in AppViewModel.DeploymentViewModel.AppBackups)
             {
                 switch (backup.Status)
                 {
@@ -88,10 +87,10 @@ namespace Inkton.Nester.Views
         }
 
 
-        private void ButtonCancel_Clicked(object sender, EventArgs e)
+        private async void ButtonCancel_ClickedAsync(object sender, EventArgs e)
         {
             IsServiceActive = true;
-            MainSideView.UnstackViewAsync();
+            await MainView.UnstackViewAsync();
             IsServiceActive = false;
         }
 
@@ -112,24 +111,24 @@ namespace Inkton.Nester.Views
                         return;
                     }
 
-                    await _baseViewModels.AppViewModel.DeploymentViewModel.RestoreAppAsync(
+                    await AppViewModel.DeploymentViewModel.RestoreAppAsync(
                         AppBackups.SelectedItem as Nest.Model.AppBackup);
 
                     // Reload everything
-                    await _baseViewModels.AppViewModel.InitAsync();
+                    await AppViewModel.InitAsync();
 
-                    AppView appView = MainSideView.GetAppView(App.Id);
+                    AppView appView = MainView.GetAppView(AppViewModel.EditApp.Id);
                     if (appView != null)
                     {
                         appView.UpdateStatus();
                     }
                 }
 
-                MainSideView.UnstackViewAsync();
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -150,14 +149,14 @@ namespace Inkton.Nester.Views
                     return;
                 }
 
-                await _baseViewModels.AppViewModel
+                await AppViewModel
                     .DeploymentViewModel.BackupAppAsync();
 
                 UpdateDescriptions();
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -169,14 +168,14 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseViewModels.AppViewModel
+                await AppViewModel
                     .DeploymentViewModel.QueryAppBackupsAsync();
 
                 UpdateDescriptions();
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Nester", ex.Message, "OK");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;

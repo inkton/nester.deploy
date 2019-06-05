@@ -4,7 +4,6 @@
              xmlns:views="clr-namespace:Inkton.Nester.Views"
              xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
              xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
-             xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:local="clr-namespace:Nester"
              x:Class="Inkton.Nester.Views.UserHistoryView"
              Title="History">
@@ -88,16 +87,13 @@
             VerticalOptions="FillAndExpand" >          
     <!--<Label Style="{StaticResource nesterListInfoLabelTiny}"
                   Text="User Events"></Label>-->
-          <sync:SfListView x:Name="History"
+          <ListView x:Name="History"
                           ItemsSource="{Binding UserEvents}"
-                          SelectionGesture="Tap"
                           SelectionMode="Single"
-                          SelectionBackgroundColor="{StaticResource selectionColor}"
                           ItemTemplate="{StaticResource ItemTemplate}"
                           HorizontalOptions="FillAndExpand"
-                          VerticalOptions="FillAndExpand"                           
-                          >
-          </sync:SfListView>
+                          VerticalOptions="FillAndExpand">
+          </ListView>
         </StackLayout>
 
         <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
