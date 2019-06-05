@@ -34,7 +34,8 @@ namespace Inkton.Nester.Views
 {
     public partial class ContactsView : View
     {
-        public ContactsView(AppViewModel appViewModel)
+        public ContactsView(AppViewModel appViewModel, bool wizardMode = false)
+            :base(wizardMode)
         {
             InitializeComponent();
 
@@ -60,8 +61,8 @@ namespace Inkton.Nester.Views
 
             AppContactsList.ItemSelected += AppContactsList_ItemSelected;
 
-            ButtonDone.IsVisible = _baseViewModels.WizardMode;
-            if (_baseViewModels.WizardMode)
+            ButtonDone.IsVisible = _wizardMode;
+            if (_wizardMode)
             {
                 // hide but do not collapse
                 TopButtonPanel.Opacity = 0;
@@ -81,8 +82,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                BaseViewModels.WizardMode = false;
-                MainSideView.CurrentLevelViewAsync(new AppBasicDetailView(AppViewModel));
+                await MainView.StackViewSkipBackAsync(new AppBasicDetailView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -98,7 +98,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new AppTierView(AppViewModel));
+                await MainView.StackViewSkipBackAsync(new AppTierView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -114,7 +114,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new AppDomainView(AppViewModel));
+                await MainView.StackViewSkipBackAsync(new AppDomainView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -130,7 +130,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new AppNestsView(AppViewModel));
+                await MainView.StackViewSkipBackAsync(new AppNestsView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -193,41 +193,6 @@ namespace Inkton.Nester.Views
                     AppContactsList.SelectedItem != null;
             }
         }
-
-        //protected override void SubscribeToMessages()
-        //{
-        //    base.SubscribeToMessages();
-
-        //    ProcessMessage<Contact>("re-invite",
-        //        new Func<Contact, bool, Task<Cloud.ServerStatus>>(
-        //        _AppViewModel.ContactViewModel.ReinviteContact));
-
-
-        //    MessagingCenter.Subscribe<ManagedObjectMessage<Contact>>(this, "remove", async (objMessage) =>
-        //    {
-        //        var yes = await DisplayAlert("Nester", "Would you like to remove this contact", "Yes", "No");
-
-        //        if (yes)
-        //        {
-        //            try
-        //            {
-        //                await _AppViewModel.ContactViewModel.RemoveContact(objMessage.Object);
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                await DisplayAlert("Nester", ex.Message, "OK");
-        //            }
-        //        }
-        //    });
-        //}
-
-        //protected override void UnsubscribeFromMessages()
-        //{
-        //    base.UnsubscribeFromMessages();
-
-        //    MessagingCenter.Unsubscribe<ManagedObjectMessage<Contact>>(this, "re-invite");
-        //    MessagingCenter.Unsubscribe<ManagedObjectMessage<Contact>>(this, "remove");
-        //}
 
         protected async override void OnAppearing()
         {
@@ -302,34 +267,6 @@ namespace Inkton.Nester.Views
 
             IsServiceActive = false;
         }
-
-        //async void OnSyncDiscordButtonClickedAsync(object sender, EventArgs e)
-        //{
-        //    IsServiceActive = true;
-
-        //    try
-        //    {
-        //        Contact editContact = AppContactsList.SelectedItem as Contact;
-
-        //        if (editContact.Status != "active")
-        //        {
-        //            IsServiceActive = false;
-        //            await DisplayAlert("Nester", "The user hasn't accepted the invitation yet", "OK");
-        //            return;
-        //        }
-        //        OnSyncDiscordButtonClickedAsync
-
-        //       await Process(AppContactsList.SelectedItem as Contact, false,
-        //            _AppViewModel.ContactViewModel.UpdateContactDiscordAsync
-        //        );
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        await DisplayAlert("Nester", ex.Message, "OK");
-        //    }
-
-        //    IsServiceActive = false;
-        //}
 
         async void OnRefreshButtonClickedAsync(object sender, EventArgs e)
         {
@@ -437,28 +374,15 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                if (_baseViewModels.WizardMode)
+                if (_wizardMode)
                 {
-                    // Pop this to go to Homeview <->
-                    foreach (var page in MainSideView.Detail.Navigation.NavigationStack.ToList())
-                    {
-                        if (!(page is ContactsView))
-                        {
-                            MainSideView.Detail.Navigation.RemovePage(page);
-                        }
-                    }
-
-                    await MainSideView.Detail.Navigation.PopAsync();
-                    _baseViewModels.WizardMode = false;
-
-                    ((DeployApp)Application.Current).RefreshView();
-
+                    await MainView.GoHomeAsync();
                 }
                 else
                 {
                     // Head back to homepage if the 
                     // page was called from here
-                    MainSideView.UnstackViewAsync();
+                    await MainView.UnstackViewAsync();
                 }
             } 
             catch (Exception ex)

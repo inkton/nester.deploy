@@ -50,7 +50,7 @@ namespace Inkton.Nester.Views
             _activityIndicator = ServiceActive;
 
             ButtonQuery.Clicked += ButtonQuery_Clicked;
-            ButtonCancel.Clicked += ButtonCancel_Clicked;
+            ButtonCancel.Clicked += ButtonCancel_ClickedAsync;
 
             ResetTimeFilter();
 
@@ -72,9 +72,9 @@ namespace Inkton.Nester.Views
 
             try
             {
-                AppViewModel.DeploymentViewModel.AppAudits.Clear();
+                AppViewModel.DeploymentViewModel.AppAudits.Clear();                
 
-                if (StartTime.Time > EndTime.Time)
+                if (TimeSpan.Compare(StartTime.Time, EndTime.Time) >= 0)
                 {
                     await ErrorHandler.ExceptionAsync(this, "Start time must be earler than the end time");
                     return;
@@ -97,9 +97,9 @@ namespace Inkton.Nester.Views
 
                 await AppViewModel.DeploymentViewModel.QueryAppAuditsAsync(filter);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                await ErrorHandler.ExceptionAsync(this, "Start time must be earler than the end time");
+                await ErrorHandler.ExceptionAsync(this, ex);
             }
 
             IsServiceActive = false;
@@ -117,10 +117,10 @@ namespace Inkton.Nester.Views
             BindingContext = AppViewModel.DeploymentViewModel;
         }
         
-        private void ButtonCancel_Clicked(object sender, EventArgs e)
+        private async void ButtonCancel_ClickedAsync(object sender, EventArgs e)
         {
             IsServiceActive = true;
-            MainSideView.UnstackViewAsync();
+            await MainView.UnstackViewAsync();
             IsServiceActive = false;
         }
     }

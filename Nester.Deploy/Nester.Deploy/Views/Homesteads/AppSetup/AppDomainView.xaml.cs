@@ -64,14 +64,7 @@ namespace Inkton.Nester.Views
 
             AppDomainsList.ItemSelected += AppDomainsList_ItemSelected;
 
-            ButtonCert.Clicked += ButtonCert_Clicked;
-
-            ButtonDone.IsVisible = _baseViewModels.WizardMode;
-            if (_baseViewModels.WizardMode)
-            {
-                // hide but do not collapse
-                TopButtonPanel.Opacity = 0;
-            }
+            ButtonCert.Clicked += ButtonCert_ClickedAsync;
 
             // Thanks - http://stackoverflow.com/questions/10306690/domain-name-validation-with-regex
             _domainVerifier = new Regex(
@@ -96,7 +89,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new AppTierView(AppViewModel));
+                await MainView.StackViewSkipBackAsync(new AppTierView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -112,8 +105,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                _baseViewModels.WizardMode = false;
-                MainSideView.CurrentLevelViewAsync(new AppBasicDetailView(AppViewModel));
+                await MainView.StackViewSkipBackAsync(new AppBasicDetailView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -129,7 +121,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new AppTierView(AppViewModel));
+                await MainView.StackViewSkipBackAsync(new AppTierView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -145,7 +137,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new ContactsView(AppViewModel));
+                await MainView.StackViewSkipBackAsync(new ContactsView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -161,7 +153,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new AppNestsView(AppViewModel));
+                await MainView.StackViewSkipBackAsync(new AppNestsView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -171,14 +163,13 @@ namespace Inkton.Nester.Views
             IsServiceActive = false;
         }
 
-        private void ButtonCert_Clicked(object sender, EventArgs e)
+        private async void ButtonCert_ClickedAsync(object sender, EventArgs e)
         {
             if (AppDomainsList.SelectedItem != null)
             {
                 Nest.Model.AppDomain browseDomain = AppDomainsList.SelectedItem as Nest.Model.AppDomain;
                 AppViewModel.DomainViewModel.EditDomain = browseDomain;
-                AppDomainCertView certView = new AppDomainCertView(AppViewModel);
-                MainSideView.StackViewAsync(certView);
+                await MainView.StackViewAsync(new AppDomainCertView(AppViewModel));
             }
         }
 
@@ -585,7 +576,7 @@ namespace Inkton.Nester.Views
             {
                 // Head back to homepage if the 
                 // page was called from here
-                MainSideView.UnstackViewAsync();
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
             {

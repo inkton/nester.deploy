@@ -29,9 +29,9 @@ using DeployApp = Nester.Deploy.App;
 
 namespace Inkton.Nester.Views
 {
-    public partial class AppEngageView : View
+    public partial class AppLaunchView : View
     {
-        public AppEngageView(AppViewModel appViewModel)
+        public AppLaunchView(AppViewModel appViewModel)
         {
             InitializeComponent();
 
@@ -51,11 +51,8 @@ namespace Inkton.Nester.Views
 
             try
             {
-                _baseViewModels.WizardMode = true;
-                AppBasicDetailView basicView = new AppBasicDetailView(AppViewModel);
-                basicView.MainSideView = MainSideView;
-                MainSideView.Detail.Navigation.InsertPageBefore(basicView, this);
-                await MainSideView.Detail.Navigation.PopAsync();
+                await MainView.StackViewSkipBackAsync(
+                    new AppBasicDetailView(AppViewModel, true));
             }
             catch (Exception ex)
             {
@@ -71,14 +68,17 @@ namespace Inkton.Nester.Views
 
             try
             {
+                // The invitations appear under each app and also under 
+                // the user for all apps. Here we query invitations for
+                // the user
+
                 ContactViewModel contactsModel = new ContactViewModel(BaseViewModels.Platform, null);
                 contactsModel.EditInvitation.OwnedBy = BaseViewModels.Platform.Permit.Owner;
+
                 await contactsModel.QueryInvitationsAsync();
 
-                AppJoinDetailView joinView = new AppJoinDetailView(contactsModel);
-                joinView.MainSideView = MainSideView;
-                MainSideView.Detail.Navigation.InsertPageBefore(joinView, this);
-                await MainSideView.Detail.Navigation.PopAsync();
+                await MainView.StackViewSkipBackAsync(
+                    new AppJoinDetailView(contactsModel));
             }
             catch (Exception ex)
             {
@@ -94,7 +94,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                ((DeployApp)Application.Current).RefreshView();
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
             {

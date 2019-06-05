@@ -234,7 +234,7 @@ namespace Inkton.Nester.Views
                 AnimateButtonTouched(button.FlagHolder, 1500, "#66b9f1", "#E4F1FE", 1);
 
                 AppViewModel.DeploymentViewModel.EditDeployment.ForestId = forest.Id;
-                MainSideView.CurrentLevelViewAsync(new AppSummaryView(AppViewModel));
+                await MainView.StackViewSkipBackAsync(new AppSummaryView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -253,7 +253,7 @@ namespace Inkton.Nester.Views
             {
                 // Head back to homepage if the 
                 // page was called from here
-                MainSideView.UnstackViewAsync();
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
             {

@@ -2,14 +2,14 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Inkton.Nester.Views"
-             x:Class="Inkton.Nester.Views.MainSideView">
+             x:Class="Inkton.Nester.Views.MainView">
     <MasterDetailPage.Master>
-        <local:HomeView x:Name="homeView" />
+        <local:HomeView x:Name="HomeView" />
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
-        <NavigationPage>
+        <NavigationPage x:Name="NavView">
             <x:Arguments>
-                <local:BannerView />
+                <local:BannerView  x:Name="TheBannerView" />
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>

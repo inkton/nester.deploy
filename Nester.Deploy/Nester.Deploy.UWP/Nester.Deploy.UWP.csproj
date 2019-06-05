@@ -165,6 +165,7 @@
     <Content Include="france.png" />
     <Content Include="freedomaincert.png" />
     <Content Include="germany.png" />
+    <Content Include="googlefonts.css" />
     <Content Include="homesteadactive32.png" />
     <Content Include="homesteadinactive32.png" />
     <Content Include="india.png" />
@@ -255,10 +256,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\nest.model\Nest.Model\Nest.Model.csproj">
-      <Project>{699d17b9-f689-4ddf-8f2d-c19fa7f985e5}</Project>
-      <Name>Nest.Model</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\nester.library\Nester.Library\Nester.Library.csproj">
       <Project>{9161e921-b2f3-4ba2-be67-719186b7db16}</Project>
       <Name>Nester.Library</Name>

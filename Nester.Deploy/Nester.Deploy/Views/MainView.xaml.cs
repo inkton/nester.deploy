@@ -30,12 +30,11 @@ using DeployApp = Nester.Deploy.App;
 
 namespace Inkton.Nester.Views
 {
-    public partial class MainSideView : MasterDetailPage
+    public partial class MainView : MasterDetailPage
     {
-        private View _currentView;
         private Dictionary<long, AppView> _viewCache;
 
-        public MainSideView()
+        public MainView()
         {
             InitializeComponent();
 
@@ -45,6 +44,8 @@ namespace Inkton.Nester.Views
             }
 
             _viewCache = new Dictionary<long, AppView>();
+
+            StackViewAsync(new LoginView()).Wait();
         }
 
         public AppView GetAppView(long appId)
@@ -58,56 +59,33 @@ namespace Inkton.Nester.Views
 
             return appView;
         }
-
-        public View CurrentView
+        
+        public async Task GoHomeAsync()
         {
-            get
+            while (!((Detail as NavigationPage).CurrentPage is BannerView ||
+                (Detail as NavigationPage).CurrentPage is AppView))
             {
-                return _currentView;
+                await Detail.Navigation.PopAsync();
             }
-        }
+        }        
 
-        public void ShowEntry()
-        {
-            (Master as HomeView).MainSideView = this;
-
-            ((Detail as NavigationPage).CurrentPage as BannerView).ShowProgress = false;
-            ((Detail as NavigationPage).CurrentPage as BannerView).MainSideView = this;
-
-            EntryView entry = new EntryView();
-            entry.MainSideView = this;
-            Detail.Navigation.PushAsync(entry);
-        }
-
-        public void CreateRootView(View view)
-        {
-            Detail = new NavigationPage(view);
-            _currentView = view;
-            _currentView.MainSideView = this;
-        }
-
-        public async void StackViewAsync(View view)
+        public async Task StackViewAsync(View view)
         {
             await (Detail as NavigationPage).PushAsync(view);
-            _currentView = view;
-            _currentView.MainSideView = this;
         }
 
-        public async void CurrentLevelViewAsync(View view)
+        public async Task StackViewSkipBackAsync(View view)
         {
-            Detail.Navigation.InsertPageBefore(view, _currentView);
+            Detail.Navigation.InsertPageBefore(view, (Detail as NavigationPage).CurrentPage);
             await (Detail as NavigationPage).PopAsync();
-            _currentView = view;
-            _currentView.MainSideView = this;
         }
 
-        public async void UnstackViewAsync()
+        public async Task UnstackViewAsync()
         {
             await (Detail as NavigationPage).PopAsync();
-            _currentView = (Detail as NavigationPage).CurrentPage as View;
         }
-
-        public void UpdateView(AppViewModel loadAppViewModel = null)
+        
+        public async Task UpdateViewAsync(AppViewModel loadAppViewModel = null)
         {
             BaseViewModels baseModels = ((DeployApp)Application.Current)
                 .BaseViewModels;
@@ -119,22 +97,20 @@ namespace Inkton.Nester.Views
 
                 if (loadAppViewModel == null)
                 {
-                    BannerView view = new BannerView();
-                    view.ShowProgress = false;
-                    CreateRootView(view);
+                    BannerView noAppsSign = new BannerView();
+                    StackAppView(noAppsSign);
                     return;
                 }                
             }
 
-            bool isAppViewCurrent = (
-                _currentView != null && 
-                _currentView is AppView );
+            bool isAppViewCurrent = 
+                ((Detail as NavigationPage).CurrentPage is AppView);
 
             bool changeView = false;
 
             if (isAppViewCurrent)
             {
-                if (_currentView.AppViewModel.EditApp.Id
+                if (((Detail as NavigationPage).CurrentPage as AppView).AppViewModel.EditApp.Id
                         != loadAppViewModel.EditApp.Id)
                 {
                     changeView = true;
@@ -158,25 +134,36 @@ namespace Inkton.Nester.Views
 
                     if (loadAppViewModel.EditApp.Id > 0)
                     {
-                        Task.Run(async () => {
-                            await appView.AppViewModel.InitAsync();
-                        });
+                        await appView.AppViewModel.InitAsync();
                     }
 
                     _viewCache[loadAppViewModel.EditApp.Id] = appView;
                 }
 
-                CreateRootView(appView);
+                StackAppView(appView);
             }
         }
-
+        
         async public Task ReloadAsync()
         {
-            if (_currentView != null && _currentView is AppView)
+            await ((Detail as NavigationPage).CurrentPage as AppView)?
+                .AppViewModel.ReloadAsync();
+        }
+
+        private void StackAppView(View newView)
+        {
+            NavigationPage detail = Detail as NavigationPage;
+            View oldView = detail.Navigation.NavigationStack.FirstOrDefault() as View;
+            System.Diagnostics.Debug.Assert(oldView != null);
+            System.Diagnostics.Debug.Assert(oldView is BannerView || oldView is AppView);
+
+            if (oldView == newView)
             {
-                await (_currentView as AppView)
-                    .AppViewModel.ReloadAsync();
+                return;
             }
+
+            detail.Navigation.InsertPageBefore(newView, oldView);
+            detail.Navigation.RemovePage(oldView);
         }
     }
 }

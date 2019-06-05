@@ -37,23 +37,25 @@ namespace Inkton.Nester.Views
                 new List<Xamarin.Forms.View> {
                 });
 
-            BindingContext = _baseViewModels.AuthViewModel;
+            BindingContext = BaseViewModels.AuthViewModel;
         }
 
         protected async override void OnAppearing()
         {
-            BindingContext = _baseViewModels.AuthViewModel;
+            BindingContext = BaseViewModels.AuthViewModel;
 
             base.OnAppearing();
 
-            await _baseViewModels.AuthViewModel.QueryUserEventsAsync(BaseViewModels.Platform.Permit.Owner);
+            await BaseViewModels.AuthViewModel
+                .QueryUserEventsAsync(
+                BaseViewModels.Platform.Permit.Owner);
         }
 
         async private void OnDoneButtonClickedAsync(object sender, EventArgs e)
         {
             try
             {
-                MainSideView.UnstackViewAsync();
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
             {
@@ -65,7 +67,7 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                MainSideView.UnstackViewAsync();
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
             {

@@ -33,20 +33,20 @@ namespace Inkton.Nester.Views
 {
     public partial class UserView : View
     {
-        public UserView(BaseViewModels baseModels)
+        public UserView(bool wizardMode = false)
+            :base(wizardMode)
         {
             InitializeComponent();
 
-            _baseViewModels = baseModels;
-            SecurityCode.IsVisible = _baseViewModels.WizardMode;
-            SecurityCodeLabel.IsVisible = _baseViewModels.WizardMode;
+            SecurityCode.IsVisible = _wizardMode;
+            SecurityCodeLabel.IsVisible = _wizardMode;
             int selectedTerritoryIndex = -1;
 
             foreach (Geography.ISO3166Country territory in Geography.Territories)
             {
                 Territories.Items.Add(territory.ToString());
 
-                if (baseModels.WizardMode == false)
+                if (_wizardMode == false)
                 {
                     if (BaseViewModels.Platform.Permit.Owner.TerritoryISOCode == territory.Alpha2)
                     {
@@ -77,7 +77,7 @@ namespace Inkton.Nester.Views
 
             NickName.Unfocused += NickName_Unfocused;
 
-            BindingContext = _baseViewModels.AuthViewModel;
+            BindingContext = BaseViewModels.AuthViewModel;
 
             LoadExplainPage();
         }
@@ -106,10 +106,11 @@ namespace Inkton.Nester.Views
 <html>
     <head> 
         <title> Nest </title> 
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto' rel='stylesheet'>
+        <link href='ms-appx-web:///googlefonts.css' rel='stylesheet'>
         <style>
             body {
               background-color: #F3F9FF;
+              color: #34495e;
               font-family: 'Open Sans';
               font-size: 12px;
             }
@@ -171,14 +172,14 @@ namespace Inkton.Nester.Views
         {
             if (NicknameValidator != null)
             {
-                _baseViewModels.AuthViewModel.Validated = (
+                BaseViewModels.AuthViewModel.Validated = (
                      NicknameValidator.IsValid &&
                      FirstNameValidator.IsValid &&
                      LastNameValidator.IsValid
                      );
 
-                SecurityCode.IsVisible = _baseViewModels.WizardMode;
-                SecurityCodeLabel.IsVisible = _baseViewModels.WizardMode;
+                SecurityCode.IsVisible = _wizardMode;
+                SecurityCodeLabel.IsVisible = _wizardMode;
             }
         }
 
@@ -206,9 +207,9 @@ namespace Inkton.Nester.Views
                 
                 IsServiceActive = false;
 
-                if (_baseViewModels.WizardMode)
+                if (_wizardMode)
                 {
-                    ResultSingle<Permit> result = await _baseViewModels.AuthViewModel.SignupAsync(false);
+                    ResultSingle<Permit> result = await BaseViewModels.AuthViewModel.SignupAsync(false);
 
                     if (result.Code == Cloud.ServerStatus.NEST_RESULT_ERROR_AUTH_SECCODE)
                     {
@@ -220,20 +221,15 @@ namespace Inkton.Nester.Views
                     }
                     else
                     {
-                        await _baseViewModels.AuthViewModel.QueryTokenAsync();
+                        await BaseViewModels.AuthViewModel.QueryTokenAsync();
         
-                        AppViewModel newAppModel = new AppViewModel(_baseViewModels.Platform);
-
-                        AppEngageView engageView = new AppEngageView(newAppModel);
-                        engageView.MainSideView = MainSideView;
-
-                        MainSideView.Detail.Navigation.InsertPageBefore(engageView, this);
-                        await MainSideView.Detail.Navigation.PopAsync();
+                        await MainView.StackViewSkipBackAsync(
+                            new AppLaunchView(new AppViewModel(BaseViewModels.Platform)));
                     }
                 }
                 else
                 {
-                    await _baseViewModels.AuthViewModel.UpdateUserAsync(BaseViewModels.Platform.Permit.Owner);
+                    await BaseViewModels.AuthViewModel.UpdateUserAsync(BaseViewModels.Platform.Permit.Owner);
                     await DisplayAlert("Nester", "Your information was saved", "OK");
                 }
             }
@@ -248,7 +244,7 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                await MainSideView.Detail.Navigation.PopAsync();
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
             {

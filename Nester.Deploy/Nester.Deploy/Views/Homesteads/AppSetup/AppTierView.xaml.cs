@@ -29,6 +29,7 @@ using Xamarin.Forms;
 using Inkton.Nest.Model;
 using Inkton.Nester.ViewModels;
 using Inkton.Nester.Helpers;
+using DeployApp = Nester.Deploy.App;
 
 namespace Inkton.Nester.Views
 {
@@ -37,7 +38,8 @@ namespace Inkton.Nester.Views
         private ServicesViewModel.ServiceTableItem _selectedAppRow;
         private bool _isUpgrading;
 
-        public AppTierView(AppViewModel appViewModel)
+        public AppTierView(AppViewModel appViewModel, bool wizardMode = false)
+            :base(wizardMode)
         {
             InitializeComponent();
 
@@ -94,7 +96,7 @@ namespace Inkton.Nester.Views
                 PaymentNotice.Text = "The prices are in US Dollars. ";
             }
 
-            if (BaseViewModels.WizardMode || _isUpgrading)
+            if (_wizardMode || _isUpgrading)
             {
                 // hide but do not collapse
                 TopButtonPanel.Opacity = 0;
@@ -129,6 +131,13 @@ namespace Inkton.Nester.Views
             {
                 ResetSelections();
             }
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            ResetSelections();
         }
 
         private void ResetSelections()
@@ -182,9 +191,8 @@ namespace Inkton.Nester.Views
 
             try
             {
-                BaseViewModels.WizardMode = false;
                 await UpdateServicesAsync();
-                MainSideView.CurrentLevelViewAsync(new AppBasicDetailView(AppViewModel));
+                await MainView.StackViewSkipBackAsync(new AppBasicDetailView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -201,7 +209,7 @@ namespace Inkton.Nester.Views
             try
             {
                 await UpdateServicesAsync();
-                MainSideView.CurrentLevelViewAsync(new AppDomainView(AppViewModel));
+                await MainView.StackViewSkipBackAsync(new AppDomainView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -218,7 +226,7 @@ namespace Inkton.Nester.Views
             try
             {
                 await UpdateServicesAsync();
-                MainSideView.CurrentLevelViewAsync(new AppNestsView(AppViewModel));
+                await MainView.StackViewSkipBackAsync(new AppNestsView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -235,7 +243,7 @@ namespace Inkton.Nester.Views
             try
             {
                 await UpdateServicesAsync();
-                MainSideView.CurrentLevelViewAsync(new ContactsView(AppViewModel));
+                await MainView.StackViewSkipBackAsync(new ContactsView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -250,7 +258,8 @@ namespace Inkton.Nester.Views
             const int FEATURE_MEMORY = 3;
 
             // MariaDB on instances less than 1024 MB not supported.
-            bool isMariaDBSupported = int.Parse(_selectedAppRow.FeaturesIncluded[FEATURE_MEMORY]) > 1024;
+            bool isMariaDBSupported = int.Parse(
+                _selectedAppRow.FeaturesIncluded[FEATURE_MEMORY]) > 1024;
 
             if (!isMariaDBSupported)
             {
@@ -267,20 +276,18 @@ namespace Inkton.Nester.Views
                 return;
             }
             
-            // At present only the wizard mode brings up this page.
             if (_isUpgrading)
             {
                 AppViewModel.ServicesViewModel.UpgradeAppServiceTier(_selectedAppRow.Tier);
-
-                AppSummaryView summaryView = new AppSummaryView(AppViewModel);
-                summaryView.MainSideView = MainSideView;
-                MainSideView.Detail.Navigation.InsertPageBefore(summaryView, this);
+                await MainView.StackViewSkipBackAsync(new AppSummaryView(AppViewModel));
             }
             else
             {
                 if (AppViewModel.EditApp.Status != "assigned")
                 {
                     await AppViewModel.CreateAppAsync(_selectedAppRow.Tier);
+                    await AppViewModel.InitAsync();
+
                     BaseViewModels.AppCollectionViewModel.AddModel(AppViewModel);
                 }
 
@@ -316,21 +323,21 @@ namespace Inkton.Nester.Views
 
                 await UpdateServicesAsync();
 
-                if (BaseViewModels.WizardMode)
+                if (_wizardMode)
                 {
-                    await AppViewModel.NestViewModel.InitAsync();
+                    if (!AppViewModel.NestViewModel.Platforms.Any())
+                    {
+                        await AppViewModel.NestViewModel.InitAsync();
+                    }
 
-                    AppNestsView nestsView = new AppNestsView(AppViewModel);
-                    nestsView.MainSideView = MainSideView;
-                    MainSideView.Detail.Navigation.InsertPageBefore(nestsView, this);
-
-                    await MainSideView.Detail.Navigation.PopAsync();
+                    await MainView.StackViewAsync(
+                        new AppNestsView(AppViewModel, _wizardMode));
                 }
                 else
                 {
                     // Head back to homepage if the 
                     // page was called from here
-                    MainSideView.UnstackViewAsync();
+                    await MainView.UnstackViewAsync();
                 }
             }
             catch (Exception ex)

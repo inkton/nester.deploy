@@ -160,7 +160,7 @@ namespace Inkton.Nester.Views
                     Credit credit = BaseViewModels.PaymentViewModel.EditCredit;
                     credit.Code = CreditCode.Text.Trim();
 
-                    ResultSingle<Credit> result = await _baseViewModels
+                    ResultSingle<Credit> result = await BaseViewModels
                         .PaymentViewModel.QueryCreditAsync();
 
                     if (result.Code == 0)
@@ -240,13 +240,13 @@ namespace Inkton.Nester.Views
 
                 await AppViewModel.QueryStatusAsync();
 
-                AppView appView = MainSideView.GetAppView(AppViewModel.EditApp.Id);
+                AppView appView = MainView.GetAppView(AppViewModel.EditApp.Id);
                 if (appView != null)
                 {
                     appView.UpdateStatus();
                 }
 
-                MainSideView.UnstackViewAsync();
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
             {
@@ -260,7 +260,7 @@ namespace Inkton.Nester.Views
             {
                 // Head back to homepage if the 
                 // page was called from here
-                MainSideView.UnstackViewAsync();
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
             {

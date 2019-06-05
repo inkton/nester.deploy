@@ -226,11 +226,11 @@
             </Grid>
 
             <ListView x:Name="AppModels"
-                        SelectionMode="Single"
-                        ItemsSource="{Binding AppModels}"
-                        ItemTemplate="{StaticResource ItemTemplate}"
-                        VerticalOptions="FillAndExpand" 
-                        HorizontalOptions="FillAndExpand">
+                SelectionMode="Single"
+                ItemsSource="{Binding AppModels}"
+                ItemTemplate="{StaticResource ItemTemplate}"
+                VerticalOptions="FillAndExpand" 
+                HorizontalOptions="FillAndExpand">
             </ListView>
             
         </StackLayout>

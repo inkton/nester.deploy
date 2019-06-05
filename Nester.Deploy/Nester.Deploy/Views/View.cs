@@ -33,31 +33,40 @@ namespace Inkton.Nester.Views
 {
     public class View : ContentPage
     {
+        protected bool _wizardMode = false;
+        protected AppViewModel _appViewModel;
+
         protected ActivityIndicator _activityIndicator;
         protected List<Xamarin.Forms.View> _blockWhenActive;
         protected List<Xamarin.Forms.View> _activeBlockViews;
-        protected AppViewModel _appViewModel;
-        protected BaseViewModels _baseViewModels;
-        protected MainSideView _mainSideView;
 
         public View()
         {
             SubscribeToMessages();
+        }
 
-            _baseViewModels = ((DeployApp)Application.Current)
-                .BaseViewModels;
+        public View(bool wizardMode = false)
+        {
+            _wizardMode = wizardMode;
+
+            SubscribeToMessages();
+        }
+
+        public bool WizardMode
+        {
+            get { return _wizardMode; }
+            set { _wizardMode = value; }
         }
 
         public virtual BaseViewModels BaseViewModels
         {
-            get { return _baseViewModels; }
-            set { _baseViewModels = value; }
+            get { return ((DeployApp)Application.Current)
+                .BaseViewModels; }
         }
 
-        public virtual MainSideView MainSideView
+        public virtual MainView MainView
         {
-            get { return _mainSideView; }
-            set { _mainSideView = value; }
+            get { return Application.Current.MainPage as MainView; }
         }
 
         public INesterClient Client
@@ -77,6 +86,7 @@ namespace Inkton.Nester.Views
             set
             {
                 _appViewModel = value;
+
                 UpdateBindings();
             }
         }

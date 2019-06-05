@@ -182,7 +182,6 @@
 
                 <ListView x:Name="AppAudits"
                         ItemsSource="{Binding AppAudits}"
-                        SelectionBackgroundColor="{StaticResource selectionColor}"
                         HorizontalOptions="FillAndExpand"
                         ItemTemplate="{StaticResource ItemTemplate}">
                 </ListView>

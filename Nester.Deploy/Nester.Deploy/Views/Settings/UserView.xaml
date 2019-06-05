@@ -130,9 +130,7 @@
 
          <WebView Grid.Row="1" Grid.Column="2" x:Name="Browser" 
               Margin="10,10,5,5"
-              WidthRequest="500" HeightRequest="1000"
-              VerticalOptions="CenterAndExpand"
-              HorizontalOptions="CenterAndExpand">
+              VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
          </WebView>
           
       <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal">

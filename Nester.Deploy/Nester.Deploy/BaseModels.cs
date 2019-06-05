@@ -19,10 +19,8 @@ namespace Inkton.Nester.ViewModels
         private PaymentViewModel _paymentViewModel = null;
         private AppCollectionViewModel _appCollectionViewModel = null;
 
-        private NesterService _platform;
-        private bool _wizardMode = false;
-
         const int ApiVersion = 2;
+        private NesterService _platform;
 
         public BaseViewModels()
         {
@@ -63,12 +61,6 @@ namespace Inkton.Nester.ViewModels
         {
             get { return _appCollectionViewModel; }
             set { _appCollectionViewModel = value; }
-        }
-
-        public bool WizardMode
-        {
-            get { return _wizardMode; }
-            set { _wizardMode = value; }
         }
 
         public void SetupPlatform()

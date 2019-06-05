@@ -41,7 +41,7 @@ namespace Nester.Deploy
     {
         private LogService _log;
         private BaseViewModels _baseModels;
-        private MainSideView _mainSideView;
+        private MainView _mainSideView;
 
         public App()
         {
@@ -54,9 +54,8 @@ namespace Nester.Deploy
                     Path.GetTempPath(), "NesterLog"));
             _baseModels = new BaseViewModels();
 
-            _mainSideView = new MainSideView();
+            _mainSideView = new MainView();
             MainPage = _mainSideView;
-            _mainSideView.ShowEntry();
         }
 
         public BaseViewModels BaseViewModels
@@ -77,9 +76,9 @@ namespace Nester.Deploy
             return resmgr;
         }
 
-        public void RefreshView(AppViewModel appModel = null)
+        public async Task RefreshViewAsync(AppViewModel appModel = null)
         {
-            _mainSideView.UpdateView(appModel);
+            await _mainSideView.UpdateViewAsync(appModel);
         }
     }
 }

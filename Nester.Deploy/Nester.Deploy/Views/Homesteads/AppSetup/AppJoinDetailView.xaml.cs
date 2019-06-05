@@ -49,15 +49,6 @@ namespace Inkton.Nester.Views
                                 ButtonMembership
                 });
 
-            if (_contactsModel.Invitations.Any())
-            {
-                _contactsModel.EditInvitation = _contactsModel.Invitations.First();
-            }
-            else
-            {
-                _contactsModel.EditInvitation = null;
-            }
-
             BindingContext = _contactsModel;
 
             AppInviteList.ItemSelected += AppInviteList_ItemSelected;
@@ -167,8 +158,6 @@ namespace Inkton.Nester.Views
                 }
 
                 ToggleMembershipButton(invitation);
-
-                ((DeployApp)Application.Current).RefreshView();
             }
             catch (Exception ex)
             {
@@ -184,7 +173,9 @@ namespace Inkton.Nester.Views
 
             try
             {
-                ((DeployApp)Application.Current).RefreshView();
+                await ((DeployApp)Application.Current).RefreshViewAsync();
+
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
             {

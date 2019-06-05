@@ -25,7 +25,7 @@ using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using System.Resources;
-using System.Reflection;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Inkton.Nest.Cloud;
 using Inkton.Nest.Model;
@@ -36,11 +36,11 @@ using DeployApp = Nester.Deploy.App;
 
 namespace Inkton.Nester.Views
 {
-    public partial class EntryView : View
+    public partial class LoginView : View
     {
-        public EntryView()
+        public LoginView()
         {
-            BindingContext = _baseViewModels.AuthViewModel;
+            BindingContext = BaseViewModels.AuthViewModel;
 
             InitializeComponent();
 
@@ -51,101 +51,22 @@ namespace Inkton.Nester.Views
                     ButtonLogin,
                     ButtonSignoff,
                     ButtonSignup,
-                    ButtonRecoverPassword
+                    ButtonRecoverPassword,
+                    ButtonAbout
                 });
-
-            LoadHelpPage();
         }
             
-        private void LoadHelpPage()
-        {
-            string page = @"
-<html>
-    <head> 
-        <title> Nest </title> 
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto' rel='stylesheet'>
-        <style>
-            body {
-              background-color: #F3F9FF;
-              color: #34495e;
-              font-family: 'Open Sans';
-              font-size: 12px;
-            }
-            .container
-            {
-              padding: 1%;
-            }
-            .content { font-size: 12px; font-family: 'Open Sans'; }
-            .title { font-size: 18px; font-family: 'Roboto'; }
-            .sub-title { font-size: 12px; color: #317589; }
-            .content p { font-size: 11px; text-align: left; color: #48929B }
-            .content table { margin-top:10px;  margin-bottom:10px;}
-            .content table td { vertical-align:top;} 
-        </style>
-    </head>
-    <body>
-        <div class='container'>
-            <div class='content'>
-                <div>
-                   <span class='title'>Nester Deploy</span>&nbsp;
-                   <span class='sub-title'>Version " + typeof(EntryView).GetTypeInfo()
-                    .Assembly.GetName().Version.ToString() + @"</span>
-                </div>
-                <table>
-                    <tr>
-                        <td>
-                            <div class='sub-title'>How to Register</div>
-                            <p>
-                                Enter email, password and click 'Sigin-In' below
-                            </p>
-                        </td>
-                        <td>
-                            <div class='sub-title'>How to Login</div>
-                            <p>
-                                Enter email, password and click 'Login' below
-                            </p>
-                        </td>
-                        <td>
-                            <div class='sub-title'>How to Unregister</div>
-                            <p>
-                                Enter email, password and click 'Sigin-Out' below
-                            </p>
-                        </td>
-                        <td>
-                            <div class='sub-title'>How to Recover Password</div>
-                            <p>
-                                Enter email and click 'Recover Password' below
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-                <div>
-                    <a href='https://nestyt.com/blog/' target='_blank'>Blog</a>&nbsp;•&nbsp;
-                    <a href='https://github.com/inkton/nester.deploy/wiki' target='_bl0nk'>Wiki</a>&nbsp;•&nbsp
-                    <a href='https://github.com/inkton/nester.deploy/issues' target='_blank'>Discuss</a>&nbsp;•&nbsp
-                    <a href='https://my.nest.yt/' target='_blank'>Support</a>
-                </div><br/>
-                <div class='sub-title'>By Inkton</div>
-            </div>
-        </div>
-    </body>
-</html>";
-            var htmlSource = new HtmlWebViewSource();
-            htmlSource.Html = page;
-            StartHelp.Source = htmlSource;
-        }
-
         void Validate()
         {
             if (EmailValidator != null)
             {
-                _baseViewModels.AuthViewModel.Validated = (
+                BaseViewModels.AuthViewModel.Validated = (
                     EmailValidator.IsValid &&
                     PasswordValidator.IsValid);
 
-                _baseViewModels.AuthViewModel.CanRecoverPassword = (
-                    _baseViewModels.AuthViewModel.Platform.Permit.Owner.Email != null &&
-                    _baseViewModels.AuthViewModel.Platform.Permit.Owner.Email.Length > 0 &&
+                BaseViewModels.AuthViewModel.CanRecoverPassword = (
+                    BaseViewModels.AuthViewModel.Platform.Permit.Owner.Email != null &&
+                    BaseViewModels.AuthViewModel.Platform.Permit.Owner.Email.Length > 0 &&
                     EmailValidator.IsValid);
             }
         }
@@ -153,6 +74,8 @@ namespace Inkton.Nester.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            _wizardMode = true;
 
             BeginNewSession();
 
@@ -166,35 +89,21 @@ namespace Inkton.Nester.Views
 
         private void BeginNewSession()
         {
-            _baseViewModels.AuthViewModel.Reset();
-            _baseViewModels.AppCollectionViewModel.AppModels.Clear();
-            _baseViewModels.WizardMode = true;
+            BaseViewModels.AuthViewModel.Platform.Permit.Invalid();
+            BaseViewModels.AppCollectionViewModel.AppModels.Clear();
 
             // TODO: binding does not update sometimes
             // this a temp fix to capture inputs
-            _baseViewModels.AuthViewModel.Platform.Permit.Password = Password.Text;
-            _baseViewModels.AuthViewModel.Platform.Permit.Owner.Email = Email.Text;
+            BaseViewModels.AuthViewModel.Platform.Permit.Password = Password.Text;
+            BaseViewModels.AuthViewModel.Platform.Permit.Owner.Email = Email.Text;
         }
 
-        private void PushEngageView()
+        private async Task PushUserUpdateAsync()
         {
-            AppViewModel newAppModel = new AppViewModel(BaseViewModels.Platform);   
-            BaseViewModels.WizardMode = true;
+            await DisplayAlert("Nester", "A security code was sent to the email address. Confirm by entering the code.", "OK");
 
-            AppEngageView engageView = new AppEngageView(newAppModel);
-            engageView.MainSideView = MainSideView;
-
-            MainSideView.Detail.Navigation.InsertPageBefore(engageView, this);
-        }
-
-        private void PushUserUpdate()
-        {
-            DisplayAlert("Nester", "A security code was sent to the email address. Confirm by entering the code.", "OK");
-
-            UserView userView = new UserView(_baseViewModels);
-            userView.MainSideView = MainSideView;
-
-            MainSideView.Detail.Navigation.InsertPageBefore(userView, this);
+            await MainView.StackViewSkipBackAsync(
+                new UserView(true));
         }
 
         async private void OnLoginButtonClickedAsync(object sender, EventArgs e)
@@ -203,7 +112,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                ResultSingle<Permit> result = await _baseViewModels
+                ResultSingle<Permit> result = await BaseViewModels
                     .AuthViewModel.QueryTokenAsync(false);
 
                 if (result.Code == Cloud.ServerStatus.NEST_RESULT_ERROR_AUTH_SECCODE)
@@ -215,27 +124,24 @@ namespace Inkton.Nester.Views
                     // sound but need to confirm the security code.
                     // a new sec code would have been sent too.
 
-                    PushUserUpdate();
-
-                    await MainSideView.Detail.Navigation.PopAsync();
+                    await PushUserUpdateAsync();
                 }
                 else if (result.Code == Cloud.ServerStatus.NEST_RESULT_SUCCESS)
                 {
-                    await _baseViewModels.PaymentViewModel.InitAsync();
+                    await BaseViewModels.PaymentViewModel.InitAsync();
 
-                    await _baseViewModels.AppCollectionViewModel.LoadApps();
+                    await BaseViewModels.AppCollectionViewModel.LoadApps();
 
-                    if (!_baseViewModels.AppCollectionViewModel.AppModels.Any())
+                    await ((DeployApp)Application.Current).RefreshViewAsync();
+
+                    if (!BaseViewModels.AppCollectionViewModel.AppModels.Any())
                     {
-                        PushEngageView();
-
-                        await MainSideView.Detail.Navigation.PopAsync();
+                        await MainView.StackViewSkipBackAsync(
+                            new AppLaunchView(new AppViewModel(BaseViewModels.Platform)));
                     }
                     else
                     {
-                        await MainSideView.Detail.Navigation.PopAsync();
-
-                        ((DeployApp)Application.Current).RefreshView();
+                        await MainView.UnstackViewAsync();
                     }
                 }
                 else
@@ -257,11 +163,9 @@ namespace Inkton.Nester.Views
 
             try
             {
-                await _baseViewModels.AuthViewModel.SignupAsync();
+                await BaseViewModels.AuthViewModel.SignupAsync();
 
-                PushUserUpdate();
-
-                await MainSideView.Detail.Navigation.PopAsync();
+                await PushUserUpdateAsync();
             }
             catch (Exception ex)
             {
@@ -278,7 +182,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                ResultSingle<Permit> result = await _baseViewModels
+                ResultSingle<Permit> result = await BaseViewModels
                     .AuthViewModel.QueryTokenAsync(false);
 
                 if (result.Code == Cloud.ServerStatus.NEST_RESULT_SUCCESS)
@@ -290,10 +194,7 @@ namespace Inkton.Nester.Views
                     // sound but need to confirm the security code.
                     // a new sec code would have been sent too.
 
-                    ExitView exitView = new ExitView();
-                    exitView.MainSideView = MainSideView;
-
-                    await MainSideView.Detail.Navigation.PushAsync(exitView);
+                    await MainView.StackViewAsync(new ExitView());
                 }
                 else
                 {
@@ -315,12 +216,12 @@ namespace Inkton.Nester.Views
 
             try
             {
-                ResultSingle<Permit> result = await _baseViewModels
+                ResultSingle<Permit> result = await BaseViewModels
                     .AuthViewModel.QueryTokenAsync(false);
 
                 if (result.Code < 0)
                 {
-                    result = await _baseViewModels.AuthViewModel.RecoverPasswordAsync(false);
+                    result = await BaseViewModels.AuthViewModel.RecoverPasswordAsync(false);
 
                     if (result.Code == Cloud.ServerStatus.NEST_RESULT_ERROR_USER_NFOUND)
                     {
@@ -344,5 +245,23 @@ namespace Inkton.Nester.Views
 
             IsServiceActive = false;
         }
+
+        async void OnAboutButtonClickedAsync(object sender, EventArgs e)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                await MainView.StackViewAsync(
+                    new WebView(WebView.Pages.AboutPage));
+            }
+            catch (Exception ex)
+            {
+                await ErrorHandler.ExceptionAsync(this, ex);
+                IsServiceActive = false;
+            }
+
+            IsServiceActive = false;
+        }        
     }
 }

@@ -78,7 +78,7 @@ namespace Inkton.Nester.Views
             ButtonAppRestore.Clicked += ButtonAppRestore_ClickedAsync;
             ButtonAppUpgrade.Clicked += ButtonAppUpgrade_ClickedAsync;
             ButtonAppDepRemove.Clicked += ButtonAppDepRemove_ClickedAsync;
-            ButtonAppHide.Clicked += ButtonAppHide_Clicked;
+            ButtonAppHide.Clicked += ButtonAppHide_ClickedAsync;
             ButtonAppShow.Clicked += ButtonAppShow_ClickedAsync;
             ButtonAppDeploy.Clicked += ButtonAppDeploy_ClickedAsync;
             ButtonAppView.Clicked += ButtonAppView_ClickedAsync;
@@ -94,13 +94,11 @@ namespace Inkton.Nester.Views
                     Device.BeginInvokeOnMainThread(() => {
 
                         System.Diagnostics.Debug.WriteLine(
-                            string.Format("Notify arrived for app - {0}", updateApp.Tag));
+                            string.Format("Notify arrived for app - {0} to {1}", 
+                            updateApp.Tag, AppViewModel.EditApp.Tag));
 
                         if (updateApp.Tag == AppViewModel.EditApp.Tag)
                         {
-                            System.Diagnostics.Debug.WriteLine(
-                               string.Format("Updating View for app - {0}", updateApp.Tag));
-
                             // Set the backend address for querying logs and metrics
                             // The IP address is only available after an update recvd
                             AppViewModel.LogViewModel.ResetBackend();
@@ -454,7 +452,7 @@ namespace Inkton.Nester.Views
             try
             {
                 await AppViewModel.QueryAppNotificationsAsync();
-                MainSideView.StackViewAsync(new NotificationView(AppViewModel));
+                await MainView.StackViewAsync(new NotificationView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -470,8 +468,8 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.StackViewAsync(new AppWebView(AppViewModel,
-                    AppWebView.Pages.TargetSlackConnect));
+                await MainView.StackViewAsync(
+                    new WebView(WebView.Pages.AppSlackConnect, AppViewModel));
             }
             catch (Exception ex)
             {
@@ -487,8 +485,8 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.StackViewAsync(new AppWebView(AppViewModel, 
-                    AppWebView.Pages.TargetSite));
+                await MainView.StackViewAsync(
+                    new WebView(WebView.Pages.AppPage, AppViewModel));
             }
             catch (Exception ex)
             {
@@ -508,8 +506,8 @@ namespace Inkton.Nester.Views
                     .ServicesViewModel
                     .SetAppUpgradingAsync();
 
-                _baseViewModels.WizardMode = false;
-                MainSideView.StackViewAsync(new AppTierView(AppViewModel));
+                _wizardMode = false;
+                await MainView.StackViewAsync(new AppTierView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -527,7 +525,7 @@ namespace Inkton.Nester.Views
             {
                 await AppViewModel.DeploymentViewModel.QueryAppBackupsAsync();
 
-                MainSideView.StackViewAsync(new AppBackupView(AppViewModel));
+                await MainView.StackViewAsync(new AppBackupView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -567,6 +565,13 @@ namespace Inkton.Nester.Views
         {
             try
             {
+                var yes = await DisplayAlert("Nester", "This will remove the 'under construction' banner for the site.\nDo you want to continue?", "Yes", "No");
+
+                if (!yes)
+                {
+                    return;
+                }
+
                 Deployment deployment =
                     AppViewModel
                         .DeploymentViewModel.Deployments.First();
@@ -581,10 +586,17 @@ namespace Inkton.Nester.Views
             }
         }
 
-        async private void ButtonAppHide_Clicked(object sender, EventArgs e)
+        async private void ButtonAppHide_ClickedAsync(object sender, EventArgs e)
         {
             try
             {
+                var yes = await DisplayAlert("Nester", "This will place an 'under construction' banner on the site.\nDo you want to continue?", "Yes", "No");
+
+                if (!yes)
+                {
+                    return;
+                }
+
                 Deployment deployment =
                     AppViewModel
                         .DeploymentViewModel.Deployments.First();
@@ -629,11 +641,11 @@ namespace Inkton.Nester.Views
                 {
                     ResultMultiple<Forest> result = await AppViewModel.QueryAppServiceTierLocationsAsync(
                         AppViewModel.ServicesViewModel.SelectedAppServiceTableItem.Tier, false);
-                    MainSideView.StackViewAsync(new AppLocationView(AppViewModel, result.Data.Payload));
+                    await MainView.StackViewAsync(new AppLocationView(AppViewModel, result.Data.Payload));
                 }
                 else
                 {
-                    MainSideView.StackViewAsync(new AppSummaryView(AppViewModel));
+                    await MainView.StackViewAsync(new AppSummaryView(AppViewModel));
                 }
             }
             catch (Exception ex)
@@ -654,8 +666,8 @@ namespace Inkton.Nester.Views
                     .ServicesViewModel
                     .SetAppUpgradingAsync(false);
 
-                BaseViewModels.WizardMode = false;
-                MainSideView.StackViewAsync(new AppBasicDetailView(AppViewModel));
+                _wizardMode = false;
+                await MainView.StackViewAsync(new AppBasicDetailView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -671,7 +683,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.StackViewAsync(new AppAuditView(AppViewModel));
+                await MainView.StackViewAsync(new AppAuditView(AppViewModel));
             }
             catch (Exception ex)
             {

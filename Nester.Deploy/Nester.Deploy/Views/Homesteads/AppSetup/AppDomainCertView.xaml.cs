@@ -258,7 +258,7 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                MainSideView.UnstackViewAsync();
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
             {

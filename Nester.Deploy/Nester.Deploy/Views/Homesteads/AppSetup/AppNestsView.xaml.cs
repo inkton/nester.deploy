@@ -34,7 +34,8 @@ namespace Inkton.Nester.Views
 {
     public partial class AppNestsView : View
     {
-        public AppNestsView(AppViewModel appViewModel)
+        public AppNestsView(AppViewModel appViewModel, bool wizardMode = false)
+            :base(wizardMode)
         {
             InitializeComponent();
 
@@ -61,8 +62,8 @@ namespace Inkton.Nester.Views
             Memory.SelectedIndexChanged += Memory_SelectedIndexChanged;
             Tag.Unfocused += Tag_Unfocused;
 
-            ButtonDone.IsVisible = _baseViewModels.WizardMode;
-            if (_baseViewModels.WizardMode)
+            ButtonDone.IsVisible = _wizardMode;
+            if (_wizardMode)
             {
                 // hide but do not collapse
                 TopButtonPanel.Opacity = 0;
@@ -89,8 +90,8 @@ namespace Inkton.Nester.Views
 
             try
             {
-                _baseViewModels.WizardMode = false;
-                MainSideView.CurrentLevelViewAsync(new AppBasicDetailView(AppViewModel));
+                await MainView.StackViewSkipBackAsync(
+                    new AppBasicDetailView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -106,7 +107,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new AppTierView(AppViewModel));
+                await MainView.StackViewSkipBackAsync(new AppTierView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -122,7 +123,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new AppDomainView(AppViewModel));
+                await MainView.StackViewSkipBackAsync(new AppDomainView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -138,7 +139,7 @@ namespace Inkton.Nester.Views
 
             try
             {
-                MainSideView.CurrentLevelViewAsync(new ContactsView(AppViewModel));
+                await MainView.StackViewSkipBackAsync(new ContactsView(AppViewModel));
             }
             catch (Exception ex)
             {
@@ -363,9 +364,6 @@ namespace Inkton.Nester.Views
                 AppViewModel.NestViewModel.CanUpdate =
                     AppViewModel.NestViewModel.Validated &&
                     AppNestsList.SelectedItem != null;
-
-                System.Diagnostics.Debug.WriteLine("Selected - {0}",
-                    AppNestsList.SelectedItem != null);
             }
         }
 
@@ -572,22 +570,20 @@ namespace Inkton.Nester.Views
                     return;
                 }
 
-                if (_baseViewModels.WizardMode)
+                if (_wizardMode)
                 {
                     await AppViewModel.ContactViewModel.InitAsync();
 
                     // if currently trvelling back and forth on the 
                     // app wizard - move to the next
-
-                    ContactsView contactsView = new ContactsView(AppViewModel);
-                    contactsView.MainSideView = MainSideView;
-                    await MainSideView.Detail.Navigation.PushAsync(contactsView);
+                    await MainView.StackViewAsync(
+                        new ContactsView(AppViewModel, _wizardMode));
                 }
                 else
                 {
                     // Head back to homepage if the 
                     // page was called from here
-                    MainSideView.UnstackViewAsync();
+                    await MainView.UnstackViewAsync();
                 }
             }
             catch (Exception ex)

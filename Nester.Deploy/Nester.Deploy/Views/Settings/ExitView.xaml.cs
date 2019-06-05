@@ -44,7 +44,7 @@ namespace Inkton.Nester.Views
                 });
 
             Message.Text = "Click 'Close Account' to close the account.\n\nAll private details will be removed from the database and remaining credit balance refunded.";
-            BindingContext = _baseViewModels.AuthViewModel;
+            BindingContext = BaseViewModels.AuthViewModel;
         }
 
         async void OnDoneButtonClickedAsync(object sender, EventArgs e)
@@ -57,9 +57,9 @@ namespace Inkton.Nester.Views
 
                 if (yes)
                 {
-                    ResultSingle<User> result = await _baseViewModels.AuthViewModel.DeleteUserAsync();
+                    ResultSingle<User> result = await BaseViewModels.AuthViewModel.DeleteUserAsync();
                     await DisplayAlert("Nester", new ResultHandler<User>(result).GetMessage(), "OK");
-                    await MainSideView.Detail.Navigation.PopAsync();
+                    await MainView.UnstackViewAsync();
                 } 
             }
             catch (Exception ex)
@@ -73,7 +73,7 @@ namespace Inkton.Nester.Views
         {
             try
             {
-                await MainSideView.Detail.Navigation.PopAsync();
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
             {

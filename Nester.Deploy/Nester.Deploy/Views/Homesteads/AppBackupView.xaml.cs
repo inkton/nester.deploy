@@ -51,7 +51,7 @@ namespace Inkton.Nester.Views
 
             _activityIndicator = ServiceActive;
 
-            ButtonCancel.Clicked += ButtonCancel_Clicked;
+            ButtonCancel.Clicked += ButtonCancel_ClickedAsync;
             ButtonRestore.Clicked += ButtonRestore_ClickedAsync;
             ButtonBackup.Clicked += ButtonBackup_ClickedAsync;
             ButtonRefresh.Clicked += ButtonRefresh_ClickedAsync;
@@ -87,10 +87,10 @@ namespace Inkton.Nester.Views
         }
 
 
-        private void ButtonCancel_Clicked(object sender, EventArgs e)
+        private async void ButtonCancel_ClickedAsync(object sender, EventArgs e)
         {
             IsServiceActive = true;
-            MainSideView.UnstackViewAsync();
+            await MainView.UnstackViewAsync();
             IsServiceActive = false;
         }
 
@@ -117,14 +117,14 @@ namespace Inkton.Nester.Views
                     // Reload everything
                     await AppViewModel.InitAsync();
 
-                    AppView appView = MainSideView.GetAppView(AppViewModel.EditApp.Id);
+                    AppView appView = MainView.GetAppView(AppViewModel.EditApp.Id);
                     if (appView != null)
                     {
                         appView.UpdateStatus();
                     }
                 }
 
-                MainSideView.UnstackViewAsync();
+                await MainView.UnstackViewAsync();
             }
             catch (Exception ex)
             {
