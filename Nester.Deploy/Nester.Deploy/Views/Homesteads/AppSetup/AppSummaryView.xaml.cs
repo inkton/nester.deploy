@@ -203,6 +203,8 @@ namespace Inkton.Nester.Views
 
         private async void OnDoneButtonClickedAsync(object sender, EventArgs e)
         {
+            IsServiceActive = true;
+
             try
             {
                 if (AppViewModel.ServicesViewModel.UpgradableAppTiers.Any())
@@ -214,8 +216,7 @@ namespace Inkton.Nester.Views
                         .SetAppUpgradingAsync(false);
                 }
                 else
-                {
-                    
+                {                    
                     foreach (var version in AppViewModel.DeploymentViewModel
                         .DotnetVersions)
                     {
@@ -240,7 +241,7 @@ namespace Inkton.Nester.Views
 
                 await AppViewModel.QueryStatusAsync();
 
-                AppView appView = MainView.GetAppView(AppViewModel.EditApp.Id);
+                AppView appView = await MainView.GetAppViewAsync(AppViewModel);
                 if (appView != null)
                 {
                     appView.UpdateStatus();
@@ -252,6 +253,8 @@ namespace Inkton.Nester.Views
             {
                 await ErrorHandler.ExceptionAsync(this, ex);
             }
+
+            IsServiceActive = false;
         }
 
         private async void OnCancelButtonClickedAsync(object sender, EventArgs e)
@@ -270,21 +273,15 @@ namespace Inkton.Nester.Views
 
         private async Task UpgradeAsync()
         {
-            IsServiceActive = true;
-
             await AppViewModel
                 .ServicesViewModel
                 .UpdateAppUpgradeServiceTierAsync();
-
-            IsServiceActive = false;
         }
 
         private async Task UpdateAsync()
         {
             if (!await IsDnsOkAsync())
                 return;
-
-            IsServiceActive = true;
 
             Deployment deployment =
                 AppViewModel.DeploymentViewModel.Deployments.First();
@@ -293,8 +290,6 @@ namespace Inkton.Nester.Views
             await AppViewModel
                 .DeploymentViewModel
                 .UpdateDeploymentAsync("reapply", deployment);
-
-            IsServiceActive = false;
         }
 
         private async Task InstallAsync()
@@ -318,8 +313,6 @@ namespace Inkton.Nester.Views
                 }
             }
 
-            IsServiceActive = true;
-
             AppViewModel.DeploymentViewModel.EditDeployment.FrameworkVersionId = _selVersion.Id;
 
             await AppViewModel.DeploymentViewModel.CreateDeployment(
@@ -328,8 +321,6 @@ namespace Inkton.Nester.Views
             AppViewModel.EditApp.Deployment = AppViewModel
                 .DeploymentViewModel
                 .EditDeployment;
-
-            IsServiceActive = false;
         }
 
         private void DisplayTotals(Credit credit = null)

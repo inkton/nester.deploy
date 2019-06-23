@@ -45,7 +45,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Flurl.Http">
-      <Version>2.4.1</Version>
+      <Version>2.4.2</Version>
+    </PackageReference>
+    <PackageReference Include="Inkton.NesterLibrary">
+      <Version>1.5.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk">
+      <Version>16.1.1</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.2</Version>
@@ -54,9 +60,6 @@
       <Version>15.4.0.20</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
-      <Version>15.4.0.20</Version>
-    </PackageReference>
-    <PackageReference Include="Syncfusion.Xamarin.SfListView">
       <Version>15.4.0.20</Version>
     </PackageReference>
     <PackageReference Include="System.Net.NameResolution">
@@ -75,7 +78,7 @@
       <Version>28.0.0.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
-      <Version>3.6.0.344457</Version>
+      <Version>4.0.0.497661</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

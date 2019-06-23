@@ -22,6 +22,7 @@
 
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Xamarin.Forms;
 using Inkton.Nester;
@@ -47,27 +48,74 @@ namespace Inkton.Nester.Views
 
             StackViewAsync(new LoginView()).Wait();
         }
-
-        public AppView GetAppView(long appId)
-        {
-            AppView appView = null;
-
-            if (_viewCache.ContainsKey(appId))
-            {
-                appView = _viewCache[appId];
-            }
-
-            return appView;
-        }
         
         public async Task GoHomeAsync()
         {
-            while (!((Detail as NavigationPage).CurrentPage is BannerView ||
-                (Detail as NavigationPage).CurrentPage is AppView))
+            NavigationPage detail = Detail as NavigationPage;
+
+            // Home (BannerView/AppView) -> Dialogs
+            var homeView = detail.Navigation.NavigationStack.FirstOrDefault();
+
+            if (homeView == null)
+            {
+                BannerView noAppsSign = new BannerView();
+                StackAppView(noAppsSign);
+            }
+            else
+            {
+                bool isAppView = homeView is AppView;
+
+                if (!isAppView)
+                {
+                    // An appView is needed. 
+                    BaseViewModels baseModels = ((DeployApp)Application.Current)
+                        .BaseViewModels;
+                    AppViewModel loadAppViewModel = baseModels.AppCollectionViewModel
+                         .AppModels.FirstOrDefault();
+                    if (loadAppViewModel != null)
+                    {
+                        detail.Navigation.InsertPageBefore(
+                            await GetAppViewAsync(loadAppViewModel), homeView);
+                    }
+                }
+
+                while (detail.Navigation.NavigationStack.Count > 1)
+                {
+                    await Detail.Navigation.PopAsync();
+                }
+            }
+        }
+            
+        public async Task LogoutAsync()
+        {
+            NavigationPage detail = Detail as NavigationPage;
+
+            // Home (BannerView/AppView) -> Dialogs
+            var homeView = detail.Navigation.NavigationStack.FirstOrDefault();
+
+            if (homeView != null)
+            {
+                detail.Navigation.InsertPageBefore(
+                    new LoginView(), homeView);
+            }
+            else
+            {
+                StackAppView(new LoginView());
+            }
+
+            while (!(detail.CurrentPage is LoginView))
             {
                 await Detail.Navigation.PopAsync();
             }
-        }        
+
+            BaseViewModels baseModels = ((DeployApp)Application.Current)
+                .BaseViewModels;
+
+            if (baseModels.AuthViewModel.IsAuthenticated)
+            {
+                baseModels.AuthViewModel.Platform.Permit.Invalid();
+            }
+        }
 
         public async Task StackViewAsync(View view)
         {
@@ -84,7 +132,37 @@ namespace Inkton.Nester.Views
         {
             await (Detail as NavigationPage).PopAsync();
         }
-        
+
+        async public Task<AppView> GetAppViewAsync(AppViewModel appModel)
+        {
+            // this creates a cache of app views
+            // the appview takes time to init
+            // caching seems to help - revisit
+            AppView appView = null;
+
+            if (_viewCache.ContainsKey(appModel.EditApp.Id))
+            {
+                appView = _viewCache[appModel.EditApp.Id];
+            }
+
+            if (appView == null)
+            {
+                appView = new AppView(appModel);
+
+                System.Diagnostics.Debug.WriteLine(
+                    string.Format("Created a view for", appModel.EditApp.Tag));
+
+                if (appModel.EditApp.Id > 0)
+                {
+                    await appView.AppViewModel.InitAsync();
+                }
+
+                _viewCache[appModel.EditApp.Id] = appView;
+            }
+
+            return appView;
+        }
+
         public async Task UpdateViewAsync(AppViewModel loadAppViewModel = null)
         {
             BaseViewModels baseModels = ((DeployApp)Application.Current)
@@ -92,6 +170,7 @@ namespace Inkton.Nester.Views
 
             if (loadAppViewModel == null)
             {
+                // No appmodel provided - get one from the collection
                 loadAppViewModel = baseModels.AppCollectionViewModel
                     .AppModels.FirstOrDefault();
 
@@ -106,41 +185,18 @@ namespace Inkton.Nester.Views
             bool isAppViewCurrent = 
                 ((Detail as NavigationPage).CurrentPage is AppView);
 
-            bool changeView = false;
-
+            // if the the app is currently displayed - ignore load.
             if (isAppViewCurrent)
             {
                 if (((Detail as NavigationPage).CurrentPage as AppView).AppViewModel.EditApp.Id
                         != loadAppViewModel.EditApp.Id)
                 {
-                    changeView = true;
+                    StackAppView(await GetAppViewAsync(loadAppViewModel));
                 }
             }
             else
             {
-                changeView = true;
-            }
-
-            if (changeView)
-            {
-                AppView appView = GetAppView(loadAppViewModel.EditApp.Id); 
-
-                if (appView == null)
-                {                  
-                    appView = new AppView(loadAppViewModel);
-
-                    System.Diagnostics.Debug.WriteLine(
-                        string.Format("Created a view for", loadAppViewModel.EditApp.Tag));
-
-                    if (loadAppViewModel.EditApp.Id > 0)
-                    {
-                        await appView.AppViewModel.InitAsync();
-                    }
-
-                    _viewCache[loadAppViewModel.EditApp.Id] = appView;
-                }
-
-                StackAppView(appView);
+                StackAppView(await GetAppViewAsync(loadAppViewModel));
             }
         }
         
@@ -154,8 +210,8 @@ namespace Inkton.Nester.Views
         {
             NavigationPage detail = Detail as NavigationPage;
             View oldView = detail.Navigation.NavigationStack.FirstOrDefault() as View;
-            System.Diagnostics.Debug.Assert(oldView != null);
-            System.Diagnostics.Debug.Assert(oldView is BannerView || oldView is AppView);
+            Debug.Assert(oldView != null);
+            Debug.Assert(oldView is BannerView || oldView is AppView);
 
             if (oldView == newView)
             {
