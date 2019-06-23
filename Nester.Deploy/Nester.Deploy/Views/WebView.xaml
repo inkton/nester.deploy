@@ -4,7 +4,7 @@
              xmlns:views="clr-namespace:Inkton.Nester.Views"
              xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
              xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
-             Title="Hello World"
+             Title="Nester Deploy"
              x:Class="Inkton.Nester.Views.WebView">
 
   <ContentPage.Resources>

@@ -117,7 +117,7 @@ namespace Inkton.Nester.Views
                     // Reload everything
                     await AppViewModel.InitAsync();
 
-                    AppView appView = MainView.GetAppView(AppViewModel.EditApp.Id);
+                    AppView appView = await MainView.GetAppViewAsync(AppViewModel);
                     if (appView != null)
                     {
                         appView.UpdateStatus();

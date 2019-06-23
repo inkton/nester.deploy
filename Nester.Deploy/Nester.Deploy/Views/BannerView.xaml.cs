@@ -52,12 +52,7 @@ namespace Inkton.Nester.Views
 
         private async void ButtonAuthenticate_ClickedAsync(object sender, System.EventArgs e)
         {
-            if (BaseViewModels.AuthViewModel.IsAuthenticated)
-            {
-                BaseViewModels.AuthViewModel.Platform.Permit.Invalid();
-            }
-
-            await MainView.StackViewAsync(new LoginView());
+            await MainView.LogoutAsync();
         }
 
         public string Text

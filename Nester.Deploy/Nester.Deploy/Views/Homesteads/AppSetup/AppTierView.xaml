@@ -91,11 +91,11 @@
 
                   <Grid>
                     <Grid.ColumnDefinitions>
-                      <ColumnDefinition Width="50" />
+                      <ColumnDefinition Width="88" />
                       <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <Label Text="{Binding Name, Converter={StaticResource i18n}}"
+                    <Label Text="{Binding Tag}"
                        Style="{StaticResource nesterFieldLabel}"
                        Margin="0,5,0,5"
                            >

@@ -4,7 +4,6 @@
              xmlns:views="clr-namespace:Inkton.Nester.Views"
              xmlns:validators="clr-namespace:Inkton.Nester.Helpers.Validators"
              xmlns:utils="clr-namespace:Inkton.Nester.Helpers"
-             xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              Title="Backups"                          
              x:Class="Inkton.Nester.Views.AppBackupView">
 
@@ -133,11 +132,10 @@
                 <Label Style="{StaticResource nesterFieldLabel}"
                     Text="Backups"></Label>
                 
-                <sync:SfListView x:Name="AppBackups"
+                <ListView x:Name="AppBackups"
                         ItemsSource="{Binding DeploymentViewModel.AppBackups}"
-                        SelectionBackgroundColor="{StaticResource selectionColor}"
                         ItemTemplate="{StaticResource ItemTemplate}">
-                </sync:SfListView>
+                </ListView>
                 
             </StackLayout>
 

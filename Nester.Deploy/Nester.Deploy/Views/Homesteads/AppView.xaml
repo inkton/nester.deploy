@@ -70,6 +70,11 @@
 
                 <!--Actions when the app is in any state -->
 
+                <Button x:Name="ButtonLogout"
+                    Style="{StaticResource appFuncButton}"
+                    Image="logout24.png" >
+                </Button>
+
                 <Button x:Name="ButtonNotifications"
                     IsVisible="{Binding EditApp.OwnerCapabilities.CanViewApp}"
                     Style="{StaticResource appFuncButton}"

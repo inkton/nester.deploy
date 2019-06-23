@@ -56,6 +56,7 @@ namespace Inkton.Nester.Views
             SetActivityMonotoring(ServiceActive,
                 new List<Xamarin.Forms.View>
                 {
+                    ButtonLogout,
                     ButtonGetAnalytics,
                     ButtonAppSettings,
                     ButtonNotifications,
@@ -73,6 +74,7 @@ namespace Inkton.Nester.Views
 
             ResetTimeFilter();
 
+            ButtonLogout.Clicked += ButtonLogout_ClickedAsync;
             ButtonAppSettings.Clicked += ButtonAppSettings_ClickedAsync;
             ButtonNotifications.Clicked += ButtonNotifications_ClickedAsync;
             ButtonAppRestore.Clicked += ButtonAppRestore_ClickedAsync;
@@ -647,6 +649,22 @@ namespace Inkton.Nester.Views
                 {
                     await MainView.StackViewAsync(new AppSummaryView(AppViewModel));
                 }
+            }
+            catch (Exception ex)
+            {
+                await ErrorHandler.ExceptionAsync(this, ex);
+            }
+
+            IsServiceActive = false;
+        }
+        
+        async private void ButtonLogout_ClickedAsync(object sender, EventArgs e)
+        {
+            IsServiceActive = true;
+
+            try
+            {
+                await MainView.LogoutAsync();
             }
             catch (Exception ex)
             {

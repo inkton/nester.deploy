@@ -20,7 +20,6 @@ namespace Nester.Deploy.UWP
         public MainPage()
         {
             this.InitializeComponent();
-            Syncfusion.ListView.XForms.UWP.SfListViewRenderer.Init();
             LoadApplication(new Nester.Deploy.App());
         }
     }

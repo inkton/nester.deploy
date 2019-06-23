@@ -211,18 +211,21 @@ namespace Inkton.Nester.Views
                 {
                     ResultSingle<Permit> result = await BaseViewModels.AuthViewModel.SignupAsync(false);
 
-                    if (result.Code == Cloud.ServerStatus.NEST_RESULT_ERROR_AUTH_SECCODE)
+                    if (result.Code < 0)
                     {
-                        await DisplayAlert("Nester", "Invalid security code", "OK");
-                    }
-                    else if (result.Code == Cloud.ServerStatus.NEST_RESULT_ERROR)
-                    {
-                        await DisplayAlert("Nester", result.Notes, "OK");
+                        if (result.Code == Cloud.ServerStatus.NEST_RESULT_ERROR_AUTH_SECCODE)
+                        {
+                            await DisplayAlert("Nester", "Invalid security code", "OK");
+                        }
+                        else
+                        {
+                            await DisplayAlert("Nester", result.Notes, "OK");
+                        }
                     }
                     else
                     {
                         await BaseViewModels.AuthViewModel.QueryTokenAsync();
-        
+
                         await MainView.StackViewSkipBackAsync(
                             new AppLaunchView(new AppViewModel(BaseViewModels.Platform)));
                     }

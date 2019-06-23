@@ -92,10 +92,12 @@ namespace Inkton.Nester.Views
             BaseViewModels.AuthViewModel.Platform.Permit.Invalid();
             BaseViewModels.AppCollectionViewModel.AppModels.Clear();
 
-            // TODO: binding does not update sometimes
-            // this a temp fix to capture inputs
             BaseViewModels.AuthViewModel.Platform.Permit.Password = Password.Text;
             BaseViewModels.AuthViewModel.Platform.Permit.Owner.Email = Email.Text;
+            BaseViewModels.AuthViewModel.Platform.Permit.Owner.Nickname = string.Empty;
+            BaseViewModels.AuthViewModel.Platform.Permit.Owner.FirstName = string.Empty;
+            BaseViewModels.AuthViewModel.Platform.Permit.Owner.LastName = string.Empty;
+            BaseViewModels.AuthViewModel.Platform.Permit.Owner.TerritoryISOCode = string.Empty;
         }
 
         private async Task PushUserUpdateAsync()
@@ -132,17 +134,7 @@ namespace Inkton.Nester.Views
 
                     await BaseViewModels.AppCollectionViewModel.LoadApps();
 
-                    await ((DeployApp)Application.Current).RefreshViewAsync();
-
-                    if (!BaseViewModels.AppCollectionViewModel.AppModels.Any())
-                    {
-                        await MainView.StackViewSkipBackAsync(
-                            new AppLaunchView(new AppViewModel(BaseViewModels.Platform)));
-                    }
-                    else
-                    {
-                        await MainView.UnstackViewAsync();
-                    }
+                    await MainView.GoHomeAsync();
                 }
                 else
                 {
